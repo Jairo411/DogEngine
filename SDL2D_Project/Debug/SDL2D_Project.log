@@ -1,0 +1,11 @@
+﻿  Map.cpp
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\gameobjects\map\map.cpp(9): warning C4101: 'graphicLayer': unreferenced local variable
+  Tiles.cpp
+  Player.cpp
+  Game.cpp
+  Main.cpp
+  TextureManager.cpp
+  Window.cpp
+  Generating Code...
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\gameobjects\player.cpp(75): warning C4715: 'Player::keyBoardInput': not all control paths return a value
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\Debug\SDL2D_Project.exe

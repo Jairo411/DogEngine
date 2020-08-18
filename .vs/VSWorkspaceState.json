@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SDL2D_Project",
+    "\\SDL2D_Project\\Game",
+    "\\SDL2D_Project\\GameObjects",
+    "\\SDL2D_Project\\GameObjects\\Map",
+    "\\SDL2D_Project\\GameObjects\\Map\\TileSet",
+    "\\SDL2D_Project\\Input",
+    "\\SDL2D_Project\\Master",
+    "\\SDL2D_Project\\TextureManager",
+    "\\SDL2D_Project\\Window"
+  ],
+  "SelectedNode": "\\SDL2D_Project\\Game\\Main.cpp",
+  "PreviewInSolutionExplorer": false
+}
