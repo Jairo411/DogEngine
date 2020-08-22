@@ -48,6 +48,7 @@ void MapLayer::OnUpdate()
 				{
 					int tempR = 16 * i;
 					int tempC = 30 * j;
+
 					tex = set->getTile(set->DIRTTILE);
 					tileMap.push_back(Tiles(tex, tempR, tempC, true));
 

@@ -137,7 +137,6 @@ void Player::PlayAnimations(int state_)
 		//Each click should cycle through the attacks
 		sprite = seconds % 4;
 		objTexture = animationSet.at(0).at(sprite);
-		std::cout << sprite << endl;
 		break;
 	case Player::ATTACK1:
 		//Each click should cycle through the attacks
