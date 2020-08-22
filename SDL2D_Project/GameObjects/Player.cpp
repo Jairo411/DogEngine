@@ -1,11 +1,10 @@
 #include "Player.h"
 #include "../TextureManager/TextureManager.h"
 
-
-
 Player::Player(const char * textureSheet, int x, int y)
 {
 	objTexture = TextureManager::LoadTexture(textureSheet);
+	AnimState = IDLE0;
 	posX = x;
 	posY = y;
 	srcRect.w = 100;
@@ -23,6 +22,7 @@ Player::Player(const char * textureSheet, int x, int y)
 		textureIsOn = false;
 		std::cout << "Object texture wasn't found" << std::endl;
 	}
+	
 }
 
 Player::~Player()
@@ -35,6 +35,9 @@ void Player::Update()
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
 	//Note you need to get your FPS working properly in order to to proper animate your character 
+
+	PlayAnimations(AnimState);
+
 	if (getDisable()==false)
 	{
 		dstRect.x = posX;
@@ -80,19 +83,26 @@ bool Player::keyBoardInput(int key)
 		if (key == SDLK_a)
 		{
 			posX -= 1;
-			
+			AnimState = RUN;
 		}
 		else if (key == SDLK_d)
 		{
 			posX += 1;
+			AnimState = RUN;
 		}
 		else if (key == SDLK_w)
 		{
 			posY -= 1;
+			AnimState = RUN;
 		}
 		else if (key == SDLK_s)
 		{
 			posY += 1;
+			AnimState = RUN;
+		}
+		else if (key == SDLK_SPACE) {
+			AnimState = JUMP;
+			/*some Jump formula over here */
 		}
 		return true;
 	}
@@ -100,12 +110,96 @@ bool Player::keyBoardInput(int key)
 
 bool Player::mouseInput(int key)
 {
-	return false;
+	if (key!=NULL)
+	{
+		if (key==SDL_BUTTON_LEFT)
+		{
+			AnimState = ATTACK0;
+			return true;
+		}
+	}
 }
 
 bool Player::controllerInput(int key)
 {
 	return false;
+}
+//This might be a way of hard coding this 
+/* function doesn't hold anything, just tells vectors what size they are and plays animations*/
+void Player::PlayAnimations(int state_)
+{
+	Uint32 ticks = SDL_GetTicks();
+	Uint32 seconds = ticks / 300;
+	Uint32 sprite;
+	switch (state_)
+	{
+	case Player::ATTACK0:
+		//Each click should cycle through the attacks
+		sprite = seconds % 4;
+		objTexture = animationSet.at(0).at(sprite);
+		std::cout << sprite << endl;
+		break;
+	case Player::ATTACK1:
+		//Each click should cycle through the attacks
+		sprite = seconds % 6;
+		objTexture = animationSet.at(1).at(sprite);
+		break;
+	case Player::ATTACK2:
+		//Each click should cycle through the attacks
+		sprite = seconds % 6;
+		objTexture = animationSet.at(2).at(sprite);
+		break;
+	case Player::CLIMB:
+		sprite = seconds % 5;
+		objTexture = animationSet.at(3).at(sprite);
+		break;
+	case Player::CORNERGRAB:
+		sprite = seconds % 4;
+		objTexture = animationSet.at(4).at(sprite);
+		break;
+	case Player::CORNERJUMP:
+		sprite = seconds % 3;
+		objTexture = animationSet.at(5).at(sprite);
+		break;
+	case Player::CROUCH:
+		sprite = seconds % 4;
+		objTexture = animationSet.at(6).at(sprite);
+		break;
+	case Player::DEATH:
+		sprite = seconds % 7;
+		objTexture = animationSet.at(7).at(sprite);
+		break;
+	case Player::FALL:
+		sprite = seconds % 2;
+		objTexture = animationSet.at(8).at(sprite);
+		break;
+	case Player::HURT:
+		sprite = seconds % 3;
+		objTexture = animationSet.at(9).at(sprite);
+		break;
+	case Player::IDLE0:
+		sprite = seconds % 3;
+		objTexture = animationSet.at(10).at(sprite);
+		break;
+	case Player::IDLE1:
+		sprite = seconds % 4;
+		objTexture = animationSet.at(11).at(sprite);
+		break;
+	case Player::JUMP:
+			sprite = seconds % 4;
+			objTexture = animationSet.at(12).at(sprite);
+			break;
+	case Player::RUN:
+		sprite = seconds % 6;
+		objTexture = animationSet.at(13).at(sprite);
+		break;
+	case Player::SLIDE:
+		sprite = seconds % 2;
+		objTexture = animationSet.at(13).at(sprite);
+		break;
+	default:
+		break;
+	}
 }
 
 

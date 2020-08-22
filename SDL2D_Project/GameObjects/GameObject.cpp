@@ -22,7 +22,6 @@ bool GameObject::intiAnimation(const char* AnimTxtFile)
 			ifstream input;
 			input.open(AnimTxtFile);
 			
-
 		
 			/*Reads txt and checks if has A:
 			A's will in the next line will have a const char locations that will read and input those values inside a a map/vector.

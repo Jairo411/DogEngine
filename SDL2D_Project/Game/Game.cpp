@@ -1,8 +1,5 @@
 #include "Game.h"
 
-
-
-
 SDL_Texture* playerTex;
 SDL_Rect* srcR, dstR;
 Player* player;
@@ -92,6 +89,10 @@ void Game::handleEvents()
 	case SDL_MOUSEBUTTONDOWN:
 		if (actualWindow->mouseInput(event.button.button))
 		{
+		}
+		if (player->mouseInput(event.button.button))
+		{
+
 		}
 	default:
 		break;

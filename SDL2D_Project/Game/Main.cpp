@@ -13,10 +13,9 @@ int main(int argc,char * argv[]) {
 	
 	const int FPS = 60;
 	/*You're an idiot the frameDelay variable will only delay SDL from running you dumbass */
-	const int frameDelay =  FPS/1000;
+	const int frameDelay =  1000/FPS;
 	Uint32 frameStart;
-	int frametime = 0 ;
-	int fps = 0;
+	int frametime;
 	game = new Game();	
 	game->init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
@@ -24,16 +23,17 @@ int main(int argc,char * argv[]) {
 		
 		frameStart = SDL_GetTicks();
 
-
 		game->handleEvents();
 		game->update();
 		game->render();
 
 		frametime = SDL_GetTicks() - frameStart;
+		
 
 		if (frameDelay>frametime)
 		{
 			SDL_Delay(frameDelay - frametime);
+		
 		}
 		
 		/*You need to add some functionality/extra variables in order to display the fps 

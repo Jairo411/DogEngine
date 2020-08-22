@@ -1,7 +1,7 @@
 ﻿  Game.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(86,78): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'SDL_Scancode' can equal the given constant
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(83,78): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'SDL_Scancode' can equal the given constant
   Player.cpp
-  Window.cpp
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(97): warning C4715: 'Player::keyBoardInput': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(109): warning C4715: 'Player::keyBoardInput': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(121): warning C4715: 'Player::mouseInput': not all control paths return a value
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

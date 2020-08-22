@@ -24,17 +24,37 @@ public:
 	 void Update();
 	 void Render();
 	 void Disable();
-	 bool  keyBoardInput(int key);
-	 bool  mouseInput(int key);
-	 bool  controllerInput(int key);
+	 bool keyBoardInput(int key);
+	 bool mouseInput(int key);
+	 bool controllerInput(int key);
+	 void PlayAnimations(int state_);
 private:  
 	int posX;
 	int posY;
 	int amountOfAniamtions;
+	int AnimState;
 	bool disableObject;
 //	vector<SDL_Texture*> run;
 	SDL_Texture *objTexture;
 	SDL_Rect srcRect, dstRect;
+	enum AnimationsStates
+	{
+		ATTACK0=0,
+		ATTACK1,
+		ATTACK2,
+		CLIMB,
+		CORNERGRAB,
+		CORNERJUMP,
+		CROUCH,
+		DEATH,
+		FALL,
+		HURT,
+		IDLE0,
+		IDLE1,
+		JUMP,
+		RUN,
+		SLIDE,
+	};
 
 	
 };
