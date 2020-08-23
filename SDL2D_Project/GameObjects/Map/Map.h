@@ -20,6 +20,7 @@ class MapLayer
 private: 
 	int colSize;
 	int ID;
+	map<int, map<int,int>> mapData;
 	/* These two X,Y vaules are just defaults*/
 	bool IsBackground;
 	bool Visible;

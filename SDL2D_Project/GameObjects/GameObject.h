@@ -31,7 +31,6 @@ private:
 	int posX;
 	int posY;
 	bool disableObject;
-   
 protected:
 	int getX();
 	int getY();

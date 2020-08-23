@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\GameDev\SDL2-2.0.12\include\</FILEPATH>
+      <FILENAME>SDL_rect.h</FILENAME>
+      <LINE>102</LINE>
+      <COLUMN>28</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'SDL_bool' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>SDL_PointInRect</FUNCTION>
+    <DECORATED>SDL_PointInRect</DECORATED>
+    <FUNCLINE>99</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\</FILEPATH>
+      <FILENAME>Player.cpp</FILENAME>
+      <LINE>4</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Player::disableObject' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Player::{ctor}</FUNCTION>
+    <DECORATED>??0Player@@QEAA@PEBDHH@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Player::disableObject</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\</FILEPATH>
+      <FILENAME>Player.cpp</FILENAME>
+      <LINE>4</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Player::dstRect' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Player::{ctor}</FUNCTION>
+    <DECORATED>??0Player@@QEAA@PEBDHH@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Player::dstRect</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\</FILEPATH>
+      <FILENAME>Input.h</FILENAME>
+      <LINE>14</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Input::InputHolder' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Input::{ctor}</FUNCTION>
+    <DECORATED>??0Input@@QEAA@XZ</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Input::InputHolder</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

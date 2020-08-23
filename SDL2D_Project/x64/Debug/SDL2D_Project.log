@@ -1,4 +1,2 @@
-﻿  Player.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(109): warning C4715: 'Player::keyBoardInput': not all control paths return a value
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(121): warning C4715: 'Player::mouseInput': not all control paths return a value
+﻿  Enemy.cpp
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

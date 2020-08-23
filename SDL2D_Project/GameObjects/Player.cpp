@@ -67,6 +67,7 @@ void Player::Render()
 void Player::Disable()
 {
 	/* You can store all the vaules in here */
+	disableObject = true;
 }
 
 
@@ -74,7 +75,7 @@ bool Player::keyBoardInput(int key)
 {
 	/*You have to fix this create allow the Input to accept two forms of Input 
 	*/
-	if (getDisable()==true)
+	if (disableObject==true)
 	{
 		return false;
 	}
@@ -110,11 +111,25 @@ bool Player::keyBoardInput(int key)
 
 bool Player::mouseInput(int key)
 {
+	if (disableObject==true)
+	{
+		return false;
+	}
 	if (key!=NULL)
 	{
-		if (key==SDL_BUTTON_LEFT)
+		if (key == SDL_BUTTON_LEFT)
 		{
 			AnimState = ATTACK0;
+			return true;
+		}
+		if (key==SDL_BUTTON_RIGHT)
+		{
+			AnimState = ATTACK1;
+			return true;
+		}
+		if (key==SDL_BUTTON_MIDDLE)
+		{
+			AnimState = ATTACK2;
 			return true;
 		}
 	}

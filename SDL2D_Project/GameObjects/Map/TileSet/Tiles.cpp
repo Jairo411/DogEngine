@@ -58,6 +58,11 @@ void Tiles::OnUpdate()
 	
 }
 
+void Tiles::Collider()
+{
+
+}
+
 SDL_Texture * Tiles::getTex()
 {
 	return baseTex;

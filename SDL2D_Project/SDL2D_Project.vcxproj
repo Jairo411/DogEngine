@@ -130,6 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameObjects\Enemy.cpp" />
+    <ClCompile Include="Physics\Collider.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="Game\Main.cpp" />
@@ -143,6 +145,8 @@
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameObjects\Enemy.h" />
+    <ClInclude Include="Physics\Collider.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="Input\Input.h" />

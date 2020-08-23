@@ -42,20 +42,26 @@ void MapLayer::OnUpdate()
 		case MapLayer::DEVELOPER:
 		{
 			TileSet* set = TileSet::GetInstance();
+	
 			for (int i = 0; i < rows; i++)
 			{
 				for (int j = 0; j < cols; j++)
 				{
-					int tempR = 16 * i;
-					int tempC = 30 * j;
+					int tempR = 16 * i; //these can be used as the cordiantes that I can used in order to place tiles 
+					int tempC = 30 * j; 
+
+					mapData.insert(make_pair(i,map<int,int>()));
+					mapData[i].insert(make_pair(i, j));
 
 					tex = set->getTile(set->DIRTTILE);
 					tileMap.push_back(Tiles(tex, tempR, tempC, true));
 
-					mapColData.push_back(set->DIRTTILE);
-					mapRowData.push_back(mapColData);
-					prevMapColData.push_back(set->DIRTTILE);
-					prevMapRowData.push_back(prevMapColData);
+					
+					
+				//	mapColData.push_back(set->DIRTTILE);
+				//	mapRowData.push_back(mapColData);
+				//	prevMapColData.push_back(set->DIRTTILE);
+				//	prevMapRowData.push_back(prevMapColData);
 					mapDataFlag = true;
 				}
 			}

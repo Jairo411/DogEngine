@@ -89,7 +89,8 @@ void Game::handleEvents()
 	case SDL_MOUSEBUTTONDOWN:
 		if (actualWindow->mouseInput(event.button.button))
 		{
-		}
+
+		} 
 		if (player->mouseInput(event.button.button))
 		{
 
@@ -113,7 +114,7 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	mapA->OnUpdate();
 	player->Render();
-	//actualWindow->OnRender();
+//	actualWindow->OnRender();
 	SDL_RenderPresent(renderer);
 	
 }
