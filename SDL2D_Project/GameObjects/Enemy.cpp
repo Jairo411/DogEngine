@@ -1,16 +1,61 @@
 #include "Enemy.h"
 
-Enemy::Enemy()
+Enemy::Enemy(int x, int y)
 {
+	/* THIS IS A HOT MESS AND YOU NEED TO MAKE IT MORE READABLE PLEASE AND THANK YOU SURE */
+	posX = x;
+	posY = y;
+	srcRect.x = 0;
+	srcRect.y = 0;
+	srcRect0.x = 0;
+	destRect0.y = 0;
+
+	srcRect0.w = 45;
+	srcRect0.h = 45;
+
+	objTexture = nullptr;
+	srcRect.w = 40;
+	srcRect.h = 40;
+
+	destRect.x = srcRect.x;
+	destRect.y = srcRect.y;
 	
+	
+	inti();
 }
 
 void Enemy::Update()
 {
+	if (getDisable()==false)
+	{
+		destRect0.x = posX;
+		destRect0.y = posY;
+		destRect0.w = srcRect0.w;
+		destRect0.h = srcRect0.h;
+	}
+	else if (getDisable() == true)
+	{
+	Disable();
+	}
 }
 
 void Enemy::Render()
 {
+	PlayAnimations(ATTACK);
+	
+	if (getDisable() == false)
+	{
+		SDL_RenderCopy(Game::renderer, objTexture, &srcRect0, &destRect0);
+	}
+	else if (getDisable() == true)
+	{
+		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect0, &destRect0);
+	}
+}
+
+void Enemy::Disable()
+{
+
 }
 
 bool Enemy::setDisable()
@@ -22,3 +67,90 @@ bool Enemy::getDisable()
 {
 	return false;
 }
+
+void Enemy::inti()
+{
+	SDL_Texture* tempIMG;
+	SDL_Texture* actualIMG;
+
+
+	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/EnemySprites/Skeleton/Sprite Sheets/SkeletonAnimations.txt", "./Assets/EnemySprites/Skeleton/Sprite Sheets/",'S');
+
+	int sourceX = 0;
+	int sourceY = 0;
+	int tempH, tempW;
+	int lengthOfSprite;
+	destRect.h = srcRect.h;
+	destRect.w = srcRect.w;
+
+
+
+	int totalSize = 0;
+	int lastWidthVar = 0;
+	
+	for (int i = 0; i < animationSet.size(); i++)
+	{
+		//This works because I only place one texture in each 
+		// 2 dimeson or slot. 
+		actualIMG = animationSet.at(i).at(0);
+		SDL_QueryTexture(actualIMG, NULL, NULL, &tempW, &tempH);
+		lengthOfSprite =   tempW/ destRect.w;
+		for  (int j = 0; j  < lengthOfSprite;  j++)
+		{
+			
+			sourceX = 43 * j;
+			sourceY = 0;
+			
+			srcRect.x = sourceX;
+			srcRect.y = sourceY;
+
+
+			tempIMG = TextureManager::LoadTexture(srcRect, actualIMG);
+			animationSet.at(i).push_back(tempIMG);
+			totalSize++;
+		}
+		totalSize++;
+	}
+
+
+
+}
+
+void Enemy::PlayAnimations(int state_)
+{
+	/* This needs to be fixed*/
+	Uint32 ticks = SDL_GetTicks();
+	Uint32 seconds = ticks / 100;
+	Uint32 sprite;
+
+	switch (state_)
+	{
+	case Enemy::ATTACK:
+		sprite = seconds % 18;
+		objTexture = animationSet.at(0).at(sprite);
+		break;
+	case Enemy::DEAD:
+		sprite = seconds % 15;
+		objTexture = animationSet.at(1).at(sprite);
+		break;
+	case Enemy::HIT:
+		sprite = seconds % 8;
+		objTexture = animationSet.at(2).at(sprite);
+		break;
+	case Enemy::IDLE:
+		sprite = seconds % 11;
+		objTexture = animationSet.at(3).at(sprite);
+		break;
+	case Enemy::REACT:
+		sprite = seconds % 4;
+		objTexture = animationSet.at(4).at(sprite);
+		break;
+	case Enemy::WALK:
+		sprite = seconds % 13;
+		objTexture = animationSet.at(5).at(sprite);
+		break;
+	default:
+		break;
+	}
+}
+

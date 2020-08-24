@@ -57,11 +57,6 @@ void MapLayer::OnUpdate()
 					tileMap.push_back(Tiles(tex, tempR, tempC, true));
 
 					
-					
-				//	mapColData.push_back(set->DIRTTILE);
-				//	mapRowData.push_back(mapColData);
-				//	prevMapColData.push_back(set->DIRTTILE);
-				//	prevMapRowData.push_back(prevMapColData);
 					mapDataFlag = true;
 				}
 			}

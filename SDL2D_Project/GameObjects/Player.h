@@ -36,7 +36,7 @@ private:
 	bool disableObject;
 //	vector<SDL_Texture*> run;
 	SDL_Texture *objTexture;
-	SDL_Rect srcRect, dstRect;
+
 	enum AnimationsStates
 	{
 		ATTACK0=0,

@@ -27,8 +27,6 @@ private:
 	bool mapDataFlag;
 	string name;
 	SDL_Texture* tex;
-	void MapRowData(int tileNum);
-	void MapColData(int tileNum);
 	vector<Tiles> tileMap;
 	vector<vector<int>>mapRowData;
 	vector<int>mapColData;

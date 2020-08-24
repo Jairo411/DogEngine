@@ -28,20 +28,18 @@ public:
    virtual bool getDisable();
    GameObject();
 private:	
-	int posX;
-	int posY;
 	bool disableObject;
 protected:
-	int getX();
-	int getY();
+	int posX;
+	int posY;
 	string nameID;
-	bool intiAnimation(const char* AnimSetName);
+	bool intiAnimation(const char* AnimSetName, const char* relativeDir,const char firstChar);
 	int ReadAmountOfAnimations();
 	bool textureIsOn;
 	vector <vector<SDL_Texture*>> animationSet;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
-	SDL_Rect srcRect, dst;
+	SDL_Rect srcRect, destRect;
 	
 };
 #endif // !GAMEOBJECT_HEADER

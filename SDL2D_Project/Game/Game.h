@@ -8,7 +8,9 @@
 #include "../TextureManager/TextureManager.h"
 #include "../GameObjects/GameObject.h"
 #include "../GameObjects/Player.h"
+#include "../GameObjects/Enemy.h"
 #include "../Window/Window.h"
+
 //#include "../Saver.h"
 
 

@@ -12,7 +12,7 @@ Player::Player(const char * textureSheet, int x, int y)
 	srcRect.x = 0;
 	srcRect.y = 0;
 	amountOfAniamtions = 0;
-	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt");
+	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
 		textureIsOn = true;
@@ -40,10 +40,10 @@ void Player::Update()
 
 	if (getDisable()==false)
 	{
-		dstRect.x = posX;
-		dstRect.y = posY;
-		dstRect.w = srcRect.w;
-		dstRect.h = srcRect.h;
+		destRect.x = posX;
+		destRect.y = posY;
+		destRect.w = srcRect.w;
+		destRect.h = srcRect.h;
 	}
 	else if (getDisable()==true)
 	{
@@ -56,11 +56,11 @@ void Player::Render()
 	/*This is in the loop*/
 	if (getDisable()==false)
 	{
-		SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &dstRect);
+		SDL_RenderCopy(Game::renderer, objTexture, NULL, NULL);
 	}
 	else if (getDisable()==true)
 	{
-		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect, &dstRect);
+		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect, &destRect);
 	}
 }
 
@@ -144,7 +144,7 @@ bool Player::controllerInput(int key)
 void Player::PlayAnimations(int state_)
 {
 	Uint32 ticks = SDL_GetTicks();
-	Uint32 seconds = ticks / 300;
+	Uint32 seconds = ticks / 100;
 	Uint32 sprite;
 	switch (state_)
 	{

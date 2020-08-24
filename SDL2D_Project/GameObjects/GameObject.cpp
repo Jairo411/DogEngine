@@ -10,7 +10,7 @@ GameObject::GameObject()
 //	Going to use the Gameobject base class to check if inhereted object has name or not
 }
 
-bool GameObject::intiAnimation(const char* AnimTxtFile)
+bool GameObject::intiAnimation(const char* AnimTxtFile, const char* tempRelativeDir, const char firstChar)
 {
 	/*
 	This checks to see if Animations or textures are in the 2D Vector object.
@@ -36,12 +36,12 @@ bool GameObject::intiAnimation(const char* AnimTxtFile)
 				do
 				{
 					input >> textReader;
-					if (textReader.at(0) == 'a')
+					if (textReader.at(0) == firstChar)
 					{
-						string tempRelativeDir;
+						string RelativeDir;
 						fileElements = textReader;
-						tempRelativeDir = "./Assets/Character/Sprites/" + fileElements;
-						animationSet.at(index).push_back(TextureManager::LoadTexture(tempRelativeDir.c_str()));
+						RelativeDir = tempRelativeDir + fileElements;
+						animationSet.at(index).push_back(TextureManager::LoadTexture(RelativeDir.c_str()));
 					}
 					else if (textReader.at(0) == 'N')
 					{
@@ -51,6 +51,7 @@ bool GameObject::intiAnimation(const char* AnimTxtFile)
 					}
 
 				} while (textReader.at(0)!='E');
+				input.close();
 			}
 		
 		return true;
@@ -65,7 +66,7 @@ int GameObject::ReadAmountOfAnimations()
 
 bool GameObject::setDisable(bool temp)
 {
-	return temp;
+	return disableObject= temp;
 }
 
 bool GameObject::getDisable()
@@ -77,12 +78,4 @@ bool GameObject::getDisable()
 	return false;	
 }
 
-int GameObject::getX()
-{
-	return posX;
-}
 
-int GameObject::getY()
-{
-	return posY;
-}
