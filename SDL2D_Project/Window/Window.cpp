@@ -20,7 +20,7 @@ Window::Window(SDL_Window *tempWindow)
 {
 	SCREENHEIGHT = 0;
 	SCREENWIDTH = 0;
-	
+	totalAmountOfSquares = 0;
 	SDL_GetWindowSize(tempWindow, &SCREENWIDTH, &SCREENHEIGHT);
 	int keyValue=0;
 	for (int r = 0; r < 20;r++)

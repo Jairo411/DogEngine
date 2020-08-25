@@ -15,13 +15,17 @@ class GraphicLayer{
 
 };
 
+class Window;
 class MapLayer
 {
 private: 
 	int colSize;
 	int ID;
-	map<int, map<int,int>> mapData;
 	/* These two X,Y vaules are just defaults*/
+	int Xsize, Ysize;
+	int cols, rows;
+	int size;
+	int mapStatus;
 	bool IsBackground;
 	bool Visible;
 	bool mapDataFlag;
@@ -32,10 +36,8 @@ private:
 	vector<int>mapColData;
 	vector<vector<int>>prevMapRowData;
 	vector<int>prevMapColData;
-	int Xsize, Ysize;
-	int cols, rows;
-	int size;
-	int mapStatus;
+	map<int, map<int, int>> mapData;
+	void attachWindow(Window* tempWindow_);
 	// You need to find a way to dynamically Create this arrays Size 
 	//I HAVE AN ENUM HERE TO SET THE STANDARD TILE TYPE 
 	enum MapSetUp : unsigned short

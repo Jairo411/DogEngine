@@ -1,57 +1,10 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int x, int y)
+Enemy::~Enemy()
 {
-	/* THIS IS A HOT MESS AND YOU NEED TO MAKE IT MORE READABLE PLEASE AND THANK YOU SURE */
-	posX = x;
-	posY = y;
-	srcRect.x = 0;
-	srcRect.y = 0;
-	srcRect0.x = 0;
-	destRect0.y = 0;
-
-	srcRect0.w = 45;
-	srcRect0.h = 45;
-
-	objTexture = nullptr;
-	srcRect.w = 40;
-	srcRect.h = 40;
-
-	destRect.x = srcRect.x;
-	destRect.y = srcRect.y;
-	
-	
-	inti();
 }
 
-void Enemy::Update()
-{
-	if (getDisable()==false)
-	{
-		destRect0.x = posX;
-		destRect0.y = posY;
-		destRect0.w = srcRect0.w;
-		destRect0.h = srcRect0.h;
-	}
-	else if (getDisable() == true)
-	{
-	Disable();
-	}
-}
 
-void Enemy::Render()
-{
-	PlayAnimations(Animations::WALK);
-	
-	if (getDisable() == false)
-	{
-		SDL_RenderCopy(Game::renderer, objTexture, &srcRect0, &destRect0);
-	}
-	else if (getDisable() == true)
-	{
-		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect0, &destRect0);
-	}
-}
 
 void Enemy::Disable()
 {
@@ -68,13 +21,43 @@ bool Enemy::getDisable()
 	return false;
 }
 
-void Enemy::inti()
+
+
+void Enemy::ChangeSrcSize(int src_w, int src_h)
+{
+	src_w = srcRect.h;
+	src_h = srcRect.w;
+	
+}
+
+Skeleton::Skeleton(int x, int y)
+{
+	posX = x;
+	posY = y;
+
+	srcRect.x = 0;
+	srcRect.y = 0;
+	srcRect0.x = 0;
+	destRect0.y = 0;
+	srcRect0.w = 55;
+	srcRect0.h = 55;
+
+	objTexture = nullptr;
+	srcRect.w = 40;
+	srcRect.h = 40;
+
+	destRect.x = srcRect.x;
+	destRect.y = srcRect.y;
+	Inti();
+}
+
+void Skeleton::Inti()
 {
 	SDL_Texture* tempIMG;
 	SDL_Texture* actualIMG;
 
 
-	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/EnemySprites/Skeleton/Sprite Sheets/SkeletonAnimations.txt", "./Assets/EnemySprites/Skeleton/Sprite Sheets/",'S');
+	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/EnemySprites/Skeleton/Sprite Sheets/SkeletonAnimations.txt", "./Assets/EnemySprites/Skeleton/Sprite Sheets/", 'S');
 
 	int sourceX = 0;
 	int sourceY = 0;
@@ -88,7 +71,7 @@ void Enemy::inti()
 
 	int totalSize = 0;
 	int lastWidthVar = 0;
-	
+
 	for (int i = 0; i < animationSet.size(); i++)
 	{
 		//This works because I only place one texture in each 
@@ -124,8 +107,8 @@ void Enemy::inti()
 		default:
 			break;
 		}
-		lengthOfSprite =   tempW/ destRect.w;
-		for  (int j = 0; j  < lengthOfSprite;  j++)
+		lengthOfSprite = tempW / destRect.w;
+		for (int j = 0; j < lengthOfSprite; j++)
 		{
 			switch (i)
 			{
@@ -145,18 +128,18 @@ void Enemy::inti()
 				sourceX = 24 * j;
 				sourceY = 0;
 				break;
-			case 4: 
+			case 4:
 				sourceX = 22 * j;
 				sourceY = 0;
 				break;
 			case 5:
 				sourceX = 22 * j;
 				sourceY = 0;
-				break;	 
+				break;
 			default:
 				break;
 			}
-			
+
 			srcRect.x = sourceX;
 			srcRect.y = sourceY;
 
@@ -168,12 +151,38 @@ void Enemy::inti()
 		Pop_Front(animationSet.at(i));
 		totalSize++;
 	}
-
-
-
 }
 
-void Enemy::PlayAnimations(int state_)
+void Skeleton::Update()
+{
+	if (getDisable() == false)
+	{
+		destRect0.x = posX;
+		destRect0.y = posY;
+		destRect0.w = srcRect0.w;
+		destRect0.h = srcRect0.h;
+	}
+	else if (getDisable() == true)
+	{
+		Disable();
+	}
+}
+
+void Skeleton::Render()
+{
+	PlayAnimations(Animations::WALK);
+
+	if (getDisable() == false)
+	{
+		SDL_RenderCopy(Game::renderer, objTexture, &srcRect0, &destRect0);
+	}
+	else if (getDisable() == true)
+	{
+		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect0, &destRect0);
+	}
+}
+
+void Skeleton::PlayAnimations(int state_)
 {
 	/* This needs to be fixed*/
 	Uint32 ticks = SDL_GetTicks();
@@ -182,29 +191,29 @@ void Enemy::PlayAnimations(int state_)
 
 	switch (state_)
 	{
-	case Enemy::ATTACK:
-		
+	case Skeleton::ATTACK:
+
 		sprite = seconds % 18;
 		objTexture = animationSet.at(0).at(sprite);
 		break;
-	case Enemy::DEAD:
-		
+	case Skeleton::DEAD:
+
 		sprite = seconds % 15;
 		objTexture = animationSet.at(1).at(sprite);
 		break;
-	case Enemy::HIT:
+	case Skeleton::HIT:
 		sprite = seconds % 8;
 		objTexture = animationSet.at(2).at(sprite);
 		break;
-	case Enemy::IDLE:
+	case Skeleton::IDLE:
 		sprite = seconds % 11;
 		objTexture = animationSet.at(3).at(sprite);
 		break;
-	case Enemy::REACT:
+	case Skeleton::REACT:
 		sprite = seconds % 4;
 		objTexture = animationSet.at(4).at(sprite);
 		break;
-	case Enemy::WALK:
+	case Skeleton::WALK:
 		sprite = seconds % 13;
 		objTexture = animationSet.at(5).at(sprite);
 		break;
@@ -213,11 +222,3 @@ void Enemy::PlayAnimations(int state_)
 	}
 
 }
-
-void Enemy::ChangeSrcSize(int src_w, int src_h)
-{
-	src_w = srcRect.h;
-	src_h = srcRect.w;
-	
-}
-

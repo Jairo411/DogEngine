@@ -1,6 +1,6 @@
 #include "Map.h"
+#include "../../Window/Window.h"
 #include "../../TextureManager/TextureManager.h"
-
 
 
 MapLayer::MapLayer(string Name_, int ID_, bool isback_,int xSize_, int ySize_)
@@ -16,6 +16,12 @@ MapLayer::MapLayer(string Name_, int ID_, bool isback_,int xSize_, int ySize_)
 	//TileSet set = TileSet("baseSet", 0); // trying to make this a singleton 
 	this->Xsize = xSize_;
 	this->Ysize = ySize_;
+}
+
+
+void MapLayer::attachWindow(Window* tempWindow_)
+{
+	
 }
 
 void MapLayer::OnRender() 
