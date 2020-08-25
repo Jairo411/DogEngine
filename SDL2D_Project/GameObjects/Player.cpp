@@ -56,7 +56,7 @@ void Player::Render()
 	/*This is in the loop*/
 	if (getDisable()==false)
 	{
-		SDL_RenderCopy(Game::renderer, objTexture, NULL, NULL);
+		SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
 	}
 	else if (getDisable()==true)
 	{

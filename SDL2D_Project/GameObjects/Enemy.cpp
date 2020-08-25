@@ -41,7 +41,7 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
-	PlayAnimations(ATTACK);
+	PlayAnimations(Animations::WALK);
 	
 	if (getDisable() == false)
 	{
@@ -80,6 +80,7 @@ void Enemy::inti()
 	int sourceY = 0;
 	int tempH, tempW;
 	int lengthOfSprite;
+
 	destRect.h = srcRect.h;
 	destRect.w = srcRect.w;
 
@@ -94,21 +95,77 @@ void Enemy::inti()
 		// 2 dimeson or slot. 
 		actualIMG = animationSet.at(i).at(0);
 		SDL_QueryTexture(actualIMG, NULL, NULL, &tempW, &tempH);
+		switch (i)
+		{
+		case 0:
+			destRect.w = 43;
+			srcRect.w = destRect.w;
+			break;
+		case 1:
+			destRect.w = 30;
+			srcRect.w = destRect.w;
+			break;
+		case 2:
+			destRect.w = 30;
+			srcRect.w = destRect.w;
+			break;
+		case 3:
+			destRect.w = 24;
+			srcRect.w = destRect.w;
+			break;
+		case 4:
+			destRect.w = 22;
+			srcRect.w = destRect.w;
+			break;
+		case 5:
+			destRect.w = 22;
+			srcRect.w = destRect.w;
+			break;
+		default:
+			break;
+		}
 		lengthOfSprite =   tempW/ destRect.w;
 		for  (int j = 0; j  < lengthOfSprite;  j++)
 		{
-			
-			sourceX = 43 * j;
-			sourceY = 0;
+			switch (i)
+			{
+			case 0:
+				sourceX = 43 * j;
+				sourceY = 0;
+				break;
+			case 1:
+				sourceX = 33 * j;
+				sourceY = 0;
+				break;
+			case 2:
+				sourceX = 30 * j;
+				sourceY = 0;
+				break;
+			case 3:
+				sourceX = 24 * j;
+				sourceY = 0;
+				break;
+			case 4: 
+				sourceX = 22 * j;
+				sourceY = 0;
+				break;
+			case 5:
+				sourceX = 22 * j;
+				sourceY = 0;
+				break;	 
+			default:
+				break;
+			}
 			
 			srcRect.x = sourceX;
 			srcRect.y = sourceY;
-
 
 			tempIMG = TextureManager::LoadTexture(srcRect, actualIMG);
 			animationSet.at(i).push_back(tempIMG);
 			totalSize++;
 		}
+		sourceX = 0;
+		Pop_Front(animationSet.at(i));
 		totalSize++;
 	}
 
@@ -126,10 +183,12 @@ void Enemy::PlayAnimations(int state_)
 	switch (state_)
 	{
 	case Enemy::ATTACK:
+		
 		sprite = seconds % 18;
 		objTexture = animationSet.at(0).at(sprite);
 		break;
 	case Enemy::DEAD:
+		
 		sprite = seconds % 15;
 		objTexture = animationSet.at(1).at(sprite);
 		break;
@@ -152,5 +211,13 @@ void Enemy::PlayAnimations(int state_)
 	default:
 		break;
 	}
+
+}
+
+void Enemy::ChangeSrcSize(int src_w, int src_h)
+{
+	src_w = srcRect.h;
+	src_h = srcRect.w;
+	
 }
 
