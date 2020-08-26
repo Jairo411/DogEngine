@@ -25,6 +25,8 @@ SDL_Texture * TextureManager::LoadTexture(SDL_Rect sRect,SDL_Texture* source)
 	/*Loads part of the texture*/
 	SDL_Texture* tex = SDL_CreateTexture(Game::renderer, SDL_PIXELFORMAT_ABGR8888,SDL_TEXTUREACCESS_TARGET,sRect.w,sRect.h);
 	SDL_SetRenderTarget(Game::renderer, tex);
+	SDL_SetTextureBlendMode(tex, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 0);
 	SDL_RenderClear(Game::renderer);
 	SDL_RenderCopy(Game::renderer, source, &sRect,NULL);
 	// the following line should reset the target to default(the screen)

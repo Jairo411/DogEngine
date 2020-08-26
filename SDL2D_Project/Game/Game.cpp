@@ -54,7 +54,7 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 		isRunning = false;
 	}
 	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",0,0);
-	player->setDisable(true);
+	//player->setDisable(true);
 	enemy = new Skeleton(30, 30);
 	//This just set the size of the game world 
 	mapA = new MapLayer("BaseLayer", 0, true,60,30);
@@ -76,17 +76,11 @@ void Game::handleEvents()
 		break;
 
 	case SDL_KEYDOWN:
-		if (player->keyBoardInput(event.key.keysym.sym))
-		{
+		player->keyBoardInput(event.key.keysym.sym);
 				//std::cout << "Key is still pressed" << std::endl;
-			
-		}
-		// Creating my Debug system when I press t, Ill be able to test certain functionality that I wouldn't be able to naturally. 
-		else if (player->keyBoardInput(event.key.keysym.scancode) == SDL_SCANCODE_T)
-		{
-
-		}
-		//std::cout << "Keys Down" << event.key.keysym.sym << std::endl;
+		break;
+	case SDL_KEYUP:
+		player->keyBoardInput(NULL);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (actualWindow->mouseInput(event.button.button))
@@ -99,6 +93,11 @@ void Game::handleEvents()
 		{
 
 		}
+		break;
+	case SDL_MOUSEBUTTONUP:
+			player->mouseInput(NULL);
+		
+		break;
 	default:
 		break;
 	}
@@ -127,7 +126,7 @@ void Game::render()
 	mapA->OnUpdate();
 	player->Render();
 	enemy->Render();
-	actualWindow->OnRender();
+	//actualWindow->OnRender();
 	SDL_RenderPresent(renderer);
 	
 }

@@ -27,16 +27,19 @@ public:
 	 bool keyBoardInput(int key);
 	 bool mouseInput(int key);
 	 bool controllerInput(int key);
-	 void PlayAnimations(int state_);
+	 Uint32 GetAnimTicks();
 private:  
 	int posX;
 	int posY;
 	int amountOfAniamtions;
 	int AnimState;
 	bool disableObject;
+	Uint32 currentAnimTicks;
+	Uint32 WaitAnimationsTicks(Uint32 wait_);
 //	vector<SDL_Texture*> run;
 	SDL_Texture *objTexture;
-
+	void PlayAnimations(int state_);
+	
 	enum AnimationsStates
 	{
 		ATTACK0=0,

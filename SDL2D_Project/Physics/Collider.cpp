@@ -17,7 +17,4 @@ void Collider::CollisonRender()
 {
 }
 
-void Collider::CollisonUpdate()
-{
 
-}

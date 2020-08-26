@@ -81,30 +81,42 @@ bool Player::keyBoardInput(int key)
 	}
 	if (key!=NULL)
 	{
+
+	
 		if (key == SDLK_a)
 		{
 			posX -= 1;
 			AnimState = RUN;
+			return true;
 		}
 		else if (key == SDLK_d)
 		{
 			posX += 1;
 			AnimState = RUN;
+			return true;
 		}
 		else if (key == SDLK_w)
 		{
 			posY -= 1;
 			AnimState = RUN;
+			return true;
 		}
 		else if (key == SDLK_s)
 		{
 			posY += 1;
 			AnimState = RUN;
+			return true;
 		}
 		else if (key == SDLK_SPACE) {
 			AnimState = JUMP;
 			/*some Jump formula over here */
+			return true;
 		}
+		/* If reached here that means that the Animation is over */
+	}
+	else 
+	{
+		AnimState = IDLE0;
 		return true;
 	}
 }
@@ -133,11 +145,24 @@ bool Player::mouseInput(int key)
 			return true;
 		}
 	}
+	else 
+	{
+		if (GetAnimTicks() == 0)
+		{
+			WaitAnimationsTicks(0);
+			AnimState = IDLE0;
+			return true;
+		}
+	}
 }
 
 bool Player::controllerInput(int key)
 {
 	return false;
+}
+Uint32 Player::GetAnimTicks()
+{
+	return currentAnimTicks;
 }
 //This might be a way of hard coding this 
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
@@ -200,9 +225,9 @@ void Player::PlayAnimations(int state_)
 		objTexture = animationSet.at(11).at(sprite);
 		break;
 	case Player::JUMP:
-			sprite = seconds % 4;
-			objTexture = animationSet.at(12).at(sprite);
-			break;
+		sprite = seconds % 4;
+		objTexture = animationSet.at(12).at(sprite);
+		break;
 	case Player::RUN:
 		sprite = seconds % 6;
 		objTexture = animationSet.at(13).at(sprite);
@@ -212,8 +237,28 @@ void Player::PlayAnimations(int state_)
 		objTexture = animationSet.at(13).at(sprite);
 		break;
 	default:
+		sprite = seconds % 3;
+		objTexture = animationSet.at(10).at(sprite);
 		break;
 	}
+	if (state_==ATTACK0)
+	{
+		WaitAnimationsTicks(sprite);
+	}
+	else if (state_ == ATTACK1)
+	{
+		WaitAnimationsTicks(sprite);
+	}
+	else if (state_ == ATTACK2)
+	{
+		WaitAnimationsTicks(sprite);
+	}
+}
+
+Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
+{
+	currentAnimTicks = wait_+15;
+	return currentAnimTicks;
 }
 
 

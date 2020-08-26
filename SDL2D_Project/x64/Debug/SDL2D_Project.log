@@ -1,3 +1,2 @@
-﻿  Game.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(85,78): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'SDL_Scancode' can equal the given constant
+﻿  Input.cpp
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
