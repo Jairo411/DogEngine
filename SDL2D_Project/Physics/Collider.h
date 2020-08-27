@@ -5,29 +5,37 @@ class Collider
 	// only need to use square colliders 
 public:
 	//for a collison rectangle/Square;
-	Collider(int x_, int y_);
+	 Collider(int x_, int y_);
+	
 	void CollisonUpdate();
 	//Only going to be used for game objects 
 	void CollisonRender();
 
+	void SetCollisonObjectType(int col_);
+	void SetCollisonType(int col);
 	/*make this into a virtual class possibly to add to the gameobjects doesn't seem like you need these enums 
 	but because I look everything up online Im currently semi copying this stuff. 
 
 	Its quite possible that you need to just simply use the gameobjects width and size in order to add collision to the objects 
 	*/
+	~Collider();
 private: 
 	int x, y;
 	int area;
+	int collisonObjectType;
+	int collisonType;
 	enum CollisonObject 
 	{
-		Default=0,
+		NONE=0,
 		GameObject
 	};
-	enum CollisonType
+	/*enum CollisonType
 	{
-		Projectile = 0,
-		Fall
-	};
+		NONE=0,
+		Projectile,
+		Mouse,
+		GameObject 
+	};*/
 
 };
 

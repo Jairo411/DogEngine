@@ -62,6 +62,7 @@ public:
 	Tiles(SDL_Texture* tex_,int srcX,int srcY,bool solid);
 	SDL_Texture* getTex();
 	SDL_Rect getSrcRect();
+	void SetID(int ID_);
 	void OnRender();	
 	~Tiles();
 private:
@@ -69,9 +70,12 @@ private:
 	SDL_Rect srcRect,dstRect;
 	void OnUpdate();
 	void Collider();
+	int getID();
 	//int sourceX;
 	//int sourceY;
 	//Modular support 
+	//This are int Variables for the postion of the Tile in the Array not Postion on the screen
+	int ID;
 	int width;
 	int Height;
 	bool isSoild;

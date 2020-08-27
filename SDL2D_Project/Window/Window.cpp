@@ -129,4 +129,9 @@ void Window::OnUpdate()
 
 }
 
+map<SDL_Rect*, int> Window::getSquareHolder()
+{
+	return GraphicSquareHolder;
+}
+
 

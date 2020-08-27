@@ -76,18 +76,18 @@ void Game::handleEvents()
 		break;
 
 	case SDL_KEYDOWN:
-		player->keyBoardInput(event.key.keysym.sym);
+		player->keyPressed(true, event.key.keysym.sym);
+		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
 				//std::cout << "Key is still pressed" << std::endl;
 		break;
 	case SDL_KEYUP:
-		player->keyBoardInput(NULL);
+		player->keyPressed(false,event.key.keysym.sym);
+		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (actualWindow->mouseInput(event.button.button))
 		{
-			int x, y;
-			SDL_GetMouseState(&x, &y);
-			std::cout << "X: " << x << "Y: " << y <<endl;
+			
 		} 
 		if (player->mouseInput(event.button.button))
 		{
@@ -106,15 +106,9 @@ void Game::handleEvents()
 void Game::update()
 {
 	cnt++;
-	try
-	{
-		player->Update();
-		enemy->Update();
-	}
-	catch (const range_error& e)
-	{
-		cout << e.what() << endl;
-	}
+	player->Update();
+	enemy->Update();
+	mapA->OnUpdate();
 	
 	
 
@@ -123,10 +117,10 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	mapA->OnUpdate();
+	mapA->OnRender();
 	player->Render();
 	enemy->Render();
-	//actualWindow->OnRender();
+	actualWindow->OnRender();
 	SDL_RenderPresent(renderer);
 	
 }

@@ -73,7 +73,15 @@ SDL_Rect Tiles::getSrcRect()
 	return srcRect;
 }
 
+int Tiles::getID()
+{
+	return ID;
+}
 
+void Tiles::SetID(int ID_)
+{
+	ID = ID_;
+}
 
 Tiles::~Tiles()
 {

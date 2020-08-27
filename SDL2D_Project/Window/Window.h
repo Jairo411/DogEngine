@@ -5,6 +5,8 @@
 #include <iterator>
 #include "../Input/Input.h"
 
+using namespace std;
+
 class Game;
 
 class Window: public Input
@@ -16,7 +18,7 @@ private:
 	int totalAmountOfSquares;
 	int windowStatus;
 	Uint32 rmask, gmask, bmask, amask;
-	std::map<SDL_Rect*, int> GraphicSquareHolder;
+	map<SDL_Rect*, int> GraphicSquareHolder;
 	SDL_Surface *graphicLayer;
 	SDL_Window *window;
 public:
@@ -32,6 +34,8 @@ public:
 	bool  controllerInput(int key);
 	void OnRender();
 	void OnUpdate();
+	map<SDL_Rect*, int>getSquareHolder();
+
 	~Window();
 
 	enum WindowStatus : unsigned int

@@ -12,6 +12,7 @@ Player::Player(const char * textureSheet, int x, int y)
 	srcRect.x = 0;
 	srcRect.y = 0;
 	amountOfAniamtions = 0;
+	currentAnimTicks = NULL;
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -37,6 +38,8 @@ void Player::Update()
 	//Note you need to get your FPS working properly in order to to proper animate your character 
 
 	PlayAnimations(AnimState);
+	
+
 
 	if (getDisable()==false)
 	{
@@ -147,12 +150,7 @@ bool Player::mouseInput(int key)
 	}
 	else 
 	{
-		if (GetAnimTicks() == 0)
-		{
-			WaitAnimationsTicks(0);
-			AnimState = IDLE0;
-			return true;
-		}
+		
 	}
 }
 
@@ -168,6 +166,7 @@ Uint32 Player::GetAnimTicks()
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
 void Player::PlayAnimations(int state_)
 {
+	/* The FPS is fucking things up hear you need to access the frame Delay and Actually Know what FPS your stuff is running at*/
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / 100;
 	Uint32 sprite;
@@ -243,21 +242,42 @@ void Player::PlayAnimations(int state_)
 	}
 	if (state_==ATTACK0)
 	{
-		WaitAnimationsTicks(sprite);
+		if (sprite==0)
+		{
+			WaitAnimationsTicks(sprite);
+		}
+		else if (sprite==3)
+		{
+			AnimState = IDLE0;
+		}
 	}
-	else if (state_ == ATTACK1)
+	else if (state_==ATTACK1) 
 	{
-		WaitAnimationsTicks(sprite);
+		if (sprite==0)
+		{
+			WaitAnimationsTicks(sprite);
+		}
+		else if (sprite==5)
+		{
+			AnimState = IDLE0;
+		}
 	}
-	else if (state_ == ATTACK2)
+	else if (state_==ATTACK2)
 	{
-		WaitAnimationsTicks(sprite);
+		if (sprite==0)
+		{
+			WaitAnimationsTicks(sprite);
+		}
+		else if (sprite==5)
+		{
+			AnimState = IDLE0;
+		}
 	}
 }
 
 Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
 {
-	currentAnimTicks = wait_+15;
+	currentAnimTicks = wait_;
 	return currentAnimTicks;
 }
 
