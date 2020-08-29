@@ -170,7 +170,7 @@ void Skeleton::Update()
 
 void Skeleton::Render()
 {
-	PlayAnimations(Animations::WALK);
+	PlayAnimations(Animations::DEAD);
 
 	if (getDisable() == false)
 	{

@@ -85,18 +85,16 @@ void Game::handleEvents()
 		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
+		player->MousePressed(true, event.button.button);
+		player->mouseInput(player->InputMouseHolder.begin()->first);
 		if (actualWindow->mouseInput(event.button.button))
 		{
 			
 		} 
-		if (player->mouseInput(event.button.button))
-		{
-
-		}
 		break;
 	case SDL_MOUSEBUTTONUP:
-			player->mouseInput(NULL);
-		
+		player->keyPressed(false, event.key.keysym.sym);
+		player->mouseInput(player->InputMouseHolder.begin()->first);
 		break;
 	default:
 		break;
@@ -120,7 +118,7 @@ void Game::render()
 	mapA->OnRender();
 	player->Render();
 	enemy->Render();
-	actualWindow->OnRender();
+	//actualWindow->OnRender();
 	SDL_RenderPresent(renderer);
 	
 }

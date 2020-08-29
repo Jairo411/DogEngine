@@ -4,6 +4,7 @@
 
 #include "GameObject.h"
 #include "../Input/Input.h"
+#include "../Physics/Collider.h"
 
 /*
 Player class, tasks that should be done 
@@ -16,7 +17,7 @@ Advance Functionality
 */
 
 class TextureManager;
-class Player : public GameObject , public Input
+class Player : public GameObject , public Input 
 {
 public:
 	 Player(const char * textureSheet, int x, int y);
@@ -34,10 +35,10 @@ private:
 	int amountOfAniamtions;
 	int AnimState;
 	bool disableObject;
+	Collider collider;
 	Uint32 currentAnimTicks;
 	Uint32 WaitAnimationsTicks(Uint32 wait_);
-//	vector<SDL_Texture*> run;
-	SDL_Texture *objTexture;
+	SDL_Rect endRect;
 	void PlayAnimations(int state_);
 	
 	enum AnimationsStates

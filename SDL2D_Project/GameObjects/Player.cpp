@@ -13,6 +13,8 @@ Player::Player(const char * textureSheet, int x, int y)
 	srcRect.y = 0;
 	amountOfAniamtions = 0;
 	currentAnimTicks = NULL;
+	//I have to render this in order to see what it looks like
+	collider = Collider(x,y,100);
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -38,8 +40,8 @@ void Player::Update()
 	//Note you need to get your FPS working properly in order to to proper animate your character 
 
 	PlayAnimations(AnimState);
+	collider.CollisonUpdate(posX, posY);
 	
-
 
 	if (getDisable()==false)
 	{
@@ -60,6 +62,7 @@ void Player::Render()
 	if (getDisable()==false)
 	{
 		SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+		collider.CollisonRender();
 	}
 	else if (getDisable()==true)
 	{
