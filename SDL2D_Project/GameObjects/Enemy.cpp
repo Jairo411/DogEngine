@@ -48,6 +48,7 @@ Skeleton::Skeleton(int x, int y)
 
 	destRect.x = srcRect.x;
 	destRect.y = srcRect.y;
+	col = Collider(10, 20, 45);
 	Inti();
 }
 
@@ -155,6 +156,7 @@ void Skeleton::Inti()
 
 void Skeleton::Update()
 {
+	col.CollisonUpdate(posX, posY);
 	if (getDisable() == false)
 	{
 		destRect0.x = posX;
@@ -170,11 +172,12 @@ void Skeleton::Update()
 
 void Skeleton::Render()
 {
-	PlayAnimations(Animations::DEAD);
+	PlayAnimations(Animations::WALK);
 
 	if (getDisable() == false)
 	{
 		SDL_RenderCopy(Game::renderer, objTexture, &srcRect0, &destRect0);
+		col.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{

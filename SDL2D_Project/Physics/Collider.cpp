@@ -38,11 +38,14 @@ Collider::Collider(int d_)
 void Collider::CollisonUpdate(int colPosX,int colPosY)
 {
 
-	x = colPosX;
-	y = colPosY;
+	int xPos, yPos;
 
-	srcRect.x = x;
-	srcRect.y = y;
+	xPos = x + colPosX;
+	yPos = y + colPosY;
+
+
+	srcRect.x = xPos;
+	srcRect.y = yPos;
 
 
 	switch (collisonObjectType)
@@ -74,10 +77,11 @@ void Collider::CollisonUpdate(int colPosX,int colPosY)
 
 void Collider::CollisonRender()
 {
-	//SDL_SetRenderDrawColor(Game::renderer, 225, 225, 225, 255);
-	SDL_RenderDrawRect(Game::renderer, &srcRect);
 	SDL_SetRenderDrawColor(Game::renderer, 33, 191, 75, 0);
+	SDL_RenderDrawRect(Game::renderer, &srcRect);
+	SDL_SetRenderDrawColor(Game::renderer, 225, 225, 225, 255);
 }
+	
 
 void Collider::SetCollisonObjectType(int col_)
 {
@@ -88,7 +92,6 @@ void Collider::SetCollisonType(int col_)
 {
 	collisonType = col_;
 }
-
 
 void Collider::MouseEventListener(int event)
 {

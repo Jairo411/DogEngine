@@ -54,10 +54,11 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 		isRunning = false;
 	}
 	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",0,0);
+	//GameObject::AddGameObject(player);
 	//player->setDisable(true);
 	enemy = new Skeleton(30, 30);
 	//This just set the size of the game world 
-	mapA = new MapLayer("BaseLayer", 0, true,60,30);
+	mapA = new MapLayer("BaseLayer", 0, true,30,30);
 	
 	
 	

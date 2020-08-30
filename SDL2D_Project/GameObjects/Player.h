@@ -39,6 +39,7 @@ private:
 	Uint32 currentAnimTicks;
 	Uint32 WaitAnimationsTicks(Uint32 wait_);
 	SDL_Rect endRect;
+	GameObject* playerPtr;
 	void PlayAnimations(int state_);
 	
 	enum AnimationsStates

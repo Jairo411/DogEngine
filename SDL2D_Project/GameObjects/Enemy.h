@@ -2,6 +2,7 @@
 #define ENEMY_H
 #include "GameObject.h"
 #include "../TextureManager/TextureManager.h"
+#include "../Physics/Collider.h"
 using namespace std;
 
 /*This whole fucking class needs to be re-worked and have variables names that make sense*/
@@ -42,6 +43,7 @@ public:
 	void Update();
 	void Render();
 private:
+	Collider col;
 	SDL_Rect srcRect0, destRect0;
 	void PlayAnimations(int state_);
 	enum Animations

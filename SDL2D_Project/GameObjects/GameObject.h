@@ -26,9 +26,11 @@ public:
    virtual void Disable() = 0;
    virtual bool setDisable(bool temp);
    virtual bool getDisable();
+   static void AddObject(GameObject* temp_);
    GameObject();
 private:	
 	bool disableObject;
+	static vector<GameObject*> gameObjectContainer; 
 protected:
 	int posX;
 	int posY;
@@ -40,6 +42,7 @@ protected:
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
+	
 	
 };
 #endif // !GAMEOBJECT_HEADER

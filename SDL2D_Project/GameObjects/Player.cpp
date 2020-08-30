@@ -14,7 +14,7 @@ Player::Player(const char * textureSheet, int x, int y)
 	amountOfAniamtions = 0;
 	currentAnimTicks = NULL;
 	//I have to render this in order to see what it looks like
-	collider = Collider(x,y,100);
+	collider = Collider(20,20,50);
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -277,6 +277,8 @@ void Player::PlayAnimations(int state_)
 		}
 	}
 }
+
+
 
 Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
 {
