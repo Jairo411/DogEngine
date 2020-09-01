@@ -23,6 +23,7 @@ public:
 	void init(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
 	void handleEvents();
 	void update();
+	void handleCollisions();
 	void render(); 
 	void clean();
 	bool running() { return isRunning; }
@@ -33,7 +34,9 @@ private:
 	bool isRunning;
 	SDL_Window *window; 
 	Window *actualWindow;
-
+	OBJArray<GameObject*> ObjHolder;
+	GameObject* holder;
+	GameObject* holder1;
 	
 	//Window window;
 	

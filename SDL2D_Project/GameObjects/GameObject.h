@@ -8,7 +8,6 @@
 #include<iostream>
 #include<fstream>
 using namespace std;
-
 /*Standard GameObject class should be abstract and should be the base class.
 of any game object in the game i.e 
 -Enemies 
@@ -21,16 +20,19 @@ class TextureManager;
 class GameObject
 {
 public:
+   virtual void handleCollison() = 0;
    virtual void Update()=0;
    virtual void Render()=0;
    virtual void Disable() = 0;
-   virtual bool setDisable(bool temp);
-   virtual bool getDisable();
-   static void AddObject(GameObject* temp_);
+   virtual bool setDisable(bool temp) final;
+   virtual bool getDisable() final;
+   static int getMaxOBJs();
+   
+   static vector<GameObject*> ObjHolder;
    GameObject();
 private:	
 	bool disableObject;
-	static vector<GameObject*> gameObjectContainer; 
+	const static int MAXOBJECTS=900;
 protected:
 	int posX;
 	int posY;
@@ -43,7 +45,64 @@ protected:
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
 	
-	
 };
-#endif // !GAMEOBJECT_HEADER
 
+template <typename T>
+class OBJArray
+{
+private:
+	int cap;
+	int numberElements;
+	T* arr;
+public:
+	OBJArray();
+	~OBJArray();
+	int size()const;
+	void add(const T &obj);
+	T& get(int index);
+};
+
+template<typename T>
+inline OBJArray<T>::OBJArray()
+{
+	this->cap = GameObject::getMaxOBJs();
+	this->numberElements = 0;
+	this->arr = new T[this->cap];
+}
+
+template<typename T>
+inline OBJArray<T>::~OBJArray()
+{
+	delete[] this->arr;
+}
+
+template<typename T>
+inline int OBJArray<T>::size() const
+{
+	return numberElements;
+}
+
+template<typename T>
+inline void OBJArray<T>::add(const T &obj)
+{
+	if (this->numberElements<this->cap)
+	{
+		this->arr[this->numberElements++] = obj;
+	}
+	else
+	{
+		cout << "reached amount maximum amount of objects in scene";
+	}
+}
+
+template<typename T>
+inline T& OBJArray<T>::get(int index)
+{
+	if (index<0|| index>=this->numberElements)
+	{
+		throw"Bad index";
+
+		return this->arr[index];
+	}
+}
+#endif // !GAMEOBJECT_HEADER

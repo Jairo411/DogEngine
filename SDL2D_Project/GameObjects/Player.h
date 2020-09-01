@@ -25,6 +25,7 @@ public:
 	 void Update();
 	 void Render();
 	 void Disable();
+	 void handleCollison();
 	 bool keyBoardInput(int key);
 	 bool mouseInput(int key);
 	 bool controllerInput(int key);
@@ -35,13 +36,12 @@ private:
 	int amountOfAniamtions;
 	int AnimState;
 	bool disableObject;
-	Collider collider;
+	Collider col;
 	Uint32 currentAnimTicks;
 	Uint32 WaitAnimationsTicks(Uint32 wait_);
 	SDL_Rect endRect;
 	GameObject* playerPtr;
 	void PlayAnimations(int state_);
-	
 	enum AnimationsStates
 	{
 		ATTACK0=0,

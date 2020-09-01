@@ -1,5 +1,19 @@
-﻿  Collider.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(105,3): warning C4060: switch statement contains no 'case' or 'default' labels
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(123,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(125,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  Enemy.cpp
+  GameObject.cpp
+  Map.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(73,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(105,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Tiles.cpp
+  Player.cpp
+  Game.cpp
+  Main.cpp
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104,3): warning C4060: switch statement contains no 'case' or 'default' labels
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(122,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(124,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  TextureManager.cpp
+  Window.cpp
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(132): warning C4715: 'Player::keyBoardInput': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(162): warning C4715: 'Player::mouseInput': not all control paths return a value
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

@@ -53,12 +53,19 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 	else {
 		isRunning = false;
 	}
-	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",0,0);
-	//GameObject::AddGameObject(player);
-	//player->setDisable(true);
+	
+
+	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",10,0);
+	holder = player;
+	GameObject::ObjHolder.push_back(holder);
+//	ObjHolder.add(holder);
 	enemy = new Skeleton(30, 30);
+	holder1 = enemy;
+	GameObject::ObjHolder.push_back(holder1);
+//	ObjHolder.add(holder1);
+	//Enemy::AddObject(enemy);
 	//This just set the size of the game world 
-	mapA = new MapLayer("BaseLayer", 0, true,30,30);
+	mapA = new MapLayer("BaseLayer", 0, true,60,30);
 	
 	
 	
@@ -108,9 +115,23 @@ void Game::update()
 	player->Update();
 	enemy->Update();
 	mapA->OnUpdate();
-	
+	//cout << "Size of Obj holder: " << ObjHolder.size() << endl;
 	
 
+}
+
+void Game::handleCollisions()
+{ 
+	Uint32 ticks;
+	Uint32 seconds;
+	Uint32 amountOfOBJs;
+	ticks = SDL_GetTicks();
+	seconds = ticks / 1;
+	amountOfOBJs = seconds % GameObject::ObjHolder.size();
+	
+	
+	
+	
 }
 
 void Game::render()
