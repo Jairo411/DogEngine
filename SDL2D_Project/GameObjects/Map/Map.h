@@ -33,7 +33,7 @@ private:
 	string name;
 	SDL_Texture* tex;
 	Window* WindowPtr;
-	vector<Tiles> tileMap;
+	vector<Tile> tileMap;
 	map<int, map<int, int>> mapData;
 	void attachWindow(Window* tempWindow_);
 	void OnBuild();
@@ -49,6 +49,7 @@ public:
 	MapLayer(string name_, int ID_, bool isback_,int Xsize_,int Ysize_);
 	void OnRender();
 	void OnUpdate();
+	int  keyCode;
 	//Here is a Maplayer that will take in more layeers.
 //	MapLayer(string name_, int ID_, bool isback_, int amountOfLayers);
 	~MapLayer();

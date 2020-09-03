@@ -44,18 +44,22 @@ void MapLayer::OnBuild()
 			{
 				for (int j = 0; j < cols; j++)
 				{
-					int tempR = 16 * i; //these can be used as the cordiantes that I can used in order to place tiles 
-					int tempC = 30 * j;
-
+					int tempR = 20 * i; //these can be used as the cordiantes that I can used in order to place tiles 
+					int tempC = 20 * j;// the space between the rows and the cols should be the same as the size of the colliders and textures in the Tile class
+											
 					int index = i + j;
 					
-					tex = set->getTile(set->DIRTTILE);
+					tex = set->getTile(set->DIRTTILE); // you don't have to give it is texture information right away.
+					Tile::setTileSize(20, 20);
 					//This is how you access the Tile Textures Right here;
-					tileMap.push_back(Tiles(tex, tempR, tempC, true));
+					tileMap.push_back(Tile(tex, tempR, tempC, true));
 					tileMap.at(index).SetID(index);
+					tileMap.at(index).setX(i);
+					tileMap.at(index).setY(j);
 					mapDataFlag = true;
 				}
 			}
+			set = TileSet::RemoveInstance();
 		}
 		break;
 		case MapLayer::ALPHA:
@@ -84,16 +88,12 @@ of the map tiles so that it doesn't have to constantly render
 /*The Update Function will only read the current Map data and update if it's Changed*/
 void MapLayer::OnUpdate() 
 {
-	/*If I tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
-	if (mapDataChanged==true)
+	//If a tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
+	int total = tileMap.size();
+	for (int i=0; i<total; i++)
 	{
-		for (int i = 0; i < mapData.size(); i++)
-		{
-			for (int j = 0; j < mapData.at(j).size(); j++)
-			{
-
-			}
-		}
+		tileMap.at(i).OnUpdate();
+		tileMap.at(i).mouseInput(keyCode);
 	}
 
 	

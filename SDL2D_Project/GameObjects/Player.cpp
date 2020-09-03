@@ -1,6 +1,22 @@
 #include "Player.h"
 #include "../TextureManager/TextureManager.h"
 
+Player::Player()
+{
+	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
+	objTexture = NULL;
+	AnimState = NULL;
+	posX = 0;
+	posY = 0;
+	srcRect.w = 0;
+	srcRect.h = 0;
+	srcRect.x = 0;
+	srcRect.y = 0;
+	currentAnimTicks = NULL;
+	col = Collider();
+	ptr = nullptr;
+}
+
 Player::Player(const char * textureSheet, int x, int y)
 {
 	objTexture = TextureManager::LoadTexture(textureSheet);
@@ -15,6 +31,7 @@ Player::Player(const char * textureSheet, int x, int y)
 	currentAnimTicks = NULL;
 	//I have to render this in order to see what it looks like
 	col = Collider(20,20,50);
+	ptr = this;
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -26,6 +43,7 @@ Player::Player(const char * textureSheet, int x, int y)
 		std::cout << "Object texture wasn't found" << std::endl;
 	}
 	
+	GameObject::ObjHolder.push_back(ptr);
 }
 
 Player::~Player()
@@ -58,6 +76,11 @@ void Player::Update()
 void Player::Render()
 {
 	/*This is in the loop*/
+	if (nullObjTexture!=NULL)
+	{
+		SDL_RenderCopy(Game::renderer, nullObjTexture, NULL, NULL);
+		cout << "You're player Texture isn't working";
+	}
 	if (getDisable()==false)
 	{
 		SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);

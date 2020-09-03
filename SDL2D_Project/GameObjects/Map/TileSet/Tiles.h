@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include "../../../Physics/Collider.h"
+#include "../../../Input/Input.h"
 /*
 This is the tile class, all IT SHOULD DO IS cut up tile textures and save so they 
 can be used later.
@@ -20,11 +22,11 @@ class TileSet
 protected:
 	static TileSet* instance;
 private:
+	int ID;
 	string name;
 	string tileSet;
 	static map<int, SDL_Texture*> imageSetHolder;
 	SDL_Rect srcRect, desRect;
-	int ID;
 	void Init();
 	TileSet(string name, int ID);
 public:
@@ -42,42 +44,47 @@ public:
 	};
 	void operator=(const TileSet&) = delete;
 	static TileSet* GetInstance();
+	static TileSet* RemoveInstance();
 	static map<int, SDL_Texture*>GetTileSet();
 	static SDL_Texture* getTile(int key_);
-
 	TileSet(TileSet& temp) = delete;
-	
 	~TileSet();
-
-	//void TestRender();
 };
 
 /*This class is setUp I don't think Ill add anymore 
 Because everything should be actually made inside the map class*/
-class Tiles
+//Honestly could've done this insides the tileClass but this exists so im going to leave it. 
+
+class Tile: public Input
 {
 public:
-	//Tileset tileSet;
-	Tiles();
-	Tiles(SDL_Texture* tex_,int srcX,int srcY,bool solid);
+	Tile();
+	Tile(SDL_Texture* tex_,int srcX,int srcY,bool solid);
 	SDL_Texture* getTex();
 	SDL_Rect getSrcRect();
+	static void setTileSize(int width_, int height_);
+	static int getWidth();
+	static int getHeight();
 	void SetID(int ID_);
-	void OnRender();	
-	~Tiles();
+	void OnRender();
+	void OnUpdate();
+	int getX();
+	int getY();
+	bool keyBoardInput(int key_);
+	bool mouseInput(int key_);
+	bool controllerInput(int key_);
+	void setX(int x_);
+	void setY(int y_);
+	~Tile();
 private:
 	SDL_Texture* baseTex;
 	SDL_Rect srcRect,dstRect;
-	void OnUpdate();
-	void Collider();
+	Collider col;
 	int getID();
-	//int sourceX;
-	//int sourceY;
-	//Modular support 
 	//This are int Variables for the postion of the Tile in the Array not Postion on the screen
 	int ID;
-	int width;
-	int Height;
+	int x, y;
+	static int width, height;
 	bool isSoild;
 
 	

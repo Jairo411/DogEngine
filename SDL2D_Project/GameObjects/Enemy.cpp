@@ -19,6 +19,29 @@ void Enemy::ChangeSrcSize(int src_w, int src_h)
 	
 }
 
+Skeleton::Skeleton()
+{
+	posX = 0;
+	posY = 0;
+
+	srcRect.x = 0;
+	srcRect.y = 0;
+	srcRect0.x = 0;
+	destRect0.y = 0;
+	srcRect0.w = 0;
+	srcRect0.h = 0;
+
+	objTexture = nullptr;
+	srcRect.w = 0;
+	srcRect.h = 0;
+	ptr = nullptr;
+
+	destRect.x = 0;
+	destRect.y = 0;
+
+	col = Collider();
+}
+
 Skeleton::Skeleton(int x, int y)
 {
 	posX = x;
@@ -34,10 +57,13 @@ Skeleton::Skeleton(int x, int y)
 	objTexture = nullptr;
 	srcRect.w = 40;
 	srcRect.h = 40;
+	ptr = this;
 
 	destRect.x = srcRect.x;
 	destRect.y = srcRect.y;
+
 	col = Collider(10, 20, 45);
+	ObjHolder.push_back(ptr);
 	Inti();
 }
 

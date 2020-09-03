@@ -9,7 +9,6 @@ GameObject::GameObject()
 	posY = 0;
 	disableObject = false;
 	nameID = "";
-	
 //	Going to use the Gameobject base class to check if inhereted object has name or not
 }
 

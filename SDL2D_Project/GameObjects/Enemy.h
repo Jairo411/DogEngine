@@ -36,7 +36,9 @@ private:
 class Skeleton : public Enemy
 {
 public:
+	Skeleton();
 	Skeleton(int x, int y);
+	~Skeleton();
 	void Inti();
 	void Update();
 	void Render();

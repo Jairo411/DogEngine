@@ -34,9 +34,6 @@ private:
 	bool isRunning;
 	SDL_Window *window; 
 	Window *actualWindow;
-	OBJArray<GameObject*> ObjHolder;
-	GameObject* holder;
-	GameObject* holder1;
 	
 	//Window window;
 	

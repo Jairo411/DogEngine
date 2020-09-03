@@ -53,23 +53,17 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 	else {
 		isRunning = false;
 	}
-	
 
 	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",10,0);
-	holder = player;
-	GameObject::ObjHolder.push_back(holder);
+//	player->Disable();
 //	ObjHolder.add(holder);
-	enemy = new Skeleton(30, 30);
-	holder1 = enemy;
-	GameObject::ObjHolder.push_back(holder1);
+	enemy = new Skeleton(100, 30);
 //	ObjHolder.add(holder1);
 	//Enemy::AddObject(enemy);
 	//This just set the size of the game world 
-	mapA = new MapLayer("BaseLayer", 0, true,60,30);
+	mapA = new MapLayer("BaseLayer", 0, true,55,35);
 	
 	
-	
-
 		
 }
 
@@ -96,13 +90,14 @@ void Game::handleEvents()
 		player->MousePressed(true, event.button.button);
 		player->mouseInput(player->InputMouseHolder.begin()->first);
 		if (actualWindow->mouseInput(event.button.button))
-		{
-			
-		} 
+		{	
+		}
+		mapA->keyCode = event.button.button;
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->mouseInput(player->InputMouseHolder.begin()->first);
+		mapA->keyCode = event.button.button;
 		break;
 	default:
 		break;
@@ -128,9 +123,6 @@ void Game::handleCollisions()
 	ticks = SDL_GetTicks();
 	seconds = ticks / 1;
 	amountOfOBJs = seconds % GameObject::ObjHolder.size();
-	
-	
-	
 	
 }
 
