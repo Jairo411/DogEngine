@@ -3,6 +3,16 @@
 #include "../../TextureManager/TextureManager.h"
 
 
+MapLayer::MapLayer()
+{
+	name = "NULL";
+	ID = NULL;
+	IsBackground = NULL;
+	rows = 0;
+	cols = 0;
+	WindowPtr = nullptr;
+}
+
 MapLayer::MapLayer(string Name_, int ID_, bool isback_,int xSize_, int ySize_)
 {
 	name = Name_;

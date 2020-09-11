@@ -3,38 +3,30 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
-#include "../GameObjects/Map/Map.h"
-#include "../GameObjects/Map/TileSet/Tiles.h"
-#include "../TextureManager/TextureManager.h"
-#include "../GameObjects/GameObject.h"
-#include "../GameObjects/Player.h"
-#include "../GameObjects/Enemy.h"
+
+#include "../Game/Scenes/Scene.h"
+#include "Scenes/SceneManager.h"
+#include "Scenes/GameScenes/Scene0.h"
 #include "../Window/Window.h"
-
-//#include "../Saver.h"
-
-
 
 class Game{
 public:
 	Game();
-	~Game();
-	
 	void init(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
-	void handleEvents();
-	void update();
+	void HandleEvents();
+	void OnUpdate();
 	void handleCollisions();
-	void render(); 
+	void OnRender(); 
 	void clean();
 	bool running() { return isRunning; }
 	static SDL_Renderer *renderer;
-
+	static Window* actualWindow;
+	~Game(); 
 private:	
 	int cnt=0;
 	bool isRunning;
 	SDL_Window *window; 
-	Window *actualWindow;
-	
+	SceneManager sceneManager;
 	//Window window;
 	
 

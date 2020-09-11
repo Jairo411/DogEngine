@@ -56,7 +56,7 @@ void Tile::OnRender()
 {
 	
 	SDL_RenderCopy(Game::renderer, baseTex, &srcRect,&dstRect);
-	col.CollisonRender();
+	//col.CollisonRender();
 }
 
 void Tile::setTileSize(int width_, int height_)
@@ -100,7 +100,7 @@ bool Tile::mouseInput(int key_)
 			TileSet* set = TileSet::GetInstance();
 			if (SDL_IntersectRect(col.getCollider(),Input::mouseClick->getCollider(),&result))
 			{
-				baseTex = set->getTile(5);
+				baseTex = set->getTile(0);
 			}
 		}
 		return true;

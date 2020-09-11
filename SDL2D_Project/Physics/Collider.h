@@ -16,7 +16,6 @@ public:
 	void CollisonUpdate(int colPosX_,int colPosY_);
 	//Only going to be used for game objects 
 	void CollisonRender();
-	//
 	void SetCollisonObjectType(int col_);
 	void SetCollisonType(int col);
 	bool MouseEventListener(int event);
@@ -27,8 +26,6 @@ public:
 	Its quite possible that you need to just simply use the gameobjects width and size in order to add collision to the objects 
 	*/
 	/*Math Functions*/
-//	SDL_Rect FindMidPointOfObject(SDL_Rect temp_,SDL_Rect temp1_);
-//	SDL_Rect FindMidPointOfObject(int x1_, int x2_, int y1_, int y2_);
 	~Collider();
 
 private: 

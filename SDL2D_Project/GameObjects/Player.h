@@ -23,13 +23,13 @@ public:
 	Player();
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
-	 void Update();
-	 void Render();
+	 void Update() override;
+	 void Render() override;
 	 void Disable();
 	 void handleCollison();
-	 bool keyBoardInput(int key);
-	 bool mouseInput(int key);
-	 bool controllerInput(int key);
+	 bool keyBoardInput(int key) override;
+	 bool mouseInput(int key) override;
+	 bool controllerInput(int key) override;
 	 Uint32 GetAnimTicks();
 private:  
 	int posX;

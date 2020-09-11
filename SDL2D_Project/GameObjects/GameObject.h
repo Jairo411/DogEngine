@@ -13,7 +13,6 @@ of any game object in the game i.e
 -Enemies 
 -Enviromental stuff
 -Player and Player weapons 
-
 Basically anything with a texture.
 */
 class TextureManager;

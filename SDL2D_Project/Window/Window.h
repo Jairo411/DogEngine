@@ -8,7 +8,8 @@
 using namespace std;
 
 class Game;
-
+/* Honestly don't know the purpose of this class
+	It's suppose to hold UI Elements I guess. It could hold a health bar maybe a stamaina bar*/
 class Window: public Input
 {	
 private:
@@ -35,9 +36,7 @@ public:
 	void OnRender();
 	void OnUpdate();
 	map<SDL_Rect*, int>getSquareHolder();
-
 	~Window();
-
 	enum WindowStatus : unsigned int
 	{
 		DEBUG = 0 ,

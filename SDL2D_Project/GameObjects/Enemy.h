@@ -40,9 +40,9 @@ public:
 	Skeleton(int x, int y);
 	~Skeleton();
 	void Inti();
-	void Update();
-	void Render();
-	void handleCollison();
+	void Update() override;
+	void Render() override;
+	void handleCollison() override;
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;

@@ -46,6 +46,7 @@ private:
 		ALPHA,
 	};
 public:
+	MapLayer();
 	MapLayer(string name_, int ID_, bool isback_,int Xsize_,int Ysize_);
 	void OnRender();
 	void OnUpdate();
