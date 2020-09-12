@@ -23,11 +23,17 @@ int main(int argc,char * argv[]) {
 		
 		frameStart = SDL_GetTicks();
 
+<<<<<<< HEAD
 		
 		game->OnUpdate();
 		game->OnRender();
 		game->handleCollisions();
 		game->HandleEvents();
+=======
+		game->handleEvents();
+		game->update();
+		game->render();
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
 
 		frametime = SDL_GetTicks() - frameStart;
 		

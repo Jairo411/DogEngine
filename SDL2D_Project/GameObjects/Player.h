@@ -26,10 +26,16 @@ public:
 	 void Update();
 	 void Render();
 	 void Disable();
+<<<<<<< HEAD
 	 void handleCollison();
 	 bool keyBoardInput(int key) override;
 	 bool mouseInput(int key) override;
 	 bool controllerInput(int key) override;
+=======
+	 bool keyBoardInput(int key);
+	 bool mouseInput(int key);
+	 bool controllerInput(int key);
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
 	 Uint32 GetAnimTicks();
 private:  
 	int posX;
@@ -37,11 +43,12 @@ private:
 	int amountOfAniamtions;
 	int AnimState;
 	bool disableObject;
-	Collider col;
+	Collider collider;
 	Uint32 currentAnimTicks;
 	Uint32 WaitAnimationsTicks(Uint32 wait_);
 	SDL_Rect endRect;
 	void PlayAnimations(int state_);
+	
 	enum AnimationsStates
 	{
 		ATTACK0=0,

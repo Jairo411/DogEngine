@@ -8,10 +8,13 @@ c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\scenemanager.o
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\master.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\saver.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\input.obj
+<<<<<<< HEAD
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\player.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\main.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobject.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game.obj
+=======
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\collider.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.command.1.tlog
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.read.1.tlog

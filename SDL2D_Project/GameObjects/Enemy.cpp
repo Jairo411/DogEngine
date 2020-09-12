@@ -11,6 +11,17 @@ void Enemy::Disable()
 
 }
 
+bool Enemy::setDisable()
+{
+	return false;
+}
+
+bool Enemy::getDisable()
+{
+	return false;
+}
+
+
 
 void Enemy::ChangeSrcSize(int src_w, int src_h)
 {
@@ -175,7 +186,7 @@ void Skeleton::Inti()
 
 void Skeleton::Update()
 {
-	handleCollison();
+	col.CollisonUpdate(posX, posY);
 	if (getDisable() == false)
 	{
 		destRect0.x = posX;
@@ -202,11 +213,6 @@ void Skeleton::Render()
 	{
 		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect0, &destRect0);
 	}
-}
-
-void Skeleton::handleCollison()
-{
-	col.CollisonUpdate(posX, posY);
 }
 
 void Skeleton::PlayAnimations(int state_)

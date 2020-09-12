@@ -12,6 +12,8 @@ class Enemy: public GameObject
 public:
 	~Enemy();
 	void Disable();
+	bool setDisable();
+	bool getDisable();
 protected:
 	/* You're gonna have to moves this to the Skeleton Class
 		Because this shit is not modular in anyway possible*/
@@ -43,7 +45,6 @@ public:
 	void Inti();
 	void Update();
 	void Render();
-	void handleCollison();
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;

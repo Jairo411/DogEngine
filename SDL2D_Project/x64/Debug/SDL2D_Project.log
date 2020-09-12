@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Enemy.cpp
   GameObject.cpp
   Map.cpp
@@ -14,4 +15,10 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104
   TextureManager.cpp
   Window.cpp
   Generating Code...
+=======
+﻿  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(105,3): warning C4060: switch statement contains no 'case' or 'default' labels
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(123,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(125,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
