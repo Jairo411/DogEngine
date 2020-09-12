@@ -185,6 +185,15 @@ bool Player::mouseInput(int key)
 		}
 	}
 		return false;
+	else 
+	{
+		if (GetAnimTicks() == 0)
+		{
+			WaitAnimationsTicks(0);
+			AnimState = IDLE0;
+			return true;
+		}
+	}
 }
 
 bool Player::controllerInput(int key)
@@ -199,7 +208,6 @@ Uint32 Player::GetAnimTicks()
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
 void Player::PlayAnimations(int state_)
 {
-	/* The FPS is fucking things up hear you need to access the frame Delay and Actually Know what FPS your stuff is running at*/
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / 100;
 	Uint32 sprite;
@@ -275,36 +283,15 @@ void Player::PlayAnimations(int state_)
 	}
 	if (state_==ATTACK0)
 	{
-		if (sprite==0)
-		{
-			WaitAnimationsTicks(sprite);
-		}
-		else if (sprite==3)
-		{
-			AnimState = IDLE0;
-		}
+		WaitAnimationsTicks(sprite);
 	}
-	else if (state_==ATTACK1) 
+	else if (state_ == ATTACK1)
 	{
-		if (sprite==0)
-		{
-			WaitAnimationsTicks(sprite);
-		}
-		else if (sprite==5)
-		{
-			AnimState = IDLE0;
-		}
+		WaitAnimationsTicks(sprite);
 	}
-	else if (state_==ATTACK2)
+	else if (state_ == ATTACK2)
 	{
-		if (sprite==0)
-		{
-			WaitAnimationsTicks(sprite);
-		}
-		else if (sprite==5)
-		{
-			AnimState = IDLE0;
-		}
+		WaitAnimationsTicks(sprite);
 	}
 }
 
@@ -312,7 +299,7 @@ void Player::PlayAnimations(int state_)
 
 Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
 {
-	currentAnimTicks = wait_;
+	currentAnimTicks = wait_+15;
 	return currentAnimTicks;
 }
 

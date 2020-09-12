@@ -20,6 +20,11 @@ public:
 	void SetCollisonType(int col);
 	bool MouseEventListener(int event);
 	SDL_Rect* getCollider();
+	Collider(int x_, int y_);
+	void CollisonUpdate();
+	//Only going to be used for game objects 
+	void CollisonRender();
+
 	/*make this into a virtual class possibly to add to the gameobjects doesn't seem like you need these enums 
 	but because I look everything up online Im currently semi copying this stuff. 
 
@@ -39,6 +44,19 @@ private:
 		NONE = 0,
 		GAMEOBJECT,
 		MOUSE,
+	};
+private: 
+	int x, y;
+	int area;
+	enum CollisonObject 
+	{
+		Default=0,
+		GameObject
+	};
+	enum CollisonType
+	{
+		Projectile = 0,
+		Fall
 	};
 
 	enum CollisonType

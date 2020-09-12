@@ -5,8 +5,6 @@
 #include <iterator>
 #include "../Input/Input.h"
 
-using namespace std;
-
 class Game;
 /* Honestly don't know the purpose of this class
 	It's suppose to hold UI Elements I guess. It could hold a health bar maybe a stamaina bar*/
@@ -19,7 +17,7 @@ private:
 	int totalAmountOfSquares;
 	int windowStatus;
 	Uint32 rmask, gmask, bmask, amask;
-	map<SDL_Rect*, int> GraphicSquareHolder;
+	std::map<SDL_Rect*, int> GraphicSquareHolder;
 	SDL_Surface *graphicLayer;
 	SDL_Window *window;
 public:
@@ -35,6 +33,7 @@ public:
 	bool  controllerInput(int key);
 	void OnRender();
 	void OnUpdate();
+<<<<<<< HEAD
 	map<SDL_Rect*, int>getSquareHolder();
 	~Window();
 	enum WindowStatus : unsigned int

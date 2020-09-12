@@ -100,17 +100,27 @@ void Game::HandleEvents()
 	case SDL_KEYDOWN:
 		player->keyPressed(true, event.key.keysym.sym);
 		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
+		player->keyBoardInput(event.key.keysym.sym);
 				//std::cout << "Key is still pressed" << std::endl;
 		break;
 	case SDL_KEYUP:
 		player->keyPressed(false,event.key.keysym.sym);
 		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
+		player->keyBoardInput(NULL);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		player->MousePressed(true, event.button.button);
 		player->mouseInput(player->InputMouseHolder.begin()->first);
 		if (actualWindow->mouseInput(event.button.button))
 		{	
+		{
+			int x, y;
+			SDL_GetMouseState(&x, &y);
+			std::cout << "X: " << x << "Y: " << y <<endl;
+		} 
+		if (player->mouseInput(event.button.button))
+		{
+
 		}
 		mapA->keyCode = event.button.button;
 		break;
@@ -151,6 +161,7 @@ void Game::handleCollisions()
 	amountOfOBJs = seconds % GameObject::ObjHolder.size();
 	*/
 =======
+	catch (const range_error& e)
 	
 	
 
@@ -166,6 +177,14 @@ void Game::OnRender()
 	enemy->Render();
 	//actualWindow->OnRender();
 	SDL_RenderPresent(renderer);*/
+=======
+	SDL_RenderClear(renderer);
+	mapA->OnUpdate();
+	player->Render();
+	enemy->Render();
+	//actualWindow->OnRender();
+	SDL_RenderPresent(renderer);
+>>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 	
 }
 

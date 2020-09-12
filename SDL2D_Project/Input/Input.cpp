@@ -11,7 +11,6 @@ Input::~Input()
 
 bool Input::keyPressed(int is_pressed,int keycode)
 {
-	InputKeyBoardHolder.clear();
 	if (SDL_PRESSED == is_pressed)
 	{
 		if (SDL_KEYDOWN)
@@ -21,8 +20,10 @@ bool Input::keyPressed(int is_pressed,int keycode)
 			InputKeyBoardHolder.insert(std::pair<int, bool>(keycode, true));	
 			return true;
 		}
+		InputHolder->insert(std::pair<int,bool>(keycode,true));
+		return true;
 	}
-	else if (SDL_RELEASED== is_pressed)
+	else if (SDL_RELEASED)
 	{
 		if (SDL_KEYUP)
 		{
@@ -69,6 +70,9 @@ bool Input::createCollider(bool state_)
 	else if (state_==false)
 	{
 		mouseClick = NULL;
+		keycode = NULL;
+		InputHolder->insert(std::pair<int, bool>(keycode, false));
+		return true;
 	}
 	return false;
 }

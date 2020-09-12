@@ -85,6 +85,18 @@ private:
 	int ID;
 	int x, y;
 	static int width, height;
+	void OnRender();	
+	~Tiles();
+private:
+	SDL_Texture* baseTex;
+	SDL_Rect srcRect,dstRect;
+	void OnUpdate();
+	void Collider();
+	//int sourceX;
+	//int sourceY;
+	//Modular support 
+	int width;
+	int Height;
 	bool isSoild;
 
 	

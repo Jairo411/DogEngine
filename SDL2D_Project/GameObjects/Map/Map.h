@@ -29,14 +29,17 @@ private:
 	bool IsBackground;
 	bool Visible;
 	bool mapDataFlag;
-	bool mapDataChanged;
 	string name;
 	SDL_Texture* tex;
 	Window* WindowPtr;
 	vector<Tile> tileMap;
+	vector<Tiles> tileMap;
+	vector<vector<int>>mapRowData;
+	vector<int>mapColData;
+	vector<vector<int>>prevMapRowData;
+	vector<int>prevMapColData;
 	map<int, map<int, int>> mapData;
 	void attachWindow(Window* tempWindow_);
-	void OnBuild();
 	// You need to find a way to dynamically Create this arrays Size 
 	//I HAVE AN ENUM HERE TO SET THE STANDARD TILE TYPE 
 	enum MapSetUp : unsigned short
@@ -51,6 +54,7 @@ public:
 	void OnRender();
 	void OnUpdate();
 	int  keyCode;
+	void readMapData();
 	//Here is a Maplayer that will take in more layeers.
 //	MapLayer(string name_, int ID_, bool isback_, int amountOfLayers);
 	~MapLayer();

@@ -1,8 +1,6 @@
 #ifndef KEYINPUT_H
 #define KEYINPUT_H
 #include <map>
-#include<iostream>
-#include "../Physics/Collider.h"
 class SDL;
 class Input
 {
@@ -19,5 +17,7 @@ public:
 private:
 	static int mouseX, mouseY;
 	static bool createCollider(bool state_);
+	 bool keyPressed(int is_Pressed,int keycode);
+	 std::map<int, bool>*InputHolder;
 };
 #endif // !KEYINPUT_H
