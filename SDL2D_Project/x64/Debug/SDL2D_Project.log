@@ -1,26 +1,17 @@
 ﻿  Enemy.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.h(27,16): error C3646: 'enemy': unknown override specifier
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.h(27,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  Collider.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104,3): warning C4060: switch statement contains no 'case' or 'default' labels
-  Game.cpp
   GameObject.cpp
-  Main.cpp
   Map.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.h(28,15): error C3646: 'mapA': unknown override specifier
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.h(28,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(87,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(102,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(115,15): warning C4834: discarding return value of function with 'nodiscard' attribute
-  Player.cpp
-  Input.cpp
-  Saver.cpp
-  Master.cpp
-  SceneManager.cpp
-  Scene0.cpp
-  TextureManager.cpp
   Tiles.cpp
+  Player.cpp
+  Game.cpp
+  Main.cpp
+  Scene0.cpp
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104,3): warning C4060: switch statement contains no 'case' or 'default' labels
+  TextureManager.cpp
   Window.cpp
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(155): warning C4715: 'Player::keyBoardInput': not all control paths return a value
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(185): warning C4715: 'Player::mouseInput': not all control paths return a value
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

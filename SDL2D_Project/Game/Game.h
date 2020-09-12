@@ -1,13 +1,17 @@
 #ifndef Game_H
 #define Game_H
+
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
-
+#include "../GameObjects/Enemy.h"
+#include "../GameObjects/Player.h"
+#include "../GameObjects/Map/Map.h"
+#include "../Input/Input.h"
+#include "../Window/Window.h"
 #include "../Game/Scenes/Scene.h"
 #include "Scenes/SceneManager.h"
 #include "Scenes/GameScenes/Scene0.h"
-#include "../Window/Window.h"
 
 class Game{
 public:

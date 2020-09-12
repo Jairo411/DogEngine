@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Physics/Collider.h"
+
 using namespace std;
 
 /*This whole fucking class needs to be re-worked and have variables names that make sense*/
@@ -40,9 +41,9 @@ public:
 	Skeleton(int x, int y);
 	~Skeleton();
 	void Inti();
-	void Update() override;
-	void Render() override;
-	void handleCollison() override;
+	void Update();
+	void Render();
+	void handleCollison();
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;

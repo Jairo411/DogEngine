@@ -23,10 +23,11 @@ int main(int argc,char * argv[]) {
 		
 		frameStart = SDL_GetTicks();
 
-		game->HandleEvents();
+		
 		game->OnUpdate();
 		game->OnRender();
 		game->handleCollisions();
+		game->HandleEvents();
 
 		frametime = SDL_GetTicks() - frameStart;
 		

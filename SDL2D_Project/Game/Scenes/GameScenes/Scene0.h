@@ -1,12 +1,9 @@
 #ifndef SCENE0_H
 #define SCENE0_H
 
-#include "../SceneManager.h"
-#include "../../../GameObjects/Map/Map.h"
-#include "../../../GameObjects/Player.h"
-#include "../../../GameObjects/Enemy.h"
-#include "../../../TextureManager/TextureManager.h"
+#include"../../Game.h"
 
+using namespace std;
 
 class Scene0: public Scene
 {
@@ -22,9 +19,6 @@ public:
 private: 
 	int cnt = 0;
 	bool isRunning;
-	SDL_Rect srcR, dstR;
-	Player player;
-	Skeleton enemy;
-	MapLayer mapA;
+	//SDL_Rect srcR, dstR;
 };
 #endif //SCENE0

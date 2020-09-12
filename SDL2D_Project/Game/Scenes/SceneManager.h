@@ -3,7 +3,6 @@
 #include <memory>
 #include <unordered_map>
 #include "Scene.h"
-#include "../../Window/Window.h"
 
 class SceneManager
 {

@@ -23,8 +23,8 @@ public:
 	Player();
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
-	 void Update() override;
-	 void Render() override;
+	 void Update();
+	 void Render();
 	 void Disable();
 	 void handleCollison();
 	 bool keyBoardInput(int key) override;
