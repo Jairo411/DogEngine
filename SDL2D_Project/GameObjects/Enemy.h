@@ -44,10 +44,7 @@ public:
 	void Inti();
 	void Update();
 	void Render();
-<<<<<<< HEAD
-=======
-	void handleCollison();
->>>>>>> parent of ff90b31... 2020-09-11
+
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;

@@ -3,7 +3,7 @@
 
 
 #include "GameObject.h"
-#include "../Input/Input.h"
+#include "C:/Users/jalbm/Desktop/SDL2D_Project-0e609616605a8522d711653b03805e45f7af73e8/SDL2D_Project/Input/Input.h"
 #include "../Physics/Collider.h"
 
 /*
@@ -26,18 +26,12 @@ public:
 	 void Update();
 	 void Render();
 	 void Disable();
-<<<<<<< HEAD
 
 	 bool keyBoardInput(int key);
 	 bool mouseInput(int key);
 	 bool controllerInput(int key);
 
-=======
-	 void handleCollison();
-	 bool keyBoardInput(int key);
-	 bool mouseInput(int key);
-	 bool controllerInput(int key);
->>>>>>> parent of ff90b31... 2020-09-11
+
 	 Uint32 GetAnimTicks();
 private:  
 	int posX;

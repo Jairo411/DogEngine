@@ -47,21 +47,6 @@ private:
 		MOUSE,
 	};
 
-private: 
-	int x, y;
-	int area;
-	enum CollisonObject 
-	{
-		Default=0,
-		GameObject
-	};
-	enum CollisonType
-	{
-		Projectile = 0,
-		Fall
-	};
-
-
 	enum CollisonType
 	{
 		NO_COl=0,

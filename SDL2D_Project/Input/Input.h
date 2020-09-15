@@ -1,3 +1,4 @@
+/*
 #ifndef KEYINPUT_H
 #define KEYINPUT_H
 #include <map>
@@ -19,4 +20,4 @@ private:
 	static int mouseX, mouseY;
 	static bool createCollider(bool state_);
 };
-#endif // !KEYINPUT_H
+#endif // !KEYINPUT_H*/
