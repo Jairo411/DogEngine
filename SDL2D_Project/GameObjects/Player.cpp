@@ -1,6 +1,25 @@
 #include "Player.h"
 #include "../TextureManager/TextureManager.h"
 
+Player::Player()
+{
+	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
+	//objTexture = NULL;
+	//AnimState = NULL;
+	posX = 0;
+	posY = 0;
+	srcRect.w = 0;
+	srcRect.h = 0;
+	srcRect.x = 0;
+	srcRect.y = 0;
+	currentAnimTicks = NULL;
+	amountOfAniamtions = 0;
+	disableObject = NULL;
+	endRect = SDL_Rect();
+	col = Collider();
+	ptr = nullptr;
+}
+
 Player::Player(const char * textureSheet, int x, int y)
 {
 	objTexture = TextureManager::LoadTexture(textureSheet);
@@ -12,9 +31,19 @@ Player::Player(const char * textureSheet, int x, int y)
 	srcRect.x = 0;
 	srcRect.y = 0;
 	amountOfAniamtions = 0;
+<<<<<<< HEAD
 	currentAnimTicks = NULL;
+	disableObject = NULL;
+	endRect = SDL_Rect();
 	//I have to render this in order to see what it looks like
+<<<<<<< HEAD
 	col = Collider(20,20,50);
+	ptr = this;
+=======
+	collider = Collider(20,20,50);
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
+=======
+>>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -26,6 +55,7 @@ Player::Player(const char * textureSheet, int x, int y)
 		std::cout << "Object texture wasn't found" << std::endl;
 	}
 	
+	GameObject::ObjHolder.push_back(ptr);
 }
 
 Player::~Player()
@@ -40,7 +70,11 @@ void Player::Update()
 	//Note you need to get your FPS working properly in order to to proper animate your character 
 
 	PlayAnimations(AnimState);
-	handleCollison();
+<<<<<<< HEAD
+	collider.CollisonUpdate(posX, posY);
+	
+=======
+>>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 
 	if (getDisable()==false)
 	{
@@ -58,10 +92,15 @@ void Player::Update()
 void Player::Render()
 {
 	/*This is in the loop*/
+	if (nullObjTexture!=NULL)
+	{
+		SDL_RenderCopy(Game::renderer, nullObjTexture, NULL, NULL);
+	//	cout << "You're player Texture isn't working" <<endl;
+	}
 	if (getDisable()==false)
 	{
 		SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
-		col.CollisonRender();
+		collider.CollisonRender();
 	}
 	else if (getDisable()==true)
 	{
@@ -73,11 +112,6 @@ void Player::Disable()
 {
 	/* You can store all the vaules in here */
 	disableObject = true;
-}
-
-void Player::handleCollison()
-{
-	col.CollisonUpdate(posX, posY);
 }
 
 
@@ -129,6 +163,7 @@ bool Player::keyBoardInput(int key)
 		AnimState = IDLE0;
 		return true;
 	}
+	return false;
 }
 
 bool Player::mouseInput(int key)
@@ -155,10 +190,19 @@ bool Player::mouseInput(int key)
 			return true;
 		}
 	}
+<<<<<<< HEAD
+		return false;
+=======
 	else 
 	{
-		
+		if (GetAnimTicks() == 0)
+		{
+			WaitAnimationsTicks(0);
+			AnimState = IDLE0;
+			return true;
+		}
 	}
+>>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 }
 
 bool Player::controllerInput(int key)
@@ -169,12 +213,10 @@ Uint32 Player::GetAnimTicks()
 {
 	return currentAnimTicks;
 }
-
 //This might be a way of hard coding this 
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
 void Player::PlayAnimations(int state_)
 {
-	/* The FPS is fucking things up hear you need to access the frame Delay and Actually Know what FPS your stuff is running at*/
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / 100;
 	Uint32 sprite;
@@ -250,36 +292,15 @@ void Player::PlayAnimations(int state_)
 	}
 	if (state_==ATTACK0)
 	{
-		if (sprite==0)
-		{
-			WaitAnimationsTicks(sprite);
-		}
-		else if (sprite==3)
-		{
-			AnimState = IDLE0;
-		}
+		WaitAnimationsTicks(sprite);
 	}
-	else if (state_==ATTACK1) 
+	else if (state_ == ATTACK1)
 	{
-		if (sprite==0)
-		{
-			WaitAnimationsTicks(sprite);
-		}
-		else if (sprite==5)
-		{
-			AnimState = IDLE0;
-		}
+		WaitAnimationsTicks(sprite);
 	}
-	else if (state_==ATTACK2)
+	else if (state_ == ATTACK2)
 	{
-		if (sprite==0)
-		{
-			WaitAnimationsTicks(sprite);
-		}
-		else if (sprite==5)
-		{
-			AnimState = IDLE0;
-		}
+		WaitAnimationsTicks(sprite);
 	}
 }
 
@@ -287,7 +308,7 @@ void Player::PlayAnimations(int state_)
 
 Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
 {
-	currentAnimTicks = wait_;
+	currentAnimTicks = wait_+15;
 	return currentAnimTicks;
 }
 

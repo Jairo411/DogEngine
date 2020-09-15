@@ -1,19 +1,508 @@
 ﻿  Enemy.cpp
-  GameObject.cpp
-  Map.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(73,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(105,15): warning C4834: discarding return value of function with 'nodiscard' attribute
-  Tiles.cpp
-  Player.cpp
-  Game.cpp
-  Main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C2143: syntax error: missing ';' before '*'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,29): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(48,19): error C3646: 'collider': unknown override specifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(48,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(83,14): error C3646: 'col': unknown override specifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(83,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
   Collider.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104,3): warning C4060: switch statement contains no 'case' or 'default' labels
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(122,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(124,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  Game.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  GameObject.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  Main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  Map.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  Player.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C2143: syntax error: missing ';' before '*'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,29): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(48,19): error C3646: 'collider': unknown override specifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(48,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(83,14): error C3646: 'col': unknown override specifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(83,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  Input.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C2143: syntax error: missing ';' before '*'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,29): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(6,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(6,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(6,18): error C2039: 'mouseClick': is not a member of 'Input'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(5): message : see declaration of 'Input'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(6,31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(16,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(18,3): error C2143: syntax error: missing ';' before '{'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(24,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(27,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(27,35): error C2041: illegal digit '8' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(31,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(33,3): error C2143: syntax error: missing ';' before '{'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(52,9): error C2039: 'cout': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\map(25): message : see declaration of 'std'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(52,14): error C2065: 'cout': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(52,60): error C2039: 'endl': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\map(25): message : see declaration of 'std'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(52,64): error C2065: 'endl': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(72,28): error C2061: syntax error: identifier 'Collider'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(77,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(79,3): error C2065: 'InputHolder': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(79,44): error C2065: 'keycode': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(81,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(81,35): error C2041: illegal digit '8' for base '8'
+  Saver.cpp
+  Master.cpp
   TextureManager.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+  Tiles.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\list(24,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\list(24,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
   Window.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C2143: syntax error: missing ';' before '*'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,29): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(35,5): error C2143: syntax error: missing ';' before '<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(35,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(35,38): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,6): error C2086: 'int Collider::x': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::x'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(51,9): error C2086: 'int Collider::y': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(38): message : see declaration of 'Collider::y'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(52,6): error C2086: 'int Collider::area': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(39): message : see declaration of 'Collider::area'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(66,2): error C2011: 'Collider::CollisonType': 'enum' type redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(58): message : see declaration of 'Collider::CollisonType'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(47,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(49,23): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(50,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Enemy.h(51,8): error C2334: unexpected token(s) preceding ':'; skipping apparent function body
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(29,1): error C2059: syntax error: '<<'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(31,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(35,1): error C2059: syntax error: '=='
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(36,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(38,27): error C2535: 'bool Skeleton::Player::mouseInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(32): message : see declaration of 'Skeleton::Player::mouseInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(39,32): error C2535: 'bool Skeleton::Player::controllerInput(int)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(33): message : see declaration of 'Skeleton::Player::controllerInput'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,1): error C2059: syntax error: '>>'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(48,19): error C3646: 'collider': unknown override specifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(48,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(18,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(83,14): error C3646: 'col': unknown override specifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(83,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(90,17): error C2535: 'void Skeleton::Tile::OnRender(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(70): message : see declaration of 'Skeleton::Tile::OnRender'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(92,15): error C2086: 'SDL_Texture *Skeleton::Tile::baseTex': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(81): message : see declaration of 'Skeleton::Tile::baseTex'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,11): error C2086: 'SDL_Rect Skeleton::Tile::srcRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::srcRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(93,19): error C2086: 'SDL_Rect Skeleton::Tile::dstRect': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(82): message : see declaration of 'Skeleton::Tile::dstRect'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(94,17): error C2535: 'void Skeleton::Tile::OnUpdate(void)': member function already defined or declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(71): message : see declaration of 'Skeleton::Tile::OnUpdate'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(99,6): error C2086: 'int Skeleton::Tile::width': redefinition
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(88): message : see declaration of 'Skeleton::Tile::width'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(7,20): error C2238: unexpected token(s) preceding ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,9): error C2065: 'Tiles': undeclared identifier
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2923: 'std::vector': 'Tiles' is not a valid template type argument for parameter '_Ty'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(132): warning C4715: 'Player::keyBoardInput': not all control paths return a value
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(162): warning C4715: 'Player::mouseInput': not all control paths return a value
-  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

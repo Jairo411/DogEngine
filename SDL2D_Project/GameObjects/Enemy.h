@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Physics/Collider.h"
+
 using namespace std;
 
 /*This whole fucking class needs to be re-worked and have variables names that make sense*/
@@ -11,6 +12,7 @@ class Enemy: public GameObject
 public:
 	~Enemy();
 	void Disable();
+	bool setDisable();
 protected:
 	/* You're gonna have to moves this to the Skeleton Class
 		Because this shit is not modular in anyway possible*/
@@ -36,11 +38,16 @@ private:
 class Skeleton : public Enemy
 {
 public:
+	Skeleton();
 	Skeleton(int x, int y);
+	~Skeleton();
 	void Inti();
 	void Update();
 	void Render();
+<<<<<<< HEAD
+=======
 	void handleCollison();
+>>>>>>> parent of ff90b31... 2020-09-11
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;

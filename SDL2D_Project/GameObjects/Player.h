@@ -20,15 +20,24 @@ class TextureManager;
 class Player : public GameObject , public Input 
 {
 public:
+	Player();
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
 	 void Update();
 	 void Render();
 	 void Disable();
+<<<<<<< HEAD
+
+	 bool keyBoardInput(int key);
+	 bool mouseInput(int key);
+	 bool controllerInput(int key);
+
+=======
 	 void handleCollison();
 	 bool keyBoardInput(int key);
 	 bool mouseInput(int key);
 	 bool controllerInput(int key);
+>>>>>>> parent of ff90b31... 2020-09-11
 	 Uint32 GetAnimTicks();
 private:  
 	int posX;
@@ -36,12 +45,12 @@ private:
 	int amountOfAniamtions;
 	int AnimState;
 	bool disableObject;
-	Collider col;
+	Collider collider;
 	Uint32 currentAnimTicks;
 	Uint32 WaitAnimationsTicks(Uint32 wait_);
 	SDL_Rect endRect;
-	GameObject* playerPtr;
 	void PlayAnimations(int state_);
+	
 	enum AnimationsStates
 	{
 		ATTACK0=0,
