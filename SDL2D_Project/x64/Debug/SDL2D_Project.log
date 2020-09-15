@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Enemy.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C2143: syntax error: missing ';' before '*'
@@ -238,6 +239,7 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
   Map.cpp
+<<<<<<< HEAD
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2447: '{': missing function header (old-style formal list?)
@@ -266,7 +268,18 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(40,35): error C2041: illegal digit '9' for base '8'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.h(41,24): error C2238: unexpected token(s) preceding ';'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
+||||||| 50f9777
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(73,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(105,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Tiles.cpp
+=======
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(87,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(102,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(115,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Tiles.cpp
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
   Player.cpp
+<<<<<<< HEAD
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C2143: syntax error: missing ';' before '*'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.h(17,29): error C2238: unexpected token(s) preceding ';'
@@ -350,6 +363,20 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(81,1): e
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(81,35): error C2041: illegal digit '8' for base '8'
   Saver.cpp
   Master.cpp
+||||||| 50f9777
+  Game.cpp
+  Main.cpp
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104,3): warning C4060: switch statement contains no 'case' or 'default' labels
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(122,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(124,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+=======
+  Game.cpp
+  Main.cpp
+  Scene0.cpp
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(104,3): warning C4060: switch statement contains no 'case' or 'default' labels
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
   TextureManager.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(7,1): error C2059: syntax error: '<<'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\cctype(37,1): error C2143: syntax error: missing ';' before '{'
@@ -506,3 +533,18 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(35
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\vector(412): message : see declaration of 'std::vector'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(13,10): fatal error C1083: Cannot open include file: '../Game/Scenes/Scene.h': No such file or directory
   Generating Code...
+<<<<<<< HEAD
+||||||| 50f9777
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(132): warning C4715: 'Player::keyBoardInput': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(162): warning C4715: 'Player::mouseInput': not all control paths return a value
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
+=======
+=======
+﻿  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(105,3): warning C4060: switch statement contains no 'case' or 'default' labels
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(123,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(125,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
+﻿  Input.cpp
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523

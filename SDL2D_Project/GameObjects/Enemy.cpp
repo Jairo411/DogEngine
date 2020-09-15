@@ -78,6 +78,10 @@ Skeleton::Skeleton(int x, int y)
 	Inti();
 }
 
+Skeleton::~Skeleton()
+{
+}
+
 void Skeleton::Inti()
 {
 	SDL_Texture* tempIMG;

@@ -1,19 +1,15 @@
 #include "Game.h"
 
-SDL_Rect* srcR, dstR;
-Player* player;
-Skeleton* enemy;
-MapLayer* mapA;
+//SDL_Rect* srcR, dstR;
+//Player* player;
+//Skeleton* enemy;
+//MapLayer* mapA;
 SDL_Renderer* Game::renderer = nullptr;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of ff90b31... 2020-09-11
 TileSet* tileSet;
 
 Game::Game()
 {
-<<<<<<< HEAD
 	/*isRunning = false;
 	std::shared_ptr<Scene0> gameScene0 = std::make_shared<Scene0>();
 
@@ -21,11 +17,12 @@ Game::Game()
 
 	sceneManager.SwitchTo(gameSceneID);
 	*/
-=======
 
-	
+<<<<<<< HEAD
+
 >>>>>>> parent of ff90b31... 2020-09-11
 }
+
 
 
 Game::~Game()
@@ -43,15 +40,15 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
 
-
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		std::cout << "Subsystem Initialised!..." << std::endl;
 		window = SDL_CreateWindow(title, posx, posy, widith, height, flags);
+		actualWindow = new Window(window);
 		if (window)
 		{
 			std::cout << "Window created!" << std::endl;
-			
+
 		}
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer)
@@ -60,55 +57,51 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 			std::cout << "Renderer Created!" << std::endl;
 		}
 		isRunning = true;
-		actualWindow = new Window(window);
 		std::cout <<"Width: "<< actualWindow->getScreenWidth() <<" Height: "<<actualWindow->getScreenHeight() << std::endl;
-		
+
 	}
 	else {
 		isRunning = false;
 	}
 
-<<<<<<< HEAD
-
-/*
+||||||| 50f9777
 =======
->>>>>>> parent of ff90b31... 2020-09-11
+/*
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",10,0);
-//	player->Disable();
+	holder = player;
+	GameObject::ObjHolder.push_back(holder);
 //	ObjHolder.add(holder);
-	enemy = new Skeleton(100, 30);
+	enemy = new Skeleton(30, 30);
+	holder1 = enemy;
+	GameObject::ObjHolder.push_back(holder1);
 //	ObjHolder.add(holder1);
 	//Enemy::AddObject(enemy);
-	//This just set the size of the game world 
-	mapA = new MapLayer("BaseLayer", 0, true,55,35);
-<<<<<<< HEAD
-*/
-
-	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",0,0);
-	//GameObject::AddGameObject(player);
-	//player->setDisable(true);
-	enemy = new Skeleton(30, 30);
-	//This just set the size of the game world 
-	mapA = new MapLayer("BaseLayer", 0, true,30,30);
-	
-	
-	
+	//This just set the size of the game world
+	mapA = new MapLayer("BaseLayer", 0, true,60,30);
 
 
+
+
+
+
+||||||| 50f9777
 =======
-	
-	
->>>>>>> parent of ff90b31... 2020-09-11
-		
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+
 }
 
-void Game::handleEvents()
+void Game::HandleEvents()
 {
 <<<<<<< HEAD
 	//sceneManager.ProcessInput();
 	/*
+||||||| 50f9777
 =======
->>>>>>> parent of ff90b31... 2020-09-11
+	sceneManager.ProcessInput();
+	/*
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	SDL_Event event;
 
 	SDL_PollEvent(&event);
@@ -118,30 +111,25 @@ void Game::handleEvents()
 		break;
 
 	case SDL_KEYDOWN:
-		player->keyBoardInput(event.key.keysym.sym);
+		player->keyPressed(true, event.key.keysym.sym);
+		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
 				//std::cout << "Key is still pressed" << std::endl;
 		break;
 	case SDL_KEYUP:
-		player->keyBoardInput(NULL);
+		player->keyPressed(false,event.key.keysym.sym);
+		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		player->MousePressed(true, event.button.button);
 		player->mouseInput(player->InputMouseHolder.begin()->first);
 		if (actualWindow->mouseInput(event.button.button))
 <<<<<<< HEAD
-		{	
-=======
+		{
 		{
 			int x, y;
 			SDL_GetMouseState(&x, &y);
 			std::cout << "X: " << x << "Y: " << y <<endl;
-		} 
-		if (player->mouseInput(event.button.button))
-		{
-
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 		}
-		mapA->keyCode = event.button.button;
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
@@ -151,15 +139,19 @@ void Game::handleEvents()
 	default:
 		break;
 	}
+	*/
 }
 
-void Game::update()
+void Game::OnUpdate()
 {
 <<<<<<< HEAD
 	//sceneManager.Update();
-	
+
+||||||| 50f9777
 =======
->>>>>>> parent of ff90b31... 2020-09-11
+	sceneManager.Update();
+	/*
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	cnt++;
 
 	player->Update();
@@ -167,20 +159,26 @@ void Game::update()
 	mapA->OnUpdate();
 	//cout << "Size of Obj holder: " << ObjHolder.size() << endl;
 <<<<<<< HEAD
+<<<<<<< HEAD
+
+||||||| 50f9777
 
 =======
-	
->>>>>>> parent of ff90b31... 2020-09-11
+	*/
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 
 }
 
 void Game::handleCollisions()
-{ 
+{
 <<<<<<< HEAD
 	//sceneManager.handleCollison();
 	/*
+||||||| 50f9777
 =======
->>>>>>> parent of ff90b31... 2020-09-11
+	sceneManager.handleCollison();
+	/*
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	Uint32 ticks;
 	Uint32 seconds;
 	Uint32 amountOfOBJs;
@@ -192,19 +190,24 @@ void Game::handleCollisions()
 
 		player->Update();
 		enemy->Update();
-=======
-	
->>>>>>> parent of ff90b31... 2020-09-11
+
+
+
+
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 }
 
-void Game::render()
+void Game::OnRender()
 {
 <<<<<<< HEAD
 	//sceneManager.Render();
 	/*SDL_RenderClear(renderer);
-=======
+||||||| 50f9777
 	SDL_RenderClear(renderer);
->>>>>>> parent of ff90b31... 2020-09-11
+=======
+	sceneManager.Render();
+	/*SDL_RenderClear(renderer);
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	mapA->OnRender();
 	player->Render();
 	enemy->Render();
@@ -217,19 +220,29 @@ void Game::render()
 	player->Render();
 	enemy->Render();
 	//actualWindow->OnRender();
+||||||| 50f9777
 =======
->>>>>>> parent of ff90b31... 2020-09-11
+	SDL_RenderPresent(renderer);*/
+=======
+	SDL_RenderClear(renderer);
+	mapA->OnUpdate();
+	player->Render();
+	enemy->Render();
+	//actualWindow->OnRender();
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	SDL_RenderPresent(renderer);
-	
+>>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+
 }
 
 void Game::clean()
 {
-	delete player;
-	delete mapA;
+
+//	delete player;
+//	delete mapA;
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
-	delete this;
+//	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;
 }

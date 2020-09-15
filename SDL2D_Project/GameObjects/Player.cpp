@@ -38,12 +38,20 @@ Player::Player(const char * textureSheet, int x, int y)
 	//I have to render this in order to see what it looks like
 <<<<<<< HEAD
 	col = Collider(20,20,50);
+<<<<<<< HEAD
 	ptr = this;
 =======
 	collider = Collider(20,20,50);
 >>>>>>> parent of 50f9777... 2020-09-01 1:52
 =======
 >>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+||||||| 50f9777
+=======
+	ptr = this;
+=======
+	collider = Collider(20,20,50);
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -71,10 +79,17 @@ void Player::Update()
 
 	PlayAnimations(AnimState);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	collider.CollisonUpdate(posX, posY);
 	
 =======
 >>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+||||||| 50f9777
+	handleCollison();
+=======
+	collider.CollisonUpdate(posX, posY);
+	
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 
 	if (getDisable()==false)
 	{
@@ -191,8 +206,13 @@ bool Player::mouseInput(int key)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return false;
 =======
+||||||| 50f9777
+=======
+		return false;
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	else 
 	{
 		if (GetAnimTicks() == 0)

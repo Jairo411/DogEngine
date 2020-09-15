@@ -10,24 +10,27 @@ using namespace std;
 Game *game = nullptr;
 
 int main(int argc,char * argv[]) {
-	
+
 	const int FPS = 60;
 	/*You're an idiot the frameDelay variable will only delay SDL from running you dumbass */
 	const int frameDelay =  1000/FPS;
 	Uint32 frameStart;
 	int frametime;
-	game = new Game();	
+	game = new Game();
 	game->init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
 	while (game->running()) {
-		
+
 		frameStart = SDL_GetTicks();
 
+||||||| 50f9777
+=======
 <<<<<<< HEAD
-<<<<<<< HEAD
-		
+
 		game->OnUpdate();
 		game->OnRender();
+		game->handleCollisions();
+		game->HandleEvents();
 =======
 		game->handleEvents();
 		game->update();
@@ -35,27 +38,27 @@ int main(int argc,char * argv[]) {
 >>>>>>> parent of ff90b31... 2020-09-11
 		game->handleCollisions();
 		game->HandleEvents();
+||||||| 50f9777
+		game->handleCollisions();
 =======
-		game->handleEvents();
-		game->update();
-		game->render();
 >>>>>>> parent of 50f9777... 2020-09-01 1:52
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 
 		frametime = SDL_GetTicks() - frameStart;
-		
+
 
 		if (frameDelay>frametime)
 		{
 			SDL_Delay(frameDelay - frametime);
-		
+
 		}
-		
-		/*You need to add some functionality/extra variables in order to display the fps 
-		because your frame Delay is a variable that only stop SDL from screen tearing. I.e you're FPS locking you're program 
+
+		/*You need to add some functionality/extra variables in order to display the fps
+		because your frame Delay is a variable that only stop SDL from screen tearing. I.e you're FPS locking you're program
 		right now.*/
-		//You're if statement is making sure cpu is cooperating with SDL. 
-		//fix this shit please 
-		
+		//You're if statement is making sure cpu is cooperating with SDL.
+		//fix this shit please
+
 	}
 
 	game->clean();

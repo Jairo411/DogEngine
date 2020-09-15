@@ -12,7 +12,6 @@ class Enemy: public GameObject
 public:
 	~Enemy();
 	void Disable();
-	bool setDisable();
 protected:
 	/* You're gonna have to moves this to the Skeleton Class
 		Because this shit is not modular in anyway possible*/
@@ -29,10 +28,10 @@ protected:
 private:
 
 	//Starting right here....
-	/*This is called generics look it up, 
+	/*This is called generics look it up,
 	  to see what it actually does please and thank you*/
-	
-	
+
+
 };
 
 class Skeleton : public Enemy
@@ -44,7 +43,12 @@ public:
 	void Inti();
 	void Update();
 	void Render();
+<<<<<<< HEAD
 
+||||||| 50f9777
+	void handleCollison();
+=======
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;
@@ -59,4 +63,4 @@ private:
 		WALK
 	};
 };
-#endif 
+#endif

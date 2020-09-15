@@ -21,10 +21,16 @@ bool Input::keyPressed(int is_pressed,int keycode)
 			InputKeyBoardHolder.insert(std::pair<int, bool>(keycode, true));	
 			return true;
 		}
+<<<<<<< HEAD
 =======
 		InputHolder->insert(std::pair<int,bool>(keycode,true));
 		return true;
 >>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+||||||| 50f9777
+=======
+		InputHolder->insert(std::pair<int,bool>(keycode,true));
+		return true;
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	}
 	else if (SDL_RELEASED)
 	{
@@ -64,6 +70,7 @@ bool Input::MousePressed(int is_Pressed, int keycode)
 	}
 	return false;
 }
+<<<<<<< HEAD
 
 bool Input::createCollider(bool state_)
 {
@@ -82,3 +89,22 @@ bool Input::createCollider(bool state_)
 	}
 	return false;
 }
+||||||| 50f9777
+=======
+
+bool Input::createCollider(bool state_)
+{
+	if (state_==true)
+	{
+		mouseClick = new Collider(mouseX, mouseY, 10);
+	}
+	else if (state_==false)
+	{
+		mouseClick = NULL;
+		keycode = NULL;
+		InputHolder->insert(std::pair<int, bool>(keycode, false));
+		return true;
+	}
+	return false;
+}
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523

@@ -62,11 +62,19 @@ public:
 	Tile(SDL_Texture* tex_,int srcX,int srcY,bool solid);
 	SDL_Texture* getTex();
 	SDL_Rect getSrcRect();
+<<<<<<< HEAD
 
 	static void setTileSize(int width_, int height_);
 	static int getWidth();
 	static int getHeight();
+||||||| 50f9777
+=======
+	static void setTileSize(int width_, int height_);
+	static int getWidth();
+	static int getHeight();
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	void SetID(int ID_);
+<<<<<<< HEAD
 	void OnRender();
 	void OnUpdate();
 	int getX();
@@ -87,6 +95,28 @@ private:
 	int x, y;
 	static int width, height;
 
+||||||| 50f9777
+=======
+	void OnRender();
+	void OnUpdate();
+	int getX();
+	int getY();
+	bool keyBoardInput(int key_);
+	bool mouseInput(int key_);
+	bool controllerInput(int key_);
+	void setX(int x_);
+	void setY(int y_);
+	~Tile();
+private:
+	SDL_Texture* baseTex;
+	SDL_Rect srcRect,dstRect;
+	Collider col;
+	int getID();
+	//This are int Variables for the postion of the Tile in the Array not Postion on the screen
+	int ID;
+	int x, y;
+	static int width, height;
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	void OnRender();	
 private:
 	SDL_Texture* baseTex;

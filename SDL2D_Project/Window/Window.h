@@ -6,7 +6,8 @@
 #include "../Input/Input.h"
 
 class Game;
-
+/* Honestly don't know the purpose of this class
+	It's suppose to hold UI Elements I guess. It could hold a health bar maybe a stamaina bar*/
 class Window: public Input
 {	
 private:
@@ -32,10 +33,9 @@ public:
 	bool  controllerInput(int key);
 	void OnRender();
 	void OnUpdate();
+<<<<<<< HEAD
 	map<SDL_Rect*, int>getSquareHolder();
-
 	~Window();
-
 	enum WindowStatus : unsigned int
 	{
 		DEBUG = 0 ,

@@ -17,21 +17,45 @@ public:
 	void CollisonUpdate(int colPosX_,int colPosY_);
 	//Only going to be used for game objects 
 	void CollisonRender();
-	//
 	void SetCollisonObjectType(int col_);
 	void SetCollisonType(int col);
+<<<<<<< HEAD
 	bool MouseEventListener(int event);
 	SDL_Rect* getCollider();
 
+||||||| 50f9777
+	void MouseEventListener(int event);
+=======
+	bool MouseEventListener(int event);
+	SDL_Rect* getCollider();
+	Collider(int x_, int y_);
+	void CollisonUpdate();
+	//Only going to be used for game objects 
+	void CollisonRender();
+
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	/*make this into a virtual class possibly to add to the gameobjects doesn't seem like you need these enums 
 	but because I look everything up online Im currently semi copying this stuff. 
 
 	Its quite possible that you need to just simply use the gameobjects width and size in order to add collision to the objects 
 	*/
+<<<<<<< HEAD
 
+||||||| 50f9777
+
+
+
+=======
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	/*Math Functions*/
+<<<<<<< HEAD
 //	SDL_Rect FindMidPointOfObject(SDL_Rect temp_,SDL_Rect temp1_);
 //	SDL_Rect FindMidPointOfObject(int x1_, int x2_, int y1_, int y2_);
+||||||| 50f9777
+	SDL_Rect FindMidPointOfObject(SDL_Rect temp_,SDL_Rect temp1_);
+	SDL_Rect FindMidPointOfObject(int x1_, int x2_, int y1_, int y2_);
+=======
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	~Collider();
 
 private: 
@@ -45,6 +69,19 @@ private:
 		NONE = 0,
 		GAMEOBJECT,
 		MOUSE,
+	};
+private: 
+	int x, y;
+	int area;
+	enum CollisonObject 
+	{
+		Default=0,
+		GameObject
+	};
+	enum CollisonType
+	{
+		Projectile = 0,
+		Fall
 	};
 
 	enum CollisonType

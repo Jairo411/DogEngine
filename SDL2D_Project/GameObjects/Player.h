@@ -26,12 +26,28 @@ public:
 	 void Update();
 	 void Render();
 	 void Disable();
+<<<<<<< HEAD
 
+||||||| 50f9777
+	 void handleCollison();
+=======
+<<<<<<< HEAD
+	 void handleCollison();
+	 bool keyBoardInput(int key) override;
+	 bool mouseInput(int key) override;
+	 bool controllerInput(int key) override;
+=======
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	 bool keyBoardInput(int key);
 	 bool mouseInput(int key);
 	 bool controllerInput(int key);
+<<<<<<< HEAD
 
 
+||||||| 50f9777
+=======
+>>>>>>> parent of 50f9777... 2020-09-01 1:52
+>>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	 Uint32 GetAnimTicks();
 private:  
 	int posX;
