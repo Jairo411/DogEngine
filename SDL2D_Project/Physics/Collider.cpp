@@ -101,26 +101,20 @@ void Collider::SetCollisonType(int col_)
 	collisonType = col_;
 }
 
-bool Collider::MouseEventListener(int event)
+void Collider::MouseEventListener(int event)
 {
 	switch (MOUSE)
 	{
 	case Collider::MOUSE:
 		switch (EventListener)
 		{
-			return true;
+			
 		}
 		break;
 	}
-	return false;
 }
 
-SDL_Rect* Collider::getCollider()
-{
-	return &srcRect;
-}
 
-/*
 SDL_Rect Collider::FindMidPointOfObject(SDL_Rect temp_,SDL_Rect temp_1)
 {
 	int x1_, x2_, y1_, y2_;
@@ -144,7 +138,7 @@ SDL_Rect Collider::FindMidPointOfObject(SDL_Rect temp_,SDL_Rect temp_1)
 
 	return middleRect;
 }
-*/
+
 Collider::~Collider()
 {
 }

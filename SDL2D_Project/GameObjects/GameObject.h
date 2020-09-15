@@ -26,6 +26,7 @@ public:
    virtual bool setDisable(bool temp) final;
    virtual bool getDisable() final;
    static int getMaxOBJs();
+
    static vector<GameObject*> ObjHolder;
 >>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
    GameObject();
@@ -35,16 +36,15 @@ private:
 protected:
 	int posX;
 	int posY;
-	int ReadAmountOfAnimations();
-	bool intiAnimation(const char* AnimSetName, const char* relativeDir,const char firstChar);
-	bool textureIsOn;
 	string nameID;
+	bool intiAnimation(const char* AnimSetName, const char* relativeDir,const char firstChar);
+	int ReadAmountOfAnimations();
+	bool textureIsOn;
 	vector <vector<SDL_Texture*>> animationSet;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
-
-};
+	GameObject* ptr;
 };
 #endif // !GAMEOBJECT_HEADER
 >>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523

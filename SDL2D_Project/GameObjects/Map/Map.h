@@ -48,9 +48,14 @@ public:
 	MapLayer(string name_, int ID_, bool isback_,int Xsize_,int Ysize_);
 	void OnRender();
 	void OnUpdate();
+<<<<<<< HEAD
 
 	int  keyCode;
 
+||||||| c9d9634... 2020-09-03
+	int  keyCode;
+=======
+>>>>>>> parent of c9d9634... 2020-09-03
 	//Here is a Maplayer that will take in more layeers.
 //	MapLayer(string name_, int ID_, bool isback_, int amountOfLayers);
 	~MapLayer();

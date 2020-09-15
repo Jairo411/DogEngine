@@ -36,6 +36,9 @@
     <ClCompile Include="Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjects\Map\TileSet\Tiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Game\SaveSystem\Saver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,6 +55,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="GameObjects\Map\TileSet\Tiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -67,6 +71,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
 >>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+||||||| c9d9634... 2020-09-03
+    <ClCompile Include="GameObjects\Map\TileSet\Tiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+=======
+>>>>>>> parent of c9d9634... 2020-09-03
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Game.h">

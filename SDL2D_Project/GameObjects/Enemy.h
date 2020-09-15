@@ -43,12 +43,7 @@ public:
 	void Inti();
 	void Update();
 	void Render();
-<<<<<<< HEAD
-
-||||||| 50f9777
 	void handleCollison();
-=======
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 private:
 	Collider col;
 	SDL_Rect srcRect0, destRect0;

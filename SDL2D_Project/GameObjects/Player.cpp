@@ -31,20 +31,13 @@ Player::Player(const char * textureSheet, int x, int y)
 	srcRect.x = 0;
 	srcRect.y = 0;
 	amountOfAniamtions = 0;
-<<<<<<< HEAD
 	currentAnimTicks = NULL;
 	disableObject = NULL;
 	endRect = SDL_Rect();
 	//I have to render this in order to see what it looks like
-<<<<<<< HEAD
 	col = Collider(20,20,50);
 <<<<<<< HEAD
 	ptr = this;
-=======
-	collider = Collider(20,20,50);
->>>>>>> parent of 50f9777... 2020-09-01 1:52
-=======
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 ||||||| 50f9777
 =======
 	ptr = this;
@@ -62,7 +55,7 @@ Player::Player(const char * textureSheet, int x, int y)
 		textureIsOn = false;
 		std::cout << "Object texture wasn't found" << std::endl;
 	}
-	
+
 	GameObject::ObjHolder.push_back(ptr);
 }
 
@@ -75,20 +68,14 @@ Player::~Player()
 void Player::Update()
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
-	//Note you need to get your FPS working properly in order to to proper animate your character 
+	//Note you need to get your FPS working properly in order to to proper animate your character
 
 	PlayAnimations(AnimState);
-<<<<<<< HEAD
-<<<<<<< HEAD
-	collider.CollisonUpdate(posX, posY);
-	
-=======
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 ||||||| 50f9777
 	handleCollison();
 =======
 	collider.CollisonUpdate(posX, posY);
-	
+
 >>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 
 	if (getDisable()==false)
@@ -132,7 +119,7 @@ void Player::Disable()
 
 bool Player::keyBoardInput(int key)
 {
-	/*You have to fix this create allow the Input to accept two forms of Input 
+	/*You have to fix this create allow the Input to accept two forms of Input
 	*/
 	if (disableObject==true)
 	{
@@ -141,7 +128,7 @@ bool Player::keyBoardInput(int key)
 	if (key!=NULL)
 	{
 
-	
+
 		if (key == SDLK_a)
 		{
 			posX -= 1;
@@ -173,7 +160,7 @@ bool Player::keyBoardInput(int key)
 		}
 		/* If reached here that means that the Animation is over */
 	}
-	else 
+	else
 	{
 		AnimState = IDLE0;
 		return true;
@@ -206,14 +193,8 @@ bool Player::mouseInput(int key)
 		}
 	}
 <<<<<<< HEAD
-<<<<<<< HEAD
 		return false;
-=======
-||||||| 50f9777
-=======
-		return false;
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
-	else 
+	else
 	{
 		if (GetAnimTicks() == 0)
 		{
@@ -233,7 +214,7 @@ Uint32 Player::GetAnimTicks()
 {
 	return currentAnimTicks;
 }
-//This might be a way of hard coding this 
+//This might be a way of hard coding this
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
 void Player::PlayAnimations(int state_)
 {
@@ -331,5 +312,3 @@ Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
 	currentAnimTicks = wait_+15;
 	return currentAnimTicks;
 }
-
-

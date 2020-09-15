@@ -15,8 +15,9 @@ public:
 	bool MousePressed(int is_Pressed, int keycode);
 	std::map<int, bool> InputKeyBoardHolder;
 	std::map<int, bool> InputMouseHolder;
-	static Collider* mouseClick;
+
 private:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	static int mouseX, mouseY;
 	static bool createCollider(bool state_);
@@ -29,5 +30,12 @@ private:
 	 bool keyPressed(int is_Pressed,int keycode);
 	 std::map<int, bool>*InputHolder;
 >>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+||||||| c9d9634... 2020-09-03
+	static int mouseX, mouseY;
+	static bool createCollider(bool state_);
+=======
+	int mouseX, mouseY;
+	Collider* mouseClick;
+>>>>>>> parent of c9d9634... 2020-09-03
 };
 #endif // !KEYINPUT_H*/

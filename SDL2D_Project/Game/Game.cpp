@@ -18,7 +18,6 @@ Game::Game()
 	sceneManager.SwitchTo(gameSceneID);
 	*/
 
-<<<<<<< HEAD
 
 >>>>>>> parent of ff90b31... 2020-09-11
 }
@@ -64,10 +63,7 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 		isRunning = false;
 	}
 
-||||||| 50f9777
-=======
-/*
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+
 	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",10,0);
 	holder = player;
 	GameObject::ObjHolder.push_back(holder);
@@ -85,23 +81,27 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 
 
 
-||||||| 50f9777
-=======
->>>>>>> parent of 50f9777... 2020-09-01 1:52
 >>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 
+||||||| c9d9634... 2020-09-03
+	//This just set the size of the game world
+	mapA = new MapLayer("BaseLayer", 0, true,55,35);
+
+
+
+=======
+	//This just set the size of the game world
+	mapA = new MapLayer("BaseLayer", 0, true,60,30);
+
+
+
+
+
+>>>>>>> parent of c9d9634... 2020-09-03
 }
 
 void Game::HandleEvents()
 {
-<<<<<<< HEAD
-	//sceneManager.ProcessInput();
-	/*
-||||||| 50f9777
-=======
-	sceneManager.ProcessInput();
-	/*
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	SDL_Event event;
 
 	SDL_PollEvent(&event);
@@ -123,18 +123,13 @@ void Game::HandleEvents()
 		player->MousePressed(true, event.button.button);
 		player->mouseInput(player->InputMouseHolder.begin()->first);
 		if (actualWindow->mouseInput(event.button.button))
-<<<<<<< HEAD
-		{
-		{
-			int x, y;
-			SDL_GetMouseState(&x, &y);
-			std::cout << "X: " << x << "Y: " << y <<endl;
+		{	
 		}
+		mapA->keyCode = event.button.button;
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->mouseInput(player->InputMouseHolder.begin()->first);
-		mapA->keyCode = event.button.button;
 		break;
 	default:
 		break;
@@ -144,92 +139,34 @@ void Game::HandleEvents()
 
 void Game::OnUpdate()
 {
-<<<<<<< HEAD
-	//sceneManager.Update();
-
-||||||| 50f9777
-=======
-	sceneManager.Update();
-	/*
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	cnt++;
 
 	player->Update();
 	enemy->Update();
 	mapA->OnUpdate();
 	//cout << "Size of Obj holder: " << ObjHolder.size() << endl;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-||||||| 50f9777
-
-=======
-	*/
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 
 }
 
 void Game::handleCollisions()
 {
-<<<<<<< HEAD
-	//sceneManager.handleCollison();
-	/*
-||||||| 50f9777
-=======
-	sceneManager.handleCollison();
-	/*
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	Uint32 ticks;
 	Uint32 seconds;
 	Uint32 amountOfOBJs;
 	ticks = SDL_GetTicks();
 	seconds = ticks / 1;
 	amountOfOBJs = seconds % GameObject::ObjHolder.size();
-<<<<<<< HEAD
-	*/
 
-		player->Update();
-		enemy->Update();
-
-
-
-
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 }
 
 void Game::OnRender()
 {
-<<<<<<< HEAD
-	//sceneManager.Render();
-	/*SDL_RenderClear(renderer);
-||||||| 50f9777
 	SDL_RenderClear(renderer);
-=======
-	sceneManager.Render();
-	/*SDL_RenderClear(renderer);
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	mapA->OnRender();
 	player->Render();
 	enemy->Render();
 	//actualWindow->OnRender();
-<<<<<<< HEAD
-	SDL_RenderPresent(renderer);*/
-
-	SDL_RenderClear(renderer);
-	mapA->OnUpdate();
-	player->Render();
-	enemy->Render();
-	//actualWindow->OnRender();
-||||||| 50f9777
-=======
-	SDL_RenderPresent(renderer);*/
-=======
-	SDL_RenderClear(renderer);
-	mapA->OnUpdate();
-	player->Render();
-	enemy->Render();
-	//actualWindow->OnRender();
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	SDL_RenderPresent(renderer);
 >>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 

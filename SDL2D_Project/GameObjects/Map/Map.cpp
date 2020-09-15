@@ -75,45 +75,24 @@ void MapLayer::OnUpdate()
 			{
 				for (int j = 0; j < cols; j++)
 				{
-					int tempR = 16 * i; //these can be used as the cordiantes that I can used in order to place tiles
-					int tempC = 30 * j;
+					int tempR = 20 * i; //these can be used as the cordiantes that I can used in order to place tiles
+					int tempC = 20 * j;// the space between the rows and the cols should be the same as the size of the colliders and textures in the Tile class
 
 					int index = i + j;
 
 					tex = set->getTile(set->DIRTTILE); // you don't have to give it is texture information right away.
 					Tile::setTileSize(20, 20);
 					//This is how you access the Tile Textures Right here;
-					tileMap.push_back(Tile(tex, tempR, tempC, true));
-					tileMap.at(index).SetID(index);
-					int tempR = 16 * i; //these can be used as the cordiantes that I can used in order to place tiles
-					int tempC = 30 * j;
-
-					mapData.insert(make_pair(i,map<int,int>()));
-					mapData[i].insert(make_pair(i, j));
-
-					tex = set->getTile(set->DIRTTILE);
 					tileMap.push_back(Tiles(tex, tempR, tempC, true));
-
-
-||||||| 50f9777
-=======
+					tileMap.at(index).SetID(index);
+||||||| c9d9634... 2020-09-03
 					tileMap.at(index).setX(i);
 					tileMap.at(index).setY(j);
-					int tempR = 16 * i; //these can be used as the cordiantes that I can used in order to place tiles
-					int tempC = 30 * j;
-
-					mapData.insert(make_pair(i,map<int,int>()));
-					mapData[i].insert(make_pair(i, j));
-
-					tex = set->getTile(set->DIRTTILE);
-					tileMap.push_back(Tiles(tex, tempR, tempC, true));
-
-
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+=======
+>>>>>>> parent of c9d9634... 2020-09-03
 					mapDataFlag = true;
 				}
 			}
-			set = TileSet::RemoveInstance();
 		}
 		break;
 		case MapLayer::ALPHA:
@@ -149,19 +128,25 @@ void MapLayer::OnUpdate()
 {
 	/*If I tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
 	if (mapDataChanged==true)
-=======
+||||||| c9d9634... 2020-09-03
+	//If a tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
+	int total = tileMap.size();
+	for (int i=0; i<total; i++)
+	{
 		tileMap.at(i).OnUpdate();
 		tileMap.at(i).mouseInput(keyCode);
-	for (int i = 0; i < mapColData.size(); i++)
+=======
+	/*If I tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
+	if (mapDataChanged==true)
 	{
-		for  (int j = 0; j < mapRowData[i].size(); j++)
+		for (int i = 0; i < mapData.size(); i++)
 		{
-			if (prevMapRowData[i].at(i)!=mapRowData[i].at(i))
+			for (int j = 0; j < mapData.at(j).size(); j++)
 			{
-				mapDataFlag = true;
+
 			}
 		}
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+>>>>>>> parent of c9d9634... 2020-09-03
 	}
 }
 
