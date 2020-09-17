@@ -33,8 +33,6 @@ public:
 	bool  controllerInput(int key);
 	void OnRender();
 	void OnUpdate();
-<<<<<<< HEAD
-	map<SDL_Rect*, int>getSquareHolder();
 	~Window();
 	enum WindowStatus : unsigned int
 	{

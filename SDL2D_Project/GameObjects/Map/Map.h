@@ -32,7 +32,7 @@ private:
 	string name;
 	SDL_Texture* tex;
 	Window* WindowPtr;
-	vector<Tiles> tileMap;
+	vector<Tile> tileMap;
 	map<int, map<int, int>> mapData;
 	void attachWindow(Window* tempWindow_);
 	// You need to find a way to dynamically Create this arrays Size
@@ -46,16 +46,12 @@ private:
 public:
 	MapLayer();
 	MapLayer(string name_, int ID_, bool isback_,int Xsize_,int Ysize_);
+	void OnBuild();
+	void ReadMapData();
 	void OnRender();
 	void OnUpdate();
-<<<<<<< HEAD
 
 	int  keyCode;
-
-||||||| c9d9634... 2020-09-03
-	int  keyCode;
-=======
->>>>>>> parent of c9d9634... 2020-09-03
 	//Here is a Maplayer that will take in more layeers.
 //	MapLayer(string name_, int ID_, bool isback_, int amountOfLayers);
 	~MapLayer();

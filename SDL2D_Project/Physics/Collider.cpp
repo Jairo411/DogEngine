@@ -11,8 +11,8 @@ Collider::Collider()
 	srcRect.h = 0;
 	
 	area = 0;
-	collisonObjectType = NONE  ;
-	collisonType = NONE;
+	collisonObjectType = CollisonObjectType::NONE;
+	collisonType = CollisonType::NO_COl;
 }
 
 Collider::Collider(int x_, int y_,int size_)
@@ -23,7 +23,7 @@ Collider::Collider(int x_, int y_,int size_)
 	area = x * y;
 
 	
-	collisonObjectType = ColiderObject::NONE;
+	collisonObjectType = CollisonObjectType::NONE;
 	collisonType = CollisonType::NO_COl;
 
 	srcRect.x = x;
@@ -36,12 +36,12 @@ Collider::Collider(int x_, int y_,int size_)
 
 Collider::Collider(int d_)
 {
-<<<<<<< HEAD
+
 }
 
 void Collider::CollisonUpdate(int colPosX,int colPosY)
 {
-
+	/*This is needs to worked out and actually thought out .*/
 	int xPos, yPos;
 
 	xPos = x + colPosX;
@@ -77,9 +77,6 @@ void Collider::CollisonUpdate(int colPosX,int colPosY)
 		}
 		break;
 	}
-=======
-	
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
 }
 
 void Collider::CollisonRender()
@@ -90,7 +87,6 @@ void Collider::CollisonRender()
 }
 	
 
-<<<<<<< HEAD
 void Collider::SetCollisonObjectType(int col_)
 {
 	collisonObjectType = col_;
@@ -103,45 +99,19 @@ void Collider::SetCollisonType(int col_)
 
 void Collider::MouseEventListener(int event)
 {
-	switch (MOUSE)
-	{
-	case Collider::MOUSE:
-		switch (EventListener)
-		{
-			
-		}
-		break;
-	}
+	
 }
 
-
-SDL_Rect Collider::FindMidPointOfObject(SDL_Rect temp_,SDL_Rect temp_1)
+SDL_Rect* Collider::getCollider()
 {
-	int x1_, x2_, y1_, y2_;
-
-	x1_ = temp_.x;
-	y1_ = temp_.y;
-
-	x2_ = temp_1.x;
-	y2_ = temp_1.y;
-
-	int midPoint0,midPoint1;
-
-	midPoint0 = sqrt(x1_ + y1_);
-
-	midPoint1 = sqrt(x2_ + y2_);
-
-	SDL_Rect middleRect;
-
-	middleRect.x = midPoint0;
-	middleRect.y = midPoint1;
-
-	return middleRect;
+	return &srcRect;
 }
+
+
 
 Collider::~Collider()
 {
+
 }
-=======
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+
 

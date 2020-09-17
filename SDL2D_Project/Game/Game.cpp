@@ -1,9 +1,9 @@
 #include "Game.h"
 
-//SDL_Rect* srcR, dstR;
-//Player* player;
-//Skeleton* enemy;
-//MapLayer* mapA;
+SDL_Rect* srcR, dstR;
+Player* player;
+Skeleton* enemy;
+MapLayer* mapA;
 SDL_Renderer* Game::renderer = nullptr;
 
 TileSet* tileSet;
@@ -19,7 +19,6 @@ Game::Game()
 	*/
 
 
->>>>>>> parent of ff90b31... 2020-09-11
 }
 
 
@@ -65,39 +64,16 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 
 
 	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",10,0);
-	holder = player;
-	GameObject::ObjHolder.push_back(holder);
-//	ObjHolder.add(holder);
+	
+//	GameObject::ObjHolder.push_back(player);;
 	enemy = new Skeleton(30, 30);
-	holder1 = enemy;
-	GameObject::ObjHolder.push_back(holder1);
-//	ObjHolder.add(holder1);
-	//Enemy::AddObject(enemy);
+//	GameObject::ObjHolder.push_back(enemy);
 	//This just set the size of the game world
 	mapA = new MapLayer("BaseLayer", 0, true,60,30);
 
 
 
 
-
-
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
-
-||||||| c9d9634... 2020-09-03
-	//This just set the size of the game world
-	mapA = new MapLayer("BaseLayer", 0, true,55,35);
-
-
-
-=======
-	//This just set the size of the game world
-	mapA = new MapLayer("BaseLayer", 0, true,60,30);
-
-
-
-
-
->>>>>>> parent of c9d9634... 2020-09-03
 }
 
 void Game::HandleEvents()
@@ -134,7 +110,7 @@ void Game::HandleEvents()
 	default:
 		break;
 	}
-	*/
+	
 }
 
 void Game::OnUpdate()
@@ -168,18 +144,18 @@ void Game::OnRender()
 	enemy->Render();
 	//actualWindow->OnRender();
 	SDL_RenderPresent(renderer);
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+
 
 }
 
 void Game::clean()
 {
 
-//	delete player;
-//	delete mapA;
+	delete player;
+	delete mapA;
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
-//	delete this;
+	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;
 }

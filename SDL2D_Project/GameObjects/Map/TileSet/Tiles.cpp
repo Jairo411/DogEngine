@@ -113,38 +113,6 @@ bool Tile::controllerInput(int key_)
 	return false;
 }
 
-void Tile::setX(int x_)
-{
-	x = x_;
-}
-
-void Tiles::Collider()
-{
-
-}
-
-bool Tile::mouseInput(int key_)
-{
-	if (key_!=NULL)
-	{
-		if (key_==SDL_BUTTON_LEFT)
-		{
-			SDL_Rect result;
-			TileSet* set = TileSet::GetInstance();
-			if (SDL_IntersectRect(col.getCollider(),Input::mouseClick->getCollider(),&result))
-			{
-				baseTex = set->getTile(0);
-			}
-		}
-		return true;
-	}
-	return false;
-}
-
-bool Tile::controllerInput(int key_)
-{
-	return false;
-}
 
 void Tile::setX(int x_)
 {
@@ -171,7 +139,7 @@ SDL_Rect Tile::getSrcRect()
 	return srcRect;
 }
 
-int Tiles::getID()
+int Tile::getID()
 {
 	return ID;
 }
@@ -180,9 +148,8 @@ void Tile::SetID(int ID_)
 {
 	ID = ID_;
 }
-=======
 
-Tiles::~Tiles()
+Tile::~Tile()
 {
 }
 //Might change this name thingy

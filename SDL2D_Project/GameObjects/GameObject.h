@@ -25,11 +25,9 @@ public:
    virtual void Disable() = 0;
    virtual bool setDisable(bool temp) final;
    virtual bool getDisable() final;
-   static int getMaxOBJs();
-
    static vector<GameObject*> ObjHolder;
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
    GameObject();
+   
 private:
 	bool disableObject;
 	static vector<GameObject*> gameObjectContainer;
@@ -46,8 +44,8 @@ protected:
 	SDL_Rect srcRect, destRect;
 	GameObject* ptr;
 };
-#endif // !GAMEOBJECT_HEADER
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+
+
 
 template <typename T>
 class OBJArray

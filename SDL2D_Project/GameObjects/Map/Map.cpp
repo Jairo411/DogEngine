@@ -23,7 +23,7 @@ MapLayer::MapLayer(string Name_, int ID_, bool isback_,int xSize_, int ySize_)
 	cols = ySize_;
 	cout << "Size of MAP is: " << rows << "," << cols << "" << endl;
 
-	//TileSet set = TileSet("baseSet", 0); // trying to make this a singleton
+
 	this->Xsize = xSize_;
 	this->Ysize = ySize_;
 }
@@ -58,7 +58,7 @@ void MapLayer::OnUpdate()
 okay so this works but you should probably store the values
 of the map tiles so that it doesn't have to constantly render
  the tiles through the for loop*/
-void MapLayer::OnUpdate()
+void MapLayer::OnBuild()
 {
 	if (mapDataFlag==false)
 	{
@@ -83,14 +83,12 @@ void MapLayer::OnUpdate()
 					tex = set->getTile(set->DIRTTILE); // you don't have to give it is texture information right away.
 					Tile::setTileSize(20, 20);
 					//This is how you access the Tile Textures Right here;
-					tileMap.push_back(Tiles(tex, tempR, tempC, true));
+					tileMap.push_back(Tile(tex, tempR, tempC, true));
 					tileMap.at(index).SetID(index);
-||||||| c9d9634... 2020-09-03
 					tileMap.at(index).setX(i);
 					tileMap.at(index).setY(j);
-=======
->>>>>>> parent of c9d9634... 2020-09-03
-					mapDataFlag = true;
+
+				//	mapDataFlag = true;
 				}
 			}
 		}
@@ -108,45 +106,12 @@ void MapLayer::OnUpdate()
 }
 /* This is will read the mapVector data and tell it
 to change the the tilelocation and the texture.*/
-void MapLayer::readMapData()
+void MapLayer::ReadMapData()
 {
 	int total = tileMap.size();
 	for (int i=0; i<total; i++)
 	{
-	for (int i = 0; i < mapColData.size(); i++)
-||||||| 50f9777
-		tileMap.at(i).OnRender();
-	}
-}
-/*
-okay so this works but you should probably store the values
-of the map tiles so that it doesn't have to constantly render
- the tiles through the for loop*/
-
-/*The Update Function will only read the current Map data and update if it's Changed*/
-void MapLayer::OnUpdate()
-{
-	/*If I tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
-	if (mapDataChanged==true)
-||||||| c9d9634... 2020-09-03
-	//If a tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
-	int total = tileMap.size();
-	for (int i=0; i<total; i++)
-	{
-		tileMap.at(i).OnUpdate();
-		tileMap.at(i).mouseInput(keyCode);
-=======
-	/*If I tile has Changed it's positions or texture or blah blah The update will Read the Following MapData*/
-	if (mapDataChanged==true)
-	{
-		for (int i = 0; i < mapData.size(); i++)
-		{
-			for (int j = 0; j < mapData.at(j).size(); j++)
-			{
-
-			}
-		}
->>>>>>> parent of c9d9634... 2020-09-03
+	//	tileMap.at(i).OnRender();
 	}
 }
 

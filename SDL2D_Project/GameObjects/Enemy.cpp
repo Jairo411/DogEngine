@@ -11,16 +11,6 @@ void Enemy::Disable()
 
 }
 
-bool Enemy::setDisable()
-{
-	return false;
-}
-
-bool Enemy::getDisable()
-{
-	return false;
-}
-
 
 
 void Enemy::ChangeSrcSize(int src_w, int src_h)

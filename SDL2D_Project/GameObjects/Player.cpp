@@ -16,7 +16,7 @@ Player::Player()
 	amountOfAniamtions = 0;
 	disableObject = NULL;
 	endRect = SDL_Rect();
-	col = Collider();
+	collider = Collider();
 	ptr = nullptr;
 }
 
@@ -35,16 +35,8 @@ Player::Player(const char * textureSheet, int x, int y)
 	disableObject = NULL;
 	endRect = SDL_Rect();
 	//I have to render this in order to see what it looks like
-	col = Collider(20,20,50);
-<<<<<<< HEAD
+	collider = Collider(20, 20, 50);
 	ptr = this;
-||||||| 50f9777
-=======
-	ptr = this;
-=======
-	collider = Collider(20,20,50);
->>>>>>> parent of 50f9777... 2020-09-01 1:52
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
 	{
@@ -71,12 +63,12 @@ void Player::Update()
 	//Note you need to get your FPS working properly in order to to proper animate your character
 
 	PlayAnimations(AnimState);
-||||||| 50f9777
+
 	handleCollison();
-=======
+
 	collider.CollisonUpdate(posX, posY);
 
->>>>>>> 48d7615b797d99609e19fadd6cf40cd1ccacf523
+
 
 	if (getDisable()==false)
 	{
@@ -192,9 +184,7 @@ bool Player::mouseInput(int key)
 			return true;
 		}
 	}
-<<<<<<< HEAD
-		return false;
-	else
+
 	{
 		if (GetAnimTicks() == 0)
 		{
@@ -203,7 +193,7 @@ bool Player::mouseInput(int key)
 			return true;
 		}
 	}
->>>>>>> parent of e7eaafc... 2020-08-26 9:35 PM
+	return false;
 }
 
 bool Player::controllerInput(int key)

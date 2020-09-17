@@ -1,4 +1,4 @@
-#include "Scene0.h"
+/*#include "Scene0.h"
 
 Player* player;
 Skeleton* enemy;
@@ -87,3 +87,4 @@ void Scene0::HandleCollison()
 }
 
 
+*/

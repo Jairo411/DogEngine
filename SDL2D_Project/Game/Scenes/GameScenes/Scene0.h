@@ -1,7 +1,8 @@
-#ifndef SCENE0_H
+/*#ifndef SCENE0_H
 #define SCENE0_H
 
 #include"../../Game.h"
+#include"../Scene.h"
 
 using namespace std;
 
@@ -21,4 +22,5 @@ private:
 	bool isRunning;
 	//SDL_Rect srcR, dstR;
 };
+*/
 #endif //SCENE0

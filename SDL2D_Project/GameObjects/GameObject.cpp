@@ -13,11 +13,6 @@ GameObject::GameObject()
 //	Going to use the Gameobject base class to check if inhereted object has name or not
 }
 
-void GameObject::AddObject(GameObject* temp_)
-{
-	gameObjectContainer.push_back(temp_);
-}
-
 bool GameObject::intiAnimation(const char* AnimTxtFile, const char* tempRelativeDir, const char firstChar)
 {
 	/*
