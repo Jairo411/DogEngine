@@ -1,5 +1,9 @@
 #include "Input.h"
 #include <SDL.h>
+
+Collider* Input::mouseClick = new Collider();
+int Input::mouseX = 0, Input::mouseY = 0;
+
 Input::~Input()
 {
 }

@@ -108,6 +108,10 @@ void Player::Disable()
 	disableObject = true;
 }
 
+void Player::handleCollison()
+{
+}
+
 
 bool Player::keyBoardInput(int key)
 {

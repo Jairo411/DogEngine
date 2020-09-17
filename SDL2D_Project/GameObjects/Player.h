@@ -23,9 +23,9 @@ public:
 	 Player();
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
-	 void Update();
-	 void Render();
-	 void Disable();
+	 void Update() override;
+	 void Render() override;
+	 void Disable() override;
 	 void handleCollison();
 
 

@@ -1,7 +1,7 @@
 #include "GameObject.h"
 #include "../TextureManager/TextureManager.h"
 
-vector<GameObject*>GameObject::gameObjectContainer = vector<GameObject*>();
+vector<GameObject*>GameObject::ObjHolder = vector<GameObject*>();
   
 GameObject::GameObject()
 {

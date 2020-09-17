@@ -30,7 +30,7 @@ public:
    
 private:
 	bool disableObject;
-	static vector<GameObject*> gameObjectContainer;
+	//static vector<GameObject*> gameObjectContainer;
 protected:
 	int posX;
 	int posY;
