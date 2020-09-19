@@ -31,8 +31,8 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 {
 	baseTex = texture_;
 
-	x = 0;
-	y = 0;
+	x = srcX;
+	y = srcY;
 
 	ID = NULL;
 
@@ -47,7 +47,7 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 
 	dstRect.w = srcRect.w;
 	dstRect.h = srcRect.h;
-	col = Collider(srcX, srcY, 20);
+	col = Collider(x,y,20);
 	isSoild = solid;
 
 }
@@ -85,12 +85,12 @@ int Tile::getY()
 	return y;
 }
 
-bool Tile::keyBoardInput(int key_)
+bool Tile::KeyBoardInput(int key_)
 {
 	return false;
 }
 
-bool Tile::mouseInput(int key_)
+bool Tile::MouseInput(int key_)
 {
 	if (key_!=NULL)
 	{

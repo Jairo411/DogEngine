@@ -2,6 +2,7 @@
 #define COLLIDER_H
 #include "SDL.h"
 #include <math.h>
+#include "Math/Vec2.h"
 class Game;
 class Collider
 {
@@ -10,9 +11,11 @@ public:
 	//for a collison rectangle/Square;
 
 	Collider();
-	Collider(int PosX, int PosY,int size_);//Square Collider
+	Collider(int area_);//Square Collider
+	Collider(int width_, int height_); //Rectangle Collider
+	Collider(int x_, int y_, int size_);//Collider for semi static postions;
 	//for a collison circle;
-	Collider(int d_);
+	//Collider(int d_);
 
 	void CollisonUpdate(int colPosX_,int colPosY_);
 	//Only going to be used for game objects 
@@ -41,6 +44,7 @@ private:
 	int collisonObjectType;
 	int collisonType;
 	SDL_Rect srcRect;
+	Vec2 middlePoint;
 	enum CollisonObjectType
 	{
 		NONE=0,

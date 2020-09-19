@@ -28,8 +28,8 @@ public:
 	Window(SDL_Window* tempWindow_,int xSquare,int ySquare);
 	int getScreenHeight();
 	int getScreenWidth();
-	bool mouseInput(int case_);
-	bool  keyBoardInput(int key);
+	bool MouseInput(int case_);
+	bool  KeyBoardInput(int key);
 	bool  controllerInput(int key);
 	void OnRender();
 	void OnUpdate();

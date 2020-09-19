@@ -144,6 +144,8 @@
     <ClCompile Include="Game\Scenes\GameScenes\Scene0.cpp" />
     <ClCompile Include="TextureManager\TextureManager.cpp" />
     <ClCompile Include="GameObjects\Map\TileSet\Tiles.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Physics\Math\Vec2.cpp" />
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +163,8 @@
     <ClInclude Include="Game\Scenes\GameScenes\Scene0.h" />
     <ClInclude Include="TextureManager\TextureManager.h" />
     <ClInclude Include="GameObjects\Map\TileSet\Tiles.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Physics\Math\Vec2.h" />
     <ClInclude Include="Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

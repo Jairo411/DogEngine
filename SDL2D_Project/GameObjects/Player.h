@@ -29,8 +29,8 @@ public:
 	 void handleCollison();
 
 
-	 bool keyBoardInput(int key);
-	 bool mouseInput(int key);
+	 bool KeyBoardInput(int key);
+	 bool MouseInput(int key);
 	 bool controllerInput(int key);
 
 	 Uint32 GetAnimTicks();
@@ -42,7 +42,7 @@ private:
 	int AnimState;
 	bool disableObject;
 	Collider collider;
-	Uint32 currentAnimTicks;
+	Uint32 FrameTicks;
 	Uint32 WaitAnimationsTicks(Uint32 wait_);
 	SDL_Rect endRect;
 	GameObject* playerPtr;

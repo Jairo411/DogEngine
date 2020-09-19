@@ -4,6 +4,7 @@
 #include "TileSet/Tiles.h"
 #include <list>
 #include <vector>
+
 using namespace std;
 class TextureManager;
 
@@ -33,6 +34,7 @@ private:
 	SDL_Texture* tex;
 	Window* WindowPtr;
 	vector<Tile> tileMap;
+	SDL_Point middlePoint;
 	map<int, map<int, int>> mapData;
 	void attachWindow(Window* tempWindow_);
 	// You need to find a way to dynamically Create this arrays Size

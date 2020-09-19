@@ -1,15 +1,14 @@
 ﻿  Enemy.cpp
   GameObject.cpp
   Map.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(39,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(51,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(111,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(120,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(41,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(53,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(113,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(122,15): warning C4834: discarding return value of function with 'nodiscard' attribute
   Tiles.cpp
   Player.cpp
   Game.cpp
   Main.cpp
-  Input.cpp
   Collider.cpp
   TextureManager.cpp
   Window.cpp

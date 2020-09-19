@@ -8,8 +8,8 @@ class Input
 {
 public:
 	virtual ~Input();
-	virtual bool keyBoardInput(int key) = 0;
-	virtual bool mouseInput(int key) = 0;
+	virtual bool KeyBoardInput(int key) = 0;
+	virtual bool MouseInput(int key) = 0;
 	virtual bool controllerInput(int key) = 0;
 
 	bool keyPressed(int is_Pressed,int keycode);
@@ -20,7 +20,7 @@ public:
 	static Collider* mouseClick;
 private:
 	static int mouseX, mouseY;
-	static bool createCollider(bool state_);
+	static bool CreateCollider(bool state_);
 	
 
 };

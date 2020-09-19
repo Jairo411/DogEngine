@@ -59,7 +59,8 @@ class Tile: public Input
 {
 public:
 	Tile();
-	Tile(SDL_Texture* tex_,int srcX,int srcY,bool solid);
+	Tile(SDL_Texture* tex_, int srcX, int srcY, bool solid);//Creates Squares tiles but could really create rectangles
+	//Tile(SDL_Texture* tex_, int srcX, int srcy); how the Tile function should look
 	SDL_Texture* getTex();
 	SDL_Rect getSrcRect();
 
@@ -71,8 +72,8 @@ public:
 	void OnUpdate();
 	int getX();
 	int getY();
-	bool keyBoardInput(int key_);
-	bool mouseInput(int key_);
+	bool KeyBoardInput(int key_);
+	bool MouseInput(int key_);
 	bool controllerInput(int key_);
 	void setX(int x_);
 	void setY(int y_);

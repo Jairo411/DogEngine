@@ -11,6 +11,7 @@ MapLayer::MapLayer()
 	rows = 0;
 	cols = 0;
 	WindowPtr = nullptr;
+	middlePoint = SDL_Point();
 }
 
 MapLayer::MapLayer(string Name_, int ID_, bool isback_,int xSize_, int ySize_)
@@ -21,11 +22,13 @@ MapLayer::MapLayer(string Name_, int ID_, bool isback_,int xSize_, int ySize_)
 	mapStatus = DEVELOPER;
 	rows = xSize_;
 	cols = ySize_;
+	middlePoint.x = rows / 2;
+	middlePoint.y = cols / 2;
 	cout << "Size of MAP is: " << rows << "," << cols << "" << endl;
-
-
 	this->Xsize = xSize_;
 	this->Ysize = ySize_;
+
+	OnBuild();
 }
 
 
@@ -69,7 +72,7 @@ void MapLayer::OnBuild()
 			break;
 		case MapLayer::DEVELOPER:
 		{
-			TileSet* set = TileSet::GetInstance();
+			TileSet* set = TileSet::GetInstance(); ;// When you create the UI to select the different types of tile you are going to move this 
 
 			for (int i = 0; i < rows; i++)
 			{
@@ -102,7 +105,7 @@ void MapLayer::OnBuild()
 		}
 	}
 
-	OnRender();
+//	OnRender();
 }
 /* This is will read the mapVector data and tell it
 to change the the tilelocation and the texture.*/

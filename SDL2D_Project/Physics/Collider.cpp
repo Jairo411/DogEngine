@@ -15,12 +15,10 @@ Collider::Collider()
 	collisonType = CollisonType::NO_COl;
 }
 
-Collider::Collider(int x_, int y_,int size_)
+Collider::Collider(int area_)
 {
-	x = x_;
-	y = y_;
-
-	area = x * y;
+	x = 0;
+	y = 0;
 
 	
 	collisonObjectType = CollisonObjectType::NONE;
@@ -29,15 +27,44 @@ Collider::Collider(int x_, int y_,int size_)
 	srcRect.x = x;
 	srcRect.y = y;
 
+	srcRect.w = area_;
+	srcRect.h = area_;
+
+}
+
+Collider::Collider( int width_, int height_)
+{
+	x = 0;
+	y = 0;
+
+	collisonObjectType = CollisonObjectType::NONE;
+	collisonType = CollisonType::NO_COl;
+
+	srcRect.x = x;
+	srcRect.y = y;
+
+	srcRect.w = width_;
+	srcRect.h = height_;
+
+	middlePoint = Vec2(width_ / 2, height_ / 2);
+}
+
+Collider::Collider(int x_, int y_, int size_)
+{
+	x = x_;
+	y = y_;
+
+	collisonObjectType = CollisonObjectType::NONE;
+	collisonType = CollisonObjectType::NONE;
+
+	srcRect.x = x;
+	srcRect.y = y;
+
 	srcRect.w = size_;
 	srcRect.h = size_;
-
 }
 
-Collider::Collider(int d_)
-{
 
-}
 
 void Collider::CollisonUpdate(int colPosX,int colPosY)
 {

@@ -10,18 +10,18 @@ Input::~Input()
 
 bool Input::keyPressed(int is_pressed,int keycode)
 {
+	InputKeyBoardHolder.clear();
 	if (SDL_PRESSED == is_pressed)
 	{
 		if (SDL_KEYDOWN)
 		{
 			/* You should add this to your player class then send the keycode to another function
-		 Function within a function*/
+		 Function within a function*/ 
 			InputKeyBoardHolder.insert(std::pair<int, bool>(keycode, true));	
 			return true;
 		}
-		return false;
 	}
-	else if (SDL_RELEASED)
+	else if (SDL_RELEASED==is_pressed)
 	{
 		if (SDL_KEYUP)
 		{
@@ -29,8 +29,7 @@ bool Input::keyPressed(int is_pressed,int keycode)
 			InputKeyBoardHolder.insert(std::pair<int, bool>(keycode, false));
 			return true;
 		}
-	}
-	return false;
+	} 
 }
 
 bool Input::MousePressed(int is_Pressed, int keycode)
@@ -57,7 +56,7 @@ bool Input::MousePressed(int is_Pressed, int keycode)
 	return false;
 }
 
-bool Input::createCollider(bool state_)
+bool Input::CreateCollider(bool state_)
 {
 	if (state_==true)
 	{

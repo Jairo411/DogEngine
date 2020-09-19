@@ -49,7 +49,7 @@ int Window::getScreenWidth()
 	return SCREENWIDTH;
 }
 
-bool Window::mouseInput(int key_)
+bool Window::MouseInput(int key_)
 {
 	/*
 	you probably want to redesign this
@@ -75,7 +75,7 @@ bool Window::controllerInput(int key)
 	return false;
 }
 
-bool Window::keyBoardInput(int key)
+bool Window::KeyBoardInput(int key)
 {
 	return false;
 }

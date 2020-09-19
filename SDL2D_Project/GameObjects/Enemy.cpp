@@ -38,7 +38,10 @@ Skeleton::Skeleton(int x, int y)
 
 	destRect.x = srcRect.x;
 	destRect.y = srcRect.y;
-	col = Collider(10, 20, 45);
+
+	ptr = this;
+	col = Collider(55);
+	GameObject::ObjHolder.push_back(ptr);
 	Inti();
 }
 

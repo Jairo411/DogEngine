@@ -12,7 +12,7 @@ Player::Player()
 	srcRect.h = 0;
 	srcRect.x = 0;
 	srcRect.y = 0;
-	currentAnimTicks = NULL;
+	FrameTicks = NULL;
 	amountOfAniamtions = 0;
 	disableObject = NULL;
 	endRect = SDL_Rect();
@@ -27,15 +27,15 @@ Player::Player(const char * textureSheet, int x, int y)
 	posX = x;
 	posY = y;
 	srcRect.w = 100;
-	srcRect.h = 74;
+	srcRect.h = 80;
 	srcRect.x = 0;
 	srcRect.y = 0;
 	amountOfAniamtions = 0;
-	currentAnimTicks = NULL;
+	FrameTicks = NULL;
 	disableObject = NULL;
 	endRect = SDL_Rect();
 	//I have to render this in order to see what it looks like
-	collider = Collider(20, 20, 50);
+	collider = Collider(srcRect.w-20,srcRect.h);
 	ptr = this;
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
@@ -66,7 +66,7 @@ void Player::Update()
 
 	handleCollison();
 
-	collider.CollisonUpdate(posX, posY);
+	collider.CollisonUpdate(posX,posY);
 
 
 
@@ -113,7 +113,7 @@ void Player::handleCollison()
 }
 
 
-bool Player::keyBoardInput(int key)
+bool Player::KeyBoardInput(int key)
 {
 	/*You have to fix this create allow the Input to accept two forms of Input
 	*/
@@ -123,38 +123,34 @@ bool Player::keyBoardInput(int key)
 	}
 	if (key!=NULL)
 	{
-
-
 		if (key == SDLK_a)
 		{
 			posX -= 1;
 			AnimState = RUN;
 			return true;
 		}
-		else if (key == SDLK_d)
+		if (key == SDLK_d)
 		{
 			posX += 1;
 			AnimState = RUN;
 			return true;
 		}
-		else if (key == SDLK_w)
+		if (key == SDLK_w)
 		{
 			posY -= 1;
 			AnimState = RUN;
 			return true;
 		}
-		else if (key == SDLK_s)
+		if (key == SDLK_s)
 		{
 			posY += 1;
 			AnimState = RUN;
 			return true;
 		}
-		else if (key == SDLK_SPACE) {
+		 if (key == SDLK_SPACE) {
 			AnimState = JUMP;
-			/*some Jump formula over here */
 			return true;
 		}
-		/* If reached here that means that the Animation is over */
 	}
 	else
 	{
@@ -164,7 +160,7 @@ bool Player::keyBoardInput(int key)
 	return false;
 }
 
-bool Player::mouseInput(int key)
+bool Player::MouseInput(int key)
 {
 	if (disableObject==true)
 	{
@@ -175,28 +171,18 @@ bool Player::mouseInput(int key)
 		if (key == SDL_BUTTON_LEFT)
 		{
 			AnimState = ATTACK0;
-			return true;
 		}
 		if (key==SDL_BUTTON_RIGHT)
 		{
 			AnimState = ATTACK1;
-			return true;
 		}
 		if (key==SDL_BUTTON_MIDDLE)
 		{
 			AnimState = ATTACK2;
-			return true;
 		}
+		return true;
 	}
-
-	{
-		if (GetAnimTicks() == 0)
-		{
-			WaitAnimationsTicks(0);
-			AnimState = IDLE0;
-			return true;
-		}
-	}
+	
 	return false;
 }
 
@@ -206,7 +192,7 @@ bool Player::controllerInput(int key)
 }
 Uint32 Player::GetAnimTicks()
 {
-	return currentAnimTicks;
+	return FrameTicks;
 }
 //This might be a way of hard coding this
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
@@ -297,12 +283,13 @@ void Player::PlayAnimations(int state_)
 	{
 		WaitAnimationsTicks(sprite);
 	}
+
 }
 
 
 
 Uint32 Player::WaitAnimationsTicks(Uint32 wait_)
 {
-	currentAnimTicks = wait_+15;
-	return currentAnimTicks;
+	FrameTicks = wait_;
+	return FrameTicks;
 }

@@ -63,11 +63,10 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 	}
 
 
-	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",10,0);
-	
-//	GameObject::ObjHolder.push_back(player);;
+	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",100,0);
+
 	enemy = new Skeleton(30, 30);
-//	GameObject::ObjHolder.push_back(enemy);
+
 	//This just set the size of the game world
 	mapA = new MapLayer("BaseLayer", 0, true,60,30);
 
@@ -88,24 +87,24 @@ void Game::HandleEvents()
 
 	case SDL_KEYDOWN:
 		player->keyPressed(true, event.key.keysym.sym);
-		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
+		player->KeyBoardInput(player->InputKeyBoardHolder.begin()->first);
 				//std::cout << "Key is still pressed" << std::endl;
 		break;
 	case SDL_KEYUP:
 		player->keyPressed(false,event.key.keysym.sym);
-		player->keyBoardInput(player->InputKeyBoardHolder.begin()->first);
+		player->KeyBoardInput(player->InputKeyBoardHolder.begin()->first);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		player->MousePressed(true, event.button.button);
-		player->mouseInput(player->InputMouseHolder.begin()->first);
-		if (actualWindow->mouseInput(event.button.button))
+		player->MouseInput(player->InputMouseHolder.begin()->first);
+		if (actualWindow->MouseInput(event.button.button))
 		{	
 		}
 		mapA->keyCode = event.button.button;
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
-		player->mouseInput(player->InputMouseHolder.begin()->first);
+		player->MouseInput(player->InputMouseHolder.begin()->first);
 		break;
 	default:
 		break;
@@ -120,7 +119,7 @@ void Game::OnUpdate()
 	player->Update();
 	enemy->Update();
 	mapA->OnUpdate();
-	//cout << "Size of Obj holder: " << ObjHolder.size() << endl;
+	//cout << "Size of Obj holder: " << GameObject::ObjHolder.size() << endl;
 
 
 }
