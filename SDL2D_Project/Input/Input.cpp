@@ -1,5 +1,6 @@
-#include "Input.h"
 #include <SDL.h>
+#include "Input.h"
+#include "../Window/Window.h"
 
 Collider* Input::mouseClick = new Collider();
 int Input::mouseX = 0, Input::mouseY = 0;
@@ -40,8 +41,7 @@ bool Input::MousePressed(int is_Pressed, int keycode)
 		if (SDL_MOUSEBUTTONDOWN)
 		{
 			SDL_GetMouseState(&mouseX, &mouseY);
-			InputMouseHolder.insert(std::pair<int, bool>(keycode, true));
-			std::cout << "X: " << mouseX << "Y: " << mouseY << std::endl;
+			InputMouseHolder.insert(std::pair<int, bool>(keycode, true));																										
 			return true;
 		}
 	}
@@ -54,6 +54,21 @@ bool Input::MousePressed(int is_Pressed, int keycode)
 		}
 	}
 	return false;
+}
+
+void Input::setWindow(Window* windowptr_)
+{
+	window = windowptr_;
+}
+
+void Input::setMiddlePoint(Vec2 tempV)
+{
+	middlepoint = tempV;
+}
+
+Vec2 Input::getMiddlePoint()
+{
+	return middlepoint;
 }
 
 bool Input::CreateCollider(bool state_)

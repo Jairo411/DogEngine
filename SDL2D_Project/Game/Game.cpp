@@ -10,6 +10,9 @@ TileSet* tileSet;
 
 Game::Game()
 {
+	actualWindow = new Window();
+	isRunning = true;
+
 	/*isRunning = false;
 	std::shared_ptr<Scene0> gameScene0 = std::make_shared<Scene0>();
 
@@ -43,6 +46,7 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 		std::cout << "Subsystem Initialised!..." << std::endl;
 		window = SDL_CreateWindow(title, posx, posy, widith, height, flags);
 		actualWindow = new Window(window);
+		
 		if (window)
 		{
 			std::cout << "Window created!" << std::endl;
@@ -63,12 +67,12 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 	}
 
 
-	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",100,0);
+	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",0,0);
 
 	enemy = new Skeleton(30, 30);
 
 	//This just set the size of the game world
-	mapA = new MapLayer("BaseLayer", 0, true,60,30);
+	mapA = new MapLayer(actualWindow);
 
 
 
@@ -78,7 +82,7 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 void Game::HandleEvents()
 {
 	SDL_Event event;
-
+	//player->setWindow(actualWindow);
 	SDL_PollEvent(&event);
 	switch (event.type) {
 	case SDL_QUIT:
@@ -116,9 +120,12 @@ void Game::OnUpdate()
 {
 	cnt++;
 
+
 	player->Update();
 	enemy->Update();
 	mapA->OnUpdate();
+	Vec2 tempV = Window::convertScreenCoords(player->getX(),player->getY()); // put this either inside the Player class or window Class 
+	cout << "X: " <<tempV.getX()<<"Y: "<<tempV.getY() << endl;
 	//cout << "Size of Obj holder: " << GameObject::ObjHolder.size() << endl;
 
 
@@ -141,7 +148,7 @@ void Game::OnRender()
 	mapA->OnRender();
 	player->Render();
 	enemy->Render();
-	//actualWindow->OnRender();
+	actualWindow->OnRender();
 	SDL_RenderPresent(renderer);
 
 

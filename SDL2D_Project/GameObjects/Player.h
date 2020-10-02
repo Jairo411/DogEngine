@@ -36,8 +36,6 @@ public:
 	 Uint32 GetAnimTicks();
 
 private:  
-	int posX;
-	int posY;
 	int amountOfAniamtions;
 	int AnimState;
 	bool disableObject;

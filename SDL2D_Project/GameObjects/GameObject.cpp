@@ -81,5 +81,16 @@ bool GameObject::getDisable()
 	return false;	
 }
 
+int GameObject::getX()
+{
+	return this->posX;
+}
+
+int GameObject::getY()
+{
+	return this->posY;
+}
+
+
 
 

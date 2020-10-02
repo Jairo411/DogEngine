@@ -10,7 +10,6 @@ Collider::Collider()
 	srcRect.w = 0;
 	srcRect.h = 0;
 	
-	area = 0;
 	collisonObjectType = CollisonObjectType::NONE;
 	collisonType = CollisonType::NO_COl;
 }

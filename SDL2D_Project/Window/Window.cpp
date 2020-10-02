@@ -2,36 +2,46 @@
 #include "../Game/Game.h"
 #include <SDL_syswm.h>
 
-
-/*
-Current task 
-- Add proper functionally when you click a square you add a tile 
-- Add proper Window modes functionailty 
-- Needs to be interconnected with MapTiles class 
-*/
-
+int Window::SCREENHEIGHT = 0; 
+int Window::SCREENWIDTH = 0;
+SDL_Point Window::middleOfScreen = SDL_Point();
 
 Window::Window()
 {
-
+	SCREENHEIGHT = 0;
+	SCREENWIDTH = 0;
+	totalAmountOfSquares = 0;
+	SquareSize = 0;
+	middleOfScreen.x = 0;
+	middleOfScreen.y = 0;
+	window = nullptr;
 }
 
 Window::Window(SDL_Window *tempWindow)
 {
 	SCREENHEIGHT = 0;
 	SCREENWIDTH = 0;
+	SquareSize = 40;
 	totalAmountOfSquares = 0;
-	SDL_GetWindowSize(tempWindow, &SCREENWIDTH, &SCREENHEIGHT);
+	window = tempWindow;
+	SDL_GetWindowSize(window, &SCREENWIDTH, &SCREENHEIGHT);
+	middleOfScreen.x = SCREENWIDTH/2;
+	middleOfScreen.y = SCREENHEIGHT/2;
+	
+	CreateMiddleRect();
+
+
 	int keyValue=0;
 	for (int r = 0; r < 20;r++)
 	{
 		for (int  c = 0; c <  16;  c++)
 		{
 			SDL_Rect* tempSquare = new SDL_Rect();
-			tempSquare->x = r * 40;
-			tempSquare->y = c * 40;
-			tempSquare->w = 40;
-			tempSquare->h = 40;
+		
+			tempSquare->x = r * SquareSize;
+			tempSquare->y = c * SquareSize;
+			tempSquare->w = SquareSize;
+			tempSquare->h = SquareSize;
 			GraphicSquareHolder.insert(std::pair<SDL_Rect*,int>(tempSquare,keyValue));	
 			keyValue++;
 		}	
@@ -75,13 +85,20 @@ bool Window::controllerInput(int key)
 	return false;
 }
 
+void Window::CreateMiddleRect()
+{
+	middleRect.x = middleOfScreen.x - 15;
+	middleRect.y = middleOfScreen.y - 15;
+
+	middleRect.w = 30;
+	middleRect.h = 30;
+
+}
+
 bool Window::KeyBoardInput(int key)
 {
 	return false;
 }
-
-
-
 
 Window::~Window()
 {
@@ -95,6 +112,13 @@ void Window::OnRender()
 	{
 	case Window::DEBUG:
 	{
+		//SDL_SetRenderDrawColor(Game::renderer, 100, 0, 15, 100);
+		//SDL_RenderDrawRect(Game::renderer, &middleRect);
+		//SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 255);
+	}
+		break;
+	case Window::STANDARD:
+	{
 		std::map<SDL_Rect*, int>::iterator it = GraphicSquareHolder.begin();
 		int cycleValue = 0;
 		for (it = GraphicSquareHolder.begin(); it != GraphicSquareHolder.end(); it++)
@@ -106,11 +130,6 @@ void Window::OnRender()
 			SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 255);
 			cycleValue += 1;
 		}
-	}
-		break;
-	case Window::STANDARD:
-	{
-
 	}
 		break;
 	case Window::RELEASE:
@@ -128,5 +147,13 @@ void Window::OnUpdate()
 {
 
 }
+
+Vec2 Window::convertScreenCoords(int x_, int y_)
+{
+	Vec2 covertedScreenCoords;
+	covertedScreenCoords = Vec2(SCREENWIDTH/2+(-x_), SCREENHEIGHT/2-(y_));
+	return covertedScreenCoords;
+}
+
 
 

@@ -3,7 +3,9 @@
 #include <map>
 #include <iostream>
 #include "../Physics/Collider.h"
+#include "../Physics/Math/Vec2.h"
 class SDL;
+class Window;
 class Input
 {
 public:
@@ -18,9 +20,14 @@ public:
 	std::map<int, bool> InputMouseHolder;
 
 	static Collider* mouseClick;
+	void setWindow(Window* windowptr_);
+	void setMiddlePoint(Vec2 tempV);
+	Vec2 getMiddlePoint();
 private:
 	static int mouseX, mouseY;
 	static bool CreateCollider(bool state_);
+	Vec2 middlepoint;
+	Window* window;
 	
 
 };

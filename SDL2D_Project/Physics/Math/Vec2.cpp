@@ -106,3 +106,4 @@ Vec2 Vec2::rotate()
 
 	return Vec2();
 }
+

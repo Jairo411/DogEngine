@@ -40,7 +40,6 @@ public:
 	
 private: 
 	int x, y;
-	int area;
 	int collisonObjectType;
 	int collisonType;
 	SDL_Rect srcRect;

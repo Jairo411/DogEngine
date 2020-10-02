@@ -20,6 +20,11 @@ void Enemy::ChangeSrcSize(int src_w, int src_h)
 	
 }
 
+Skeleton::Skeleton()
+{
+
+}
+
 Skeleton::Skeleton(int x, int y)
 {
 	posX = x;
@@ -148,7 +153,7 @@ void Skeleton::Inti()
 		sourceX = 0;
 		Pop_Front(animationSet.at(i));
 		totalSize++;
-	}
+	} //you have to move this over somewhere it's more readable 
 }
 
 void Skeleton::Update()
@@ -182,7 +187,7 @@ void Skeleton::Render()
 	}
 }
 
-void Skeleton::PlayAnimations(int state_)
+void Skeleton::PlayAnimations(int state_) // These in both the player and the enemy classes need to be over an animations class
 {
 	/* This needs to be fixed*/
 	Uint32 ticks = SDL_GetTicks();

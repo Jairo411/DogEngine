@@ -63,9 +63,7 @@ void Player::Update()
 	//Note you need to get your FPS working properly in order to to proper animate your character
 
 	PlayAnimations(AnimState);
-
 	handleCollison();
-
 	collider.CollisonUpdate(posX,posY);
 
 

@@ -15,10 +15,7 @@ Tile::Tile()
 	ID = NULL;
 	x = 0;
 	y = 0;
-	/*old verison of the regular width and height
-		w=16
-		h=30
-	*/
+
 	srcRect.w = 40;
 	srcRect.h = 40;
 
@@ -56,7 +53,7 @@ void Tile::OnRender()
 {
 
 	SDL_RenderCopy(Game::renderer, baseTex, &srcRect,&dstRect);
-	col.CollisonRender();
+	//col.CollisonRender();
 }
 
 void Tile::setTileSize(int width_, int height_)
