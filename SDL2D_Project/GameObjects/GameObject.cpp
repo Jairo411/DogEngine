@@ -91,6 +91,13 @@ int GameObject::getY()
 	return this->posY;
 }
 
+Vec2 GameObject::getPostion()
+{
+	Vec2 position; 
+	position = Vec2(posX, posY);
+	return position;
+}
+
 
 
 

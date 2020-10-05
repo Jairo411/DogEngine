@@ -6,6 +6,7 @@ Player::Player()
 	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
 	//objTexture = NULL;
 	//AnimState = NULL;
+	position = Vec2();
 	posX = 0;
 	posY = 0;
 	srcRect.w = 0;
@@ -36,6 +37,7 @@ Player::Player(const char * textureSheet, int x, int y)
 	endRect = SDL_Rect();
 	//I have to render this in order to see what it looks like
 	collider = Collider(srcRect.w-20,srcRect.h);
+	position = Vec2(posX, posY);
 	ptr = this;
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
@@ -57,16 +59,15 @@ Player::~Player()
 
 }
 
-void Player::Update()
+void Player::Update(float deltaTime_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
 	//Note you need to get your FPS working properly in order to to proper animate your character
 
 	PlayAnimations(AnimState);
 	handleCollison();
-	collider.CollisonUpdate(posX,posY);
 
-
+	delta = deltaTime_;
 
 	if (getDisable()==false)
 	{
@@ -79,6 +80,7 @@ void Player::Update()
 	{
 		Disable();
 	}
+	collider.CollisonUpdate(posX,posY);
 }
 
 void Player::Render()
@@ -119,35 +121,34 @@ bool Player::KeyBoardInput(int key)
 	{
 		return false;
 	}
+	float velo = 1.0 * delta;
+	int positionX, positionY;
 	if (key!=NULL)
 	{
 		if (key == SDLK_a)
 		{
-			posX -= 1;
+			positionX = (posX * velo);
+			posX = posX-positionX;
 			AnimState = RUN;
-			return true;
 		}
 		if (key == SDLK_d)
 		{
-			posX += 1;
+			positionX = (posX * velo);
+			posX += positionX;
 			AnimState = RUN;
-			return true;
 		}
 		if (key == SDLK_w)
 		{
-			posY -= 1;
+			posY *= (1 + delta) * -1;
 			AnimState = RUN;
-			return true;
 		}
 		if (key == SDLK_s)
 		{
-			posY += 1;
+			posY *= 1*delta;
 			AnimState = RUN;
-			return true;
 		}
 		 if (key == SDLK_SPACE) {
 			AnimState = JUMP;
-			return true;
 		}
 	}
 	else

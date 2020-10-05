@@ -1,7 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
-#include "../../Game/Game.h"
 #include "TileSet/Tiles.h"
+#include "../../Game/Game.h"
 #include "../../Physics/Math/Vec2.h"
 #include <list>
 #include <vector>
@@ -9,8 +9,9 @@
 using namespace std;
 class TextureManager;
 
-/*Map Layer is basically the whole map or an single layer something like that
-right now it's only gonna be a single layer
+/*Map Layer is the game map, Takes in the Window class I made, 
+takes the screen width and height. Then displays the tiles from 0,0 to the final coordinate.
+have the Other classes in order to move functionality.
 */
 
 class GraphicLayer{
@@ -27,14 +28,13 @@ public:
 	void OnBuild(int state_);
 	void ReadMapData();
 	void OnRender();
-	void OnUpdate();
+	void OnUpdate(float deltaTime_);
 	int  keyCode;
-	//Here is a Maplayer that will take in more layeers.
-//	MapLayer(string name_, int ID_, bool isback_, int amountOfLayers);
 	~MapLayer();
 private:
+	/* Need to re-look at all these variables 
+	   I'm pretty sure I don't use all these variables*/
 	int ID;
-	/* These two X,Y vaules are just defaults*/
 	int Xsize, Ysize;
 	int cols, rows;
 	int screenWidth, screenHeight;
@@ -44,10 +44,10 @@ private:
 	bool IsBackground;
 	bool Visible;
 	bool mapDataFlag;
-	string name;
+	std::string name;
 	SDL_Texture* tex;
-	vector<Tile> tileMap;
-	map<int, map<int, int>> mapData;
+	std::vector<Tile> tileMap;
+	std::map<int, map<int, int>> mapData;
 	Vec2 covertedScreenCoords;
 	// You need to find a way to dynamically Create this arrays Size
 	//I HAVE AN ENUM HERE TO SET THE STANDARD TILE TYPE

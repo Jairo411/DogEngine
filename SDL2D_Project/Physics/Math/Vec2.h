@@ -9,18 +9,30 @@ class Vec2
 public:
 	Vec2();
 	Vec2(int x_, int y_);
+	Vec2(float x_, float y_);
 	~Vec2();
-	
+
+	//GETTER AND SETTTERS
 	float getX();
 	float getY();
-	float GetDot();
 
+	//VECTOR MATH  
+	float GetDot();
+	float GetMag();
+	Vec2 Normalize();
+	Vec2 rotate();
 	void SetDot(Vec2 b_);
 	float GetAngleBetween(Vec2 b_);
-	/*Overloading operators So I can simpily Add Vectors and subtract themd*/
+
+	/*Overloading operators VECTOR TO VECTOR*/
 	Vec2 operator+(const Vec2& b_);
-	Vec2 operator-(const Vec2 & b_);
-	Vec2 rotate();
+	Vec2 operator-(const Vec2& b_);
+
+	/*Overloading operators VECTOR TO SCALAR*/
+	Vec2 operator*(const float& b_);
+	Vec2 operator*(const int& b_);
+
+	
 private: 
 	 float SetMag();
 	 float x, y;

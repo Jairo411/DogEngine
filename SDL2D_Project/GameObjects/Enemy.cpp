@@ -1,5 +1,5 @@
 #include "Enemy.h"
-
+#include "../Game/Game.h"
 Enemy::~Enemy()
 {
 }
@@ -29,7 +29,8 @@ Skeleton::Skeleton(int x, int y)
 {
 	posX = x;
 	posY = y;
-
+	speed = 5;
+	position = Vec2(posX, posY);
 	srcRect.x = 0;
 	srcRect.y = 0;
 	srcRect0.x = 0;
@@ -66,6 +67,7 @@ void Skeleton::Inti()
 	int sourceY = 0;
 	int tempH, tempW;
 	int lengthOfSprite;
+
 
 	destRect.h = srcRect.h;
 	destRect.w = srcRect.w;
@@ -156,8 +158,9 @@ void Skeleton::Inti()
 	} //you have to move this over somewhere it's more readable 
 }
 
-void Skeleton::Update()
+void Skeleton::Update(float DeltaTime_)
 {
+	UpdateAI();
 	col.CollisonUpdate(posX, posY);
 	if (getDisable() == false)
 	{
@@ -185,6 +188,33 @@ void Skeleton::Render()
 	{
 		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect0, &destRect0);
 	}
+}
+
+void Skeleton::handleCollison()
+{
+
+}
+
+void Skeleton::UpdateAI()
+{
+	float distance = getTarget().GetMag();
+	float arrive = 3;
+	int32_t ticks = SDL_GetTicks();
+	velocity = getTarget();
+	position = velocity* Game::timer->GetCurrentTicks();// this should be an equation of motion but you need to have a decent timer class for this 
+	posX = position.getX();
+	posY = position.getY();
+}
+
+void Skeleton::SetTarget(Vec2 target_)
+{
+	Vec2 dir=position - target_;
+	targetPos= dir.Normalize();
+}
+
+Vec2 Skeleton::getTarget()
+{
+	return targetPos;
 }
 
 void Skeleton::PlayAnimations(int state_) // These in both the player and the enemy classes need to be over an animations class

@@ -41,7 +41,7 @@ void MapLayer::OnRender()
 okay so this works but you should probably store the values
 of the map tiles so that it doesn't have to constantly render
  the tiles through the for loop*/
-void MapLayer::OnUpdate()
+void MapLayer::OnUpdate(float deltaTime_)
 {
 	int total = tileMap.size();
 	for (int i = 0; i < total; i++)

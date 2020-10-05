@@ -10,7 +10,7 @@ class Game;
 /* I should make this static Reasoning:
  -I can access very basic window stuff which should be important because this carries the SDL_Context 
  -I will be able to do easy Vector math with my screenCoords covered methods 
- -Everything is technically  in this Window Screen. */
+ -Everything is technically  in this Window Screen.*/
 class Window: public Input
 {	
 private:

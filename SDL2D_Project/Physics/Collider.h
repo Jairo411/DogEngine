@@ -6,36 +6,23 @@
 class Game;
 class Collider
 {
-	// only need to use square colliders 
 public:
-	//for a collison rectangle/Square;
 
-	Collider();
+	Collider(); //default Collider square
 	Collider(int area_);//Square Collider
 	Collider(int width_, int height_); //Rectangle Collider
 	Collider(int x_, int y_, int size_);//Collider for semi static postions;
-	//for a collison circle;
-	//Collider(int d_);
+	//Collider(int d_); //for a collison circle;
 
 	void CollisonUpdate(int colPosX_,int colPosY_);
-	//Only going to be used for game objects 
 	void CollisonRender();
 	void SetCollisonObjectType(int col_);
 	void SetCollisonType(int col);
 
-
+	//TIGGER FOR COLLIDER
 	void MouseEventListener(int event);
+
 	SDL_Rect* getCollider();
-	//void CollisonUpdate();
-	//Only going to be used for game objects 
-
-
-
-	/*make this into a virtual class possibly to add to the gameobjects doesn't seem like you need these enums 
-	but because I look everything up online Im currently semi copying this stuff. 
-
-	Its quite possible that you need to just simply use the gameobjects width and size in order to add collision to the objects 
-	*/
 	~Collider(); 
 	
 private: 
@@ -44,13 +31,15 @@ private:
 	int collisonType;
 	SDL_Rect srcRect;
 	Vec2 middlePoint;
+
+	//TYPE OF COLLIDER
 	enum CollisonObjectType
 	{
 		NONE=0,
 		GAMEOBJECT,
 		Projectile
 	};
-
+	//TYPE OF COLLISION
 	enum CollisonType
 	{
 		NO_COl=0,

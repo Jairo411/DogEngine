@@ -3,19 +3,18 @@
 #include "GameObject.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Physics/Collider.h"
+#include "../Game/AI/AI.h"
 
 using namespace std;
 
-/*This whole fucking class needs to be re-worked and have variables names that make sense*/
+class Game;
 class Enemy: public GameObject
 {
 public:
 	~Enemy();
 	void Disable();
 protected:
-	/* You're gonna have to moves this to the Skeleton Class
-		Because this shit is not modular in anyway possible*/
-	int x, y;
+	int x, y; // this is going to be removed soon...
 	void ChangeSrcSize(int src_w, int src_h);
 	template<typename T>
 	inline void Pop_Front(vector<T>& v)
@@ -26,28 +25,29 @@ protected:
 		}
 	};
 private:
-
-	//Starting right here....
-	/*This is called generics look it up,
-	  to see what it actually does please and thank you*/
-
-
+	//Could enter generics here 
 };
 
-class Skeleton : public Enemy
+class Skeleton : public Enemy, public AI
 {
 public:
 	Skeleton();
 	Skeleton(int x, int y);
 	~Skeleton();
 	void Inti();
-	void Update();
+	void Update(float deltaTime_);
 	void Render();
 	void handleCollison();
+	void UpdateAI();
+	void SetTarget(Vec2 target_);
+	
 private:
-	Collider col;
+	float speed;
+	Vec2 targetPos;
+	Collider col;	
 	SDL_Rect srcRect0, destRect0;
 	void PlayAnimations(int state_);
+	Vec2 getTarget();
 	enum Animations
 	{
 		ATTACK = 0,

@@ -5,23 +5,18 @@ Player* player;
 Skeleton* enemy;
 MapLayer* mapA;
 SDL_Renderer* Game::renderer = nullptr;
+Timer* Game::timer = nullptr;
 
 TileSet* tileSet;
 
+
+
 Game::Game()
 {
-	actualWindow = new Window();
 	isRunning = true;
-
-	/*isRunning = false;
-	std::shared_ptr<Scene0> gameScene0 = std::make_shared<Scene0>();
-
-	unsigned int gameSceneID = sceneManager.Add(gameScene0);
-
-	sceneManager.SwitchTo(gameSceneID);
-	*/
-
-
+	timer = new Timer();
+	actualWindow = new Window();
+	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
 
@@ -32,7 +27,7 @@ Game::~Game()
 
 }
 
-void Game::init(const char * title, int posx, int posy, int widith, int height, bool fullscreen)
+void Game::init(const char * title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	int flags = 0;
 
@@ -44,7 +39,7 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		std::cout << "Subsystem Initialised!..." << std::endl;
-		window = SDL_CreateWindow(title, posx, posy, widith, height, flags);
+		window = SDL_CreateWindow(title, posx, posy, width, height, flags);
 		actualWindow = new Window(window);
 		
 		if (window)
@@ -60,29 +55,46 @@ void Game::init(const char * title, int posx, int posy, int widith, int height, 
 		}
 		isRunning = true;
 		std::cout <<"Width: "<< actualWindow->getScreenWidth() <<" Height: "<<actualWindow->getScreenHeight() << std::endl;
-
 	}
 	else {
 		isRunning = false;
 	}
 
 
-	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",0,0);
+	
+	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",100,0);
 
 	enemy = new Skeleton(30, 30);
+ 	enemy->SetTarget(player->getPostion());
 
 	//This just set the size of the game world
 	mapA = new MapLayer(actualWindow);
 
+	timer->Start();
+	GameLoop();
 
 
+}
+void Game::GameLoop()
+{
+;
+	while (isRunning==true)
+	{
+		timer->UpdateGeneralFrameTicks();
+		HandleEvents();
+		handleCollisions();
+		OnRender();
+		OnUpdate(timer->GetDeltaTime());
+		SDL_Delay(timer->GetSleepTime(FPS));
+	}
+	
+	clean();
 
 }
 
 void Game::HandleEvents()
 {
 	SDL_Event event;
-	//player->setWindow(actualWindow);
 	SDL_PollEvent(&event);
 	switch (event.type) {
 	case SDL_QUIT:
@@ -116,16 +128,16 @@ void Game::HandleEvents()
 	
 }
 
-void Game::OnUpdate()
+void Game::OnUpdate(float deltaTime_)
 {
 	cnt++;
 
 
-	player->Update();
-	enemy->Update();
-	mapA->OnUpdate();
+	player->Update(deltaTime_);
+	enemy->Update(deltaTime_);
+	mapA->OnUpdate(deltaTime_);
 	Vec2 tempV = Window::convertScreenCoords(player->getX(),player->getY()); // put this either inside the Player class or window Class 
-	cout << "X: " <<tempV.getX()<<"Y: "<<tempV.getY() << endl;
+	//cout << "X: " <<tempV.getX()<<"Y: "<<tempV.getY() << endl;
 	//cout << "Size of Obj holder: " << GameObject::ObjHolder.size() << endl;
 
 

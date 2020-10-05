@@ -6,16 +6,6 @@
 #include "../Input/Input.h"
 #include "../Physics/Collider.h"
 
-/*
-Player class, tasks that should be done 
--add antimation.
--might need to add physics (box coliders)
-Basic functionality ^^^^
-********************
-Advance Functionality 
--To be written down here.
-*/
-
 class TextureManager;
 class Player : public GameObject , public Input 
 {
@@ -23,7 +13,7 @@ public:
 	 Player();
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
-	 void Update() override;
+	 void Update(float DeltaTime_) override;
 	 void Render() override;
 	 void Disable() override;
 	 void handleCollison();
@@ -38,6 +28,7 @@ public:
 private:  
 	int amountOfAniamtions;
 	int AnimState;
+	float delta;
 	bool disableObject;
 	Collider collider;
 	Uint32 FrameTicks;

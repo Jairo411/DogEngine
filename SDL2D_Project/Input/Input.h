@@ -6,6 +6,9 @@
 #include "../Physics/Math/Vec2.h"
 class SDL;
 class Window;
+/* This is Input class is capable of an abstract class,
+but does have actual functionallity.
+*/
 class Input
 {
 public:
