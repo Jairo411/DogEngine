@@ -32,6 +32,8 @@ private:
 	SDL_Rect srcRect;
 	Vec2 middlePoint;
 
+	
+
 	//TYPE OF COLLIDER
 	enum CollisonObjectType
 	{

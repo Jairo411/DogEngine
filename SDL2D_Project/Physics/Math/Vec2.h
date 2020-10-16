@@ -12,10 +12,6 @@ public:
 	Vec2(float x_, float y_);
 	~Vec2();
 
-	//GETTER AND SETTTERS
-	float getX();
-	float getY();
-
 	//VECTOR MATH  
 	float GetDot();
 	float GetMag();
@@ -32,10 +28,13 @@ public:
 	Vec2 operator*(const float& b_);
 	Vec2 operator*(const int& b_);
 
-	
+	/*Overloading logical operators*/
+	bool operator==(const Vec2& b_);
+	bool operator!=(const Vec2& b_);
+
+	float x, y;
 private: 
 	 float SetMag();
-	 float x, y;
 	 float mag;
 	 float dot, cross;
 };

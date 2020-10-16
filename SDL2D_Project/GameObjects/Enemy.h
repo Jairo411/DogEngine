@@ -14,7 +14,6 @@ public:
 	~Enemy();
 	void Disable();
 protected:
-	int x, y; // this is going to be removed soon...
 	void ChangeSrcSize(int src_w, int src_h);
 	template<typename T>
 	inline void Pop_Front(vector<T>& v)
@@ -35,11 +34,11 @@ public:
 	Skeleton(int x, int y);
 	~Skeleton();
 	void Inti();
-	void Update(float deltaTime_);
-	void Render();
+	virtual void Update(float deltaTime_);
+	virtual void Render();
 	void handleCollison();
-	void UpdateAI();
-	void SetTarget(Vec2 target_);
+	virtual void UpdateAI();
+	virtual void SetTarget(GameObject* obj_);
 	
 private:
 	float speed;

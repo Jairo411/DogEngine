@@ -11,30 +11,20 @@ Vec2::Vec2()
 
 Vec2::Vec2(int x_, int y_)
 {
-	this->x = x_;
-	this->y = y_;
-	this->mag = SetMag();
+	x = x_;
+	y = y_;
+	mag = SetMag();
 }
 
 Vec2::Vec2(float x_, float y_)
 {
-	this->x = x_;
-	this->y = y_;
-	this->mag = SetMag();
+	x = x_;
+	y = y_;
+	mag = SetMag();
 }
 
 Vec2::~Vec2()
 {
-}
-
-float Vec2::getX()
-{
-	return x;
-}
-
-float Vec2::getY()
-{
-	return y;
 }
 
 float Vec2::GetDot()
@@ -126,6 +116,30 @@ Vec2 Vec2::operator*(const int& b_)
 
 	vec2 = Vec2(this->x * b_,this->y*b_);
 	return vec2;
+}
+
+bool Vec2::operator==(const Vec2& b_)
+{
+	if (x==b_.x && y==b_.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Vec2::operator!=(const Vec2& b_)
+{
+	if (x!=b_.x && y!=b_.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 Vec2 Vec2::rotate()

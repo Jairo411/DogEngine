@@ -7,10 +7,17 @@ GameObject::GameObject()
 {
 	posX = 0;
 	posY = 0;
+	position = Vec2(posX, posY);
 	disableObject = false;
 	nameID = "";
 	
 //	Going to use the Gameobject base class to check if inhereted object has name or not
+}
+
+void GameObject::UpdatePostion()
+{
+	posX = position.x;
+	posY = position.y;
 }
 
 bool GameObject::intiAnimation(const char* AnimTxtFile, const char* tempRelativeDir, const char firstChar)
@@ -67,6 +74,23 @@ int GameObject::ReadAmountOfAnimations()
 	return 0;
 }
 
+void GameObject::setDelta(float deltaTime_)
+{
+	deltaTime = deltaTime_;
+}
+
+float GameObject::getDelta()
+{
+	return deltaTime;
+}
+
+void GameObject::DrawLine(Vec2 start_, Vec2 end_)
+{
+	SDL_RenderClear(Game::renderer);
+	SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+	SDL_RenderDrawLine(Game::renderer, start_.x,start_.y,end_.x, end_.y);
+}
+
 bool GameObject::setDisable(bool temp)
 {
 	return disableObject= temp;
@@ -83,18 +107,41 @@ bool GameObject::getDisable()
 
 int GameObject::getX()
 {
-	return this->posX;
+	return posX;
 }
 
 int GameObject::getY()
 {
-	return this->posY;
+	return posY;
 }
 
-Vec2 GameObject::getPostion()
+Vec2 GameObject::moveMiddle(Vec2 pos_)
 {
-	Vec2 position; 
-	position = Vec2(posX, posY);
+	Vec2 center;
+	center.x = (pos_.x + this->srcRect.w);
+	center.y = (pos_.y + this->srcRect.h);
+	return center;
+}
+
+void GameObject::setPosition(int x_, int y_)
+{
+	posX = x_;
+	posY = y_;
+	Vec2 center = moveMiddle(Vec2(posX, posY));
+	position = center;
+	
+}
+
+void GameObject::setPosition(Vec2 vPosition)
+{
+	Vec2 center =moveMiddle(vPosition);
+	posX = center.x;
+	posY = center.y;
+	position = center;
+}
+
+Vec2 GameObject::getPosition()
+{
 	return position;
 }
 

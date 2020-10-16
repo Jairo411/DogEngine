@@ -27,10 +27,8 @@ Skeleton::Skeleton()
 
 Skeleton::Skeleton(int x, int y)
 {
-	posX = x;
-	posY = y;
-	speed = 5;
-	position = Vec2(posX, posY);
+	setPosition(x, y);
+	speed = 40;
 	srcRect.x = 0;
 	srcRect.y = 0;
 	srcRect0.x = 0;
@@ -160,12 +158,10 @@ void Skeleton::Inti()
 
 void Skeleton::Update(float DeltaTime_)
 {
-	UpdateAI();
-	col.CollisonUpdate(posX, posY);
 	if (getDisable() == false)
 	{
-		destRect0.x = posX;
-		destRect0.y = posY;
+		destRect0.x = position.x;
+		destRect0.y = position.y;
 		destRect0.w = srcRect0.w;
 		destRect0.h = srcRect0.h;
 	}
@@ -173,6 +169,9 @@ void Skeleton::Update(float DeltaTime_)
 	{
 		Disable();
 	}
+	col.CollisonUpdate(position.x, position.y);
+	UpdatePostion();
+	UpdateAI();
 }
 
 void Skeleton::Render()
@@ -197,23 +196,20 @@ void Skeleton::handleCollison()
 
 void Skeleton::UpdateAI()
 {
-	float distance = getTarget().GetMag();
-	float arrive = 3;
-	int32_t ticks = SDL_GetTicks();
-	velocity = getTarget();
-	position = velocity* Game::timer->GetCurrentTicks();// this should be an equation of motion but you need to have a decent timer class for this 
-	posX = position.getX();
-	posY = position.getY();
+	if (position!=getTarget())
+	{
+		float arrive = 3;
+		int32_t ticks = SDL_GetTicks();
+		velocity = getTarget() * speed;
+		position = position + velocity * Game::timer->GetDeltaTime();// this should be an equation of motion but you need to have a decent timer class for this 
+	}
 }
 
-void Skeleton::SetTarget(Vec2 target_)
-{
-	Vec2 dir=position - target_;
-	targetPos= dir.Normalize();
-}
 
 Vec2 Skeleton::getTarget()
 {
+	Vec2 dir = targetObj->getPosition() - position;
+	targetPos = dir.Normalize();
 	return targetPos;
 }
 

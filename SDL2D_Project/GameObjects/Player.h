@@ -1,5 +1,5 @@
-#ifndef PLAYER_HEADER
-#define PLAYER_HEADER
+#ifndef PLAYER_H
+#define PLAYER_H
 
 
 #include "GameObject.h"
@@ -13,8 +13,8 @@ public:
 	 Player();
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
-	 void Update(float DeltaTime_) override;
-	 void Render() override;
+	 virtual void Update(float DeltaTime_) override;
+	 virtual void Render() override;
 	 void Disable() override;
 	 void handleCollison();
 

@@ -35,14 +35,10 @@ public:
 	~Game();
 private:
 	int cnt=0;
-	const int FPS = 120;
+	const int FPS = 60;
 	bool isRunning;
 	SDL_Window *window;
 	Window *actualWindow;
-	
-
-	//Window window;
-
 
 };
 

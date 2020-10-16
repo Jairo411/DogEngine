@@ -7,8 +7,6 @@ Player::Player()
 	//objTexture = NULL;
 	//AnimState = NULL;
 	position = Vec2();
-	posX = 0;
-	posY = 0;
 	srcRect.w = 0;
 	srcRect.h = 0;
 	srcRect.x = 0;
@@ -25,8 +23,6 @@ Player::Player(const char * textureSheet, int x, int y)
 {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	AnimState = IDLE0;
-	posX = x;
-	posY = y;
 	srcRect.w = 100;
 	srcRect.h = 80;
 	srcRect.x = 0;
@@ -36,8 +32,8 @@ Player::Player(const char * textureSheet, int x, int y)
 	disableObject = NULL;
 	endRect = SDL_Rect();
 	//I have to render this in order to see what it looks like
-	collider = Collider(srcRect.w-20,srcRect.h);
-	position = Vec2(posX, posY);
+	collider = Collider(srcRect.w,srcRect.h);
+	setPosition(x,y);
 	ptr = this;
 	intiAnimation("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt","./Assets/Character/Sprites/",'a');
 	if (this->objTexture != NULL)
@@ -63,16 +59,16 @@ void Player::Update(float deltaTime_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
 	//Note you need to get your FPS working properly in order to to proper animate your character
+	setDelta(deltaTime_);
 
 	PlayAnimations(AnimState);
 	handleCollison();
-
 	delta = deltaTime_;
 
 	if (getDisable()==false)
 	{
-		destRect.x = posX;
-		destRect.y = posY;
+		destRect.x = position.x;
+		destRect.y = position.y;
 		destRect.w = srcRect.w;
 		destRect.h = srcRect.h;
 	}
@@ -80,7 +76,8 @@ void Player::Update(float deltaTime_)
 	{
 		Disable();
 	}
-	collider.CollisonUpdate(posX,posY);
+	collider.CollisonUpdate(position.x,position.y);
+	UpdatePostion();
 }
 
 void Player::Render()
@@ -117,34 +114,32 @@ bool Player::KeyBoardInput(int key)
 {
 	/*You have to fix this create allow the Input to accept two forms of Input
 	*/
+	/* Because you handle the movement throught the Keyboard Input it actually is behide 
+		the movement of the game*/
 	if (disableObject==true)
 	{
 		return false;
 	}
-	float velo = 1.0 * delta;
-	int positionX, positionY;
 	if (key!=NULL)
 	{
 		if (key == SDLK_a)
 		{
-			positionX = (posX * velo);
-			posX = posX-positionX;
+			position.x -= 2.5;
 			AnimState = RUN;
 		}
 		if (key == SDLK_d)
 		{
-			positionX = (posX * velo);
-			posX += positionX;
+			position.x += 2.5;
 			AnimState = RUN;
 		}
 		if (key == SDLK_w)
 		{
-			posY *= (1 + delta) * -1;
+			position.y -= 2.5;
 			AnimState = RUN;
 		}
 		if (key == SDLK_s)
 		{
-			posY *= 1*delta;
+			position.y += 2.5;
 			AnimState = RUN;
 		}
 		 if (key == SDLK_SPACE) {

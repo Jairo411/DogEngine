@@ -62,11 +62,10 @@ void Game::init(const char * title, int posx, int posy, int width, int height, b
 
 
 	
-	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",100,0);
+	player= new Player("Assets/Character/Sprites/adventurer-attack1-00.png",400,200);
 
 	enemy = new Skeleton(30, 30);
- 	enemy->SetTarget(player->getPostion());
-
+	enemy->SetTarget(player);
 	//This just set the size of the game world
 	mapA = new MapLayer(actualWindow);
 
@@ -131,13 +130,16 @@ void Game::HandleEvents()
 void Game::OnUpdate(float deltaTime_)
 {
 	cnt++;
-
-
 	player->Update(deltaTime_);
 	enemy->Update(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
-	Vec2 tempV = Window::convertScreenCoords(player->getX(),player->getY()); // put this either inside the Player class or window Class 
-	//cout << "X: " <<tempV.getX()<<"Y: "<<tempV.getY() << endl;
+	Vec2 tempV = player->getPosition();// put this either inside the Player class or window Class 
+	Vec2 enemyPos = enemy->getPosition();
+
+	cout << "Enemy Pos" << endl;
+	//cout << "X:" << enemyPos.x << " Y: " << enemyPos.y << endl;
+	//cout << "Player Pos" << endl;
+	//cout << "X: " <<tempV.x<<"Y: "<<tempV.y << endl;
 	//cout << "Size of Obj holder: " << GameObject::ObjHolder.size() << endl;
 
 
@@ -157,6 +159,7 @@ void Game::handleCollisions()
 void Game::OnRender()
 {
 	SDL_RenderClear(renderer);
+	player->DrawLine(player->getPosition(), enemy->getPosition());
 	mapA->OnRender();
 	player->Render();
 	enemy->Render();

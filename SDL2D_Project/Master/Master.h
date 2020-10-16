@@ -1,5 +1,5 @@
-#ifndef MASTER_HEADER
-#define MASTER_HEARED
+#ifndef MASTER_H
+#define MASTER_H
 class Master
 {
 
