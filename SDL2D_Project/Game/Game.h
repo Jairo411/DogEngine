@@ -4,17 +4,19 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "../TextureManager/TextureManager.h"
+#include "../Window/Window.h"
+#include "../Input/Input.h"
+#include "../Timer/Timer.h"
+#include "Scenes/SceneManager.h"
+#include "Scenes/GameScenes/Scene0.h"
 #include "../GameObjects/Map/Map.h"
 #include "../GameObjects/Map/TileSet/Tiles.h"
-#include "../TextureManager/TextureManager.h"
 #include "../GameObjects/GameObject.h"
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Enemy.h"
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Map/Map.h"
-#include "../Input/Input.h"
-#include "../Window/Window.h"
-#include "../Timer/Timer.h"
 
 
 
@@ -32,14 +34,14 @@ public:
 	bool running() { return isRunning; }
 	static SDL_Renderer *renderer;
 	static Timer *timer;
+	static Window* actualWindow;
 	~Game();
 private:
 	int cnt=0;
-	const int FPS = 60;
+	const int FPS = 120;
 	bool isRunning;
-	SDL_Window *window;
-	Window *actualWindow;
-
+	SDL_Window* window;
+	SceneManager* sceneManager;
 };
 
 #endif // !Game_H

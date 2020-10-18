@@ -25,7 +25,7 @@ MapLayer::MapLayer(Window* window)
 	screenWidth = window->getScreenWidth();
 	screenHeight = window->getScreenHeight();
 	cout << "Size of MAP is: " << rows << "," << cols << "" << endl;
-	OnBuild(DEFAULT); //choose the state through the constuctor 
+	OnBuild(DEBUG); //choose the state through the constuctor 
 }
 
 
@@ -55,7 +55,7 @@ of the map tiles so that it doesn't have to constantly render
  the tiles through the for loop*/
 void MapLayer::OnBuild(int state_)
 {
-	if (state_ == 4)
+	if (state_ == 0)
 	{
 		if (mapDataFlag == false)
 		{

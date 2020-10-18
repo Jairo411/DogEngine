@@ -1,6 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 #include <SDL.h>
+#include <SDL_image.h>
 #include <map>
 #include <iterator>
 #include "../Input/Input.h"

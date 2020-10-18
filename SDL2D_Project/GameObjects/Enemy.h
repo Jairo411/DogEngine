@@ -15,7 +15,7 @@ public:
 	void Disable();
 protected:
 	void ChangeSrcSize(int src_w, int src_h);
-	template<typename T>
+	template<typename T> //I forgot what this does, and it seems to have a functional purpose
 	inline void Pop_Front(vector<T>& v)
 	{
 		if (v.size() > 0)
@@ -37,8 +37,8 @@ public:
 	virtual void Update(float deltaTime_);
 	virtual void Render();
 	void handleCollison();
-	virtual void UpdateAI();
-	virtual void SetTarget(GameObject* obj_);
+	virtual void Chase();
+	//virtual void SetTarget(GameObject* obj_);
 	
 private:
 	float speed;

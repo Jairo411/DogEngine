@@ -9,8 +9,8 @@ class SceneManager
 public:
 	SceneManager();
 
-	void ProcessInput();
-	void Update();
+	void HandleEvents();
+	void Update(float deltaTime_);
 	void Render();
 	void handleCollison();
 	unsigned int Add(std::shared_ptr<Scene> scene);

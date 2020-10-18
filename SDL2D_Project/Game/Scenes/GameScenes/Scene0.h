@@ -1,8 +1,9 @@
-/*#ifndef SCENE0_H
+#ifndef SCENE0_H
 #define SCENE0_H
 
 #include"../../Game.h"
 #include"../Scene.h"
+#include "../../../Window/Window.h"
 
 using namespace std;
 
@@ -14,13 +15,10 @@ public:
 	void OnDestroy() override;
 	void HandleEvents() override;
 	void HandleCollison() override;
-	void OnUpdate() override;
+	void OnUpdate(float deltaTime_) override;
 	void OnRender() override;
-	//static SDL_Renderer* renderer;
 private: 
 	int cnt = 0;
 	bool isRunning;
-	//SDL_Rect srcR, dstR;
 };
-*/
 #endif //SCENE0

@@ -15,6 +15,40 @@ Window::Window()
 	middleOfScreen.x = 0;
 	middleOfScreen.y = 0;
 	window = nullptr;
+
+
+	//  you're gonna now place the window class and renderer functionailty here soon....
+	//int flags = 0;
+
+	/*if (fullscreen)
+	{
+		flags = SDL_WINDOW_FULLSCREEN;
+	}
+
+	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+	{
+		std::cout << "Subsystem Initialised!..." << std::endl;
+		window = SDL_CreateWindow(title, posx, posy, width, height, flags);
+		actualWindow = new Window(window);
+
+		if (window)
+		{
+			std::cout << "Window created!" << std::endl;
+
+		}
+		renderer = SDL_CreateRenderer(window, -1, 0);
+		if (renderer)
+		{
+			SDL_SetRenderDrawColor(renderer, 225, 225, 225, 225);
+			std::cout << "Renderer Created!" << std::endl;
+		}
+		isRunning = true;
+		std::cout << "Width: " << actualWindow->getScreenWidth() << " Height: " << actualWindow->getScreenHeight() << std::endl;
+	}
+	else {
+		isRunning = false;
+	}*/
+
 }
 
 Window::Window(SDL_Window *tempWindow)
@@ -24,6 +58,8 @@ Window::Window(SDL_Window *tempWindow)
 	SquareSize = 40;
 	totalAmountOfSquares = 0;
 	window = tempWindow;
+
+
 	SDL_GetWindowSize(window, &SCREENWIDTH, &SCREENHEIGHT);
 	middleOfScreen.x = SCREENWIDTH/2;
 	middleOfScreen.y = SCREENHEIGHT/2;

@@ -1,6 +1,2 @@
-﻿  Game.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(162,92): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(162,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(162,168): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(162,145): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  Scene0.cpp
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

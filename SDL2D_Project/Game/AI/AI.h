@@ -7,13 +7,27 @@ class AI
 public:
 	AI() {};
 	virtual ~AI() {};
-	virtual void UpdateAI()=0;
+	virtual void Chase()=0;
 	virtual void SetTarget(GameObject* obj_) final;
-	virtual void Purse();
-	virtual void CollisonAvoidance();
-	virtual void Cohensions();
+//	virtual void Purse();
+//	virtual void CollisonAvoidance();
+//	virtual void Cohensions();
 protected:
 		Vec2 targetPos;
 		GameObject* targetObj;
+
+		enum Enabled
+		{
+			FALSE =0,
+			TRUE
+		};
+
+		enum STATES
+		{
+			IDLE = 0,
+			CHASE,
+			ATTACK,
+
+		};
 };
 #endif //AI_H

@@ -27,7 +27,6 @@ class GameObject
 public:
 	GameObject();
    virtual void Update(float deltaTime_)=0;
-   virtual void UpdatePostion() final;
    virtual void Render()=0;
    virtual void Disable() = 0;
    virtual bool setDisable(bool temp) final;
@@ -50,7 +49,8 @@ protected:
 	float rotation;
 	float maxAcceleration; 
 	bool textureIsOn;
-	bool intiAnimation(const char* AnimSetName, const char* relativeDir,const char firstChar);
+	bool intiAnimation(const char* AnimSetName, const char* relativeDir,const char firstChar); // This needs to be moved to the animator class
+	virtual void UpdatePostion() final; 
 	int ReadAmountOfAnimations();
 	void setDelta(float deltaTime_);
 	float getDelta();

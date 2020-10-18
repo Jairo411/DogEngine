@@ -35,7 +35,6 @@ private:
 	/* Need to re-look at all these variables 
 	   I'm pretty sure I don't use all these variables*/
 	int ID;
-	int Xsize, Ysize;
 	int cols, rows;
 	int screenWidth, screenHeight;
 	int size;

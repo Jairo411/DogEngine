@@ -10,7 +10,7 @@ public:
 	virtual void OnDeactivate() {};
 	virtual void HandleEvents() {};
 	virtual void HandleCollison() {};
-	virtual void OnUpdate(){};
-	virtual void OnRender() {};
+	virtual void OnUpdate(float deltaTime_) = 0;
+	virtual void OnRender() = 0;
 };
 #endif //SCENE_HEADER

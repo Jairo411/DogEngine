@@ -2,7 +2,7 @@
 
 SceneManager::SceneManager() : scenes(0), curScene(0),insertedSceneID(NULL) {}
 
-void SceneManager::ProcessInput()
+void SceneManager::HandleEvents()
 {
 	if (curScene)
 	{
@@ -10,11 +10,11 @@ void SceneManager::ProcessInput()
 	}
 }
 
-void SceneManager::Update()
+void SceneManager::Update(float deltaTime_)
 {
 	if (curScene)
 	{
-		curScene->OnUpdate();
+		curScene->OnUpdate(deltaTime_);
 	}
 }
 

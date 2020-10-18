@@ -171,7 +171,7 @@ void Skeleton::Update(float DeltaTime_)
 	}
 	col.CollisonUpdate(position.x, position.y);
 	UpdatePostion();
-	UpdateAI();
+	Chase();
 }
 
 void Skeleton::Render()
@@ -194,12 +194,12 @@ void Skeleton::handleCollison()
 
 }
 
-void Skeleton::UpdateAI()
+void Skeleton::Chase()
 {
 	if (position!=getTarget())
 	{
-		float arrive = 3;
-		int32_t ticks = SDL_GetTicks();
+		//float arrive = 3;
+		//int32_t ticks = SDL_GetTicks();
 		velocity = getTarget() * speed;
 		position = position + velocity * Game::timer->GetDeltaTime();// this should be an equation of motion but you need to have a decent timer class for this 
 	}
@@ -208,9 +208,16 @@ void Skeleton::UpdateAI()
 
 Vec2 Skeleton::getTarget()
 {
-	Vec2 dir = targetObj->getPosition() - position;
-	targetPos = dir.Normalize();
-	return targetPos;
+	if (targetObj != nullptr)
+	{
+		Vec2 dir = targetObj->getPosition() - position;
+		targetPos = dir.Normalize();
+		return targetPos;
+	}
+	else {
+		return Vec2(); // Right now this will just make the Vector 2 have a pos of (0,0), 
+					   // you'll want to return a function that will make it not chase
+	}
 }
 
 void Skeleton::PlayAnimations(int state_) // These in both the player and the enemy classes need to be over an animations class

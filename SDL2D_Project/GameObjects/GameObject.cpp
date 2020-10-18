@@ -142,7 +142,7 @@ void GameObject::setPosition(Vec2 vPosition)
 
 Vec2 GameObject::getPosition()
 {
-	return position;
+	return this->position;
 }
 
 
