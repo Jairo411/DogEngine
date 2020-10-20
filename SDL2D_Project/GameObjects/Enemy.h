@@ -38,7 +38,7 @@ public:
 	virtual void Render();
 	void handleCollison();
 	virtual void Chase();
-	//virtual void SetTarget(GameObject* obj_);
+	virtual void Purse();
 	
 private:
 	float speed;

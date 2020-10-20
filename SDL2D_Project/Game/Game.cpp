@@ -23,7 +23,7 @@ Game::~Game()
 
 }
 
-void Game::init(const char * title, int posx, int posy, int width, int height, bool fullscreen)
+void Game::init(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	int flags = 0;
 
@@ -37,7 +37,7 @@ void Game::init(const char * title, int posx, int posy, int width, int height, b
 		std::cout << "Subsystem Initialised!..." << std::endl;
 		window = SDL_CreateWindow(title, posx, posy, width, height, flags);
 		actualWindow = new Window(window);
-		
+
 		if (window)
 		{
 			std::cout << "Window created!" << std::endl;
@@ -50,7 +50,7 @@ void Game::init(const char * title, int posx, int posy, int width, int height, b
 			std::cout << "Renderer Created!" << std::endl;
 		}
 		isRunning = true;
-		std::cout <<"Width: "<< actualWindow->getScreenWidth() <<" Height: "<<actualWindow->getScreenHeight() << std::endl;
+		std::cout << "Width: " << actualWindow->getScreenWidth() << " Height: " << actualWindow->getScreenHeight() << std::endl;
 	}
 	else {
 		isRunning = false;
@@ -58,7 +58,7 @@ void Game::init(const char * title, int posx, int posy, int width, int height, b
 
 	std::shared_ptr<Scene0> gameScene = std::make_shared<Scene0>();
 	unsigned int gameSceneID = sceneManager->Add(gameScene);
-	
+
 	timer->Start();
 	sceneManager->SwitchTo(gameSceneID);
 	GameLoop();
@@ -67,8 +67,8 @@ void Game::init(const char * title, int posx, int posy, int width, int height, b
 }
 void Game::GameLoop()
 {
-;
-	while (isRunning==true)
+	;
+	while (isRunning == true)
 	{
 		timer->UpdateGeneralFrameTicks();
 		HandleEvents();
@@ -77,7 +77,7 @@ void Game::GameLoop()
 		OnUpdate(timer->GetDeltaTime());
 		SDL_Delay(timer->GetSleepTime(FPS));
 	}
-	
+
 	clean();
 
 }

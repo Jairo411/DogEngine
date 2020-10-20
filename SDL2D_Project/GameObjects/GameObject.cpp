@@ -34,7 +34,7 @@ bool GameObject::intiAnimation(const char* AnimTxtFile, const char* tempRelative
 			input.open(AnimTxtFile);
 			
 		
-			/*Reads txt and checks if has A:
+			/*Reads txt and checks if has a char that matches with what I put in:
 			A's will in the next line will have a const char locations that will read and input those values inside a a map/vector.
 			the filestream will check a line in the file, if there is a N which will mean new animation set, and place it inside a new col/row  of a 2D map/vector.
 			 */

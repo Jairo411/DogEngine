@@ -198,10 +198,16 @@ void Skeleton::Chase()
 {
 	if (position!=getTarget())
 	{
-		//float arrive = 3;
-		//int32_t ticks = SDL_GetTicks();
 		velocity = getTarget() * speed;
 		position = position + velocity * Game::timer->GetDeltaTime();// this should be an equation of motion but you need to have a decent timer class for this 
+	}
+}
+
+void Skeleton::Purse()
+{
+	if (position!=getTarget()&&chaseFlag==true)
+	{
+		/* Input Purse function here*/
 	}
 }
 

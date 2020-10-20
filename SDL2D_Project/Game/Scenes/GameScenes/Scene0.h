@@ -18,7 +18,6 @@ public:
 	void OnUpdate(float deltaTime_) override;
 	void OnRender() override;
 private: 
-	int cnt = 0;
 	bool isRunning;
 };
 #endif //SCENE0
