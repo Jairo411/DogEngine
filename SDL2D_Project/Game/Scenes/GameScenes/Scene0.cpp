@@ -16,10 +16,9 @@ Scene0::Scene0()
 void Scene0::OnCreate()
 {
 	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 150, 150);
-	//player.Disable();
 	enemy = new Skeleton(100, 30);
 	enemy0 = new Skeleton(200, 50);
-	//This just set the size of the game world
+	enemy0->SetTarget(player);
 	mapA = new MapLayer(Game::actualWindow);
 }
 
@@ -34,7 +33,7 @@ void Scene0::HandleEvents()
 	SDL_PollEvent(&event);
 	switch (event.type) {
 	case SDL_QUIT:
-		isRunning = false;
+		Game::setIsRunning(false);
 		break;
 	case SDL_KEYDOWN:
 		player->keyPressed(true, event.key.keysym.sym);
@@ -68,6 +67,8 @@ void Scene0::OnUpdate(float deltaTime_)
 	enemy->Update(deltaTime_);
 	enemy0->Update(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
+
+	std::cout << "X: " << player->getPosition().x << "Y: " << player->getPosition().y << std::endl;
 }
 
 

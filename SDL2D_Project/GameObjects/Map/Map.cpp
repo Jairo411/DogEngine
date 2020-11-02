@@ -1,7 +1,4 @@
 #include "Map.h"
-#include "../../Window/Window.h"
-#include "../../TextureManager/TextureManager.h"
-
 
 MapLayer::MapLayer()
 {

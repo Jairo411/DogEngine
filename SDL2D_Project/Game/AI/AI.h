@@ -9,7 +9,7 @@ public:
 	virtual ~AI() {};
 	virtual void SetTarget(GameObject* obj_) final;
 	virtual void Chase() = 0;
-	virtual void Purse() = 0;
+	virtual void Pursue() = 0;
 	//	virtual void CollisonAvoidance();
 	//	virtual void Cohensions();
 protected:

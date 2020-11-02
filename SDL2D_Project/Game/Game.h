@@ -18,9 +18,6 @@
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Map/Map.h"
 
-
-
-
 class Game{
 public:
 	Game();
@@ -31,15 +28,15 @@ public:
 	void handleCollisions();
 	void OnRender();
 	void clean();
-	bool running() { return isRunning; }
 	static SDL_Renderer *renderer;
 	static Timer *timer;
 	static Window* actualWindow;
+	static bool	setIsRunning(bool tempBool_);
 	~Game();
 private:
 	int cnt=0;
 	const int FPS = 120;
-	bool isRunning;
+	static bool isRunning;
 	SDL_Window* window;
 	SceneManager* sceneManager;
 };

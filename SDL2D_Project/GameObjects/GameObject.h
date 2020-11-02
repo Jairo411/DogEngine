@@ -7,6 +7,7 @@
 #include<vector>
 #include<iostream>
 #include<fstream>
+#include<type_traits>
 #include"../Physics/Math/Vec2.h"
 using namespace std;
 
@@ -33,6 +34,7 @@ public:
 	virtual bool getDisable() final;
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
+//	virtual void HandleCollison(); Update this in the future
 	Vec2 getPosition();
 	static vector<GameObject*> ObjHolder;
 	void DrawLine(Vec2 start_, Vec2 end_);
@@ -43,25 +45,27 @@ private:
 	int getX();
 	int getY();
 	float deltaTime;
-	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle
+	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
 protected:
+	/*Members variables*/
 	float orientation;
 	float rotation;
 	float maxAcceleration;
 	bool textureIsOn;
-	bool intiAnimation(const char* AnimSetName, const char* relativeDir, const char firstChar); // This needs to be moved to the animator class
-	virtual void UpdatePostion() final;
-	int ReadAmountOfAnimations();
-	void setDelta(float deltaTime_);
-	float getDelta();
+	/*Object Members*/
 	string nameID;
-	Vec2 position;
+	Vec2 position; // real position
+	Vec2 Cposition; // move position to the center of the sprite // this is not a good solution to this at all 
 	Vec2 velocity;
-	vector <vector<SDL_Texture*>> animationSet;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
 	GameObject* ptr;
+	/*Functions*/
+	virtual void UpdatePostion() final;
+	int ReadAmountOfAnimations();
+	void setDelta(float deltaTime_);
+	float getDelta();
 };
 
 

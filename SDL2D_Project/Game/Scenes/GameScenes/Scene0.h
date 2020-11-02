@@ -17,7 +17,5 @@ public:
 	void HandleCollison() override;
 	void OnUpdate(float deltaTime_) override;
 	void OnRender() override;
-private: 
-	bool isRunning;
 };
 #endif //SCENE0

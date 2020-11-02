@@ -2,29 +2,20 @@
 #define MAP_H
 #include "TileSet/Tiles.h"
 #include "../../Game/Game.h"
+#include "../../Window/Window.h"
+#include "../../TextureManager/TextureManager.h"
 #include "../../Physics/Math/Vec2.h"
 #include <list>
 #include <vector>
-
-using namespace std;
-class TextureManager;
-
 /*Map Layer is the game map, Takes in the Window class I made, 
 takes the screen width and height. Then displays the tiles from 0,0 to the final coordinate.
 have the Other classes in order to move functionality.
 */
-
-class GraphicLayer{
-
-};
-
-class Window;
 class MapLayer
 {
 public:
 	MapLayer();
 	MapLayer(Window* window);
-	
 	void OnBuild(int state_);
 	void ReadMapData();
 	void OnRender();

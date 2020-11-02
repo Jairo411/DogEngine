@@ -4,10 +4,10 @@
 #include "../TextureManager/TextureManager.h"
 #include "../Physics/Collider.h"
 #include "../Game/AI/AI.h"
+#include "../Animator/Animator.h"
 
 using namespace std;
 
-class Game;
 class Enemy: public GameObject
 {
 public:
@@ -27,27 +27,28 @@ private:
 	//Could enter generics here 
 };
 
-class Skeleton : public Enemy, public AI
+class Skeleton : public Enemy, public AI , public Animator
 {
 public:
 	Skeleton();
 	Skeleton(int x, int y);
 	~Skeleton();
 	void Inti();
+	void handleCollison();
 	virtual void Update(float deltaTime_);
 	virtual void Render();
-	void handleCollison();
 	virtual void Chase();
-	virtual void Purse();
+	virtual void Pursue();
 	
 private:
+	/*Member variables*/
 	float speed;
+	float prediction;
+	/*Objects Members*/
 	Vec2 targetPos;
 	Collider col;	
 	SDL_Rect srcRect0, destRect0;
-	void PlayAnimations(int state_);
-	Vec2 getTarget();
-	enum Animations
+	enum class AnimationStates
 	{
 		ATTACK = 0,
 		DEAD,
@@ -56,5 +57,15 @@ private:
 		REACT,
 		WALK
 	};
+	AnimationStates animState;
+	/*Functions*/
+	virtual void PlayAnimations(AnimationStates state_);
+	Vec2 getTarget();
 };
+
+struct SkeletonStats
+{
+
+};
+
 #endif

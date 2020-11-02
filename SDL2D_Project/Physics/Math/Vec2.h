@@ -32,6 +32,7 @@ public:
 	bool operator==(const Vec2& b_);
 	bool operator!=(const Vec2& b_);
 
+
 	float x, y;
 private: 
 	 float SetMag();

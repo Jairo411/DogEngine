@@ -142,6 +142,7 @@ bool Vec2::operator!=(const Vec2& b_)
 	}
 }
 
+
 Vec2 Vec2::rotate()
 {
 

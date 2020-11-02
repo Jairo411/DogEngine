@@ -7,7 +7,7 @@
 class SDL;
 class Window;
 /* This is Input class is capable of an abstract class,
-but does have actual functionallity.
+but does have actual functionallity. Really its more of an interface if anything.
 */
 class Input
 {

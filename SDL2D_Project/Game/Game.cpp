@@ -4,7 +4,7 @@ SDL_Rect* srcR, dstR;
 SDL_Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::actualWindow = nullptr;
-
+bool Game::isRunning = false;
 
 
 Game::Game()
@@ -16,6 +16,11 @@ Game::Game()
 }
 
 
+bool Game::setIsRunning(bool tempBool_)
+{
+	isRunning = tempBool_;
+	return isRunning;
+}
 
 Game::~Game()
 {
@@ -67,7 +72,7 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 }
 void Game::GameLoop()
 {
-	;
+	
 	while (isRunning == true)
 	{
 		timer->UpdateGeneralFrameTicks();
