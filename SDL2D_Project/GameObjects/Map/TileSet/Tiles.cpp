@@ -1,10 +1,11 @@
 #include "Tiles.h"
 #include "C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\TextureManager\TextureManager.h"
 
-map<int, SDL_Texture*> TileSet::imageSetHolder;
+vector<SDL_Texture*> TileSet::imageSetHolder;
 TileSet* TileSet::instance;
 int Tile::width = 0;
 int Tile::height = 0;
+
 Tile::Tile()
 {
 	baseTex = __nullptr;
@@ -44,7 +45,7 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 
 	dstRect.w = srcRect.w;
 	dstRect.h = srcRect.h;
-	col = Collider(x,y,20);
+	col = RectCollider(x, y, dstRect.w);
 	isSoild = solid;
 
 }
@@ -52,8 +53,8 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 void Tile::OnRender()
 {
 
-	SDL_RenderCopy(Game::renderer, baseTex, &srcRect,&dstRect);
-	//col.CollisonRender();
+	SDL_RenderCopy(Game::renderer, baseTex, &srcRect, &dstRect);
+	col.CollisonRender();
 }
 
 void Tile::setTileSize(int width_, int height_)
@@ -72,15 +73,7 @@ int Tile::getHeight()
 	return height;
 }
 
-int Tile::getX()
-{
-	return x;
-}
 
-int Tile::getY()
-{
-	return y;
-}
 
 bool Tile::KeyBoardInput(int key_)
 {
@@ -89,13 +82,13 @@ bool Tile::KeyBoardInput(int key_)
 
 bool Tile::MouseInput(int key_)
 {
-	if (key_!=NULL)
+	if (key_ != NULL)
 	{
-		if (key_==SDL_BUTTON_LEFT)
+		if (key_ == SDL_BUTTON_LEFT)
 		{
 			SDL_Rect result;
 			TileSet* set = TileSet::GetInstance();
-			if (SDL_IntersectRect(col.getCollider(),Input::mouseClick->getCollider(),&result))
+			if (SDL_IntersectRect(col.getCollider(), Input::mouseClick->getCollider(), &result))
 			{
 				baseTex = set->getTile(5);
 			}
@@ -110,23 +103,31 @@ bool Tile::controllerInput(int key_)
 	return false;
 }
 
-
-void Tile::setX(int x_)
+void Tile::SetPosition(Vec2 pos_)
 {
-	x = x_;
+	x = pos_.x;
+	y = pos_.y;
 }
 
-void Tile::setY(int y_)
+void Tile::SetStats(int x_, int y_, int labels_)
 {
-	y = y_;
+	tileDataMap.x = x_;
+	tileDataMap.y = y_;
+	tileDataMap.n = new Node(labels_);
 }
+
 
 void Tile::OnUpdate()
 {
 
 }
 
-SDL_Texture * Tile::getTex()
+Vec2 Tile::getPosition()
+{
+	return Vec2(x, y);
+}
+
+SDL_Texture* Tile::getTex()
 {
 	return baseTex;
 }
@@ -144,6 +145,7 @@ int Tile::getID()
 void Tile::SetID(int ID_)
 {
 	ID = ID_;
+	tileDataMap.labels = ID;
 }
 
 Tile::~Tile()
@@ -165,16 +167,16 @@ TileSet::TileSet(std::string tempName, int tempID)
 TileSet* TileSet::GetInstance()
 {
 
-	if (instance==nullptr)
+	if (instance == nullptr)
 	{
-		instance = new TileSet("BaseLayer",0);
+		instance = new TileSet("BaseLayer", 0);
 	}
 	return instance;
 }
 
 TileSet* TileSet::RemoveInstance()
 {
-	if (instance!=nullptr)
+	if (instance != nullptr)
 	{
 		instance = nullptr;
 	}
@@ -187,7 +189,12 @@ TileSet::~TileSet()
 
 void TileSet::Init()
 {
-	SDL_Texture* tempIMG;
+	SDL_Texture* actualIMG;
+	int width, height;
+	actualIMG = TextureManager::LoadTexture("Assets/Level Sprites/Foreground/Tileset.png");
+	SDL_QueryTexture(actualIMG, NULL, NULL, &width, &height);
+	imageSetHolder = TextureManager::LoadMapSprite(actualIMG, width, height, 20, 16, 32);
+	/*SDL_Texture* tempIMG;
 	SDL_Texture* actualIMG;
 	actualIMG = TextureManager::LoadTexture("Assets/Level Sprites/Foreground/Tileset.png");
 
@@ -209,17 +216,18 @@ void TileSet::Init()
 			 srcRect.y = sourceY;
 
 			 tempIMG = TextureManager::LoadTexture(srcRect,actualIMG);
-			 // it's working now
 			 imageSetHolder.insert(make_pair(c+r,tempIMG));
-		 }
-	 }
+		 }*/
+}
 
-std::map<int, SDL_Texture*> TileSet::GetTileSet()
+
+vector<SDL_Texture*> TileSet::GetTileSet()
 {
 	return imageSetHolder;
 }
 
-SDL_Texture * TileSet::getTile(int key_)
+SDL_Texture* TileSet::getTile(int index_)
 {
-	return imageSetHolder[key_];
+	return imageSetHolder[index_];
 }
+

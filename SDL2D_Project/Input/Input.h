@@ -3,7 +3,7 @@
 #include <map>
 #include <iostream>
 #include "../Physics/Collider.h"
-#include "../Physics/Math/Vec2.h"
+#include "../Math/Vec2.h"
 class SDL;
 class Window;
 /* This is Input class is capable of an abstract class,
@@ -22,7 +22,7 @@ public:
 	std::map<int, bool> InputKeyBoardHolder;
 	std::map<int, bool> InputMouseHolder;
 
-	static Collider* mouseClick;
+	static RectCollider* mouseClick;
 	void setWindow(Window* windowptr_);
 	void setMiddlePoint(Vec2 tempV);
 	Vec2 getMiddlePoint();

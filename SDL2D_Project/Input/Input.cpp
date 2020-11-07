@@ -2,7 +2,7 @@
 #include "Input.h"
 #include "../Window/Window.h"
 
-Collider* Input::mouseClick = new Collider();
+RectCollider* Input::mouseClick = new RectCollider();
 int Input::mouseX = 0, Input::mouseY = 0;
 
 Input::~Input()
@@ -75,7 +75,7 @@ bool Input::CreateCollider(bool state_)
 {
 	if (state_==true)
 	{
-		mouseClick = new Collider(mouseX, mouseY, 10);
+		mouseClick = new RectCollider(mouseX, mouseY, 10);
 	}
 	else if (state_==false)
 	{

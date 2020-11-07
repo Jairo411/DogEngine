@@ -35,6 +35,7 @@ public:
 	bool KeyBoardInput(int key);
 	bool controllerInput(int key);
 	void CreateMiddleRect();
+	//void OnCreateUI(UI tempUI_) adding UI functionality 
 	void OnRender();
 	void OnUpdate();
 	static Vec2 convertScreenCoords(int x, int y);

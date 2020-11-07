@@ -4,13 +4,17 @@
 #include "../../Game/Game.h"
 #include "../../Window/Window.h"
 #include "../../TextureManager/TextureManager.h"
-#include "../../Physics/Math/Vec2.h"
+#include "../../Math/Vec2.h"
 #include <list>
 #include <vector>
+
 /*Map Layer is the game map, Takes in the Window class I made, 
 takes the screen width and height. Then displays the tiles from 0,0 to the final coordinate.
 have the Other classes in order to move functionality.
 */
+
+
+
 class MapLayer
 {
 public:
@@ -35,12 +39,9 @@ private:
 	bool Visible;
 	bool mapDataFlag;
 	std::string name;
-	SDL_Texture* tex;
 	std::vector<Tile> tileMap;
-	std::map<int, map<int, int>> mapData;
+	SDL_Texture* tex;
 	Vec2 covertedScreenCoords;
-	// You need to find a way to dynamically Create this arrays Size
-	//I HAVE AN ENUM HERE TO SET THE STANDARD TILE TYPE
 	enum MapSetUp : unsigned short
 	{
 		DEBUG = 0,
@@ -56,17 +57,11 @@ private:
 };
 
 class GameMap {
-private:
-
 public:
-	GameMap();
+	GameMap(MapLayer mapData_);
 	~GameMap();
+private:
+	MapLayer MapData;
 };
 
-class GameMapEditor
-{
-public:
-	GameMapEditor();
-	~GameMapEditor();
-};
 #endif // !MAP_H

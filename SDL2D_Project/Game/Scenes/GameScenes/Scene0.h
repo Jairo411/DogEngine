@@ -1,9 +1,8 @@
 #ifndef SCENE0_H
 #define SCENE0_H
 
-#include"../../Game.h"
 #include"../Scene.h"
-#include "../../../Window/Window.h"
+#include"../../Game.h"
 
 using namespace std;
 
@@ -17,5 +16,7 @@ public:
 	void HandleCollison() override;
 	void OnUpdate(float deltaTime_) override;
 	void OnRender() override;
+ 
+
 };
 #endif //SCENE0

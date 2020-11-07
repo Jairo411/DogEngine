@@ -40,11 +40,7 @@ of the map tiles so that it doesn't have to constantly render
  the tiles through the for loop*/
 void MapLayer::OnUpdate(float deltaTime_)
 {
-	int total = tileMap.size();
-	for (int i = 0; i < total; i++)
-	{
-		//tileMap.at(i).OnRender();
-	}
+	
 }
 /*
 okay so this works but you should probably store the values
@@ -71,24 +67,14 @@ void MapLayer::OnBuild(int state_)
 						int index = i + j;
 
 						tex = set->getTile(set->BASETILE); // you don't have to give it is texture information right away.
-						Tile::setTileSize(20, 20);
 						//This is how you access the Tile Textures Right here;
+						Tile::setTileSize(20, 20);
 						tileMap.push_back(Tile(tex, tempR, tempC, true));
+						tileMap.at(index).setTileSize(20, 20);
+						Vec2 position = Vec2(i, j);
 						tileMap.at(index).SetID(index);
-
-						/*This is PesudoCode 
-						int X = i;
-						int Y = j;
-						Vec2 temp = covertedScreenCoords(int x,int y);
-						tileMap.at(index).setX(temp.getX());
-						tileMap.at(index).setY(temp.getY());
-
-						This switches the tiles from screenCoords, to a origin
-						that is in the middle
-						*/// The Purpose of this is probably I will be able to move these tiles properly during game which could be cool.
-
-						tileMap.at(index).setX(i);
-						tileMap.at(index).setY(j);
+						tileMap.at(index).SetPosition(position);
+						tileMap.at(index).SetStats(i, j, index);
 						 
 					}
 				}
@@ -105,15 +91,15 @@ void MapLayer::OnBuild(int state_)
 
 						int index = i + j;
 
-						tex = set->getTile(set->DIRTTILE); // you don't have to give it is texture information right away.
-						Tile::setTileSize(20, 20);
+						tex = set->getTile(set->BASETILE); // you don't have to give it is texture information right away.
 						//This is how you access the Tile Textures Right here;
+						Tile::setTileSize(20, 20);
 						tileMap.push_back(Tile(tex, tempR, tempC, true));
+						Vec2 position = Vec2(i, j);
 						tileMap.at(index).SetID(index);
-						tileMap.at(index).setX(i);
-						tileMap.at(index).setY(j);
+						tileMap.at(index).SetPosition(position);
+						tileMap.at(index).SetStats(i, j, index);
 
-						//	mapDataFlag = true;
 					}
 				}
 			}

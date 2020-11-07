@@ -8,7 +8,7 @@
 #include<iostream>
 #include<fstream>
 #include<type_traits>
-#include"../Physics/Math/Vec2.h"
+#include"../Math/Vec2.h"
 using namespace std;
 
 /*Standard GameObject class should be abstract and should be the base class.
@@ -42,10 +42,9 @@ private:
 	bool disableObject;
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;
-	int getX();
-	int getY();
-	float deltaTime;
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
+	Vec2 Cposition; // move position to the center of the sprite // this is not a good solution to this at all  <-- this was stupid
+	float deltaTime;
 protected:
 	/*Members variables*/
 	float orientation;
@@ -55,7 +54,6 @@ protected:
 	/*Object Members*/
 	string nameID;
 	Vec2 position; // real position
-	Vec2 Cposition; // move position to the center of the sprite // this is not a good solution to this at all 
 	Vec2 velocity;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;

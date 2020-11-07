@@ -34,6 +34,38 @@ SDL_Texture * TextureManager::LoadTexture(SDL_Rect sRect,SDL_Texture* source)
 	return tex;
 }
 
+std::vector<SDL_Texture*> TextureManager::LoadMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
+{
+	std::vector<SDL_Texture*> MapSpriteContainer;
+	SDL_Rect srcRect;
+	SDL_Texture* tempIMG;
+	SDL_Texture* mapSprite = tex_;
+	int width = width_;
+	int height = height_;
+	int sourceX, sourceY;
+	
+	width = width / SizeOfCut_;
+	height = height / SizeOfCut_;
+
+	srcRect.w = sourceX_;
+	srcRect.h = sourceY_;
+
+	for (int r = 0; r < width; r++)
+	{
+		for (int c = 0; c < height; c++)
+		{
+			sourceX = sourceX_ *r;
+			sourceY = sourceY_ *c;
+			srcRect.x = sourceX;
+			srcRect.y = sourceY;
+
+			tempIMG = TextureManager::LoadTexture(srcRect, mapSprite);
+			MapSpriteContainer.push_back(tempIMG);
+		}
+	}
+	return MapSpriteContainer;
+}
+
 
 
 void TextureManager::Draw(SDL_Texture * tex, SDL_Rect src, SDL_Rect dest)

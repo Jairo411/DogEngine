@@ -44,16 +44,16 @@ public:
 		 SLIDE,
 	 };
 private:  
-
 	/*Members*/
 	int amountOfAnimations;
 	float delta;
 	bool disableObject;
 	/*Objects/Classes*/
-	Collider collider;
+	RectCollider collider;
 	Uint32 FrameTicks;
-	SDL_Rect endRect;
+	SDL_Rect srcRect0, dstRect0;
 	GameObject* playerPtr;
+	CircleCollider circleCol;
 	AnimationStates animState;
 	/*Functions*/
 	virtual void PlayAnimations(AnimationStates temp_);

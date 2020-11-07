@@ -1,7 +1,7 @@
 #include "Collider.h"
 #include "../Game/Game.h"
 
-Collider::Collider()
+RectCollider::RectCollider()
 {
 	x = 0;
 	y = 0;
@@ -9,29 +9,29 @@ Collider::Collider()
 	srcRect.y = 0;
 	srcRect.w = 0;
 	srcRect.h = 0;
-	
+
 	collisonObjectType = CollisonObjectType::NONE;
 	collisonType = CollisonType::NO_COl;
 }
 
-Collider::Collider(int area_)
+RectCollider::RectCollider(int squareArea_)
 {
 	x = 0;
 	y = 0;
 
-	
+
 	collisonObjectType = CollisonObjectType::NONE;
 	collisonType = CollisonType::NO_COl;
 
 	srcRect.x = x;
 	srcRect.y = y;
 
-	srcRect.w = area_;
-	srcRect.h = area_;
+	srcRect.w = squareArea_;
+	srcRect.h = squareArea_;
 
 }
 
-Collider::Collider( int width_, int height_)
+RectCollider::RectCollider(int width_, int height_)
 {
 	x = 0;
 	y = 0;
@@ -48,7 +48,7 @@ Collider::Collider( int width_, int height_)
 	middlePoint = Vec2(width_ / 2, height_ / 2);
 }
 
-Collider::Collider(int x_, int y_, int size_)
+RectCollider::RectCollider(int x_, int y_, int size_)
 {
 	x = x_;
 	y = y_;
@@ -65,7 +65,7 @@ Collider::Collider(int x_, int y_, int size_)
 
 
 
-void Collider::CollisonUpdate(int colPosX,int colPosY)
+void RectCollider::CollisonUpdate(int colPosX, int colPosY)
 {
 	/*This is needs to worked out and actually thought out .*/
 	int xPos, yPos;
@@ -73,71 +73,149 @@ void Collider::CollisonUpdate(int colPosX,int colPosY)
 	xPos = x + colPosX;
 	yPos = y + colPosY;
 
-
 	srcRect.x = xPos;
 	srcRect.y = yPos;
 
-
 	switch (collisonObjectType)
 	{
-	case Collider::NONE:
+	case RectCollider::NONE:
 		switch (collisonType)
 		{
-		case Collider::NO_COl:
+		case RectCollider::NO_COl:
 			break;
-		case Collider::Game_COL:
+		case RectCollider::Game_COL:
 			break;
-		case Collider::Projectile_COL:
+		case RectCollider::Projectile_COL:
 			break;
 		}
 		break;
-	case Collider::GAMEOBJECT:
+	case RectCollider::GAMEOBJECT:
 		switch (collisonType)
 		{
-		case Collider::NO_COl:
+		case RectCollider::NO_COl:
 			break;
-		case Collider::Game_COL:
+		case RectCollider::Game_COL:
 			break;
-		case Collider::Projectile_COL:
+		case RectCollider::Projectile_COL:
 			break;
 		}
 		break;
 	}
 }
 
-void Collider::CollisonRender()
+void RectCollider::CollisonUpdate(Vec2 position_)
+{
+	srcRect.x = position_.x;
+	srcRect.y = position_.y;
+}
+
+void RectCollider::CollisonRender()
 {
 	SDL_SetRenderDrawColor(Game::renderer, 33, 191, 75, 0);
 	SDL_RenderDrawRect(Game::renderer, &srcRect);
 	SDL_SetRenderDrawColor(Game::renderer, 225, 225, 225, 255);
 }
-	
 
-void Collider::SetCollisonObjectType(int col_)
+
+void RectCollider::SetCollisonObjectType(int col_)
 {
 	collisonObjectType = col_;
 }
 
-void Collider::SetCollisonType(int col_)
+void RectCollider::SetCollisonType(int col_)
 {
 	collisonType = col_;
 }
 
-void Collider::MouseEventListener(int event)
+void RectCollider::MouseEventListener(int event)
 {
-	
+
 }
 
-SDL_Rect* Collider::getCollider()
+SDL_Rect* RectCollider::getCollider()
 {
 	return &srcRect;
 }
 
 
 
-Collider::~Collider()
+RectCollider::~RectCollider()
 {
 
 }
 
+CircleCollider::CircleCollider()
+{
+	x = 0;
+	y = 0;
+	oX = 0;
+	oY = 0;
+	radius = 0;
+}
 
+CircleCollider::CircleCollider(float radius_)
+{
+	oX = 0;
+	oY = 0;
+	radius = powf(radius_, 2);
+	float startAngle = 0.0f;
+	float endAngle = 360.0f;
+	for (int i = 0; i < endAngle; i++)
+	{
+		startAngle = i;
+		x = radius * cos(startAngle);
+		y = radius * sin(startAngle);
+		positions.push_back(Vec2(x, y));
+	}
+}
+
+CircleCollider::CircleCollider(int x_, int y_, float radius_)
+{
+	oX = x_;
+	oY = y_;
+	radius = powf(radius_, 2);
+	float startAngle = 0.0f;
+	float endAngle = 360.0f;
+	for (int i = startAngle; i < endAngle; i++)
+	{
+		startAngle = i;
+		x = oX + radius * cos(startAngle);
+		y = oY + radius * sin(startAngle);
+		//std::cout << "Circle pos X: " << x << " Circle pos Y: " << y << std::endl;
+		positions.push_back(Vec2(x, y));
+	}
+}
+
+
+void CircleCollider::Update(Vec2 position_)
+{
+	positions.clear();
+	oX = position_.x;
+	oY = position_.y;
+	float startAngle = 0.0f;
+	float endAngle = 360.0f;
+	for (int i = startAngle; i < endAngle; i++)
+	{
+		startAngle = i;
+		x = oX + radius * cos(startAngle);
+		y = oY + radius * sin(startAngle);
+		//std::cout << "Circle pos X: " << x << " Circle pos Y: " << y << std::endl;
+		positions.push_back(Vec2(x, y));
+	}
+	
+}
+
+void CircleCollider::Render()
+{
+	SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 0);
+	for (int i = 0; i < positions.size(); i++)
+	{
+		SDL_RenderDrawPoint(Game::renderer, positions.at(i).x, positions.at(i).y);
+	}
+	SDL_SetRenderDrawColor(Game::renderer, 225, 225, 225, 255);
+}
+
+CircleCollider::~CircleCollider()
+{
+
+}

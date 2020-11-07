@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../../../Physics/Collider.h"
 #include "../../../Input/Input.h"
+#include "../../../PriorityQueue/node.h"
 /*
 This is the tile class, all IT SHOULD DO IS cut up tile textures and save so they
 can be used later.
@@ -17,18 +18,9 @@ We done need any more than one
 */
 using namespace std;
 class TextureManager;
+/* If this is suppose to be a singleton please give it singleton functionality*/
 class TileSet
 {
-protected:
-	static TileSet* instance;
-private:
-	int ID;
-	string name;
-	string tileSet;
-	static map<int, SDL_Texture*> imageSetHolder;
-	SDL_Rect srcRect, desRect;
-	void Init();
-	TileSet(string name, int ID);
 public:
 	// THE tileSet CLASS WILL ASSIGN THE TYPE OF TILE TO THE ARRAY
 	enum ID : unsigned int
@@ -45,45 +37,53 @@ public:
 	void operator=(const TileSet&) = delete;
 	static TileSet* GetInstance();
 	static TileSet* RemoveInstance();
-	static map<int, SDL_Texture*>GetTileSet();
-	static SDL_Texture* getTile(int key_);
+	static vector<SDL_Texture*>GetTileSet();
+	static SDL_Texture* getTile(int index_);
 	TileSet(TileSet& temp) = delete;
 	~TileSet();
+private:
+	static TileSet* instance;
+	int ID;
+	string name;
+	string tileSet;
+	SDL_Rect srcRect, desRect;
+	static vector<SDL_Texture*> imageSetHolder;
+	void Init();
+	TileSet(string name, int ID);
 };
-
-/*This class is setUp I don't think Ill add anymore
-Because everything should be actually made inside the map class*/
-//Honestly could've done this insides the tileClass but this exists so im going to leave it.
-
+struct TileStats
+{
+	int x, y;
+	int labels;
+	float prioritiesWeight;
+	Node* n;
+};
 class Tile: public Input
 {
 public:
 	Tile();
 	Tile(SDL_Texture* tex_, int srcX, int srcY, bool solid);//Creates Squares tiles but could really create rectangles
-	//Tile(SDL_Texture* tex_, int srcX, int srcy); how the Tile function should look
 	SDL_Texture* getTex();
 	SDL_Rect getSrcRect();
-
-	static void setTileSize(int width_, int height_);
+	Vec2 getPosition();
 	static int getWidth();
 	static int getHeight();
+	static void setTileSize(int width_, int height_);
 	void SetID(int ID_);
 	void OnRender();
 	void OnUpdate();
-	int getX();
-	int getY();
 	bool KeyBoardInput(int key_);
 	bool MouseInput(int key_);
 	bool controllerInput(int key_);
-	void setX(int x_);
-	void setY(int y_);
+	void SetPosition(Vec2 pos_);
+	void SetStats(int x_, int y_, int labels_);
 	~Tile();
 private:
 	SDL_Texture* baseTex;
 	SDL_Rect srcRect,dstRect;
-	Collider col;
+	RectCollider col;
+	TileStats tileDataMap;
 	int getID();
-	//This are int Variables for the postion of the Tile in the Array not Postion on the screen
 	int ID;
 	int x, y;
 	static int width, height;

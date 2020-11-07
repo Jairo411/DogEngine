@@ -1,12 +1,11 @@
 #include "Player.h"
 #include "../TextureManager/TextureManager.h"
 
+/* How the sprite gets loaded is a problem. */
 Player::Player()
 {
 	/* Basic intializations of a member variables */
 	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
-	//objTexture = NULL;
-	//AnimState = NULL;
 	position = Vec2();
 	srcRect.w = 0;
 	srcRect.h = 0;
@@ -15,8 +14,7 @@ Player::Player()
 	FrameTicks = NULL;
 	amountOfAnimations = 0;
 	disableObject = NULL;
-	endRect = SDL_Rect();
-	collider = Collider();
+	collider = RectCollider();
 	ptr = nullptr;
 	/* Don't know the point of this to be honest...*/
 }
@@ -26,16 +24,22 @@ Player::Player(const char* textureSheet, int x, int y)
 	/* Basic intializations of a member variables */
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	animState = AnimationStates::IDLE0;
-	srcRect.w = 100;
-	srcRect.h = 80;
-	srcRect.x = 0;
-	srcRect.y = 0;
+	setPosition(x, y);
+	srcRect.w = 100; // IMAGE SIZE ----> MAKE THIS A GAMEOBJECT FUNCTION 
+	srcRect.h = 80; // IMAGE SIZE  This is where the image get finished drawed  
+	srcRect.x = 0;  // This is where the image start begin drawed 
+	srcRect.y = 0; // This is where the image start begin drawed
+
+
+	destRect.x = srcRect.x;
+	destRect.y = srcRect.y;
+
 	amountOfAnimations = 0;
 	FrameTicks = NULL;
 	disableObject = NULL;
-	endRect = SDL_Rect();
-	collider = Collider(srcRect.w, srcRect.h);
-	setPosition(x, y);
+
+	circleCol = CircleCollider(5.0f);
+	collider = RectCollider(srcRect.w,srcRect.h);
 	ptr = this;
 	IntiAnimations("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt", "./Assets/Character/Sprites/", 'a'); //Calling from the Animator class
 	if (this->objTexture != NULL)
@@ -81,7 +85,7 @@ void Player::Update(float deltaTime_)
 	{
 		Disable();
 	}
-	collider.CollisonUpdate(position.x, position.y);
+	collider.CollisonUpdate(this->position);
 	UpdatePostion();
 }
 
