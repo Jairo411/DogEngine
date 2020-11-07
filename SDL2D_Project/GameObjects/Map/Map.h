@@ -3,8 +3,8 @@
 #include "TileSet/Tiles.h"
 #include "../../Game/Game.h"
 #include "../../Window/Window.h"
-#include "../../TextureManager/TextureManager.h"
 #include "../../Math/Vec2.h"
+#include "../../Math/Converter.h"
 #include <list>
 #include <vector>
 
@@ -20,12 +20,14 @@ class MapLayer
 public:
 	MapLayer();
 	MapLayer(Window* window);
+	~MapLayer();
 	void OnBuild(int state_);
 	void ReadMapData();
 	void OnRender();
 	void OnUpdate(float deltaTime_);
+	static Vec2 getGameObjectLocation(Vec2 position_);
+	static void readTileMap(GameObject* gameObj_);
 	int  keyCode;
-	~MapLayer();
 private:
 	/* Need to re-look at all these variables 
 	   I'm pretty sure I don't use all these variables*/
@@ -42,6 +44,7 @@ private:
 	std::vector<Tile> tileMap;
 	SDL_Texture* tex;
 	Vec2 covertedScreenCoords;
+	TileSet set0;
 	enum MapSetUp : unsigned short
 	{
 		DEBUG = 0,

@@ -54,6 +54,9 @@ std::vector<SDL_Texture*> TextureManager::LoadMapSprite(SDL_Texture* tex_, int w
 	{
 		for (int c = 0; c < height; c++)
 		{
+			sourceX = sourceX_;
+			sourceY = sourceY_;
+
 			sourceX = sourceX_ *r;
 			sourceY = sourceY_ *c;
 			srcRect.x = sourceX;

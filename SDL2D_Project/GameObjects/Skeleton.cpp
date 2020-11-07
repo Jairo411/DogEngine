@@ -211,6 +211,17 @@ void Skeleton::Seperate()
 	
 }
 
+void Skeleton::CreatePriorties()
+{
+	/* Establish a sort of move set for your character to allow you to handle in a certain way*/
+
+	//first get the GameObject location within the squares 
+	Vec2 currentPos;
+	
+
+
+}
+
 Vec2 Skeleton::getTargetDirection()
 {
 	if (targetObj != nullptr)

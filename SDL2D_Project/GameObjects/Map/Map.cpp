@@ -15,21 +15,29 @@ MapLayer::MapLayer(Window* window)
 	//This is should be the main Constructor
 	name = "MapLayer";
 	ID = 0;
-	tileSize = 20;
+	tileSize = 32;
 	mapStatus = DEVELOPER;
 	rows = window->getScreenWidth()/tileSize; //divided by the SDL_rect.w size of my tiles  
 	cols = window->getScreenHeight()/tileSize; //divided by the SDL_rect.h size of my tiles 
 	screenWidth = window->getScreenWidth();
 	screenHeight = window->getScreenHeight();
+	SDL_Rect srcRect, desRect;
+	srcRect.w = 32;
+	srcRect.h = 32;
+	desRect.w = srcRect.w;
+	desRect.h = srcRect.h;
+	set0 = TileSet("./Assets/Level Sprites/Foreground/template8x6.png", "DeveloperMap", 0);
+	set0.SetDisplayRects(srcRect, desRect);
+	set0.CreateSet(64, desRect.w, desRect.h);
 	cout << "Size of MAP is: " << rows << "," << cols << "" << endl;
 	OnBuild(DEBUG); //choose the state through the constuctor 
+	std::cout << "X: " <<tileMap.at(30).getPosition().x << "Y: " <<tileMap.at(30).getPosition().y << std::endl;
 }
 
 
 void MapLayer::OnRender()
 {
-	int total = tileMap.size();
-	for (int i = 0; i < total; i++)
+	for (int i = 0; i < tileMap.size(); i++)
 	{
 		tileMap.at(i).OnRender();
 	}
@@ -42,21 +50,31 @@ void MapLayer::OnUpdate(float deltaTime_)
 {
 	
 }
+Vec2 MapLayer::getGameObjectLocation(Vec2 position_)
+{
+	/*Compare this to your tilePosition*/
+	Vec2 newPosition;
+	newPosition = Converter::GetMiddleOfSquare(position_);
+	return newPosition;
+}
+void MapLayer::readTileMap(GameObject* gameObj_)
+{
+	Vec2 currentPosition;
+}
 /*
 okay so this works but you should probably store the values
 of the map tiles so that it doesn't have to constantly render
  the tiles through the for loop*/
 void MapLayer::OnBuild(int state_)
 {
+	int index = 0;
 	if (state_ == 0)
 	{
 		if (mapDataFlag == false)
 		{
-			TileSet* set = TileSet::GetInstance(); // When you create the UI to select the different types of tile you are going to move this 
 			switch (mapStatus)
 			{
 			case MapLayer::DEBUG:
-
 				for (int i = 0; i < rows; i++)
 				{
 					for (int j = 0; j < cols; j++)
@@ -64,24 +82,21 @@ void MapLayer::OnBuild(int state_)
 						int tempR = tileSize * i; //these can be used as the cordiantes that I can used in order to place tiles
 						int tempC = tileSize * j;// the space between the rows and the cols should be the same as the size of the colliders and textures in the Tile class
 
-						int index = i + j;
-
-						tex = set->getTile(set->BASETILE); // you don't have to give it is texture information right away.
+						tex = TileSet::getTile(0); // you don't have to give it is texture information right away.
 						//This is how you access the Tile Textures Right here;
-						Tile::setTileSize(20, 20);
+					//	Tile::setTileSize(20, 20);
 						tileMap.push_back(Tile(tex, tempR, tempC, true));
-						tileMap.at(index).setTileSize(20, 20);
 						Vec2 position = Vec2(i, j);
 						tileMap.at(index).SetID(index);
 						tileMap.at(index).SetPosition(position);
-						tileMap.at(index).SetStats(i, j, index);
-						 
+						index++;
 					}
 				}
 
 				break;
 			case MapLayer::DEVELOPER:
 			{
+				
 				for (int i = 0; i < rows; i++)
 				{
 					for (int j = 0; j < cols; j++)
@@ -89,17 +104,18 @@ void MapLayer::OnBuild(int state_)
 						int tempR = tileSize * i; //these can be used as the cordiantes that I can used in order to place tiles
 						int tempC = tileSize * j;// the space between the rows and the cols should be the same as the size of the colliders and textures in the Tile class
 
-						int index = i + j;
+						
 
-						tex = set->getTile(set->BASETILE); // you don't have to give it is texture information right away.
+						tex = TileSet::getTile(0); // you don't have to give it is texture information right away.
 						//This is how you access the Tile Textures Right here;
-						Tile::setTileSize(20, 20);
+						Tile::setTileSize(32, 32);
 						tileMap.push_back(Tile(tex, tempR, tempC, true));
 						Vec2 position = Vec2(i, j);
 						tileMap.at(index).SetID(index);
 						tileMap.at(index).SetPosition(position);
-						tileMap.at(index).SetStats(i, j, index);
-
+						std::cout << " Tile label ID: ";
+						tileMap.at(index).getID(index)->print();
+						index++;
 					}
 				}
 			}

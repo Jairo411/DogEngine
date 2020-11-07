@@ -1,8 +1,7 @@
 #include "Tiles.h"
-#include "C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\TextureManager\TextureManager.h"
+#include "../../../TextureManager/TextureManager.h"
 
-vector<SDL_Texture*> TileSet::imageSetHolder;
-TileSet* TileSet::instance;
+vector<SDL_Texture*> TileSet::imageSetHolder = vector<SDL_Texture*>();
 int Tile::width = 0;
 int Tile::height = 0;
 
@@ -23,6 +22,18 @@ Tile::Tile()
 	dstRect.w = srcRect.w;
 	dstRect.h = srcRect.h;
 	isSoild = NULL;
+}
+
+Tile::Tile(int srcX_, int srcY_)
+{
+	//baseTex =  ;
+	x = srcX_;
+	y = srcY_;
+	srcRect.x = x;
+	srcRect.y = y;
+
+	ID = NULL;
+
 }
 
 Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
@@ -82,19 +93,6 @@ bool Tile::KeyBoardInput(int key_)
 
 bool Tile::MouseInput(int key_)
 {
-	if (key_ != NULL)
-	{
-		if (key_ == SDL_BUTTON_LEFT)
-		{
-			SDL_Rect result;
-			TileSet* set = TileSet::GetInstance();
-			if (SDL_IntersectRect(col.getCollider(), Input::mouseClick->getCollider(), &result))
-			{
-				baseTex = set->getTile(5);
-			}
-		}
-		return true;
-	}
 	return false;
 }
 
@@ -108,14 +106,6 @@ void Tile::SetPosition(Vec2 pos_)
 	x = pos_.x;
 	y = pos_.y;
 }
-
-void Tile::SetStats(int x_, int y_, int labels_)
-{
-	tileDataMap.x = x_;
-	tileDataMap.y = y_;
-	tileDataMap.n = new Node(labels_);
-}
-
 
 void Tile::OnUpdate()
 {
@@ -137,97 +127,79 @@ SDL_Rect Tile::getSrcRect()
 	return srcRect;
 }
 
-int Tile::getID()
-{
-	return ID;
-}
+
 
 void Tile::SetID(int ID_)
 {
 	ID = ID_;
-	tileDataMap.labels = ID;
+	n = new Node(ID);
+}
+
+Node* Tile::getID(int ID_)
+{
+	if (ID_==n->label)
+	{
+		return n;
+	}
 }
 
 Tile::~Tile()
 {
 }
+TileSet::TileSet()
+{
+	tileSetImage = nullptr;
+	name = "NULL";
+	ID = NULL;
+	srcRect = SDL_Rect();
+	desRect = SDL_Rect();
+	width = NULL;
+	height = NULL;
+}
 //Might change this name thingy
-TileSet::TileSet(std::string tempName, int tempID)
+TileSet::TileSet(const char* dir_, string name_, int ID_)
 {
-	//tileSet = "Assets/Level Sprites/Foreground/Tileset.png";
-	name = tempName;
-	ID = tempID;
-	srcRect.w = 16;
-	srcRect.h = 30;
-	srcRect.x = 0;
-	srcRect.y = 0;
-	Init();
+	tileSetImage = TextureManager::LoadTexture(dir_);
+	name = name_;
+	ID = ID_;
+	srcRect = SDL_Rect();
+	desRect = SDL_Rect();
+	SDL_QueryTexture(tileSetImage, NULL, NULL, &width, &height);
 }
 
-TileSet* TileSet::GetInstance()
+void TileSet::CreateSet(int sizeOfCut_, int srcX_, int srcY_)
 {
-
-	if (instance == nullptr)
-	{
-		instance = new TileSet("BaseLayer", 0);
-	}
-	return instance;
+	imageSetHolder = TextureManager::LoadMapSprite(tileSetImage, width, height, sizeOfCut_, srcX_, srcY_);
 }
 
-TileSet* TileSet::RemoveInstance()
+
+void TileSet::SetDisplayRects(SDL_Rect tempSrcR_, SDL_Rect tempDesR_)
 {
-	if (instance != nullptr)
-	{
-		instance = nullptr;
-	}
-	return instance;
+	srcRect = tempSrcR_;
+	desRect = tempDesR_;
 }
 
-TileSet::~TileSet()
+void TileSet::SetBaseImage(SDL_Texture* tempIMG_)
 {
+	baseImage = tempIMG_;
 }
 
-void TileSet::Init()
+SDL_Texture* TileSet::getBaseImage()
 {
-	SDL_Texture* actualIMG;
-	int width, height;
-	actualIMG = TextureManager::LoadTexture("Assets/Level Sprites/Foreground/Tileset.png");
-	SDL_QueryTexture(actualIMG, NULL, NULL, &width, &height);
-	imageSetHolder = TextureManager::LoadMapSprite(actualIMG, width, height, 20, 16, 32);
-	/*SDL_Texture* tempIMG;
-	SDL_Texture* actualIMG;
-	actualIMG = TextureManager::LoadTexture("Assets/Level Sprites/Foreground/Tileset.png");
-
-	int sourceX =0;
-	int sourceY=0;
-	int width=0, height=0;
-	desRect.h = srcRect.h;
-	desRect.w = srcRect.w;
-
-	SDL_QueryTexture(actualIMG,NULL,NULL,&width, &height);
-	width = width / 20;
-	height = height / 20;
-	 for (int c = 0; c < width; c++)
-		 for (int r = 0; r <height; r++)
-		 {
-			 sourceX = 16 * r;
-			 sourceY = 32 * c;
-			 srcRect.x = sourceX;
-			 srcRect.y = sourceY;
-
-			 tempIMG = TextureManager::LoadTexture(srcRect,actualIMG);
-			 imageSetHolder.insert(make_pair(c+r,tempIMG));
-		 }*/
+	return baseImage;
 }
-
 
 vector<SDL_Texture*> TileSet::GetTileSet()
 {
 	return imageSetHolder;
 }
 
+
 SDL_Texture* TileSet::getTile(int index_)
 {
 	return imageSetHolder[index_];
 }
 
+TileSet::~TileSet()
+{
+}

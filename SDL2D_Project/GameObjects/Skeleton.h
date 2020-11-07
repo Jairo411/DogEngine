@@ -5,6 +5,7 @@
 #include "../Physics/Collider.h"
 #include "../Game/AI/AI.h"
 #include "../Animator/Animator.h"
+#include "../Math/Converter.h"
 
 using namespace std;
 
@@ -20,8 +21,9 @@ public:
 	virtual void Disable();
 	virtual void Update(float deltaTime_);
 	virtual void Render();
-	virtual void Steer(); //defined here but not called in the regular update
+	virtual void Steer();
 	virtual void Seperate();
+	virtual void CreatePriorties();
 private:
 	/*Member variables*/
 	float speed;

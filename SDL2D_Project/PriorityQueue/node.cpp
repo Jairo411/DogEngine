@@ -21,5 +21,5 @@ Node::Node( int i_ )
 
 void Node::print()
 {
-    printf ("%i ", label );
+    printf ("%i \n", label );
 }
