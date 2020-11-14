@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "AI/AI.h"
 SDL_Rect* srcR, dstR;
 SDL_Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;

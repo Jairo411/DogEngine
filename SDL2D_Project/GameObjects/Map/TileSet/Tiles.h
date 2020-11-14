@@ -65,6 +65,7 @@ public:
 	static int getHeight();
 	static void setTileSize(int width_, int height_);
 	void SetID(int ID_);
+	
 	Node* getID(int ID_);
 	void OnRender();
 	void OnUpdate();

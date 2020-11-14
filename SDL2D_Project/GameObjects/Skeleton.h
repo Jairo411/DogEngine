@@ -1,10 +1,11 @@
 #ifndef SKELETON_H
 #define SKELETON_H
 #include "GameObject.h"
-#include "../TextureManager/TextureManager.h"
-#include "../Physics/Collider.h"
 #include "../Game/AI/AI.h"
+#include "Map/Map.h"
+#include "../TextureManager/TextureManager.h"
 #include "../Animator/Animator.h"
+#include "../Physics/Collider.h"
 #include "../Math/Converter.h"
 
 using namespace std;
@@ -23,7 +24,6 @@ public:
 	virtual void Render();
 	virtual void Steer();
 	virtual void Seperate();
-	virtual void CreatePriorties();
 private:
 	/*Member variables*/
 	float speed;
@@ -48,9 +48,5 @@ private:
 	Vec2 getSeperationDirection(Vec2 pos_);
 };
 
-struct SkeletonStats
-{
-
-};
 
 #endif

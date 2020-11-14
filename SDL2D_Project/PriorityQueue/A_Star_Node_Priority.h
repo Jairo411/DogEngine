@@ -20,6 +20,7 @@ public:
     float priority;
     
     // constructors
+    A_Star_Node_Priority() {  node = nullptr; priority = 0;}
     A_Star_Node_Priority( Node *node_, float priority);
     
     // useful functions

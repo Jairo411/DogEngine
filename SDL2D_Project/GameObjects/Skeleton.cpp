@@ -26,8 +26,8 @@ Skeleton::Skeleton(int x, int y)
 	srcRect0.h = 60; //IMAGESIZE
 
 	objTexture = nullptr;
-	srcRect.w = 40; 
-	srcRect.h = 40; 
+	srcRect.w = 40;
+	srcRect.h = 40;
 
 	destRect.x = srcRect.x;
 	destRect.y = srcRect.y;
@@ -35,7 +35,7 @@ Skeleton::Skeleton(int x, int y)
 	animState = AnimationStates::WALK;
 
 	ptr = this;
-	col = RectCollider(srcRect0.w,srcRect0.h);
+	col = RectCollider(srcRect0.w, srcRect0.h);
 	GameObject::ObjHolder.push_back(ptr);
 	Inti();
 }
@@ -150,8 +150,8 @@ void Skeleton::Update(float DeltaTime_)
 {
 	if (getDisable() == false)
 	{
-		destRect0.x = position.x;
-		destRect0.y = position.y;
+		destRect0.x = realPosition.x;
+		destRect0.y = realPosition.y;
 		destRect0.w = srcRect0.w;
 		destRect0.h = srcRect0.h;
 	}
@@ -159,14 +159,13 @@ void Skeleton::Update(float DeltaTime_)
 	{
 		Disable();
 	}
-	col.CollisonUpdate(this->position);
+	col.CollisonUpdate(this->realPosition);
 	UpdatePostion();
-//	Chase(); // so no steer function here 
 }
 
 void Skeleton::Render()
 {
-	
+
 	PlayAnimations(AnimationStates::WALK);
 
 	if (getDisable() == false)
@@ -191,16 +190,16 @@ void Skeleton::Disable()
 }
 
 // so steer gets defined in there respective GameObject class but they don't get called in the, yes but they don't get called in there GameObject classes 
-void Skeleton::Steer() 
+void Skeleton::Steer()
 {
 
-	if (position!=getTargetDirection()&& seperateFlag==false)
+	if (realPosition != getTargetDirection() && seperateFlag == false)
 	{
 		chaseFlag = true;
 		velocity = getTargetDirection() * speed;
-		position = (position + velocity * Game::timer->GetDeltaTime());// this should be an equation of motion but you need to have a decent timer class for this 
+		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());// this should be an equation of motion but you need to have a decent timer class for this 
 	}
-	else if (position!=getTargetDirection()&& seperateFlag==true)
+	else if (realPosition != getTargetDirection() && seperateFlag == true)
 	{
 		Seperate();
 	}
@@ -208,17 +207,6 @@ void Skeleton::Steer()
 
 void Skeleton::Seperate()
 {
-	
-}
-
-void Skeleton::CreatePriorties()
-{
-	/* Establish a sort of move set for your character to allow you to handle in a certain way*/
-
-	//first get the GameObject location within the squares 
-	Vec2 currentPos;
-	
-
 
 }
 
@@ -226,15 +214,20 @@ Vec2 Skeleton::getTargetDirection()
 {
 	if (targetObj != nullptr)
 	{
-		Vec2 dir = targetObj->getPosition() - position;
-		targetPos = dir.Normalize();
-		return targetPos;
+			Vec2 dir = targetObj->getPosition() - getPosition();
+			if (dir.GetMag()>1.0)
+			{
+				targetPos = dir.Normalize();
+				return targetPos;
+			}
+			dir = Vec2(0.0f, 0.0f);
+			return dir;
 	}
 }
 
 Vec2 Skeleton::getSeperationDirection(Vec2 pos_)
 {
-	Vec2 tempPos = position - pos_;
+	Vec2 tempPos = realPosition - pos_;
 	Vec2 normalizedPos = tempPos.Normalize();
 	return normalizedPos;
 }
@@ -248,7 +241,7 @@ void Skeleton::PlayAnimations(AnimationStates state_) // These in both the playe
 	{
 	case Skeleton::AnimationStates::ATTACK:
 		frame = ticks % 18;
-		objTexture=sprite.animationSet.at(0).at(frame);
+		objTexture = sprite.animationSet.at(0).at(frame);
 		break;
 	case Skeleton::AnimationStates::DEAD:
 		frame = ticks % 15;

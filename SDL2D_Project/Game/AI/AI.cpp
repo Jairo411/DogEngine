@@ -1,8 +1,8 @@
 #include "AI.h"
-#include "../../GameObjects/Skeleton.h"
 
-std::vector<GameObject*> AIManager::AIAgentContainer = std::vector<GameObject*>();
 AIManager* AIManager::instance = nullptr;
+std::vector<GameObject*> AIManager::AIAgentContainer = std::vector<GameObject*>();
+
 
 AI::AI()
 {
@@ -25,10 +25,61 @@ void AI::SetTarget(GameObject* obj_)
 		}
 }
 
+
 void AI::CheckAgentsDistance()
 {
 	
 }
+
+NavTile AI::grabOriginTile(GameObject* currentAgent)
+{
+	return NavTile();
+}
+
+NavTile AI::Huristic(NavTile currentNode_, NavTile otherNode_)
+{
+	Vec2 huristic;
+	//float movementCost = currentNode_.aStar->priority;
+	float distantFromOrigin;
+	
+	
+	return NavTile();
+}
+
+float AI::a_starPathFinding(Vec2 start_, Vec2 goal_)
+{
+	//std::priority_queue<A_Star_Node_Priority, std::deque<A_Star_Node_Priority>, ComparePriority> openList;
+	//std::priority_queue<A_Star_Node_Priority, std::deque<A_Star_Node_Priority>, ComparePriority> closedList;
+	//std::vector<NavTile>::iterator it;
+
+
+	//for (int i = 0; i < weightedgraph.size(); i++)
+	//{
+	//	openList.push(*weightedgraph.at(i).aStar);
+	//}
+	//while (!openList.empty())
+	//{
+	//	Node *currentN = new Node();
+	//	
+	//	int i = 0; // counter
+	//	for (it = weightedgraph.begin(); it < weightedgraph.end(); it++ , i++)
+	//	{
+	//		if (weightedgraph.at(i).getPosition()==goal_)
+	//		{
+
+	//		}
+	//	}
+	//}
+	return 0.0f;
+}
+
+void AI::setWeightedGraph(std::vector<NavTile> weightedgraph_)
+{
+	weightedgraph = weightedgraph_;
+}
+
+
+
 /*Need to pass this some sort of like AI stats in order for it to run properly.
 	this funciton will not be called every update. It will be triggered 
 */
@@ -109,7 +160,7 @@ void AIManager::getTotalAgents()
 	for (int i = 0; i < GameObject::ObjHolder.size(); i++)
 	{
 		GameObject* tempPtr = GameObject::ObjHolder.at(i);
-		if (dynamic_cast<Skeleton*>(tempPtr))
+		if (dynamic_cast<AI*>(tempPtr))
 		{
 			AIAgentContainer.push_back(tempPtr);
 		}
@@ -124,5 +175,7 @@ void AIManager::OnUpdate(float deltaTime)
 	{
 		dynamic_cast<AI*>(AIAgentContainer.at(i))->Steer();
 		dynamic_cast<AI*>(AIAgentContainer.at(i))->Seperate();
+		
 	}
 }
+

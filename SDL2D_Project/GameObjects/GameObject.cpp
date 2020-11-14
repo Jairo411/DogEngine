@@ -7,7 +7,7 @@ GameObject::GameObject()
 {
 	posX = 0;
 	posY = 0;
-	position = Vec2(posX, posY);
+	realPosition = Vec2(posX, posY);
 	disableObject = false;
 	nameID = "";
 	
@@ -16,9 +16,9 @@ GameObject::GameObject()
 
 void GameObject::UpdatePostion()
 {
-	posX = position.x;
-	posY = position.y;
-	Cposition = moveMiddle(Vec2(posX,posY));
+	posX = realPosition.x;
+	posY = realPosition.y;
+	APosition = moveMiddle(Vec2(posX,posY));
 }
 
 int GameObject::ReadAmountOfAnimations()
@@ -69,9 +69,9 @@ void GameObject::setPosition(int x_, int y_)
 {
 	posX = x_;
 	posY = y_;
-	position = Vec2(posX, posY);
+	realPosition = Vec2(posX, posY);
 	Vec2 center = moveMiddle(Vec2(posX, posY));
-	Cposition = center;
+	APosition = center;
 }
 
 void GameObject::setPosition(Vec2 vPosition)
@@ -79,12 +79,12 @@ void GameObject::setPosition(Vec2 vPosition)
 	Vec2 center =moveMiddle(vPosition);
 	posX = center.x;
 	posY = center.y;
-	position = center;
+	realPosition = center;
 }
 
 Vec2 GameObject::getPosition()
 {
-	return this->Cposition;
+	return this->APosition;
 }
 
 

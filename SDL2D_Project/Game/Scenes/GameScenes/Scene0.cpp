@@ -25,7 +25,8 @@ void Scene0::OnCreate()
 	enemy1->SetTarget(player);
 	mapA = new MapLayer(Game::actualWindow);
 	Game::AI_Manager->getInstance()->getTotalAgents();
-
+	
+	
 	std::cout << "X: " <<enemy->getPosition().x << "Y: " <<enemy->getPosition().y << std::endl;
 }
 
@@ -60,7 +61,6 @@ void Scene0::HandleEvents()
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->MouseInput(player->InputMouseHolder.begin()->first);
-		mapA->keyCode = event.button.button;
 		break;
 	}
 }
@@ -75,8 +75,8 @@ void Scene0::OnUpdate(float deltaTime_)
 	enemy0->Update(deltaTime_);
 	enemy1->Update(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
-	//Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
-	//std::cout << "X: " << player ->getPosition().x << "Y: " << player->getPosition().y << std::endl;
+	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
+	//std::cout << "X: " << player->getPosition().x << "Y: " << player->getPosition().y << std::endl;
 }
 
 

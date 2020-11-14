@@ -1,2 +1,53 @@
-﻿  node.cpp
-  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
+﻿  Animator.cpp
+  Converter.cpp
+  GameObject.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(19,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(20,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(43,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(43,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(43,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(43,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(80,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(81,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(79,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(80,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(201,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  Skeleton.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(153,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(154,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(237,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(226): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+  AI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(43,8): warning C4101: 'distantFromOrigin': unreferenced local variable
+  Grid.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(98,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(99,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xstddef(127,22): error C2676: binary '<': 'const _Ty' does not define this operator or a conversion to a type acceptable to the predefined operator
+          with
+          [
+              _Ty=Vec2
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xstddef(126): message : while compiling class template member function 'bool std::less<Vec2>::operator ()(const _Ty &,const _Ty &) const'
+          with
+          [
+              _Ty=Vec2
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xutility(1518): message : see reference to function template instantiation 'bool std::less<Vec2>::operator ()(const _Ty &,const _Ty &) const' being compiled
+          with
+          [
+              _Ty=Vec2
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xmemory(1318): message : see reference to class template instantiation 'std::less<Vec2>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\xmemory(1318): message : see reference to variable template 'const bool is_empty_v<std::less<Vec2> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\map(75): message : see reference to class template instantiation 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>' being compiled
+          with
+          [
+              _Kty=Vec2,
+              _Ty=bool,
+              _Pr=std::less<Vec2>,
+              _Alloc=std::allocator<std::pair<const Vec2,bool>>
+          ]
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.h(19): message : see reference to class template instantiation 'std::map<Vec2,bool,std::less<Vec2>,std::allocator<std::pair<const Vec2,bool>>>' being compiled
+  Generating Code...

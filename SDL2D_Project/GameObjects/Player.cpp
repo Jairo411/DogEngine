@@ -6,7 +6,7 @@ Player::Player()
 {
 	/* Basic intializations of a member variables */
 	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
-	position = Vec2();
+	realPosition = Vec2();
 	srcRect.w = 0;
 	srcRect.h = 0;
 	srcRect.x = 0;
@@ -76,8 +76,8 @@ void Player::Update(float deltaTime_)
 
 	if (getDisable() == false)
 	{
-		destRect.x = position.x;
-		destRect.y = position.y;
+		destRect.x = realPosition.x;
+		destRect.y = realPosition.y;
 		destRect.w = srcRect.w;
 		destRect.h = srcRect.h;
 	}
@@ -85,7 +85,7 @@ void Player::Update(float deltaTime_)
 	{
 		Disable();
 	}
-	collider.CollisonUpdate(this->position);
+	collider.CollisonUpdate(this->realPosition);
 	UpdatePostion();
 }
 
@@ -133,22 +133,22 @@ bool Player::KeyBoardInput(int key)
 	{
 		if (key == SDLK_a)
 		{
-			position.x -= 3.5;
+			realPosition.x -= 3.5;
 			animState = AnimationStates::RUN;
 		}
 		if (key == SDLK_d)
 		{
-			position.x += 3.5;
+			realPosition.x += 3.5;
 			animState = AnimationStates::RUN;
 		}
 		if (key == SDLK_w)
 		{
-			position.y -= 3.5;
+			realPosition.y -= 3.5;
 			animState = AnimationStates::RUN;
 		}
 		if (key == SDLK_s)
 		{
-			position.y += 2.5;
+			realPosition.y += 2.5;
 			animState = AnimationStates::RUN;
 		}
 		if (key == SDLK_SPACE) {

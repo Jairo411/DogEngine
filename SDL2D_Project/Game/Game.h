@@ -9,6 +9,7 @@
 #include "../Input/Input.h"
 #include "../Timer/Timer.h"
 #include "AI/AI.h"
+#include "../Math/Converter.h"
 #include "Scenes/SceneManager.h"
 #include "Scenes/GameScenes/Scene0.h"
 #include "../GameObjects/Map/Map.h"
@@ -16,9 +17,9 @@
 #include "../GameObjects/GameObject.h"
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Skeleton.h"
-#include "../GameObjects/Player.h"
 #include "../GameObjects/Map/Map.h"
 
+class AIManager;
 class Game{
 public:
 	Game();
@@ -34,7 +35,7 @@ public:
 	static Timer *timer;
 	static Window* actualWindow;
 	static bool	setIsRunning(bool tempBool_);
-	static AIManager* AI_Manager;
+	static AIManager *AI_Manager;
 private:
 	int cnt=0;
 	const int FPS = 120;

@@ -43,7 +43,6 @@ private:
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
-	Vec2 Cposition; // move position to the center of the sprite // this is not a good solution to this at all  <-- this was stupid
 	float deltaTime;
 protected:
 	/*Members variables*/
@@ -53,7 +52,8 @@ protected:
 	bool textureIsOn;
 	/*Object Members*/
 	string nameID;
-	Vec2 position; // real position
+	Vec2 realPosition; // real position
+	Vec2 APosition; // stands for Anchor Position -> middle of image or square
 	Vec2 velocity;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;

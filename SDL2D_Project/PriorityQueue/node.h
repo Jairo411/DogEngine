@@ -19,6 +19,7 @@ public:
     Node();
     Node( int i_ );
     
+   // Node operator = (Node& nodeB_);
     // useful functions
     void print();
 };

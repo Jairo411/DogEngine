@@ -8,12 +8,9 @@
 #include <list>
 #include <vector>
 
-/*Map Layer is the game map, Takes in the Window class I made, 
-takes the screen width and height. Then displays the tiles from 0,0 to the final coordinate.
-have the Other classes in order to move functionality.
-*/
-
-
+/*Map Layer is the background of the game, Currently acting like the actual game map
+ but that will chance*/
+ /* I either need to build a nav mesh class or extend MapLayer functionality to make this work better, right now I do not know */
 
 class MapLayer
 {
@@ -22,16 +19,13 @@ public:
 	MapLayer(Window* window);
 	~MapLayer();
 	void OnBuild(int state_);
-	void ReadMapData();
 	void OnRender();
 	void OnUpdate(float deltaTime_);
+	std::vector<Tile> getTiles();
 	static Vec2 getGameObjectLocation(Vec2 position_);
-	static void readTileMap(GameObject* gameObj_);
-	int  keyCode;
 private:
-	/* Need to re-look at all these variables 
+	/* Need to re-look at all these variables
 	   I'm pretty sure I don't use all these variables*/
-	int ID;
 	int cols, rows;
 	int screenWidth, screenHeight;
 	int size;
@@ -39,7 +33,6 @@ private:
 	int tileSize;
 	bool IsBackground;
 	bool Visible;
-	bool mapDataFlag;
 	std::string name;
 	std::vector<Tile> tileMap;
 	SDL_Texture* tex;
@@ -57,14 +50,6 @@ private:
 		STATE0,
 		STATE1
 	};
-};
-
-class GameMap {
-public:
-	GameMap(MapLayer mapData_);
-	~GameMap();
-private:
-	MapLayer MapData;
 };
 
 #endif // !MAP_H
