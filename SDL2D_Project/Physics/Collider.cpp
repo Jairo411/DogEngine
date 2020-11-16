@@ -48,6 +48,23 @@ RectCollider::RectCollider(int width_, int height_)
 	middlePoint = Vec2(width_ / 2, height_ / 2);
 }
 
+RectCollider::RectCollider(int width_, int height_, const char* colliderName_)
+{
+	x = 0;
+	y = 0;
+
+	collisonObjectType = CollisonObjectType::NONE;
+	collisonType = CollisonType::NO_COl;
+
+	srcRect.x = x;	
+	srcRect.y = y;
+
+	srcRect.w = width_;
+	srcRect.h = height_;
+
+	tag = colliderName_; 
+}
+
 RectCollider::RectCollider(int x_, int y_, int size_)
 {
 	x = x_;
@@ -61,6 +78,23 @@ RectCollider::RectCollider(int x_, int y_, int size_)
 
 	srcRect.w = size_;
 	srcRect.h = size_;
+}
+
+RectCollider::RectCollider(int x_, int y_, int size_, const char* colliderName_)
+{
+	x = x_;
+	y = y_;
+	
+	collisonObjectType = CollisonObjectType::NONE;
+	collisonType = CollisonObjectType::NONE;
+
+	srcRect.x = x;
+	srcRect.y = y;
+
+	srcRect.w = size_;
+	srcRect.h = size_;
+
+	tag = colliderName_;
 }
 
 

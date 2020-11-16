@@ -13,3 +13,9 @@ Vec2 Converter::ConvertedScreenCoordinates()
 	//Fill this in when you need it 
 	return Vec2();
 }
+
+bool Converter::inRange(Vec2 low_, Vec2 high_, Vec2 vec)
+{
+	return (low_.x <= vec.x && low_.y <= vec.y 
+		&& high_.x >= vec.x && high_.y >= vec.y);
+}

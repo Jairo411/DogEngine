@@ -21,7 +21,7 @@ public:
 	void OnBuild(int state_);
 	void OnRender();
 	void OnUpdate(float deltaTime_);
-	std::vector<Tile> getTiles();
+	std::vector<Tile*> getTiles();
 	static Vec2 getGameObjectLocation(Vec2 position_);
 private:
 	/* Need to re-look at all these variables

@@ -1,5 +1,7 @@
 #include "Scene0.h"
 
+
+std::vector<Tile*> ptr;
 Player* player;
 Skeleton* enemy;
 Skeleton* enemy0;
@@ -12,6 +14,7 @@ Scene0::Scene0()
 	player = nullptr;
 	enemy = nullptr;
 	mapA = nullptr;
+
 }
 
 void Scene0::OnCreate()
@@ -21,13 +24,13 @@ void Scene0::OnCreate()
 	enemy0 = new Skeleton(300, 50);
 	enemy1 = new Skeleton(400, 200);
 	enemy->SetTarget(player);
-	enemy0->SetTarget(player);
-	enemy1->SetTarget(player);
+	//enemy0->SetTarget(player);
+	
 	mapA = new MapLayer(Game::actualWindow);
 	Game::AI_Manager->getInstance()->getTotalAgents();
+	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
 	
-	
-	std::cout << "X: " <<enemy->getPosition().x << "Y: " <<enemy->getPosition().y << std::endl;
+
 }
 
 void Scene0::OnDestroy()
@@ -76,7 +79,6 @@ void Scene0::OnUpdate(float deltaTime_)
 	enemy1->Update(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
-	//std::cout << "X: " << player->getPosition().x << "Y: " << player->getPosition().y << std::endl;
 }
 
 

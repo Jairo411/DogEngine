@@ -6,6 +6,14 @@
 #include <vector>
 #include<queue>
 
+struct ComparePriority
+{
+	bool operator()(A_Star_Node_Priority const& lhs, A_Star_Node_Priority const& rhs)
+	{
+		return lhs.priority > rhs.priority;
+	}
+};
+
 /* This will be a subclass used by the AI manager */
 class Map;
 class Tile;
@@ -16,14 +24,15 @@ struct NavTile
 	~NavTile() {};
 	Node *n=nullptr;
 	A_Star_Node_Priority *aStar = nullptr;
-	std::map<Vec2,bool> neighbors; // Map of neighbors check to see if move is valid and if it has been checked // move is vaild if the Vec2 position is already in the map's key, and boolean is a true or false to see if its been checked
+	Vec2 getPosition();
+	 // Map of neighbors check to see if move is valid and if it has been checked // move is vaild if the Vec2 position is already in the map's key, and boolean is a true or false to see if its been checked
 	void setPosition(int x_, int y_);
 	void setPosition(Vec2 position_);
-	Vec2 getPosition();
+	
+	NavTile* giveAddress(A_Star_Node_Priority node);
 private:
 	int x, y;
 	Vec2 position;
-	
 };
 
 class Grid
@@ -34,7 +43,7 @@ public:
 	void BuildMesh(std::vector<Tile*> mapData_);
 	std::vector<NavTile> getNavData();
 private:
-	std::map<Vec2,bool> grabNeighbors(Tile* mapData_);
+
 	std::vector<NavTile> navData;
 };
 

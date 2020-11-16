@@ -45,6 +45,7 @@ private:
 	/*Functions*/
 	virtual void PlayAnimations(AnimationStates state_);
 	Vec2 getTargetDirection();
+	Vec2 nodeDirection(std::vector<NavTile> directionSet);
 	Vec2 getSeperationDirection(Vec2 pos_);
 };
 

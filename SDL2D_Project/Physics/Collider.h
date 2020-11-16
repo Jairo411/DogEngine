@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include <math.h>
 #include <vector>
+#include <string>
 #include "../Math/Vec2.h"
 class Game;
 class RectCollider
@@ -12,7 +13,9 @@ public:
 	RectCollider(); //default Collider square
 	RectCollider(int squareArea_);//Square Collider
 	RectCollider(int width_, int height_); //Rectangle Collider
+	RectCollider(int width_, int height_, const char* colliderName_);
 	RectCollider(int x_, int y_, int size_);// Square Collider for static postions;
+	RectCollider(int x_, int y_, int size_, const char* colliderName_);
 
 	void CollisonUpdate(int colPosX_,int colPosY_); // don't use this 
 	void CollisonUpdate(Vec2 position_);
@@ -32,7 +35,7 @@ private:
 	int collisonType;
 	SDL_Rect srcRect;
 	Vec2 middlePoint;
-
+	std::string tag;
 	
 
 	//TYPE OF COLLIDER
@@ -51,6 +54,7 @@ private:
 		EventListener
 	};
 };
+
 
 class CircleCollider
 {

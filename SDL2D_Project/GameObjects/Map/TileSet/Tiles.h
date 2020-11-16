@@ -61,11 +61,11 @@ public:
 	SDL_Texture* getTex();
 	SDL_Rect getSrcRect();
 	Vec2 getPosition();
+	Vec2 getGridPosition();
 	static int getWidth();
 	static int getHeight();
 	static void setTileSize(int width_, int height_);
 	void SetID(int ID_);
-	
 	Node* getID(int ID_);
 	void OnRender();
 	void OnUpdate();
@@ -73,11 +73,13 @@ public:
 	bool MouseInput(int key_);
 	bool controllerInput(int key_);
 	void SetPosition(Vec2 pos_);
+	void setGridPosition(Vec2 pos_);
 	~Tile();
 private:
 	SDL_Texture* baseTex;
 	SDL_Rect srcRect,dstRect;
 	RectCollider col;
+	Vec2 GridPosition;
 	Node* n;
 	int ID;
 	int x, y;

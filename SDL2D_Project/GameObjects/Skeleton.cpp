@@ -172,6 +172,7 @@ void Skeleton::Render()
 	{
 		SDL_RenderCopy(Game::renderer, objTexture, &srcRect0, &destRect0);
 		col.CollisonRender();
+		navCollider.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{
@@ -192,14 +193,19 @@ void Skeleton::Disable()
 // so steer gets defined in there respective GameObject class but they don't get called in the, yes but they don't get called in there GameObject classes 
 void Skeleton::Steer()
 {
+	if (pathFinding==true)
+	{
+		velocity = nodeDirection(path)*speed;
+		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());
+	}
 
-	if (realPosition != getTargetDirection() && seperateFlag == false)
+	if (realPosition != getTargetDirection() && seperateFlag == false && pathFinding==false)
 	{
 		chaseFlag = true;
 		velocity = getTargetDirection() * speed;
 		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());// this should be an equation of motion but you need to have a decent timer class for this 
 	}
-	else if (realPosition != getTargetDirection() && seperateFlag == true)
+	else if (realPosition != getTargetDirection() && seperateFlag == true && pathFinding ==false)
 	{
 		Seperate();
 	}
@@ -209,6 +215,7 @@ void Skeleton::Seperate()
 {
 
 }
+
 
 Vec2 Skeleton::getTargetDirection()
 {
@@ -223,6 +230,17 @@ Vec2 Skeleton::getTargetDirection()
 			dir = Vec2(0.0f, 0.0f);
 			return dir;
 	}
+}
+
+Vec2 Skeleton::nodeDirection(std::vector<NavTile> directionSet)
+{
+	if (directionSet.at(indexPath).getPosition()==getPosition())
+	{
+		indexPath++;
+	}
+	Vec2 dir = directionSet.at(indexPath).getPosition() - getPosition();
+	Vec2 normalize = dir.Normalize();
+	return normalize;
 }
 
 Vec2 Skeleton::getSeperationDirection(Vec2 pos_)

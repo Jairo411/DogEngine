@@ -107,6 +107,12 @@ void Tile::SetPosition(Vec2 pos_)
 	y = pos_.y;
 }
 
+void Tile::setGridPosition(Vec2 pos_)
+{
+	GridPosition.x = pos_.x;
+	GridPosition.y = pos_.y;
+}
+
 void Tile::OnUpdate()
 {
 
@@ -114,7 +120,15 @@ void Tile::OnUpdate()
 
 Vec2 Tile::getPosition()
 {
-	return Vec2(x, y);
+	Vec2 Aposition= Vec2(); 
+	Aposition.x = x + srcRect.w / 2;
+	Aposition.y = y + srcRect.h / 2;
+	return Aposition;
+}
+
+Vec2 Tile::getGridPosition()
+{
+	return GridPosition;
 }
 
 SDL_Texture* Tile::getTex()
@@ -126,7 +140,6 @@ SDL_Rect Tile::getSrcRect()
 {
 	return srcRect;
 }
-
 
 
 void Tile::SetID(int ID_)

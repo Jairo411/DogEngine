@@ -26,6 +26,8 @@ public:
 	Vec2 operator+(const Vec2* b_);
 	Vec2 operator-(const Vec2* b_);
 
+
+
 	/*Overloading operators VECTOR TO SCALAR*/
 	Vec2 operator*(const float& b_);
 	Vec2 operator*(const int& b_);
