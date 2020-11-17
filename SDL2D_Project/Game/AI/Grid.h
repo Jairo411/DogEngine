@@ -25,14 +25,17 @@ struct NavTile
 	Node *n=nullptr;
 	A_Star_Node_Priority *aStar = nullptr;
 	Vec2 getPosition();
+	Vec2 getGridPosition();
 	 // Map of neighbors check to see if move is valid and if it has been checked // move is vaild if the Vec2 position is already in the map's key, and boolean is a true or false to see if its been checked
 	void setPosition(int x_, int y_);
-	void setPosition(Vec2 position_);
-	
+	void setPosition(Vec2 position_,Vec2 gridPosition_);
 	NavTile* giveAddress(A_Star_Node_Priority node);
+
+	float f;
 private:
 	int x, y;
-	Vec2 position;
+	Vec2 localPosition;
+	Vec2 gridPosition;
 };
 
 class Grid

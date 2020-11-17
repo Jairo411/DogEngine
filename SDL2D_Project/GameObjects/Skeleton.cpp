@@ -234,9 +234,11 @@ Vec2 Skeleton::getTargetDirection()
 
 Vec2 Skeleton::nodeDirection(std::vector<NavTile> directionSet)
 {
+	
 	if (directionSet.at(indexPath).getPosition()==getPosition())
 	{
 		indexPath++;
+		std::cout << "Index: " << indexPath<<std::endl;
 	}
 	Vec2 dir = directionSet.at(indexPath).getPosition() - getPosition();
 	Vec2 normalize = dir.Normalize();

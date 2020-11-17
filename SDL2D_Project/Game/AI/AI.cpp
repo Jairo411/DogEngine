@@ -44,15 +44,15 @@ NavTile AI::grabOriginTile()
 	bool isInRange = false;
 	for (int i = 0; i < weightedgraph.size(); i++)
 	{
-		Vec2 lowRange = weightedgraph.at(i).getPosition() + Vec2(-200.0f, -200.0f);
-		Vec2 highRange = weightedgraph.at(i).getPosition() + Vec2(40.0f, 40.0f);
+		Vec2 lowRange = weightedgraph.at(i).getPosition() + Vec2(-10.0f, -10.0f);
+		Vec2 highRange = weightedgraph.at(i).getPosition() + Vec2(10.0f, 0.0f);
 		isInRange = Converter::inRange(lowRange, highRange, currentAgent->getPosition());
 		if (isInRange)
 		{
 			weightedgraph.at(i).aStar->priority;
 			start = weightedgraph.at(i);
 			start.aStar->priority = 0.0f;
-			std::cout << "CurrentnavTilePoistion is " << "X: " << start.getPosition().x << " Y: " << start.getPosition().y;
+			std::cout << "CurrentnavTilePoistion is " << "X: " << start.getGridPosition().x << " Y: " << start.getGridPosition().y << endl;
 			return start;
 		}
 	}
@@ -60,63 +60,63 @@ NavTile AI::grabOriginTile()
 	return NavTile();
 }
 
-NavTile* AI::grabNeighbors(NavTile* current_, int index_)
+NavTile* AI::grabNeighbors(NavTile* current_, int index_, std::vector<A_Star_Node_Priority> closedV)
 {
-	NavTile neighbors;
 	Vec2 DIRECTION = Vec2();
 	Vec2 difference;
+
 	switch (index_)
 	{
 	case 0:
 		DIRECTION = Vec2(0.0f, -1.0f); // up
-		neighbors.setPosition(DIRECTION);
-		difference = neighbors.getPosition() + current_->getPosition();
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 1:
 		DIRECTION = Vec2(-1.0f, 0.0f); // left
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 2:
 		DIRECTION = Vec2(0.0f, 1.0f); // down
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 3:
 		DIRECTION = Vec2(1.0f, 0.0f); // right
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 4:
 		DIRECTION = Vec2(-1.0f, -1.0f); // up diagonal left
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 5:
 		DIRECTION = Vec2(1.0f, -1.0f); // up diagonal right
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 6:
 		DIRECTION = Vec2(1.0f, 1.0f);// down diagonal right
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	case 7:
 		DIRECTION = Vec2(-1.0f, 1.0f); // down diagonal left
-		neighbors.setPosition(difference);
-		difference = neighbors.getPosition() + current_->getPosition();
+
+		difference = DIRECTION + current_->getGridPosition();
 		break;
 	default:
 		break;
 	}
 
+
 	for (int i = 0; i < weightedgraph.size(); i++)
 	{
 		//if any position in the weighted graph doesn't equal any one of the  neighbor position cases return nothing
-		if (weightedgraph.at(i).getPosition() == neighbors.getPosition())
+
+		if (weightedgraph.at(i).getGridPosition() == difference)
 		{
-			return &neighbors;
+			return &weightedgraph.at(i);
 		}
 	}
 
@@ -126,17 +126,28 @@ NavTile* AI::grabNeighbors(NavTile* current_, int index_)
 
 void AI::Huristic(NavTile currentNode_, NavTile goalNode_)
 {
+
 	Vec2 huristic;
 
 	NavTile originTile = start;
+	currentNode_.aStar->priority = 1.0f;
 
-	float g = originTile.aStar->priority + currentNode_.aStar->priority;
-	float h = max(abs(currentNode_.getPosition().x - goalNode_.getPosition().x),
-		abs(currentNode_.getPosition().y - goalNode_.getPosition().y));
-	float f = g + h;
+	float g = gVaule(currentNode_);
+	float h = max(abs(currentNode_.getGridPosition().x - goalNode_.getGridPosition().x),
+		abs(currentNode_.getGridPosition().y - goalNode_.getGridPosition().y));
 
-	currentNode_.aStar->priority = f;
+	currentNode_.f = g + h;
+	currentNode_.aStar->priority = currentNode_.f;
+//	currentNode_.aStar->print();
+}
 
+float AI::gVaule(NavTile distanceFromOrigin_)
+{
+	NavTile originTile = start;
+	float g = max(abs(originTile.getGridPosition().x - goal.getGridPosition().x),
+		abs(originTile.getGridPosition().y - goal.getGridPosition().y));
+	g += 1.0f;
+	return g;
 }
 
 void AI::a_starPathFinding(NavTile goal_)
@@ -144,50 +155,86 @@ void AI::a_starPathFinding(NavTile goal_)
 	pathFinding = true;
 	start = grabOriginTile();
 	goal = goal_;
+	std::cout << "NavTile goal position is " << "X: " << goal.getGridPosition().x << " Y: " << goal.getGridPosition().y << endl;
 	std::priority_queue<A_Star_Node_Priority, std::deque<A_Star_Node_Priority>, ComparePriority> openList;
 	std::priority_queue<A_Star_Node_Priority, std::deque<A_Star_Node_Priority>, ComparePriority> closedList;
 	std::vector<NavTile> navHolder;
+	std::vector<A_Star_Node_Priority> closedV;
 	NavTile* currentNode = new NavTile();
 	NavTile* otherNode = new NavTile();
-
+	bool flag = false;
+	//putting a start Node in the beginning of my list
 	currentNode = &start;
+	openList.push(*currentNode->aStar);
 
-	/*Push everything from the weighted graph into the OpenList*/
-	for (int i = 0; i < weightedgraph.size(); i++)
+	while (flag == false)
 	{
-		A_Star_Node_Priority currentNode =*weightedgraph.at(i).aStar;
-		openList.push(currentNode);
-	}
-	while (!openList.empty())
-	{
-		if (currentNode == &goal_)
+		if (openList.size() > 0)
 		{
-			break;
-		}
-		currentNode = currentNode->giveAddress(openList.top());
-		for (int i = 0; i < 8; i++)
-		{
-			otherNode = grabNeighbors(currentNode, i);
-			// my way of saying if the move is invaild 
-			if (otherNode != nullptr)
+			for (int i = 0; i < weightedgraph.size(); i++)
 			{
-				Huristic(*otherNode, goal_);
+				Node* nodeTograb;
+				nodeTograb = openList.top().node;
+				if (weightedgraph.at(i).aStar->node == nodeTograb)
+				{
+					currentNode = &weightedgraph.at(i);
+				}
 			}
 		}
-		//once you have checked all neighbours pop off the current node
-		A_Star_Node_Priority c = openList.top();
-		c.print();
-		closedList.push(c);
-		openList.pop();
-	}
-	for (int i = 0; i < weightedgraph.size(); i++)
-	{
-		if (weightedgraph.at(i).aStar == &closedList.top())
+
+		if (currentNode->n != goal.n)
 		{
-			navHolder.push_back(weightedgraph.at(i));
+			//Check all of its neighbors 
+			for (int i = 0; i < 8; i++)
+			{
+				if (closedV.size() == 0)
+				{
+					otherNode = grabNeighbors(currentNode, i, closedV);
+					Huristic(*otherNode, goal_);
+					openList.push(*otherNode->aStar);
+				}
+				else if (closedV.size() > 0)
+				{
+					for (int j = 0; j < closedV.size(); j++)
+					{
+						if (currentNode->n != closedV.at(j).node)
+						{
+							otherNode = grabNeighbors(currentNode, i, closedV);
+							Huristic(*otherNode, goal_);
+							openList.push(*otherNode->aStar);
+						}
+					}
+				}
+			}
+
+			A_Star_Node_Priority c = openList.top();
+
+			closedV.push_back(c);
+			closedList.push(c);
+
+			openList.pop();
+
 		}
-		closedList.pop();
+		else if (currentNode->n == goal.n)
+		{
+			openList.empty();
+			flag = true;
+		}
 	}
+
+	for (int i = 0; i < closedV.size(); i++)
+	{
+		for (int j = 0; j < weightedgraph.size(); j++)
+		{
+			if (weightedgraph.at(j).aStar->node == closedV.at(i).node)
+			{
+				navHolder.push_back(weightedgraph.at(j));
+				closedList.pop();
+			}
+		}
+	}
+	
+//	std::reverse(std::begin(navHolder),std::end(navHolder));
 
 	path = navHolder;
 }
@@ -259,13 +306,13 @@ std::map<GameObject*, Vec2> AIManager::getClosestDistanceBetweenAgents()
 	return std::map<GameObject*, Vec2>();
 }
 
-void AIManager::setPath(AI* agent_, std::vector<Tile*> mapData_,int goal_)
+void AIManager::setPath(AI* agent_, std::vector<Tile*> mapData_, int goal_)
 {
 	Grid grid = Grid();
-	NavTile goal; 
+	NavTile goal;
 	grid.BuildMesh(mapData_);
 	agent_->setWeightedGraph(grid.getNavData());
-	goal= agent_->getNavTileAt(goal_);
+	goal = agent_->getNavTileAt(goal_);
 	agent_->a_starPathFinding(goal);
 }
 

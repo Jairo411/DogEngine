@@ -7,6 +7,7 @@
 #include "Grid.h"
 #include <minmax.h>
 #include <queue>
+#include <algorithm>
 /* AI class is an interface that is meant to be added into GameObjects
 	To give them basic AI Functionality and states.*/
 	// The AI class is just an intereface that may have some member variables that I might use 
@@ -42,8 +43,9 @@ protected:
 	std::vector<NavTile> path;
 private:
 	NavTile grabOriginTile();
-	NavTile* grabNeighbors(NavTile* current_,int index_);
-	void Huristic(NavTile currentNode_,NavTile otherNode_);
+	NavTile* grabNeighbors(NavTile* current_, int index_,std::vector<A_Star_Node_Priority> closedlist_);
+	void Huristic(NavTile currentNode_,NavTile goalNode_);
+	float gVaule(NavTile distanceFromOrigin_);
 	std::vector<NavTile> weightedgraph;
 	NavTile start, goal;
 };

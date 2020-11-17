@@ -17,7 +17,7 @@ void Grid::BuildMesh(std::vector<Tile*> mapData_)
 	{
 		NavTile nt;
 		nt = NavTile();
-		nt.setPosition(mapData_.at(i)->getPosition());
+		nt.setPosition(mapData_.at(i)->getPosition(),mapData_.at(i)->getGridPosition());
 		nt.n = mapData_.at(i)->getID(i);
 	    nt.aStar = new A_Star_Node_Priority(nt.n, FLT_MAX);
 		navData.push_back(nt);
@@ -35,14 +35,15 @@ void NavTile::setPosition(int x_, int y_)
 {
 	x = x_;
 	y = y_;
-	position = Vec2(x, y);
+	localPosition = Vec2(x, y);
 }
 
-void NavTile::setPosition(Vec2 position_)
+void NavTile::setPosition(Vec2 position_,Vec2 GridPosition_)
 {
 	x = position_.x;
 	y = position_.y;
-	position = position_;
+	localPosition = position_;
+	gridPosition = GridPosition_;
 }
 
 NavTile* NavTile::giveAddress(A_Star_Node_Priority node)
@@ -59,5 +60,10 @@ NavTile* NavTile::giveAddress(A_Star_Node_Priority node)
 
 Vec2 NavTile::getPosition()
 {
-	return position;
+	return localPosition;
+}
+
+Vec2 NavTile::getGridPosition()
+{
+	return gridPosition;
 }
