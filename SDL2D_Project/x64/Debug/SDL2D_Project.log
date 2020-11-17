@@ -1,3 +1,6 @@
-﻿  AI.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(119): warning C4172: returning address of local variable or temporary: neighbors
+﻿  Skeleton.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(153,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(154,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(257,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(233): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
