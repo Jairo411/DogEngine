@@ -193,19 +193,19 @@ void Skeleton::Disable()
 // so steer gets defined in there respective GameObject class but they don't get called in the, yes but they don't get called in there GameObject classes 
 void Skeleton::Steer()
 {
-	if (pathFinding==true)
+	if (pathFinding == true)
 	{
-		velocity = nodeDirection(path)*speed;
+		velocity = nodeDirection(path) * speed;
 		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());
 	}
 
-	if (realPosition != getTargetDirection() && seperateFlag == false && pathFinding==false)
+	if (realPosition != getTargetDirection() && seperateFlag == false && pathFinding == false)
 	{
 		chaseFlag = true;
 		velocity = getTargetDirection() * speed;
 		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());// this should be an equation of motion but you need to have a decent timer class for this 
 	}
-	else if (realPosition != getTargetDirection() && seperateFlag == true && pathFinding ==false)
+	else if (realPosition != getTargetDirection() && seperateFlag == true && pathFinding == false)
 	{
 		Seperate();
 	}
@@ -221,27 +221,40 @@ Vec2 Skeleton::getTargetDirection()
 {
 	if (targetObj != nullptr)
 	{
-			Vec2 dir = targetObj->getPosition() - getPosition();
-			if (dir.GetMag()>1.0)
-			{
-				targetPos = dir.Normalize();
-				return targetPos;
-			}
-			dir = Vec2(0.0f, 0.0f);
-			return dir;
+		Vec2 dir = targetObj->getPosition() - getPosition();
+		if (dir.GetMag() > 1.0)
+		{
+			targetPos = dir.Normalize();
+			return targetPos;
+		}
+		dir = Vec2(0.0f, 0.0f);
+		return dir;
 	}
 }
 
 Vec2 Skeleton::nodeDirection(std::vector<NavTile> directionSet)
 {
-	
-	if (directionSet.at(indexPath).getPosition()==getPosition())
+
+	Vec2 dir;
+	Vec2 normalize;
+	if (directionSet.at(indexPath).getPosition() == getPosition())
 	{
+
 		indexPath++;
-		std::cout << "Index: " << indexPath<<std::endl;
+		std::cout << "Index :" << indexPath << std::endl;
+
 	}
-	Vec2 dir = directionSet.at(indexPath).getPosition() - getPosition();
-	Vec2 normalize = dir.Normalize();
+
+	if (indexPath == directionSet.size())
+	{
+		pathFinding = false;
+		dir = Vec2(0.0f, 0.0f);
+		return dir;
+	}
+	dir = directionSet.at(indexPath).getPosition() - getPosition();
+
+	normalize = dir.Normalize();
+
 	return normalize;
 }
 

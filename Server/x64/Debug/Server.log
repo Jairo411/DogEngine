@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(8,37): warning C4081: expected 'newline'; found ';'
+  Server.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\Server.exe
