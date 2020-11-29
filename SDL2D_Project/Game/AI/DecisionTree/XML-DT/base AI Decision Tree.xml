@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decisionTree>
+  <test> is enemy visible? </test>
+  <!-- Conditional Statement false-->
+  <false>
+    <action>ROAM</action>
+  </false>
+  <!-- Conditional Statement true-->
+  <true>
+    <test>is enemy greater than 10 tiles far? </test>
+    <!-- Conditional Statement false-->
+    <false>
+      <action>STEER</action>
+    </false>
+    <!-- Conditional Statement true-->
+    <true>
+      <action>PATHFIND</action>
+    </true>
+  </true>
+</decisionTree>

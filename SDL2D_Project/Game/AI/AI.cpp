@@ -13,6 +13,7 @@ AI::AI()
 	pathFinding = false;
 	radius = 0;
 	indexPath = 0;
+	DecisionTreeNode DTN("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/AI/DecisionTree/XML-DT/base AI Decision Tree.xml");
 }
 
 AI::~AI()
