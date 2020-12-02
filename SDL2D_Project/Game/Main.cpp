@@ -5,8 +5,6 @@
 //An array to store frame times:
 using namespace std;
 
-
-
 Game *game = nullptr;
 
 int main(int argc,char * argv[]) {

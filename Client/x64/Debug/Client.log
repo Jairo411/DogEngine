@@ -1,4 +1,14 @@
 ﻿  Client.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(67,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(67,1): message : This diagnostic occurred in the compiler generated function 'void Client::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(37,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.cpp(76): message : see reference to function template instantiation 'void Client::sendMessage<const char*>(T)' being compiled
+          with
+          [
+              T=const char *
+          ]
   main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(67,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(67,1): message : This diagnostic occurred in the compiler generated function 'void Client::sendMessage(T)'
   Generating Code...
   Client.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\Client.exe

@@ -42,8 +42,8 @@ private:
 	bool disableObject;
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;
-	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
 	float deltaTime;
+	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
 protected:
 	/*Members variables*/
 	float orientation;

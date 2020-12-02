@@ -3,8 +3,6 @@
 #include<string>
 #include<iostream>
 #include<stdio.h>
-
-
 #include"XML_parser/pugixml.hpp"
 
 using namespace pugi;

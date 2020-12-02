@@ -51,7 +51,6 @@ NavTile* NavTile::giveAddress(A_Star_Node_Priority node)
 	A_Star_Node_Priority* ptr = &node;
 	if (ptr->node==this->n)
 	{
-
 		return this;
 	}
 }

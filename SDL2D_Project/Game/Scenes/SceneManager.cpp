@@ -1,6 +1,6 @@
 #include "SceneManager.h"
 
-SceneManager::SceneManager() : scenes(0), curScene(0),insertedSceneID(NULL) {}
+SceneManager::SceneManager() : scenes(0), curScene(0), insertedSceneID(NULL) {}
 
 void SceneManager::HandleEvents()
 {
@@ -39,12 +39,11 @@ void SceneManager::handleCollison()
 unsigned int SceneManager::Add(std::shared_ptr<Scene> scene)
 {
 	auto inserted = scenes.insert(std::make_pair(insertedSceneID, scene));
-
 	insertedSceneID++;
 
 	inserted.first->second->OnCreate();
 
-	return insertedSceneID- 1;
+	return insertedSceneID - 1;
 }
 
 void SceneManager::SwitchTo(unsigned int id)
@@ -58,7 +57,7 @@ void SceneManager::SwitchTo(unsigned int id)
 		}
 
 		curScene = it->second;
-		
+
 		curScene->OnActivate();
 	}
 }
@@ -67,9 +66,9 @@ void SceneManager::Remove(unsigned int id)
 {
 	auto it = scenes.find(id);
 
-	if (it!= scenes.end())
+	if (it != scenes.end())
 	{
-		if (curScene==it->second)
+		if (curScene == it->second)
 		{
 			curScene = nullptr;
 		}

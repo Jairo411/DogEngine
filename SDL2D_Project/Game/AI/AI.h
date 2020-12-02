@@ -36,11 +36,6 @@ protected:
 	GameObject* targetObj; // I should make this private
 	RectCollider navCollider;
 	CircleCollider circleCol;
-	enum class Enabled
-	{
-		FALSE = 0,
-		TRUE
-	};
 	std::vector<NavTile> path;
 private:
 	NavTile grabOriginTile();

@@ -4,11 +4,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "AI/AI.h"
+#include "../Networking/ServerNetworkHandler.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Window/Window.h"
 #include "../Input/Input.h"
 #include "../Timer/Timer.h"
-#include "AI/AI.h"
 #include "../Math/Converter.h"
 #include "Scenes/SceneManager.h"
 #include "Scenes/GameScenes/Scene0.h"
@@ -36,6 +37,7 @@ public:
 	static Window* actualWindow;
 	static bool	setIsRunning(bool tempBool_);
 	static AIManager *AI_Manager;
+	
 private:
 	int cnt=0;
 	const int FPS = 120;

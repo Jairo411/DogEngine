@@ -1,6 +1,12 @@
-﻿  main.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(8,37): warning C4081: expected 'newline'; found ';'
-  Server.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(8,37): warning C4081: expected 'newline'; found ';'
-  Generating Code...
+﻿  Server.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(88,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(88,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(50,19): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.cpp(110): message : see reference to function template instantiation 'void Server::sendMessage<const char*>(T)' being compiled
+          with
+          [
+              T=const char *
+          ]
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(52,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Server.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\Server.exe

@@ -1,5 +1,5 @@
 #include "Server.h"
-
+#include "..\SDL2D_Project\Networking\ServerNetworkHandler.h"
 Server::Server()
 {
 }
@@ -11,7 +11,7 @@ Server::~Server()
 bool Server::IntiServer(const char* ipAddress_)
 {
 	isRunning = true;
-	sockaddr_in *ptr;
+	sockaddr_in* ptr;
 
 
 	//Initialize Winsock
@@ -31,7 +31,7 @@ bool Server::IntiServer(const char* ipAddress_)
 
 	ZeroMemory(&hints, sizeof(hints));
 	hints.ai_family = AF_INET;
-	hints.ai_socktype = SOCK_DGRAM;
+	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_UDP;
 	hints.ai_flags = AI_PASSIVE;
 
@@ -45,13 +45,13 @@ bool Server::IntiServer(const char* ipAddress_)
 		return false;
 	}
 
-	listenSocket = socket(addresult->ai_family, addresult->ai_socktype, addresult->ai_protocol);
-	if (listenSocket == INVALID_SOCKET) {
-		printf("socket failed with error: %ld\n", WSAGetLastError());
-		freeaddrinfo(addresult);
-		WSACleanup();
-		return false;
-	}
+	listenSocket = socket(AF_INET, SOCK_DGRAM, 0);
+	//if (listenSocket == INVALID_SOCKET) {
+	//	printf("socket failed with error: %ld\n", WSAGetLastError());
+	//	freeaddrinfo(addresult);
+	//	WSACleanup();
+	//	return false;
+	//}
 
 	if (gethostname(hostname, sizeof(hostname)) == SOCKET_ERROR)
 	{
@@ -65,7 +65,7 @@ bool Server::IntiServer(const char* ipAddress_)
 
 
 	iResult = bind(listenSocket, (sockaddr*)&service, sizeof(service));
-	if(iResult==SOCKET_ERROR)
+	if (iResult == SOCKET_ERROR)
 	{
 		std::cout << "Socket bind failed: " << WSAGetLastError() << std::endl;
 		return false;
@@ -77,7 +77,7 @@ bool Server::IntiServer(const char* ipAddress_)
 	freeaddrinfo(addresult);
 
 	std::cout << "Server Set Up" << std::endl;
-	
+
 	return true;
 
 }
@@ -91,6 +91,10 @@ void Server::handleLoop()
 	while (isRunning == true)
 	{
 		Listen();
+		if (recvBuf=="inti")
+		{
+			Speak();
+		}
 		Update(deltaTime);
 	}
 	// std::cout << getTime();
@@ -101,18 +105,31 @@ void Server::Update(float deltaTime_)
 
 }
 
+void Server::Speak()
+{
+	sendMessage<const char*>("Yolo");
+	
+}
+
 void Server::Listen()
 {
-	int clientLength = sizeof(client);
 	ZeroMemory(&clientListener, clientLength);
-	ZeroMemory( recvBuf, 1024);
+	ZeroMemory(recvBuf, 1024);
+	ReadMessage();
+	
 
-	int bytesIn = recvfrom(listenSocket, recvBuf, 1024, 0, (sockaddr*)&client, &clientLength);
-	if (bytesIn==SOCKET_ERROR)
+}
+
+
+const char* Server::ReadMessage()
+{
+	int bytesIn = recvfrom(listenSocket, recvBuf, DEFAULT_BUFLEN, 0, (sockaddr*)&client, &clientLength);
+	if (bytesIn == SOCKET_ERROR)
 	{
 		std::cout << "Error receiving from client" << WSAGetLastError() << std::endl;
 	}
-	
+	std::cout << recvBuf << std::endl;
+	return recvBuf;
 }
 
 std::string Server::getTime()
@@ -121,7 +138,6 @@ std::string Server::getTime()
 
 	std::time_t result = std::time(nullptr);
 	currentT = std::asctime(std::localtime(&result));
-
 
 	return currentT;
 }

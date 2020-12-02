@@ -15,7 +15,7 @@ Skeleton::Skeleton()
 Skeleton::Skeleton(int x, int y)
 {
 	setPosition(x, y);
-	speed = 40;
+	speed = 20;
 	srcRect.x = 0;
 	srcRect.y = 0;
 

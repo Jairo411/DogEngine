@@ -18,6 +18,7 @@ Window::Window()
 
 
 	//  you're gonna now place the window class and renderer functionailty here soon....
+	// Im pretty sure it's been m
 	//int flags = 0;
 
 	/*if (fullscreen)

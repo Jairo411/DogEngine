@@ -62,6 +62,7 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	}
 
 	std::shared_ptr<Scene0> gameScene = std::make_shared<Scene0>();
+
 	unsigned int gameSceneID = sceneManager->Add(gameScene);
 
 	timer->Start();

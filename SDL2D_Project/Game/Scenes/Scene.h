@@ -1,6 +1,5 @@
 #ifndef SCENE_HEADER
 #define SCENE_HEADER
-#include "../../Window/Window.h"
 class Scene
 {
 public:

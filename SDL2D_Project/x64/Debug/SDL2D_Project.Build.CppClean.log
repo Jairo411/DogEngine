@@ -1,9 +1,12 @@
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\vc142.pdb
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\vc142.idb
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\animationhandler\animationhandler.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\decisiontreenode.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\xml_parser\pugixml.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\vec2.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\converter.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\networking.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\networking\clientinterfacenetwork.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\networking\servernetworkhandler.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\input\input.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\savesystem\saver.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\scenes\scenemanager.obj
@@ -11,7 +14,6 @@ c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\priorityqueue\
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\priorityqueue\a_star_node_priority.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\timer\timer.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\animator\animator.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\decisiontreenode.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\skeleton.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\player.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\gameobject.obj

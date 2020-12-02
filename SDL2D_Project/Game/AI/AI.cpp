@@ -139,7 +139,7 @@ void AI::Huristic(NavTile currentNode_, NavTile goalNode_)
 
 	currentNode_.f = g + h;
 	currentNode_.aStar->priority = currentNode_.f;
-//	currentNode_.aStar->print();
+
 }
 
 float AI::gVaule(NavTile distanceFromOrigin_)
@@ -160,13 +160,13 @@ void AI::a_starPathFinding(NavTile goal_)
 	std::priority_queue<A_Star_Node_Priority, std::deque<A_Star_Node_Priority>, ComparePriority> openList;
 	std::priority_queue<A_Star_Node_Priority, std::deque<A_Star_Node_Priority>, ComparePriority> closedList;
 	std::vector<NavTile> navHolder;
-	std::vector<A_Star_Node_Priority> closedV;
-	NavTile* currentNode = new NavTile();
-	NavTile* otherNode = new NavTile();
+	std::vector<A_Star_Node_Priority> closedNode;
+	NavTile* currentTile = new NavTile();
+	NavTile* otherTile = new NavTile();
 	bool flag = false;
 	//putting a start Node in the beginning of my list
-	currentNode = &start;
-	openList.push(*currentNode->aStar);
+	currentTile = &start;
+	openList.push(*currentTile->aStar);
 
 	while (flag == false)
 	{
@@ -178,31 +178,31 @@ void AI::a_starPathFinding(NavTile goal_)
 				nodeTograb = openList.top().node;
 				if (weightedgraph.at(i).aStar->node == nodeTograb)
 				{
-					currentNode = &weightedgraph.at(i);
+					currentTile = &weightedgraph.at(i);
 				}
 			}
 		}
 
-		if (currentNode->n != goal.n)
+		if (currentTile->n != goal.n)
 		{
 			//Check all of its neighbors 
 			for (int i = 0; i < 8; i++)
 			{
-				if (closedV.size() == 0)
+				if (closedNode.size() == 0)
 				{
-					otherNode = grabNeighbors(currentNode, i, closedV);
-					Huristic(*otherNode, goal_);
-					openList.push(*otherNode->aStar);
+					otherTile = grabNeighbors(currentTile, i, closedNode);
+					Huristic(*otherTile, goal_);
+					openList.push(*otherTile->aStar);
 				}
-				else if (closedV.size() > 0)
+				else if (closedNode.size() > 0)
 				{
-					for (int j = 0; j < closedV.size(); j++)
+					for (int j = 0; j < closedNode.size(); j++)
 					{
-						if (currentNode->n != closedV.at(j).node)
+						if (currentTile->n != closedNode.at(j).node)
 						{
-							otherNode = grabNeighbors(currentNode, i, closedV);
-							Huristic(*otherNode, goal_);
-							openList.push(*otherNode->aStar);
+							otherTile = grabNeighbors(currentTile, i, closedNode);
+							Huristic(*otherTile, goal_);
+							openList.push(*otherTile->aStar);
 						}
 					}
 				}
@@ -210,24 +210,24 @@ void AI::a_starPathFinding(NavTile goal_)
 
 			A_Star_Node_Priority c = openList.top();
 
-			closedV.push_back(c);
+			closedNode.push_back(c);
 			closedList.push(c);
 
 			openList.pop();
 
 		}
-		else if (currentNode->n == goal.n)
+		else if (currentTile->n == goal.n)
 		{
 			openList.empty();
 			flag = true;
 		}
 	}
 
-	for (int i = 0; i < closedV.size(); i++)
+	for (int i = 0; i < closedNode.size(); i++)
 	{
 		for (int j = 0; j < weightedgraph.size(); j++)
 		{
-			if (weightedgraph.at(j).aStar->node == closedV.at(i).node)
+			if (weightedgraph.at(j).aStar->node == closedNode.at(i).node)
 			{
 				navHolder.push_back(weightedgraph.at(j));
 				closedList.pop();

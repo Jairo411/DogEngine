@@ -2,7 +2,7 @@
 #define MESSAGE_H
 #include <string>
 template <class TypeMessage>
-struct Message
+class Message
 {
 	Message(TypeMessage type_, std::string timeStamp_)
 	{
