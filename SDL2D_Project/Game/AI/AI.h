@@ -4,7 +4,7 @@
 #include "../../Math/Converter.h"
 #include "../../Physics/Collider.h"
 #include "../../GameObjects/GameObject.h"
-#include "DecisionTree/XML-DT/DecisionTreeNode.h"
+#include "DecisionTree/XML-DT/XML.h"
 #include "Grid.h"
 #include <minmax.h>
 #include <queue>

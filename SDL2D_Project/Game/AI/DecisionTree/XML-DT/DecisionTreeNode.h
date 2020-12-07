@@ -3,43 +3,52 @@
 #include<string>
 #include<iostream>
 #include<stdio.h>
-#include"XML_parser/pugixml.hpp"
+#include "../XML-DT/XML.h"
 
 using namespace pugi;
 
 class DecisionTreeNode
 {
 public:
-	DecisionTreeNode(const char* xml_);
+	DecisionTreeNode();
+	DecisionTreeNode(XML xmlFile_);
 	~DecisionTreeNode();
-	//virtual void MakeDecision() = 0;
-private:
-	xml_document doc;
-	xml_parse_result res;
-	
+	virtual DecisionTreeNode MakeDecision() = 0;
+protected:
+	XML xml_DecisionTree;
 };
 
-//
-//class Action : public DecisionTreeNode
-//{
-//protected:
-//	virtual void MakeDecision();
-//};
-//
-//class Decision : public DecisionTreeNode
-//{
-//public:
-//	void testValue();
-//	void getBranch();
-//protected:
-//	//virtual void MakeDecision();
-//};
-//
-//class FloatDecision : public Decision
-//{
-//public:
-//
-//};
+
+class Action : public DecisionTreeNode
+{
+public:
+	Action();
+	~Action();
+	void SetAction(std::string action_);
+private:
+	std::string actionType;
+protected:
+//	virtual DecisionTreeNode MakeDecision();
+};
+
+class Decision : public DecisionTreeNode
+{
+public:
+	Decision();
+	~Decision();
+protected:
+	virtual void testValue();
+	virtual void getBranch();
+//	virtual DecisionTreeNode MakeDecision();
+	DecisionTreeNode* falseNode;
+	DecisionTreeNode* trueNode;
+};
+class BoolDecision : public Decision
+{
+public:
+	void testValue();
+	void getBranch();
+};
 
 #endif // !DECISIONTREENODE_H
 

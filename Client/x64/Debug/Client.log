@@ -10,5 +10,6 @@ C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.cpp(76): message : see r
   main.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(67,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\Client\Client.h(67,1): message : This diagnostic occurred in the compiler generated function 'void Client::sendMessage(T)'
+  Window.cpp
   Generating Code...
   Client.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\Client.exe

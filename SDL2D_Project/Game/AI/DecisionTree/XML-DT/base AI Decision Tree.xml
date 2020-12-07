@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--My condition tree-->
 <decisionTree>
-  <test> is enemy visible? </test>
-  <!-- Conditional Statement false-->
-  <false>
-    <action>ROAM</action>
-  </false>
-  <!-- Conditional Statement true-->
-  <true>
-    <test>is enemy greater than 10 tiles far? </test>
-    <!-- Conditional Statement false-->
-    <false>
-      <action>STEER</action>
-    </false>
-    <!-- Conditional Statement true-->
+  <move>
+    <!--Test is a child of move-->
+    <test> is enemy Visible? </test>
+    <!--false is a child of move-->
+      <false>
+        <!--action is a child of false-->
+        <action>STEER</action>
+      </false>
+    <!--true is a child of move-->
     <true>
-      <action>PATHFIND</action>
+      <!--test is a child of true-->
+      <test> is enemy 5m away?</test>
+      <false>
+        <!--action is a child of false-->
+        <action>PATHFIND</action>
+      </false>
+      <true>
+        <!--action is a child of true-->
+        <action>STEER</action>
+      </true>
     </true>
-  </true>
+  </move>
 </decisionTree>

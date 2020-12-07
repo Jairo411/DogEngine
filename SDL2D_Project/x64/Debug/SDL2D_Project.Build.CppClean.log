@@ -1,7 +1,6 @@
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\vc142.pdb
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\vc142.idb
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\animationhandler\animationhandler.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\decisiontreenode.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\xml_parser\pugixml.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\vec2.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\converter.obj
@@ -14,6 +13,8 @@ c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\priorityqueue\
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\priorityqueue\a_star_node_priority.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\timer\timer.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\animator\animator.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\xml.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\decisiontree\xml-dt\decisiontreenode.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\skeleton.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\player.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\gameobject.obj
