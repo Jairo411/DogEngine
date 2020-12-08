@@ -38,7 +38,7 @@ void Scene0::OnCreate()
 	Game::AI_Manager->getInstance()->getTotalAgents();
 	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 479);
 //	std::cout << "Current Enemy Poistion is " << "X: " << enemy1->getPosition().x << " Y: " << enemy1->getPosition().y << endl;
-
+	
 }
 
 void Scene0::OnDestroy()

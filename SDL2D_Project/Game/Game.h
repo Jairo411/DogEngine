@@ -5,7 +5,7 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "AI/AI.h"
-#include "../Networking/ServerNetworkHandler.h"
+#include "../Networking/GameState.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Window/Window.h"
 #include "../Input/Input.h"

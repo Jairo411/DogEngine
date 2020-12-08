@@ -1,2 +1,76 @@
-﻿  DecisionTreeNode.cpp
+﻿  Animator.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+  DecisionTreeNode.cpp
+  XML.cpp
+  Generating Code...
+  GameObject.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(18,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(19,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(79,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(80,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(79,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(80,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(201,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  Skeleton.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(153,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(154,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(270,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(233): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+  AI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(221,18): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Grid.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(43,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(44,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(56): warning C4715: 'NavTile::giveAddress': not all control paths return a value
+  GameState.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.cpp(22,18): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.cpp(23,14): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.cpp(24,23): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.cpp(25,20): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(142,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(199,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(208,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(209,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(213,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(215,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(231,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(233,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(247,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(247,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+  Main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+  Generating Code...
+  Map.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(153,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Scene0.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+  TextureManager.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+  Tiles.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(106,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(107,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(124,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(125,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(157): warning C4715: 'Tile::getID': not all control paths return a value
+  Window.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(39,2): warning C4091: 'typedef ': ignored on left of 'gameState' when no variable is declared
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

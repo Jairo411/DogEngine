@@ -4,37 +4,43 @@ XML::XML()
 {
 }
 
-XML::XML(const char* source_)
+XML::XML(const char* source_,const char* name_)
 {
-	source = source_;
-	doc.load_file(source_);
-	// using the xml node is how you traverse your xml file
-	mainTag = doc.first_child();
-	xml_node tools = mainTag;
-	if (res)
-	{
-		std::cout << "XML [" << source << "] parsed without errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n\n";
-	}
-	else
-	{
-		std::cout << "XML [" << source << "] parsed with errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n";
-		std::cout << "Error description: " << res.description() << "\n";
-		std::cout << "Error offset: " << res.offset << " (error at [..." << (source + res.offset) << "]\n\n";
-	}
+	doc = xml_document();
+	std::string fullpath = source_;
+	fullpath += name_;
+	doc.load_file(source_, parse_default | parse_declaration);
+	
+	auto declarationNode = doc.append_child(node_declaration);
+	declarationNode.append_attribute("version") = "1.0";
+	declarationNode.append_attribute("encoding") = "utf-8";
 
-	
-	
-	doc.traverse(walker);
-	walker.PrintNodeVector();
-	setElements(walker);
-	std::cout << walker.totalElements << std::endl;
-	doc.print(std::cout);
-	system("pause");
+	mainTag = doc.append_child("myroot");
+	bool saved = doc.save_file(fullpath.c_str());
+	assert(saved);
+//	doc.traverse(walker);
+	//walker.PrintNodeVector();
+	//setElements(walker);
+	//std::cout << walker.totalElements << std::endl;
+	//doc.print(std::cout);
+	//system("pause");
+
 
 }
 
 XML::~XML()
 {
+}
+
+void XML::addClassNode(const char* name_,const char* type_)
+{
+
+	xml_node classElement;
+	/*Creates the element*/
+	classElement = mainTag.append_child(name_);
+	classElement.append_child(node_pcdata).set_value("");
+	/*Assigns a type value inside the element*/
+	classElement.append_attribute("type") = type_;	
 }
 
 bool XML::checkNode(const char* tagName_)
@@ -56,30 +62,44 @@ std::vector<const char*> XML::setElements(simple_walker walker)
 	return ElementNames;
 }
 
-void XML::savefile(int condition_)
+void XML::addChildElement(const char* name_, std::string elementValue_)
 {
-	switch (condition_)
-	{
-		//just saves current xml file
-		//Currently not working seems like I need to parse it to a string and place it here 
-	case 0:
-		doc.load_string("");
-		break;
-		//  This should save the current xml document, then create a new one 
-	case 1:
 
-		break;
-	default:
-		break;
-	}
+	xml_node childElement;
+	currentNode = mainTag.last_child();
+	/*Creates the element*/
+	childElement = currentNode.append_child(name_);
+	childElement.set_value(elementValue_.c_str());
+}
+
+void XML::savefile()
+{
+	std::cout << "Saving in directory:  " << source.c_str() << std::endl;
+	doc.save_file(source.c_str());
 }
 
 void XML::printXML()
 {
 	doc.print(std::cout);
+	doc.traverse(walker);
+	walker.PrintNodeVector();
+//	std::cout << walker.totalElements << std::endl;
 }
 
 int XML::getTotalAmountOfElements()
 {
 	return walker.totalElements;
 }
+
+/* A way to check the xml parsed 
+if (res)
+	{
+		std::cout << "XML [" << source << "] parsed without errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n\n";
+	}
+	else
+	{
+		std::cout << "XML [" << source << "] parsed with errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n";
+		std::cout << "Error description: " << res.description() << "\n";
+		std::cout << "Error offset: " << res.offset << " (error at [..." << (source + res.offset) << "]\n\n";
+	}
+*/
