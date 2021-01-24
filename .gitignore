@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+SDL2D_Project/Networking/GameState.cpp
+SDL2D_Project/Networking/GameState.h
