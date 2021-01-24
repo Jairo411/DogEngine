@@ -1,20 +1,18 @@
 #include "Scene0.h"
 
 
-std::vector<Tile*> ptr;
 Player* player;
 Skeleton* enemy;
 Skeleton* enemy0;
 Skeleton* enemy1;
 MapLayer* mapA;
-GameState* gameState;
 
 Scene0::Scene0()
 {
 	player = nullptr;
 	enemy = nullptr;
 	mapA = nullptr;
-	gameState = new GameState();
+	
 }
 
 Scene0::~Scene0()
@@ -30,15 +28,14 @@ void Scene0::OnCreate()
 	enemy1 = new Skeleton(400, 200);
 	mapA = new MapLayer(Game::actualWindow);
 
-	/* GameState Setting*/
-	gameState->setGameObjects(&GameObject::ObjHolder);
 	/* Setting GameObject Functionality*/
 	enemy->SetTarget(player);
 	enemy0->SetTarget(player);
 	Game::AI_Manager->getInstance()->getTotalAgents();
-	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 479);
-//	std::cout << "Current Enemy Poistion is " << "X: " << enemy1->getPosition().x << " Y: " << enemy1->getPosition().y << endl;
-
+	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
+	std::string name = "test1";
+	XML xml = XML();
+	xml.createXML(name);
 }
 
 void Scene0::OnDestroy()
@@ -58,24 +55,20 @@ void Scene0::HandleEvents()
 	case SDL_KEYDOWN:
 		player->keyPressed(true, event.key.keysym.sym);
 		player->KeyBoardInput(player->InputKeyBoardHolder.begin()->first);
-		gameState->setCurrentKeyBoardInput(&player->InputKeyBoardHolder);
 		break;
 	case SDL_KEYUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->KeyBoardInput(player->InputKeyBoardHolder.begin()->first);
-		gameState->setCurrentKeyBoardInput(&player->InputKeyBoardHolder);
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		player->MousePressed(true, event.button.button);
 		player->MouseInput(player->InputMouseHolder.begin()->first);
-		gameState->setCurrentMouseInput(&player->InputMouseHolder);
 		//	if (Game::actualWindow->MouseInput(event.button.button))
 		//	mapA->keyCode = event.button.button;
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->MouseInput(player->InputMouseHolder.begin()->first);
-		gameState->setCurrentMouseInput(&player->InputMouseHolder);
 		break;
 	}
 }

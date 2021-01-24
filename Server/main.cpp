@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Server.h"
 #include "message.h"
-int main()
+int main(int argv, char** args)
 {
 	Server server0;
 
@@ -13,4 +13,5 @@ int main()
 
 		}
 	}
+	return 0;
 }

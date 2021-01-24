@@ -22,6 +22,7 @@ Basically anything with a texture.
 might want to strip this class of alot of it's functionality leave basic functionality.
 and expand the functionailty to child classes.
 potentailly going to have gameObjects with no movement or extra functionality being used and having a bunch of null variables */
+
 class TextureManager;
 class GameObject
 {
@@ -30,6 +31,7 @@ public:
 	virtual void Update(float deltaTime_) = 0;
 	virtual void Render() = 0;
 	virtual void Disable() = 0;
+	virtual SDL_Texture* getTexture() final;
 	virtual bool setDisable(bool temp) final;
 	virtual bool getDisable() final;
 	virtual void setPosition(int x_, int y_);

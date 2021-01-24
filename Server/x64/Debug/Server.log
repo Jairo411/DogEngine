@@ -1,17 +1,20 @@
-﻿  main.cpp
+﻿  Server.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(88,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(88,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
-  Server.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(88,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(88,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(50,19): warning C4834: discarding return value of function with 'nodiscard' attribute
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.cpp(110): message : see reference to function template instantiation 'void Server::sendMessage<const char*>(T)' being compiled
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(34,2): warning C4091: 'typedef ': ignored on left of 'ServerSetUpInfo' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(49,2): warning C4091: 'typedef ': ignored on left of 'GameObjectInfo' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Networking\GameState.h(60,2): warning C4091: 'typedef ': ignored on left of 'TileInfo' when no variable is declared
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(45,19): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.cpp(111): message : see reference to function template instantiation 'void Server::sendMessage<const char*>(T)' being compiled
           with
           [
               T=const char *
           ]
-C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(52,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(47,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
   Generating Code...
   Server.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\Server.exe

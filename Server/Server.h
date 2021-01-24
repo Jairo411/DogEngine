@@ -1,4 +1,4 @@
-#ifndef SERVER_H
+﻿#ifndef SERVER_H
 #define SERVER_H
 #define WIN32_LEAN_AND_MEAN
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
@@ -17,13 +17,10 @@
 #include<sstream>
 #include<string>
 
-
-
 #define DEFAULT_BUFLEN 1024
 #define DEFAULT_PORT "1986"
 
 class Client;
-class GameState;
 class Server
 {
 public:
@@ -35,11 +32,9 @@ public:
 	void Update(float deltaTime_);
 	void Speak();
 	void Listen();
-
+	void printState();
 private:
-
 	std::string testVariable = "TEST";
-
 	template <class T>
 	void sendMessage(T messageType)
 	{
@@ -62,12 +57,10 @@ private:
 	//your getTime function will be outdated and not functional on
 //03:14 : 07 UTC on 19 January 2038 but who cares 
 	std::string getTime();
-
-
+	
 	WSADATA wsaData;
 	SOCKET listenSocket = INVALID_SOCKET;
 	SOCKET clientListener;
-	//std::vector<SOCKET> clientSocket;
 	sockaddr_in service;
 	sockaddr_in client;
 	struct addrinfo hints;
@@ -78,7 +71,6 @@ private:
 	char recvBuf[DEFAULT_BUFLEN];
 	int recvBufLength = DEFAULT_BUFLEN;
 	int clientLength = sizeof(client);
-
 
 	bool isRunning;
 	int recvBuflen = DEFAULT_BUFLEN;

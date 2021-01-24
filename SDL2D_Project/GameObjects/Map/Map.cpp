@@ -79,6 +79,7 @@ of the map tiles so that it doesn't have to constantly render
 void MapLayer::OnBuild(int state_)
 {
 	int index = 0;
+	std::vector<Tile*>* gameStatePtr= new std::vector<Tile*>();
 	if (state_ == 0)
 	{
 
@@ -110,14 +111,14 @@ void MapLayer::OnBuild(int state_)
 			break;
 		case MapLayer::DEVELOPER:
 		{
-
+			
 			for (int i = 0; i < rows; i++)
 			{
 				for (int j = 0; j < cols; j++)
 				{
 					int tempR = tileSize * i; //these can be used as the cordiantes that I can used in order to place tiles
 					int tempC = tileSize * j;// the space between the rows and the cols should be the same as the size of the colliders and textures in the Tile class
-
+					
 					tex = TileSet::getTile(0); // you don't have to give it is texture information right away.
 					//This is how you access the Tile Textures Right here;
 					Tile::setTileSize(32, 32);
@@ -127,9 +128,12 @@ void MapLayer::OnBuild(int state_)
 					tileMap.at(index).SetID(index);
 					tileMap.at(index).SetPosition(position);
 					tileMap.at(index).setGridPosition(gridPosition);
+					gameStatePtr->push_back(new Tile(tex, tempR, tempC, true));
 					std::cout << " Tile label ID: ";
 					tileMap.at(index).getID(index)->print();
 					index++;
+
+					
 				}
 			}
 		}

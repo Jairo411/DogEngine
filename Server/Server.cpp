@@ -1,11 +1,14 @@
 #include "Server.h"
-#include "..\SDL2D_Project\Networking\ServerNetworkHandler.h"
+#include "..\SDL2D_Project\Networking\GameState.h"
+
 Server::Server()
 {
+	
 }
 
 Server::~Server()
 {
+
 }
 
 bool Server::IntiServer(const char* ipAddress_)
@@ -22,8 +25,6 @@ bool Server::IntiServer(const char* ipAddress_)
 		system("pause");
 		return false;
 	}
-
-
 
 	service.sin_addr.S_un.S_addr = inet_addr(ipAddress_);
 	service.sin_family = AF_INET;
@@ -97,7 +98,7 @@ void Server::handleLoop()
 		}
 		Update(deltaTime);
 	}
-	// std::cout << getTime();
+
 }
 
 void Server::Update(float deltaTime_)
@@ -117,9 +118,12 @@ void Server::Listen()
 	ZeroMemory(recvBuf, 1024);
 	ReadMessage();
 	
-
 }
 
+void Server::printState()
+{
+	
+}
 
 const char* Server::ReadMessage()
 {

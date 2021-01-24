@@ -42,6 +42,11 @@ void GameObject::DrawLine(Vec2 start_, Vec2 end_)
 	SDL_RenderDrawLine(Game::renderer, start_.x,start_.y,end_.x, end_.y);
 }
 
+SDL_Texture* GameObject::getTexture()
+{
+	return objTexture;
+}
+
 bool GameObject::setDisable(bool temp)
 {
 	return disableObject= temp;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<breakfast_menu>
+  <food>
+    <name>Burger</name>
+    <price>4.00</price>
+    <description> its a Burger homie</description>
+    <calories> 400</calories>
+  </food>
+  <food>
+    <name>Fries</name>
+    <price>3.00</price>
+    <description> its fries homie</description>
+    <calories> 200</calories>
+  </food>
+  <food>
+    <name>coca cola</name>
+    <price>2.50</price>
+    <description> its a coca cola homie</description>
+  </food>
+</breakfast_menu>
