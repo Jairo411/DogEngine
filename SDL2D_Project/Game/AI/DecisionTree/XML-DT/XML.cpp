@@ -8,7 +8,7 @@ XML::XML()
 	doc = xml_document();
 	mainTag = xml_node();
 	currentNode = xml_node();
-	
+
 
 }
 
@@ -60,6 +60,17 @@ void XML::addClassNode(const char* name_, const char* ID_)
 	classElement.append_attribute("ID").set_value(ID_);
 }
 
+void XML::addClassNode(const char* name_,const char* type_)
+{
+
+	xml_node classElement;
+	/*Creates the element*/
+	classElement = mainTag.append_child(name_);
+	classElement.append_child(node_pcdata).set_value("");
+	/*Assigns a type value inside the element*/
+	classElement.append_attribute("type") = type_;
+}
+
 bool XML::checkNode(const char* tagName_)
 {
 	return false;
@@ -77,13 +88,20 @@ std::string XML::deserializeAttribute(int index_)
 	return attribute;
 }
 
+<<<<<<< HEAD
 int XML::AmountOfNodes()
+||||||| cf9c116
+void XML::savefile(int condition_)
+=======
+void XML::addChildElement(const char* name_, std::string elementValue_)
+>>>>>>> c39ce80023f7ae94260674ec10d67643cfd6f46b
 {
 	return walker.ElementV.size();
 }
 
 xml_node XML::getNode(int index_)
 {
+<<<<<<< HEAD
 	return walker.ElementV.at(index_);
 }
 
@@ -123,6 +141,14 @@ void XML::savefile()
 {
 	std::cout << "Saving in directory:  " << source.c_str() << std::endl;
 	doc.save_file(source.c_str());
+||||||| cf9c116
+	doc.print(std::cout);
+=======
+	doc.print(std::cout);
+	doc.traverse(walker);
+	walker.PrintNodeVector();
+//	std::cout << walker.totalElements << std::endl;
+>>>>>>> c39ce80023f7ae94260674ec10d67643cfd6f46b
 }
 
 void XML::printXML()
@@ -130,3 +156,16 @@ void XML::printXML()
 	doc.print(std::cout);
 	walker.PrintNodeVector();
 }
+
+/* A way to check the xml parsed
+if (res)
+	{
+		std::cout << "XML [" << source << "] parsed without errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n\n";
+	}
+	else
+	{
+		std::cout << "XML [" << source << "] parsed with errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n";
+		std::cout << "Error description: " << res.description() << "\n";
+		std::cout << "Error offset: " << res.offset << " (error at [..." << (source + res.offset) << "]\n\n";
+	}
+*/

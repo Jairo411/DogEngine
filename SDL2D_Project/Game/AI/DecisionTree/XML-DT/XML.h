@@ -110,6 +110,4 @@ private:
 	xml_node currentNode;
 
 };
-#endif 
-
-
+#endif

@@ -38,14 +38,14 @@ public:
 	static Window* actualWindow;
 	static bool	setIsRunning(bool tempBool_);
 	static AIManager *AI_Manager;
-	
+
 private:
 	int cnt=0;
 	const int FPS = 120;
 	static bool isRunning;
 	SDL_Window* window;
 	SceneManager* sceneManager;
-	
+
 };
 
 #endif // !Game_H

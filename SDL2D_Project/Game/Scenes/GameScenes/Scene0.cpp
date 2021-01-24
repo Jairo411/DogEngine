@@ -12,7 +12,7 @@ Scene0::Scene0()
 	player = nullptr;
 	enemy = nullptr;
 	mapA = nullptr;
-	
+
 }
 
 Scene0::~Scene0()
@@ -99,5 +99,3 @@ void Scene0::OnRender()
 	Game::actualWindow->OnRender();
 	SDL_RenderPresent(Game::renderer);
 }
-
-
