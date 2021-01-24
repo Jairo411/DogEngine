@@ -33,9 +33,7 @@ void Scene0::OnCreate()
 	enemy0->SetTarget(player);
 	Game::AI_Manager->getInstance()->getTotalAgents();
 	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
-	std::string name = "test1";
-	XML xml = XML();
-	xml.createXML(name);
+
 }
 
 void Scene0::OnDestroy()

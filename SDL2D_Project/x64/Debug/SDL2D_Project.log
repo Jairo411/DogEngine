@@ -1,3 +1,135 @@
-﻿  XML.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\DecisionTree\XML-DT\XML.cpp(82,31): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+﻿  AnimationHandler.cpp
+  Animator.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+  XML.cpp
+  pugixml.cpp
+  Converter.cpp
+  Vec2.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(14,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(15,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Skeleton.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(153,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(154,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(270,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  GameObject.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(18,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(19,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(42,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(84,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(85,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(79,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(80,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(201,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(233): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+  AI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(221,18): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Grid.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(43,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(44,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(56): warning C4715: 'NavTile::giveAddress': not all control paths return a value
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(142,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(199,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(208,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(209,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(213,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(215,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(231,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(233,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(247,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(247,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+  Main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+  Generating Code...
+  Map.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(157,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Input.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(34): warning C4715: 'Input::keyPressed': not all control paths return a value
+  Saver.cpp
+  SceneManager.cpp
+  Scene0.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+  A_Star_Node_Priority.cpp
+  node.cpp
+  Generating Code...
+  TextureManager.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+  Tiles.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(106,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(107,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(124,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(125,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(157): warning C4715: 'Tile::getID': not all control paths return a value
+  Timer.cpp
+  Window.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(7,37): warning C4081: expected 'newline'; found ';'
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\Server\Server.h(80,1): message : This diagnostic occurred in the compiler generated function 'void Server::sendMessage(T)'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
