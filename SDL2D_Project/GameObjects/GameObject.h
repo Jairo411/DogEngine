@@ -9,6 +9,7 @@
 #include<fstream>
 #include<type_traits>
 #include"../Math/Vec2.h"
+#include"../DataStructures/Observer.h"
 using namespace std;
 
 /*Standard GameObject class should be abstract and should be the base class.
@@ -24,10 +25,12 @@ and expand the functionailty to child classes.
 potentailly going to have gameObjects with no movement or extra functionality being used and having a bunch of null variables */
 
 class TextureManager;
-class GameObject
+class IObserver;
+class GameObject : public IObserverable
 {
 public:
 	GameObject();
+	virtual ~GameObject();
 	virtual void Update(float deltaTime_) = 0;
 	virtual void Render() = 0;
 	virtual void Disable() = 0;
@@ -36,10 +39,14 @@ public:
 	virtual bool getDisable() final;
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
+	virtual void Attach(IObserver* observer_);
+	virtual void Detach(IObserver* observer_);
+	virtual void Notify();
 //	virtual void HandleCollison(); Update this in the future
 	Vec2 getPosition();
-	static vector<GameObject*> ObjHolder;
+	static vector<GameObject*> ObjHolder; //Switch this to a list <----------------------------------------
 	void DrawLine(Vec2 start_, Vec2 end_);
+	string nameID;
 private:
 	bool disableObject;
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
@@ -53,7 +60,6 @@ protected:
 	float maxAcceleration;
 	bool textureIsOn;
 	/*Object Members*/
-	string nameID;
 	Vec2 realPosition; // real position
 	Vec2 APosition; // stands for Anchor Position -> middle of image or square
 	Vec2 velocity;

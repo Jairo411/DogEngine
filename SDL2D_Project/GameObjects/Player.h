@@ -24,7 +24,7 @@ public:
 	 /* Keyboard Handler */
 	 bool KeyBoardInput(int key);
 	 bool MouseInput(int key);
-	 bool controllerInput(int key);
+	 bool ControllerInput(int key);
 	 enum class AnimationStates
 	 {
 		 ATTACK0 = 0,
@@ -61,12 +61,6 @@ private:
 	
 
 };
-
-struct playerStats 
-{
-
-};
-
 
 #endif // !PLAYER_HEADER
 

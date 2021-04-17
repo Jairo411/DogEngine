@@ -15,7 +15,7 @@ public:
 	virtual ~Input();
 	virtual bool KeyBoardInput(int key) = 0;
 	virtual bool MouseInput(int key) = 0;
-	virtual bool controllerInput(int key) = 0;
+	virtual bool ControllerInput(int key) = 0;
 
 	bool keyPressed(int is_Pressed,int keycode);
 	bool MousePressed(int is_Pressed, int keycode);

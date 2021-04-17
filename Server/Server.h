@@ -1,5 +1,5 @@
-﻿#ifndef SERVER_H
-#define SERVER_H
+﻿/*#ifndef SERVER_H
+#define SERVER
 #define WIN32_LEAN_AND_MEAN
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
@@ -87,3 +87,4 @@ private:
 
 };
 #endif // !SERVER_H
+*/

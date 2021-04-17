@@ -53,6 +53,7 @@ Player::Player(const char* textureSheet, int x, int y)
 	}
 
 	GameObject::ObjHolder.push_back(ptr);
+	nameID += to_string(ObjHolder.size());
 
 
 
@@ -68,6 +69,7 @@ void Player::Update(float deltaTime_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
 	//Note you need to get your FPS working properly in order to to proper animate your character
+	
 	setDelta(deltaTime_);
 
 	PlayAnimations(animState);
@@ -94,17 +96,17 @@ void Player::Render()
 	/*This is in the loop*/
 	if (nullObjTexture != NULL)
 	{
-		SDL_RenderCopy(Game::renderer, nullObjTexture, NULL, NULL);
+		SDL_RenderCopy(Window::RenderContext->renderer, nullObjTexture, NULL, NULL);
 		//	cout << "You're player Texture isn't working" <<endl;
 	}
 	if (getDisable() == false)
 	{
-		SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+		SDL_RenderCopy(Window::RenderContext->renderer, objTexture, &srcRect, &destRect);
 		collider.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{
-		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect, &destRect);
+		SDL_RenderCopy(Window::RenderContext->renderer, nullObjTexture, &srcRect, &destRect);
 	}
 }
 
@@ -189,7 +191,7 @@ bool Player::MouseInput(int key)
 	return false;
 }
 
-bool Player::controllerInput(int key)
+bool Player::ControllerInput(int key)
 {
 	return false;
 }
@@ -200,10 +202,13 @@ void Player::PlayAnimations(AnimationStates temp_)
 {
 	Uint32 ticks = 10*Game::timer->GetCurrentTicks();
 	Uint32 frames;
+	/*
+		Im gonna re-work all this mess, its old and doesnt really make sense. 
+	*/
 	switch (temp_)
 	{
 	case AnimationStates::ATTACK0:
-		frames = ticks % 4;
+		frames = ticks % 4; 
 		objTexture = sprite.animationSet.at(0).at(frames);
 		break;
 	case AnimationStates::ATTACK1:

@@ -37,6 +37,7 @@ Skeleton::Skeleton(int x, int y)
 	ptr = this;
 	col = RectCollider(srcRect0.w, srcRect0.h);
 	GameObject::ObjHolder.push_back(ptr);
+	nameID += to_string(ObjHolder.size());
 	Inti();
 }
 
@@ -148,6 +149,10 @@ void Skeleton::Inti()
 
 void Skeleton::Update(float DeltaTime_)
 {
+	if (dynamic_cast<IObserverable*>(this))
+	{
+		Notify();
+	}
 	if (getDisable() == false)
 	{
 		destRect0.x = realPosition.x;
@@ -170,13 +175,13 @@ void Skeleton::Render()
 
 	if (getDisable() == false)
 	{
-		SDL_RenderCopy(Game::renderer, objTexture, &srcRect0, &destRect0);
+		SDL_RenderCopy(Window::RenderContext->renderer, objTexture, &srcRect0, &destRect0);
 		col.CollisonRender();
 		navCollider.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{
-		SDL_RenderCopy(Game::renderer, nullObjTexture, &srcRect0, &destRect0);
+		SDL_RenderCopy(Window::RenderContext->renderer, nullObjTexture, &srcRect0, &destRect0);
 	}
 }
 

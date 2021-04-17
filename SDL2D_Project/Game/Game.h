@@ -43,7 +43,6 @@ private:
 	int cnt=0;
 	const int FPS = 120;
 	static bool isRunning;
-	SDL_Window* window;
 	SceneManager* sceneManager;
 
 };

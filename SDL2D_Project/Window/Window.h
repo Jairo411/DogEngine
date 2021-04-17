@@ -5,16 +5,44 @@
 #include <map>
 #include <iterator>
 #include "../Input/Input.h"
+#include "GUI.h"
 class Game;
-/* Honestly don't know the purpose of this class
-	It's suppose to hold UI Elements I guess. It could hold a health bar maybe a stamina bar*/
-/* I should make this static Reasoning:
- -I can access very basic window stuff which should be important because this carries the SDL_Context 
- -I will be able to do easy Vector math with my screenCoords covered methods 
- -Everything is technically  in this Window Screen.*/
+struct Renderer
+{
+ SDL_Renderer* renderer;
+ int width;
+ int height;
+};
+
 class Window: public Input
 {	
+public:
+	Window();
+	Window(SDL_Window* tempWindow_);
+	~Window();
+	static int getScreenHeight();
+	static int getScreenWidth();
+	bool MouseInput(int case_);
+	bool KeyBoardInput(int key);
+	bool ControllerInput(int key);
+	void CreateMiddleRect();
+	void SetRenderer(SDL_Renderer* renderer_);
+	void SetGUIEvent(SDL_Event* GUIEvent_);
+	SDL_Renderer* GetRenderer();
+	void OnRender();
+	void OnUpdate();
+	static Vec2 ConvertScreenCoords(int x, int y);
+	Vec2 midVec;
+	enum WindowStatus : unsigned int
+	{
+		DEBUG = 0,
+		STANDARD,
+		RELEASE
+	};
+	static Renderer* RenderContext;
+	SDL_Window* GetWindow();
 private:
+	int mouseX, mouseY;
 	static int SCREENWIDTH; //Actually since you have functions for this 
 	static int SCREENHEIGHT; // move over the covertedScreenCoords 
 	int SquareSize;
@@ -26,27 +54,8 @@ private:
 	SDL_Surface *graphicLayer;
 	SDL_Window *window;
 	Vec2 covertedScreenCoords;
-public:
-	Window();
-	Window(SDL_Window* tempWindow_);
-	static int getScreenHeight();
-	static int getScreenWidth();
-	bool MouseInput(int case_);
-	bool KeyBoardInput(int key);
-	bool controllerInput(int key);
-	void CreateMiddleRect();
-	//void OnCreateUI(UI tempUI_) adding UI functionality 
-	void OnRender();
-	void OnUpdate();
-	static Vec2 convertScreenCoords(int x, int y);
-	~Window();
-	Vec2 midVec;
-	enum WindowStatus : unsigned int
-	{
-		DEBUG = 0 ,
-		STANDARD,
-		RELEASE
-	};
+	GUI GUIContext;
+	SDL_Event* GUIEvent;
 };
 
 #endif // !WINDOW_H

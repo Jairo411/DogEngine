@@ -40,15 +40,14 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		std::cout << "Subsystem Initialised!..." << std::endl;
-		window = SDL_CreateWindow(title, posx, posy, width, height, flags);
-		actualWindow = new Window(window);
-
-		if (window)
+		actualWindow = new Window(SDL_CreateWindow(title, posx, posy, width, height, flags));
+		
+		if (actualWindow->GetWindow())
 		{
 			std::cout << "Window created!" << std::endl;
 
 		}
-		renderer = SDL_CreateRenderer(window, -1, 0);
+		actualWindow->SetRenderer(SDL_CreateRenderer(actualWindow->GetWindow(), -1, 0));
 		if (renderer)
 		{
 			SDL_SetRenderDrawColor(renderer, 225, 225, 225, 225);
@@ -110,8 +109,8 @@ void Game::OnRender()
 
 void Game::clean()
 {
-	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(actualWindow->GetWindow());
+	SDL_DestroyRenderer(actualWindow->GetRenderer());
 	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;

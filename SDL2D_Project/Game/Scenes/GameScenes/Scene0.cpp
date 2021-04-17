@@ -26,6 +26,11 @@ void Scene0::OnCreate()
 	enemy = new Skeleton(180, 100);
 	enemy0 = new Skeleton(300, 50);
 	enemy1 = new Skeleton(400, 200);
+
+	enemy->Attach(new GameObserver(enemy));
+	enemy0->Attach(new GameObserver(enemy0));
+	enemy1->Attach(new GameObserver(enemy1));
+
 	mapA = new MapLayer(Game::actualWindow);
 
 	/* Setting GameObject Functionality*/
@@ -57,12 +62,17 @@ void Scene0::HandleEvents()
 	case SDL_KEYUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->KeyBoardInput(player->InputKeyBoardHolder.begin()->first);
+		if (SDLK_0)
+		{
+			enemy->Remove();
+		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		player->MousePressed(true, event.button.button);
 		player->MouseInput(player->InputMouseHolder.begin()->first);
 		//	if (Game::actualWindow->MouseInput(event.button.button))
 		//	mapA->keyCode = event.button.button;
+		Game::actualWindow->SetGUIEvent(&event);
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);
@@ -82,18 +92,22 @@ void Scene0::OnUpdate(float deltaTime_)
 	enemy1->Update(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
+	Game::actualWindow->OnUpdate();
 }
 
 
 
 void Scene0::OnRender()
 {
-	SDL_RenderClear(Game::renderer);
+	{
+		SDL_SetRenderDrawColor(Window::RenderContext->renderer, 225, 225, 225, 255);
+	}
+	SDL_RenderClear(Window::RenderContext->renderer);
 	mapA->OnRender();
 	player->Render();
 	enemy->Render();
 	enemy0->Render();
 	enemy1->Render();
 	Game::actualWindow->OnRender();
-	SDL_RenderPresent(Game::renderer);
+	SDL_RenderPresent(Window::RenderContext->renderer);
 }

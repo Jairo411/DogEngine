@@ -64,7 +64,7 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 void Tile::OnRender()
 {
 
-	SDL_RenderCopy(Game::renderer, baseTex, &srcRect, &dstRect);
+	SDL_RenderCopy(Window::RenderContext->renderer, baseTex, &srcRect, &dstRect);
 	col.CollisonRender();
 }
 
@@ -96,7 +96,7 @@ bool Tile::MouseInput(int key_)
 	return false;
 }
 
-bool Tile::controllerInput(int key_)
+bool Tile::ControllerInput(int key_)
 {
 	return false;
 }

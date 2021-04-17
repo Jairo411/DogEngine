@@ -71,7 +71,7 @@ public:
 	void OnUpdate();
 	bool KeyBoardInput(int key_);
 	bool MouseInput(int key_);
-	bool controllerInput(int key_);
+	bool ControllerInput(int key_);
 	void SetPosition(Vec2 pos_);
 	void setGridPosition(Vec2 pos_);
 	~Tile();
