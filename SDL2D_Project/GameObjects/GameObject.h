@@ -39,8 +39,10 @@ public:
 	virtual bool getDisable() final;
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
+	/*Observer Pattern Implemented*/
 	virtual void Attach(IObserver* observer_);
 	virtual void Detach(IObserver* observer_);
+	/*Observer Pattern Implemented*/
 	virtual void Notify();
 //	virtual void HandleCollison(); Update this in the future
 	Vec2 getPosition();

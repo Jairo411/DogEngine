@@ -97,7 +97,7 @@ void GameObject::setPosition(Vec2 vPosition)
 	posY = center.y;
 	realPosition = center;
 }
-
+/*Observer Pattern Implemented*/
 void GameObject::Attach(IObserver* observer_)
 {
 	currentObserver = observer_;
@@ -110,7 +110,7 @@ void GameObject::Detach(IObserver* observer_)
 	std::cout << "Observer has been removed from: " << nameID << endl;
 	system("pause");
 }
-
+/*Observer Pattern Implemented*/
 void GameObject::Notify()
 {
 	if (!observerableContainer.empty())

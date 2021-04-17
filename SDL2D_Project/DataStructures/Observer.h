@@ -34,7 +34,6 @@ public:
 	virtual void Update();
 private:
 	IObserverable* Observerable;
-	int situation;
 };
 
 

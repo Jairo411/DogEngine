@@ -27,10 +27,12 @@ void Scene0::OnCreate()
 	enemy0 = new Skeleton(300, 50);
 	enemy1 = new Skeleton(400, 200);
 
+	/*Observer Pattern Implemented*/
 	enemy->Attach(new GameObserver(enemy));
 	enemy0->Attach(new GameObserver(enemy0));
 	enemy1->Attach(new GameObserver(enemy1));
 
+	/*Observer Pattern Implemented*/
 	mapA = new MapLayer(Game::actualWindow);
 
 	/* Setting GameObject Functionality*/
