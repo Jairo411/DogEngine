@@ -46,6 +46,7 @@ RectCollider::RectCollider(int width_, int height_)
 	srcRect.h = height_;
 
 	middlePoint = Vec2(width_ / 2, height_ / 2);
+	
 }
 
 RectCollider::RectCollider(int width_, int height_, const char* colliderName_)
@@ -101,7 +102,7 @@ RectCollider::RectCollider(int x_, int y_, int size_, const char* colliderName_)
 
 void RectCollider::CollisonUpdate(int colPosX, int colPosY)
 {
-	/*This is needs to worked out and actually thought out .*/
+	/*This is needs to be worked out and actually thought out .*/
 	int xPos, yPos;
 
 	xPos = x + colPosX;

@@ -25,6 +25,30 @@ GameObject::~GameObject()
 	delete temp;
 }
 
+void GameObject::Start()
+{
+	for (int i = components.size()-1; i>=0; i--)
+	{
+		components[i]->Start();
+	}
+}
+
+void GameObject::Update(float deltaTime_)
+{
+	for (int i = components.size()-1; i >=0; i--)
+	{
+		components[i]->Update(deltaTime);
+	}
+}
+
+void GameObject::Render()
+{
+	for (int i = components.size() - 1; i >= 0; i--)
+	{
+		components[i]->Render();
+	}
+}
+
 void GameObject::UpdatePostion()
 {
 	posX = realPosition.x;
