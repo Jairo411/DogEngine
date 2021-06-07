@@ -1,11 +1,60 @@
-﻿  Map.cpp
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\gameobjects\map\map.cpp(9): warning C4101: 'graphicLayer': unreferenced local variable
-  Tiles.cpp
-  Player.cpp
+﻿  AnimatorSerializer.cpp
+  Animation.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Animator\Animation.cpp(41,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  AnimationHandler.cpp
+  Animator.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Animator\Animator.h(7,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  C_CircleCollider.cpp
+  C_RectangleCollider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_RectangleCollider.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Observer.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_sdl.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\DearGUI\imgui_sdl.cpp(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  imgui_widgets.cpp
+  GUI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\GUI.h(5,10): fatal error C1083: Cannot open include file: 'SDL_events.h': No such file or directory
+  Converter.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Skeleton.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  AI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Vec2.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(14,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(15,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Grid.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Game.cpp
-  Main.cpp
-  TextureManager.cpp
-  Window.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Generating Code...
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\gameobjects\player.cpp(75): warning C4715: 'Player::keyBoardInput': not all control paths return a value
-  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\Debug\SDL2D_Project.exe
+  Compiling...
+  GameObject.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Map.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Player.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Input.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(1,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  SceneManager.cpp
+  Scene0.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  A_Star_Node_Priority.cpp
+  node.cpp
+  TextureManager.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Tiles.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Timer.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Timer\Timer.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Window.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Generating Code...

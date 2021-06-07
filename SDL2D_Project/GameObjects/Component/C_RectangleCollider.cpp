@@ -1,8 +1,8 @@
 #include "C_RectangleCollider.h"
 #include "../GameObject.h"
-#include "../../Math/Vec2.h"
 
-C_RectangleCollider::C_RectangleCollider(Object* owner) : Component(owner) 
+
+C_RectangleCollider::C_RectangleCollider(BaseObj* owner) : Component(owner) 
 {
 	Start();
 }
@@ -28,6 +28,7 @@ void C_RectangleCollider::Update(float deltatime)
 
 void C_RectangleCollider::Render()
 {
+
 }
 
 void C_RectangleCollider::ChangeSize(int width_, int height_)

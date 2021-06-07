@@ -17,6 +17,7 @@ void GUI::Inti(Renderer* renderer)
 	ImGui::CreateContext();
 	ImGuiSDL::Initialize(renderContext->renderer, 800, 600);
 	io = ImGui::GetIO();
+	
 }
 
 void GUI::HandleEvents(SDL_Event* e_)

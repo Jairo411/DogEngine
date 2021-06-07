@@ -23,8 +23,8 @@ void Window::SetRenderer(SDL_Renderer* renderer_)
 {
 	RenderContext = new Renderer();
 	RenderContext->renderer = renderer_;
-	GUIContext = GUI();
-	GUIContext.Inti(RenderContext);
+//	GUIContext = GUI();
+//	GUIContext.Inti(RenderContext);
 }
 
 void Window::SetGUIEvent(SDL_Event* GUIEvent_)
@@ -136,7 +136,7 @@ void Window::OnRender()
 		SDL_SetRenderDrawColor(RenderContext->renderer, 100, 0, 15, 100);
 		SDL_RenderDrawRect(RenderContext->renderer, &middleRect);
 		SDL_SetRenderDrawColor(RenderContext->renderer, 0, 0, 0, 255);
-		GUIContext.Render();
+//		GUIContext.Render();
 	}
 		break;
 	case Window::STANDARD:

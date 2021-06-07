@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "EngineSerializer.h"
 #include "AI/AI.h"
 #include "../../Server/Server.h"
 #include "../TextureManager/TextureManager.h"
@@ -19,7 +20,6 @@
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Skeleton.h"
 #include "../GameObjects/Map/Map.h"
-#include "../Game/AI/DecisionTree/XML-DT/XML.h"
 
 class AIManager;
 class Game{

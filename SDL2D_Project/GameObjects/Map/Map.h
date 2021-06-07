@@ -13,7 +13,7 @@
  /* I either need to build a nav mesh class or extend MapLayer functionality to make this work better, right now I do not know */
 
 //the Map struct should only contain pure Map information
-struct Map
+	struct Map
 {
 	int cols, rows;
 	int tileSize;

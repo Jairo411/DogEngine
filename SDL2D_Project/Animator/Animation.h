@@ -17,7 +17,6 @@ class Animation
 {
 public:
 	Animation();
-
 	void AddFrame(int textureID, int x, int y,
 		int width, int height, float frameTime);
 	const FrameData* GetCurrentFrame() const;

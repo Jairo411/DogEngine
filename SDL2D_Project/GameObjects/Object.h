@@ -2,12 +2,12 @@
 #define OBJECT_H
 #include <iostream>
 #include <map>
-/* I should use this class to move over more generic ID stuff*/
-class Object
+// I should use this class to move over more generic ID stuff*/
+class BaseObj
 {
 public:
-	Object();
-	virtual ~Object()=0;
+	BaseObj() {}
+	virtual ~BaseObj() {}
 protected:
 	std::string tag;
 	std::string name; 

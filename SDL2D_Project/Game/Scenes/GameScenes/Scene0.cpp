@@ -39,7 +39,9 @@ void Scene0::OnCreate()
 	enemy->SetTarget(player);
 	enemy0->SetTarget(player);
 	Game::AI_Manager->getInstance()->getTotalAgents();
-	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
+	//Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
+	
+	
 
 }
 

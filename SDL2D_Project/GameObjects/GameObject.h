@@ -28,7 +28,7 @@ potentailly going to have gameObjects with no movement or extra functionality be
 
 class TextureManager;
 class IObserver;
-class GameObject : public Object , public IObserverable
+class GameObject : public BaseObj , public IObserverable
 {
 public:
 	GameObject();
@@ -101,6 +101,11 @@ private:
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
 	std::vector<std::shared_ptr<Component>> components;
 protected:
+	/*Functions*/
+	virtual void UpdatePostion() final;
+	int ReadAmountOfAnimations();
+	void setDelta(float deltaTime_);
+	float getDelta();
 	/*Members variables*/
 	float orientation;
 	float rotation;
@@ -114,11 +119,7 @@ protected:
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
 	GameObject* ptr;
-	/*Functions*/
-	virtual void UpdatePostion() final;
-	int ReadAmountOfAnimations();
-	void setDelta(float deltaTime_);
-	float getDelta();
+	
 };
 
 
