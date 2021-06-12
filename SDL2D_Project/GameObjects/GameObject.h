@@ -52,7 +52,6 @@ public:
 	static vector<GameObject*> ObjHolder; //Switch this to a list <----------------------------------------
 	void DrawLine(Vec2 start_, Vec2 end_);
 	string nameID;
-
 	template <typename T> std::shared_ptr<T> AddComponent()
 	{
 		//this ensures that we only try to add a class the derives 
@@ -111,6 +110,7 @@ protected:
 	float rotation;
 	float maxAcceleration;
 	bool textureIsOn;
+	std::string ID;
 	/*Object Members*/
 	Vec2 realPosition; // real position
 	Vec2 APosition; // stands for Anchor Position -> middle of image or square

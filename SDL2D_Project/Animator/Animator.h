@@ -7,6 +7,11 @@
 #include <SDL.h>
 #include <map>
 #include <string>
+
+/*
+	THIS SHIT IS OUTDATED SUN
+*/
+
 /*Animator class Suppose to be an interface inhereted by GameObjects with animations.
 	right now functionality is basically non-existance. Because you're to lazy to fix these issues now they are.
 	 - You're hard coding the frame speed of the animations

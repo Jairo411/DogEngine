@@ -56,7 +56,6 @@ Player::Player(const char* textureSheet, int x, int y)
 	nameID += to_string(ObjHolder.size());
 
 
-
 }
 
 Player::~Player()

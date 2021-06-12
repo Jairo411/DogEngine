@@ -5,7 +5,7 @@ SDL_Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::actualWindow = nullptr;
 bool Game::isRunning = false;
-
+std::string SceneName = "swagScene";
 
 Game::Game()
 {
@@ -13,7 +13,7 @@ Game::Game()
 	timer = new Timer();
 	sceneManager = new SceneManager();
 	EngineSerializer engine = EngineSerializer();
-	engine.CreateScene(0);
+	engine.CreateScene(0,SceneName);
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 

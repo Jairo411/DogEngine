@@ -1,6 +1,2 @@
-﻿  Game.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(11,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(10): message : see declaration of 'Renderer'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
+﻿  EngineSerializer.cpp
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
