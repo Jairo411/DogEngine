@@ -1,0 +1,10 @@
+<?xml version="1" encoding="ISO-8859-1"?>
+<GameObjectsInfo>
+<GameObject GameObject ID ="GameObject 1">
+<AnimationInfo AmountOfAnimationSets="0">
+<AnimationSet0>
+<IMGSrc></IMGSrc>
+</AnimationSet0>
+</AnimationInfo>
+</GameObject>
+</GameObjectsInfo>

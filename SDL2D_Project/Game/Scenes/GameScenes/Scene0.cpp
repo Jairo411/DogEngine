@@ -21,11 +21,18 @@ Scene0::~Scene0()
 
 void Scene0::OnCreate()
 {
+
+	EngineSerializer engine = EngineSerializer();
+
+
 	/* Intial Object Creations*/
 	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);
 	enemy = new Skeleton(180, 100);
 	enemy0 = new Skeleton(300, 50);
 	enemy1 = new Skeleton(400, 200);
+
+	engine.AddAnimationState(player, "examplePath.img");
+
 
 	/*Observer Pattern Implemented*/
 	enemy->Attach(new GameObserver(enemy));

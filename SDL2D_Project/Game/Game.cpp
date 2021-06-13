@@ -12,8 +12,6 @@ Game::Game()
 	isRunning = true;
 	timer = new Timer();
 	sceneManager = new SceneManager();
-	EngineSerializer engine = EngineSerializer();
-	engine.CreateScene(0,SceneName);
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
