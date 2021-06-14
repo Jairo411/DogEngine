@@ -31,7 +31,7 @@ void Scene0::OnCreate()
 	enemy0 = new Skeleton(300, 50);
 	enemy1 = new Skeleton(400, 200);
 
-	engine.AddAnimationState(player, "examplePath.img");
+
 
 
 	/*Observer Pattern Implemented*/

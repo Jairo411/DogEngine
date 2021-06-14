@@ -1,2 +1,3 @@
 ﻿  EngineSerializer.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\EngineSerializer.cpp(92,14): warning C4101: 'status': unreferenced local variable
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
