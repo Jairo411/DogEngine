@@ -9,6 +9,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <vector>
 /* I could rework this right now, 
 
 	main focus is that, the documents can be handle all together. Instead of individually. 
@@ -44,20 +45,21 @@ public:
 	void Read();
 	//Helper Functions 
 	void newAnimationSet();
-	pugi::xml_document GameObjectSerializer(GameObject* OBJ_);
-	pugi::xml_document DefaultSerialized(std::string tag_);
-	bool isNodeExist(const char* nodeName_);
+	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_);
+	pugi::xml_document* DefaultSerialized(std::string tag_);
+	bool isChildNodeExist(const char* nodeName_);
+	bool SceneExist(int SceneIndex_, const char* SceneName_);
+	void loadFile(const char* nodeName_);
+	//Debug functions
+	void Print();
 private:
 	pugi::xml_document* CurrentDoc;
-	pugi::xml_node lastNodeElement; //This is kinda a bad idea and should exist for their own xmlDocuments
 	pugi::xml_parse_result result;
-	std::map <pugi::xml_document*,pugi::xml_node> documentList;
-	std::vector<int>fileIndex;
+	std::multimap <pugi::xml_document*,pugi::xml_node> documentList;
 //	std::vector <pugi::xml_node> lastNodes;
-	std::map < const char*, const char*> directorydictionary;
-	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
-
+	std::map < const char*, const char*> directorydictionary; // This might need to be removed
 	friend class Animation;
-	bool isCreated;
+	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
+	
 };
 #endif // !ANIMATORSERIALIZER

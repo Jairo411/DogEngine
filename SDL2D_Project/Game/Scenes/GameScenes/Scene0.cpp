@@ -23,7 +23,9 @@ void Scene0::OnCreate()
 {
 
 	EngineSerializer engine = EngineSerializer();
-
+	engine.CreateScene(1, "swagbitch");
+	engine.CreateScene(2, "swagBitch2");
+	engine.Print();
 
 	/* Intial Object Creations*/
 	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);

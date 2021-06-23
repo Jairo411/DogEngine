@@ -1,2 +1,5 @@
-<?xml version="1" encoding="ISO-8859-1"?>
-<ScenesInfo />
+<?xml version="1.0"?>
+<ScenesInfo>
+<Scene SceneNumber ="1" SceneName ="swagbitch" />
+<Scene SceneNumber ="2" SceneName ="swagBitch2" />
+</ScenesInfo>
