@@ -1,8 +1,10 @@
 #include "EngineSerializer.h"
 #include "../GameObjects/GameObject.h"
 
+
 EngineSerializer::EngineSerializer()
 {
+	std::thread t1(EngineSerializer());
 	//Just creating every file, not handling any of the files
 	//intializing my std::map variable
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData", "/EngineData.xml"));
@@ -65,10 +67,15 @@ EngineSerializer::EngineSerializer()
 		count++;
 		it++;
 	}
-
+	init();
 }
 
 EngineSerializer::~EngineSerializer()
+{
+	
+}
+
+void EngineSerializer::init()
 {
 }
 
@@ -100,20 +107,12 @@ bool EngineSerializer::isChildNodeExist(const char* nodeName_)
 	return false;
 }
 
-bool EngineSerializer::SceneExist(int SceneIndex_, const char* SceneName_)
+void EngineSerializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
-	auto sceneInfo = CurrentDoc->child("ScenesInfo");
-	std::cout << sceneInfo.name() << std::endl;
-	while (sceneInfo != NULL)
+	for (pugi::xml_node i = CurrentDoc->child("Scene"); i; i=CurrentDoc->next_sibling())
 	{
-		if (sceneInfo.first_attribute().as_int() == SceneIndex_ && sceneInfo.last_attribute().as_string() == SceneName_)
-		{
-			return true;
-		}
-		sceneInfo = sceneInfo.next_sibling();
+		std::cout << "Node: " << i.name() << std::endl;
 	}
-	return false;
-
 }
 
 void EngineSerializer::loadFile(const char* nodeName_)
@@ -142,16 +141,20 @@ void EngineSerializer::loadFile(const char* nodeName_)
 	}
 }
 
+
+
 void EngineSerializer::Print()
 {
 	pugi::xml_node_iterator it = CurrentDoc->begin();
 
 	for (auto depth0 : CurrentDoc->first_child())
 	{
-		std::cout << "Current Node" << CurrentDoc->name();
+		std::cout << "Current Node" << depth0.name() << std::endl;
+		std::cout << "Current Node attributes: " << depth0.first_attribute().name()<< depth0.first_attribute().value() <<std::endl;
 		for (auto depth1 : CurrentDoc->next_sibling())
 		{
-			std::cout << "Current Node" << CurrentDoc->name();
+			std::cout << "Current Node" << depth1.name() << std::endl;
+			std::cout << "Current Node attributes: " << depth1.first_attribute().name() << depth0.first_attribute().value() <<std::endl;
 		}
 	}
 }
@@ -222,6 +225,8 @@ void EngineSerializer::CreateScene(int currentScene_, std::string sceneName_)
 	std::multimap<pugi::xml_document*, pugi::xml_node>::iterator it0 = documentList.begin();
 	std::map <const char*, const char*>::iterator it1 = directorydictionary.begin();
 
+
+
 	for (int i = 0; i < 1; i++)
 	{
 		it0++;
@@ -246,7 +251,6 @@ void EngineSerializer::CreateScene(int currentScene_, std::string sceneName_)
 		CurrentDoc->save_file(combined.c_str(), PUGIXML_TEXT(""));
 
 	}
-
 
 }
 

@@ -10,6 +10,7 @@
 #include <list>
 #include <map>
 #include <vector>
+#include <thread>
 /* I could rework this right now, 
 
 	main focus is that, the documents can be handle all together. Instead of individually. 
@@ -29,6 +30,7 @@ class EngineSerializer
 public:
 	EngineSerializer();
 	~EngineSerializer();
+	void init();
 	//XML File Handler 
 	//EngineStuff
 	/*
@@ -48,11 +50,11 @@ public:
 	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_);
 	pugi::xml_document* DefaultSerialized(std::string tag_);
 	bool isChildNodeExist(const char* nodeName_);
-	bool SceneExist(int SceneIndex_, const char* SceneName_);
+	void SceneExist(int SceneIndex_, const char* SceneName_);
 	void loadFile(const char* nodeName_);
 	//Debug functions
 	void Print();
-private:
+private: 
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
 	std::multimap <pugi::xml_document*,pugi::xml_node> documentList;
