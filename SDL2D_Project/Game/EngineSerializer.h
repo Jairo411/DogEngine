@@ -10,19 +10,25 @@
 #include <list>
 #include <map>
 #include <vector>
-#include <thread>
-/* I could rework this right now, 
+#include<variant>
+#include <utility>
+#include "StateMachine.h"
+/* I could rework this right now,
 
-	main focus is that, the documents can be handle all together. Instead of individually. 
+	main focus is that, the documents can be handle all together. Instead of individually.
 	So XMLHandler could handle a xml_document doc and a lastNodeElement variable
-	essentally a data structure class 
-	
+	essentally a data structure class
+
 	*/
-/* PATHS VISUALLIZED 
-*/
+	/* PATHS VISUALLIZED
+	*
+	* Converting this class to be a finite state machine  2021-06-09
+	*/
 std::string const SerializedEnginePath = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData";
 std::string const SerializedScenePath = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes";
 std::string const SerializedGameObjectInfo = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameObjects/GameObjectData";
+
+
 
 class GameObject;
 class EngineSerializer
@@ -30,22 +36,12 @@ class EngineSerializer
 public:
 	EngineSerializer();
 	~EngineSerializer();
-	void init();
-	//XML File Handler 
-	//EngineStuff
-	/*
-		Anything with the game objects should handle there current xml file, to make it modular
-	*/
 	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);
 	void RemoveAnimation(std::string tagID_, const char* imageSrc_);
 	void CreateScene(int currentScene_, std::string sceneName_);// This will only create a Scene but not its serialized information
 	void RemoveScene(const char* sceneName);
-	void Save();
-	//Final Stuff 
 	void Update();
-	void Write();
-	void Read();
-	//Helper Functions 
+	//HELPER FUNCTIONS 
 	void newAnimationSet();
 	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_);
 	pugi::xml_document* DefaultSerialized(std::string tag_);
@@ -54,14 +50,14 @@ public:
 	void loadFile(const char* nodeName_);
 	//Debug functions
 	void Print();
-private: 
+private:
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
-	std::multimap <pugi::xml_document*,pugi::xml_node> documentList;
-//	std::vector <pugi::xml_node> lastNodes;
+	std::multimap <pugi::xml_document*, pugi::xml_node> documentList;
 	std::map < const char*, const char*> directorydictionary; // This might need to be removed
 	friend class Animation;
 	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
-	
 };
+
+
 #endif // !ANIMATORSERIALIZER

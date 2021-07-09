@@ -4,7 +4,6 @@
 
 EngineSerializer::EngineSerializer()
 {
-	std::thread t1(EngineSerializer());
 	//Just creating every file, not handling any of the files
 	//intializing my std::map variable
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData", "/EngineData.xml"));
@@ -50,7 +49,7 @@ EngineSerializer::EngineSerializer()
 				documentList.insert(std::make_pair(temp, rootNode));
 				temp->save_file(combined.c_str(), PUGIXML_TEXT(""));
 			}
-			else if (stat(combined.c_str(), &status)==0)
+			else if (stat(combined.c_str(), &status) == 0)
 			{
 				std::cout << "Loading in Files...." << std::endl;
 				std::string path = it->first;
@@ -67,17 +66,14 @@ EngineSerializer::EngineSerializer()
 		count++;
 		it++;
 	}
-	init();
 }
 
 EngineSerializer::~EngineSerializer()
 {
-	
+
 }
 
-void EngineSerializer::init()
-{
-}
+
 
 pugi::xml_document* EngineSerializer::GameObjectSerializer(GameObject* OBJ_)
 {
@@ -109,7 +105,7 @@ bool EngineSerializer::isChildNodeExist(const char* nodeName_)
 
 void EngineSerializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
-	for (pugi::xml_node i = CurrentDoc->child("Scene"); i; i=CurrentDoc->next_sibling())
+	for (pugi::xml_node i = CurrentDoc->child("Scene"); i; i = CurrentDoc->next_sibling())
 	{
 		std::cout << "Node: " << i.name() << std::endl;
 	}
@@ -150,11 +146,11 @@ void EngineSerializer::Print()
 	for (auto depth0 : CurrentDoc->first_child())
 	{
 		std::cout << "Current Node" << depth0.name() << std::endl;
-		std::cout << "Current Node attributes: " << depth0.first_attribute().name()<< depth0.first_attribute().value() <<std::endl;
+		std::cout << "Current Node attributes: " << depth0.first_attribute().name() << depth0.first_attribute().value() << std::endl;
 		for (auto depth1 : CurrentDoc->next_sibling())
 		{
 			std::cout << "Current Node" << depth1.name() << std::endl;
-			std::cout << "Current Node attributes: " << depth1.first_attribute().name() << depth0.first_attribute().value() <<std::endl;
+			std::cout << "Current Node attributes: " << depth1.first_attribute().name() << depth0.first_attribute().value() << std::endl;
 		}
 	}
 }
@@ -253,5 +249,11 @@ void EngineSerializer::CreateScene(int currentScene_, std::string sceneName_)
 	}
 
 }
+
+void EngineSerializer::Update()
+{
+	
+}
+
 
 

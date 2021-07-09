@@ -1,19 +1,21 @@
 #include "Game.h"
 #include "AI/AI.h"
+
 SDL_Rect* srcR, dstR;
 SDL_Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::actualWindow = nullptr;
 bool Game::isRunning = false;
-std::string SceneName = "swagScene";
 
 Game::Game()
 {
 	isRunning = true;
 	timer = new Timer();
 	sceneManager = new SceneManager();
+	EngineSerializer Serializer = EngineSerializer();
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
+
 
 
 bool Game::setIsRunning(bool tempBool_)

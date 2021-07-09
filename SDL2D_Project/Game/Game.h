@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
-#include "EngineSerializer.h"
+#include <thread>
 #include "AI/AI.h"
 #include "../../Server/Server.h"
 #include "../TextureManager/TextureManager.h"
@@ -20,8 +20,10 @@
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Skeleton.h"
 #include "../GameObjects/Map/Map.h"
+#include "EngineSerializer.h"
 
 class AIManager;
+class EngineSerializer;
 class Game{
 public:
 	Game();
@@ -33,12 +35,12 @@ public:
 	void handleCollisions();
 	void OnRender();
 	void clean();
+	static bool	setIsRunning(bool tempBool_);
 	static SDL_Renderer *renderer;
 	static Timer *timer;
 	static Window* actualWindow;
-	static bool	setIsRunning(bool tempBool_);
-	static AIManager *AI_Manager;
-
+	static AIManager* AI_Manager;
+	static EngineSerializer* engineSerializer;
 private:
 	int cnt=0;
 	const int FPS = 120;
