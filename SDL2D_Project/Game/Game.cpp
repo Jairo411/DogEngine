@@ -6,13 +6,14 @@ SDL_Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::actualWindow = nullptr;
 bool Game::isRunning = false;
+Serializer* Game::serializer = nullptr;
 
 Game::Game()
 {
 	isRunning = true;
 	timer = new Timer();
 	sceneManager = new SceneManager();
-	EngineSerializer Serializer = EngineSerializer();
+	serializer = new Serializer();
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 

@@ -2,7 +2,7 @@
 #include "../GameObjects/GameObject.h"
 
 
-EngineSerializer::EngineSerializer()
+Serializer::Serializer()
 {
 	//Just creating every file, not handling any of the files
 	//intializing my std::map variable
@@ -66,21 +66,22 @@ EngineSerializer::EngineSerializer()
 		count++;
 		it++;
 	}
+	
 }
 
-EngineSerializer::~EngineSerializer()
+Serializer::~Serializer()
 {
 
 }
 
 
 
-pugi::xml_document* EngineSerializer::GameObjectSerializer(GameObject* OBJ_)
+pugi::xml_document* Serializer::GameObjectSerializer(GameObject* OBJ_)
 {
 	return 	DefaultSerialized(OBJ_->nameID);
 }
 
-pugi::xml_document* EngineSerializer::DefaultSerialized(std::string tag_)
+pugi::xml_document* Serializer::DefaultSerialized(std::string tag_)
 {
 	/* SO THIS IS ALWAYS THE DEFAULT*/
 	pugi::xml_document* temp = new pugi::xml_document();
@@ -93,7 +94,7 @@ pugi::xml_document* EngineSerializer::DefaultSerialized(std::string tag_)
 	return temp;
 }
 
-bool EngineSerializer::isChildNodeExist(const char* nodeName_)
+bool Serializer::isChildNodeExist(const char* nodeName_)
 {
 	if (CurrentDoc->child(nodeName_) != NULL)
 	{
@@ -103,7 +104,7 @@ bool EngineSerializer::isChildNodeExist(const char* nodeName_)
 	return false;
 }
 
-void EngineSerializer::SceneExist(int SceneIndex_, const char* SceneName_)
+void Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
 	for (pugi::xml_node i = CurrentDoc->child("Scene"); i; i = CurrentDoc->next_sibling())
 	{
@@ -111,7 +112,7 @@ void EngineSerializer::SceneExist(int SceneIndex_, const char* SceneName_)
 	}
 }
 
-void EngineSerializer::loadFile(const char* nodeName_)
+void Serializer::loadFile(const char* nodeName_)
 {
 	if (CurrentDoc->child(nodeName_) != NULL)
 	{
@@ -139,7 +140,7 @@ void EngineSerializer::loadFile(const char* nodeName_)
 
 
 
-void EngineSerializer::Print()
+void Serializer::Print()
 {
 	pugi::xml_node_iterator it = CurrentDoc->begin();
 
@@ -155,7 +156,7 @@ void EngineSerializer::Print()
 	}
 }
 
-void EngineSerializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
+void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 {
 
 	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;
@@ -215,7 +216,7 @@ void EngineSerializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_
 	//	
 	//}
 }
-void EngineSerializer::CreateScene(int currentScene_, std::string sceneName_)
+void Serializer::CreateScene(int currentScene_, std::string sceneName_)
 {
 
 	std::multimap<pugi::xml_document*, pugi::xml_node>::iterator it0 = documentList.begin();
@@ -250,10 +251,28 @@ void EngineSerializer::CreateScene(int currentScene_, std::string sceneName_)
 
 }
 
-void EngineSerializer::Update()
+void EngineSerializer::operator()()
 {
-	
+	/*if (std::is_same<,IntializedState()>::value)
+	{
+		condition = 0;
+	}
+	else if (stateMachine.getCurrentState()==UpdateState())
+	{
+		condition = 1;
+	}
+	else if (stateMachine.getCurrentState()==ReadState())
+	{
+		condition = 2;
+	}
+	else if (stateMachine.getCurrentState()==WriteState())
+	{
+		condition = 3;
+	}
+	Update(condition);*/
 }
 
+void EngineSerializer::Update(int condition_)
+{
 
-
+}

@@ -23,7 +23,7 @@
 #include "EngineSerializer.h"
 
 class AIManager;
-class EngineSerializer;
+class Serializer;
 class Game{
 public:
 	Game();
@@ -40,7 +40,7 @@ public:
 	static Timer *timer;
 	static Window* actualWindow;
 	static AIManager* AI_Manager;
-	static EngineSerializer* engineSerializer;
+	static Serializer* serializer;
 private:
 	int cnt=0;
 	const int FPS = 120;

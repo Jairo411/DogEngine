@@ -31,33 +31,45 @@ std::string const SerializedGameObjectInfo = "C:/Users/jalbm/source/repos/SDL2D_
 
 
 class GameObject;
-class EngineSerializer
+class Serializer
 {
 public:
-	EngineSerializer();
-	~EngineSerializer();
-	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);
-	void RemoveAnimation(std::string tagID_, const char* imageSrc_);
-	void CreateScene(int currentScene_, std::string sceneName_);// This will only create a Scene but not its serialized information
-	void RemoveScene(const char* sceneName);
-	void Update();
+	Serializer();
+	~Serializer();
+	//PURE WRITE FUNCTIONS
+	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);//Write function
+	void RemoveAnimation(std::string tagID_, const char* imageSrc_);//Write function
+	void CreateScene(int currentScene_, std::string sceneName_);// Write function
+	void RemoveScene(const char* sceneName); //Write function
+	//PURE READ FUNCTIONS
+
+											 
 	//HELPER FUNCTIONS 
-	void newAnimationSet();
-	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_);
-	pugi::xml_document* DefaultSerialized(std::string tag_);
-	bool isChildNodeExist(const char* nodeName_);
-	void SceneExist(int SceneIndex_, const char* SceneName_);
-	void loadFile(const char* nodeName_);
+	void newAnimationSet(); //WriteFunction
+	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_); //Write Function
+	pugi::xml_document* DefaultSerialized(std::string tag_); //Write Function
+	bool isChildNodeExist(const char* nodeName_); //Read Function
+	void SceneExist(int SceneIndex_, const char* SceneName_);//Red Function
+	void loadFile(const char* nodeName_); //Read function
 	//Debug functions
 	void Print();
 private:
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
 	std::multimap <pugi::xml_document*, pugi::xml_node> documentList;
-	std::map < const char*, const char*> directorydictionary; // This might need to be removed
+	std::map < const char*, const char*> directorydictionary; // This might need to be remove
 	friend class Animation;
 	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
 };
 
+class EngineSerializer
+{
+public:
+	void Update(int condition_);
+	void operator()();
+private:
+	int condition;
+	StateMachine<IntializedState, UpdateState, ReadState, WriteState> stateMachine;
+};
 
 #endif // !ANIMATORSERIALIZER

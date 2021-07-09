@@ -19,7 +19,6 @@
 	If the processes could be clearly define through what serializer is doing. Then I could have the processes run through at the very least two threads.
 	As well by adding the statemachine we are simplifying the update capiability for this project.
 */
-
 template <typename... States> // what is with all the dots, seems like just a prefence thing 
 class StateMachine
 {
@@ -48,6 +47,7 @@ public:
 	//	std::visit(passEventToState, CurrentState);
 	//}
 	//template <typename Event>
+	template<typename Event>
 	void handle(const Event& event)
 	{
 		auto passeventToState = [this, &event](auto statePtr){ // generic lambda function, I pass a state, since my parameter variable define as auto, the computer will assign its type to the state I give it.
@@ -57,6 +57,13 @@ public:
 		//Because statePTr->handle(event).execute(*this) line of code exist it will call execute always, even if it has nothing to transition too
 		//last but not least the compiler ensures that all the state types have a 'handle' method that accpets an event of type T
 	}
+	template<typename State>
+	State getCurrentState()
+	{
+		return std::get<State>(CurrentState);
+	}
+private:
+	
 	std::tuple<States...> states; //What are tuples????, tuple is an ordering of what it seems like generic types of data. Its like std::pair.
 	std::variant<States...> CurrentState{ &std::get<0>(states) };//the {bracket std::get<0>(State) is defaulting the CurrentState variable to the first index of variant variable }//what is this as well?, std::variant allows you to present all the possible types it could be, then you decide what it will be later. the reason its doing this is because of the amount of possible states I could create, each one is considered a different type. 
 };
