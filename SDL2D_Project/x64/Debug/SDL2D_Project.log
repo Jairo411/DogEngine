@@ -25,6 +25,7 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
   Generating Code...
   Observer.cpp
   pugixml.cpp
+  Renderer.cpp
   imgui.cpp
   imgui_demo.cpp
   imgui_draw.cpp

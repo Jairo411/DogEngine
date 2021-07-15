@@ -20,22 +20,22 @@ class Game;
 struct Renderer
 {
  SDL_Renderer* renderer;
- int width;
- int height;
 };
 struct WindowProp
 {
 	SDL_Window* win;
 	int ScreenHeight;
 	int ScreenWidth;
-	int squareSize;
+	int xPos;
+	int yPos;
 };
 class Window: public Input
 {	
 public:
 	Window(Window& other) = delete;
 	void operator=(const Window&) = delete;
-	void setWindowProperties(WindowProp  windowProperties_); //Sets the properties for the MainWindow singleton class everyother window will be under heiarchy of this main window.
+	//Takes a WindowProp structure, and intializes Window classe's member variables.
+	void setWindowProperties(WindowProp  windowProperties_); 
 	static Window* GetInstance(); 
 	static int getScreenHeight();
 	static int getScreenWidth();
@@ -45,7 +45,6 @@ public:
 	void CreateMiddleRect();
 	void SetRenderer(SDL_Renderer* renderer_);
 	void SetGUIEvent(SDL_Event* GUIEvent_);
-	void getRenderContext(); // We are going to reimplement this later, cause Im going to have to fix everything...
 	SDL_Renderer* GetRenderer();
 	void OnRender();
 	void OnUpdate();
@@ -57,13 +56,17 @@ public:
 		STANDARD,
 		RELEASE
 	};
-	static Renderer* RenderContext; // TIm gonna get rid of this
 	SDL_Window* GetWindow();
+	static Renderer* RenderContext; 
+	static WindowProp* properities;
 private:
+	//Basic Window Member Variables
+	int CurrentWindow_XPOS, CurrentWindow_YPOS;
+	int width,height;
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
 	Window(SDL_Window* window_);
 	~Window();
-	int mouseX, mouseY;
+	int mouseX, mouseY; //Mouse positions
 	static int SCREENWIDTH; //Actually since you have functions for this 
 	static int SCREENHEIGHT; // move over the covertedScreenCoords 
 	int SquareSize;
@@ -76,7 +79,6 @@ private:
 	SDL_Surface* graphicLayer;
 	SDL_Window* window;
 	SDL_Event* GUIEvent;
-	WindowProp properities;
 	Vec2 covertedScreenCoords;
 	GUI GUIContext;
 };

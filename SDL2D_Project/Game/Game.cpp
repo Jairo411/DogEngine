@@ -36,12 +36,11 @@ Game::~Game()
 void Game::init(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	int flags = 0;
-	WindowProp windowProp;
-	windowProp.ScreenWidth = width;
-	windowProp.ScreenHeight = height;
-	actualWindow->setWindowProperties(windowProp);
-	Renderer renderer;
-	renderer.renderer = SDL_CreateRenderer(actualWindow->GetInstance()->GetWindow(),-1,0);
+	WindowProp* windowProp = new WindowProp();
+	windowProp->ScreenWidth = width;
+	windowProp->ScreenHeight = height;
+	actualWindow->GetInstance()->setWindowProperties(*windowProp);
+	Renderer* renderer= new Renderer();
 	if (fullscreen)
 	{
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -50,14 +49,14 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		std::cout << "Subsystem Initialised!..." << std::endl;
-		windowProp.win = SDL_CreateWindow(title, posx, posy, width, height, flags);
+		windowProp->win = SDL_CreateWindow(title, posx, posy, width, height, flags);
 		
 		if (actualWindow->GetInstance()->GetWindow())
 		{
 			std::cout << "Window created!" << std::endl;
 
 		}
-		actualWindow->GetInstance()->SetRenderer(SDL_CreateRenderer(actualWindow->GetWindow(), -1, 0));
+		renderer->renderer = SDL_CreateRenderer(actualWindow->GetInstance()->GetWindow(), -1,0);
 		if (Window::RenderContext->renderer)
 		{
 			SDL_SetRenderDrawColor(Window::RenderContext->renderer, 225, 225, 225, 225);
