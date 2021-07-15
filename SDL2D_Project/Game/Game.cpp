@@ -5,15 +5,17 @@ SDL_Rect* srcR, dstR;
 SDL_Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::actualWindow = nullptr;
+Serializer* Game::EngineSerializer = nullptr;
 bool Game::isRunning = false;
-Serializer* Game::serializer = nullptr;
+
 
 Game::Game()
 {
 	isRunning = true;
-	timer = new Timer();
+	timer = new Timer(); //Im making all of these managers /Single entity type classes as singletons
 	sceneManager = new SceneManager();
-	serializer = new Serializer();
+	actualWindow->GetInstance();
+	EngineSerializer->GetInstance(); // makes a pointer, this is essentially doing EngineSerializer(); 
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
@@ -34,7 +36,12 @@ Game::~Game()
 void Game::init(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	int flags = 0;
-
+	WindowProp windowProp;
+	windowProp.ScreenWidth = width;
+	windowProp.ScreenHeight = height;
+	actualWindow->setWindowProperties(windowProp);
+	Renderer renderer;
+	renderer.renderer = SDL_CreateRenderer(actualWindow->GetInstance()->GetWindow(),-1,0);
 	if (fullscreen)
 	{
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -43,17 +50,17 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		std::cout << "Subsystem Initialised!..." << std::endl;
-		actualWindow = new Window(SDL_CreateWindow(title, posx, posy, width, height, flags));
+		windowProp.win = SDL_CreateWindow(title, posx, posy, width, height, flags);
 		
-		if (actualWindow->GetWindow())
+		if (actualWindow->GetInstance()->GetWindow())
 		{
 			std::cout << "Window created!" << std::endl;
 
 		}
-		actualWindow->SetRenderer(SDL_CreateRenderer(actualWindow->GetWindow(), -1, 0));
-		if (renderer)
+		actualWindow->GetInstance()->SetRenderer(SDL_CreateRenderer(actualWindow->GetWindow(), -1, 0));
+		if (Window::RenderContext->renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 225, 225, 225, 225);
+			SDL_SetRenderDrawColor(Window::RenderContext->renderer, 225, 225, 225, 225);
 			std::cout << "Renderer Created!" << std::endl;
 		}
 		isRunning = true;

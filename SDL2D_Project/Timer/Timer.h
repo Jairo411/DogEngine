@@ -1,6 +1,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 #include <SDL.h>
+/*2021-07-09
+This shit over here needs some work.*/
 class Timer
 {
 public:

@@ -25,7 +25,8 @@ Basically anything with a texture.
 might want to strip this class of alot of it's functionality leave basic functionality.
 and expand the functionailty to child classes.
 potentailly going to have gameObjects with no movement or extra functionality being used and having a bunch of null variables */
-
+/*2021-07-09
+	I agree with past me, and looking forward to moving to a component base structure.*/
 class TextureManager;
 class IObserver;
 class GameObject : public BaseObj , public IObserverable

@@ -13,6 +13,10 @@
  /* I either need to build a nav mesh class or extend MapLayer functionality to make this work better, right now I do not know */
 
 //the Map struct should only contain pure Map information
+
+/*2021-07-09
+	Probably the oldest class I have here that is written, Defienitly going to be reimplemented, to make more sense and generally be a better class
+*/
 	struct Map
 {
 	int cols, rows;

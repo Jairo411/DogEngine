@@ -6,7 +6,8 @@
 #include "../Animator/Animator.h"
 #include "../Input/Input.h"
 #include "../Physics/Collider.h"
-
+/*2021-07-09 
+	Not prefect, but  will intentioned going to reimplement this class.*/
 class TextureManager;
 class Player : public GameObject , public Input , public Animator
 {

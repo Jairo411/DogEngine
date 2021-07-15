@@ -26,7 +26,7 @@ public:
 	template <typename State>
 	void transitionTo()
 	{
-		CurrentState = &std::get<State>(state);
+		CurrentState = &std::get<State>(states);
 		//CurrentState = &std::get<State>(states);// gets current state to be later called in function
 	}
 

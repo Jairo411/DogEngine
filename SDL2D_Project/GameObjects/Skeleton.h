@@ -10,7 +10,8 @@
 
 using namespace std;
 
-
+/*2021-07-09
+	Not prefect, but  will intentioned going to reimplement this class.*/
 class Skeleton : public GameObject, public AI , public Animator
 {
 public:

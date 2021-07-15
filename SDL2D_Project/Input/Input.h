@@ -9,6 +9,8 @@ class Window;
 /* This is Input class is capable of an abstract class,
 but does have actual functionallity. Really its more of an interface if anything.
 */
+/*2021-07-09
+ My first implementation of the Input class is kinda wonky, I believe it would be better if I completely re-work this.*/
 class Input
 {
 public:

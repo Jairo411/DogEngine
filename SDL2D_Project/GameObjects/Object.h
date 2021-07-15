@@ -3,6 +3,8 @@
 #include <iostream>
 #include <map>
 // I should use this class to move over more generic ID stuff*/
+/*2021-07-09
+	This is fine.*/
 class BaseObj
 {
 public:

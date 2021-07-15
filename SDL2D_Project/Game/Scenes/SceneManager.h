@@ -3,7 +3,8 @@
 #include <memory>
 #include <unordered_map>
 #include "Scene.h"
-
+/*2021-07-09
+ This code here is fine.*/
 class SceneManager
 {
 public:

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <ScenesInfo>
-<Scene SceneNumber ="1" SceneName ="swagbitch" />
-<Scene SceneNumber ="2" SceneName ="swagBitch2" />
+<Scene SceneNumber="1" SceneName="swagbitch" />
+<Scene SceneNumber="2" SceneName="swagBitch2" />
+<Scene SceneNumber="4" SceneName="Hello" />
+<Scene SceneNumber ="4" SceneName ="Hello" />
 </ScenesInfo>

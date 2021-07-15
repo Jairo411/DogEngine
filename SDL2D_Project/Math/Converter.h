@@ -3,6 +3,8 @@
 #include "../GameObjects/Map/TileSet/Tiles.h"
 #include "../Math/Vec2.h"
 #include <SDL_rect.h>
+/*2021-07-09
+	Serves an actual purpose, Might need to re-look this but, this can be fixed way later into the future.*/
 class Converter
 {
 public:

@@ -1,0 +1,13 @@
+START: 2021-07-09	
+-Currently looking at every .cpp and .h file that I've created, I've improved appond my coding skills and knowing myself I probably have alot of left over variables and 
+not deleted pointers. 
+-The MAIN FOCUS:
+Okay so serializer class being you're main focus is a huge ass lie, what you need, 
+is to decompartamentalize your GameEngine Functionality, Like your timer is a part of your Engine but should
+be only created once. Your serializer, Renderer and Window, will at somepoint need to be changed in some way, or
+properities will need to be accessed at somepoint, so this in essences is a group of classes that need to be created once, 
+while also having the added ability of "gobal reach". 
+So to summerize this all, I need my GameEngine Functionality to be seperated even more and have clear destinction between the "Main" Engine, 
+and all the Engine Components. 
+is currently my serializer class, as it's more wonkey then the rest of my code. 
+END: 2021-07-09

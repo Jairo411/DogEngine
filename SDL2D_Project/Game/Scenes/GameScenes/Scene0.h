@@ -5,7 +5,8 @@
 #include"../../Game.h"
 
 using namespace std;
-
+/*2021-07-09 
+	This code here is fine*/
 class Scene0: public Scene
 {
 public:

@@ -11,6 +11,9 @@
 /* AI class is an interface that is meant to be added into GameObjects
 	To give them basic AI Functionality and states.*/
 	// The AI class is just an intereface that may have some member variables that I might use 
+/*2021--07-09
+	Looking at this quickly I can notice that I have a bit to many component like features/attachments to my AI interface,
+	um I am headed in a more industry standard by adding a component system into my engine to attached pecies of functionality to my AI interface*/
 class AI
 {
 public:
@@ -44,7 +47,8 @@ private:
 	std::vector<NavTile> weightedgraph;
 	NavTile start, goal;
 };
-
+/* 2021-07-09
+ I actually like this idea, people say its not that good of an Idea.*/
 class AIManager
 {
 public:

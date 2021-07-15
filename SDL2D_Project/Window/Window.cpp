@@ -6,6 +6,7 @@ int Window::SCREENHEIGHT = 0;
 int Window::SCREENWIDTH = 0;
 SDL_Point Window::middleOfScreen = SDL_Point();
 Renderer* Window::RenderContext = nullptr;
+Window* Window::instance = nullptr;
 
 Window::Window()
 {
@@ -37,13 +38,13 @@ SDL_Renderer* Window::GetRenderer()
 	return RenderContext->renderer;
 }
 
-Window::Window(SDL_Window *tempWindow)
+Window::Window(SDL_Window *window_)
 {
-	SCREENHEIGHT = 0;
+	SCREENHEIGHT = 0; //
 	SCREENWIDTH = 0;
 	SquareSize = 40;
 	totalAmountOfSquares = 0;
-	window = tempWindow;
+	window= window_;
 	
 
 	SDL_GetWindowSize(window, &SCREENWIDTH, &SCREENHEIGHT);
@@ -68,6 +69,21 @@ Window::Window(SDL_Window *tempWindow)
 		}	
 	}
 	
+}
+
+void Window::setWindowProperties(WindowProp windowProperties_)
+{
+	window = windowProperties_.win;
+
+}
+
+Window* Window::GetInstance()
+{
+	if (instance==nullptr)
+	{
+		instance = new Window();
+	}
+	return instance;
 }
 
 int Window::getScreenHeight()

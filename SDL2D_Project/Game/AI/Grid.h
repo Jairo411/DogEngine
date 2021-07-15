@@ -6,6 +6,10 @@
 #include <vector>
 #include<queue>
 
+/*2021-07-09
+	Looking at this now, it's possible that this way of mapping is okay for now, 
+	But knowing how I created it and the state I was in might need to rework this and improve this.*/
+
 struct ComparePriority
 {
 	bool operator()(A_Star_Node_Priority const& lhs, A_Star_Node_Priority const& rhs)

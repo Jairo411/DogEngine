@@ -1,10 +1,146 @@
-﻿  Animator.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(11,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(10): message : see declaration of 'Renderer'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(17,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(16): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\StateMachine.h(61,1): error C2955: 'std::variant': use of class template requires template argument list
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\variant(1032): message : see declaration of 'std::variant'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\StateMachine.h(68): message : see reference to class template instantiation 'StateMachine<States...>' being compiled
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\StateMachine.h(29,35): error C3861: 'state': identifier not found
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\StateMachine.h(27,7): message : This diagnostic occurred in the compiler generated function 'void StateMachine<States...>::transitionTo(void)'
+﻿  EngineSerializer.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\EngineSerializer.cpp(166,14): warning C4101: 'status': unreferenced local variable
+  Game.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Main.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Generating Code...
+  Animation.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Animator\Animation.cpp(41,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Animator.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Generating Code...
+  AnimationHandler.cpp
+  C_CircleCollider.cpp
+  C_RectangleCollider.cpp
+  Generating Code...
+  Observer.cpp
+  pugixml.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_sdl.cpp
+  imgui_widgets.cpp
+  Generating Code...
+  GUI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Window.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Generating Code...
+  Converter.cpp
+  Vec2.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(14,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(15,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Skeleton.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(158,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(159,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(275,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  GameObject.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(30,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(38,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(46,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(54,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(55,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(78,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(78,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(78,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(78,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(120,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(121,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(80,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(81,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(202,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(238): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+  AI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(220,18): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Grid.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(43,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(44,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(56): warning C4715: 'NavTile::giveAddress': not all control paths return a value
+  Collider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(144,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(200,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(209,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(210,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(214,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(216,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(232,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(234,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(248,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(248,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Map.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.cpp(157,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Input.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(34): warning C4715: 'Input::keyPressed': not all control paths return a value
+  SceneManager.cpp
+  Scene0.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  A_Star_Node_Priority.cpp
+  node.cpp
+  Generating Code...
+  TextureManager.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Tiles.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(21,1): warning C4099: 'Renderer': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.h(20): message : see declaration of 'Renderer'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(106,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(107,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(124,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(125,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(157): warning C4715: 'Tile::getID': not all control paths return a value
+  Timer.cpp
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

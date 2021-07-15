@@ -22,6 +22,9 @@
 #include "../GameObjects/Map/Map.h"
 #include "EngineSerializer.h"
 
+/*2021-07-09 
+	Currently looking at this, don't really see a problem besides the FPS Issues that I need to fix,
+	probably not coming on this side of the engine but yah, */
 class AIManager;
 class Serializer;
 class Game{
@@ -36,16 +39,17 @@ public:
 	void OnRender();
 	void clean();
 	static bool	setIsRunning(bool tempBool_);
-	static SDL_Renderer *renderer;
-	static Timer *timer;
-	static Window* actualWindow;
-	static AIManager* AI_Manager;
-	static Serializer* serializer;
+	static SDL_Renderer* renderer;
+	static Timer* timer; //EngineFunctitonality 
+	static Window* actualWindow; //engineFunctionality 
+	static AIManager* AI_Manager; // this is a component not a engineFunctionality 
+	static Serializer* EngineSerializer;
+	SceneManager* sceneManager;
 private:
 	int cnt=0;
 	const int FPS = 120;
 	static bool isRunning;
-	SceneManager* sceneManager;
+	
 
 };
 
