@@ -5,6 +5,7 @@
 #include <map>
 #include <iterator>
 #include "../Input/Input.h"
+#include "../Renderer/Renderer.h"
 #include "GUI.h"
 /*2021-07-09
 This whole entire class need to be re-implemented and improved appond. */
@@ -17,10 +18,6 @@ functionality will be used to set up properties and maybe access none static var
 	Like how Graphics APIs set up there logic.*/
 class Game;
 /*Might put some flags into this*/
-struct Renderer
-{
- SDL_Renderer* renderer;
-};
 struct WindowProp
 {
 	SDL_Window* win;
@@ -43,9 +40,8 @@ public:
 	bool KeyBoardInput(int key);
 	bool ControllerInput(int key);
 	void CreateMiddleRect();
-	void SetRenderer(SDL_Renderer* renderer_);
+	void SetRenderer(Renderer* renderer_);
 	void SetGUIEvent(SDL_Event* GUIEvent_);
-	SDL_Renderer* GetRenderer();
 	void OnRender();
 	void OnUpdate();
 	static Vec2 ConvertScreenCoords(int x, int y);
@@ -57,18 +53,16 @@ public:
 		RELEASE
 	};
 	SDL_Window* GetWindow();
-	static Renderer* RenderContext; 
 	static WindowProp* properities;
 private:
 	//Basic Window Member Variables
 	int CurrentWindow_XPOS, CurrentWindow_YPOS;
-	int width,height;
+	static int SCREENWIDTH; //Actually since you have functions for this 
+	static int SCREENHEIGHT; // move over the covertedScreenCoords 
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
 	Window(SDL_Window* window_);
 	~Window();
 	int mouseX, mouseY; //Mouse positions
-	static int SCREENWIDTH; //Actually since you have functions for this 
-	static int SCREENHEIGHT; // move over the covertedScreenCoords 
 	int SquareSize;
 	int totalAmountOfSquares;
 	int windowStatus;
@@ -81,6 +75,7 @@ private:
 	SDL_Event* GUIEvent;
 	Vec2 covertedScreenCoords;
 	GUI GUIContext;
+	SDL_Renderer* renderContext;
 };
 
 #endif // !WINDOW_H

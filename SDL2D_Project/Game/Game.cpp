@@ -2,9 +2,9 @@
 #include "AI/AI.h"
 
 SDL_Rect* srcR, dstR;
-SDL_Renderer* Game::renderer = nullptr;
+Renderer* Game::renderer = nullptr;
 Timer* Game::timer = nullptr;
-Window* Game::actualWindow = nullptr;
+Window* Game::window = nullptr;
 Serializer* Game::EngineSerializer = nullptr;
 bool Game::isRunning = false;
 
@@ -14,8 +14,9 @@ Game::Game()
 	isRunning = true;
 	timer = new Timer(); //Im making all of these managers /Single entity type classes as singletons
 	sceneManager = new SceneManager();
-	actualWindow->GetInstance();
-	EngineSerializer->GetInstance(); // makes a pointer, this is essentially doing EngineSerializer(); 
+	window = Window::GetInstance();
+	renderer = Renderer::getInstance();
+	EngineSerializer = Serializer::GetInstance();
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
@@ -39,8 +40,7 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	WindowProp* windowProp = new WindowProp();
 	windowProp->ScreenWidth = width;
 	windowProp->ScreenHeight = height;
-	actualWindow->GetInstance()->setWindowProperties(*windowProp);
-	Renderer* renderer= new Renderer();
+	RenderProp* renderProp = new RenderProp();
 	if (fullscreen)
 	{
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -50,20 +50,22 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	{
 		std::cout << "Subsystem Initialised!..." << std::endl;
 		windowProp->win = SDL_CreateWindow(title, posx, posy, width, height, flags);
+		window->GetInstance()->setWindowProperties(*windowProp);
 		
-		if (actualWindow->GetInstance()->GetWindow())
+		if (window->GetInstance()->GetWindow())
 		{
 			std::cout << "Window created!" << std::endl;
 
 		}
-		renderer->renderer = SDL_CreateRenderer(actualWindow->GetInstance()->GetWindow(), -1,0);
-		if (Window::RenderContext->renderer)
+		renderProp->renderer = SDL_CreateRenderer(window->GetInstance()->GetWindow(), -1,0);
+		renderer->getInstance()->setRenderProp(*renderProp);
+		if (renderer->getInstance()->getRenderer()!=nullptr)
 		{
-			SDL_SetRenderDrawColor(Window::RenderContext->renderer, 225, 225, 225, 225);
+			SDL_SetRenderDrawColor(renderer->getInstance()->getRenderer(), 225, 225, 225, 225);
 			std::cout << "Renderer Created!" << std::endl;
 		}
 		isRunning = true;
-		std::cout << "Width: " << actualWindow->getScreenWidth() << " Height: " << actualWindow->getScreenHeight() << std::endl;
+		std::cout << "Width: " << window->GetInstance()->getScreenWidth() << " Height: " << window->GetInstance()->getScreenHeight() << std::endl;
 	}
 	else {
 		isRunning = false;
@@ -118,8 +120,8 @@ void Game::OnRender()
 
 void Game::clean()
 {
-	SDL_DestroyWindow(actualWindow->GetWindow());
-	SDL_DestroyRenderer(actualWindow->GetRenderer());
+	SDL_DestroyWindow(window->GetWindow());
+	SDL_DestroyRenderer(renderer->getRenderer());
 	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;

@@ -16,10 +16,10 @@ MapLayer::MapLayer(Window* window)
 	name = "MapLayer";
 	tileSize = 32;
 	mapStatus = DEVELOPER;
-	rows = window->getScreenWidth() / tileSize; //divided by the SDL_rect.w size of my tiles  
-	cols = window->getScreenHeight() / tileSize; //divided by the SDL_rect.h size of my tiles 
-	screenWidth = window->getScreenWidth();
-	screenHeight = window->getScreenHeight();
+	rows = window->GetInstance()->getScreenWidth() / tileSize; //divided by the SDL_rect.w size of my tiles  
+	cols = window->GetInstance()->getScreenHeight() / tileSize; //divided by the SDL_rect.h size of my tiles 
+	screenWidth = window->GetInstance()->getScreenWidth();
+	screenHeight = window->GetInstance()->getScreenHeight();
 	SDL_Rect srcRect, desRect;
 	srcRect.w = 32;
 	srcRect.h = 32;

@@ -9,6 +9,7 @@
 #include "../../Server/Server.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Window/Window.h"
+#include "../Renderer/Renderer.h"
 #include "../Input/Input.h"
 #include "../Timer/Timer.h"
 #include "../Math/Converter.h"
@@ -39,12 +40,12 @@ public:
 	void OnRender();
 	void clean();
 	static bool	setIsRunning(bool tempBool_);
-	static SDL_Renderer* renderer;
 	static Timer* timer; //EngineFunctitonality 
-	static Window* actualWindow; //engineFunctionality 
-	static AIManager* AI_Manager; // this is a component not a engineFunctionality 
-	static Serializer* EngineSerializer;
-	SceneManager* sceneManager;
+	static Window* window; //engineFunctionality 
+	static Renderer* renderer; //engineFunctionality
+	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
+	static Serializer* EngineSerializer; //engine functionality 
+	SceneManager* sceneManager; //Engine functionality 
 private:
 	int cnt=0;
 	const int FPS = 120;

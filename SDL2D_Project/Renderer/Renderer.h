@@ -2,7 +2,7 @@
 #define RENDERER_H
 #include<SDL.h>
 /*2021-7-15 
-Right now this class doesn't support alot but in the future in will...
+Renderer class will support many different renderers hopefully in the future
 */
 struct RenderProp
 {
@@ -15,6 +15,8 @@ public:
 	void operator =(const Renderer&) = delete;
 	//Takes in a RenderProperty Structure and intializes Renderer's class member variables.
 	void setRenderProp(RenderProp RenderProperties_);
+	// with the addition of new renderers, this will be changed.
+	SDL_Renderer* getRenderer(); 
 	static Renderer* getInstance();
 	static RenderProp* properties; 
 private:
@@ -22,5 +24,6 @@ private:
 	Renderer();
 	//Renderer() over load this function when you want to add other renderer, lets start with openGL, then vulkan....
 	static Renderer* instance;
+	SDL_Renderer* currentRenderer;
 };
 #endif

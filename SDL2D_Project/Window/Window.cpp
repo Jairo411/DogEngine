@@ -5,7 +5,6 @@
 int Window::SCREENHEIGHT = 0; 
 int Window::SCREENWIDTH = 0;
 SDL_Point Window::middleOfScreen = SDL_Point();
-Renderer* Window::RenderContext = nullptr;
 WindowProp* Window::properities = nullptr;
 Window* Window::instance = nullptr;
 
@@ -21,10 +20,9 @@ Window::Window()
 
 }
 
-void Window::SetRenderer(SDL_Renderer* renderer_)
+void Window::SetRenderer(Renderer* renderer_)
 {
-	RenderContext = new Renderer();
-	RenderContext->renderer = renderer_;
+	renderContext = renderer_->getInstance()->getRenderer();
 //	GUIContext = GUI();
 //	GUIContext.Inti(RenderContext);
 }
@@ -32,11 +30,6 @@ void Window::SetRenderer(SDL_Renderer* renderer_)
 void Window::SetGUIEvent(SDL_Event* GUIEvent_)
 {
 
-}
-
-SDL_Renderer* Window::GetRenderer()
-{
-	return RenderContext->renderer;
 }
 
 Window::Window(SDL_Window *window_)
@@ -76,8 +69,8 @@ void Window::setWindowProperties(WindowProp windowProperties_)
 {
 	/*Saving internal MemberProperties*/
 	window = windowProperties_.win;
-	width = windowProperties_.ScreenWidth;
-	height = windowProperties_.ScreenHeight;
+	SCREENWIDTH = windowProperties_.ScreenWidth;
+	SCREENHEIGHT= windowProperties_.ScreenHeight;
 	CurrentWindow_XPOS = windowProperties_.xPos;
 	CurrentWindow_YPOS = windowProperties_.yPos;
 }
@@ -154,9 +147,9 @@ void Window::OnRender()
 	{
 	case Window::DEBUG:
 	{
-		SDL_SetRenderDrawColor(RenderContext->renderer, 100, 0, 15, 100);
-		SDL_RenderDrawRect(RenderContext->renderer, &middleRect);
-		SDL_SetRenderDrawColor(RenderContext->renderer, 0, 0, 0, 255);
+		SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 100, 0, 15, 100);
+		SDL_RenderDrawRect(Game::renderer->getInstance()->getRenderer(), &middleRect);
+		SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 0, 0, 0, 255);
 //		GUIContext.Render();
 	}
 		break;
@@ -168,9 +161,9 @@ void Window::OnRender()
 		{
 			SDL_Rect* thisKey = it->first;
 			it->second = cycleValue;
-			SDL_SetRenderDrawColor(Window::RenderContext->renderer, 255, 255, 255, 255);
-			SDL_RenderDrawRect(Window::RenderContext->renderer, it->first);
-			SDL_SetRenderDrawColor(Window::RenderContext->renderer, 0, 0, 0, 255);
+			SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 255, 255, 255, 255);
+			SDL_RenderDrawRect(Game::renderer->getInstance()->getRenderer(), it->first);
+			SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 0, 0, 0, 255);
 			cycleValue += 1;
 		}
 	}

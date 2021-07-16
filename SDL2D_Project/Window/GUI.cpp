@@ -11,11 +11,11 @@ GUI::~GUI()
 
 }
 
-void GUI::Inti(Renderer* renderer)
+void GUI::Inti(renderer* renderer)
 {
 	renderContext = renderer;
 	ImGui::CreateContext();
-	ImGuiSDL::Initialize(renderContext->renderer, 800, 600);
+	ImGuiSDL::Initialize(Game::renderer->getInstance()->getRenderer(), 800, 600);
 	io = ImGui::GetIO();
 	
 }

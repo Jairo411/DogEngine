@@ -64,7 +64,7 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 void Tile::OnRender()
 {
 
-	SDL_RenderCopy(Window::RenderContext->renderer, baseTex, &srcRect, &dstRect);
+	SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), baseTex, &srcRect, &dstRect);
 	col.CollisonRender();
 }
 

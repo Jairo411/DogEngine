@@ -175,13 +175,13 @@ void Skeleton::Render()
 
 	if (getDisable() == false)
 	{
-		SDL_RenderCopy(Window::RenderContext->renderer, objTexture, &srcRect0, &destRect0);
+		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), objTexture, &srcRect0, &destRect0);
 		col.CollisonRender();
 		navCollider.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{
-		SDL_RenderCopy(Window::RenderContext->renderer, nullObjTexture, &srcRect0, &destRect0);
+		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), nullObjTexture, &srcRect0, &destRect0);
 	}
 }
 
