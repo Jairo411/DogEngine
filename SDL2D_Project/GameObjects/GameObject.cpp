@@ -33,7 +33,7 @@ void GameObject::Start()
 	}
 }
 
-void GameObject::Update(float deltaTime_)
+void GameObject::OnUpdate(float deltaTime_)
 {
 	for (int i = components.size()-1; i >=0; i--)
 	{
@@ -41,7 +41,7 @@ void GameObject::Update(float deltaTime_)
 	}
 }
 
-void GameObject::Render()
+void GameObject::OnRender()
 {
 	for (int i = components.size() - 1; i >= 0; i--)
 	{

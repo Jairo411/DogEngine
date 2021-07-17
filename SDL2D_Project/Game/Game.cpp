@@ -57,12 +57,22 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 			std::cout << "Window created!" << std::endl;
 
 		}
+		else
+		{
+			throw std::runtime_error("Window Failed");
+		//	std::cout <<&std::runtime_error::what << std::endl;
+		}
 		renderProp->renderer = SDL_CreateRenderer(window->GetInstance()->GetWindow(), -1,0);
 		renderer->getInstance()->setRenderProp(*renderProp);
 		if (renderer->getInstance()->getRenderer()!=nullptr)
 		{
 			SDL_SetRenderDrawColor(renderer->getInstance()->getRenderer(), 225, 225, 225, 225);
 			std::cout << "Renderer Created!" << std::endl;
+		}
+		else
+		{
+			throw std::runtime_error("Renderer Failed");
+		//	std::cout<<&std::runtime_error::what<<std::endl;
 		}
 		isRunning = true;
 		std::cout << "Width: " << window->GetInstance()->getScreenWidth() << " Height: " << window->GetInstance()->getScreenHeight() << std::endl;

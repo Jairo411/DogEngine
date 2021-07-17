@@ -1,5 +1,6 @@
 #include "EngineSerializer.h"
 #include "../GameObjects/GameObject.h"
+#include "Scenes/Scene.h"
 
 Serializer* Serializer::instance = nullptr;
 
@@ -8,6 +9,7 @@ Serializer::Serializer()
 	//Just creating every file, not handling any of the files
 	//intializing my std::map variable
 	CurrentDoc = new pugi::xml_document();
+	std::map < const char*, const char*> directorydictionary;
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData", "/EngineData.xml"));
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes", "/SceneData.xml"));
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameObjects/GameObjectData", "/GameObjectData.xml"));
@@ -249,6 +251,5 @@ void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 
 	}
 }
-
 }
 

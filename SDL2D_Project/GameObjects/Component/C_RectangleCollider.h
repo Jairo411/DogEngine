@@ -1,6 +1,6 @@
 #ifndef COMPONENTCOLLIDIER_H 
 #define COMPONENTCOLLIDIER_H
-#include "Component.hpp"
+#include "Component.h"
 #include "../../Math/Vec2.h"
 #include <SDL.h>
 class GameObject;

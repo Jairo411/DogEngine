@@ -21,6 +21,7 @@ Scene0::~Scene0()
 
 void Scene0::OnCreate()
 {
+	Game::EngineSerializer->GetInstance()->CreateScene(6, "SCENE0");
 	/* Intial Object Creations*/
 	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);
 	enemy = new Skeleton(180, 100);

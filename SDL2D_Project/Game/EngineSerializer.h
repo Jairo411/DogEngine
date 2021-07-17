@@ -33,8 +33,8 @@
 	Now Each Read and Write function can be handle properly through my load file function.
 	To prevent any future problems we are going to try, catch execptions all over the read and write functions that I have. 
 	*/
-
 class GameObject;
+class Scene;
 class Serializer
 {
 public:
@@ -42,9 +42,16 @@ public:
 	Serializer operator=(const Serializer& other) = delete;
 	static Serializer* GetInstance();
 	//PURE WRITE FUNCTIONS
-	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);//Write function
-	void RemoveAnimation(std::string tagID_, const char* imageSrc_);//Write function
-	void CreateScene(int currentScene_, const char* sceneName_);// Write function
+	//Serializes GameObject
+	void AddGameObject(GameObject* OBJ_); //Write function 
+	//Serializes Animations of GameObject
+	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);//Write function //Animations will be stored in there respective gameObjectDataXML sheet. With there associated tags. 
+	void RemoveAnimation(std::string tagID_, const char* imageSrc_);//Write function 
+	//Creates a Scene 
+	void CreateScene(int currentScene_, const char* sceneName_);// Write function 
+	//Serializes Scene
+	void serializeScene(int currentScene_, Scene Scenedata_); //Write function //The Scenedata will push out how many gameObjects are in a scene and there ID's nothing more nothing less
+	//Remove Scene
 	void RemoveScene(const char* sceneName); //Write function
 	//PURE READ FUNCTIONS
 	void DeserializeAnimations(); //<-- Deserialzer should return a string
@@ -64,9 +71,6 @@ private:
 	~Serializer();
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
-	std::multimap <pugi::xml_document*, pugi::xml_node> documentList; // This might need to be removed
-	std::map < const char*, const char*> directorydictionary; // This might need to be removed
-	friend class Animation;
 	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
 	const char* fullpath[3] = { "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData/EngineData.xml",
 						  "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes/SceneData.xml",

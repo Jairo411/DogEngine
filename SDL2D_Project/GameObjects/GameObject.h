@@ -35,8 +35,8 @@ public:
 	GameObject();
 	virtual ~GameObject();
 	virtual void Start();
-	virtual void Update(float deltaTime_);
-	virtual void Render();
+	virtual void OnUpdate(float deltaTime_);
+	virtual void OnRender();
 	virtual void Disable() = 0;
 	virtual SDL_Texture* getTexture() final;
 	virtual bool setDisable(bool temp) final;
