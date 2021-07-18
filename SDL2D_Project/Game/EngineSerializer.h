@@ -62,15 +62,16 @@ public:
 	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_); //Write Function
 	pugi::xml_document* DefaultSerialized(std::string tag_); //Write Function
 	bool isChildNodeExist(const char* nodeName_); //Read Function
-	bool SceneExist(int SceneIndex_, const char* SceneName_);//Red Function
-	bool loadFile(const char* fileDirectory_); //Read function, dude, what the actual fuck was this made for?
-	//Debug functions
-	void Print();
+	bool SceneExist(int SceneIndex_, const char* SceneName_);//Read Function
+	bool GameObjectExist(const char* ID_); // Read Function
+	bool loadFile(const char* fileDirectory_); //Read function
 private:
 	Serializer();
 	~Serializer();
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
+	std::multimap<pugi::xml_document*, pugi::xml_node> documentList; 
+	std::map < const char*, const char*> directorydictionary;
 	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
 	const char* fullpath[3] = { "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData/EngineData.xml",
 						  "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes/SceneData.xml",
@@ -80,15 +81,5 @@ private:
 	std::string const SerializedGameObjectInfo = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameObjects/GameObjectData";
 	static Serializer* instance;
 };
-
-//class EngineSerializer
-//{
-//public:
-//	void Update(int condition_);
-//	void operator()();
-//private:
-//	int condition;
-//	StateMachine<IntializedState, UpdateState, ReadState, WriteState> stateMachine;
-//};
 
 #endif // !ANIMATORSERIALIZER

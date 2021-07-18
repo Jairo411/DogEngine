@@ -21,8 +21,8 @@ public:
 	void Inti();
 	void handleCollison();
 	virtual void Disable();
-	virtual void Update(float deltaTime_);
-	virtual void Render();
+	virtual void OnUpdate(float deltaTime_);
+	virtual void OnRender();
 	virtual void Steer();
 	virtual void Seperate();
 private:

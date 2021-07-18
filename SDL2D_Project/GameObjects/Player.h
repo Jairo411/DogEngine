@@ -16,8 +16,8 @@ public:
 	 Player(const char * textureSheet, int x, int y);
 	 ~Player();
 	 /*Texture Display functions*/
-	 virtual void Update(float DeltaTime_) override;
-	 virtual void Render() override;
+	 virtual void OnUpdate(float DeltaTime_) override;
+	 virtual void OnRender() override;
 
 	 void Disable() override;
 	 /* Collison Handler*/

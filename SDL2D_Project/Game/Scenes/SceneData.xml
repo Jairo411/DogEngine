@@ -3,5 +3,6 @@
 <Scene SceneNumber="1" SceneName="swagbitch" />
 <Scene SceneNumber="2" SceneName="swagBitch2" />
 <Scene SceneNumber="4" SceneName="Hello" />
-<Scene SceneNumber ="4" SceneName ="Hello" />
+<Scene SceneNumber="4" SceneName="Hello" />
+<Scene SceneNumber="6" SceneName="SCENE0" />
 </ScenesInfo>

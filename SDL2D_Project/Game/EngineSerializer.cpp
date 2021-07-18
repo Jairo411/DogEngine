@@ -9,7 +9,6 @@ Serializer::Serializer()
 	//Just creating every file, not handling any of the files
 	//intializing my std::map variable
 	CurrentDoc = new pugi::xml_document();
-	std::map < const char*, const char*> directorydictionary;
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData", "/EngineData.xml"));
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes", "/SceneData.xml"));
 	directorydictionary.insert(std::make_pair("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameObjects/GameObjectData", "/GameObjectData.xml"));
@@ -121,12 +120,38 @@ bool Serializer::isChildNodeExist(const char* nodeName_)
 
 bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
-	pugi::xml_node root = CurrentDoc->next_sibling();
+	pugi::xml_node root = CurrentDoc->first_child();
 	std::cout << root.name() << std::endl;
-	for (pugi::xml_node node : root.child(SceneName_) )
+	for (pugi::xml_node node: root.children("Scene"))
 	{
-		std::cout << node.name() << std::endl;
-		system("pause");
+		std::cout << node.name()<<std::endl;
+		pugi::xml_attribute_iterator it;
+		std::string de_SerializedContainer[2];
+		for (it= node.attributes().begin(); it !=node.attributes().end(); it++)
+		{
+			std::string attributeName = it->name();
+			if (strcmp(attributeName.c_str(),"SceneNumber")==0)
+			{
+				std::cout << " " << it->name();
+				std::cout << " = " << it->as_string();
+				de_SerializedContainer[0] = it->as_string();
+			}
+			if (strcmp(attributeName.c_str(),"SceneName")==0)
+			{
+				std::cout << " " << it->name();
+				std::cout << " = " << it->as_string();
+				de_SerializedContainer[1] = it->as_string();
+			}
+			if (strcmp(de_SerializedContainer[0].c_str(),std::to_string(SceneIndex_).c_str())==0) // comparing the first attribute with my SceneIndex value
+			{
+				if (strcmp(de_SerializedContainer[1].c_str(),SceneName_)==0)
+				{
+					std::cout << std::endl;
+					return true;
+				}
+			}
+		}
+		std::cout << std::endl;
 	}
 	return false;
 }
@@ -139,33 +164,11 @@ bool Serializer::loadFile(const char* FileDirectory_)
 	return result;
 }
 
-
-
-void Serializer::Print()
-{
-	pugi::xml_node_iterator it = CurrentDoc->begin();
-
-	for (auto depth0 : CurrentDoc->first_child())
-	{
-		std::cout << "Current Node" << depth0.name() << std::endl;
-		std::cout << "Current Node attributes: " << depth0.first_attribute().name() << depth0.first_attribute().value() << std::endl;
-		for (auto depth1 : CurrentDoc->next_sibling())
-		{
-			std::cout << "Current Node" << depth1.name() << std::endl;
-			std::cout << "Current Node attributes: " << depth1.first_attribute().name() << depth0.first_attribute().value() << std::endl;
-		}
-	}
-}
-
 void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 {
+	loadFile(fullpath[2]);
 
 	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;
-
-	std::string path = "/GameObjectsData.xml";
-	std::string combinedPath = SerializedGameObjectInfo + path;
-	std::string flag = "GameObject";
-	struct stat status;
 
 	//Creates new file
 	//if (stat(combinedPath.c_str(), &status) != 0)
@@ -220,36 +223,39 @@ void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 {
 	/*I need to load the file if it exist*/
-	loadFile(fullpath[2]);
-	if (SceneExist(currentScene_,sceneName_)==false)
+	loadFile(fullpath[1]);
+	if (SceneExist(currentScene_, sceneName_) == false)
 	{
 		std::multimap<pugi::xml_document*, pugi::xml_node>::iterator it0 = documentList.begin();
-	std::map <const char*, const char*>::iterator it1 = directorydictionary.begin();
+		std::map <const char*, const char*>::iterator it1 = directorydictionary.begin();
 
-	for (int i = 0; i < 1; i++)
-	{
-		it0++;
-		it1++;
+		for (int i = 0; i < 1; i++)
+		{
+			it0++;
+			it1++;
+		}
+
+		if (isChildNodeExist("ScenesInfo") == true)
+		{
+
+			auto rootNode = CurrentDoc->child("ScenesInfo");
+
+			auto sceneNode = rootNode.append_child(pugi::node_element);
+			sceneNode.set_name("Scene");
+			sceneNode.append_attribute("SceneNumber ") = currentScene_;
+			sceneNode.append_attribute("SceneName ") = sceneName_;
+
+
+			std::string path = it1->first;
+			std::string fileName = it1->second;
+			std::string combined = path + fileName;
+
+			CurrentDoc->save_file(combined.c_str(), PUGIXML_TEXT(""));
+		}
 	}
-
-	if (isChildNodeExist("ScenesInfo") == true)
+	else
 	{
-
-		auto rootNode = CurrentDoc->child("ScenesInfo");
-
-		auto sceneNode = rootNode.append_child(pugi::node_element);
-		sceneNode.set_name("Scene");
-		sceneNode.append_attribute("SceneNumber ") = currentScene_;
-		sceneNode.append_attribute("SceneName ") = sceneName_;
-
-
-		std::string path = it1->first;
-		std::string fileName = it1->second;
-		std::string combined = path + fileName;
-
-		CurrentDoc->save_file(combined.c_str(), PUGIXML_TEXT(""));
-
+		std::cout << sceneName_ << ": this scene already exist" << std::endl;
 	}
-}
 }
 

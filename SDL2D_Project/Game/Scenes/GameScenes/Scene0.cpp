@@ -94,10 +94,10 @@ void Scene0::HandleCollison()
 }
 void Scene0::OnUpdate(float deltaTime_)
 {
-	player->Update(deltaTime_);
-	enemy->Update(deltaTime_);
-	enemy0->Update(deltaTime_);
-	enemy1->Update(deltaTime_);
+	player->OnUpdate(deltaTime_);
+	enemy->OnUpdate(deltaTime_);
+	enemy0->OnUpdate(deltaTime_);
+	enemy1->OnUpdate(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 	Game::window->OnUpdate();
@@ -112,10 +112,10 @@ void Scene0::OnRender()
 	}
 	SDL_RenderClear(Game::renderer->getInstance()->getRenderer());
 	mapA->OnRender();
-	player->Render();
-	enemy->Render();
-	enemy0->Render();
-	enemy1->Render();
+	player->OnRender();
+	enemy->OnRender();
+	enemy0->OnRender();
+	enemy1->OnRender();
 	Game::window->OnRender();
 	SDL_RenderPresent(Game::renderer->getInstance()->getRenderer());
 }

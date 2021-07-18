@@ -64,7 +64,7 @@ Player::~Player()
 
 }
 
-void Player::Update(float deltaTime_)
+void Player::OnUpdate(float deltaTime_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
 	//Note you need to get your FPS working properly in order to to proper animate your character
@@ -90,7 +90,7 @@ void Player::Update(float deltaTime_)
 	UpdatePostion();
 }
 
-void Player::Render()
+void Player::OnRender()
 {
 	/*This is in the loop*/
 	if (nullObjTexture != NULL)

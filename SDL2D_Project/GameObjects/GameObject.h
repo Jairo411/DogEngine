@@ -11,7 +11,7 @@
 #include<type_traits>
 #include"../Math/Vec2.h"
 #include"../DataStructures/Observer.h"
-#include"Component/Component.hpp"
+#include"Component/Component.h"
 using namespace std;
 
 /*Standard GameObject class should be abstract and should be the base class.

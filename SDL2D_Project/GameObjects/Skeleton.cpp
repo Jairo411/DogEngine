@@ -147,7 +147,7 @@ void Skeleton::Inti()
 	} //you have to move this over somewhere it's more readable 
 }
 
-void Skeleton::Update(float DeltaTime_)
+void Skeleton::OnUpdate(float DeltaTime_)
 {
 	if (dynamic_cast<IObserverable*>(this))
 	{
@@ -168,7 +168,7 @@ void Skeleton::Update(float DeltaTime_)
 	UpdatePostion();
 }
 
-void Skeleton::Render()
+void Skeleton::OnRender()
 {
 
 	PlayAnimations(AnimationStates::WALK);
