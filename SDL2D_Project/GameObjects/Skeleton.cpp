@@ -10,6 +10,7 @@ Skeleton::Skeleton()
 	srcRect.y = 0;
 	srcRect0.x = 0;
 	destRect0.y = 0;
+	name = "skeleton";
 }
 
 Skeleton::Skeleton(int x, int y)
@@ -37,7 +38,7 @@ Skeleton::Skeleton(int x, int y)
 	ptr = this;
 	col = RectCollider(srcRect0.w, srcRect0.h);
 	GameObject::ObjHolder.push_back(ptr);
-	nameID += to_string(ObjHolder.size());
+	name += to_string(ObjHolder.size());
 	Inti();
 }
 

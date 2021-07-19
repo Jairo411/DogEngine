@@ -52,7 +52,7 @@ public:
 	Vec2 getPosition();
 	static vector<GameObject*> ObjHolder; //Switch this to a list <----------------------------------------
 	void DrawLine(Vec2 start_, Vec2 end_);
-	string nameID;
+	int getID() {  return ID; }
 	template <typename T> std::shared_ptr<T> AddComponent()
 	{
 		//this ensures that we only try to add a class the derives 
@@ -111,7 +111,7 @@ protected:
 	float rotation;
 	float maxAcceleration;
 	bool textureIsOn;
-	std::string ID;
+	int ID; // this number will be loaded into each game object to be able to identify each gameObject
 	/*Object Members*/
 	Vec2 realPosition; // real position
 	Vec2 APosition; // stands for Anchor Position -> middle of image or square

@@ -12,6 +12,8 @@
 #include <vector>
 #include<variant>
 #include <utility>
+#include <stdlib.h>
+#include <time.h>
 #include "StateMachine.h"
 /* I could rework this right now,
 
@@ -56,14 +58,12 @@ public:
 	//PURE READ FUNCTIONS
 	void DeserializeAnimations(); //<-- Deserialzer should return a string
 	void DeserializeScenes(); //<--Deserializer should return a string 
-											  
 	//HELPER FUNCTIONS 
 	void newAnimationSet(); //WriteFunction
-	pugi::xml_document* GameObjectSerializer(GameObject* OBJ_); //Write Function
 	pugi::xml_document* DefaultSerialized(std::string tag_); //Write Function
 	bool isChildNodeExist(const char* nodeName_); //Read Function
 	bool SceneExist(int SceneIndex_, const char* SceneName_);//Read Function
-	bool GameObjectExist(const char* ID_); // Read Function
+	bool GameObjectExist(int ID_); // Read Function
 	bool loadFile(const char* fileDirectory_); //Read function
 private:
 	Serializer();

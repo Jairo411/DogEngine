@@ -14,9 +14,9 @@ public:
 	virtual void Start()=0;
 	virtual void OnUpdate(float deltaTime_)=0;
 	virtual void OnRender()=0;
+	std::string getName() {	return name; }
 protected:
-	std::string tag;
-	std::string name; 
+	std::string name; // will be used in Editor
 	std::map <std::string, std::string> components; 
 };
 #endif

@@ -10,7 +10,7 @@ GameObject::GameObject()
 	posY = 0;
 	realPosition = Vec2(posX, posY);
 	disableObject = false;
-	nameID = "GameObject ";
+	name = "GameObject ";
 	//	Going to use the Gameobject base class to check if inhereted object has name or not
 }
 
@@ -131,7 +131,7 @@ void GameObject::Attach(IObserver* observer_)
 void GameObject::Detach(IObserver* observer_)
 {
 	IObserverable::observerableContainer.remove(observer_);
-	std::cout << "Observer has been removed from: " << nameID << endl;
+	std::cout << "Observer has been removed from: " << getName().c_str() << endl;
 	system("pause");
 }
 /*Observer Pattern Implemented*/

@@ -16,6 +16,7 @@ Player::Player()
 	disableObject = NULL;
 	collider = RectCollider();
 	ptr = nullptr;
+	name = "Player";
 	/* Don't know the point of this to be honest...*/
 }
 
@@ -53,7 +54,7 @@ Player::Player(const char* textureSheet, int x, int y)
 	}
 
 	GameObject::ObjHolder.push_back(ptr);
-	nameID += to_string(ObjHolder.size());
+	name += to_string(ObjHolder.size());
 
 
 }

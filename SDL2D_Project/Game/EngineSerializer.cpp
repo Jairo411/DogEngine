@@ -70,12 +70,12 @@ Serializer::Serializer()
 		count++;
 		it++;
 	}
-	
+
 }
 
 Serializer* Serializer::GetInstance()
 {
-	if (instance==nullptr)
+	if (instance == nullptr)
 	{
 		instance = new Serializer();
 	}
@@ -88,12 +88,6 @@ Serializer::~Serializer()
 	delete CurrentDoc;
 }
 
-
-
-pugi::xml_document* Serializer::GameObjectSerializer(GameObject* OBJ_)
-{
-	return 	DefaultSerialized(OBJ_->nameID);
-}
 
 pugi::xml_document* Serializer::DefaultSerialized(std::string tag_)
 {
@@ -122,29 +116,29 @@ bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
 	pugi::xml_node root = CurrentDoc->first_child();
 	std::cout << root.name() << std::endl;
-	for (pugi::xml_node node: root.children("Scene"))
+	for (pugi::xml_node node : root.children("Scene"))
 	{
-		std::cout << node.name()<<std::endl;
+		std::cout << node.name() << std::endl;
 		pugi::xml_attribute_iterator it;
 		std::string de_SerializedContainer[2];
-		for (it= node.attributes().begin(); it !=node.attributes().end(); it++)
+		for (it = node.attributes().begin(); it != node.attributes().end(); it++)
 		{
 			std::string attributeName = it->name();
-			if (strcmp(attributeName.c_str(),"SceneNumber")==0)
+			if (strcmp(attributeName.c_str(), "SceneNumber") == 0)
 			{
 				std::cout << " " << it->name();
 				std::cout << " = " << it->as_string();
 				de_SerializedContainer[0] = it->as_string();
 			}
-			if (strcmp(attributeName.c_str(),"SceneName")==0)
+			if (strcmp(attributeName.c_str(), "SceneName") == 0)
 			{
 				std::cout << " " << it->name();
 				std::cout << " = " << it->as_string();
 				de_SerializedContainer[1] = it->as_string();
 			}
-			if (strcmp(de_SerializedContainer[0].c_str(),std::to_string(SceneIndex_).c_str())==0) // comparing the first attribute with my SceneIndex value
+			if (strcmp(de_SerializedContainer[0].c_str(), std::to_string(SceneIndex_).c_str()) == 0) // comparing the first attribute with my SceneIndex value
 			{
-				if (strcmp(de_SerializedContainer[1].c_str(),SceneName_)==0)
+				if (strcmp(de_SerializedContainer[1].c_str(), SceneName_) == 0)
 				{
 					std::cout << std::endl;
 					return true;
@@ -156,18 +150,83 @@ bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 	return false;
 }
 
+bool Serializer::GameObjectExist(int ID_)
+{
+	pugi::xml_node root = CurrentDoc->first_child();
+	std::cout << root.name() << std::endl;
+	for (pugi::xml_node node : root.children("GameObject"))
+	{
+		std::cout << node.name() << std::endl;
+		pugi::xml_attribute_iterator it;
+		for (it = node.attributes().begin(); it != node.attributes().end(); it++)
+		{
+			std::string attributeName = node.name();
+			if (strcmp(attributeName.c_str(), "ID") == 0)
+			{
+				std::cout << " " << it->name();
+				std::cout << " = " << it->as_string();
+			}
+			/*	if (strcmp(it->as_string(),ID_)==0)
+				{
+					std::cout << std::endl;
+					return true;
+				}*/
+		}
+		std::cout << std::endl;
+	}
+	return false;
+}
+
 bool Serializer::loadFile(const char* FileDirectory_)
 {
-	
+
 	pugi::xml_parse_result result = CurrentDoc->load_file(FileDirectory_);
 	std::cout << "Load results: " << result.description() << std::endl;
 	return result;
 }
 
+void Serializer::AddGameObject(GameObject* OBJ_)
+{
+	loadFile(fullpath[2]);
+	srand(time(NULL));
+	int random = rand() % INT32_MAX + 0;
+	//const char* convertedIDValue = std::to_string(OBJ_->getID()).c_str(); // the gameObject ID value gets converted into a const char* to be read.
+	std::multimap<pugi::xml_document*, pugi::xml_node>::iterator it0 = documentList.begin();
+	std::map <const char*, const char*>::iterator it1 = directorydictionary.begin();
+
+	for (int i = 0; i < 2; i++)
+	{
+		it0++;
+		it1++;
+	}
+
+	if (isChildNodeExist("GameObjectsInfo") == true)
+	{
+		auto rootNode = CurrentDoc->child("GameObjectsInfo");
+
+		auto gameObjectNode = rootNode.append_child(pugi::node_element);
+		gameObjectNode.set_name("GameObject");
+		gameObjectNode.append_attribute("ID") = random; // Only thing that gets set here is the ID number;
+		gameObjectNode.append_attribute("Name") = OBJ_->getName().c_str();
+
+		std::string combined = "GameObject";
+		combined += gameObjectNode.first_attribute().value();
+
+		auto rootGameClassNode = gameObjectNode.append_child(pugi::node_element);
+		rootGameClassNode.set_name(combined.c_str());
+		/*Over here is were we write down the class information all over the place*/
+
+		std::string path = it1->first;
+		std::string fileName = it1->second;
+		std::string combinedPath = path + fileName;
+
+		CurrentDoc->save_file(combinedPath.c_str(), PUGIXML_TEXT(""));
+	}
+}
+
 void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 {
 	loadFile(fullpath[2]);
-
 	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;
 
 	//Creates new file
