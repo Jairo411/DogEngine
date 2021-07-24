@@ -1,2 +1,9 @@
 <?xml version="1.0"?>
+<GameObjectsInfo>
+<GameObject ID="30557" Name="GameObject 1">
+<GameObject30557 />
+</GameObject>
+<GameObject ID="31119" Name="GameObject 1">
+<GameObject31119 />
+</GameObject>
 </GameObjectsInfo>

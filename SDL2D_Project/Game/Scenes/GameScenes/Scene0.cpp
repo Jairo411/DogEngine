@@ -21,7 +21,7 @@ Scene0::~Scene0()
 
 void Scene0::OnCreate()
 {
-	Game::EngineSerializer->GetInstance()->CreateScene(6, "SCENE0");
+	Game::EngineSerializer->GetInstance()->CreateScene(6, "SCENE0"); // we should find a way to serial objects not in any OnCreate function but returning the Scene maybe.
 	/* Intial Object Creations*/
 	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);
 	Game::EngineSerializer->GetInstance()->AddGameObject(player);

@@ -35,6 +35,7 @@
 	Now Each Read and Write function can be handle properly through my load file function.
 	To prevent any future problems we are going to try, catch execptions all over the read and write functions that I have. 
 	*/
+/* Note about the gameObject deserializer you might not have to have seperate function to deserialize components. */
 class GameObject;
 class Scene;
 class Serializer

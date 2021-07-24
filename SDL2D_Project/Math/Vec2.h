@@ -5,6 +5,8 @@
  All children Classes of GameObject will carry the Vec2 class*/
 /*2021-07-09
 	probably can be improved on, but works soild.*/
+/* 2021-07-20 
+ With new Information all of my GameObjects will carry a transform*/
 class Vec2
 {
 public:
@@ -38,10 +40,10 @@ public:
 	bool operator!=(const Vec2& b_);
 
 
-	float x, y;
 private: 
 	 float SetMag();
 	 float mag;
+	 float x, y;
 	 float dot, cross;
 };
 
