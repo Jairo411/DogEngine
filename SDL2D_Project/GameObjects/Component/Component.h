@@ -7,11 +7,14 @@ class BaseObj; // forward declaration
 class Component
 {
 public:
-	Component(BaseObj* owner) : owner(owner) {};
-	virtual void Start() {};
+	Component(BaseObj* owner) : Parent(owner) {};
+	~Component() { Parent = nullptr; }
+	virtual void OnCreate(BaseObj* parent_) = 0;
+	virtual bool OnDestroy() = 0;
 	virtual void Update(float deltatime) =0; // I want this to always be defined in there child classes.
-	virtual void Render() {};
+	virtual void FixedUpdate(float superDeltaTime_); 
+	virtual void Render() const = 0;
 protected:
-		BaseObj* owner; 
+		BaseObj* Parent; 
 };
 #endif // COMPONENT_HPP

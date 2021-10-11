@@ -1,34 +1,54 @@
 #include "Renderer.h"
 
-Renderer* Renderer::instance = nullptr;
-RenderProp* Renderer::properties = nullptr;
+RendererManager* RendererManager::instance = nullptr;
 
-void Renderer::setRenderProp(RenderProp RenderProperties_)
+
+void RendererManager::setRenderer(SDL_Renderer* renderer_)
 {
-	properties = &RenderProperties_;
-	currentRenderer = RenderProperties_.renderer;
+
+	renderer_ = SDL_CreateRenderer(window,-1,0);
+	if (renderer_!=nullptr)
+	{
+		SDL_SetRenderDrawColor(renderer_, 225, 225, 225, 225);
+		std::cout << "SDLRenderer Created" << std::endl;
+	}
+	else
+	{
+		std::cout << "Renderer Failed" << std::endl;
+	}
+}
+
+void RendererManager::setRenderer(VulkanRenderer renderer_)
+{
+	renderer_.OnCreate();
+}
+
+void RendererManager::setRenderer(OpenGLRenderer renderer_)
+{
+	renderer_.OnCreate();
 }
 
 
-SDL_Renderer* Renderer::getRenderer()
+SDL_Renderer* RendererManager::getRenderer()
 {
 	return currentRenderer;
 }
 
-Renderer* Renderer::getInstance()
+RendererManager* RendererManager::getInstance()
 {
 	if (instance==nullptr)
 	{
-		instance = new Renderer();
+		instance = new RendererManager();
 	}
 	return instance;
 }
 
-Renderer::~Renderer()
+RendererManager::~RendererManager()
 {
 
 }
 
-Renderer::Renderer()
+RendererManager::RendererManager()
 {
 }
+

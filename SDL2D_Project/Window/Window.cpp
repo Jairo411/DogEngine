@@ -2,16 +2,15 @@
 #include "../Game/Game.h"
 #include <SDL_syswm.h>
 
-int Window::SCREENHEIGHT = 0; 
-int Window::SCREENWIDTH = 0;
+int Window::ScreenHeight = 0; 
+int Window::ScreenWidth = 0;
 SDL_Point Window::middleOfScreen = SDL_Point();
-WindowProp* Window::properities = nullptr;
 Window* Window::instance = nullptr;
 
 Window::Window()
 {
-	SCREENHEIGHT = 0;
-	SCREENWIDTH = 0;
+	ScreenHeight = 0;
+	ScreenWidth = 0;
 	totalAmountOfSquares = 0;
 	SquareSize = 0;
 	middleOfScreen.x = 0;
@@ -20,7 +19,7 @@ Window::Window()
 
 }
 
-void Window::SetRenderer(Renderer* renderer_)
+void Window::SetRenderer(RendererManager* renderer_)
 {
 	renderContext = renderer_->getInstance()->getRenderer();
 //	GUIContext = GUI();
@@ -34,16 +33,16 @@ void Window::SetGUIEvent(SDL_Event* GUIEvent_)
 
 Window::Window(SDL_Window *window_)
 {
-	SCREENHEIGHT = 0; //
-	SCREENWIDTH = 0;
+	ScreenHeight = 0; //
+	ScreenWidth = 0;
 	SquareSize = 40;
 	totalAmountOfSquares = 0;
 	window= window_;
 	
 
-	SDL_GetWindowSize(window, &SCREENWIDTH, &SCREENHEIGHT);
-	middleOfScreen.x = SCREENWIDTH/2;
-	middleOfScreen.y = SCREENHEIGHT/2;
+	SDL_GetWindowSize(window, &ScreenWidth, &ScreenHeight);
+	middleOfScreen.x = ScreenWidth/2;
+	middleOfScreen.y = ScreenHeight/2;
 	
 	CreateMiddleRect();
 
@@ -65,14 +64,50 @@ Window::Window(SDL_Window *window_)
 	
 }
 
-void Window::setWindowProperties(WindowProp windowProperties_)
+
+void Window::OnCreate()
 {
-	/*Saving internal MemberProperties*/
-	window = windowProperties_.win;
-	SCREENWIDTH = windowProperties_.ScreenWidth;
-	SCREENHEIGHT= windowProperties_.ScreenHeight;
-	CurrentWindow_XPOS = windowProperties_.xPos;
-	CurrentWindow_YPOS = windowProperties_.yPos;
+	if (windowFlag ==SDL_WINDOW_FULLSCREEN)
+	{
+		std::cout << "FullScreen : ON" << std::endl;
+	}
+
+	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+	{
+		std::cout << "SDL initialized " << std::endl;
+		window = SDL_CreateWindow(WindowTitle.c_str(),CurrentWindow_XPOS,CurrentWindow_YPOS,ScreenWidth,ScreenHeight,windowFlag);
+		PrintWindowProperities();
+	}
+}
+
+void Window::OnDestroy()
+{
+}
+
+void Window::setWindowProperties(int xPosition_, int yPosition_, int width_, int height_, int flag_)
+{
+	CurrentWindow_XPOS = xPosition_;
+	CurrentWindow_YPOS = yPosition_;
+	ScreenWidth = width_;
+	ScreenHeight = height_;
+	windowFlag = flag_;
+}
+
+void Window::setWindowTitle(const char* title_)
+{
+	WindowTitle = title_;
+}
+
+void Window::setFlag(int flag_)
+{
+	windowFlag = flag_;
+}
+
+void Window::PrintWindowProperities()
+{
+	std::cout << "Window Width: " << ScreenWidth << "Window Height: " << ScreenHeight << std::endl;
+	std::cout << "Current Window X Position: " << CurrentWindow_XPOS << "Current Window Y Position" << CurrentWindow_YPOS << std::endl;
+	std::cout << "Current Window Flag :" << windowFlag << std::endl;
 }
 
 Window* Window::GetInstance()
@@ -86,12 +121,22 @@ Window* Window::GetInstance()
 
 int Window::getScreenHeight()
 {
-	return SCREENHEIGHT;
+	return ScreenHeight;
 }
 
 int Window::getScreenWidth()
 {
-	return SCREENWIDTH;
+	return ScreenWidth;
+}
+
+SDL_Window* Window::getWindowContext()
+{
+	return window;
+}
+
+void Window::setWindowContext(SDL_Window* windowContext_)
+{
+	window = windowContext_;
 }
 
 bool Window::MouseInput(int key_)
@@ -188,7 +233,7 @@ void Window::OnUpdate()
 Vec2 Window::ConvertScreenCoords(int x_, int y_)
 {
 	Vec2 covertedScreenCoords;
-	covertedScreenCoords = Vec2(SCREENWIDTH/2+(-x_), SCREENHEIGHT/2-(y_));
+	covertedScreenCoords = Vec2(ScreenWidth/2+(-x_), ScreenHeight/2-(y_));
 	return covertedScreenCoords;
 }
 

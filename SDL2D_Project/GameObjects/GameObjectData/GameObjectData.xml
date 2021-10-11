@@ -9,4 +9,25 @@
 <GameObject ID="2524" Name="GameObject 1">
 <GameObject2524 />
 </GameObject>
+<GameObject ID="30672" Name="GameObject 1">
+<GameObject30672 />
+</GameObject>
+<GameObject ID="4241" Name="GameObject 1">
+<GameObject4241 />
+</GameObject>
+<GameObject ID="12411" Name="GameObject 1">
+<GameObject12411 />
+</GameObject>
+<GameObject ID="12451" Name="GameObject 1">
+<GameObject12451 />
+</GameObject>
+<GameObject ID="17653" Name="GameObject 1">
+<GameObject17653 />
+</GameObject>
+<GameObject ID="18140" Name="GameObject 1">
+<GameObject18140 />
+</GameObject>
+<GameObject ID="20974" Name="GameObject 1">
+<GameObject20974 />
+</GameObject>
 </GameObjectsInfo>

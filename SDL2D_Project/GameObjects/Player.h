@@ -7,25 +7,30 @@
 #include "../Input/Input.h"
 #include "../Physics/Collider.h"
 /*2021-07-09 
-	Not prefect, but  will intentioned going to reimplement this class.*/
+	Not prefect, but  will intentioned going to reimplement this class.
+	Rename this to PlayerController
+	*/
 class TextureManager;
 class Player : public GameObject , public Input , public Animator
 {
 public:
 	 Player();
 	 Player(const char * textureSheet, int x, int y);
+	 /*New Code*/
+	 virtual void OnCreate()override;
+	 virtual void OnDestroy()override;
 	 ~Player();
 	 /*Texture Display functions*/
-	 virtual void OnUpdate(float DeltaTime_) override;
-	 virtual void OnRender() override;
-
+	 //new Code
+	 virtual void OnRender()override;
+	 virtual void Update(float DeltaTime_) override;
+	 virtual void Render() override;
 	 void Disable() override;
-	 /* Collison Handler*/
-	 void handleCollison(); 
 	 /* Keyboard Handler */
 	 bool KeyBoardInput(int key);
 	 bool MouseInput(int key);
 	 bool ControllerInput(int key);
+	 /* Get Rid of this*/
 	 enum class AnimationStates
 	 {
 		 ATTACK0 = 0,
@@ -45,9 +50,9 @@ public:
 		 SLIDE,
 	 };
 private:  
+	//Look at this stuff here
 	/*Members*/
 	int amountOfAnimations;
-	float delta;
 	bool disableObject;
 	/*Objects/Classes*/
 	RectCollider collider;

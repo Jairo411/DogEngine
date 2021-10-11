@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "../TextureManager/TextureManager.h"
+#include "../Graphics/TextureManager.h"
 
 /* How the sprite gets loaded is a problem. */
 Player::Player()
@@ -59,22 +59,32 @@ Player::Player(const char* textureSheet, int x, int y)
 
 }
 
+void Player::OnCreate()
+{
+}
+
+void Player::OnDestroy()
+{
+}
+
 Player::~Player()
 {
 	objTexture = nullptr;
 
 }
 
-void Player::OnUpdate(float deltaTime_)
+void Player::OnRender()
+{
+}
+
+void Player::Update(float deltaTime_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
-	//Note you need to get your FPS working properly in order to to proper animate your character
+	//Note you need to get your FPS working properly in order to proper animate your character
 	
-	setDelta(deltaTime_);
+	
 
 	PlayAnimations(animState);
-	handleCollison();
-	delta = deltaTime_;
 
 	if (getDisable() == false)
 	{
@@ -91,7 +101,7 @@ void Player::OnUpdate(float deltaTime_)
 	UpdatePostion();
 }
 
-void Player::OnRender()
+void Player::Render()
 {
 	/*This is in the loop*/
 	if (nullObjTexture != NULL)
@@ -114,10 +124,6 @@ void Player::Disable()
 {
 	/* You can store all the vaules in here */
 	disableObject = true;
-}
-
-void Player::handleCollison()
-{
 }
 
 

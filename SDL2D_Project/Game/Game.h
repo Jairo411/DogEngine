@@ -7,7 +7,7 @@
 #include <thread>
 #include "AI/AI.h"
 #include "../../Server/Server.h"
-#include "../TextureManager/TextureManager.h"
+#include "../Graphics/TextureManager.h"
 #include "../Window/Window.h"
 #include "../Renderer/Renderer.h"
 #include "../Input/Input.h"
@@ -33,22 +33,24 @@ public:
 	Game();
 	~Game();
 	void init(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
+	// new Code
+	void OnDestroy();
 	void GameLoop();
 	void HandleEvents();
-	void OnUpdate(float deltaTime_);
+	void Update(float deltaTime_);
+	//new Code
+	void FixedUpdate(float superDeltaTime_);
 	void handleCollisions();
-	void OnRender();
+	void Render();
 	void clean();
 	static bool	setIsRunning(bool tempBool_);
 	static Timer* timer; //EngineFunctitonality 
-	static Window* window; //engineFunctionality 
-	static Renderer* renderer; //engineFunctionality
+	static Window* window; //EngineFunctionality 
+	static RendererManager* renderer; //EngineFunctionality
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
 	static Serializer* EngineSerializer; //engine functionality 
 	SceneManager* sceneManager; //Engine functionality 
 private:
-	int cnt=0;
-	const int FPS = 120;
 	static bool isRunning;
 	
 

@@ -33,9 +33,9 @@ void Scene0::OnCreate()
 
 
 	/*Observer Pattern Implemented*/
-	enemy->Attach(new GameObserver(enemy));
-	enemy0->Attach(new GameObserver(enemy0));
-	enemy1->Attach(new GameObserver(enemy1));
+	//enemy->Attach(new GameObserver(enemy));
+	//enemy0->Attach(new GameObserver(enemy0));
+	//enemy1->Attach(new GameObserver(enemy1));
 
 	/*Observer Pattern Implemented*/
 	mapA = new MapLayer(Game::window);
@@ -95,10 +95,10 @@ void Scene0::HandleCollison()
 }
 void Scene0::OnUpdate(float deltaTime_)
 {
-	player->OnUpdate(deltaTime_);
-	enemy->OnUpdate(deltaTime_);
-	enemy0->OnUpdate(deltaTime_);
-	enemy1->OnUpdate(deltaTime_);
+	player->Update(deltaTime_);
+	enemy->Update(deltaTime_);
+	enemy0->Update(deltaTime_);
+	enemy1->Update(deltaTime_);
 	mapA->OnUpdate(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 	Game::window->OnUpdate();
@@ -113,10 +113,10 @@ void Scene0::OnRender()
 	}
 	SDL_RenderClear(Game::renderer->getInstance()->getRenderer());
 	mapA->OnRender();
-	player->OnRender();
-	enemy->OnRender();
-	enemy0->OnRender();
-	enemy1->OnRender();
+	player->Render();
+	enemy->Render();
+	enemy0->Render();
+	enemy1->Render();
 	Game::window->OnRender();
 	SDL_RenderPresent(Game::renderer->getInstance()->getRenderer());
 }

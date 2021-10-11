@@ -10,7 +10,7 @@
 #include<fstream>
 #include<type_traits>
 #include"../Math/Vec2.h"
-#include"../DataStructures/Observer.h"
+#include"../DesignPattern/Observer.h"
 #include"Component/Component.h"
 using namespace std;
 
@@ -26,7 +26,16 @@ might want to strip this class of alot of it's functionality leave basic functio
 and expand the functionailty to child classes.
 potentailly going to have gameObjects with no movement or extra functionality being used and having a bunch of null variables */
 /*2021-07-09
-	I agree with past me, and looking forward to moving to a component base structure.*/
+	I agree with past me, and looking forward to moving to a component base structure.
+	2021-10-04 
+	Okay so GameObject class isn't terrible like I thought it would be. Just need remove shitting SDL Centering logic that I created myself. 
+*/
+/*
+NOTES:
+CHECK ON SHARED_PTR 
+CHECK dynamic_PTR CAST
+ALSO Remove IObserverable
+*/
 class TextureManager;
 class IObserver;
 class GameObject : public BaseObj , public IObserverable
@@ -34,31 +43,32 @@ class GameObject : public BaseObj , public IObserverable
 public:
 	GameObject();
 	virtual ~GameObject();
-	virtual void Start();
-	virtual void OnUpdate(float deltaTime_);
-	virtual void OnRender();
+	virtual void OnCreate()=0;
+	virtual void OnDestroy() = 0;
+	virtual void Update(float deltaTime_)=0;
+	virtual void OnRender()=0;
 	virtual void Disable() = 0;
 	virtual SDL_Texture* getTexture() final;
 	virtual bool setDisable(bool temp) final;
 	virtual bool getDisable() final;
+	/* Overloaded Position functions*/
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
 	/*Observer Pattern Implemented*/
 	virtual void Attach(IObserver* observer_);
 	virtual void Detach(IObserver* observer_);
-	/*Observer Pattern Implemented*/
 	virtual void Notify();
-//	virtual void HandleCollison(); Update this in the future
 	Vec2 getPosition();
-	static vector<GameObject*> ObjHolder; //Switch this to a list <----------------------------------------
+	static vector<GameObject*> ObjHolder; //Switch this to a list <---------------------------------------- // should also encapsulate that too 
 	void DrawLine(Vec2 start_, Vec2 end_);
 	int getID() {  return ID; }
-	template <typename T> std::shared_ptr<T> AddComponent()
+	template <typename T, typename ... Args > std::shared_ptr<T> AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
+		T* comp = new T(std::forward<Args>(args_)...); // Need to reLook at this, this has to do something with treating a Lvalue and turns it into a Lvalue or Rvalue?
 		//this ensures that we only try to add a class the derives 
 		//from component. This is tested at compile time.
 		static_assert(std::is_base_of<Component, T>::value,
-			"T must derive from Component");//<-- need to look at std::is_base_of()
+			"T must derive from Component");//<-- need to look at std::is_base_of() static assert seems to be an sort of execption checking
 
 			//check to see if we have this component already
 		for (auto& exisitingComponent : components)
@@ -68,16 +78,17 @@ public:
 			if (std::dynamic_pointer_cast<T>(exisitingComponent))
 			{
 				return std::dynamic_pointer_cast<T>(exisitingComponent);
+				std::cout << " Component Already Exists" << std::endl;
 			}
 		}
 		// The object does not have this component so we create it and 
 		// and it to our list.
-		std::shared_ptr<T> newComponent = std::make_shared<T>(this);
+		std::shared_ptr<T> pointer;
+		std::shared_ptr<T> newComponent = std::make_shared<T>( new Component());
+		pointer = std::dynamic_pointer_cast<Component*>(newComponent);
 		components.push_back(newComponent);
-
-		return newComponent;
+		pointer->OnCreate();
 	};
-
 	template <typename T> std::shared_ptr<T> GetComponent()
 	{
 		static_assert(std::is_base_of<Component, T>::value,
@@ -92,20 +103,28 @@ public:
 			}
 		}
 	}
+	template <typename T> std::shared_ptr<T> RemoveComponent()
+	{
+		for (int i = 0; i < components.size(); i++)
+		{
+			if (std::dynamic_pointer_cast<T>(components[i]))
+			{
+				delete components[i];
+				components.erase(components.begin() + i); //position 0 + index 
+			}
+		}
+	}
 
 private:
 	bool disableObject;
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;
-	float deltaTime;
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
 	std::vector<std::shared_ptr<Component>> components;
 protected:
 	/*Functions*/
 	virtual void UpdatePostion() final;
 	int ReadAmountOfAnimations();
-	void setDelta(float deltaTime_);
-	float getDelta();
 	/*Members variables*/
 	float orientation;
 	float rotation;
@@ -113,7 +132,7 @@ protected:
 	bool textureIsOn;
 	int ID; // this number will be loaded into each game object to be able to identify each gameObject
 	/*Object Members*/
-	Vec2 realPosition; // real position
+	Vec2 realPosition; // real position 
 	Vec2 APosition; // stands for Anchor Position -> middle of image or square
 	Vec2 velocity;
 	SDL_Texture* nullObjTexture;

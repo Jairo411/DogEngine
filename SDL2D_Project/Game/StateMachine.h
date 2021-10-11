@@ -18,6 +18,8 @@
 	REASONING:
 	If the processes could be clearly define through what serializer is doing. Then I could have the processes run through at the very least two threads.
 	As well by adding the statemachine we are simplifying the update capiability for this project.
+
+	Ill keep this see if I can get this to work
 */
 template <typename... States> // what is with all the dots, seems like just a prefence thing 
 class StateMachine

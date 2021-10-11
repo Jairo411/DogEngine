@@ -55,6 +55,10 @@ M3x3 M3x3::operator+(M3x3 rhs)
 
 M3x3 M3x3::operator*(M3x3 rhs)
 {
+	M3x3 newM = M3x3();
+	M3x3 tempM = *this;
+
+
 	return M3x3();
 }
 

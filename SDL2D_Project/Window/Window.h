@@ -15,32 +15,33 @@ functionality will be used to set up properties and maybe access none static var
 /* Cool notes:
 	I am going to create structs to represent the properites of my objects before hand so 
 	that I can create my objects and assign there member values according to how I want.
-	Like how Graphics APIs set up there logic.*/
+	Like how Graphics APIs set up there logic
+- THE WINDOW CLASS SHOULD NOT HANDLE INPUT LOGIC 
+	
+	.*/
 class Game;
-/*Might put some flags into this*/
-struct WindowProp
-{
-	SDL_Window* win;
-	int ScreenHeight;
-	int ScreenWidth;
-	int xPos;
-	int yPos;
-};
 class Window: public Input
 {	
 public:
 	Window(Window& other) = delete;
 	void operator=(const Window&) = delete;
 	//Takes a WindowProp structure, and intializes Window classe's member variables.
-	void setWindowProperties(WindowProp  windowProperties_); 
+	void OnCreate();
+	void OnDestroy();
+	void PrintWindowProperities();
 	static Window* GetInstance(); 
+	SDL_Window* getWindowContext();
 	static int getScreenHeight();
 	static int getScreenWidth();
 	bool MouseInput(int case_);
 	bool KeyBoardInput(int key);
 	bool ControllerInput(int key);
 	void CreateMiddleRect();
-	void SetRenderer(Renderer* renderer_);
+	void setWindowProperties(int xPosition_, int yPosition, int width, int height, int flag);
+	void setWindowTitle(const char* title_);
+	void setFlag(int flag_);
+	void setWindowContext(SDL_Window* windowContext_);
+	void SetRenderer(RendererManager* renderer_);
 	void SetGUIEvent(SDL_Event* GUIEvent_);
 	void OnRender();
 	void OnUpdate();
@@ -53,12 +54,13 @@ public:
 		RELEASE
 	};
 	SDL_Window* GetWindow();
-	static WindowProp* properities;
 private:
 	//Basic Window Member Variables
 	int CurrentWindow_XPOS, CurrentWindow_YPOS;
-	static int SCREENWIDTH; //Actually since you have functions for this 
-	static int SCREENHEIGHT; // move over the covertedScreenCoords 
+	int windowFlag;
+	static int ScreenWidth; //Actually since you have functions for this 
+	static int ScreenHeight; // move over the covertedScreenCoords 
+	std::string WindowTitle;
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
 	Window(SDL_Window* window_);
 	~Window();
@@ -70,11 +72,12 @@ private:
 	std::map<SDL_Rect*, int> GraphicSquareHolder;
 	SDL_Rect middleRect;
 	static SDL_Point middleOfScreen;
+	Vec2 covertedScreenCoords;
+	/* Graphics Stuff*/
+	GUI GUIContext;
 	SDL_Surface* graphicLayer;
 	SDL_Window* window;
 	SDL_Event* GUIEvent;
-	Vec2 covertedScreenCoords;
-	GUI GUIContext;
 	SDL_Renderer* renderContext;
 };
 

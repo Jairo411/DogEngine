@@ -1,6 +1,6 @@
 #include "GameObject.h"
-#include "../TextureManager/TextureManager.h"
-#include "../DataStructures/Observer.h"
+#include "../Graphics/TextureManager.h"
+#include "../DesignPattern/Observer.h"
 
 vector<GameObject*>GameObject::ObjHolder = vector<GameObject*>();
 
@@ -25,30 +25,6 @@ GameObject::~GameObject()
 	delete temp;
 }
 
-void GameObject::Start()
-{
-	for (int i = components.size()-1; i>=0; i--)
-	{
-		components[i]->Start();
-	}
-}
-
-void GameObject::OnUpdate(float deltaTime_)
-{
-	for (int i = components.size()-1; i >=0; i--)
-	{
-		components[i]->Update(deltaTime);
-	}
-}
-
-void GameObject::OnRender()
-{
-	for (int i = components.size() - 1; i >= 0; i--)
-	{
-		components[i]->Render();
-	}
-}
-
 void GameObject::UpdatePostion()
 {
 	posX = realPosition.x;
@@ -61,15 +37,6 @@ int GameObject::ReadAmountOfAnimations()
 	return 0;
 }
 
-void GameObject::setDelta(float deltaTime_)
-{
-	deltaTime = deltaTime_;
-}
-
-float GameObject::getDelta()
-{
-	return deltaTime;
-}
 
 void GameObject::DrawLine(Vec2 start_, Vec2 end_)
 {

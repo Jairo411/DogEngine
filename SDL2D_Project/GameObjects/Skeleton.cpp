@@ -47,6 +47,14 @@ Skeleton::~Skeleton()
 
 }
 
+void Skeleton::OnCreate()
+{
+}
+
+void Skeleton::OnDestroy()
+{
+}
+
 void Skeleton::Inti()
 {
 	SDL_Texture* tempIMG;
@@ -148,8 +156,9 @@ void Skeleton::Inti()
 	} //you have to move this over somewhere it's more readable 
 }
 
-void Skeleton::OnUpdate(float DeltaTime_)
+void Skeleton::Update(float DeltaTime_)
 {
+	/* I like this but IObserverable Should be in the Game Object class*/
 	if (dynamic_cast<IObserverable*>(this))
 	{
 		Notify();
@@ -169,7 +178,7 @@ void Skeleton::OnUpdate(float DeltaTime_)
 	UpdatePostion();
 }
 
-void Skeleton::OnRender()
+void Skeleton::Render()
 {
 
 	PlayAnimations(AnimationStates::WALK);
@@ -220,6 +229,10 @@ void Skeleton::Steer()
 void Skeleton::Seperate()
 {
 
+}
+
+void Skeleton::OnRender()
+{
 }
 
 

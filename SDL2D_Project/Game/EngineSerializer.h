@@ -10,11 +10,7 @@
 #include <list>
 #include <map>
 #include <vector>
-#include<variant>
-#include <utility>
 #include <stdlib.h>
-#include <time.h>
-#include "StateMachine.h"
 /* I could rework this right now,
 
 	main focus is that, the documents can be handle all together. Instead of individually.

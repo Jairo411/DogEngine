@@ -23,7 +23,7 @@ void C_RectangleCollider::Start()
 void C_RectangleCollider::Update(float deltatime)
 {
 	Vec2 newPos;
-	newPos = dynamic_cast<GameObject*>(owner)->getPosition();
+	newPos = dynamic_cast<GameObject*>(Parent)->getPosition();
 }
 
 void C_RectangleCollider::Render()

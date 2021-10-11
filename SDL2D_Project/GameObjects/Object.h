@@ -4,16 +4,21 @@
 #include <map>
 // I should use this class to move over more generic ID stuff*/
 /*2021-07-09
-	This class is fine*/
+	This class is fine
+	Add component functionality to the class,
+	where a component will update,render and or create itself.
+	*/
 #include "Component/Component.h"
 class BaseObj
 {
 public:
 	BaseObj() {}
 	virtual ~BaseObj() {}
-	virtual void Start()=0;
-	virtual void OnUpdate(float deltaTime_)=0;
-	virtual void OnRender()=0;
+	virtual void OnCreate();
+	virtual void OnDestory();
+	virtual void Update(float deltaTime_);
+	virtual void fixUpdate();
+	virtual void Render();
 	std::string getName() {	return name; }
 protected:
 	std::string name; // will be used in Editor
