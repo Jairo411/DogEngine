@@ -77,7 +77,7 @@ void Player::OnRender()
 {
 }
 
-void Player::Update(float deltaTime_)
+void Player::Update(float dt_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
 	//Note you need to get your FPS working properly in order to proper animate your character
@@ -99,6 +99,10 @@ void Player::Update(float deltaTime_)
 	}
 	collider.CollisonUpdate(this->realPosition);
 	UpdatePostion();
+}
+
+void Player::fixedUpdate(float dt_)
+{
 }
 
 void Player::Render()

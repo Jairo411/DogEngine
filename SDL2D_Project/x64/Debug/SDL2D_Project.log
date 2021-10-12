@@ -52,9 +52,9 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
   Skeleton.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(160,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(161,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(277,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(168,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(169,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(293,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
   GameObject.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
@@ -71,9 +71,9 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(91,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(92,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(209,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Player.cpp(213,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(240): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(256): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
   AI.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(220,18): warning C4834: discarding return value of function with 'nodiscard' attribute
   Grid.cpp
@@ -107,39 +107,16 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(34): war
   Scene0.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28): error C2259: 'Skeleton': cannot instantiate abstract class
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.h(15): message : see declaration of 'Skeleton'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28): message : due to following members:
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28): message : 'void GameObject::OnCreate(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(46): message : see declaration of 'GameObject::OnCreate'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28): message : 'void GameObject::OnDestroy(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(47): message : see declaration of 'GameObject::OnDestroy'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28): message : 'void GameObject::OnRender(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(49): message : see declaration of 'GameObject::OnRender'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28,22): error C2259: 'Skeleton': cannot instantiate abstract class
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.h(15): message : see declaration of 'Skeleton'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28,22): message : due to following members:
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28,22): message : 'void GameObject::OnCreate(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(46): message : see declaration of 'GameObject::OnCreate'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28,22): message : 'void GameObject::OnDestroy(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(47): message : see declaration of 'GameObject::OnDestroy'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(28,22): message : 'void GameObject::OnRender(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(49): message : see declaration of 'GameObject::OnRender'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(29): error C2259: 'Skeleton': cannot instantiate abstract class
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.h(15): message : see declaration of 'Skeleton'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(29): message : due to following members:
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(29): message : 'void GameObject::OnCreate(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(46): message : see declaration of 'GameObject::OnCreate'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(29): message : 'void GameObject::OnDestroy(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(47): message : see declaration of 'GameObject::OnDestroy'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(29): message : 'void GameObject::OnRender(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(49): message : see declaration of 'GameObject::OnRender'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(30): error C2259: 'Skeleton': cannot instantiate abstract class
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.h(15): message : see declaration of 'Skeleton'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(30): message : due to following members:
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(30): message : 'void GameObject::OnCreate(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(46): message : see declaration of 'GameObject::OnCreate'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(30): message : 'void GameObject::OnDestroy(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(47): message : see declaration of 'GameObject::OnDestroy'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Scenes\GameScenes\Scene0.cpp(30): message : 'void GameObject::OnRender(void)': is abstract
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(49): message : see declaration of 'GameObject::OnRender'
+  A_Star_Node_Priority.cpp
+  node.cpp
+  Generating Code...
+  Tiles.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(106,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(107,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(124,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(125,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(157): warning C4715: 'Tile::getID': not all control paths return a value
+  Timer.cpp
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

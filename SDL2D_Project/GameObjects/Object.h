@@ -14,11 +14,11 @@ class BaseObj
 public:
 	BaseObj() {}
 	virtual ~BaseObj() {}
-	virtual void OnCreate();
-	virtual void OnDestory();
-	virtual void Update(float deltaTime_);
-	virtual void fixUpdate();
-	virtual void Render();
+	virtual void OnCreate()=0;
+	virtual void OnDestroy()=0;
+	virtual void Update(float deltaTime_)=0;
+	virtual void fixedUpdate(float deltaTime)=0;
+	virtual void Render()=0;
 	std::string getName() {	return name; }
 protected:
 	std::string name; // will be used in Editor

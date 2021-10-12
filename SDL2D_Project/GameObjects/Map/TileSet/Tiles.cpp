@@ -1,5 +1,5 @@
 #include "Tiles.h"
-#include "../../../TextureManager/TextureManager.h"
+#include "../../../Graphics/TextureManager.h"
 
 vector<SDL_Texture*> TileSet::imageSetHolder = vector<SDL_Texture*>();
 int Tile::width = 0;

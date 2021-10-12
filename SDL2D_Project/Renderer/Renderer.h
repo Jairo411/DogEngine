@@ -1,6 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 #include<SDL.h>
+#include <glew.h>
 #include <SDL_opengl.h>
 #include <iostream>
 /*2021-7-15 
@@ -40,11 +41,14 @@ public:
 	void OnDestroy();
 	void PrintOpenGL(int* major_, int* minor_);
 	void SetAttributes(int major_, int minor_);
-
-	SDL_GLContext context;
+	void SetViewPort(int width_, int height_);
+	
+	void Update(float dt_);
+	void Render();
+	SDL_GLContext* context;
 	GLenum error;
 	int ScreenHeight;
-	int ScreenWidith;
+	int ScreenWidth;
 };
 // Vulkan implementation really is the last thing you want to implement
 struct VulkanRenderer

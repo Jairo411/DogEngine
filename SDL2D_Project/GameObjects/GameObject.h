@@ -46,6 +46,7 @@ public:
 	virtual void OnCreate()=0;
 	virtual void OnDestroy() = 0;
 	virtual void Update(float deltaTime_)=0;
+	virtual void fixedUpdate(float deltaTime) = 0;
 	virtual void OnRender()=0;
 	virtual void Disable() = 0;
 	virtual SDL_Texture* getTexture() final;

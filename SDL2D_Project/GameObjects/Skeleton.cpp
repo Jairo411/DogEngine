@@ -178,6 +178,10 @@ void Skeleton::Update(float DeltaTime_)
 	UpdatePostion();
 }
 
+void Skeleton::fixedUpdate(float dt_)
+{
+}
+
 void Skeleton::Render()
 {
 

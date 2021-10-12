@@ -23,7 +23,8 @@ public:
 	 /*Texture Display functions*/
 	 //new Code
 	 virtual void OnRender()override;
-	 virtual void Update(float DeltaTime_) override;
+	 virtual void Update(float dt_) override;
+	 virtual void fixedUpdate(float dt_) override;
 	 virtual void Render() override;
 	 void Disable() override;
 	 /* Keyboard Handler */

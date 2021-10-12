@@ -6,10 +6,10 @@
 #include <iostream>
 #include <thread>
 #include "AI/AI.h"
+#include "../Renderer/Renderer.h"
 #include "../../Server/Server.h"
 #include "../Graphics/TextureManager.h"
 #include "../Window/Window.h"
-#include "../Renderer/Renderer.h"
 #include "../Input/Input.h"
 #include "../Timer/Timer.h"
 #include "../Math/Converter.h"
@@ -52,7 +52,7 @@ public:
 	SceneManager* sceneManager; //Engine functionality 
 private:
 	static bool isRunning;
-	
+	SDL_Renderer* rend;
 
 };
 

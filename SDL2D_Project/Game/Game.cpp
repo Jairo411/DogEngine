@@ -41,9 +41,7 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	window->setWindowTitle(title);
 	window->setFlag(NULL);
 	window->OnCreate();
-	SDL_Renderer* rend;
 	renderer->setRenderer(rend);
-
 	isRunning = true;
 	//if (fullscreen)
 	//{
@@ -91,6 +89,9 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 
 
 }
+void Game::OnDestroy()
+{
+}
 void Game::GameLoop()
 {
 	/*RE-WORK THIS*/
@@ -117,6 +118,10 @@ void Game::HandleEvents()
 void Game::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
+}
+
+void Game::FixedUpdate(float superDeltaTime_)
+{
 }
 
 void Game::handleCollisions()
