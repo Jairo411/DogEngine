@@ -1,47 +1,16 @@
 #include "Renderer.h"
+#include "../Window/Window.h"
 
 RendererManager* RendererManager::instance = nullptr;
+int RendererManager::RenderValue = NULL;
 
-
-void RendererManager::setRenderer(SDL_Renderer* renderer_)
+RendererManager::RendererManager()
 {
-
-	renderer_ = SDL_CreateRenderer(window,-1,0);
-	if (renderer_!=nullptr)
-	{
-		SDL_SetRenderDrawColor(renderer_, 225, 225, 225, 225);
-		std::cout << "SDLRenderer Created" << std::endl;
-	}
-	else
-	{
-		std::cout << "Renderer Failed" << std::endl;
-	}
-}
-
-void RendererManager::setRenderer(VulkanRenderer renderer_)
-{
-	renderer_.OnCreate();
-}
-
-void RendererManager::setRenderer(OpenGLRenderer renderer_)
-{
-	renderer_ = OpenGLRenderer();
-	renderer_.OnCreate();
-}
-
-
-SDL_Renderer* RendererManager::getRenderer()
-{
-	return currentRenderer;
-}
-
-RendererManager* RendererManager::getInstance()
-{
-	if (instance==nullptr)
-	{
-		instance = new RendererManager();
-	}
-	return instance;
+	renderVariant = std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*>();
+	SDLRenderer = nullptr;
+	openGLRenderer = nullptr;
+	vulkanRenderer = nullptr;
+	window = nullptr;
 }
 
 RendererManager::~RendererManager()
@@ -49,8 +18,98 @@ RendererManager::~RendererManager()
 
 }
 
-RendererManager::RendererManager()
+void RendererManager::OnCreate()
 {
+
+}
+
+void RendererManager::OnDestroy()
+{
+}
+
+void RendererManager::setRenderer(int numbercase_)
+{
+	switch (numbercase_)
+	{
+	default:
+		break;
+	case 0:
+	{
+		RenderValue = 0;
+		SDLRenderer = SDL_CreateRenderer(window, -1, 0);
+		renderVariant = SDLRenderer;
+		if (SDLRenderer != nullptr)
+		{
+			SDL_SetRenderDrawColor(SDLRenderer, 225, 225, 225, 225);
+		}
+		else
+		{
+			std::cout << "Renderer Failed" << std::endl;
+		}
+		break;
+	}
+	case 1:
+	{
+		RenderValue = 1;
+		openGLRenderer = new OpenGLRenderer();
+		renderVariant = openGLRenderer;
+		openGLRenderer->OnCreate();
+		break;
+	}
+	case 2:
+	{
+		RenderValue = 2;
+		vulkanRenderer = new VulkanRenderer();
+		renderVariant = vulkanRenderer;
+		vulkanRenderer->OnCreate();
+		break;
+	}
+	}
+}
+
+void RendererManager::setWindow(Window* window_)
+{
+	window = window_->getWindowContext();
+}
+
+std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*> RendererManager::getRenderer()
+{
+	try
+	{
+		switch (RenderValue)
+		{
+		default:
+			break;
+		case 0:
+			return std::get<SDL_Renderer*>(renderVariant);
+			break;
+		case 1:
+			return std::get<OpenGLRenderer*>(renderVariant);
+			break;
+		case 2:
+			return std::get<VulkanRenderer*>(renderVariant);
+			break;
+		}
+	}
+	catch (const std::bad_variant_access& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+
+RendererManager* RendererManager::GetInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new RendererManager();
+		instance->OnCreate();
+	}
+	return instance;
+}
+
+int RendererManager::getRenderValue()
+{
+	return RenderValue;
 }
 
 OpenGLRenderer::OpenGLRenderer()
@@ -102,7 +161,7 @@ void OpenGLRenderer::PrintOpenGL(int* major_, int* minor_)
 	std::cout << "Graphics Card Vendor: " + std::string((char*)vendor) << std::endl;
 	std::cout << "Graphics card name: " + std::string((char*)renderer) << std::endl;
 	std::cout << "GLSL Verison: " + std::string((char*)glslVersion) << std::endl;
-	
+
 
 }
 

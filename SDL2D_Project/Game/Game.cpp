@@ -2,7 +2,7 @@
 #include "AI/AI.h"
 
 SDL_Rect* srcR, dstR;
-RendererManager* Game::renderer = nullptr;
+RendererManager* Game::rendererManager = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::window = nullptr;
 Serializer* Game::EngineSerializer = nullptr;
@@ -15,8 +15,9 @@ Game::Game()
 	timer = new Timer(); //Im making all of these managers /Single entity type classes as singletons
 	sceneManager = new SceneManager();
 	window = Window::GetInstance();
-	renderer = RendererManager::getInstance();
+	rendererManager = RendererManager::GetInstance();
 	EngineSerializer = Serializer::GetInstance();
+	textureManager = TextureManager::getInstance();
 	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
@@ -41,7 +42,9 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	window->setWindowTitle(title);
 	window->setFlag(NULL);
 	window->OnCreate();
-	renderer->setRenderer(rend);
+	rendererManager->GetInstance()->setWindow(window);
+	rendererManager->GetInstance()->setRenderer(0);
+	//	window->SetRenderer();
 	isRunning = true;
 	//if (fullscreen)
 	//{
@@ -136,8 +139,8 @@ void Game::Render()
 
 void Game::clean()
 {
-	SDL_DestroyWindow(window->GetWindow());
-	SDL_DestroyRenderer(renderer->getRenderer());
+	SDL_DestroyWindow(window->getWindowContext());
+	SDL_DestroyRenderer(rendererManager->GetRenderer<SDL_Renderer*>());
 	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;

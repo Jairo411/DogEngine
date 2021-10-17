@@ -31,8 +31,8 @@ public:
 	MapLayer(Window* window);
 	~MapLayer();
 	void OnBuild(int state_);
-	void OnRender();
-	void OnUpdate(float deltaTime_);
+	void Render();
+	void Update(float deltaTime_);
 	std::vector<Tile*> getTiles();
 	static Vec2 getGameObjectLocation(Vec2 position_);
 private:

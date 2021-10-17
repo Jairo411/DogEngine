@@ -40,9 +40,9 @@ int GameObject::ReadAmountOfAnimations()
 
 void GameObject::DrawLine(Vec2 start_, Vec2 end_)
 {
-	SDL_RenderClear(Game::renderer->getInstance()->getRenderer());
-	SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 255, 255, 255, SDL_ALPHA_OPAQUE);
-	SDL_RenderDrawLine(Game::renderer->getInstance()->getRenderer(), start_.x, start_.y, end_.x, end_.y);
+//	SDL_RenderClear(Game::rendererManager->GetInstance()->getRenderer());
+//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 255, 255, 255, SDL_ALPHA_OPAQUE);
+//	SDL_RenderDrawLine(Game::rendererManager->GetInstance()->getRenderer(), start_.x, start_.y, end_.x, end_.y);
 }
 
 SDL_Texture* GameObject::getTexture()

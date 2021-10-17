@@ -15,7 +15,7 @@ void GUI::Inti(renderer* renderer)
 {
 	renderContext = renderer;
 	ImGui::CreateContext();
-	ImGuiSDL::Initialize(Game::renderer->getInstance()->getRenderer(), 800, 600);
+	ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 800, 600);
 	io = ImGui::GetIO();
 	
 }

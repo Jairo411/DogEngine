@@ -41,7 +41,6 @@ public:
 	void setWindowTitle(const char* title_);
 	void setFlag(int flag_);
 	void setWindowContext(SDL_Window* windowContext_);
-	void SetRenderer(RendererManager* renderer_);
 	void SetGUIEvent(SDL_Event* GUIEvent_);
 	void OnRender();
 	void OnUpdate();
@@ -53,7 +52,6 @@ public:
 		STANDARD,
 		RELEASE
 	};
-	SDL_Window* GetWindow();
 private:
 	//Basic Window Member Variables
 	int CurrentWindow_XPOS, CurrentWindow_YPOS;
@@ -78,7 +76,6 @@ private:
 	SDL_Surface* graphicLayer;
 	SDL_Window* window;
 	SDL_Event* GUIEvent;
-	SDL_Renderer* renderContext;
 };
 
 #endif // !WINDOW_H

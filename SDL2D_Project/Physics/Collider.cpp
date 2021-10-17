@@ -146,9 +146,24 @@ void RectCollider::CollisonUpdate(Vec2 position_)
 
 void RectCollider::CollisonRender()
 {
-	SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 33, 191, 75, 0);
-	SDL_RenderDrawRect(Game::renderer->getInstance()->getRenderer(), &srcRect);
-	SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 225, 225, 225, 255);
+	switch (Game::rendererManager->getRenderValue())
+	{
+	default:
+		break;
+
+	case 0:
+		break;
+
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	}
+	//SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 33, 191, 75, 0);
+	//SDL_RenderDrawRect(Game::rendererManager->GetInstance()->getRenderer(), &srcRect);
+	//SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 225, 225, 225, 255);
 }
 
 
@@ -242,12 +257,27 @@ void CircleCollider::Update(Vec2 position_)
 
 void CircleCollider::Render()
 {
-	SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 0, 0, 0, 0);
+	switch (Game::rendererManager->getRenderValue())
+	{
+	default:
+		break;
+
+	case 0:
+		break;
+
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	}
+	/*SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 0, 0, 0, 0);
 	for (int i = 0; i < positions.size(); i++)
 	{
-		SDL_RenderDrawPoint(Game::renderer->getInstance()->getRenderer(), positions.at(i).x, positions.at(i).y);
+		SDL_RenderDrawPoint(Game::rendererManager->GetInstance()->getRenderer(), positions.at(i).x, positions.at(i).y);
 	}
-	SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 225, 225, 225, 255);
+	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 225, 225, 225, 255);*/
 }
 
 CircleCollider::~CircleCollider()

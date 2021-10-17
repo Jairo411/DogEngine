@@ -46,13 +46,13 @@ public:
 	static bool	setIsRunning(bool tempBool_);
 	static Timer* timer; //EngineFunctitonality 
 	static Window* window; //EngineFunctionality 
-	static RendererManager* renderer; //EngineFunctionality
+	static RendererManager* rendererManager; //EngineFunctionality
+	static TextureManager* textureManager;// textureManager
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
 	static Serializer* EngineSerializer; //engine functionality 
 	SceneManager* sceneManager; //Engine functionality 
 private:
 	static bool isRunning;
-	SDL_Renderer* rend;
 
 };
 

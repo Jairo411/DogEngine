@@ -30,12 +30,10 @@ MapLayer::MapLayer(Window* window)
 	set0.CreateSet(64, desRect.w, desRect.h);
 	cout << "Size of MAP is: " << rows << "," << cols << "" << endl;
 	OnBuild(DEBUG); //choose the state through the constuctor 
-	std::cout << "X: " << tileMap.at(22).getPosition().x << "Y: " << tileMap.at(22).getPosition().y << std::endl;
-	std::cout << "X: " << tileMap.at(21).getPosition().x << "Y: " << tileMap.at(21).getPosition().y << std::endl;
 }
 
 
-void MapLayer::OnRender()
+void MapLayer::Render()
 {
 	for (int i = 0; i < tileMap.size(); i++)
 	{
@@ -46,7 +44,7 @@ void MapLayer::OnRender()
 okay so this works but you should probably store the values
 of the map tiles so that it doesn't have to constantly render
  the tiles through the for loop*/
-void MapLayer::OnUpdate(float deltaTime_)
+void MapLayer::Update(float deltaTime_)
 {
 
 }

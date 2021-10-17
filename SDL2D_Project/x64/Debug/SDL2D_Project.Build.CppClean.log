@@ -13,9 +13,6 @@ c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\pugixml\p
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\vec2.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\converter.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\vec3.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\m3x3.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\math\m2x2.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\renderer\renderer.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\graphics\texturemanager.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\graphics\shader.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\deargui\imgui_widgets.obj
@@ -23,6 +20,7 @@ c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\deargui
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\deargui\imgui_draw.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\deargui\imgui_demo.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\deargui\imgui.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\renderer\renderer.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\window.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\window\gui.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\player.obj
@@ -30,10 +28,6 @@ c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\ga
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\skeleton.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\grid.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\ai\ai.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\physics\collider.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\map\map.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\input\input.obj
-c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\game\scenes\scenemanager.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.command.1.tlog
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.read.1.tlog
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.write.1.tlog

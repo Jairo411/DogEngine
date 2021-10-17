@@ -189,13 +189,14 @@ void Skeleton::Render()
 
 	if (getDisable() == false)
 	{
-		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), objTexture, &srcRect0, &destRect0);
+
+	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect0, &destRect0); get rid of using Render_Copy inside your GameObject render functions
 		col.CollisonRender();
 		navCollider.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{
-		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), nullObjTexture, &srcRect0, &destRect0);
+	//SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect0, &destRect0);
 	}
 }
 

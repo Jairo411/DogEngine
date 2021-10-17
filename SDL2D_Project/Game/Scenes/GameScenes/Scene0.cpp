@@ -45,8 +45,8 @@ void Scene0::OnCreate()
 	enemy0->SetTarget(player);
 	Game::AI_Manager->getInstance()->getTotalAgents();
 	//Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
-	
-	
+
+
 
 }
 
@@ -99,7 +99,7 @@ void Scene0::OnUpdate(float deltaTime_)
 	enemy->Update(deltaTime_);
 	enemy0->Update(deltaTime_);
 	enemy1->Update(deltaTime_);
-	mapA->OnUpdate(deltaTime_);
+	mapA->Update(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 	Game::window->OnUpdate();
 }
@@ -108,15 +108,15 @@ void Scene0::OnUpdate(float deltaTime_)
 
 void Scene0::OnRender()
 {
-	{
-		SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 225, 225, 225, 255);
-	}
-	SDL_RenderClear(Game::renderer->getInstance()->getRenderer());
-	mapA->OnRender();
+
+	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 225, 225, 225, 255);
+	SDL_RenderClear(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>());
+	mapA->Render();
 	player->Render();
 	enemy->Render();
 	enemy0->Render();
 	enemy1->Render();
 	Game::window->OnRender();
-	SDL_RenderPresent(Game::renderer->getInstance()->getRenderer());
+	SDL_RenderPresent(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>());
+
 }

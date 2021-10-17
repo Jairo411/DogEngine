@@ -64,7 +64,7 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 void Tile::OnRender()
 {
 
-	SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), baseTex, &srcRect, &dstRect);
+	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), baseTex, &srcRect, &dstRect);
 	col.CollisonRender();
 }
 
@@ -182,7 +182,7 @@ TileSet::TileSet(const char* dir_, string name_, int ID_)
 
 void TileSet::CreateSet(int sizeOfCut_, int srcX_, int srcY_)
 {
-	imageSetHolder = TextureManager::LoadMapSprite(tileSetImage, width, height, sizeOfCut_, srcX_, srcY_);
+	imageSetHolder = TextureManager::CreateMapSprite(tileSetImage, width, height, sizeOfCut_, srcX_, srcY_);
 }
 
 

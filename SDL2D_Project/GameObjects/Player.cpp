@@ -110,17 +110,17 @@ void Player::Render()
 	/*This is in the loop*/
 	if (nullObjTexture != NULL)
 	{
-		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), nullObjTexture, NULL, NULL);
+	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, NULL, NULL);
 		//	cout << "You're player Texture isn't working" <<endl;
 	}
 	if (getDisable() == false)
 	{
-		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), objTexture, &srcRect, &destRect);
+	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect, &destRect);
 		collider.CollisonRender();
 	}
 	else if (getDisable() == true)
 	{
-		SDL_RenderCopy(Game::renderer->getInstance()->getRenderer(), nullObjTexture, &srcRect, &destRect);
+	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect, &destRect);
 	}
 }
 

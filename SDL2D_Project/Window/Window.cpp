@@ -19,12 +19,6 @@ Window::Window()
 
 }
 
-void Window::SetRenderer(RendererManager* renderer_)
-{
-	renderContext = renderer_->getInstance()->getRenderer();
-//	GUIContext = GUI();
-//	GUIContext.Inti(RenderContext);
-}
 
 void Window::SetGUIEvent(SDL_Event* GUIEvent_)
 {
@@ -78,6 +72,10 @@ void Window::OnCreate()
 		window = SDL_CreateWindow(WindowTitle.c_str(),CurrentWindow_XPOS,CurrentWindow_YPOS,ScreenWidth,ScreenHeight,windowFlag);
 		PrintWindowProperities();
 	}
+	else
+	{
+		std::cout << "SDL Couldn't initialize" << std::endl;
+	}
 }
 
 void Window::OnDestroy()
@@ -105,9 +103,16 @@ void Window::setFlag(int flag_)
 
 void Window::PrintWindowProperities()
 {
-	std::cout << "Window Width: " << ScreenWidth << "Window Height: " << ScreenHeight << std::endl;
-	std::cout << "Current Window X Position: " << CurrentWindow_XPOS << "Current Window Y Position" << CurrentWindow_YPOS << std::endl;
-	std::cout << "Current Window Flag :" << windowFlag << std::endl;
+	std::cout << "Window Width: " << ScreenWidth << " " << "Window Height: " << ScreenHeight << std::endl;
+	if (CurrentWindow_XPOS == SDL_WINDOWPOS_CENTERED)
+	{
+		std::cout << "Current Window X Position: " << "CENTERED" << " " << "Current Window Y Position " << "CENTERED" << std::endl;
+	}
+	else
+	{
+		std::cout << "Current Window X Position: " << CurrentWindow_XPOS << " " << "Current Window Y Position " << CurrentWindow_YPOS << std::endl;
+	}
+	std::cout << "Current Window Flag: " << windowFlag << std::endl;
 }
 
 Window* Window::GetInstance()
@@ -188,40 +193,68 @@ Window::~Window()
 
 void Window::OnRender()
 {
-	switch (windowStatus)
+	switch (Game::rendererManager->GetInstance()->getRenderValue())
 	{
-	case Window::DEBUG:
-	{
-		SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 100, 0, 15, 100);
-		SDL_RenderDrawRect(Game::renderer->getInstance()->getRenderer(), &middleRect);
-		SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 0, 0, 0, 255);
-//		GUIContext.Render();
-	}
-		break;
-	case Window::STANDARD:
-	{
-		std::map<SDL_Rect*, int>::iterator it = GraphicSquareHolder.begin();
-		int cycleValue = 0;
-		for (it = GraphicSquareHolder.begin(); it != GraphicSquareHolder.end(); it++)
-		{
-			SDL_Rect* thisKey = it->first;
-			it->second = cycleValue;
-			SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 255, 255, 255, 255);
-			SDL_RenderDrawRect(Game::renderer->getInstance()->getRenderer(), it->first);
-			SDL_SetRenderDrawColor(Game::renderer->getInstance()->getRenderer(), 0, 0, 0, 255);
-			cycleValue += 1;
-		}
-	}
-		break;
-	case Window::RELEASE:
-	{
-
-	}
-		break;
 	default:
 		break;
-	};
-	
+	case 0:
+		/// <summary>
+	/// SDL Render Process
+	/// </summary>
+		switch (windowStatus)
+		{
+		case Window::DEBUG:
+		{
+			SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 100, 0, 15, 100);
+			SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), &middleRect);
+			SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 0, 0, 0, 255);
+			//		GUIContext.Render();
+		}
+		break;
+		case Window::STANDARD:
+		{
+			std::map<SDL_Rect*, int>::iterator it = GraphicSquareHolder.begin();
+			int cycleValue = 0;
+			for (it = GraphicSquareHolder.begin(); it != GraphicSquareHolder.end(); it++)
+			{
+				SDL_Rect* thisKey = it->first;
+				it->second = cycleValue;
+				SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 255, 255, 255, 255);
+				SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), it->first);
+				SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 0, 0, 0, 255);
+				cycleValue += 1;
+			}
+		}
+		break;
+		case Window::RELEASE:
+		{
+
+		}
+		break;
+		default:
+			break;
+		};
+		break;
+	/// <summary>
+	/// OpenGL Render Process
+	/// </summary>
+	case 1: 
+		switch (windowStatus)
+		{
+		default:
+			break;
+		}
+		break;
+		/// <summary>
+	/// Vulkan Render Process
+	/// </summary>
+	case 2:
+		switch (windowStatus)
+		{
+		default:
+			break;
+		}
+	}
 }
 
 void Window::OnUpdate()
@@ -235,11 +268,6 @@ Vec2 Window::ConvertScreenCoords(int x_, int y_)
 	Vec2 covertedScreenCoords;
 	covertedScreenCoords = Vec2(ScreenWidth/2+(-x_), ScreenHeight/2-(y_));
 	return covertedScreenCoords;
-}
-
-SDL_Window* Window::GetWindow()
-{
-	return window;
 }
 
 
