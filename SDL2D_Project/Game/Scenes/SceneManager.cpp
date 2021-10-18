@@ -14,7 +14,15 @@ void SceneManager::Update(float deltaTime_)
 {
 	if (curScene)
 	{
-		curScene->OnUpdate(deltaTime_);
+		curScene->Update(deltaTime_);
+	}
+}
+
+void SceneManager::FixedUpdate(float deltaTime_)
+{
+	if (curScene)
+	{
+		curScene->FixedUpdate(deltaTime_);
 	}
 }
 

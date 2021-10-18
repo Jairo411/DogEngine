@@ -16,7 +16,7 @@ public:
 	void OnDestroy() override;
 	void HandleEvents() override;
 	void HandleCollison() override;
-	void OnUpdate(float deltaTime_) override;
+	void Update(float deltaTime_) override;
 	void OnRender() override;
 };
 #endif //SCENE0

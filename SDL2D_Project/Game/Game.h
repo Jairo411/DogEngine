@@ -23,6 +23,7 @@
 #include "../GameObjects/Map/Map.h"
 #include "EngineSerializer.h"
 
+
 /*2021-07-09 
 	Currently looking at this, don't really see a problem besides the FPS Issues that I need to fix,
 	probably not coming on this side of the engine but yah, */
@@ -39,7 +40,7 @@ public:
 	void HandleEvents();
 	void Update(float deltaTime_);
 	//new Code
-	void FixedUpdate(float superDeltaTime_);
+	void FixedUpdate(float deltaTime_);
 	void handleCollisions();
 	void Render();
 	void clean();

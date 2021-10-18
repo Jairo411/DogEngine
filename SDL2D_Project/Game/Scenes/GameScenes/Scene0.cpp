@@ -93,7 +93,7 @@ void Scene0::HandleCollison()
 {
 
 }
-void Scene0::OnUpdate(float deltaTime_)
+void Scene0::Update(float deltaTime_)
 {
 	player->Update(deltaTime_);
 	enemy->Update(deltaTime_);

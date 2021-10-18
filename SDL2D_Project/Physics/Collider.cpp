@@ -146,21 +146,6 @@ void RectCollider::CollisonUpdate(Vec2 position_)
 
 void RectCollider::CollisonRender()
 {
-	switch (Game::rendererManager->getRenderValue())
-	{
-	default:
-		break;
-
-	case 0:
-		break;
-
-	case 1:
-
-		break;
-	case 2:
-
-		break;
-	}
 	//SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 33, 191, 75, 0);
 	//SDL_RenderDrawRect(Game::rendererManager->GetInstance()->getRenderer(), &srcRect);
 	//SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 225, 225, 225, 255);
@@ -257,21 +242,6 @@ void CircleCollider::Update(Vec2 position_)
 
 void CircleCollider::Render()
 {
-	switch (Game::rendererManager->getRenderValue())
-	{
-	default:
-		break;
-
-	case 0:
-		break;
-
-	case 1:
-
-		break;
-	case 2:
-
-		break;
-	}
 	/*SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 0, 0, 0, 0);
 	for (int i = 0; i < positions.size(); i++)
 	{

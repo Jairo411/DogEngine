@@ -5,6 +5,7 @@
 #include <SDL_opengl.h>
 #include <iostream>
 #include <variant>
+
 /*2021-7-15
 Renderer class will support many different renderers hopefully in the future
 I will also Write the difference renderer inside my Render class.
@@ -25,23 +26,21 @@ public:
 	void operator =(const RendererManager&) = delete;
 	void setRenderer(int numbercase_);
 	void setWindow(Window* window_);
-	std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*> getRenderer();
 	// with the addition of new renderers, this will be changed.
 	static RendererManager* GetInstance();
 	static int getRenderValue();
-
-	//template function for returning my different renderers
+	//template function for returning the different renderers when you know what render
 	template <typename T>
 	T GetRenderer()
 	{
 	};
 	template<>
-	SDL_Renderer* GetRenderer<SDL_Renderer*>()
+	SDLRenderer* GetRenderer<SDLRenderer*>()
 	{
-		SDL_Renderer* temp;
+		SDLRenderer* temp;
 		try
 		{
-			temp = std::get<SDL_Renderer*>(renderVariant);
+			temp = std::get<SDLRenderer*>(renderVariant);
 			return temp;
 		}
 		catch (const std::bad_variant_access& e)
@@ -82,11 +81,11 @@ public:
 	RendererManager();
 	//Renderer() over load this function when you want to add other renderer, lets start with openGL, then vulkan....
 	static RendererManager* instance;
-	SDL_Renderer* SDLRenderer;
+	SDLRenderer* SDL__Renderer;
 	OpenGLRenderer* openGLRenderer;
 	VulkanRenderer* vulkanRenderer;
 	SDL_Window* window;
-	std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*> renderVariant;
+	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderVariant;
 	// a simple value that I use to tell my engine what renderer its using.
 	static int RenderValue;
 };
@@ -94,9 +93,20 @@ public:
 class SDLRenderer
 {
 public:
-
+	SDLRenderer(SDL_Window* window_, SDL_Renderer* renderer_);
+	~SDLRenderer();
+	void OnCreate();
+	void OnDestroy();
+	void DrawTexture(SDL_Texture* tex_,SDL_Rect* srcRect_,SDL_Rect* dstRect);
+	void DrawLine(float startX_,float startY_, float endX_, float endY_);
+	void DrawPoint(int x_, int y_);
+	void DrawRect(SDL_Rect* rect_);
+	void DrawRect(int x_, int y_, int width_, int height_);
+	void SetRenderDrawColour(Uint8 r_, Uint8 g_, Uint8 b_, Uint8 a_);
+	void Update();
 private:
-
+	SDL_Renderer* rend;
+	SDL_Window* window;
 };
 
 
@@ -130,7 +140,7 @@ public:
 
 
 	int ScreenHeight;
-	int ScreenWidith;
+	int ScreenWidth;
 };
 
 #endif //RENDERER_H

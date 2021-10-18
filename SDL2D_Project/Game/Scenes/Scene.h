@@ -7,7 +7,8 @@ public:
 	virtual void OnDestroy() = 0;
 	virtual void HandleEvents() {};
 	virtual void HandleCollison() {};
-	virtual void OnUpdate(float deltaTime_) = 0;
+	virtual void Update(float deltaTime_) = 0;
+	virtual void FixedUpdate(float deltaTime) = 0;
 	virtual void OnRender() = 0;
 	
 };

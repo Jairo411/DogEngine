@@ -97,15 +97,30 @@ void Game::OnDestroy()
 }
 void Game::GameLoop()
 {
-	/*RE-WORK THIS*/
+	int currentRenderFlag = NULL;
+	int passRenderFlag = NULL;
+
+	currentRenderFlag = rendererManager->getRenderValue();
 	while (isRunning == true)
 	{
+		if (currentRenderFlag !=rendererManager->getRenderValue())
+		{
+			currentRenderFlag = passRenderFlag;
+
+			rendererManager->OnDestroy();
+			
+			rendererManager->OnCreate();
+			rendererManager->setRenderer(currentRenderFlag);
+		}
+
 		timer->UpdateGeneralFrameTicks();
 		HandleEvents();
 		handleCollisions();
-		Render();
-		Update(timer->GetDeltaTime()); // GameLogic happens all through this update.
 		FixedUpdate(timer->GetDeltaTime());// Physics Update happen through here anddd animations too. 
+		Update(timer->GetDeltaTime()); // GameLogic happens all through this update.
+		Render();
+
+		passRenderFlag = rendererManager->getRenderValue();
 	//	SDL_Delay(timer->GetSleepTime(FPS));
 	}
 
@@ -123,8 +138,9 @@ void Game::Update(float deltaTime_)
 	sceneManager->Update(deltaTime_);
 }
 
-void Game::FixedUpdate(float superDeltaTime_)
+void Game::FixedUpdate(float deltaTime_)
 {
+	sceneManager->FixedUpdate(deltaTime_);
 }
 
 void Game::handleCollisions()

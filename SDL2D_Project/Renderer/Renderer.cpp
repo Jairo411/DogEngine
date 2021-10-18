@@ -6,8 +6,8 @@ int RendererManager::RenderValue = NULL;
 
 RendererManager::RendererManager()
 {
-	renderVariant = std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*>();
-	SDLRenderer = nullptr;
+	renderVariant = std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*>();
+	SDL__Renderer = nullptr;
 	openGLRenderer = nullptr;
 	vulkanRenderer = nullptr;
 	window = nullptr;
@@ -35,17 +35,12 @@ void RendererManager::setRenderer(int numbercase_)
 		break;
 	case 0:
 	{
+		SDL_Renderer* temp = nullptr;
+
 		RenderValue = 0;
-		SDLRenderer = SDL_CreateRenderer(window, -1, 0);
-		renderVariant = SDLRenderer;
-		if (SDLRenderer != nullptr)
-		{
-			SDL_SetRenderDrawColor(SDLRenderer, 225, 225, 225, 225);
-		}
-		else
-		{
-			std::cout << "Renderer Failed" << std::endl;
-		}
+		SDL__Renderer = new SDLRenderer(window,temp);
+		SDL__Renderer->OnCreate();
+		renderVariant = SDL__Renderer;
 		break;
 	}
 	case 1:
@@ -70,31 +65,6 @@ void RendererManager::setRenderer(int numbercase_)
 void RendererManager::setWindow(Window* window_)
 {
 	window = window_->getWindowContext();
-}
-
-std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*> RendererManager::getRenderer()
-{
-	try
-	{
-		switch (RenderValue)
-		{
-		default:
-			break;
-		case 0:
-			return std::get<SDL_Renderer*>(renderVariant);
-			break;
-		case 1:
-			return std::get<OpenGLRenderer*>(renderVariant);
-			break;
-		case 2:
-			return std::get<VulkanRenderer*>(renderVariant);
-			break;
-		}
-	}
-	catch (const std::bad_variant_access& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
 }
 
 RendererManager* RendererManager::GetInstance()
@@ -205,4 +175,85 @@ void VulkanRenderer::OnCreate()
 
 void VulkanRenderer::OnDestroy()
 {
+	
+
 }
+
+SDLRenderer::SDLRenderer(SDL_Window* window_, SDL_Renderer* renderer_)
+{
+	rend = renderer_;
+	window = window;
+
+	rend = SDL_CreateRenderer(window, -1 , SDL_RENDERER_ACCELERATED && SDL_RENDERER_TARGETTEXTURE );
+
+	if (rend!=nullptr)
+	{
+		std::cout << "render could not be create" << std::endl;
+	}
+	
+	SDL_SetRenderDrawColor(rend, 225, 225, 225, 225);
+
+}
+SDLRenderer::~SDLRenderer()
+{
+	OnDestroy();
+}
+
+void SDLRenderer::OnCreate()
+{
+
+}
+
+void SDLRenderer::OnDestroy()
+{
+	rend = nullptr;
+	window = nullptr;
+	delete rend;
+	delete window;
+}
+
+void SDLRenderer::DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_)
+{
+	SDL_RenderCopy(rend, tex_, srcRect_, dstRect_);
+}
+
+void SDLRenderer::DrawLine(float startX_, float startY_, float endX_, float endY_)
+{
+	SDL_RenderDrawLine(rend, startX_, startY_, endX_, endY_);
+}
+
+void SDLRenderer::DrawPoint(int x_, int y_)
+{
+	SDL_RenderDrawPoint(rend, x_, y_);
+}
+
+void SDLRenderer::DrawRect(SDL_Rect* rect_)
+{
+	SDL_RenderDrawRect(rend, rect_);
+}
+
+void SDLRenderer::DrawRect(int x_, int y_, int width_, int height_)
+{
+	SDL_Rect* tempRect;
+
+	tempRect = new SDL_Rect();
+
+	tempRect->x = x_;
+	tempRect->y = y_;
+
+	tempRect->w = width_;
+	tempRect->h = height_;
+
+	SDL_RenderDrawRect(rend, tempRect);
+}
+
+void SDLRenderer::SetRenderDrawColour(Uint8 r_, Uint8 g_, Uint8 b_, Uint8 a_)
+{
+	SDL_SetRenderDrawColor(rend, r_, g_, b_, a_);
+}
+
+void SDLRenderer::Update()
+{
+	/* this update here is to make sure nothing has changed*/
+}
+
