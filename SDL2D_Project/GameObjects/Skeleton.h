@@ -30,8 +30,6 @@ public:
 	virtual void Render();
 	virtual void Steer();
 	virtual void Seperate();
-	/*New Code*/
-	virtual void OnRender() override;
 private:
 	/*Member variables*/
 	float speed;
@@ -39,7 +37,7 @@ private:
 	/*Objects Members*/
 	Vec2 targetPos;
 	RectCollider col;	
-	SDL_Rect srcRect0, destRect0;
+	SDL_Rect srcRect0, dstRect0;
 	/*Get rid of this */
 	enum class AnimationStates
 	{

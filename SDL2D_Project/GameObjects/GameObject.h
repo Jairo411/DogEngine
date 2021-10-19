@@ -9,6 +9,7 @@
 #include<iostream>
 #include<fstream>
 #include<type_traits>
+#include <utility>
 #include"../Math/Vec2.h"
 #include"../DesignPattern/Observer.h"
 #include"Component/Component.h"
@@ -47,22 +48,23 @@ public:
 	virtual void OnDestroy() = 0;
 	virtual void Update(float deltaTime_)=0;
 	virtual void fixedUpdate(float deltaTime) = 0;
-	virtual void OnRender()=0;
+	virtual void Render()=0; 
 	virtual void Disable() = 0;
-	virtual SDL_Texture* getTexture() final;
-	virtual bool setDisable(bool temp) final;
-	virtual bool getDisable() final;
-	/* Overloaded Position functions*/
+	/*Setters*/
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
+	/*Getters*/
+	virtual bool getDisable();
+	bool setDisable(bool temp);
+	SDL_Texture* getTexture();
+	std::pair<SDL_Rect*, SDL_Rect*> getTextureDisplayInfo();
 	/*Observer Pattern Implemented*/
 	virtual void Attach(IObserver* observer_);
 	virtual void Detach(IObserver* observer_);
 	virtual void Notify();
-	Vec2 getPosition();
+	virtual Vec2 getPosition() final;
 	static vector<GameObject*> ObjHolder; //Switch this to a list <---------------------------------------- // should also encapsulate that too 
 	void DrawLine(Vec2 start_, Vec2 end_);
-	int getID() {  return ID; }
 	template <typename T, typename ... Args > std::shared_ptr<T> AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
 		T* comp = new T(std::forward<Args>(args_)...); // Need to reLook at this, this has to do something with treating a Lvalue and turns it into a Lvalue or Rvalue?
@@ -115,18 +117,13 @@ public:
 			}
 		}
 	}
-
-private:
-	bool disableObject;
-	int posX; // Individual postions X and Y. I don't want these variables to be touched 
-	int posY;
-	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
-	std::vector<std::shared_ptr<Component>> components;
 protected:
 	/*Functions*/
 	virtual void UpdatePostion() final;
 	int ReadAmountOfAnimations();
+	int getID() { return ID; }
 	/*Members variables*/
+	std::pair<SDL_Rect*, SDL_Rect*> TextureDisplayRectInfo;
 	float orientation;
 	float rotation;
 	float maxAcceleration;
@@ -138,9 +135,15 @@ protected:
 	Vec2 velocity;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
-	SDL_Rect srcRect, destRect;
+	SDL_Rect srcRect, dstRect;
 	GameObject* ptr;
-	
+private:
+	bool disableObject;
+	int posX; // Individual postions X and Y. I don't want these variables to be touched 
+	int posY;
+	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
+	std::vector<std::shared_ptr<Component>> components;
+
 };
 
 

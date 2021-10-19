@@ -10,6 +10,7 @@
 #include "../../Server/Server.h"
 #include "../Graphics/TextureManager.h"
 #include "../Window/Window.h"
+#include "../Window/GUI.h"
 #include "../Input/Input.h"
 #include "../Timer/Timer.h"
 #include "../Math/Converter.h"
@@ -33,7 +34,7 @@ class Game{
 public:
 	Game();
 	~Game();
-	void init(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
+	void OnCreate(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
 	// new Code
 	void OnDestroy();
 	void GameLoop();
@@ -52,6 +53,7 @@ public:
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
 	static Serializer* EngineSerializer; //engine functionality 
 	SceneManager* sceneManager; //Engine functionality 
+	GUI* engineGUI;
 private:
 	static bool isRunning;
 

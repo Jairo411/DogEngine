@@ -55,6 +55,14 @@ void Scene0::OnDestroy()
 
 }
 
+void Scene0::OnActivate()
+{
+}
+
+void Scene0::OnDeactivate()
+{
+}
+
 void Scene0::HandleEvents()
 {
 	SDL_Event event;
@@ -101,22 +109,37 @@ void Scene0::Update(float deltaTime_)
 	enemy1->Update(deltaTime_);
 	mapA->Update(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
-	Game::window->OnUpdate();
+	Game::window->Update();
+}
+
+void Scene0::FixedUpdate(float deltaTime_)
+{
 }
 
 
 
-void Scene0::OnRender()
+void Scene0::Render()
 {
-
-	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 225, 225, 225, 255);
-	SDL_RenderClear(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>());
+	//NEW
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
 	mapA->Render();
 	player->Render();
 	enemy->Render();
 	enemy0->Render();
 	enemy1->Render();
-	Game::window->OnRender();
-	SDL_RenderPresent(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>());
-
+	Game::window->Render();
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
+	//NEW
+	//OLD
+//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 225, 225, 225, 255);
+//	SDL_RenderClear(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>());
+//	mapA->Render();
+//	player->Render();
+//	enemy->Render();
+//	enemy0->Render();
+//	enemy1->Render();
+//	Game::window->OnRender();
+//	SDL_RenderPresent(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>());
+	//OLD
 }

@@ -11,18 +11,17 @@
 /// 2021-10-17
 /// </summary>
 class Game;
-class renderer;
 class GUI
 {
 public:
 	GUI();
 	~GUI();
-	void Inti(renderer* renderer);
+	void OnCreate();
+	void OnDestroy();
 	void HandleEvents(SDL_Event* e_);
 	void Update();
 	void Render();
 private:
-	renderer* renderContext;
 	ImGuiIO io;
 	int mouseX, mouseY;
 };

@@ -35,10 +35,8 @@ void RendererManager::setRenderer(int numbercase_)
 		break;
 	case 0:
 	{
-		SDL_Renderer* temp = nullptr;
-
 		RenderValue = 0;
-		SDL__Renderer = new SDLRenderer(window,temp);
+		SDL__Renderer = new SDLRenderer(window);
 		SDL__Renderer->OnCreate();
 		renderVariant = SDL__Renderer;
 		break;
@@ -179,16 +177,18 @@ void VulkanRenderer::OnDestroy()
 
 }
 
-SDLRenderer::SDLRenderer(SDL_Window* window_, SDL_Renderer* renderer_)
+SDLRenderer::SDLRenderer(SDL_Window* window_)
 {
-	rend = renderer_;
-	window = window;
+	rend = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED && SDL_RENDERER_TARGETTEXTURE);
+	window = window_;
 
-	rend = SDL_CreateRenderer(window, -1 , SDL_RENDERER_ACCELERATED && SDL_RENDERER_TARGETTEXTURE );
-
-	if (rend!=nullptr)
+	if (rend==nullptr)
 	{
-		std::cout << "render could not be create" << std::endl;
+		std::cout << "SDL renderer could not be created" << std::endl;
+	}
+	else
+	{
+		std::cout << "SDL Renderer has been Intialized" << std::endl;
 	}
 	
 	SDL_SetRenderDrawColor(rend, 225, 225, 225, 225);
@@ -210,6 +210,17 @@ void SDLRenderer::OnDestroy()
 	window = nullptr;
 	delete rend;
 	delete window;
+}
+
+SDL_Texture* SDLRenderer::CreateTextureFromSurface(SDL_Surface* surface_)
+{
+	SDL_Texture* tex = SDL_CreateTextureFromSurface(rend,surface_);
+	return tex;
+}
+
+void SDLRenderer::DrawGameObject(GameObject* gameOBJ_)
+{
+	DrawTexture(gameOBJ_->getTexture(), gameOBJ_->getTextureDisplayInfo().first, gameOBJ_->getTextureDisplayInfo().second);
 }
 
 void SDLRenderer::DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_)
@@ -250,6 +261,21 @@ void SDLRenderer::DrawRect(int x_, int y_, int width_, int height_)
 void SDLRenderer::SetRenderDrawColour(Uint8 r_, Uint8 g_, Uint8 b_, Uint8 a_)
 {
 	SDL_SetRenderDrawColor(rend, r_, g_, b_, a_);
+}
+
+SDL_Renderer* SDLRenderer::GetRenderer()
+{
+	return rend;
+}
+
+void SDLRenderer::RenderClear()
+{
+	SDL_RenderClear(rend);
+}
+
+void SDLRenderer::RenderPresent()
+{
+	SDL_RenderPresent(rend);
 }
 
 void SDLRenderer::Update()

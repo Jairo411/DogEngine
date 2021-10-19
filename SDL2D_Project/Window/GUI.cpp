@@ -3,7 +3,7 @@
 #include "../Game/Game.h"
 GUI::GUI()
 {
-	renderContext = nullptr;
+
 }
 
 GUI::~GUI()
@@ -11,13 +11,17 @@ GUI::~GUI()
 
 }
 
-void GUI::Inti(renderer* renderer)
+void GUI::OnCreate()
 {
-	renderContext = renderer;
 	ImGui::CreateContext();
-	ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 800, 600);
+	ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
 	io = ImGui::GetIO();
-	
+	io.DisplaySize.x = 100;
+	io.DisplaySize.y = 100;
+}
+
+void GUI::OnDestroy()
+{
 }
 
 void GUI::HandleEvents(SDL_Event* e_)

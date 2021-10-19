@@ -32,8 +32,8 @@ Player::Player(const char* textureSheet, int x, int y)
 	srcRect.y = 0; // This is where the image start begin drawed
 
 
-	destRect.x = srcRect.x;
-	destRect.y = srcRect.y;
+	dstRect.x = srcRect.x;
+	dstRect.y = srcRect.y;
 
 	amountOfAnimations = 0;
 	FrameTicks = NULL;
@@ -73,10 +73,6 @@ Player::~Player()
 
 }
 
-void Player::OnRender()
-{
-}
-
 void Player::Update(float dt_)
 {
 	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
@@ -88,10 +84,10 @@ void Player::Update(float dt_)
 
 	if (getDisable() == false)
 	{
-		destRect.x = realPosition.x;
-		destRect.y = realPosition.y;
-		destRect.w = srcRect.w;
-		destRect.h = srcRect.h;
+		dstRect.x = realPosition.x;
+		dstRect.y = realPosition.y;
+		dstRect.w = srcRect.w;
+		dstRect.h = srcRect.h;
 	}
 	else if (getDisable() == true)
 	{
@@ -115,6 +111,7 @@ void Player::Render()
 	}
 	if (getDisable() == false)
 	{
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
 	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect, &destRect);
 		collider.CollisonRender();
 	}

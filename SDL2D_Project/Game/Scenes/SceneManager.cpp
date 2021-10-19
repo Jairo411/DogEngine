@@ -30,7 +30,7 @@ void SceneManager::Render()
 {
 	if (curScene)
 	{
-		curScene->OnRender();
+		curScene->Render();
 	}
 }
 

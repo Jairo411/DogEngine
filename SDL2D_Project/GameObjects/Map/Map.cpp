@@ -37,7 +37,7 @@ void MapLayer::Render()
 {
 	for (int i = 0; i < tileMap.size(); i++)
 	{
-		tileMap.at(i).OnRender();
+		tileMap.at(i).Render();
 	}
 }
 /*

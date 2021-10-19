@@ -6,6 +6,7 @@ RendererManager* Game::rendererManager = nullptr;
 Timer* Game::timer = nullptr;
 Window* Game::window = nullptr;
 Serializer* Game::EngineSerializer = nullptr;
+TextureManager* Game::textureManager = nullptr;
 bool Game::isRunning = false;
 
 
@@ -18,7 +19,8 @@ Game::Game()
 	rendererManager = RendererManager::GetInstance();
 	EngineSerializer = Serializer::GetInstance();
 	textureManager = TextureManager::getInstance();
-	init("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+	engineGUI = new GUI();
+	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
 
@@ -35,7 +37,7 @@ Game::~Game()
 
 }
 
-void Game::init(const char* title, int posx, int posy, int width, int height, bool fullscreen)
+void Game::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	int flags = 0;
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
@@ -44,6 +46,7 @@ void Game::init(const char* title, int posx, int posy, int width, int height, bo
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
 	rendererManager->GetInstance()->setRenderer(0);
+	window->SetGUI(engineGUI);
 	//	window->SetRenderer();
 	isRunning = true;
 	//if (fullscreen)
@@ -119,7 +122,6 @@ void Game::GameLoop()
 		FixedUpdate(timer->GetDeltaTime());// Physics Update happen through here anddd animations too. 
 		Update(timer->GetDeltaTime()); // GameLogic happens all through this update.
 		Render();
-
 		passRenderFlag = rendererManager->getRenderValue();
 	//	SDL_Delay(timer->GetSleepTime(FPS));
 	}
@@ -156,7 +158,7 @@ void Game::Render()
 void Game::clean()
 {
 	SDL_DestroyWindow(window->getWindowContext());
-	SDL_DestroyRenderer(rendererManager->GetRenderer<SDL_Renderer*>());
+	SDL_DestroyRenderer(rendererManager->GetRenderAPI<SDLRenderer*>()->GetRenderer());
 	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;

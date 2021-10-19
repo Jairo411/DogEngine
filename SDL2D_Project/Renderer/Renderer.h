@@ -5,7 +5,7 @@
 #include <SDL_opengl.h>
 #include <iostream>
 #include <variant>
-
+#include "../GameObjects/GameObject.h";
 /*2021-7-15
 Renderer class will support many different renderers hopefully in the future
 I will also Write the difference renderer inside my Render class.
@@ -31,78 +31,84 @@ public:
 	static int getRenderValue();
 	//template function for returning the different renderers when you know what render
 	template <typename T>
-	T GetRenderer()
-	{
-	};
+	T GetRenderAPI();
 	template<>
-	SDLRenderer* GetRenderer<SDLRenderer*>()
+	SDLRenderer* GetRenderAPI<SDLRenderer*>()
 	{
-		SDLRenderer* temp;
+		SDLRenderer* temp = nullptr;
 		try
 		{
 			temp = std::get<SDLRenderer*>(renderVariant);
-			return temp;
 		}
 		catch (const std::bad_variant_access& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
+		return temp;
 	};
 	template<>
-	OpenGLRenderer* GetRenderer<OpenGLRenderer*>()
+	OpenGLRenderer* GetRenderAPI<OpenGLRenderer*>()
 	{
-		OpenGLRenderer* temp;
+		OpenGLRenderer* temp = nullptr;
 		try
 		{
 			temp = std::get<OpenGLRenderer*>(renderVariant);
-			return temp;
 		}
 		catch (const std::bad_variant_access& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
+		return temp;
 	};
 	template<>
-	VulkanRenderer* GetRenderer<VulkanRenderer*>()
+	VulkanRenderer* GetRenderAPI<VulkanRenderer*>()
 	{
-		VulkanRenderer* temp;
+		VulkanRenderer* temp = nullptr;
 		try
 		{
 			temp = std::get<VulkanRenderer*>(renderVariant);
-			return temp;
 		}
 		catch (const std::bad_variant_access& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
+		return temp;
 	}
 	private:
 	~RendererManager();
 	RendererManager();
 	//Renderer() over load this function when you want to add other renderer, lets start with openGL, then vulkan....
 	static RendererManager* instance;
+	SDL_Window* window;
 	SDLRenderer* SDL__Renderer;
 	OpenGLRenderer* openGLRenderer;
 	VulkanRenderer* vulkanRenderer;
-	SDL_Window* window;
 	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderVariant;
 	// a simple value that I use to tell my engine what renderer its using.
 	static int RenderValue;
 };
 
+/* My SDL Renderer class 
+ Does all my rendering stuff here, some of these functions exist simply for abstracting 
+ my render process and it also seems like that, I will create own purpose rendering functions*/
 class SDLRenderer
 {
 public:
-	SDLRenderer(SDL_Window* window_, SDL_Renderer* renderer_);
+	SDLRenderer(SDL_Window* window_);
 	~SDLRenderer();
 	void OnCreate();
 	void OnDestroy();
+	SDL_Texture* CreateTextureFromSurface(SDL_Surface* surface_);
+	void DrawGameObject(GameObject* gameOBJ_);
 	void DrawTexture(SDL_Texture* tex_,SDL_Rect* srcRect_,SDL_Rect* dstRect);
 	void DrawLine(float startX_,float startY_, float endX_, float endY_);
 	void DrawPoint(int x_, int y_);
 	void DrawRect(SDL_Rect* rect_);
 	void DrawRect(int x_, int y_, int width_, int height_);
 	void SetRenderDrawColour(Uint8 r_, Uint8 g_, Uint8 b_, Uint8 a_);
+	SDL_Renderer* GetRenderer();
+	void RenderClear();
+	void RenderPresent();
 	void Update();
 private:
 	SDL_Renderer* rend;

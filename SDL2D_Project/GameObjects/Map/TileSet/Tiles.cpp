@@ -61,10 +61,9 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 
 }
 
-void Tile::OnRender()
+void Tile::Render()
 {
-
-	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), baseTex, &srcRect, &dstRect);
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(baseTex,&srcRect,&dstRect);
 	col.CollisonRender();
 }
 
@@ -85,22 +84,6 @@ int Tile::getHeight()
 }
 
 
-
-bool Tile::KeyBoardInput(int key_)
-{
-	return false;
-}
-
-bool Tile::MouseInput(int key_)
-{
-	return false;
-}
-
-bool Tile::ControllerInput(int key_)
-{
-	return false;
-}
-
 void Tile::SetPosition(Vec2 pos_)
 {
 	x = pos_.x;
@@ -113,7 +96,7 @@ void Tile::setGridPosition(Vec2 pos_)
 	GridPosition.y = pos_.y;
 }
 
-void Tile::OnUpdate()
+void Tile::Update(float deltaTime_)
 {
 
 }

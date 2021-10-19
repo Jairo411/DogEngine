@@ -25,6 +25,12 @@ void Window::SetGUIEvent(SDL_Event* GUIEvent_)
 
 }
 
+void Window::SetGUI(GUI* GUIContext_)
+{
+	GUIContext = GUIContext_;
+	GUIContext->OnCreate();
+}
+
 Window::Window(SDL_Window *window_)
 {
 	ScreenHeight = 0; //
@@ -39,6 +45,7 @@ Window::Window(SDL_Window *window_)
 	middleOfScreen.y = ScreenHeight/2;
 	
 	CreateMiddleRect();
+
 
 	int keyValue=0;
 	for (int r = 0; r < 20;r++)
@@ -191,7 +198,7 @@ Window::~Window()
 }
 
 
-void Window::OnRender()
+void Window::Render()
 {
 	switch (Game::rendererManager->GetInstance()->getRenderValue())
 	{
@@ -205,9 +212,15 @@ void Window::OnRender()
 		{
 		case Window::DEBUG:
 		{
-			SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 100, 0, 15, 100);
-			SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), &middleRect);
-			SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 0, 0, 0, 255);
+			//NEW 
+			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
+			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&middleRect);
+			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
+			GUIContext->Render();
+			//OLD
+		//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 100, 0, 15, 100);
+		//	SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), &middleRect);
+		//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 0, 0, 0, 255);
 			//		GUIContext.Render();
 		}
 		break;
@@ -219,12 +232,15 @@ void Window::OnRender()
 			{
 				SDL_Rect* thisKey = it->first;
 				it->second = cycleValue;
-				SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 255, 255, 255, 255);
-				SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), it->first);
-				SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderer<SDL_Renderer*>(), 0, 0, 0, 255);
+
+				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
+				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(it->first);
+				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
+
 				cycleValue += 1;
 			}
 		}
+
 		break;
 		case Window::RELEASE:
 		{
@@ -257,10 +273,10 @@ void Window::OnRender()
 	}
 }
 
-void Window::OnUpdate()
+void Window::Update()
 {
-	GUIContext.HandleEvents(GUIEvent);
-	GUIContext.Update();
+	GUIContext->HandleEvents(GUIEvent);
+	GUIContext->Update();
 }
 
 Vec2 Window::ConvertScreenCoords(int x_, int y_)

@@ -21,7 +21,6 @@
 {
 	int cols, rows;
 	int tileSize;
-
 };
 
 class MapLayer

@@ -11,6 +11,8 @@ GameObject::GameObject()
 	realPosition = Vec2(posX, posY);
 	disableObject = false;
 	name = "GameObject ";
+	TextureDisplayRectInfo.first = &srcRect;
+	TextureDisplayRectInfo.second = &dstRect;
 	//	Going to use the Gameobject base class to check if inhereted object has name or not
 }
 
@@ -48,6 +50,11 @@ void GameObject::DrawLine(Vec2 start_, Vec2 end_)
 SDL_Texture* GameObject::getTexture()
 {
 	return objTexture;
+}
+
+std::pair<SDL_Rect*, SDL_Rect*> GameObject::getTextureDisplayInfo()
+{
+	return TextureDisplayRectInfo;
 }
 
 bool GameObject::setDisable(bool temp)

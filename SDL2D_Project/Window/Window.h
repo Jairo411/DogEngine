@@ -42,8 +42,9 @@ public:
 	void setFlag(int flag_);
 	void setWindowContext(SDL_Window* windowContext_);
 	void SetGUIEvent(SDL_Event* GUIEvent_);
-	void OnRender();
-	void OnUpdate();
+	void SetGUI(GUI* GUIContext_);
+	void Render();
+	void Update();
 	static Vec2 ConvertScreenCoords(int x, int y);
 	Vec2 midVec;
 	enum WindowStatus : unsigned int
@@ -72,7 +73,7 @@ private:
 	static SDL_Point middleOfScreen;
 	Vec2 covertedScreenCoords;
 	/* Graphics Stuff*/
-	GUI GUIContext;
+	GUI* GUIContext;
 	SDL_Surface* graphicLayer;
 	SDL_Window* window;
 	SDL_Event* GUIEvent;

@@ -9,7 +9,7 @@ Skeleton::Skeleton()
 	srcRect.x = 0;
 	srcRect.y = 0;
 	srcRect0.x = 0;
-	destRect0.y = 0;
+	dstRect0.y = 0;
 	name = "skeleton";
 }
 
@@ -30,8 +30,8 @@ Skeleton::Skeleton(int x, int y)
 	srcRect.w = 40;
 	srcRect.h = 40;
 
-	destRect.x = srcRect.x;
-	destRect.y = srcRect.y;
+	dstRect.x = srcRect.x;
+	dstRect.y = srcRect.y;
 
 	animState = AnimationStates::WALK;
 
@@ -68,8 +68,8 @@ void Skeleton::Inti()
 	int lengthOfSprite;
 
 
-	destRect.h = srcRect.h;
-	destRect.w = srcRect.w;
+	dstRect.h = srcRect.h;
+	dstRect.w = srcRect.w;
 
 
 
@@ -85,33 +85,33 @@ void Skeleton::Inti()
 		switch (i)
 		{
 		case 0:
-			destRect.w = 43;
-			srcRect.w = destRect.w;
+			dstRect.w = 43;
+			srcRect.w = dstRect.w;
 			break;
 		case 1:
-			destRect.w = 30;
-			srcRect.w = destRect.w;
+			dstRect.w = 30;
+			srcRect.w = dstRect.w;
 			break;
 		case 2:
-			destRect.w = 30;
-			srcRect.w = destRect.w;
+			dstRect.w = 30;
+			srcRect.w = dstRect.w;
 			break;
 		case 3:
-			destRect.w = 24;
-			srcRect.w = destRect.w;
+			dstRect.w = 24;
+			srcRect.w = dstRect.w;
 			break;
 		case 4:
-			destRect.w = 22;
-			srcRect.w = destRect.w;
+			dstRect.w = 22;
+			srcRect.w = dstRect.w;
 			break;
 		case 5:
-			destRect.w = 22;
-			srcRect.w = destRect.w;
+			dstRect.w = 22;
+			srcRect.w = dstRect.w;
 			break;
 		default:
 			break;
 		}
-		lengthOfSprite = tempW / destRect.w;
+		lengthOfSprite = tempW / dstRect.w;
 		for (int j = 0; j < lengthOfSprite; j++)
 		{
 			switch (i)
@@ -165,10 +165,10 @@ void Skeleton::Update(float DeltaTime_)
 	}
 	if (getDisable() == false)
 	{
-		destRect0.x = realPosition.x;
-		destRect0.y = realPosition.y;
-		destRect0.w = srcRect0.w;
-		destRect0.h = srcRect0.h;
+		dstRect0.x = realPosition.x;
+		dstRect0.y = realPosition.y;
+		dstRect0.w = srcRect0.w;
+		dstRect0.h = srcRect0.h;
 	}
 	else if (getDisable() == true)
 	{
@@ -189,7 +189,7 @@ void Skeleton::Render()
 
 	if (getDisable() == false)
 	{
-
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture,&srcRect0,&dstRect0);
 	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect0, &destRect0); get rid of using Render_Copy inside your GameObject render functions
 		col.CollisonRender();
 		navCollider.CollisonRender();
@@ -235,11 +235,6 @@ void Skeleton::Seperate()
 {
 
 }
-
-void Skeleton::OnRender()
-{
-}
-
 
 Vec2 Skeleton::getTargetDirection()
 {

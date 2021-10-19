@@ -33,13 +33,8 @@ public:
     static SDL_Texture* LoadTexture(SDL_Rect sRect,SDL_Texture* source);
 	///Create a sprite map 
 	static std::vector<SDL_Texture*> CreateMapSprite(SDL_Texture* tex_,int width_, int height_,int SizeOfCut_,int sourceX_, int sourceY_);
-	/// will render or "Draw SDL_texture 
-	static void Draw(SDL_Texture* tex,SDL_Rect src, SDL_Rect dest);
 
 	///SDL CALLS
-
-
-
 
 
 	void setRenderer(SDL_Renderer* renderer_);
@@ -48,9 +43,7 @@ public:
 private:
 	TextureManager();
 	~TextureManager();
-
 	static TextureManager* instance;
-	static std::variant<SDL_Renderer*, OpenGLRenderer*, VulkanRenderer*> renderInfo;
 };
 
 

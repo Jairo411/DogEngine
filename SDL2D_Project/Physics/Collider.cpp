@@ -146,6 +146,11 @@ void RectCollider::CollisonUpdate(Vec2 position_)
 
 void RectCollider::CollisonRender()
 {
+	///NEW
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(33, 191, 75, 0);
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&srcRect);
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
+	///OLD
 	//SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 33, 191, 75, 0);
 	//SDL_RenderDrawRect(Game::rendererManager->GetInstance()->getRenderer(), &srcRect);
 	//SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 225, 225, 225, 255);

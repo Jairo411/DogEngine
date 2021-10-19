@@ -14,9 +14,12 @@ public:
 	~Scene0();
 	void OnCreate() override;
 	void OnDestroy() override;
+	void OnActivate() override;
+	void OnDeactivate() override;
 	void HandleEvents() override;
 	void HandleCollison() override;
 	void Update(float deltaTime_) override;
-	void OnRender() override;
+	void FixedUpdate(float deltaTime_) override;
+	void Render() override;
 };
 #endif //SCENE0

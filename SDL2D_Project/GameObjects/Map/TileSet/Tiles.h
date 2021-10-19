@@ -52,7 +52,7 @@ private:
 	static vector<SDL_Texture*> imageSetHolder;
 };
 
-class Tile: public Input
+class Tile
 {
 public:
 	Tile();
@@ -67,17 +67,15 @@ public:
 	static void setTileSize(int width_, int height_);
 	void SetID(int ID_);
 	Node* getID(int ID_);
-	void OnRender();
-	void OnUpdate();
-	bool KeyBoardInput(int key_);
-	bool MouseInput(int key_);
-	bool ControllerInput(int key_);
+	void Render();
+	void Update(float deltaTime_);
 	void SetPosition(Vec2 pos_);
 	void setGridPosition(Vec2 pos_);
 	~Tile();
 private:
 	SDL_Texture* baseTex;
-	SDL_Rect srcRect,dstRect;
+	SDL_Rect srcRect;
+	SDL_Rect dstRect;
 	RectCollider col;
 	Vec2 GridPosition;
 	Node* n;
