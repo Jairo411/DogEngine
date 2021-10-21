@@ -88,6 +88,9 @@ Serializer::~Serializer()
 	delete CurrentDoc;
 }
 
+void Serializer::NewAnimationSet()
+{
+}
 
 pugi::xml_document* Serializer::DefaultSerialized(std::string tag_)
 {
@@ -156,23 +159,10 @@ bool Serializer::GameObjectExist(int ID_)
 	std::cout << root.name() << std::endl;
 	for (pugi::xml_node node : root.children("GameObject"))
 	{
-		std::cout << node.name() << std::endl;
-		pugi::xml_attribute_iterator it;
-		for (it = node.attributes().begin(); it != node.attributes().end(); it++)
+		if (node.first_attribute().as_int()!=0 || node.first_attribute().as_int()> 0) // Im am saying here that in the GameObjectData.xml file that if, it already has an ID value then the object exists
 		{
-			std::string attributeName = node.name();
-			if (strcmp(attributeName.c_str(), "ID") == 0)
-			{
-				std::cout << " " << it->name();
-				std::cout << " = " << it->as_string();
-			}
-			/*	if (strcmp(it->as_string(),ID_)==0)
-				{
-					std::cout << std::endl;
-					return true;
-				}*/
+
 		}
-		std::cout << std::endl;
 	}
 	return false;
 }
@@ -207,13 +197,26 @@ void Serializer::AddGameObject(GameObject* OBJ_)
 		auto gameObjectNode = rootNode.append_child(pugi::node_element);
 		gameObjectNode.set_name("GameObject");
 		gameObjectNode.append_attribute("ID") = random; // Only thing that gets set here is the ID number;
-		gameObjectNode.append_attribute("Name") = OBJ_->getName().c_str();
+		gameObjectNode.append_attribute("Name") = OBJ_->getNameIdentifier().c_str();
 
-		std::string combined = "GameObject";
+
+		auto classNode = gameObjectNode.append_child(pugi::node_element);
+		classNode.set_name("Class");
+		classNode.append_attribute("Name") = OBJ_->getClassName().c_str();
+		/*Add templated specialization for class variable Seralization*/
+
+
+		auto ParentNode = gameObjectNode.append_child(pugi::node_element);
+		ParentNode.set_name("ParentOf");
+
+		auto childNode = gameObjectNode.append_child(pugi::node_element);
+		childNode.set_name("ChildOf");
+
+	/*	std::string combined = "GameObject ";
 		combined += gameObjectNode.first_attribute().value();
 
 		auto rootGameClassNode = gameObjectNode.append_child(pugi::node_element);
-		rootGameClassNode.set_name(combined.c_str());
+		rootGameClassNode.set_name(combined.c_str());*/
 		/*Over here is were we write down the class information all over the place*/
 
 		std::string path = it1->first;
@@ -221,6 +224,29 @@ void Serializer::AddGameObject(GameObject* OBJ_)
 		std::string combinedPath = path + fileName;
 
 		CurrentDoc->save_file(combinedPath.c_str(), PUGIXML_TEXT(""));
+	}
+}
+
+void Serializer::AssignID(std::list<GameObject*> OBJ_List)
+{
+	loadFile(fullpath[2]);
+	std::vector<int> GameObjectID = std::vector<int>();
+	std::vector<int>::iterator gameObjectIDIT = GameObjectID.begin();
+
+	pugi::xml_node root = CurrentDoc->first_child();
+	std::cout << root.name() << std::endl;
+	for (pugi::xml_node node : root.children("GameObject"))
+	{
+		GameObjectID.push_back(node.first_attribute().as_int());
+	}
+	std::list<GameObject*>::iterator objIt;
+	
+	for (objIt = OBJ_List.begin(); objIt!=OBJ_List.end(); objIt++)
+	{
+		dynamic_cast<BaseObj*>(*objIt)->setID(*gameObjectIDIT);
+
+		gameObjectIDIT++;
+		objIt++;
 	}
 }
 
@@ -279,6 +305,9 @@ void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 	//	
 	//}
 }
+void Serializer::RemoveAnimation(std::string tagID_, const char* imageSrc_)
+{
+}
 void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 {
 	/*I need to load the file if it exist*/
@@ -316,5 +345,21 @@ void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 	{
 		std::cout << sceneName_ << ": this scene already exist" << std::endl;
 	}
+}
+
+void Serializer::SaveScene(int currentScene_, Scene& Scenedata_)
+{
+}
+
+void Serializer::RemoveScene(const char* sceneName)
+{
+}
+
+void Serializer::DeserializeAnimations()
+{
+}
+
+void Serializer::DeserializeScenes()
+{
 }
 

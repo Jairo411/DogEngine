@@ -19,9 +19,20 @@ public:
 	virtual void Update(float deltaTime_)=0;
 	virtual void fixedUpdate(float deltaTime)=0;
 	virtual void Render()=0;
-	std::string getName() {	return name; }
+	void setID(int ID_) { ID = ID_; }
+	void setIndexLocation(int index_) { indexLocation = index_; }
+	int getID() { return ID; }
+	int getIndexLocation() { return indexLocation; }
+	std::string getNameIdentifier() {	return nameIdentifier; }
+	std::string getClassName() { return className; }
+	std::string getName() { return name; }
 protected:
-	std::string name; // will be used in Editor
+	std::string nameIdentifier; // will be used in Editor
+	std::string className; //The Actual class name 
+	std::string name; //an subjective string variable that you assign what ever name; 
 	std::map <std::string, std::string> components; 
+private: 
+	int ID; // unique Identifyer 
+	int indexLocation;// Localtion within my LargeStorage container of all my gameObjects
 };
 #endif

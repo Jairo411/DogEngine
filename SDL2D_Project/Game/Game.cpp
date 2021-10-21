@@ -47,6 +47,7 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	rendererManager->GetInstance()->setWindow(window);
 	rendererManager->GetInstance()->setRenderer(0);
 	window->SetGUI(engineGUI);
+
 	//	window->SetRenderer();
 	isRunning = true;
 	//if (fullscreen)

@@ -13,7 +13,6 @@
 #include"../Math/Vec2.h"
 #include"../DesignPattern/Observer.h"
 #include"Component/Component.h"
-using namespace std;
 
 /*Standard GameObject class should be abstract and should be the base class.
 of any game object in the game i.e
@@ -63,7 +62,7 @@ public:
 	virtual void Detach(IObserver* observer_);
 	virtual void Notify();
 	virtual Vec2 getPosition() final;
-	static vector<GameObject*> ObjHolder; //Switch this to a list <---------------------------------------- // should also encapsulate that too 
+	static std::list<GameObject*> OBJHolder;
 	void DrawLine(Vec2 start_, Vec2 end_);
 	template <typename T, typename ... Args > std::shared_ptr<T> AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
@@ -136,7 +135,6 @@ protected:
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, dstRect;
-	GameObject* ptr;
 private:
 	bool disableObject;
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 

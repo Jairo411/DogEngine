@@ -10,7 +10,7 @@ Skeleton::Skeleton()
 	srcRect.y = 0;
 	srcRect0.x = 0;
 	dstRect0.y = 0;
-	name = "skeleton";
+	nameIdentifier = "skeleton";
 }
 
 Skeleton::Skeleton(int x, int y)
@@ -34,11 +34,11 @@ Skeleton::Skeleton(int x, int y)
 	dstRect.y = srcRect.y;
 
 	animState = AnimationStates::WALK;
-
-	ptr = this;
 	col = RectCollider(srcRect0.w, srcRect0.h);
-	GameObject::ObjHolder.push_back(ptr);
-	name += to_string(ObjHolder.size());
+
+	//temporary pointer so my engine doesn't break
+	GameObject::OBJHolder.push_back(this);
+
 	Inti();
 }
 

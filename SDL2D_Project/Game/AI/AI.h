@@ -56,7 +56,7 @@ public:
 	static AIManager* removeInstance();
 	void getTotalAgents();
 	void OnUpdate(float deltaTime);
-	static std::vector<GameObject*> AIAgentContainer;
+	static std::list<GameObject*> AIAgentList;
 	static std::map<GameObject*, Vec2> getClosestDistanceBetweenAgents();
 	void setPath(AI* agents_, std::vector<Tile*> mapData ,int goal_);
 	

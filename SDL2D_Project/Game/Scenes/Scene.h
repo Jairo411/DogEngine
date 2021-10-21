@@ -12,6 +12,6 @@ public:
 	virtual void Update(float deltaTime_) = 0;
 	virtual void FixedUpdate(float deltaTime) = 0;
 	virtual void Render() = 0;
-	
+	int currentScene;
 };
 #endif //SCENE_HEADER

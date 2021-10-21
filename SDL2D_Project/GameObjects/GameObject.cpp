@@ -2,7 +2,7 @@
 #include "../Graphics/TextureManager.h"
 #include "../DesignPattern/Observer.h"
 
-vector<GameObject*>GameObject::ObjHolder = vector<GameObject*>();
+std::list<GameObject*>GameObject::OBJHolder = std::list<GameObject*>();
 
 GameObject::GameObject()
 {
@@ -10,7 +10,7 @@ GameObject::GameObject()
 	posY = 0;
 	realPosition = Vec2(posX, posY);
 	disableObject = false;
-	name = "GameObject ";
+	nameIdentifier = "GameObject";
 	TextureDisplayRectInfo.first = &srcRect;
 	TextureDisplayRectInfo.second = &dstRect;
 	//	Going to use the Gameobject base class to check if inhereted object has name or not
@@ -21,9 +21,7 @@ GameObject::~GameObject()
 	GameObserver* temp;
 	temp = dynamic_cast<GameObserver*>(this);
 	Detach(temp);
-	temp = nullptr;
-	ptr = nullptr;
-	delete ptr;
+	temp = nullptr;;
 	delete temp;
 }
 

@@ -1,7 +1,7 @@
 #include "AI.h"
 
 AIManager* AIManager::instance = nullptr;
-std::vector<GameObject*> AIManager::AIAgentContainer = std::vector<GameObject*>();
+std::list<GameObject*> AIManager::AIAgentList = std::list<GameObject*>();
 
 
 AI::AI()
@@ -257,53 +257,105 @@ NavTile AI::getNavTileAt(int index_)
 std::map<GameObject*, Vec2> AIManager::getClosestDistanceBetweenAgents()
 {
 	std::vector<GameObject*> Agents;
+	std::vector<GameObject*>::iterator agentsIt;
 	std::map<GameObject*, bool> checkAgentPosition;
 	std::map<GameObject*, Vec2> newAgentDistance;
 	std::vector<Vec2>positionsV;
 	std::vector<Vec2>distanceV;
 	Vec2 originPosition;
 
-	if (AIAgentContainer.size() > 0)
+	//if (AIAgentContainer.size() > 0)
+	//{
+	//	for (int i = 0; i < AIAgentContainer.size(); i++)
+	//	{
+	//		Agents.push_back(AIAgentContainer.at(i)); //reference to the gameObjects i.e Agents
+	//		checkAgentPosition.insert(std::make_pair(Agents.at(i), false)); // A map to see if positions are being checked
+	//	}
+	//	for (int i = 0; i < AIAgentContainer.size(); i++)
+	//	{
+	//		for (auto const& [key, val] : checkAgentPosition) // Same as the AI_AgentContainer, but this is way easier to write 
+	//		{
+	//			checkAgentPosition.at(Agents.at(i)) = true; //current Agent position is being checked
+	//			if (val == true) // if key is false, position gets added to a vector
+	//			{
+	//				originPosition = key->getPosition();
+	//			}
+	//			if (val == false)
+	//			{
+	//				positionsV.push_back(key->getPosition());
+	//			}
+	//		}
+	//		Vec2 distance;
+	//		for (int i = 0; i < positionsV.size(); i++)
+	//		{
+	//			distance = originPosition - positionsV.at(i);
+	//			//	std::cout << "Mag: " << distance.GetMag()<<std::endl;
+	//			if (distance.GetMag() < 70.0f)
+	//			{
+	//				newAgentDistance.insert(std::make_pair(AIAgentContainer.at(i), AIAgentContainer.at(i)->getPosition()));
+	//				std::cout << "Agents are close to each other" << std::endl;
+	//			}
+	//		}
+	//		for (int i = 0; i < Agents.size(); i++)
+	//		{
+	//			checkAgentPosition.at(Agents.at(i)) = false;
+	//		}
+	//		positionsV.clear();
+	//	}
+	//	return newAgentDistance;
+	//}
+	//return std::map<GameObject*, Vec2>();
+
+	if (AIAgentList.size()>0)
 	{
-		for (int i = 0; i < AIAgentContainer.size(); i++)
+		agentsIt = Agents.begin();
+		for (auto it = AIAgentList.begin(); it!=AIAgentList.end(); it++)
 		{
-			Agents.push_back(AIAgentContainer.at(i)); //reference to the gameObjects i.e Agents
-			checkAgentPosition.insert(std::make_pair(Agents.at(i), false)); // A map to see if positions are being checked
+			Agents.push_back(*it);
+			checkAgentPosition.insert(std::make_pair(*agentsIt,false));
+			agentsIt++;
 		}
-		for (int i = 0; i < AIAgentContainer.size(); i++)
+		for (auto it = AIAgentList.begin(); it != AIAgentList.end(); it++)
 		{
-			for (auto const& [key, val] : checkAgentPosition) // Same as the AI_AgentContainer, but this is way easier to write 
+			for (auto const& [key, val] : checkAgentPosition)
 			{
-				checkAgentPosition.at(Agents.at(i)) = true; //current Agent position is being checked
-				if (val == true) // if key is false, position gets added to a vector
+				checkAgentPosition.at(*it) = true;
+				if (val == true)
 				{
 					originPosition = key->getPosition();
 				}
-				if (val == false)
+				else if (val == false)
 				{
 					positionsV.push_back(key->getPosition());
 				}
 			}
-			Vec2 distance;
-			for (int i = 0; i < positionsV.size(); i++)
-			{
-				distance = originPosition - positionsV.at(i);
-				//	std::cout << "Mag: " << distance.GetMag()<<std::endl;
-				if (distance.GetMag() < 70.0f)
-				{
-					newAgentDistance.insert(std::make_pair(AIAgentContainer.at(i), AIAgentContainer.at(i)->getPosition()));
-					std::cout << "Agents are close to each other" << std::endl;
-				}
-			}
-			for (int i = 0; i < Agents.size(); i++)
-			{
-				checkAgentPosition.at(Agents.at(i)) = false;
-			}
-			positionsV.clear();
 		}
+		agentsIt = Agents.begin();
+		Vec2 distance;
+		Vec2 position;
+		std::list<GameObject*>::iterator listIterator;
+		for (int i = 0; i < positionsV.size(); i++)
+		{
+			distance = originPosition - positionsV.at(i);
+			position = dynamic_cast<GameObject*>(*listIterator)->getPosition();
+			if (distance.GetMag() < 70.0f)
+			{
+				newAgentDistance.insert(std::make_pair(*listIterator, position));
+				std::cout << "Agents are close to each other" << std::endl;
+				listIterator++;
+			}
+		}
+		for (auto it = AIAgentList.begin(); it!= AIAgentList.end(); it++);
+		{
+			checkAgentPosition.at(*agentsIt) = false;
+		}
+		positionsV.clear();
 		return newAgentDistance;
 	}
-	return std::map<GameObject*, Vec2>();
+	else 
+	{
+		return std::map<GameObject*, Vec2>();
+	}
 }
 
 void AIManager::setPath(AI* agent_, std::vector<Tile*> mapData_, int goal_)
@@ -338,25 +390,42 @@ AIManager* AIManager::removeInstance()
 
 void AIManager::getTotalAgents()
 {
-	for (int i = 0; i < GameObject::ObjHolder.size(); i++)
+	for ( auto it = GameObject::OBJHolder.begin(); it!=GameObject::OBJHolder.end(); it++)
 	{
-		GameObject* tempPtr = GameObject::ObjHolder.at(i);
-		if (dynamic_cast<AI*>(tempPtr))
+		if (dynamic_cast<AI*>(*it))
 		{
-			AIAgentContainer.push_back(tempPtr);
+			AIAgentList.push_back(*it);
 		}
 	}
-	std::cout << "Total amount of Agents: " << AIAgentContainer.size() << std::endl;
+
+	//for (int i = 0; i < GameObject::OBJHolder.size(); i++)
+	//{
+	//	GameObject* tempPtr = GameObject::
+	//	if (dynamic_cast<AI*>(tempPtr))
+	//	{
+	//		AIAgentContainer.push_back(tempPtr);
+	//	}
+	//}
+	//std::cout << "Total amount of Agents: " << AIAgentContainer.size() << std::endl;
+
+	std::cout << "Total amount of Agents: " << AIAgentList.size() << std::endl;
 }
 
 // so over here the AI manager updates any GameObject in my AIAgentContainer that has an AI interface
 void AIManager::OnUpdate(float deltaTime)
 {
-	for (int i = 0; i < AIAgentContainer.size(); i++)
-	{
-		dynamic_cast<AI*>(AIAgentContainer.at(i))->Steer();
-		dynamic_cast<AI*>(AIAgentContainer.at(i))->Seperate();
+	///OLD 
+	//for (int i = 0; i < AIAgentContainer.size(); i++)
+	//{
+	//	dynamic_cast<AI*>(AIAgentContainer.at(i))->Steer();
+	//	dynamic_cast<AI*>(AIAgentContainer.at(i))->Seperate();
 
+	//}
+	///NEW
+	for (auto it = AIAgentList.begin(); it!= AIAgentList.end(); it++)
+	{
+		dynamic_cast<AI*>(*it)->Steer();
+		dynamic_cast<AI*>(*it)->Seperate();
 	}
 }
 

@@ -9,7 +9,6 @@
 #include <iostream>
 #include <list>
 #include <map>
-#include <vector>
 #include <stdlib.h>
 /* I could rework this right now,
 
@@ -43,20 +42,22 @@ public:
 	//PURE WRITE FUNCTIONS
 	//Serializes GameObject
 	void AddGameObject(GameObject* OBJ_); //Write function 
+	//On Engine Initialization I will assign already written IDs to current engine game Objects
+	void AssignID(std::list<GameObject*> OBJ_List);
 	//Serializes Animations of GameObject
 	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);//Write function //Animations will be stored in there respective gameObjectDataXML sheet. With there associated tags. 
 	void RemoveAnimation(std::string tagID_, const char* imageSrc_);//Write function 
 	//Creates a Scene 
 	void CreateScene(int currentScene_, const char* sceneName_);// Write function 
 	//Serializes Scene
-	void serializeScene(int currentScene_, Scene Scenedata_); //Write function //The Scenedata will push out how many gameObjects are in a scene and there ID's nothing more nothing less
+	void SaveScene(int currentScene_, Scene& Scenedata_); //Write function //The Scenedata will push out how many gameObjects are in a scene and there ID's nothing more nothing less
 	//Remove Scene
 	void RemoveScene(const char* sceneName); //Write function
 	//PURE READ FUNCTIONS
 	void DeserializeAnimations(); //<-- Deserialzer should return a string
 	void DeserializeScenes(); //<--Deserializer should return a string 
 	//HELPER FUNCTIONS 
-	void newAnimationSet(); //WriteFunction
+	void NewAnimationSet(); //WriteFunction
 	pugi::xml_document* DefaultSerialized(std::string tag_); //Write Function
 	bool isChildNodeExist(const char* nodeName_); //Read Function
 	bool SceneExist(int SceneIndex_, const char* SceneName_);//Read Function

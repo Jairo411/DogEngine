@@ -15,14 +15,13 @@ Player::Player()
 	amountOfAnimations = 0;
 	disableObject = NULL;
 	collider = RectCollider();
-	ptr = nullptr;
-	name = "Player";
 	/* Don't know the point of this to be honest...*/
 }
 
 Player::Player(const char* textureSheet, int x, int y)
 {
 	/* Basic intializations of a member variables */
+	className = "Player";
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	animState = AnimationStates::IDLE0;
 	setPosition(x, y);
@@ -41,7 +40,6 @@ Player::Player(const char* textureSheet, int x, int y)
 
 	circleCol = CircleCollider(5.0f);
 	collider = RectCollider(srcRect.w,srcRect.h);
-	ptr = this;
 	IntiAnimations("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt", "./Assets/Character/Sprites/", 'a'); //Calling from the Animator class
 	if (this->objTexture != NULL)
 	{
@@ -53,8 +51,8 @@ Player::Player(const char* textureSheet, int x, int y)
 		std::cout << "Object texture wasn't found" << std::endl;
 	}
 
-	GameObject::ObjHolder.push_back(ptr);
-	name += to_string(ObjHolder.size());
+	GameObject::OBJHolder.push_back(this);
+
 
 
 }

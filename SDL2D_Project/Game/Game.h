@@ -5,6 +5,8 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <thread>
+#include <fmod.h>
+#include <fmod_studio.h>
 #include "AI/AI.h"
 #include "../Renderer/Renderer.h"
 #include "../../Server/Server.h"
