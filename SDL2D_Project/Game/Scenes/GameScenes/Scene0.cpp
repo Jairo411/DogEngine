@@ -1,18 +1,27 @@
 #include "Scene0.h"
 
 
-Player* player;
-Skeleton* enemy;
-Skeleton* enemy0;
-Skeleton* enemy1;
-MapLayer* mapA;
+Player* player = nullptr;
+Skeleton* enemy = nullptr;
+Skeleton* enemy0 = nullptr;
+Skeleton* enemy1 = nullptr;
+MapLayer* mapA = nullptr;
 
 Scene0::Scene0()
 {
-	player = nullptr;
-	enemy = nullptr;
-	mapA = nullptr;
+	Game::EngineSerializer->GetInstance()->CreateScene(6, "SCENE0"); // we should find a way to serial objects not in any OnCreate function but returning the Scene maybe.
+	
+	/* Intial Object Creations*/
+	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);
+	enemy = new Skeleton(180, 100);
+	enemy0 = new Skeleton(300, 50);
+	enemy1 = new Skeleton(400, 200);
+	
 
+	/*Observer Pattern Implemented*/
+	mapA = new MapLayer(Game::window);
+
+	Game::EngineSerializer->GetInstance()->AssignID(GameObject::OBJHolder);
 }
 
 Scene0::~Scene0()
@@ -21,24 +30,12 @@ Scene0::~Scene0()
 
 void Scene0::OnCreate()
 {
-	Game::EngineSerializer->GetInstance()->CreateScene(6, "SCENE0"); // we should find a way to serial objects not in any OnCreate function but returning the Scene maybe.
-	/* Intial Object Creations*/
-	player = new Player("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);
-	Game::EngineSerializer->GetInstance()->AddGameObject(player);
-	enemy = new Skeleton(180, 100);
-	enemy0 = new Skeleton(300, 50);
-	enemy1 = new Skeleton(400, 200);
-
-
-
 
 	/*Observer Pattern Implemented*/
 	//enemy->Attach(new GameObserver(enemy));
 	//enemy0->Attach(new GameObserver(enemy0));
 	//enemy1->Attach(new GameObserver(enemy1));
 
-	/*Observer Pattern Implemented*/
-	mapA = new MapLayer(Game::window);
 
 	/* Setting GameObject Functionality*/
 	enemy->SetTarget(player);

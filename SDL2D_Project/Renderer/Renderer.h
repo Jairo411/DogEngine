@@ -26,6 +26,8 @@ public:
 	void operator =(const RendererManager&) = delete;
 	void setRenderer(int numbercase_);
 	void setWindow(Window* window_);
+	void incrementFrames();
+	int getTotalFrameCalls();
 	// with the addition of new renderers, this will be changed.
 	static RendererManager* GetInstance();
 	static int getRenderValue();
@@ -86,6 +88,7 @@ public:
 	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderVariant;
 	// a simple value that I use to tell my engine what renderer its using.
 	static int RenderValue;
+	int frames;
 };
 
 /* My SDL Renderer class 
@@ -109,10 +112,11 @@ public:
 	SDL_Renderer* GetRenderer();
 	void RenderClear();
 	void RenderPresent();
-	void Update();
+	int getTotalFrames();
 private:
 	SDL_Renderer* rend;
 	SDL_Window* window;
+	int totalFrames;
 };
 
 

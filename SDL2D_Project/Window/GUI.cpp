@@ -54,6 +54,8 @@ void GUI::HandleEvents(SDL_Event* e_)
 void GUI::Update()
 {
 	io.DeltaTime = Game::timer->GetDeltaTime();
+	//io.MousePos = getMousePositionx and getMousePositiony probably use a static thingy over here
+	
 }
 
 void GUI::Render()

@@ -11,6 +11,7 @@ RendererManager::RendererManager()
 	openGLRenderer = nullptr;
 	vulkanRenderer = nullptr;
 	window = nullptr;
+	frames = 0;
 }
 
 RendererManager::~RendererManager()
@@ -63,6 +64,16 @@ void RendererManager::setRenderer(int numbercase_)
 void RendererManager::setWindow(Window* window_)
 {
 	window = window_->getWindowContext();
+}
+
+void RendererManager::incrementFrames()
+{
+	frames++;
+}
+
+int RendererManager::getTotalFrameCalls()
+{
+	return frames;
 }
 
 RendererManager* RendererManager::GetInstance()
@@ -278,8 +289,9 @@ void SDLRenderer::RenderPresent()
 	SDL_RenderPresent(rend);
 }
 
-void SDLRenderer::Update()
+
+int SDLRenderer::getTotalFrames()
 {
-	/* this update here is to make sure nothing has changed*/
+	return totalFrames;
 }
 

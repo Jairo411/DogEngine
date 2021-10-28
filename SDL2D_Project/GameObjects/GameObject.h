@@ -120,14 +120,12 @@ protected:
 	/*Functions*/
 	virtual void UpdatePostion() final;
 	int ReadAmountOfAnimations();
-	int getID() { return ID; }
 	/*Members variables*/
 	std::pair<SDL_Rect*, SDL_Rect*> TextureDisplayRectInfo;
 	float orientation;
 	float rotation;
 	float maxAcceleration;
 	bool textureIsOn;
-	int ID; // this number will be loaded into each game object to be able to identify each gameObject
 	/*Object Members*/
 	Vec2 realPosition; // real position 
 	Vec2 APosition; // stands for Anchor Position -> middle of image or square

@@ -32,7 +32,7 @@ protected:
 	std::string name; //an subjective string variable that you assign what ever name; 
 	std::map <std::string, std::string> components; 
 private: 
-	int ID; // unique Identifyer 
 	int indexLocation;// Localtion within my LargeStorage container of all my gameObjects
+	int ID; // unique Identifyer 
 };
 #endif

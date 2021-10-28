@@ -48,48 +48,14 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	rendererManager->GetInstance()->setRenderer(0);
 	window->SetGUI(engineGUI);
 
-	//	window->SetRenderer();
 	isRunning = true;
-	//if (fullscreen)
-	//{
-	//	flags = SDL_WINDOW_FULLSCREEN;
-	//}
 
-	//if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
-	//{
-	//	std::cout << "Subsystem Initialised!..." << std::endl;
-	////	windowProp->win = SDL_CreateWindow(title, posx, posy, width, height, flags);
-	////	window->GetInstance()->setWindowProperties(*windowProp);
-	//	
-	//	if (window->GetInstance()->GetWindow())
-	//	{
-	//		std::cout << "Window created!" << std::endl;
-
-	//	}
-	//	else
-	//	{
-	//		throw std::runtime_error("Window Failed");
-	//	//	std::cout <<&std::runtime_error::what << std::endl;
-	//	}
-	//	renderProp->renderer = SDL_CreateRenderer(window->GetInstance()->GetWindow(), -1,0);
-	//	renderer->getInstance()->setRenderProp(*renderProp);
-	//	if (renderer->getInstance()->getRenderer()!=nullptr)
-	//	{
-	//		SDL_SetRenderDrawColor(renderer->getInstance()->getRenderer(), 225, 225, 225, 225);
-	//		std::cout << "Renderer Created!" << std::endl;
-	//	}
-	//	else
-	//	{
-	//		throw std::runtime_error("Renderer Failed");
-	//	//	std::cout<<&std::runtime_error::what<<std::endl;
-	//	}
-	//	isRunning = true;
-	//	std::cout << "Width: " << window->GetInstance()->getScreenWidth() << " Height: " << window->GetInstance()->getScreenHeight() << std::endl;
 
 	std::shared_ptr<Scene0> gameScene = std::make_shared<Scene0>();
 
 	unsigned int gameSceneID = sceneManager->Add(gameScene);
 
+	timer->SetFPS(60);
 	timer->Start();
 	sceneManager->SwitchTo(gameSceneID);
 	GameLoop();
@@ -117,11 +83,12 @@ void Game::GameLoop()
 			rendererManager->setRenderer(currentRenderFlag);
 		}
 
-		timer->UpdateGeneralFrameTicks();
+		timer->UpdateSteadyClock();
+		timer->UpdatePerformanceClock();
 		HandleEvents();
 		handleCollisions();
-		FixedUpdate(timer->GetDeltaTime());// Physics Update happen through here anddd animations too. 
-		Update(timer->GetDeltaTime()); // GameLogic happens all through this update.
+		FixedUpdate(timer->GetDelta());// Physics Update happen through here anddd animations too. 
+		Update(timer->GetDelta()); // GameLogic happens all through this update.
 		Render();
 		passRenderFlag = rendererManager->getRenderValue();
 	//	SDL_Delay(timer->GetSleepTime(FPS));
@@ -133,6 +100,21 @@ void Game::GameLoop()
 
 void Game::HandleEvents()
 {
+	SDL_Event e;
+
+	SDL_PollEvent(&e);
+	switch (e.type)
+	{
+	default:
+		break;
+	case SDL_WINDOWEVENT: 
+		if (e.window.type == SDL_WINDOWEVENT_CLOSE)
+		{
+
+		}
+		break;
+	}
+	
 	sceneManager->HandleEvents();
 }
 
@@ -154,6 +136,8 @@ void Game::handleCollisions()
 void Game::Render()
 {
 	sceneManager->Render();
+	
+	rendererManager->GetInstance()->incrementFrames();
 }
 
 void Game::clean()

@@ -10,6 +10,7 @@
 #include <list>
 #include <map>
 #include <stdlib.h>
+#include <queue>
 /* I could rework this right now,
 
 	main focus is that, the documents can be handle all together. Instead of individually.
@@ -38,12 +39,16 @@ class Serializer
 public:
 	Serializer(Serializer &other) = delete;
 	Serializer operator=(const Serializer& other) = delete;
+	void OnCreate();
+	void OnDestroy();
 	static Serializer* GetInstance();
 	//PURE WRITE FUNCTIONS
 	//Serializes GameObject
-	void AddGameObject(GameObject* OBJ_); //Write function 
+	void AddGameObject(GameObject* OBJ_); //Write function in scene
+	void AddGameObject(int ID_); //Write function in serializer
 	//On Engine Initialization I will assign already written IDs to current engine game Objects
 	void AssignID(std::list<GameObject*> OBJ_List);
+	void CreateID(GameObject* OBJ_);
 	//Serializes Animations of GameObject
 	void AddAnimationState(GameObject* OBJ_, const char* imageSrc_);//Write function //Animations will be stored in there respective gameObjectDataXML sheet. With there associated tags. 
 	void RemoveAnimation(std::string tagID_, const char* imageSrc_);//Write function 
@@ -57,26 +62,44 @@ public:
 	void DeserializeAnimations(); //<-- Deserialzer should return a string
 	void DeserializeScenes(); //<--Deserializer should return a string 
 	//HELPER FUNCTIONS 
-	void NewAnimationSet(); //WriteFunction
+	int GenerateRandomNumber(); // Generates random number, that will later be used as ID
 	pugi::xml_document* DefaultSerialized(std::string tag_); //Write Function
 	bool isChildNodeExist(const char* nodeName_); //Read Function
 	bool SceneExist(int SceneIndex_, const char* SceneName_);//Read Function
 	bool GameObjectExist(int ID_); // Read Function
 	bool loadFile(const char* fileDirectory_); //Read function
+	void Update();
 private:
 	Serializer();
 	~Serializer();
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
-	std::multimap<pugi::xml_document*, pugi::xml_node> documentList; 
 	std::map < const char*, const char*> directorydictionary;
-	const char* docRootNames[3] = { "EngineDataInfo","ScenesInfo","GameObjectsInfo" };
-	const char* fullpath[3] = { "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData/EngineData.xml",
-						  "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes/SceneData.xml",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameObjects/GameObjectData/GameObjectData.xml" };
-	std::string const SerializedEnginePath = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/EngineData";
-	std::string const SerializedScenePath = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Game/Scenes";
-	std::string const SerializedGameObjectInfo = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameObjects/GameObjectData";
+	const char* docRootNames[4] = 
+	{"EngineSaveData" ,
+	"EngineDataInfo",
+	"ScenesInfo",
+	"GameObjectsInfo"
+	};
+	const char* fullpath[4] = 
+	{ "C:/Users/jalbm/source/repos/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/EngineData.xml",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/SceneData.xml",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjectData/GameObjectData.xml" 
+	};
+	const char* fileNames[4] = 
+		{ "EngineSaveData.xml",
+		"EngineData.xml",
+		"SceneData.xml",
+		"GameObjectData.xml"};
+	const char* directoryPath[4] = 
+		{"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/",
+		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/",
+		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/",
+		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/"
+	};
+	std::list<pugi::xml_document*> document_list;
+	std::vector<int> gameObjectIDs;
 	static Serializer* instance;
 };
 
