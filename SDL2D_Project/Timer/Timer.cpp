@@ -127,6 +127,5 @@ int Timer::GetTotalAmountTime()
 
 void Timer::CalculateFrames()
 {
-	//FPS = totalFrames /  ONE Second
-
+	FPS = totalFrames / ONESECOND;
 }

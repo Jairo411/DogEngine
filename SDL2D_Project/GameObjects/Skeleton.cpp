@@ -216,14 +216,14 @@ void Skeleton::Steer()
 	if (pathFinding == true)
 	{
 		velocity = nodeDirection(path) * speed;
-		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());
+		realPosition = (realPosition + velocity * (float)Game::timer->GetDelta());
 	}
 
 	if (realPosition != getTargetDirection() && seperateFlag == false && pathFinding == false)
 	{
 		chaseFlag = true;
 		velocity = getTargetDirection() * speed;
-		realPosition = (realPosition + velocity * Game::timer->GetDeltaTime());// this should be an equation of motion but you need to have a decent timer class for this 
+		realPosition = (realPosition + velocity * (float)Game::timer->GetDelta());// this should be an equation of motion but you need to have a decent timer class for this 
 	}
 	else if (realPosition != getTargetDirection() && seperateFlag == true && pathFinding == false)
 	{

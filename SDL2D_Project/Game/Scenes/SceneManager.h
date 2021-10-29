@@ -9,7 +9,12 @@
 class SceneManager
 {
 public:
-	SceneManager();
+	SceneManager(const SceneManager&) = delete;
+	SceneManager(SceneManager&&) = delete;
+	SceneManager& operator =(const SceneManager&) = delete;
+	SceneManager& operator =(SceneManager&&) = delete;
+
+	static SceneManager* GetInstance();
 
 	void HandleEvents();
 	void Update(float deltaTime_);
@@ -22,6 +27,9 @@ public:
 	void Remove(unsigned int id);
 
 private:
+	SceneManager();
+	~SceneManager();
+	static SceneManager* instance;
 	friend Serializer;
 	std::unordered_map<unsigned int, std::shared_ptr<Scene>> scenes;
 	std::shared_ptr<Scene> curScene;

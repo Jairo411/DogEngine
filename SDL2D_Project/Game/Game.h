@@ -54,7 +54,7 @@ public:
 	static TextureManager* textureManager;// textureManager
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
 	static Serializer* EngineSerializer; //engine functionality 
-	SceneManager* sceneManager; //Engine functionality 
+	static SceneManager* sceneManager; //Engine functionality 
 	GUI* engineGUI;
 private:
 	static bool isRunning;

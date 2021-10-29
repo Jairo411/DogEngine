@@ -22,10 +22,10 @@ public:
 	float GetDeltaTime() const;
 	[[deprecated("replaced")]]
 	unsigned int GetSleepTime(unsigned int fps_) const;
-	[[deprecated("don't use")]]
+//	[[deprecated("don't use")]]
 	float GetCurrentTicks();
 	/*New Code*/
-	Timer* GetInstance();
+	static Timer* GetInstance();
 	///Will clamp FPS to whatever It is set too
 	void SetFPS(int FrameRatePerSecond_);
 	void SetFrames(int frames_);

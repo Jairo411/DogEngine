@@ -7,14 +7,16 @@ Timer* Game::timer = nullptr;
 Window* Game::window = nullptr;
 Serializer* Game::EngineSerializer = nullptr;
 TextureManager* Game::textureManager = nullptr;
+SceneManager* Game::sceneManager = nullptr;
+
 bool Game::isRunning = false;
 
 
 Game::Game()
 {
 	isRunning = true;
-	timer = new Timer(); //Im making all of these managers /Single entity type classes as singletons
-	sceneManager = new SceneManager();
+	timer = Timer::GetInstance();//Im making all of these managers /Single entity type classes as singletons
+	sceneManager = SceneManager::GetInstance();
 	window = Window::GetInstance();
 	rendererManager = RendererManager::GetInstance();
 	EngineSerializer = Serializer::GetInstance();
@@ -91,7 +93,6 @@ void Game::GameLoop()
 		Update(timer->GetDelta()); // GameLogic happens all through this update.
 		Render();
 		passRenderFlag = rendererManager->getRenderValue();
-	//	SDL_Delay(timer->GetSleepTime(FPS));
 	}
 
 	clean();
@@ -121,6 +122,7 @@ void Game::HandleEvents()
 void Game::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
+	std::cout << "Machine Updating: " << timer->GetInstance()->GetDelta() << std::endl;
 }
 
 void Game::FixedUpdate(float deltaTime_)
@@ -136,8 +138,8 @@ void Game::handleCollisions()
 void Game::Render()
 {
 	sceneManager->Render();
-	
 	rendererManager->GetInstance()->incrementFrames();
+	timer->GetInstance()->SetFrames(rendererManager->GetInstance()->getTotalFrameCalls());
 }
 
 void Game::clean()
