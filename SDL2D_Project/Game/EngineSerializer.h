@@ -11,6 +11,7 @@
 #include <map>
 #include <stdlib.h>
 #include <queue>
+#include <algorithm>
 /* I could rework this right now,
 
 	main focus is that, the documents can be handle all together. Instead of individually.
@@ -88,7 +89,7 @@ private:
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjectData/GameObjectData.xml" 
 	};
 	const char* fileNames[4] = 
-		{ "EngineSaveData.xml",
+		{ "EngineSaveData.xml", 
 		"EngineData.xml",
 		"SceneData.xml",
 		"GameObjectData.xml"};

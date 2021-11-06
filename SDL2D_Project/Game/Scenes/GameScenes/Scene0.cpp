@@ -43,7 +43,7 @@ void Scene0::OnCreate()
 	Game::AI_Manager->getInstance()->getTotalAgents();
 	//Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
 
-
+	Game::initialized = true;
 
 }
 
@@ -76,17 +76,10 @@ void Scene0::HandleEvents()
 	case SDL_KEYUP:
 		player->keyPressed(false, event.key.keysym.sym);
 		player->KeyBoardInput(player->InputKeyBoardHolder.begin()->first);
-		if (SDLK_0)
-		{
-			enemy->Remove();
-		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		player->MousePressed(true, event.button.button);
 		player->MouseInput(player->InputMouseHolder.begin()->first);
-		//	if (Game::actualWindow->MouseInput(event.button.button))
-		//	mapA->keyCode = event.button.button;
-		Game::window->SetGUIEvent(&event);
 		break;
 	case SDL_MOUSEBUTTONUP:
 		player->keyPressed(false, event.key.keysym.sym);

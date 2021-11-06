@@ -8,6 +8,7 @@ Window* Game::window = nullptr;
 Serializer* Game::EngineSerializer = nullptr;
 TextureManager* Game::textureManager = nullptr;
 SceneManager* Game::sceneManager = nullptr;
+bool Game::initialized = false;
 
 bool Game::isRunning = false;
 
@@ -22,6 +23,7 @@ Game::Game()
 	EngineSerializer = Serializer::GetInstance();
 	textureManager = TextureManager::getInstance();
 	engineGUI = new GUI();
+	initialized = false;	
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
@@ -57,8 +59,9 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 
 	unsigned int gameSceneID = sceneManager->Add(gameScene);
 
-	timer->SetFPS(60);
+//	timer->SetFPS(60);
 	timer->Start();
+	timer->SetLogicLoopSpeed(60);
 	sceneManager->SwitchTo(gameSceneID);
 	GameLoop();
 
@@ -75,23 +78,42 @@ void Game::GameLoop()
 	currentRenderFlag = rendererManager->getRenderValue();
 	while (isRunning == true)
 	{
-		if (currentRenderFlag !=rendererManager->getRenderValue())
+		if (currentRenderFlag != rendererManager->getRenderValue())
 		{
 			currentRenderFlag = passRenderFlag;
 
 			rendererManager->OnDestroy();
-			
+
 			rendererManager->OnCreate();
 			rendererManager->setRenderer(currentRenderFlag);
 		}
-
 		timer->UpdateSteadyClock();
 		timer->UpdatePerformanceClock();
-		HandleEvents();
+
 		handleCollisions();
-		FixedUpdate(timer->GetDelta());// Physics Update happen through here anddd animations too. 
-		Update(timer->GetDelta()); // GameLogic happens all through this update.
-		Render();
+		HandleEvents();
+
+		timer->IncrementUpdateLag(timer->GetDelta());
+
+		while (timer->GetUpdateLag()>=timer->getMS_Machine_Update())
+		{
+
+			double positiveTimeValue = timer->getMS_Machine_Update();
+
+//			FixedUpdate(positiveTimeValue);// Physics Update happen through here anddd animations too. 
+
+			Update(positiveTimeValue); // GameLogic happens all through this update.
+
+
+			double negativeTimeValue = timer->getMS_Machine_Update() * -1.0;
+
+			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
+		}
+		
+		Render(); // when everything has been finished render that is one call draw
+
+
+
 		passRenderFlag = rendererManager->getRenderValue();
 	}
 
@@ -122,7 +144,7 @@ void Game::HandleEvents()
 void Game::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
-	std::cout << "Machine Updating: " << timer->GetInstance()->GetDelta() << std::endl;
+	std::cout << "Machine Updating: " << timer->GetDelta() << std::endl;
 }
 
 void Game::FixedUpdate(float deltaTime_)
@@ -138,8 +160,8 @@ void Game::handleCollisions()
 void Game::Render()
 {
 	sceneManager->Render();
-	rendererManager->GetInstance()->incrementFrames();
-	timer->GetInstance()->SetFrames(rendererManager->GetInstance()->getTotalFrameCalls());
+	timer->IncrementFrames();
+
 }
 
 void Game::clean()

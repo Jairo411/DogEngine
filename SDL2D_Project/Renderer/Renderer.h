@@ -26,8 +26,6 @@ public:
 	void operator =(const RendererManager&) = delete;
 	void setRenderer(int numbercase_);
 	void setWindow(Window* window_);
-	void incrementFrames();
-	int getTotalFrameCalls();
 	// with the addition of new renderers, this will be changed.
 	static RendererManager* GetInstance();
 	static int getRenderValue();

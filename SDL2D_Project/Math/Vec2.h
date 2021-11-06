@@ -1,6 +1,7 @@
 #ifndef MATH_H
 #define MATH_H
 #include <math.h>
+#include <iostream>
 /*Simple Vector 2 class with basic vector math
  All children Classes of GameObject will carry the Vec2 class*/
 /*2021-07-09
@@ -38,6 +39,9 @@ public:
 	/*Overloading logical operators*/
 	bool operator==(const Vec2& b_);
 	bool operator!=(const Vec2& b_);
+
+
+	friend std::ostream& operator <<(std::ostream& os,const Vec2& b_);
 
 	float x, y;
 private: 

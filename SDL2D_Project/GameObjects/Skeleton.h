@@ -32,6 +32,7 @@ public:
 	virtual void Seperate();
 private:
 	/*Member variables*/
+	float dt;
 	float speed;
 	float prediction;
 	/*Objects Members*/

@@ -56,6 +56,7 @@ public:
 	static Serializer* EngineSerializer; //engine functionality 
 	static SceneManager* sceneManager; //Engine functionality 
 	GUI* engineGUI;
+	static bool initialized;
 private:
 	static bool isRunning;
 

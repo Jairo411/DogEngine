@@ -166,3 +166,9 @@ Vec2 Vec2::rotate()
 	return Vec2();
 }
 
+std::ostream& operator<<(std::ostream& os, const Vec2& b_)
+{
+	os << " Position X: " << b_.x << "Position Y:" << b_.y;
+
+	return os;
+}

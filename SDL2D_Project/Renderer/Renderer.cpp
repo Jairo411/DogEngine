@@ -66,16 +66,6 @@ void RendererManager::setWindow(Window* window_)
 	window = window_->getWindowContext();
 }
 
-void RendererManager::incrementFrames()
-{
-	frames++;
-}
-
-int RendererManager::getTotalFrameCalls()
-{
-	return frames;
-}
-
 RendererManager* RendererManager::GetInstance()
 {
 	if (instance == nullptr)

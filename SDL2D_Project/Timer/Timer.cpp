@@ -9,6 +9,13 @@ Timer::Timer()
 	currentTicks = 0;
 	prevPerformaceTicks = 0;
 	currentPerformanceTicks = 0;
+	FramePerSecondFlag = 0.0;
+	flag = 0;
+	totalFrames = 0;
+	updateLag = 0;
+	delta = 0.0;
+	thresHold = 0.0;
+	updateLoopSpeed = 0.0f;
 }
 
 Timer::~Timer()
@@ -49,10 +56,12 @@ void Timer::UpdatePerformanceClock()
 	performanceTP.second = performanceTP.first;
 	performanceTP.first = performanceClock.first.now();
  	
-	FramePerSecondFlag += GetDelta();
+	delta = CalculateDelta();
+	FramePerSecondFlag += delta;
 	if (FramePerSecondFlag>=ONESECOND)
 	{
-		CalculateFrames();
+		FPS = totalFrames;
+		PrintFPS();
 	}
 }
 
@@ -64,23 +73,23 @@ float Timer::GetDeltaTime() const
 	// return 
 }
 
-unsigned int Timer::GetSleepTime(unsigned int fps_) const
-{
-	unsigned int milliPerFrame = 1000/fps_;
-	if (milliPerFrame==0)
-	{
-		return 0;
-	}
-
-	unsigned int sleepTime = milliPerFrame - SDL_GetTicks();
-	
-	if (sleepTime> milliPerFrame)
-	{
-		return milliPerFrame;
-	}
-
-	return sleepTime;
-}
+//unsigned int Timer::GetSleepTime(unsigned int fps_) const
+//{
+//	unsigned int milliPerFrame = 1000/fps_;
+//	if (milliPerFrame==0)
+//	{
+//		return 0;
+//	}
+//
+//	unsigned int sleepTime = milliPerFrame - SDL_GetTicks();
+//	
+//	if (sleepTime> milliPerFrame)
+//	{
+//		return milliPerFrame;
+//	}
+//
+//	return sleepTime;
+//}
 
 float Timer::GetCurrentTicks()
 {
@@ -99,33 +108,80 @@ Timer* Timer::GetInstance()
 	}
 }
 
-void Timer::SetFPS(int FrameRatePerSecond_)
+void Timer::IncrementSleepTime()
 {
-	FPS = FrameRatePerSecond_;
+	double tempDelta = CalculateDelta();
+	updateLag += tempDelta;
 }
 
-void Timer::SetFrames(int frames_)
+double Timer::getSleepTime()
 {
-	totalFrames = frames_;
+	return updateLag;
 }
 
-Uint64 Timer::GetDelta()
+
+void Timer::IncrementFrames()
 {
-	std::chrono::nanoseconds elasped = performanceTP.second - performanceTP.first;
+	if (FramePerSecondFlag<ONESECOND)
+	{
+		totalFrames++;
+	}
+	else if (FramePerSecondFlag>=ONESECOND)
+	{
+		totalFrames = 0;
+		FramePerSecondFlag = 0.0;
+	}
+}
+
+void Timer::PrintFPS()
+{
+	std::cout << "FPS: " << FPS << std::endl;
+}
+
+
+
+void Timer::IncrementUpdateLag(double updateLag_)
+{
+	updateLag += updateLag_;
+	std::cout << "sleepTime:" << updateLag << std::endl;
+}
+
+double Timer::GetUpdateLag()
+{
+	return updateLag;
+}
+
+void Timer::SetLogicLoopSpeed(int FPS_)
+{
+	updateLoopSpeed = 1.0/(double)FPS_; //1/60 = 0.016
+}
+
+double Timer::getMS_Machine_Update()
+{
+	return updateLoopSpeed;
+}
+
+double Timer::GetDelta()
+{
+	return delta;
+}
+
+double Timer::CalculateDelta()
+{
+	std::chrono::nanoseconds elasped = performanceTP.first - performanceTP.second; //elapsed == current - pervious 
 	double time = std::chrono::duration<double, std::milli>(elasped).count();
-	Uint64 dataTypeConverter = (Uint64)time;
-	return dataTypeConverter;
+	time /= 1000.0;
+	return time;
 }
 
 int Timer::GetTotalAmountTime()
 {
-	std::chrono::duration<float> elasped = steadyTP.second - steadyTP.first;
+	std::chrono::duration<float> elasped = steadyTP.first - steadyTP.second; //elapsed == current - pervious 
 	float time = elasped.count();
 	assert(time<0.0f);
 	return (int)time;
 }
 
-void Timer::CalculateFrames()
-{
-	FPS = totalFrames / ONESECOND;
-}
+
+
+

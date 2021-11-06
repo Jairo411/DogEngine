@@ -7,34 +7,32 @@ Serializer* Serializer::instance = nullptr;
 Serializer::Serializer()
 {
 	//Just creating every file, not handling any of the files
-	std::string directoryPaths[4] = { directoryPath[0],directoryPath[1],directoryPath[2],directoryPath[3]};
-	std::string fileNames[4] = { fileNames[0],fileNames[1],fileNames[2],fileNames[3] };
-	std::string::const_iterator its = directoryPaths->cbegin();
 	CurrentDoc = new pugi::xml_document();
 	struct stat status;
-	int count = 0;
-	while (its != directoryPaths->cend())
+	int index = 0;
+	int length = sizeof(directoryPath) / sizeof(directoryPath[0]); //total length of the array, this works because the total size of the array 
+	while (index != length)
 	{
-		if (std::filesystem::exists(its) == false)
+		
+		if (std::filesystem::exists(directoryPath[index]) == false)
 		{
-			std::cout << *its << std::endl;
+			std::cout << directoryPath[index] << std::endl;
 			std::cout << "Directory doesn't exist, creating it..." << std::endl;
 
-			std::filesystem::create_directory(its);
-			std::cout << "Creating Files, currentFile being created :" << docRootNames[count] << std::endl;
+			std::filesystem::create_directory(directoryPath[index]);
+			std::cout << "Creating Files, currentFile being created :" << docRootNames[index] << std::endl;
 		}
 		// get current path from iterator then check to see if they exist or not
-		std::string iteratorString(1, *its);
-		std::string path = iteratorString;
-		std::string file = fileNames[count];
+		std::string path = directoryPath[index];
+		std::string file = fileNames[index];
 		std::string combined = path + file;
 		// this checks to see if the files exist themselves  
 		// if they don't exist
 		if (stat(combined.c_str(), &status) != 0)
 		{
-			std::cout << "Creating Files, currentFile being created :" << docRootNames[count] << std::endl;
+			std::cout << "Creating Files, currentFile being created :" << docRootNames[index] << std::endl;
 			pugi::xml_document* document;
-			document = DefaultSerialized(docRootNames[count]);
+			document = DefaultSerialized(docRootNames[index]);
 			document->save_file(combined.c_str(), PUGIXML_TEXT(""));
 			document_list.push_back(document);
 		}
@@ -42,16 +40,14 @@ Serializer::Serializer()
 		else if (stat(combined.c_str(), &status) == 0)
 		{
 			std::cout << "Loading in Files...." << std::endl;
-			std::string path = iteratorString;
-			std::string file = fileNames[count];
+			std::string file = fileNames[index];
 			std::string combined = path + file;
 			pugi::xml_document* document = new pugi::xml_document();
 			document->load_file(combined.c_str());
 			document_list.push_back(document);
 		}
+		index++;
 	}
-	count++;
-	its++;
 }
 
 void Serializer::OnCreate()

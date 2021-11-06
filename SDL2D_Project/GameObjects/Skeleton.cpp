@@ -16,10 +16,9 @@ Skeleton::Skeleton()
 Skeleton::Skeleton(int x, int y)
 {
 	setPosition(x, y);
-	speed = 20;
 	srcRect.x = 0;
 	srcRect.y = 0;
-
+	speed = 0.1f;
 
 	srcRect0.x = 0;
 	srcRect0.y = 0;
@@ -159,6 +158,7 @@ void Skeleton::Inti()
 void Skeleton::Update(float DeltaTime_)
 {
 	/* I like this but IObserverable Should be in the Game Object class*/
+	dt = DeltaTime_;
 	if (dynamic_cast<IObserverable*>(this))
 	{
 		Notify();
@@ -215,15 +215,18 @@ void Skeleton::Steer()
 {
 	if (pathFinding == true)
 	{
-		velocity = nodeDirection(path) * speed;
-		realPosition = (realPosition + velocity * (float)Game::timer->GetDelta());
+		velocity = nodeDirection(path);
+		realPosition = (realPosition + velocity * dt);
 	}
 
 	if (realPosition != getTargetDirection() && seperateFlag == false && pathFinding == false)
 	{
 		chaseFlag = true;
-		velocity = getTargetDirection() * speed;
-		realPosition = (realPosition + velocity * (float)Game::timer->GetDelta());// this should be an equation of motion but you need to have a decent timer class for this 
+
+		velocity = getTargetDirection();
+
+		realPosition = (realPosition + velocity * dt);// this should be an equation of motion but you need to have a decent timer class for this
+	//	std::cout << "real position" << realPosition <<std::endl;
 	}
 	else if (realPosition != getTargetDirection() && seperateFlag == true && pathFinding == false)
 	{

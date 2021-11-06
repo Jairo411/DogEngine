@@ -82,8 +82,8 @@ void Player::Update(float dt_)
 
 	if (getDisable() == false)
 	{
-		dstRect.x = realPosition.x;
-		dstRect.y = realPosition.y;
+		dstRect.x = realPosition.x * dt_;
+		dstRect.y = realPosition.y * dt_;
 		dstRect.w = srcRect.w;
 		dstRect.h = srcRect.h;
 	}
@@ -145,7 +145,7 @@ bool Player::KeyBoardInput(int key)
 		}
 		if (key == SDLK_d)
 		{
-			realPosition.x += 3.5;
+			realPosition.x += 3.5 ;
 			animState = AnimationStates::RUN;
 		}
 		if (key == SDLK_w)
