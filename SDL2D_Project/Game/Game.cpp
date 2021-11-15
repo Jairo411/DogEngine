@@ -138,6 +138,7 @@ void Game::HandleEvents()
 		break;
 	}
 	
+	/*SceneManager handleEvents is spefically for events that I set up for that current Scene*/
 	sceneManager->HandleEvents();
 }
 

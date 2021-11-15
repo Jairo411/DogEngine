@@ -93,6 +93,7 @@ void GameObject::setPosition(Vec2 vPosition)
 	posY = center.y;
 	realPosition = center;
 }
+
 /*Observer Pattern Implemented*/
 void GameObject::Attach(IObserver* observer_)
 {

@@ -9,51 +9,10 @@ Input::~Input()
 {
 }
 
-bool Input::keyPressed(int is_pressed,int keycode)
+SDL_Event* Input::GetEvent()
 {
-	InputKeyBoardHolder.clear();
-	if (SDL_PRESSED == is_pressed)
-	{
-		if (SDL_KEYDOWN)
-		{
-			/* You should add this to your player class then send the keycode to another function
-		 Function within a function*/ 
-			InputKeyBoardHolder.insert(std::pair<int, bool>(keycode, true));	
-			return true;
-		}
-	}
-	else if (SDL_RELEASED==is_pressed)
-	{
-		if (SDL_KEYUP)
-		{
-			keycode = NULL;
-			InputKeyBoardHolder.insert(std::pair<int, bool>(keycode, false));
-			return true;
-		}
-	} 
-}
-
-bool Input::MousePressed(int is_Pressed, int keycode)
-{
-	InputMouseHolder.clear();
-	if (SDL_PRESSED== is_Pressed)
-	{
-		if (SDL_MOUSEBUTTONDOWN)
-		{
-			SDL_GetMouseState(&mouseX, &mouseY);
-			InputMouseHolder.insert(std::pair<int, bool>(keycode, true));																										
-			return true;
-		}
-	}
-	else if (SDL_RELEASED== is_Pressed)
-	{
-		if (SDL_MOUSEBUTTONUP)
-		{
-			InputMouseHolder.insert(std::pair<int, bool>(keycode, false));
-			return true;
-		}
-	}
-	return false;
+	SDL_PollEvent(currentEvent);
+	return currentEvent;
 }
 
 void Input::setWindow(Window* windowptr_)
@@ -82,6 +41,63 @@ bool Input::CreateCollider(bool state_)
 		mouseClick = NULL;
 	}
 	return false;
+}
+
+MouseInput::MouseInput()
+{
+	InputMouseHolder = std::map<int, bool>();
+}
+
+MouseInput::~MouseInput()
+{
+	InputMouseHolder.empty();
+}
+
+void MouseInput::Update()
+{
+	switch (GetEvent()->type)
+	{
+	default:
+		break;
+		
+	case SDL_MOUSEBUTTONUP: //Should be used for singluar clicks
+		InputMouseHolder.insert(std::pair<int, bool>());
+		break;
+	case SDL_MOUSEBUTTONDOWN:  //Should be used when holding down the button
+		InputMouseHolder.insert(std::pair<int, bool>());
+		break;
+
+	case SDL_MOUSEWHEEL: //Should be used when using the scrolling wheel
+		InputMouseHolder.insert(std::pair<int, bool>());
+		break;
+	}
+}
+
+KeyBoardInput::KeyBoardInput()
+{
+	InputKeyBoardHolder = std::map<int, bool>();
+}
+
+KeyBoardInput::~KeyBoardInput()
+{
+}
+
+
+
+void KeyBoardInput::Update()
+{
+	SDL_Event* tempEvent = GetEvent();
+	switch (tempEvent->type)
+	{
+	default:
+		break;
+	case SDL_KEYDOWN:
+		InputKeyBoardHolder.insert(std::pair<int,bool>(tempEvent->key.keysym.scancode,true));
+		break;
+	case SDL_KEYUP:
+		InputKeyBoardHolder.insert(std::pair<int, bool>(tempEvent->key.keysym.scancode, true));
+		break;
+	}
 }
 
 

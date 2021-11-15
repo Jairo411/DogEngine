@@ -13,6 +13,7 @@
 #include"../Math/Vec2.h"
 #include"../DesignPattern/Observer.h"
 #include"Component/Component.h"
+#include "../Input/PlayerController.h"
 
 /*Standard GameObject class should be abstract and should be the base class.
 of any game object in the game i.e

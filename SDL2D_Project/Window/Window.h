@@ -17,10 +17,11 @@ functionality will be used to set up properties and maybe access none static var
 	that I can create my objects and assign there member values according to how I want.
 	Like how Graphics APIs set up there logic
 - THE WINDOW CLASS SHOULD NOT HANDLE INPUT LOGIC 
-	
+- THE WINDOW CLASS WILL NOW HANDLE INPUT LOGIC THROUGH COMPOSITIONS OBJECTS. :D
+- THE WINDOW CLASS INPUT LOGIC CAN AND WILL BE HARDCODEDISH.
 	.*/
 class Game;
-class Window: public Input
+class Window
 {	
 public:
 	Window(Window& other) = delete;
@@ -33,9 +34,6 @@ public:
 	SDL_Window* getWindowContext();
 	static int getScreenHeight();
 	static int getScreenWidth();
-	bool MouseInput(int case_);
-	bool KeyBoardInput(int key);
-	bool ControllerInput(int key);
 	void CreateMiddleRect();
 	void setWindowProperties(int xPosition_, int yPosition, int width, int height, int flag);
 	void setWindowTitle(const char* title_);
@@ -45,6 +43,7 @@ public:
 	void SetGUI(GUI* GUIContext_);
 	void Render();
 	void Update();
+	void HandleInput();
 	static Vec2 ConvertScreenCoords(int x, int y);
 	Vec2 midVec;
 	enum WindowStatus : unsigned int
@@ -54,21 +53,22 @@ public:
 		RELEASE
 	};
 private:
-	//Basic Window Member Variables
-	int CurrentWindow_XPOS, CurrentWindow_YPOS;
-	int windowFlag;
-	static int ScreenWidth; //Actually since you have functions for this 
-	static int ScreenHeight; // move over the covertedScreenCoords 
-	std::string WindowTitle;
+	//Functions
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
 	Window(SDL_Window* window_);
 	~Window();
-	int mouseX, mouseY; //Mouse positions
+	//INPUT HANDLER
+	KeyBoardInput keyBoardHandler;
+	MouseInput mouseInput;
+	//Basic Window Member Variables
+	static int ScreenWidth, ScreenHeight; //Window Size
+	int CurrentWindow_XPOS, CurrentWindow_YPOS; // Position of the window 
+	int mouseX, mouseY; //Position of the mouse Remove this 
+	int windowFlag; 
 	int SquareSize;
-	int totalAmountOfSquares;
 	int windowStatus;
+	std::string WindowTitle;
 	static Window* instance;
-	std::map<SDL_Rect*, int> GraphicSquareHolder;
 	SDL_Rect middleRect;
 	static SDL_Point middleOfScreen;
 	Vec2 covertedScreenCoords;

@@ -11,7 +11,6 @@ Window::Window()
 {
 	ScreenHeight = 0;
 	ScreenWidth = 0;
-	totalAmountOfSquares = 0;
 	SquareSize = 0;
 	middleOfScreen.x = 0;
 	middleOfScreen.y = 0;
@@ -33,10 +32,9 @@ void Window::SetGUI(GUI* GUIContext_)
 
 Window::Window(SDL_Window *window_)
 {
-	ScreenHeight = 0; //
+	ScreenHeight = 0; 
 	ScreenWidth = 0;
 	SquareSize = 40;
-	totalAmountOfSquares = 0;
 	window= window_;
 	
 
@@ -46,22 +44,6 @@ Window::Window(SDL_Window *window_)
 	
 	CreateMiddleRect();
 
-
-	int keyValue=0;
-	for (int r = 0; r < 20;r++)
-	{
-		for (int  c = 0; c <  16;  c++)
-		{
-			SDL_Rect* tempSquare = new SDL_Rect();
-		
-			tempSquare->x = r * SquareSize;
-			tempSquare->y = c * SquareSize;
-			tempSquare->w = SquareSize;
-			tempSquare->h = SquareSize;
-			GraphicSquareHolder.insert(std::pair<SDL_Rect*,int>(tempSquare,keyValue));	
-			keyValue++;
-		}	
-	}
 	
 }
 
@@ -151,31 +133,6 @@ void Window::setWindowContext(SDL_Window* windowContext_)
 	window = windowContext_;
 }
 
-bool Window::MouseInput(int key_)
-{
-	/*
-	you probably want to redesign this
-	make it so that the mouse doesn't turn it on and off.
-	*/
-	if (key_!=NULL)
-	{
-		if (SDL_BUTTON_RIGHT&&windowStatus!=STANDARD)
-		{
-			windowStatus = STANDARD;
-		}
-		else if (SDL_BUTTON_RIGHT&& windowStatus!=DEBUG)
-		{
-			windowStatus = DEBUG;
-		}
-		return true;
-	}
-	return false;
-}
-
-bool Window::ControllerInput(int key)
-{
-	return false;
-}
 
 void Window::CreateMiddleRect()
 {
@@ -185,11 +142,6 @@ void Window::CreateMiddleRect()
 	middleRect.w = 30;
 	middleRect.h = 30;
 
-}
-
-bool Window::KeyBoardInput(int key)
-{
-	return false;
 }
 
 Window::~Window()
@@ -277,6 +229,10 @@ void Window::Update()
 {
 	GUIContext->HandleEvents(GUIEvent);
 	GUIContext->Update();
+}
+
+void Window::HandleInput()
+{
 }
 
 Vec2 Window::ConvertScreenCoords(int x_, int y_)

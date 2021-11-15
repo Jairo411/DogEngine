@@ -21,7 +21,7 @@
 #include "../GameObjects/Map/Map.h"
 #include "../GameObjects/Map/TileSet/Tiles.h"
 #include "../GameObjects/GameObject.h"
-#include "../GameObjects/Player.h"
+#include "../GameObjects/Rogue.h"
 #include "../GameObjects/Skeleton.h"
 #include "../GameObjects/Map/Map.h"
 #include "EngineSerializer.h"
