@@ -6,6 +6,7 @@
 #include <iostream>
 #include <variant>
 #include "../GameObjects/GameObject.h";
+#include "../Thread/ThreadAble.h"
 /*2021-7-15
 Renderer class will support many different renderers hopefully in the future
 I will also Write the difference renderer inside my Render class.
@@ -17,13 +18,14 @@ class OpenGLRenderer;
 class VulkanRenderer;
 class SDLRenderer;
 class Window;
-class RendererManager
+class RendererManager :ThreadAble
 {
 public:
 	void OnCreate();
 	void OnDestroy();
 	RendererManager(RendererManager& other) = delete;
 	void operator =(const RendererManager&) = delete;
+	///note make sure that you can switch renderers but the machine has to reboot the program
 	void setRenderer(int numbercase_);
 	void setWindow(Window* window_);
 	// with the addition of new renderers, this will be changed.
@@ -74,6 +76,11 @@ public:
 		}
 		return temp;
 	}
+
+	virtual void operator()()
+	{
+
+	}
 	private:
 	~RendererManager();
 	RendererManager();
@@ -92,7 +99,7 @@ public:
 /* My SDL Renderer class 
  Does all my rendering stuff here, some of these functions exist simply for abstracting 
  my render process and it also seems like that, I will create own purpose rendering functions*/
-class SDLRenderer
+class SDLRenderer :ThreadAble
 {
 public:
 	SDLRenderer(SDL_Window* window_);
@@ -111,6 +118,10 @@ public:
 	void RenderClear();
 	void RenderPresent();
 	int getTotalFrames();
+	virtual void operator()()
+	{
+
+	}
 private:
 	SDL_Renderer* rend;
 	SDL_Window* window;
@@ -118,7 +129,7 @@ private:
 };
 
 
-class OpenGLRenderer
+class OpenGLRenderer 
 {
 public:
 	OpenGLRenderer();
