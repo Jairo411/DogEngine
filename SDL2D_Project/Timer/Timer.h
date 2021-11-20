@@ -4,6 +4,7 @@
 #include <chrono>
 #include <assert.h>
 #include <iostream>
+#include <list>
 #define ONESECOND 1000 /// This is exactly one second in milliseconds
 #define SIXTYFRAMES_PER_SECOND 16.666 // 60FPS in milliseconds 1/60 
 #define THIRTYFRAMES_PER_SECOND 33.333 // 30FPS in milliseconds
@@ -12,6 +13,16 @@ This shit over here needs some work.
 2021-11-01
 Did the work.
 */
+
+/*
+* The Local Timer struct is essentially an object that I can create to check to see if a 
+* certain amount of time has passed. 
+*/
+struct LocalTimer
+{
+	double timerLimit = 0.0;
+	std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> LocalTimerPair;
+};
 
 class Timer
 {
@@ -46,7 +57,21 @@ public:
 	double GetDelta();
 	///This will return the total seconds the engine has been running at
 	int GetTotalAmountTime();
-private:
+	///Will add my local timer structure to my list of local timers
+	static void AddLocalTimer(LocalTimer local_);
+	///Will just simply start the timer at the end of the list 
+	static void StartTimer();
+	///Can Pass the localTimer directly 
+	static void StartTimer(LocalTimer local_);
+	///Remember when working with std::chrono::<insert time variable here> that you know exactly what unit of time you are working in, i.e secs, millisecs,mircosecs 
+	static void SetTimer(std::chrono::milliseconds milli_);
+	///Remember when working with std::chrono::<insert time variable here> that you know exactly what unit of time you are working in, i.e secs, millisecs,mircosecs 
+	static void SetTimer(std::chrono::seconds secs_);
+	///get the Current local Timer flag
+	static bool getCurrentLocalTimerFlag();
+	///Here I will in
+	static void UpdateAllLocalTimers();
+ private:
 	/* Old Code*/
 	unsigned int prevTicks, currentTicks;
 	bool flag;
@@ -63,6 +88,10 @@ private:
 	double thresHold;
 	double updateLoopSpeed;
 	double FramePerSecondFlag;
+	static double timerLimit;
+	static LocalTimer* currentLocaltimerPtr;
+	static std::list<LocalTimer*>localTimersContainer;
+	static std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> timer;
 	std::pair<std::chrono::high_resolution_clock,std::chrono::high_resolution_clock> performanceClock;
 	std::pair<std::chrono::steady_clock,std::chrono::steady_clock> steadyClock;
 	std::pair<std::chrono::high_resolution_clock::time_point, std::chrono::high_resolution_clock::time_point> performanceTP;

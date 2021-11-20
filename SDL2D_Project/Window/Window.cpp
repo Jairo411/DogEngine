@@ -178,7 +178,7 @@ void Window::Render()
 		break;
 		case Window::STANDARD:
 		{
-			std::map<SDL_Rect*, int>::iterator it = GraphicSquareHolder.begin();
+	/*		std::map<SDL_Rect*, int>::iterator it = GraphicSquareHolder.begin();
 			int cycleValue = 0;
 			for (it = GraphicSquareHolder.begin(); it != GraphicSquareHolder.end(); it++)
 			{
@@ -190,7 +190,7 @@ void Window::Render()
 				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
 
 				cycleValue += 1;
-			}
+			}*/
 		}
 
 		break;

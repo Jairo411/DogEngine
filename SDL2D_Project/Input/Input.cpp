@@ -64,6 +64,7 @@ void MouseInput::Update()
 		InputMouseHolder.insert(std::pair<int, bool>());
 		break;
 	case SDL_MOUSEBUTTONDOWN:  //Should be used when holding down the button
+		
 		InputMouseHolder.insert(std::pair<int, bool>());
 		break;
 

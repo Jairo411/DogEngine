@@ -2,6 +2,8 @@
 #define MILLISECONDS_TO_SECONDS /1000.0f 
 
 Timer* Timer::instance = nullptr;
+std::list<LocalTimer*> Timer::localTimersContainer = std::list<LocalTimer*>();
+LocalTimer* Timer::currentLocaltimerPtr = nullptr;
 
 Timer::Timer()
 {
@@ -180,6 +182,60 @@ int Timer::GetTotalAmountTime()
 	float time = elasped.count();
 	assert(time<0.0f);
 	return (int)time;
+}
+
+void Timer::AddLocalTimer(LocalTimer local_)
+{
+	localTimersContainer.push_back(&local_);
+}
+
+void Timer::StartTimer()
+{
+	assert(localTimersContainer.empty() == true);
+	LocalTimer* tempLocalTimer = nullptr;
+	tempLocalTimer = localTimersContainer.back();
+	tempLocalTimer->LocalTimerPair.first = std::chrono::steady_clock();
+	currentLocaltimerPtr = tempLocalTimer;
+}
+
+void Timer::StartTimer(LocalTimer local_)
+{
+	assert(localTimersContainer.empty()==true);
+	for (auto timer : localTimersContainer  )
+	{
+		if (timer==&local_)
+		{
+			timer->LocalTimerPair.first = std::chrono::steady_clock();
+			currentLocaltimerPtr = timer;
+		}
+	}
+	
+}
+
+void Timer::SetTimer(std::chrono::milliseconds milli_)
+{
+	currentLocaltimerPtr->timerLimit = (double)milli_.count();
+}
+
+void Timer::SetTimer(std::chrono::seconds secs_)
+{
+	currentLocaltimerPtr->timerLimit = (double)secs_.count();
+}
+
+bool Timer::getCurrentLocalTimerFlag()
+{
+	if (currentLocaltimerPtr->timerLimit<=0.0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Timer::UpdateAllLocalTimers()
+{
 }
 
 

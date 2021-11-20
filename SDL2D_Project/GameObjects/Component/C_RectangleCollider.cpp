@@ -2,7 +2,8 @@
 #include "../GameObject.h"
 
 
-C_RectangleCollider::C_RectangleCollider(BaseObj* owner) : Component(owner) 
+
+C_RectangleCollider::C_RectangleCollider(BaseObj* owner) : Component(owner)
 {
 	Start();
 }

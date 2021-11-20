@@ -25,7 +25,12 @@ Game::Game()
 	engineGUI = new GUI();
 	initialized = false;	
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+	
+	
+	//threadContainer.push_back(std::thread([&]() {}));
+		
 }
+
 
 
 
@@ -91,9 +96,10 @@ void Game::GameLoop()
 		timer->UpdatePerformanceClock();
 
 		handleCollisions();
-		HandleEvents();
+		HandleEvents(); // I handle my input here 
 
 		timer->IncrementUpdateLag(timer->GetDelta());
+
 
 		while (timer->GetUpdateLag()>=timer->getMS_Machine_Update())
 		{
@@ -108,7 +114,7 @@ void Game::GameLoop()
 			double negativeTimeValue = timer->getMS_Machine_Update() * -1.0;
 
 			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
-		}
+		}	
 		
 		Render(); // when everything has been finished render that is one call draw
 

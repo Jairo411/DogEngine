@@ -7,6 +7,7 @@
 #include <thread>
 #include <fmod.h>
 #include <fmod_studio.h>
+#include <functional>
 #include "AI/AI.h"
 #include "../Renderer/Renderer.h"
 #include "../../Server/Server.h"
@@ -58,8 +59,8 @@ public:
 	GUI* engineGUI;
 	static bool initialized;
 private:
-	static bool isRunning;
-
+	static bool isRunning;	
+	std::vector<std::thread> threadContainer;
 };
 
 #endif // !Game_H
