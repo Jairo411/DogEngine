@@ -102,6 +102,7 @@ public:
 class SDLRenderer :ThreadAble
 {
 public:
+	SDLRenderer() { ; }
 	SDLRenderer(SDL_Window* window_);
 	~SDLRenderer();
 	void OnCreate();

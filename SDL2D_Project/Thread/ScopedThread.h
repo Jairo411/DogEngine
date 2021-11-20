@@ -5,7 +5,7 @@
 class Scoped_Thread
 {
 public:
-	explicit Scoped_Thread(std::thread t_):t(std::move(t_)) 
+	explicit Scoped_Thread(std::thread* t_):t(std::move(t_)) 
 	{
 		if (!t.joinable())
 		{
