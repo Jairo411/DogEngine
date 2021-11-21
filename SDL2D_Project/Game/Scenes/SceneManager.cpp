@@ -104,3 +104,4 @@ void SceneManager::Remove(unsigned int id)
 		scenes.erase(it);
 	}
 }
+

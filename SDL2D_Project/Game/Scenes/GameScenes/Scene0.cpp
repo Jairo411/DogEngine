@@ -22,6 +22,8 @@ Scene0::Scene0()
 	mapA = new MapLayer(Game::window);
 
 	Game::EngineSerializer->GetInstance()->AssignID(GameObject::OBJHolder);
+
+	
 }
 
 Scene0::~Scene0()

@@ -9,7 +9,6 @@ Game *game = nullptr;
 
 int main(int argc,char * argv[]) {
 	game = new Game();
-	std::getchar();
 
 	return 0;
 }

@@ -8,6 +8,7 @@ Window* Game::window = nullptr;
 Serializer* Game::EngineSerializer = nullptr;
 TextureManager* Game::textureManager = nullptr;
 SceneManager* Game::sceneManager = nullptr;
+ThreadManager* Game::threadManager = nullptr;
 bool Game::initialized = false;
 
 bool Game::isRunning = false;
@@ -23,11 +24,23 @@ Game::Game()
 	EngineSerializer = Serializer::GetInstance();
 	textureManager = TextureManager::getInstance();
 	engineGUI = new GUI();
+	threadManager = ThreadManager::GetInstance();
+	
+	threadManager->setMaxAmountOfThreads(4);
+	threadManager->AddThreadAble(sceneManager);
+//	threadManager->StartThreadA<Game*>(static_cast<ThreadAble*>(this),this);
+	
+	
+
+
+	//threadManager->AddThreadA<SceneManager*>(sceneManager);
+	//threadManager->AddThreadAble(static_cast<ThreadAble*>(sceneManager));
+	//threadManager->StartThread(static_cast<ThreadAble*>(sceneManager));
+
 	initialized = false;	
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 	
 	
-	//threadContainer.push_back(std::thread([&]() {}));
 		
 }
 
@@ -39,6 +52,8 @@ bool Game::setIsRunning(bool tempBool_)
 	isRunning = tempBool_;
 	return isRunning;
 }
+
+
 
 Game::~Game()
 {
@@ -68,6 +83,7 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	timer->Start();
 	timer->SetLogicLoopSpeed(60);
 	sceneManager->SwitchTo(gameSceneID);
+	//threadManager->StartThread(static_cast<ThreadAble*>(sceneManager), call);
 	GameLoop();
 
 
@@ -80,7 +96,17 @@ void Game::GameLoop()
 	int currentRenderFlag = NULL;
 	int passRenderFlag = NULL;
 
+	///TEST ZONEEEEE
+
 	currentRenderFlag = rendererManager->getRenderValue();
+
+	SceneManager*(*callptr)() = sceneManager->GetInstance;
+	
+	std::thread t1 = std::thread(callptr);
+
+	///TEST ZONEEEEE 
+
+
 	while (isRunning == true)
 	{
 		if (currentRenderFlag != rendererManager->getRenderValue())
@@ -116,7 +142,7 @@ void Game::GameLoop()
 			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
 		}	
 		
-		Render(); // when everything has been finished render that is one call draw
+	//	Render(); // when everything has been finished render that is one call draw
 
 
 

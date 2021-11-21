@@ -2,29 +2,31 @@
 #define SCOPEDTHREAD_H
 #include <thread>
 #include <stdexcept>
-class Scoped_Thread
+class Thread_Guard
 {
 public:
-	explicit Scoped_Thread(std::thread* t_):t(std::move(t_)) 
+	Thread_Guard()
 	{
-		if (!t.joinable())
-		{
-			throw std::logic_error("no thread");
-		}
+		
 	}
-	~Scoped_Thread()
+	void setGuard(std::thread t_)
 	{
-		t.join();
+		t = std::thread();
+		t = std::move(t_);
 	}
-	Scoped_Thread(Scoped_Thread const&) = delete;
-	Scoped_Thread& operator =(Scoped_Thread const&) = delete;
+	~Thread_Guard()
+	{
+		
+	}
+	Thread_Guard(Thread_Guard const&) = delete;
+	Thread_Guard& operator =(Thread_Guard const&) = delete;
 
 	std::thread& getThread() 
 	{
 		return t;
 	}
 
-	void operator = (Scoped_Thread rhs_)
+	void operator = (Thread_Guard rhs_)
 	{
 		//put logical condition here to check if the thread is running on a thread cause if not then crash
 		this->t = std::move(rhs_.t);

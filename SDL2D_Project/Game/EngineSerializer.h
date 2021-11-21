@@ -35,7 +35,7 @@
 /* Note about the gameObject deserializer you might not have to have seperate function to deserialize components. */
 class GameObject;
 class Scene;
-class Serializer
+class Serializer 
 {
 public:
 	Serializer(Serializer &other) = delete;
@@ -69,7 +69,10 @@ public:
 	bool SceneExist(int SceneIndex_, const char* SceneName_);//Read Function
 	bool GameObjectExist(int ID_); // Read Function
 	bool loadFile(const char* fileDirectory_); //Read function
-	void Update();
+
+	void Update(); //this will update as fast as possible
+
+	
 private:
 	Serializer();
 	~Serializer();

@@ -4,9 +4,10 @@
 #include <unordered_map>
 #include "Scene.h"
 #include "../EngineSerializer.h"
+#include "../../Thread/ThreadAble.h"
 /*2021-07-09
  This code here is fine.*/
-class SceneManager
+class SceneManager : public ThreadAble
 {
 public:
 	SceneManager(const SceneManager&) = delete;
@@ -26,6 +27,20 @@ public:
 	void SwitchTo(unsigned int id);
 	void Remove(unsigned int id);
 
+	virtual void operator()()
+	{
+		while (getThreadAssignment()==true)
+		{
+			Render();
+		}
+	}
+	void threadRunnable()
+	{
+		while (getThreadAssignment() == true)
+		{
+			Render();
+		}
+	}
 private:
 	SceneManager();
 	~SceneManager();

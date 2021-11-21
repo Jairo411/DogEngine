@@ -26,6 +26,8 @@
 #include "../GameObjects/Skeleton.h"
 #include "../GameObjects/Map/Map.h"
 #include "EngineSerializer.h"
+#include "../Thread/ThreadManager.h"
+
 
 
 /*2021-07-09 
@@ -33,7 +35,7 @@
 	probably not coming on this side of the engine but yah, */
 class AIManager;
 class Serializer;
-class Game{
+class Game {
 public:
 	Game();
 	~Game();
@@ -54,8 +56,9 @@ public:
 	static RendererManager* rendererManager; //EngineFunctionality
 	static TextureManager* textureManager;// textureManager
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
-	static Serializer* EngineSerializer; //engine functionality 
+	static Serializer* EngineSerializer; //Engine functionality 
 	static SceneManager* sceneManager; //Engine functionality 
+	static ThreadManager* threadManager; //Engine functionality
 	GUI* engineGUI;
 	static bool initialized;
 private:

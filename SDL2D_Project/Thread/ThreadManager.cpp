@@ -33,11 +33,11 @@ void ThreadManager::setMaxAmountOfThreads(int MaxAmount_)
 
 void ThreadManager::AddThreadAble(ThreadAble* threadAbleOBJ_)
 {
-	assert(AmountOfThreads > MAXSIZE);
+	assert(AmountOfThreads > MAXSIZE!=true);
 	if (static_cast<ThreadAble*>(threadAbleOBJ_))
 	{
-		Scoped_Thread* threadPtr = nullptr;
-		threadDictionary.insert(std::pair<ThreadAble*, Scoped_Thread*>(threadAbleOBJ_,threadPtr));
+		Thread_Guard tempThreadG = Thread_Guard();
+		threadDictionary.insert(std::pair<ThreadAble*, Thread_Guard*>(threadAbleOBJ_,&tempThreadG));
 		AmountOfThreads++;
 	}
 	else
@@ -53,18 +53,25 @@ void ThreadManager::RemoveThreadAble(ThreadAble* threadAbleOBJ_)
 	threadDictionary.erase(threadAbleOBJ_);
 }
 
-void ThreadManager::StartThread(ThreadAble* threadAbleOBJ_)
+void ThreadManager::StartThread(ThreadAble* threadAbleOBJ_, std::function<void()> call_)
 {
 	threadAbleOBJ_->setThreadAble(true);
-	Scoped_Thread* temp = threadDictionary.at(threadAbleOBJ_);
-	std::thread tempThread = std::thread(threadAbleOBJ_);
-	temp = new Scoped_Thread(&tempThread);
+	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
+	temp->setGuard(std::thread(call_));
 }
+
+
+//void ThreadManager::StartThread(ThreadAble* threadAbleOBJ_)
+//{
+//	threadAbleOBJ_->setThreadAble(true);
+//	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
+//	temp->setGuard(std::thread(threadAbleOBJ_));
+//}
 
 void ThreadManager::StopThread(ThreadAble* threadAbleOBJ_)
 {
-	threadAbleOBJ_->setThreadAble(false);
-	Scoped_Thread* temp = threadDictionary.at(threadAbleOBJ_);
-	RemoveThreadAble(threadAbleOBJ_);
-	temp->~Scoped_Thread();
+//	threadAbleOBJ_->setThreadAble(false);
+//	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
+//	RemoveThreadAble(threadAbleOBJ_);
+//	temp->~Thread_Guard();
 }

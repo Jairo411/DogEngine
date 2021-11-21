@@ -7,7 +7,7 @@
 #include <iostream>
 #include <assert.h>
 #include "ThreadAble.h"
-#include "ScopedThread.h"
+#include "ThreadGuard.h"
 #include "../Renderer/Renderer.h"
 class ThreadManager
 {
@@ -23,8 +23,11 @@ public:
 	//The thread doesn't actually start running here
 	void AddThreadAble(ThreadAble* threadAbleOBJ_);
 	void RemoveThreadAble(ThreadAble* threaAbleOBJ_);
+
 	
-	void StartThread(ThreadAble* threadAbleOBJ_);
+	void StartThread(ThreadAble* threadAbleOBJ_,std::function<void()> call_);
+
+	//void StartThread(ThreadAble* threadAbleOBJ_);
 	void StopThread(ThreadAble* threadAbleOBJ_);
 
 private:
@@ -34,6 +37,6 @@ private:
 	static ThreadManager* instance;
 	int AmountOfThreads;
 	int MAXSIZE;
-	std::map<ThreadAble*, Scoped_Thread*> threadDictionary;
+	std::map<ThreadAble*, Thread_Guard*> threadDictionary;
 };
 #endif //THREADMANAGER_H
