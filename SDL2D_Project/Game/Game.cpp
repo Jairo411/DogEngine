@@ -28,6 +28,7 @@ Game::Game()
 	
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(sceneManager);
+	threadManager->StartThread(static_cast<ThreadAble*>(sceneManager));
 //	threadManager->StartThreadA<Game*>(static_cast<ThreadAble*>(this),this);
 	
 	
@@ -100,9 +101,8 @@ void Game::GameLoop()
 
 	currentRenderFlag = rendererManager->getRenderValue();
 
-	SceneManager*(*callptr)() = sceneManager->GetInstance;
-	
-	std::thread t1 = std::thread(callptr);
+	//static_cast<ThreadAble*>(sceneManager)->setThreadAble(true);
+	//std::thread t1 = static_cast<ThreadAble*>(sceneManager)->createThread();
 
 	///TEST ZONEEEEE 
 
@@ -158,15 +158,12 @@ void Game::HandleEvents()
 	SDL_Event e;
 
 	SDL_PollEvent(&e);
-	switch (e.type)
+	switch (e.window.event)
 	{
 	default:
 		break;
-	case SDL_WINDOWEVENT: 
-		if (e.window.type == SDL_WINDOWEVENT_CLOSE)
-		{
-
-		}
+	case SDL_WINDOWEVENT_CLOSE: 
+		clean();
 		break;
 	}
 	
@@ -201,6 +198,7 @@ void Game::clean()
 {
 	SDL_DestroyWindow(window->getWindowContext());
 	SDL_DestroyRenderer(rendererManager->GetRenderAPI<SDLRenderer*>()->GetRenderer());
+	threadManager->StopThread(static_cast<ThreadAble*>(sceneManager));
 	delete this;
 	SDL_Quit();
 	std::cout << "Game Cleaned" << std::endl;

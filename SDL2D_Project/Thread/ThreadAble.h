@@ -13,7 +13,7 @@ class ThreadAble
 public:
 	ThreadAble()
 	{
-		isthreadAssigned = false;	
+		isthreadAssigned = false;
 	}
 	virtual ~ThreadAble()
 	{
@@ -23,8 +23,12 @@ public:
 	{
 		isthreadAssigned = thread_;
 	};
+	std::thread createThread()
+	{
+		return std::thread([=] {RunInstructions(); });
+	}
 	//Define This in my classes that are threadable
-	virtual void operator ()() = 0;
+	virtual void RunInstructions() = 0;
 protected:
 	virtual bool getThreadAssignment()
 	{

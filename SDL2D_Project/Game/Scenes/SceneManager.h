@@ -10,6 +10,9 @@
 class SceneManager : public ThreadAble
 {
 public:
+
+	SceneManager();
+	~SceneManager();
 	SceneManager(const SceneManager&) = delete;
 	SceneManager(SceneManager&&) = delete;
 	SceneManager& operator =(const SceneManager&) = delete;
@@ -26,24 +29,10 @@ public:
 	bool load(); // this will take a deserialized string value and create a new scene in prospective to its coording xml information
 	void SwitchTo(unsigned int id);
 	void Remove(unsigned int id);
-
-	virtual void operator()()
-	{
-		while (getThreadAssignment()==true)
-		{
-			Render();
-		}
-	}
-	void threadRunnable()
-	{
-		while (getThreadAssignment() == true)
-		{
-			Render();
-		}
-	}
+	//Inherited function
+	virtual void RunInstructions();
+	
 private:
-	SceneManager();
-	~SceneManager();
 	static SceneManager* instance;
 	friend Serializer;
 	std::unordered_map<unsigned int, std::shared_ptr<Scene>> scenes;

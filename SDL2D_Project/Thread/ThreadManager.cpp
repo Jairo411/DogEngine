@@ -53,25 +53,17 @@ void ThreadManager::RemoveThreadAble(ThreadAble* threadAbleOBJ_)
 	threadDictionary.erase(threadAbleOBJ_);
 }
 
-void ThreadManager::StartThread(ThreadAble* threadAbleOBJ_, std::function<void()> call_)
+void ThreadManager::StartThread(ThreadAble* threadAbleOBJ_)
 {
 	threadAbleOBJ_->setThreadAble(true);
 	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
-	temp->setGuard(std::thread(call_));
+	temp->setGuard(threadAbleOBJ_->createThread());
 }
-
-
-//void ThreadManager::StartThread(ThreadAble* threadAbleOBJ_)
-//{
-//	threadAbleOBJ_->setThreadAble(true);
-//	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
-//	temp->setGuard(std::thread(threadAbleOBJ_));
-//}
 
 void ThreadManager::StopThread(ThreadAble* threadAbleOBJ_)
 {
-//	threadAbleOBJ_->setThreadAble(false);
-//	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
-//	RemoveThreadAble(threadAbleOBJ_);
-//	temp->~Thread_Guard();
+	threadAbleOBJ_->setThreadAble(false);
+	Thread_Guard* temp = threadDictionary.at(threadAbleOBJ_);
+	RemoveThreadAble(threadAbleOBJ_);
+	temp->CloseThread();
 }

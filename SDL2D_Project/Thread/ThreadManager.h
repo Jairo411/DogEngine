@@ -25,9 +25,8 @@ public:
 	void RemoveThreadAble(ThreadAble* threaAbleOBJ_);
 
 	
-	void StartThread(ThreadAble* threadAbleOBJ_,std::function<void()> call_);
+	void StartThread(ThreadAble* threadAbleOBJ_);
 
-	//void StartThread(ThreadAble* threadAbleOBJ_);
 	void StopThread(ThreadAble* threadAbleOBJ_);
 
 private:

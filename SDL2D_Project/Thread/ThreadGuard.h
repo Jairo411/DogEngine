@@ -14,6 +14,21 @@ public:
 		t = std::thread();
 		t = std::move(t_);
 	}
+	std::thread& GetThread()
+	{
+		return t;
+	}
+	void CloseThread()
+	{
+		if (t.joinable()==true)
+		{
+			t.join();
+		}
+		else
+		{
+			std::cout << "Tried to join thread that wasn't joinable" << std::endl;
+		}
+	}
 	~Thread_Guard()
 	{
 		

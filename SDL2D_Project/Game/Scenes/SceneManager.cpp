@@ -6,6 +6,8 @@ SceneManager::SceneManager() : scenes(0), curScene(0), insertedSceneID(NULL) {}
 
 SceneManager::~SceneManager()
 {
+	instance = nullptr;
+	delete instance;
 }
 
 SceneManager* SceneManager::GetInstance()
@@ -103,5 +105,14 @@ void SceneManager::Remove(unsigned int id)
 		it->second->OnDestroy();
 		scenes.erase(it);
 	}
+}
+
+void SceneManager::RunInstructions()
+{
+	while (getThreadAssignment() == true)
+	{
+		Render();
+	}
+
 }
 
