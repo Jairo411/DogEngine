@@ -145,7 +145,7 @@ void Timer::PrintFPS()
 void Timer::IncrementUpdateLag(double updateLag_)
 {
 	updateLag += updateLag_;
-	std::cout << "sleepTime:" << updateLag << std::endl;
+//	std::cout << "sleepTime:" << updateLag << std::endl;
 }
 
 double Timer::GetUpdateLag()

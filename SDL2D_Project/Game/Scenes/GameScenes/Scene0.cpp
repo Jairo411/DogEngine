@@ -101,7 +101,6 @@ void Scene0::Update(float deltaTime_)
 	enemy1->Update(deltaTime_);
 	mapA->Update(deltaTime_);
 	Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
-	Game::window->Update();
 }
 
 void Scene0::FixedUpdate(float deltaTime_)

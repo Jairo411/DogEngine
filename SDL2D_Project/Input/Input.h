@@ -2,8 +2,10 @@
 #define KEYINPUT_H
 #include <map>
 #include <iostream>
+#include <vector>
 #include "../Physics/Collider.h"
 #include "../Math/Vec2.h"
+
 class SDL;
 class Window;
 /* This is Input class is capable of an abstract class,
@@ -21,45 +23,50 @@ class Input
 public:
 	virtual ~Input();
 	///NEW
-	virtual void Update() =0;
+	virtual void HandleEvents() =0;
    	///OLD
 	static RectCollider* mouseClick;
 	void setWindow(Window* windowptr_);
 	void setMiddlePoint(Vec2 tempV);
 	Vec2 getMiddlePoint();
+	void SetEvent(SDL_Event* event_);
 protected:
-	SDL_Event* GetEvent();
+	SDL_Event* currentEvent;
 private:
 	static int mouseX, mouseY;
 	static bool CreateCollider(bool state_);
-	SDL_Event* currentEvent;
+	
 	///Remove middlePoint
 	Vec2 middlepoint;
 	Window* window;
 };
 
 //KeyBoard should always be listening, to accept mutiple inputs 
-class KeyBoardInput : Input
+class KeyBoardInput : public Input
 {
 	///Constructor & Destructor 
 public:
 	KeyBoardInput();
 	~KeyBoardInput();
-	
-	virtual void Update() final;
+	virtual void HandleEvents() final;
 private:
 	std::map<int, bool> InputKeyBoardHolder;
 };
 
-class MouseInput : Input
+class MouseInput : public Input
 {
 public:
 	///Constructor & Destructor 
 	MouseInput();
 	~MouseInput();
-	virtual void Update() final;
+	std::vector<int> getMouse();
+	std::vector<int> getButtons();
+	int GetWheel();
+	virtual void HandleEvents() final;
 private:
 	int mouseX, mouseY;
+	int buttons;
+	int wheel;
 	std::map<int, bool> InputMouseHolder;
 };
 

@@ -19,11 +19,14 @@ public:
 	void OnCreate();
 	void OnDestroy();
 	void HandleEvents(SDL_Event* e_);
-	void Update();
+	void Update(float deltaTime_);
 	void Render();
 private:
-	ImGuiIO io;
+	bool DisplayWindowMenuBar();
+	ImGuiIO* io;
 	int mouseX, mouseY;
+	int wheel;
+	int buttons;
 };
 
 #endif // ! GUI_H

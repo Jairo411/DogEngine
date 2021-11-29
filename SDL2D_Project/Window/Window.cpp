@@ -15,6 +15,11 @@ Window::Window()
 	middleOfScreen.x = 0;
 	middleOfScreen.y = 0;
 	window = nullptr;
+	keyBoardInput = KeyBoardInput();
+	mouseInput = MouseInput();
+	
+
+
 
 }
 
@@ -225,14 +230,50 @@ void Window::Render()
 	}
 }
 
-void Window::Update()
+void Window::Update(float deltaTime_)
 {
-	GUIContext->HandleEvents(GUIEvent);
-	GUIContext->Update();
+	
+	GUIContext->Update(deltaTime_);
+	//mouseInput.HandleEvents(); //mouses update
+	//GUIContext->HandleEvents(GUIEvent);
+	//GUIContext->Update();
+
+	//GUIContext->GetIO()->DeltaTime = 1.0f / 60.0f;
+	//GUIContext->GetIO()->MousePos = ImVec2(static_cast<float>(mouseInput.getMouse()[0]), static_cast<float>(mouseInput.getMouse()[1]));
+	//GUIContext->GetIO()->MouseDown[0] = mouseInput.getButtons()[0];
+	//GUIContext->GetIO()->MouseDown[1] = mouseInput.getButtons()[1];
+	//GUIContext->GetIO()->MouseWheel = static_cast<float>(mouseInput.GetWheel());
+
+
 }
 
-void Window::HandleInput()
+void Window::HandleEvents()
 {
+	SDL_Event sdlEvent;
+	SDL_PollEvent(&sdlEvent);
+	mouseInput.SetEvent(&sdlEvent);
+	switch (sdlEvent.window.event)
+	{
+	default:
+		break;
+	
+	case SDL_WINDOWEVENT_SIZE_CHANGED:
+	{
+
+		break;
+	}
+	case SDL_WINDOWEVENT_CLOSE:
+		{
+		isClose = true;
+			break;
+		}
+	}
+	mouseInput.HandleEvents();
+}
+
+bool Window::getIsClose()
+{
+	return isClose;
 }
 
 Vec2 Window::ConvertScreenCoords(int x_, int y_)

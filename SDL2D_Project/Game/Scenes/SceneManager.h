@@ -11,8 +11,6 @@ class SceneManager : public ThreadAble
 {
 public:
 
-	SceneManager();
-	~SceneManager();
 	SceneManager(const SceneManager&) = delete;
 	SceneManager(SceneManager&&) = delete;
 	SceneManager& operator =(const SceneManager&) = delete;
@@ -31,8 +29,9 @@ public:
 	void Remove(unsigned int id);
 	//Inherited function
 	virtual void RunInstructions();
-	
 private:
+	SceneManager();
+	~SceneManager();
 	static SceneManager* instance;
 	friend Serializer;
 	std::unordered_map<unsigned int, std::shared_ptr<Scene>> scenes;

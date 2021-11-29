@@ -5,8 +5,6 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <thread>
-#include <fmod.h>
-#include <fmod_studio.h>
 #include <functional>
 #include "AI/AI.h"
 #include "../Renderer/Renderer.h"
@@ -27,6 +25,7 @@
 #include "../GameObjects/Map/Map.h"
 #include "EngineSerializer.h"
 #include "../Thread/ThreadManager.h"
+#include "../Audio/AudioManager.h"
 
 
 
@@ -59,6 +58,7 @@ public:
 	static Serializer* EngineSerializer; //Engine functionality 
 	static SceneManager* sceneManager; //Engine functionality 
 	static ThreadManager* threadManager; //Engine functionality
+	static AudioManager* audioManager;
 	GUI* engineGUI;
 	static bool initialized;
 private:

@@ -9,6 +9,7 @@ Serializer* Game::EngineSerializer = nullptr;
 TextureManager* Game::textureManager = nullptr;
 SceneManager* Game::sceneManager = nullptr;
 ThreadManager* Game::threadManager = nullptr;
+AudioManager* Game::audioManager = nullptr;
 bool Game::initialized = false;
 
 bool Game::isRunning = false;
@@ -22,19 +23,20 @@ Game::Game()
 	window = Window::GetInstance();
 	rendererManager = RendererManager::GetInstance();
 	EngineSerializer = Serializer::GetInstance();
-	textureManager = TextureManager::getInstance();
-	engineGUI = new GUI();
+	textureManager = TextureManager::GetInstance();
+	audioManager = AudioManager::GetInstance();
+	engineGUI = new GUI(); // I need to look into this 
 	threadManager = ThreadManager::GetInstance();
-	
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(sceneManager);
 	threadManager->StartThread(static_cast<ThreadAble*>(sceneManager));
 //	threadManager->StartThreadA<Game*>(static_cast<ThreadAble*>(this),this);
 	
-	
+	audioManager->AddSong("./Martin Stig Andersen - Limbo (Original Videogame Soundtrack) - 01 Menu.wav");
+	audioManager->playFirstSong();
 
 
-	//threadManager->AddThreadA<SceneManager*>(sceneManager);
+	//threadManager->AddThreadA<eneManager*>(sceneManager);
 	//threadManager->AddThreadAble(static_cast<ThreadAble*>(sceneManager));
 	//threadManager->StartThread(static_cast<ThreadAble*>(sceneManager));
 
@@ -155,26 +157,21 @@ void Game::GameLoop()
 
 void Game::HandleEvents()
 {
-	SDL_Event e;
-
-	SDL_PollEvent(&e);
-	switch (e.window.event)
-	{
-	default:
-		break;
-	case SDL_WINDOWEVENT_CLOSE: 
-		clean();
-		break;
-	}
-	
 	/*SceneManager handleEvents is spefically for events that I set up for that current Scene*/
+	window->HandleEvents();
 	sceneManager->HandleEvents();
+
+	if (window->getIsClose())
+	{
+		clean();
+	}
 }
 
 void Game::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
-	std::cout << "Machine Updating: " << timer->GetDelta() << std::endl;
+	window->Update(deltaTime_);
+	//std::cout << "Machine Updating: " << timer->GetDelta() << std::endl;
 }
 
 void Game::FixedUpdate(float deltaTime_)

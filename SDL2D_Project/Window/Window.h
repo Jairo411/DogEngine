@@ -42,8 +42,9 @@ public:
 	void SetGUIEvent(SDL_Event* GUIEvent_);
 	void SetGUI(GUI* GUIContext_);
 	void Render();
-	void Update();
-	void HandleInput();
+	void Update(float deltaTime_);
+	void HandleEvents();
+	bool getIsClose();
 	static Vec2 ConvertScreenCoords(int x, int y);
 	Vec2 midVec;
 	enum WindowStatus : unsigned int
@@ -53,17 +54,17 @@ public:
 		RELEASE
 	};
 private:
-	//Functions
+	//Constructors
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
 	Window(SDL_Window* window_);
 	~Window();
 	//INPUT HANDLER
-	KeyBoardInput keyBoardHandler;
+	KeyBoardInput keyBoardInput;
 	MouseInput mouseInput;
 	//Basic Window Member Variables
 	static int ScreenWidth, ScreenHeight; //Window Size
 	int CurrentWindow_XPOS, CurrentWindow_YPOS; // Position of the window 
-	int mouseX, mouseY; //Position of the mouse Remove this 
+	int* mouseX, *mouseY, *mousePtr; //Position of the mouse Remove this 
 	int windowFlag; 
 	int SquareSize;
 	int windowStatus;
@@ -72,6 +73,8 @@ private:
 	SDL_Rect middleRect;
 	static SDL_Point middleOfScreen;
 	Vec2 covertedScreenCoords;
+	//FLAGS
+	bool isClose;
 	/* Graphics Stuff*/
 	GUI* GUIContext;
 	SDL_Surface* graphicLayer;

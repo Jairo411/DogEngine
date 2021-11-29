@@ -9,10 +9,9 @@ Input::~Input()
 {
 }
 
-SDL_Event* Input::GetEvent()
+void Input::SetEvent(SDL_Event* event_)
 {
-	SDL_PollEvent(currentEvent);
-	return currentEvent;
+	currentEvent = event_;
 }
 
 void Input::setWindow(Window* windowptr_)
@@ -45,6 +44,10 @@ bool Input::CreateCollider(bool state_)
 
 MouseInput::MouseInput()
 {
+	mouseX = 0;
+	mouseY = 0;
+	buttons = 0;
+	wheel = 0;
 	InputMouseHolder = std::map<int, bool>();
 }
 
@@ -53,9 +56,39 @@ MouseInput::~MouseInput()
 	InputMouseHolder.empty();
 }
 
-void MouseInput::Update()
+std::vector<int> MouseInput::getMouse()
 {
-	switch (GetEvent()->type)
+	std::vector<int> temp;
+
+	temp.push_back(mouseX);
+	temp.push_back(mouseY);
+
+	return temp;
+}
+
+std::vector<int> MouseInput::getButtons()
+{
+	std::vector<int> temp;
+
+	int tempButton = buttons & SDL_BUTTON(SDL_BUTTON_LEFT);
+	int tempButton1 = buttons & SDL_BUTTON(SDL_BUTTON_RIGHT);
+
+	temp.push_back(tempButton);
+	temp.push_back(tempButton1);
+
+	return temp;
+}
+
+int MouseInput::GetWheel()
+{
+	return wheel;
+}
+
+
+void MouseInput::HandleEvents()
+{
+	int buttons = SDL_GetMouseState(&mouseX, &mouseY);
+	switch (currentEvent->type)
 	{
 	default:
 		break;
@@ -70,6 +103,7 @@ void MouseInput::Update()
 
 	case SDL_MOUSEWHEEL: //Should be used when using the scrolling wheel
 		InputMouseHolder.insert(std::pair<int, bool>());
+		wheel = currentEvent->wheel.y;
 		break;
 	}
 }
@@ -85,18 +119,17 @@ KeyBoardInput::~KeyBoardInput()
 
 
 
-void KeyBoardInput::Update()
+void KeyBoardInput::HandleEvents()
 {
-	SDL_Event* tempEvent = GetEvent();
-	switch (tempEvent->type)
+	switch (currentEvent->type)
 	{
 	default:
 		break;
 	case SDL_KEYDOWN:
-		InputKeyBoardHolder.insert(std::pair<int,bool>(tempEvent->key.keysym.scancode,true));
+		InputKeyBoardHolder.insert(std::pair<int,bool>(currentEvent->key.keysym.scancode,true));
 		break;
 	case SDL_KEYUP:
-		InputKeyBoardHolder.insert(std::pair<int, bool>(tempEvent->key.keysym.scancode, true));
+		InputKeyBoardHolder.insert(std::pair<int, bool>(currentEvent->key.keysym.scancode, true));
 		break;
 	}
 }

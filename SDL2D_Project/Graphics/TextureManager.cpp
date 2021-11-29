@@ -21,7 +21,7 @@ void TextureManager::OnDestroy()
 {
 }
 
-TextureManager* TextureManager::getInstance()
+TextureManager* TextureManager::GetInstance()
 {
 	if (instance==nullptr)
 	{

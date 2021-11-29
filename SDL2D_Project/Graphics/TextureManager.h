@@ -20,7 +20,7 @@ public:
 	void OnCreate();
 	void OnDestroy();
 
-	static TextureManager* getInstance();
+	static TextureManager* GetInstance();
 
 	TextureManager(TextureManager& other) = delete;
 	void operator =(const TextureManager&) = delete;
