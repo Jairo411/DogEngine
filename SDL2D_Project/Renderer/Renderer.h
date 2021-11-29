@@ -123,19 +123,23 @@ private:
 	int totalFrames;
 };
 
-struct SquareStruct 
+struct Square2D 
 {
-	SquareStruct(const char* imageSrc_);
+	Square2D(const char* imageSrc_); //only two functions that need to be intialized
+	void setProjection(glm::mat4 projection_);
+	void setWindow(SDL_Window* window_);
 	void Render();
-	void Update();
 	glm::mat4 transform;
+	glm::mat4 projection;
+private:
 	unsigned VBO;
 	unsigned VAO;
-	unsigned texturePtr;
 	unsigned int projectionLoc;
 	unsigned int transformLoc;
+	unsigned texturePtr;
 	SDL_Surface* texture;
 	ShaderScript* shader;
+	SDL_Window* window;
 };
 
 class OpenGLRenderer 
@@ -145,16 +149,16 @@ public:
 	~OpenGLRenderer();
 	void OnCreate();
 	void OnDestroy();
-	void SetContext(SDL_Window* window_);
+	void setWindow(SDL_Window* window_);
 	void SetWindowSize(int width_, int height_);
+	void SetViewPort(int width_, int height_);
+	Square2D CreateSquare(const char* imageSrc_, glm::mat4 transform_); // create a plain square don't know why I would need this. But im gonna leave this hear
+private:
 	void PrintOpenGL(int* major_, int* minor_);
 	void SetAttributes(int major_, int minor_);
-	void SetViewPort(int width_, int height_);
-	//void CreateSquare(); // create a plain square don't know why I would need this. But im gonna leave this hear
-	void Update(float dt_);
-	void Render();
-private:
+	void SetContext();
 	glm::mat4 projection;
+	SDL_Window* window;
 	SDL_GLContext* context;
 	GLenum error;
 	int ScreenHeight;

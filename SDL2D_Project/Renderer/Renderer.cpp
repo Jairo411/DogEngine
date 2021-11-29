@@ -47,7 +47,7 @@ void RendererManager::setRenderer(int numbercase_)
 		RenderValue = 1;
 		int* w, * h;
 		openGLRenderer = new OpenGLRenderer();
-		openGLRenderer->SetContext(window);
+		openGLRenderer->setWindow(window);
 		SDL_GetWindowSize(window, w, h);
 		openGLRenderer->SetWindowSize(*w, *h);
 		renderVariant = openGLRenderer;
@@ -95,9 +95,12 @@ OpenGLRenderer::~OpenGLRenderer()
 	OnDestroy();
 }
 
+
+
+
 void OpenGLRenderer::OnCreate()
 {
-	context = new SDL_GLContext();
+	SetContext();
 	int major, minor;
 	PrintOpenGL(&major, &minor);
 	SetAttributes(major, minor);
@@ -108,7 +111,10 @@ void OpenGLRenderer::OnCreate()
 		std::cout << "GLEW FAILED" << std::endl;
 	}
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
+	projection = glm::ortho((float)-ScreenWidth, (float)ScreenWidth, (float)-ScreenHeight, (float)ScreenHeight);
 	std::cout << "Just Intialized GLEW/OPENGL" << std::endl;
+
+
 }
 
 void OpenGLRenderer::OnDestroy()
@@ -118,10 +124,15 @@ void OpenGLRenderer::OnDestroy()
 	delete context;
 }
 
-void OpenGLRenderer::SetContext(SDL_Window* window_)
+void OpenGLRenderer::setWindow(SDL_Window* window_)
+{
+	window = window_;
+}
+
+void OpenGLRenderer::SetContext()
 {
 	context = new SDL_GLContext();
-	*context = SDL_GL_CreateContext(window_);
+	*context = SDL_GL_CreateContext(window);
 }
 
 void OpenGLRenderer::SetWindowSize(int width_, int height_)
@@ -168,13 +179,18 @@ void OpenGLRenderer::SetViewPort(int width_, int height_)
 	ScreenHeight = height_;
 }
 
-void OpenGLRenderer::Update(float dt_)
+Square2D OpenGLRenderer::CreateSquare(const char* imageSrc_, glm::mat4 transform_)
 {
+	//Create the square then set the projection of the square to the engine camera
+	Square2D tempSquare = Square2D(imageSrc_);
+	tempSquare.setProjection(projection);
+	tempSquare.transform = transform_;
+	tempSquare.setWindow(window);
+	
+
+	return tempSquare;
 }
 
-void OpenGLRenderer::Render()
-{
-}
 
 VulkanRenderer::VulkanRenderer()
 {
@@ -301,8 +317,10 @@ int SDLRenderer::getTotalFrames()
 	return totalFrames;
 }
 
-SquareStruct::SquareStruct(const char* imageSrc_)
+Square2D::Square2D(const char* imageSrc_)
 {
+	transform = glm::mat4(1.0f);
+	projection = glm::mat4(1.0f);
 	shader = new ShaderScript("Renderer/ShadersScripts/SquareV.glsl", "Renderer/ShadersScripts/SquareF.glsl");
 	texture = Game::textureManager->GetInstance()->LoadSurface(imageSrc_);
 
@@ -342,11 +360,38 @@ SquareStruct::SquareStruct(const char* imageSrc_)
 
 }
 
-void SquareStruct::Render()
+void Square2D::setProjection(glm::mat4 projection_)
+{
+	projection = projection_;
+}
+
+void Square2D::setWindow(SDL_Window* window_)
+{
+	window = window_;
+}
+
+void Square2D::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glBindVertexArray(VAO);
 	glUseProgram(shader->getProgram());
 	glBindTexture(GL_TEXTURE_2D,texturePtr);
 
+	projectionLoc = glGetUniformLocation(shader->getProgram(), "projection");
+
+	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &projection[0][0]);
+
+	transformLoc = glGetUniformLocation(shader->getProgram(), "transform");
+
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	glBindVertexArray(0);
+	glUseProgram(0);
+
+	SDL_GL_SwapWindow(window);
+
+
 }
+
