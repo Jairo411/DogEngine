@@ -5,7 +5,12 @@
 #include <SDL_opengl.h>
 #include <iostream>
 #include <variant>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include "Shader.h"
 #include "../GameObjects/GameObject.h";
+#include "../Game/Game.h"
 /*2021-7-15
 Renderer class will support many different renderers hopefully in the future
 I will also Write the difference renderer inside my Render class.
@@ -80,7 +85,7 @@ public:
 	RendererManager();
 	//Renderer() over load this function when you want to add other renderer, lets start with openGL, then vulkan....
 	static RendererManager* instance;
-	SDL_Window* window;
+	static SDL_Window* window;
 	SDLRenderer* SDL__Renderer;
 	OpenGLRenderer* openGLRenderer;
 	VulkanRenderer* vulkanRenderer;
@@ -118,6 +123,17 @@ private:
 	int totalFrames;
 };
 
+struct SquareStruct 
+{
+	SquareStruct();
+	void Render();
+	void Update();
+	glm::mat4 transform;
+	unsigned int projectionLoc;
+	unsigned int transformLoc;
+	SDL_Surface* texture;
+	ShaderScript shader;
+};
 
 class OpenGLRenderer 
 {
@@ -126,12 +142,16 @@ public:
 	~OpenGLRenderer();
 	void OnCreate();
 	void OnDestroy();
+	void SetContext(SDL_Window* window_);
+	void SetWindowSize(int width_, int height_);
 	void PrintOpenGL(int* major_, int* minor_);
 	void SetAttributes(int major_, int minor_);
 	void SetViewPort(int width_, int height_);
+	//void CreateSquare(); // create a plain square don't know why I would need this. But im gonna leave this hear
 	void Update(float dt_);
 	void Render();
 private:
+	glm::mat4 projection;
 	SDL_GLContext* context;
 	GLenum error;
 	int ScreenHeight;

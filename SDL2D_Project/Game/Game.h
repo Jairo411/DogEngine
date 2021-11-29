@@ -9,7 +9,7 @@
 #include "AI/AI.h"
 #include "../Renderer/Renderer.h"
 #include "../../Server/Server.h"
-#include "../Graphics/TextureManager.h"
+#include "../TextureManager/TextureManager.h"
 #include "../Window/Window.h"
 #include "../Window/GUI.h"
 #include "../Input/Input.h"

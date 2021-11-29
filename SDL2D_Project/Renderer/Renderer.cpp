@@ -21,7 +21,7 @@ RendererManager::~RendererManager()
 
 void RendererManager::OnCreate()
 {
-
+	
 }
 
 void RendererManager::OnDestroy()
@@ -45,7 +45,11 @@ void RendererManager::setRenderer(int numbercase_)
 	case 1:
 	{
 		RenderValue = 1;
+		int* w, * h;
 		openGLRenderer = new OpenGLRenderer();
+		openGLRenderer->SetContext(window);
+		SDL_GetWindowSize(window, w, h);
+		openGLRenderer->SetWindowSize(*w, *h);
 		renderVariant = openGLRenderer;
 		openGLRenderer->OnCreate();
 		break;
@@ -112,6 +116,18 @@ void OpenGLRenderer::OnDestroy()
 	SDL_GL_DeleteContext(context);
 	context = nullptr;
 	delete context;
+}
+
+void OpenGLRenderer::SetContext(SDL_Window* window_)
+{
+	context = new SDL_GLContext();
+	*context = SDL_GL_CreateContext(window_);
+}
+
+void OpenGLRenderer::SetWindowSize(int width_, int height_)
+{
+	ScreenWidth = width_;
+	ScreenHeight = height_;
 }
 
 void OpenGLRenderer::PrintOpenGL(int* major_, int* minor_)
@@ -285,3 +301,7 @@ int SDLRenderer::getTotalFrames()
 	return totalFrames;
 }
 
+SquareStruct::SquareStruct()
+{
+	shader = new ShaderScript("Renderer/ShadersScripts/SquareV.glsl", "Renderer/ShadersScripts/SquareF.glsl");
+}

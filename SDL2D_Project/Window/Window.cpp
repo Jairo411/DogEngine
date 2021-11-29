@@ -173,6 +173,7 @@ void Window::Render()
 			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
 			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&middleRect);
 			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
+
 			GUIContext->Render();
 			//OLD
 		//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 100, 0, 15, 100);

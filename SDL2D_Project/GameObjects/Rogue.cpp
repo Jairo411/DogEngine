@@ -102,20 +102,31 @@ void Rogue::fixedUpdate(float dt_)
 void Rogue::Render()
 {
 	/*This is in the loop*/
-	if (nullObjTexture != NULL)
+	switch (Game::rendererManager->GetInstance()->getRenderValue())
 	{
-	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, NULL, NULL);
-		//	cout << "You're player Texture isn't working" <<endl;
-	}
-	if (getDisable() == false)
-	{
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
-	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect, &destRect);
-		collider.CollisonRender();
-	}
-	else if (getDisable() == true)
-	{
-	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect, &destRect);
+	default:
+		break;
+
+	case 0: //SDL
+		if (nullObjTexture != NULL)
+		{
+			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, NULL, NULL);
+				//	cout << "You're player Texture isn't working" <<endl;
+		}
+		if (getDisable() == false)
+		{
+			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
+			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect, &destRect);
+			collider.CollisonRender();
+		}
+		else if (getDisable() == true)
+		{
+			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect, &destRect);
+		}
+
+	case 1: //OPENGL
+
+	case 2: // VULKAN
 	}
 }
 

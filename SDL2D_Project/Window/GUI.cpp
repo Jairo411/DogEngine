@@ -14,7 +14,21 @@ GUI::~GUI()
 void GUI::OnCreate()
 {
 	ImGui::CreateContext();
-	ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
+
+
+	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	{
+	default:
+		break;
+
+	case 0: //SDL
+		ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
+	case 1://OPENGL
+
+	case 2://VULKAN
+	}
+
+	
 	//io.DisplaySize.x = 100;
 	//io.DisplaySize.y = 100;
 }
