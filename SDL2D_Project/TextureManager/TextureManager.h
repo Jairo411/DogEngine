@@ -27,6 +27,8 @@ public:
 
 	///SDL CALLS
 
+	SDL_Surface* LoadSurface(const char* filename_);
+
 	///will load texture into memory
 	static SDL_Texture* LoadTexture(const char* filename);
 	///will take texture from memory then cut smaller texture from memory and make more texture

@@ -301,7 +301,52 @@ int SDLRenderer::getTotalFrames()
 	return totalFrames;
 }
 
-SquareStruct::SquareStruct()
+SquareStruct::SquareStruct(const char* imageSrc_)
 {
 	shader = new ShaderScript("Renderer/ShadersScripts/SquareV.glsl", "Renderer/ShadersScripts/SquareF.glsl");
+	texture = Game::textureManager->GetInstance()->LoadSurface(imageSrc_);
+
+	float vertices[] =
+	{
+		//pos	//tex
+		0.0f,1.0f,0.0f,1.0f,
+		1.0f,0.0f,1.0f,0.0f,
+		0.0f,0.0f,0.0f,0.0f,
+
+		0.0f,1.0f,0.0f,1.0f,
+		1.0f,1.0f,1.0f,1.0f,
+		1.0f,0.0f,1.0f,0.0f
+	};
+
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	glBindVertexArray(VAO);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float),0);
+
+	glGenTextures(1, &texturePtr);
+	glBindTexture(GL_TEXTURE_2D, texturePtr);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture->w, texture->h, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->pixels);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	SDL_FreeSurface(texture);
+
+
+}
+
+void SquareStruct::Render()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBindVertexArray(VAO);
+	glUseProgram(shader->getProgram());
+	glBindTexture(GL_TEXTURE_2D,texturePtr);
+
 }

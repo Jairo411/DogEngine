@@ -30,6 +30,34 @@ TextureManager* TextureManager::GetInstance()
 	return instance;
 }
 
+SDL_Surface* TextureManager::LoadSurface(const char* filename_)
+{
+	SDL_Surface* tempSurface = IMG_Load(filename_);
+
+	SDL_LockSurface(tempSurface);
+
+	int pitch = tempSurface->pitch; // row size
+	char* temp = new char[pitch];
+	char* pixels = (char*)tempSurface->pixels;
+
+	for (int i = 0; tempSurface->h/2; i++)
+	{
+		//get pointers to the two rows to swap 
+
+		char* row1 = pixels + i * pitch;
+		char* row2 = pixels + (tempSurface->h - 1) * pitch;
+
+		//swap rows 
+		memcpy(temp, row1, pitch);
+		memcpy(temp, row2, pitch);
+		memcpy(row2, temp, pitch);
+	}
+
+	delete[] temp;
+	SDL_UnlockSurface(tempSurface);
+	return tempSurface;
+}
+
 SDL_Texture * TextureManager::LoadTexture(const char * filename)
 {	
 	SDL_Surface* tempSurface;

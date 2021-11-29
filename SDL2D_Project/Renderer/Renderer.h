@@ -125,14 +125,17 @@ private:
 
 struct SquareStruct 
 {
-	SquareStruct();
+	SquareStruct(const char* imageSrc_);
 	void Render();
 	void Update();
 	glm::mat4 transform;
+	unsigned VBO;
+	unsigned VAO;
+	unsigned texturePtr;
 	unsigned int projectionLoc;
 	unsigned int transformLoc;
 	SDL_Surface* texture;
-	ShaderScript shader;
+	ShaderScript* shader;
 };
 
 class OpenGLRenderer 
