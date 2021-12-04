@@ -39,9 +39,9 @@ public:
 	///SDL CALLS
 
 
-	void setRenderer(SDL_Renderer* renderer_);
-	void setRenderer(OpenGLRenderer* renderer_);
-	void setRenderer(VulkanRenderer* renderer_);
+//	void setRenderer(SDL_Renderer* renderer_);
+//	void setRenderer(OpenGLRenderer* renderer_);
+//	void setRenderer(VulkanRenderer* renderer_);
 private:
 	TextureManager();
 	~TextureManager();

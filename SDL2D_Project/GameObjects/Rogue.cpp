@@ -1,5 +1,5 @@
 #include "Rogue.h"
-#include "../Graphics/TextureManager.h"
+#include "../TextureManager/TextureManager.h"
 
 /* How the sprite gets loaded is a problem. */
 Rogue::Rogue()
@@ -22,7 +22,7 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 {
 	/* Basic intializations of a member variables */
 	className = "Player";
-	objTexture = TextureManager::LoadTexture(textureSheet);
+	//objTexture = TextureManager::LoadTexture(textureSheet);
 	animState = AnimationStates::IDLE0;
 	setPosition(x, y);
 	srcRect.w = 100; // IMAGE SIZE ----> MAKE THIS A GAMEOBJECT FUNCTION 
@@ -123,10 +123,13 @@ void Rogue::Render()
 		{
 			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect, &destRect);
 		}
-
+		break;
 	case 1: //OPENGL
 
+		break;
 	case 2: // VULKAN
+
+		break;
 	}
 }
 

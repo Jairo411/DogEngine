@@ -175,6 +175,7 @@ void Window::Render()
 			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
 
 			GUIContext->Render();
+
 			//OLD
 		//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 100, 0, 15, 100);
 		//	SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), &middleRect);
@@ -235,15 +236,7 @@ void Window::Update(float deltaTime_)
 {
 	
 	GUIContext->Update(deltaTime_);
-	//mouseInput.HandleEvents(); //mouses update
-	//GUIContext->HandleEvents(GUIEvent);
-	//GUIContext->Update();
 
-	//GUIContext->GetIO()->DeltaTime = 1.0f / 60.0f;
-	//GUIContext->GetIO()->MousePos = ImVec2(static_cast<float>(mouseInput.getMouse()[0]), static_cast<float>(mouseInput.getMouse()[1]));
-	//GUIContext->GetIO()->MouseDown[0] = mouseInput.getButtons()[0];
-	//GUIContext->GetIO()->MouseDown[1] = mouseInput.getButtons()[1];
-	//GUIContext->GetIO()->MouseWheel = static_cast<float>(mouseInput.GetWheel());
 
 
 }

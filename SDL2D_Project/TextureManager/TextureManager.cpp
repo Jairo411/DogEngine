@@ -34,13 +34,15 @@ SDL_Surface* TextureManager::LoadSurface(const char* filename_)
 {
 	SDL_Surface* tempSurface = IMG_Load(filename_);
 
+	assert(tempSurface != NULL); // if the sdlSurface returns null its and the file directory is correct, its most likely because IMG_LOAD doesn't support the picture file format that you gave it. 
+
 	SDL_LockSurface(tempSurface);
 
 	int pitch = tempSurface->pitch; // row size
 	char* temp = new char[pitch];
 	char* pixels = (char*)tempSurface->pixels;
 
-	for (int i = 0; tempSurface->h/2; i++)
+	for (int i = 0; i < tempSurface->h/2; i++)
 	{
 		//get pointers to the two rows to swap 
 

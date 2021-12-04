@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "../Game/AI/AI.h"
 #include "Map/Map.h"
-#include "../Graphics/TextureManager.h"
+#include "../TextureManager/TextureManager.h"
 #include "../Animator/Animator.h"
 #include "../Physics/Collider.h"
 #include "../Math/Converter.h"

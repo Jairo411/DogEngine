@@ -10,7 +10,6 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
 #include "../GameObjects/GameObject.h";
-#include "../Game/Game.h"
 /*2021-7-15
 Renderer class will support many different renderers hopefully in the future
 I will also Write the difference renderer inside my Render class.
@@ -22,6 +21,7 @@ class OpenGLRenderer;
 class VulkanRenderer;
 class SDLRenderer;
 class Window;
+class Game;
 class RendererManager 
 {
 public:
@@ -85,7 +85,7 @@ public:
 	RendererManager();
 	//Renderer() over load this function when you want to add other renderer, lets start with openGL, then vulkan....
 	static RendererManager* instance;
-	static SDL_Window* window;
+	SDL_Window* window;
 	SDLRenderer* SDL__Renderer;
 	OpenGLRenderer* openGLRenderer;
 	VulkanRenderer* vulkanRenderer;
@@ -101,9 +101,9 @@ public:
 class SDLRenderer 
 {
 public:
-	SDLRenderer(SDL_Window* window_);
+	SDLRenderer();
 	~SDLRenderer();
-	void OnCreate();
+	void OnCreate(SDL_Window* window_);
 	void OnDestroy();
 	SDL_Texture* CreateTextureFromSurface(SDL_Surface* surface_);
 	void DrawGameObject(GameObject* gameOBJ_);
@@ -125,13 +125,12 @@ private:
 
 struct Square2D 
 {
-	Square2D(const char* imageSrc_); //only two functions that need to be intialized
-	void setProjection(glm::mat4 projection_);
-	void setWindow(SDL_Window* window_);
-	void Render();
+	Square2D();
+	void OnCreate();
+	void SetImage(const char* imageSrc_);
+	void SetProjection(glm::mat4 projection_);
 	glm::mat4 transform;
 	glm::mat4 projection;
-private:
 	unsigned VBO;
 	unsigned VAO;
 	unsigned int projectionLoc;
@@ -139,8 +138,33 @@ private:
 	unsigned texturePtr;
 	SDL_Surface* texture;
 	ShaderScript* shader;
-	SDL_Window* window;
 };
+
+struct Particle
+{
+	Particle();
+	void OnCreate();
+	void SetImage(const char* imageSrc_);
+	void SetProjection(glm::mat4 projection_);
+
+	unsigned int VBO;
+	unsigned int VAO;
+	unsigned int texturePtr;
+	unsigned int projectionLoc;
+	unsigned int transformLoc;
+	unsigned int nr_particles;
+	unsigned int lastUsedParticle;
+	SDL_Surface* texture;
+	ShaderScript* shader;
+	glm::mat4 projection;
+	glm::mat4 transform;
+	glm::vec3 Position;
+	glm::vec2 Velocity;
+	glm::vec4 colour;
+	float life;
+
+};
+
 
 class OpenGLRenderer 
 {
@@ -152,7 +176,13 @@ public:
 	void setWindow(SDL_Window* window_);
 	void SetWindowSize(int width_, int height_);
 	void SetViewPort(int width_, int height_);
-	Square2D CreateSquare(const char* imageSrc_, glm::mat4 transform_); // create a plain square don't know why I would need this. But im gonna leave this hear
+	void RefreshWindow();
+	void Update();
+	glm::mat4 getProjection();
+	Square2D CreateSquare(Square2D square2D_); // create a plain square don't know why I would need this. But im gonna leave this hear
+	Particle CreateParticle(Particle particles_);
+	
+
 private:
 	void PrintOpenGL(int* major_, int* minor_);
 	void SetAttributes(int major_, int minor_);

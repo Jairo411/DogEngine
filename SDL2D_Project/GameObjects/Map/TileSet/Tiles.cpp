@@ -1,5 +1,5 @@
 #include "Tiles.h"
-#include "../../../Graphics/TextureManager.h"
+#include "../../../TextureManager/TextureManager.h"
 
 vector<SDL_Texture*> TileSet::imageSetHolder = vector<SDL_Texture*>();
 int Tile::width = 0;
@@ -63,8 +63,20 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 
 void Tile::Render()
 {
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(baseTex,&srcRect,&dstRect);
-	col.CollisonRender();
+	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	{
+	default:
+		break;
+	case 0:// SDL
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(baseTex, &srcRect, &dstRect);
+		col.CollisonRender();
+	case 1: //OPENGL
+		break;
+		//Game::rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->CreateSquare();
+	case 2://VULKAN
+
+		break;
+	}
 }
 
 void Tile::setTileSize(int width_, int height_)

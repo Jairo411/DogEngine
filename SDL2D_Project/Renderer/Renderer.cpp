@@ -1,8 +1,10 @@
 #include "Renderer.h"
 #include "../Window/Window.h"
+#include "../Game/Game.h"
 
 RendererManager* RendererManager::instance = nullptr;
 int RendererManager::RenderValue = NULL;
+
 
 RendererManager::RendererManager()
 {
@@ -37,19 +39,20 @@ void RendererManager::setRenderer(int numbercase_)
 	case 0:
 	{
 		RenderValue = 0;
-		SDL__Renderer = new SDLRenderer(window);
-		SDL__Renderer->OnCreate();
+		SDL__Renderer = new SDLRenderer();
+		SDL__Renderer->OnCreate(window);
 		renderVariant = SDL__Renderer;
 		break;
 	}
 	case 1:
 	{
 		RenderValue = 1;
-		int* w, * h;
+		int w =0;
+		int h =0;
 		openGLRenderer = new OpenGLRenderer();
 		openGLRenderer->setWindow(window);
-		SDL_GetWindowSize(window, w, h);
-		openGLRenderer->SetWindowSize(*w, *h);
+		SDL_GetWindowSize(window, &w, &h);
+		openGLRenderer->SetWindowSize(w, h);
 		renderVariant = openGLRenderer;
 		openGLRenderer->OnCreate();
 		break;
@@ -102,6 +105,7 @@ void OpenGLRenderer::OnCreate()
 {
 	SetContext();
 	int major, minor;
+
 	PrintOpenGL(&major, &minor);
 	SetAttributes(major, minor);
 
@@ -110,10 +114,14 @@ void OpenGLRenderer::OnCreate()
 	{
 		std::cout << "GLEW FAILED" << std::endl;
 	}
+
+	glEnable(GL_DEPTH_TEST); // this way not work the way you think it does
+
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
-	projection = glm::ortho((float)-ScreenWidth, (float)ScreenWidth, (float)-ScreenHeight, (float)ScreenHeight);
+	projection = glm::ortho((float)-ScreenWidth,(float)ScreenWidth,(float)-ScreenHeight,(float)ScreenHeight,0.0f,1000.0f);
 	std::cout << "Just Intialized GLEW/OPENGL" << std::endl;
 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 }
 
@@ -179,16 +187,38 @@ void OpenGLRenderer::SetViewPort(int width_, int height_)
 	ScreenHeight = height_;
 }
 
-Square2D OpenGLRenderer::CreateSquare(const char* imageSrc_, glm::mat4 transform_)
+void OpenGLRenderer::RefreshWindow()
+{
+	SDL_GL_SwapWindow(window);
+}
+
+void OpenGLRenderer::Update()
+{
+}
+
+glm::mat4 OpenGLRenderer::getProjection()
+{
+	return projection;
+}
+
+Square2D OpenGLRenderer::CreateSquare(Square2D square_)
 {
 	//Create the square then set the projection of the square to the engine camera
-	Square2D tempSquare = Square2D(imageSrc_);
-	tempSquare.setProjection(projection);
-	tempSquare.transform = transform_;
-	tempSquare.setWindow(window);
 	
+	square_.SetProjection(projection);
+	
+	square_.OnCreate();
+	
+	return square_;
+	
+}
 
-	return tempSquare;
+Particle OpenGLRenderer::CreateParticle( Particle particle_)
+{
+		particle_.SetProjection(projection);
+		particle_.OnCreate();
+
+		return particle_;
 }
 
 
@@ -210,12 +240,22 @@ void VulkanRenderer::OnDestroy()
 
 }
 
-SDLRenderer::SDLRenderer(SDL_Window* window_)
+SDLRenderer::SDLRenderer()
+{
+	rend = nullptr;
+	window = nullptr;
+}
+SDLRenderer::~SDLRenderer()
+{
+	OnDestroy();
+}
+
+void SDLRenderer::OnCreate(SDL_Window* window_)
 {
 	rend = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED && SDL_RENDERER_TARGETTEXTURE);
 	window = window_;
 
-	if (rend==nullptr)
+	if (rend == nullptr)
 	{
 		std::cout << "SDL renderer could not be created" << std::endl;
 	}
@@ -223,18 +263,8 @@ SDLRenderer::SDLRenderer(SDL_Window* window_)
 	{
 		std::cout << "SDL Renderer has been Intialized" << std::endl;
 	}
-	
+
 	SDL_SetRenderDrawColor(rend, 225, 225, 225, 225);
-
-}
-SDLRenderer::~SDLRenderer()
-{
-	OnDestroy();
-}
-
-void SDLRenderer::OnCreate()
-{
-
 }
 
 void SDLRenderer::OnDestroy()
@@ -317,13 +347,14 @@ int SDLRenderer::getTotalFrames()
 	return totalFrames;
 }
 
-Square2D::Square2D(const char* imageSrc_)
+Square2D::Square2D()
 {
-	transform = glm::mat4(1.0f);
-	projection = glm::mat4(1.0f);
-	shader = new ShaderScript("Renderer/ShadersScripts/SquareV.glsl", "Renderer/ShadersScripts/SquareF.glsl");
-	texture = Game::textureManager->GetInstance()->LoadSurface(imageSrc_);
+}
 
+void Square2D::OnCreate()
+{
+//	projection = glm::mat4(1.0f);
+	shader = new ShaderScript("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Renderer/ShadersScripts/SquareV.glsl", "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Renderer/ShadersScripts/SquareF.glsl");
 	float vertices[] =
 	{
 		//pos	//tex
@@ -344,7 +375,7 @@ Square2D::Square2D(const char* imageSrc_)
 
 	glBindVertexArray(VAO);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float),0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
 
 	glGenTextures(1, &texturePtr);
 	glBindTexture(GL_TEXTURE_2D, texturePtr);
@@ -357,41 +388,72 @@ Square2D::Square2D(const char* imageSrc_)
 
 	SDL_FreeSurface(texture);
 
-
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 }
 
-void Square2D::setProjection(glm::mat4 projection_)
+void Square2D::SetImage(const char* imageSrc_)
+{
+	texture = Game::textureManager->GetInstance()->LoadSurface(imageSrc_);
+}
+
+void Square2D::SetProjection(glm::mat4 projection_)
 {
 	projection = projection_;
 }
 
-void Square2D::setWindow(SDL_Window* window_)
-{
-	window = window_;
+Particle::Particle() : Position(0.0f), Velocity(0.0f), colour(1.0f), life(0.0f)
+{	
 }
 
-void Square2D::Render()
+void Particle::OnCreate()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	shader = new ShaderScript("Renderer/ShadersScripts/ParticleV.glsl", "Renderer/ShadersScripts/ParticleF.glsl");
+	float vertices[] =
+	{
+		//pos	//tex
+		0.0f,1.0f,0.0f,1.0f,
+		1.0f,0.0f,1.0f,0.0f,
+		0.0f,0.0f,0.0f,0.0f,
+
+		0.0f,1.0f,0.0f,1.0f,
+		1.0f,1.0f,1.0f,1.0f,
+		1.0f,0.0f,1.0f,0.0f
+	};
+
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
 	glBindVertexArray(VAO);
-	glUseProgram(shader->getProgram());
-	glBindTexture(GL_TEXTURE_2D,texturePtr);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
 
-	projectionLoc = glGetUniformLocation(shader->getProgram(), "projection");
+	glGenTextures(1, &texturePtr);
+	glBindTexture(GL_TEXTURE_2D, texturePtr);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture->w, texture->h, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->pixels);
+	glGenerateMipmap(GL_TEXTURE_2D);
 
-	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &projection[0][0]);
+	SDL_FreeSurface(texture);
 
-	transformLoc = glGetUniformLocation(shader->getProgram(), "transform");
-
-	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
-	glUseProgram(0);
-
-	SDL_GL_SwapWindow(window);
-
 
 }
 
+void Particle::SetImage(const char* imageSrc_)
+{
+	texture = Game::textureManager->GetInstance()->LoadSurface(imageSrc_);
+}
+
+void Particle::SetProjection(glm::mat4 projection_)
+{
+	projection = projection_;
+}

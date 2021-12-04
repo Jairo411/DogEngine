@@ -184,20 +184,38 @@ void Skeleton::fixedUpdate(float dt_)
 
 void Skeleton::Render()
 {
-
-	PlayAnimations(AnimationStates::WALK);
-
-	if (getDisable() == false)
+	switch (Game::rendererManager->getRenderValue())
 	{
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture,&srcRect0,&dstRect0);
-	//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect0, &destRect0); get rid of using Render_Copy inside your GameObject render functions
-		col.CollisonRender();
-		navCollider.CollisonRender();
+	default:
+		break;
+
+	case 0: // SDL
+
+		PlayAnimations(AnimationStates::WALK);
+
+		if (getDisable() == false)
+		{
+			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect0, &dstRect0);
+			col.CollisonRender();
+			navCollider.CollisonRender();
+		}
+		else if (getDisable() == true)
+		{
+	
+		}
+
+		break;
+
+	case 1: // OPENGL
+
+		break;
+
+	case 2: // VULKAN
+
+		break;
 	}
-	else if (getDisable() == true)
-	{
-	//SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect0, &destRect0);
-	}
+
+
 }
 
 void Skeleton::handleCollison()

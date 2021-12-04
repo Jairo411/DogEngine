@@ -22,6 +22,7 @@
 #include "../GameObjects/GameObject.h"
 #include "../GameObjects/Rogue.h"
 #include "../GameObjects/Skeleton.h"
+#include "../GameObjects/OpenGLTestGameObj.h"
 #include "../GameObjects/Map/Map.h"
 #include "EngineSerializer.h"
 #include "../Thread/ThreadManager.h"
@@ -34,7 +35,7 @@
 	probably not coming on this side of the engine but yah, */
 class AIManager;
 class Serializer;
-class Game {
+class Game : public ThreadAble {
 public:
 	Game();
 	~Game();
@@ -61,6 +62,11 @@ public:
 	static AudioManager* audioManager;
 	GUI* engineGUI;
 	static bool initialized;
+
+	virtual void RunInstructions()
+	{
+		Render();
+	};
 private:
 	static bool isRunning;	
 	std::vector<std::thread> threadContainer;

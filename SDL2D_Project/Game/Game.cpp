@@ -26,19 +26,17 @@ Game::Game()
 	textureManager = TextureManager::GetInstance();
 	audioManager = AudioManager::GetInstance();
 	engineGUI = new GUI(); // I need to look into this 
+
 	threadManager = ThreadManager::GetInstance();
 	threadManager->setMaxAmountOfThreads(4);
-	threadManager->AddThreadAble(sceneManager);
-	threadManager->StartThread(static_cast<ThreadAble*>(sceneManager));
-//	threadManager->StartThreadA<Game*>(static_cast<ThreadAble*>(this),this);
+	threadManager->AddThreadAble(this);
+	threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process
 	
 	audioManager->AddSong("./Martin Stig Andersen - Limbo (Original Videogame Soundtrack) - 01 Menu.wav");
 	audioManager->playFirstSong();
 
 
-	//threadManager->AddThreadA<eneManager*>(sceneManager);
-	//threadManager->AddThreadAble(static_cast<ThreadAble*>(sceneManager));
-	//threadManager->StartThread(static_cast<ThreadAble*>(sceneManager));
+	
 
 	initialized = false;	
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
@@ -69,10 +67,10 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	int flags = 0;
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
 	window->setWindowTitle(title);
-	window->setFlag(NULL);
+	window->setFlag(SDL_WINDOW_OPENGL);
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
-	rendererManager->GetInstance()->setRenderer(0);
+	rendererManager->GetInstance()->setRenderer(1);
 	window->SetGUI(engineGUI);
 
 	isRunning = true;
@@ -82,11 +80,9 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 
 	unsigned int gameSceneID = sceneManager->Add(gameScene);
 
-//	timer->SetFPS(60);
 	timer->Start();
 	timer->SetLogicLoopSpeed(60);
 	sceneManager->SwitchTo(gameSceneID);
-	//threadManager->StartThread(static_cast<ThreadAble*>(sceneManager), call);
 	GameLoop();
 
 
@@ -99,14 +95,7 @@ void Game::GameLoop()
 	int currentRenderFlag = NULL;
 	int passRenderFlag = NULL;
 
-	///TEST ZONEEEEE
-
 	currentRenderFlag = rendererManager->getRenderValue();
-
-	//static_cast<ThreadAble*>(sceneManager)->setThreadAble(true);
-	//std::thread t1 = static_cast<ThreadAble*>(sceneManager)->createThread();
-
-	///TEST ZONEEEEE 
 
 
 	while (isRunning == true)
@@ -144,7 +133,7 @@ void Game::GameLoop()
 			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
 		}	
 		
-	//	Render(); // when everything has been finished render that is one call draw
+		Render(); // when everything has been finished render that is one call draw
 
 
 
@@ -186,9 +175,21 @@ void Game::handleCollisions()
 
 void Game::Render()
 {
+	if (rendererManager->GetInstance()->getRenderValue() == 0)
+	{
+		//till I figure out why my engine keeps crashing when I do SDL clear calls here, ill leave this empty. 
+	}
+	else if (rendererManager->GetInstance()->getRenderValue() == 1)
+	{
+		rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->RefreshWindow();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+	else if (rendererManager->GetInstance()->getRenderValue() == 2)
+	{
+
+	}
 	sceneManager->Render();
 	timer->IncrementFrames();
-
 }
 
 void Game::clean()

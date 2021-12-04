@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include "../Graphics/TextureManager.h"
+#include "../TextureManager/TextureManager.h"
 #include "../DesignPattern/Observer.h"
 
 std::list<GameObject*>GameObject::OBJHolder = std::list<GameObject*>();

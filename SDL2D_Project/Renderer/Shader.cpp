@@ -1,5 +1,4 @@
 #include "Shader.h"
-#include "..\Renderer\Shaders\Shader.h"
 
 ShaderScript::ShaderScript()
 {
@@ -19,6 +18,37 @@ ShaderScript::~ShaderScript()
     glDeleteShader(vertShaderID);
     glDeleteProgram(shaderID);  
         
+}
+
+void ShaderScript::SetFloat(const char* name, float value_)
+{
+	glUniform1f(glGetUniformLocation(this->getProgram(), name),value_);
+}
+
+void ShaderScript::SetInteger(const char* name, int value_)
+{
+	glUniform1i(glGetUniformLocation(this->getProgram(), name),value_);
+}
+
+void ShaderScript::SetVector2f(const char* name, glm::vec2& value_)
+{
+	glUniform2f(glGetUniformLocation(this->getProgram(), name),value_.x,value_.y);
+}
+
+void ShaderScript::SetVector3f(const char* name, glm::vec3& value_)
+{
+	glUniform3f(glGetUniformLocation(this->getProgram(), name), value_.x, value_.y,value_.z);
+}
+
+void ShaderScript::SetVector4f(const char* name, glm::vec4& value_)
+{
+	glUniform4f(glGetUniformLocation(this->getProgram(), name), value_.x, value_.y, value_.z, value_.w);
+}
+
+void ShaderScript::SetMatrix(const char* name, glm::mat4& matrix_)
+{
+	unsigned int location =glGetUniformLocation(this->getProgram(), name);
+	glUniformMatrix4fv(location,1, GL_FALSE,&matrix_[0][0]);
 }
 
 char* ShaderScript::readTextFile(const char* filename_)

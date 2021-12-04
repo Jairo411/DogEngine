@@ -23,9 +23,11 @@ void GUI::OnCreate()
 
 	case 0: //SDL
 		ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
+		break;
 	case 1://OPENGL
-
+		break;
 	case 2://VULKAN
+		break;
 	}
 
 	
@@ -82,7 +84,7 @@ void GUI::Render()
 
 	ImGui::NewFrame();
 
-	if (DisplayWindowMenuBar());
+	if (DisplayWindowMenuBar())
 	
 
 	ImGui::ShowDemoWindow();
