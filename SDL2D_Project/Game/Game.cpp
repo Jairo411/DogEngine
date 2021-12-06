@@ -39,6 +39,9 @@ Game::Game()
 	
 
 	initialized = false;	
+
+	
+
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 	
 	
@@ -83,6 +86,7 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	timer->Start();
 	timer->SetLogicLoopSpeed(60);
 	sceneManager->SwitchTo(gameSceneID);
+
 	GameLoop();
 
 
@@ -95,46 +99,39 @@ void Game::GameLoop()
 	int currentRenderFlag = NULL;
 	int passRenderFlag = NULL;
 
+
 	currentRenderFlag = rendererManager->getRenderValue();
 
 
 	while (isRunning == true)
 	{
-		if (currentRenderFlag != rendererManager->getRenderValue())
-		{
-			currentRenderFlag = passRenderFlag;
 
-			rendererManager->OnDestroy();
-
-			rendererManager->OnCreate();
-			rendererManager->setRenderer(currentRenderFlag);
-		}
 		timer->UpdateSteadyClock();
 		timer->UpdatePerformanceClock();
 
 		handleCollisions();
 		HandleEvents(); // I handle my input here 
 
-		timer->IncrementUpdateLag(timer->GetDelta());
+		double delta = timer->GetDelta();
+
+		*timer->GetUpdateLag() += delta;
 
 
-		while (timer->GetUpdateLag()>=timer->getMS_Machine_Update())
+		while (*timer->GetUpdateLag()>timer->GetMachineLoopSpeed())
 		{
 
-			double positiveTimeValue = timer->getMS_Machine_Update();
 
 //			FixedUpdate(positiveTimeValue);// Physics Update happen through here anddd animations too. 
 
-			Update(positiveTimeValue); // GameLogic happens all through this update.
+			Update(delta); // GameLogic happens all through this update.
 
 
-			double negativeTimeValue = timer->getMS_Machine_Update() * -1.0;
-
-			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
+			*timer->GetUpdateLag() -= timer->GetMachineLoopSpeed();
 		}	
+	
 		
-		Render(); // when everything has been finished render that is one call draw
-
+		Render(*timer->GetUpdateLag()/timer->GetMachineLoopSpeed()); // when everything has been finished render that is one call draw
+		
 
 
 		passRenderFlag = rendererManager->getRenderValue();
@@ -160,7 +157,8 @@ void Game::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
 	window->Update(deltaTime_);
-	//std::cout << "Machine Updating: " << timer->GetDelta() << std::endl;
+	timer->UpdatePerformanceClock();
+	
 }
 
 void Game::FixedUpdate(float deltaTime_)
@@ -173,8 +171,11 @@ void Game::handleCollisions()
 	sceneManager->handleCollison();
 }
 
-void Game::Render()
+void Game::Render(double timeStep_)
 {
+
+	
+
 	if (rendererManager->GetInstance()->getRenderValue() == 0)
 	{
 		//till I figure out why my engine keeps crashing when I do SDL clear calls here, ill leave this empty. 

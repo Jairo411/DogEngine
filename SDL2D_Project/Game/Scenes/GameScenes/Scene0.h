@@ -21,5 +21,6 @@ public:
 	void Update(float deltaTime_) override;
 	void FixedUpdate(float deltaTime_) override;
 	void Render() override;
+
 };
 #endif //SCENE0
