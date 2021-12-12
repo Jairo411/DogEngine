@@ -31,7 +31,7 @@ Scene0::Scene0()
 
 //	Game::EngineSerializer->GetInstance()->AssignID(GameObject::OBJHolder);
 
-
+	
 }
 
 Scene0::~Scene0()
@@ -95,7 +95,7 @@ void Scene0::Update(float deltaTime_)
 		Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 		break;
 	case 1:
-		obj->Update(deltaTime_);
+		obj1->Update(deltaTime_, glm::vec2(0.5f, 1.0f));
 		break;
 	}
 	
@@ -118,21 +118,21 @@ void Scene0::Render()
 
 	case 0:
 
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
-			mapA->Render();
-			player->Render();
-			enemy->Render();
-			enemy0->Render();
-			enemy1->Render();
-			Game::window->Render();
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
-		
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
+		mapA->Render();
+		player->Render();
+		enemy->Render();
+		enemy0->Render();
+		enemy1->Render();
+		Game::window->Render();
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
 		break;
 
 	case 1: 
-			obj->Render();
-			obj1->Render();
+
+		obj->Render();
+		obj1->Render();
 		break;
 	}
 	

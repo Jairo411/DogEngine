@@ -30,11 +30,6 @@ void RendererManager::OnDestroy()
 {
 }
 
-bool RendererManager::GetIsRunning()
-{
-	return isRunning;
-}
-
 void RendererManager::setRenderer(int numbercase_)
 {
 	switch (numbercase_)
@@ -47,7 +42,6 @@ void RendererManager::setRenderer(int numbercase_)
 		SDL__Renderer = new SDLRenderer();
 		SDL__Renderer->OnCreate(window);
 		renderVariant = SDL__Renderer;
-		isRunning = true;
 		break;
 	}
 	case 1:
@@ -61,7 +55,6 @@ void RendererManager::setRenderer(int numbercase_)
 		openGLRenderer->SetWindowSize(w, h);
 		renderVariant = openGLRenderer;
 		openGLRenderer->OnCreate();
-		isRunning = true;
 		break;
 	}
 	case 2:
@@ -70,11 +63,9 @@ void RendererManager::setRenderer(int numbercase_)
 		vulkanRenderer = new VulkanRenderer();
 		renderVariant = vulkanRenderer;
 		vulkanRenderer->OnCreate();
-		isRunning = true;
 		break;
 	}
 	}
-	
 }
 
 void RendererManager::setWindow(Window* window_)
@@ -418,25 +409,6 @@ Particle::Particle() : Position(0.0f), Velocity(0.0f), colour(1.0f), life(0.0f)
 void Particle::OnCreate()
 {
 	shader = new ShaderScript("Renderer/ShadersScripts/ParticleV.glsl", "Renderer/ShadersScripts/ParticleF.glsl");
-	
-	glm::vec2 translations[1000];
-	int index = 0;
-	float offset = 0.2f;
-
-	for (int i = 0; i < 1000; i++)
-	{
-		glm::vec2 translation;
-		translation.x = (float)i/ 10.0f + offset;
-		translation.y = (float)i / 10.0f + offset;
-		translations[index++] = translation;
-	}
-
-	unsigned int instanceVBO;
-	glGenBuffers(1, &instanceVBO);
-	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * 1000, &translations[0], GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	
 	float vertices[] =
 	{
 		//pos	//tex
@@ -460,13 +432,6 @@ void Particle::OnCreate()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
 
-
-	//set instance data 
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER,0);
-	glVertexAttribDivisor(2, 1);
-
 	glGenTextures(1, &texturePtr);
 	glBindTexture(GL_TEXTURE_2D, texturePtr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -476,7 +441,6 @@ void Particle::OnCreate()
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture->w, texture->h, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->pixels);
 	glGenerateMipmap(GL_TEXTURE_2D);
 
-	
 	SDL_FreeSurface(texture);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

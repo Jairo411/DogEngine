@@ -29,7 +29,6 @@ public:
 	void OnDestroy();
 	RendererManager(RendererManager& other) = delete;
 	void operator =(const RendererManager&) = delete;
-	bool GetIsRunning();
 	///note make sure that you can switch renderers but the machine has to reboot the program
 	void setRenderer(int numbercase_);
 	void setWindow(Window* window_);
@@ -94,7 +93,6 @@ public:
 	// a simple value that I use to tell my engine what renderer its using.
 	static int RenderValue;
 	int frames;
-	bool isRunning =false;
 };
 
 /* My SDL Renderer class 
@@ -164,7 +162,6 @@ struct Particle
 	glm::vec2 Velocity;
 	glm::vec4 colour;
 	float life;
-	float size;
 
 };
 
