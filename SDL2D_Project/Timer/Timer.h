@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <iostream>
 #include <list>
-#define ONESECOND 1000 /// This is exactly one second in milliseconds
+#define ONESECOND 1000.000 /// This is exactly one second in milliseconds
 #define SIXTYFRAMES_PER_SECOND 16.666 // 60FPS in milliseconds 1/60 
 #define THIRTYFRAMES_PER_SECOND 33.333 // 30FPS in milliseconds
 /*2021-07-09
@@ -18,10 +18,15 @@ Did the work.
 * The Local Timer struct is essentially an object that I can create to check to see if a 
 * certain amount of time has passed. 
 */
+
+//All Associations with time, are in milliseconds, there are converstions between miliseconds to seconds 
+//but with all the data relating to time, that information is soley in milliseconds.
 struct LocalTimer
 {
 	double timerLimit = 0.0;
-	std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> LocalTimerPair;
+	bool steady = false;
+	std::pair<std::chrono::high_resolution_clock, std::chrono::high_resolution_clock::time_point> LocalTimerPairHigh;
+	std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> LocalTimerPairSteady;
 };
 
 class Timer
@@ -37,9 +42,6 @@ public:
 	void UpdatePerformanceClock();
 	[[deprecated("replaced by Uint64 get delta")]]
 	float GetDeltaTime() const;
-//	[[deprecated("replaced")]]
-//	unsigned int GetSleepTime(unsigned int fps_) const;
-//	[[deprecated("don't use")]]
 	float GetCurrentTicks();
 	/*New Code*/
 	static Timer* GetInstance();
@@ -48,28 +50,27 @@ public:
 	void IncrementFrames();
 	void PrintFPS();
 	///This will set the total system lag if any and make sure that the computer runs at an even 60, or 30 FPS
-	void IncrementUpdateLag(double updateLag_);
-	double GetUpdateLag();
+	double *GetUpdateLag();
 	///This will set the machine loop speed rate in milliseconds, in relation to frameRate 1/60 = 0.0166*1000 to convert to milliseconds = 16.6
 	void SetLogicLoopSpeed(int FPS_);
-	double getMS_Machine_Update();
-	///This will return the performance timer current delta time in milliseconds
+	/// this is the delta
 	double GetDelta();
+	/// Get the set standard of the logic loop speed
+	double GetMachineLoopSpeed();
 	///This will return the total seconds the engine has been running at
 	int GetTotalAmountTime();
 	///Will add my local timer structure to my list of local timers
 	static void AddLocalTimer(LocalTimer local_);
-	///Will just simply start the timer at the end of the list 
+	///Will just simply start the timer at the end of the list with an independent clock
 	static void StartTimer();
-	///Can Pass the localTimer directly 
+	///Can Pass the localTimer directly, with an independent clock
 	static void StartTimer(LocalTimer local_);
-	///Remember when working with std::chrono::<insert time variable here> that you know exactly what unit of time you are working in, i.e secs, millisecs,mircosecs 
-	static void SetTimer(std::chrono::milliseconds milli_);
-	///Remember when working with std::chrono::<insert time variable here> that you know exactly what unit of time you are working in, i.e secs, millisecs,mircosecs 
-	static void SetTimer(std::chrono::seconds secs_);
-	///get the Current local Timer flag
+	///Returns the last currentLocalTimer from its container
+	static LocalTimer* GetLocalTimer();
+	///No real implmentation on these two right here.
+	[[deprecated("Not implemented")]]
 	static bool getCurrentLocalTimerFlag();
-	///Here I will in
+	[[deprecated("Not implemented")]]
 	static void UpdateAllLocalTimers();
  private:
 	/* Old Code*/
@@ -79,7 +80,6 @@ public:
 	/*New Code*/
 	Timer();
 	~Timer();
-	double CalculateDelta();
 	static Timer* instance;
 	int FPS;
 	int totalFrames; ///a frame is one draw call
