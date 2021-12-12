@@ -12,6 +12,9 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Input.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(56,24): warning C4834: discarding return value of function with 'nodiscard' attribute
   GameObject.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
@@ -52,6 +55,12 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(30
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Shader.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Shader.cpp(110,35): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Shader.cpp(125,35): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Generating Code...
+  ThreadManager.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   GUI.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
@@ -105,4 +114,29 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(119,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(120,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(152): warning C4715: 'Tile::getID': not all control paths return a value
+  Timer.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Timer\Timer.cpp(92): warning C4715: 'Timer::GetInstance': not all control paths return a value
+  LINK : C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe not found or not built by the last incremental link; performing full link
+node.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'node.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+A_Star_Node_Priority.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'A_Star_Node_Priority.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+SceneManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'SceneManager.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+AI.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'AI.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+imgui_widgets.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_widgets.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+imgui_sdl.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_sdl.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+imgui_draw.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_draw.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+imgui_demo.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_demo.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+imgui.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+Vec2.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Vec2.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+Converter.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Converter.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+Vec3.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Vec3.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+NetworkManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'NetworkManager.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+PlayerController.obj : warning LNK4099: PDB '' was not found with 'PlayerController.obj' or at ''; linking object as if no debug info
+pugixml.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'pugixml.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+Observer.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Observer.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+C_RectangleCollider.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'C_RectangleCollider.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+C_CircleCollider.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'C_CircleCollider.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+AnimationHandler.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'AnimationHandler.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+Animation.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Animation.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+EngineSerializer.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'EngineSerializer.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+AudioManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'AudioManager.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
