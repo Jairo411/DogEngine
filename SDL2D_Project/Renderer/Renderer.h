@@ -29,7 +29,6 @@ public:
 	void OnDestroy();
 	RendererManager(RendererManager& other) = delete;
 	void operator =(const RendererManager&) = delete;
-	bool GetIsRunning();
 	///note make sure that you can switch renderers but the machine has to reboot the program
 	void setRenderer(int numbercase_);
 	void setWindow(Window* window_);
@@ -94,7 +93,6 @@ public:
 	// a simple value that I use to tell my engine what renderer its using.
 	static int RenderValue;
 	int frames;
-	bool isRunning =false;
 };
 
 /* My SDL Renderer class 
@@ -110,6 +108,8 @@ public:
 	SDL_Texture* CreateTextureFromSurface(SDL_Surface* surface_);
 	void DrawGameObject(GameObject* gameOBJ_);
 	void DrawTexture(SDL_Texture* tex_,SDL_Rect* srcRect_,SDL_Rect* dstRect);
+	/// Please learn how the middle Point algorithm actually works in this case. Hard Coded
+	void DrawCircle(int centreX_, int centreY_, int radius_);
 	void DrawLine(float startX_,float startY_, float endX_, float endY_);
 	void DrawPoint(int x_, int y_);
 	void DrawRect(SDL_Rect* rect_);
@@ -164,7 +164,6 @@ struct Particle
 	glm::vec2 Velocity;
 	glm::vec4 colour;
 	float life;
-	float size;
 
 };
 

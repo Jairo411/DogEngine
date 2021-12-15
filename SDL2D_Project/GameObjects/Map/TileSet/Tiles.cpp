@@ -56,7 +56,6 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 
 	dstRect.w = srcRect.w;
 	dstRect.h = srcRect.h;
-	col = RectCollider(x, y, dstRect.w);
 	isSoild = solid;
 
 }
@@ -69,7 +68,6 @@ void Tile::Render()
 		break;
 	case 0:// SDL
 		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(baseTex, &srcRect, &dstRect);
-		col.CollisonRender();
 	case 1: //OPENGL
 		break;
 		//Game::rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->CreateSquare();

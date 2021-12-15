@@ -30,11 +30,6 @@ void RendererManager::OnDestroy()
 {
 }
 
-bool RendererManager::GetIsRunning()
-{
-	return isRunning;
-}
-
 void RendererManager::setRenderer(int numbercase_)
 {
 	switch (numbercase_)
@@ -47,7 +42,6 @@ void RendererManager::setRenderer(int numbercase_)
 		SDL__Renderer = new SDLRenderer();
 		SDL__Renderer->OnCreate(window);
 		renderVariant = SDL__Renderer;
-		isRunning = true;
 		break;
 	}
 	case 1:
@@ -61,7 +55,6 @@ void RendererManager::setRenderer(int numbercase_)
 		openGLRenderer->SetWindowSize(w, h);
 		renderVariant = openGLRenderer;
 		openGLRenderer->OnCreate();
-		isRunning = true;
 		break;
 	}
 	case 2:
@@ -70,11 +63,9 @@ void RendererManager::setRenderer(int numbercase_)
 		vulkanRenderer = new VulkanRenderer();
 		renderVariant = vulkanRenderer;
 		vulkanRenderer->OnCreate();
-		isRunning = true;
 		break;
 	}
 	}
-	
 }
 
 void RendererManager::setWindow(Window* window_)
@@ -300,6 +291,44 @@ void SDLRenderer::DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* d
 	SDL_RenderCopy(rend, tex_, srcRect_, dstRect_);
 }
 
+void SDLRenderer::DrawCircle(int centreX_, int centreY_, int radius_)
+{
+
+	SDL_SetRenderDrawColor(rend, 89, 225, 0, 1);
+	
+	float fcentreX = (float)centreX_;
+	float fcentreY = (float)centreY_;
+	float fradius = (float)radius_;
+	SDL_FPoint points[24000];
+	float xPoint = 0;
+	float yPoint = 0;
+	int index = 0;
+	for (float i = 0.000f; i < 360.000f;)
+	{
+		//get a point on the circle using cartesan coordinates with the origin of this circle being (0,0)
+		xPoint = fradius * cosf(i);
+		yPoint = fradius * sinf(i);
+		
+		points[index].x = xPoint;
+		points[index].y = yPoint;
+
+		//Move the origin of the circle to where my object actually is 
+		//SDL_RenderDrawPoint(rend, xPoint, yPoint);
+		i += 0.015;
+		index++;
+	}
+
+	for (int i = 0; i < 24000; i++)
+	{
+		points[i].x +=  fcentreX;
+		points[i].y += fcentreY;
+	}
+	
+	SDL_RenderDrawPointsF(rend, &points[0], 24000);
+
+	SDL_SetRenderDrawColor(rend, 225, 225, 225, 225);
+}
+
 void SDLRenderer::DrawLine(float startX_, float startY_, float endX_, float endY_)
 {
 	SDL_RenderDrawLine(rend, startX_, startY_, endX_, endY_);
@@ -312,7 +341,10 @@ void SDLRenderer::DrawPoint(int x_, int y_)
 
 void SDLRenderer::DrawRect(SDL_Rect* rect_)
 {
+	SDL_SetRenderDrawColor(rend,89,225,0,1);
 	SDL_RenderDrawRect(rend, rect_);
+	SDL_SetRenderDrawColor(rend, 225, 225, 225, 225);
+	//SDL_RenderClear(rend);
 }
 
 void SDLRenderer::DrawRect(int x_, int y_, int width_, int height_)
@@ -418,25 +450,6 @@ Particle::Particle() : Position(0.0f), Velocity(0.0f), colour(1.0f), life(0.0f)
 void Particle::OnCreate()
 {
 	shader = new ShaderScript("Renderer/ShadersScripts/ParticleV.glsl", "Renderer/ShadersScripts/ParticleF.glsl");
-	
-	glm::vec2 translations[1000];
-	int index = 0;
-	float offset = 0.2f;
-
-	for (int i = 0; i < 1000; i++)
-	{
-		glm::vec2 translation;
-		translation.x = (float)i/ 10.0f + offset;
-		translation.y = (float)i / 10.0f + offset;
-		translations[index++] = translation;
-	}
-
-	unsigned int instanceVBO;
-	glGenBuffers(1, &instanceVBO);
-	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * 1000, &translations[0], GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	
 	float vertices[] =
 	{
 		//pos	//tex
@@ -460,13 +473,6 @@ void Particle::OnCreate()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
 
-
-	//set instance data 
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER,0);
-	glVertexAttribDivisor(2, 1);
-
 	glGenTextures(1, &texturePtr);
 	glBindTexture(GL_TEXTURE_2D, texturePtr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -476,7 +482,6 @@ void Particle::OnCreate()
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture->w, texture->h, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->pixels);
 	glGenerateMipmap(GL_TEXTURE_2D);
 
-	
 	SDL_FreeSurface(texture);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

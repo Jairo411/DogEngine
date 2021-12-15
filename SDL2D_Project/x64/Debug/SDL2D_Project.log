@@ -1,8 +1,37 @@
-﻿  Game.cpp
+﻿  C_CircleCollider.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(126,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(47,86): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(47,82): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(47,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(52,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(54,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(59,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_CircleCollider.cpp(63,14): warning C4305: '*=': truncation from 'double' to 'float'
+  C_RectangleCollider.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_RectangleCollider.cpp(37,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_RectangleCollider.cpp(38,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_RectangleCollider.cpp(58,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_RectangleCollider.cpp(59,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  C_Sprite.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_Sprite.cpp(27,16): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
+C:\GameDev\SDL2-2.0.12\include\SDL_render.h(137): message : see declaration of 'SDL_Texture'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_Sprite.cpp(34,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Component\C_Sprite.cpp(35,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  EngineSerializer.cpp
+  Game.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\Game.cpp(128,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Main.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
@@ -12,6 +41,7 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
+  Observer.cpp
   Input.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(56,24): warning C4834: discarding return value of function with 'nodiscard' attribute
@@ -19,10 +49,10 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Input\Input.cpp(56,24): 
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(30,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(31,21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(92,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(93,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(30,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(31,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(88,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.cpp(89,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   OpenGLTestGameObj.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
@@ -31,34 +61,34 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Rogue.cpp(85,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Rogue.cpp(86,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Rogue.cpp(146,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Rogue.cpp(96,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Rogue.cpp(97,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Rogue.cpp(160,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
   Skeleton.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(168,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(169,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(310,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(167,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(168,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(308,15): warning C4244: 'initializing': conversion from 'float' to 'Uint32', possible loss of data
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(273): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Skeleton.cpp(271): warning C4715: 'Skeleton::getTargetDirection': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(120): warning C4715: 'GameObject::GetComponent<C_RectangleCollider>': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(120): warning C4715: 'GameObject::GetComponent<C_CircleCollider>': not all control paths return a value
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(120): warning C4715: 'GameObject::GetComponent<C_Sprite>': not all control paths return a value
   Renderer.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(283,13): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(274,13): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\DearGUI\imgui_sdl.h(4): message : see declaration of 'SDL_Renderer'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(284,15): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(275,15): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
 C:\GameDev\SDL2-2.0.12\include\SDL_video.h(90): message : see declaration of 'SDL_Window'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(305,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Shader.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Shader.cpp(110,35): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Shader.cpp(125,35): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
-  Generating Code...
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(317,13): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(334,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(334,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(334,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(334,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   ThreadManager.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   GUI.cpp
@@ -72,12 +102,15 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.cpp(221,3): warning C4065: switch statement contains 'default' but no 'case' labels
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\Window.cpp(231,3): warning C4065: switch statement contains 'default' but no 'case' labels
   Generating Code...
+  AI.cpp
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\AI.cpp(220,18): warning C4834: discarding return value of function with 'nodiscard' attribute
   Grid.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(43,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(44,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Game\AI\Grid.cpp(56): warning C4715: 'NavTile::giveAddress': not all control paths return a value
   Collider.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
@@ -85,13 +118,13 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(144,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(205,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(214,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(215,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(219,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(221,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(237,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(239,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(201,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(210,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(211,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(215,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(217,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(233,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(235,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Map.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
@@ -109,34 +142,9 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(12,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(21,1): warning C4099: 'Map': type name first seen using 'class' now seen using 'struct'
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\Map.h(20): message : see declaration of 'Map'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(101,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(102,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(119,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(120,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(152): warning C4715: 'Tile::getID': not all control paths return a value
-  Timer.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Timer\Timer.cpp(92): warning C4715: 'Timer::GetInstance': not all control paths return a value
-  LINK : C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe not found or not built by the last incremental link; performing full link
-node.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'node.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-A_Star_Node_Priority.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'A_Star_Node_Priority.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-SceneManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'SceneManager.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-AI.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'AI.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-imgui_widgets.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_widgets.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-imgui_sdl.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_sdl.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-imgui_draw.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_draw.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-imgui_demo.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui_demo.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-imgui.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'imgui.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-Vec2.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Vec2.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-Converter.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Converter.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-Vec3.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Vec3.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-NetworkManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'NetworkManager.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-PlayerController.obj : warning LNK4099: PDB '' was not found with 'PlayerController.obj' or at ''; linking object as if no debug info
-pugixml.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'pugixml.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-Observer.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Observer.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-C_RectangleCollider.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'C_RectangleCollider.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-C_CircleCollider.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'C_CircleCollider.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-AnimationHandler.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'AnimationHandler.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-Animation.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'Animation.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-EngineSerializer.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'EngineSerializer.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
-AudioManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'AudioManager.obj' or at 'C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\vc142.pdb'; linking object as if no debug info
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(99,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(100,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(117,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(118,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(150): warning C4715: 'Tile::getID': not all control paths return a value
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

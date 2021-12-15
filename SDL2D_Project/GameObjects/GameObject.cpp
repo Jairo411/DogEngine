@@ -8,7 +8,7 @@ GameObject::GameObject()
 {
 	posX = 0;
 	posY = 0;
-	realPosition = Vec2(posX, posY);
+	Position = Vec2(posX, posY);
 	disableObject = false;
 	nameIdentifier = "GameObject";
 	TextureDisplayRectInfo.first = &srcRect;
@@ -27,9 +27,9 @@ GameObject::~GameObject()
 
 void GameObject::UpdatePostion()
 {
-	posX = realPosition.x;
-	posY = realPosition.y;
-	APosition = moveMiddle(Vec2(posX, posY));
+	posX = Position.x;
+	posY = Position.y;
+	PivotPosition = moveMiddle(Vec2(posX, posY));
 }
 
 int GameObject::ReadAmountOfAnimations()
@@ -40,9 +40,6 @@ int GameObject::ReadAmountOfAnimations()
 
 void GameObject::DrawLine(Vec2 start_, Vec2 end_)
 {
-//	SDL_RenderClear(Game::rendererManager->GetInstance()->getRenderer());
-//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->getRenderer(), 255, 255, 255, SDL_ALPHA_OPAQUE);
-//	SDL_RenderDrawLine(Game::rendererManager->GetInstance()->getRenderer(), start_.x, start_.y, end_.x, end_.y);
 }
 
 SDL_Texture* GameObject::getTexture()
@@ -81,9 +78,8 @@ void GameObject::setPosition(int x_, int y_)
 {
 	posX = x_;
 	posY = y_;
-	realPosition = Vec2(posX, posY);
-	Vec2 center = moveMiddle(Vec2(posX, posY));
-	APosition = center;
+	Position = Vec2(posX, posY);
+	PivotPosition = moveMiddle(Vec2(posX, posY));
 }
 
 void GameObject::setPosition(Vec2 vPosition)
@@ -91,7 +87,7 @@ void GameObject::setPosition(Vec2 vPosition)
 	Vec2 center = moveMiddle(vPosition);
 	posX = center.x;
 	posY = center.y;
-	realPosition = center;
+	Position = center;
 }
 
 /*Observer Pattern Implemented*/
@@ -116,9 +112,14 @@ void GameObject::Notify()
 	}
 }
 
+Vec2 GameObject::getPivotPosition()
+{
+	return this->PivotPosition;
+}
+
 Vec2 GameObject::getPosition()
 {
-	return this->APosition;
+	return Position;
 }
 
 

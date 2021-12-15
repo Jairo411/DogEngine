@@ -11,9 +11,13 @@
 #include<type_traits>
 #include <utility>
 #include"../Math/Vec2.h"
-#include"../DesignPattern/Observer.h"
 #include"Component/Component.h"
+#include "Component/C_CircleCollider.h"
+#include "Component/C_RectangleCollider.h"
+#include "Component/C_Sprite.h"
+#include"../DesignPattern/Observer.h"
 #include "../Input/PlayerController.h"
+
 
 /*Standard GameObject class should be abstract and should be the base class.
 of any game object in the game i.e
@@ -29,7 +33,7 @@ potentailly going to have gameObjects with no movement or extra functionality be
 /*2021-07-09
 	I agree with past me, and looking forward to moving to a component base structure.
 	2021-10-04 
-	Okay so GameObject class isn't terrible like I thought it would be. Just need remove shitting SDL Centering logic that I created myself. 
+	Okay so GameObject class isn't terrible like I thought it would be. Just need remove SDL Centering logic that I created myself. 
 */
 /*
 NOTES:
@@ -54,6 +58,7 @@ public:
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
 	/*Getters*/
+	
 	virtual bool getDisable();
 	bool setDisable(bool temp);
 	SDL_Texture* getTexture();
@@ -62,10 +67,13 @@ public:
 	virtual void Attach(IObserver* observer_);
 	virtual void Detach(IObserver* observer_);
 	virtual void Notify();
+	///Returns the Pivot Position (the middle) of the object position
+	virtual Vec2 getPivotPosition() final; 
+	///Returns the actual Sreen Coordinate position
 	virtual Vec2 getPosition() final;
 	static std::list<GameObject*> OBJHolder;
 	void DrawLine(Vec2 start_, Vec2 end_);
-	template <typename T, typename ... Args > std::shared_ptr<T> AddComponent(Args&& ... args_ ) // Move Constructor 
+	template <typename T, typename ... Args > void AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
 		T* comp = new T(std::forward<Args>(args_)...); // Need to reLook at this, this has to do something with treating a Lvalue and turns it into a Lvalue or Rvalue?
 		//this ensures that we only try to add a class the derives 
@@ -74,46 +82,57 @@ public:
 			"T must derive from Component");//<-- need to look at std::is_base_of() static assert seems to be an sort of execption checking
 
 			//check to see if we have this component already
-		for (auto& exisitingComponent : components)
+
+		if (components.size() > 0)
 		{
-			// Currently we prevent adding the same component twice
-			// This may be something we will change in the future. 
-			if (std::dynamic_pointer_cast<T>(exisitingComponent))
-			{
-				return std::dynamic_pointer_cast<T>(exisitingComponent);
-				std::cout << " Component Already Exists" << std::endl;
-			}
+			
 		}
 		// The object does not have this component so we create it and 
-		// and it to our list.
-		std::shared_ptr<T> pointer;
-		std::shared_ptr<T> newComponent = std::make_shared<T>( new Component());
-		pointer = std::dynamic_pointer_cast<Component*>(newComponent);
+		// and it to our list.	
+		Component* newComponent;
+		//T* newComponent = new Component();
+		newComponent = dynamic_cast<Component*>(comp);
 		components.push_back(newComponent);
-		pointer->OnCreate();
+		newComponent->OnCreate(this);
 	};
-	template <typename T> std::shared_ptr<T> GetComponent()
+	template <typename T> T* GetComponent()
 	{
 		static_assert(std::is_base_of<Component, T>::value,
 			"T must derived from Component");
-		
-		//Check that we don't already have a component of this type.
-		for (auto& exisitingComponents : components)
+		T* CurrentType = new T();
+		T* ComponentType;
+		for (Component* component : components)
 		{
-			if (std::dynamic_pointer_cast<T>(exisitingComponents))
+			ComponentType = dynamic_cast<T*>(component);
+			if (ComponentType != nullptr)
 			{
-				return std::dynamic_pointer_cast<T>(exisitingComponents);
+				std::string typePtrID = typeid(CurrentType).name();
+				std::string ComponentPtrID = typeid(ComponentType).name();
+
+				if (strcmp(typePtrID.c_str(), ComponentPtrID.c_str()) == 0) // if the types are the same types then return the current type
+				{
+					return ComponentType;
+				}
 			}
 		}
+
+		
 	}
-	template <typename T> std::shared_ptr<T> RemoveComponent()
+	template <typename T> void RemoveComponent()
 	{
-		for (int i = 0; i < components.size(); i++)
+		static_assert(std::is_base_of<Component, T>::value,
+			"T must derived from Component");
+		T* ptr = new T();
+		std::vector<Component*>::iterator it = components.begin();
+		for (it; it != components.end(); it++)
 		{
-			if (std::dynamic_pointer_cast<T>(components[i]))
+			if (dynamic_cast<T*>(*it) != nullptr)
 			{
-				delete components[i];
-				components.erase(components.begin() + i); //position 0 + index 
+				components.erase(it);
+			}
+			else
+			{
+				std::cout << "Component does not exist" << std::endl;
 			}
 		}
 	}
@@ -128,8 +147,8 @@ protected:
 	float maxAcceleration;
 	bool textureIsOn;
 	/*Object Members*/
-	Vec2 realPosition; // real position 
-	Vec2 APosition; // stands for Anchor Position -> middle of image or square
+	Vec2 Position; // real position 
+	Vec2 PivotPosition; // stands for Piviot Position -> moved the origin of the gameObject to the middle of its rect
 	Vec2 velocity;
 	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
@@ -139,7 +158,9 @@ private:
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
-	std::vector<std::shared_ptr<Component>> components;
+	std::vector<Component*> components;
+
+
 
 };
 

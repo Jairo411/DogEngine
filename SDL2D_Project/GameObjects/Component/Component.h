@@ -1,5 +1,5 @@
-#ifndef COMPONENT_HPP
-#define COMPONENT_HPP
+#ifndef COMPONENT_H
+#define COMPONENT_H
 /*2021-07-17 
  Basic Component system class*/
 class BaseObj; // forward declaration 
@@ -7,15 +7,14 @@ class BaseObj; // forward declaration
 class Component
 {
 public:
-	Component() { Parent = nullptr; }
-	Component(BaseObj* owner) : Parent(owner) {};
-	virtual ~Component() {};
-	virtual void OnCreate(BaseObj* parent_) = 0;
-	virtual bool OnDestroy() = 0;
+	inline Component() { Parent = nullptr; }
+	virtual ~Component() { Parent = nullptr; }
+	virtual void OnCreate(BaseObj* owner) = 0;
+	virtual void OnDestroy() = 0;
 	virtual void Update(float deltatime) =0; // I want this to always be defined in there child classes.
-	virtual void FixedUpdate(float DeltaTime_)=0; 
-	virtual void Render() const = 0;
+	virtual void FixedUpdate(float DeltaTime_) =0;
+	virtual void Render() =0;
 protected:
 		BaseObj* Parent; 
 };
-#endif // COMPONENT_HPP
+#endif // COMPONENT_H

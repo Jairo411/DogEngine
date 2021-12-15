@@ -33,7 +33,6 @@ Skeleton::Skeleton(int x, int y)
 	dstRect.y = srcRect.y;
 
 	animState = AnimationStates::WALK;
-	col = RectCollider(srcRect0.w, srcRect0.h);
 
 	//temporary pointer so my engine doesn't break
 	GameObject::OBJHolder.push_back(this);
@@ -165,8 +164,8 @@ void Skeleton::Update(float DeltaTime_)
 	}
 	if (getDisable() == false)
 	{
-		dstRect0.x = realPosition.x;
-		dstRect0.y = realPosition.y;
+		dstRect0.x = Position.x;
+		dstRect0.y = Position.y;
 		dstRect0.w = srcRect0.w;
 		dstRect0.h = srcRect0.h;
 	}
@@ -174,7 +173,7 @@ void Skeleton::Update(float DeltaTime_)
 	{
 		Disable();
 	}
-	col.CollisonUpdate(this->realPosition);
+
 	UpdatePostion();
 }
 
@@ -196,8 +195,7 @@ void Skeleton::Render()
 		if (getDisable() == false)
 		{
 			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect0, &dstRect0);
-			col.CollisonRender();
-			navCollider.CollisonRender();
+			//navCollider.CollisonRender();
 		}
 		else if (getDisable() == true)
 		{
@@ -234,19 +232,19 @@ void Skeleton::Steer()
 	if (pathFinding == true)
 	{
 		velocity = nodeDirection(path);
-		realPosition = (realPosition + velocity * dt);
+		Position = (Position + velocity * dt);
 	}
 
-	if (realPosition != getTargetDirection() && seperateFlag == false && pathFinding == false)
+	if (Position != getTargetDirection() && seperateFlag == false && pathFinding == false)
 	{
 		chaseFlag = true;
 
 		velocity = getTargetDirection();
 
-		realPosition = (realPosition + velocity * dt);// this should be an equation of motion but you need to have a decent timer class for this
+		Position = (Position + velocity * dt);// this should be an equation of motion but you need to have a decent timer class for this
 	//	std::cout << "real position" << realPosition <<std::endl;
 	}
-	else if (realPosition != getTargetDirection() && seperateFlag == true && pathFinding == false)
+	else if (Position != getTargetDirection() && seperateFlag == true && pathFinding == false)
 	{
 		Seperate();
 	}
@@ -261,7 +259,7 @@ Vec2 Skeleton::getTargetDirection()
 {
 	if (targetObj != nullptr)
 	{
-		Vec2 dir = targetObj->getPosition() - getPosition();
+		Vec2 dir = targetObj->getPivotPosition() - getPivotPosition();
 		if (dir.GetMag() > 1.0)
 		{
 			targetPos = dir.Normalize();
@@ -277,7 +275,7 @@ Vec2 Skeleton::nodeDirection(std::vector<NavTile> directionSet)
 
 	Vec2 dir;
 	Vec2 normalize;
-	if (directionSet.at(indexPath).getPosition() == getPosition())
+	if (directionSet.at(indexPath).getPosition() == getPivotPosition())
 	{
 
 		indexPath++;
@@ -291,7 +289,7 @@ Vec2 Skeleton::nodeDirection(std::vector<NavTile> directionSet)
 		dir = Vec2(0.0f, 0.0f);
 		return dir;
 	}
-	dir = directionSet.at(indexPath).getPosition() - getPosition();
+	dir = directionSet.at(indexPath).getPosition() - getPivotPosition();
 
 	normalize = dir.Normalize();
 
@@ -300,7 +298,7 @@ Vec2 Skeleton::nodeDirection(std::vector<NavTile> directionSet)
 
 Vec2 Skeleton::getSeperationDirection(Vec2 pos_)
 {
-	Vec2 tempPos = realPosition - pos_;
+	Vec2 tempPos = Position - pos_;
 	Vec2 normalizedPos = tempPos.Normalize();
 	return normalizedPos;
 }

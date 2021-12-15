@@ -17,9 +17,9 @@ void PlayerController::OnCreate(BaseObj* parent_)
     Parent = parent_;
 }
 
-bool PlayerController::OnDestroy()
+void PlayerController::OnDestroy()
 {
-    return false;
+    
 }
 
 void PlayerController::Update()

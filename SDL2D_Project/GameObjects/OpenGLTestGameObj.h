@@ -10,7 +10,7 @@ public:
 	OpenGLTestGameObj();
 	~OpenGLTestGameObj();
 	void Render();
-	void Update(float deltaTime_);
+	void Update();
 
 	std::string imgSrc; 
 	Square2D square;
@@ -21,14 +21,13 @@ class OpenGLTestGameObj1
 public:
 	OpenGLTestGameObj1();
 	~OpenGLTestGameObj1();
-	void Render();
 	void Update();
+	void Render();
 private:
 	Particle CurrentParticle;
-	unsigned int nr_particles = 1000;
-	int lastUsedparticle = 0;
 	int index=0;
 	int flag = 0;
+	std::vector<Particle> particles;
 };
 
 #endif

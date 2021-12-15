@@ -36,8 +36,7 @@ private:
 	float speed;
 	float prediction;
 	/*Objects Members*/
-	Vec2 targetPos;
-	RectCollider col;	
+	Vec2 targetPos;	
 	SDL_Rect srcRect0, dstRect0;
 	/*Get rid of this */
 	enum class AnimationStates

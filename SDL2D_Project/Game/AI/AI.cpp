@@ -46,7 +46,7 @@ NavTile AI::grabOriginTile()
 	{
 		Vec2 lowRange = weightedgraph.at(i).getPosition() + Vec2(-10.0f, -10.0f);
 		Vec2 highRange = weightedgraph.at(i).getPosition() + Vec2(10.0f, 0.0f);
-		isInRange = Converter::inRange(lowRange, highRange, currentAgent->getPosition());
+		isInRange = Converter::inRange(lowRange, highRange, currentAgent->getPivotPosition());
 		if (isInRange)
 		{
 			weightedgraph.at(i).aStar->priority;
@@ -322,11 +322,11 @@ std::map<GameObject*, Vec2> AIManager::getClosestDistanceBetweenAgents()
 				checkAgentPosition.at(*it) = true;
 				if (val == true)
 				{
-					originPosition = key->getPosition();
+					originPosition = key->getPivotPosition();
 				}
 				else if (val == false)
 				{
-					positionsV.push_back(key->getPosition());
+					positionsV.push_back(key->getPivotPosition());
 				}
 			}
 		}
@@ -337,7 +337,7 @@ std::map<GameObject*, Vec2> AIManager::getClosestDistanceBetweenAgents()
 		for (int i = 0; i < positionsV.size(); i++)
 		{
 			distance = originPosition - positionsV.at(i);
-			position = dynamic_cast<GameObject*>(*listIterator)->getPosition();
+			position = dynamic_cast<GameObject*>(*listIterator)->getPivotPosition();
 			if (distance.GetMag() < 70.0f)
 			{
 				newAgentDistance.insert(std::make_pair(*listIterator, position));

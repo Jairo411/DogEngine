@@ -15,23 +15,25 @@ Scene0::Scene0()
 	
 
 	//OPENGL
-	obj = new OpenGLTestGameObj();
-	obj1 = new OpenGLTestGameObj1();
+//	obj = new OpenGLTestGameObj();
+
 
 	//SDL
 	/* Intial Object Creations*/
-//	player = new Rogue("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 0);
-//	enemy = new Skeleton(180, 100);
-//	enemy0 = new Skeleton(300, 50);
-//	enemy1 = new Skeleton(400, 200);
+	player = new Rogue("./Assets/Character/Sprites/adventurer-attack1-00.png", 0,60);
+	enemy = new Skeleton(180, 100);
+	enemy0 = new Skeleton(300, 50);
+	enemy1 = new Skeleton(400, 200);
+	
+
 	
 
 	/*Observer Pattern Implemented*/
-//	mapA = new MapLayer(Game::window);
+	mapA = new MapLayer(Game::window);
 
 //	Game::EngineSerializer->GetInstance()->AssignID(GameObject::OBJHolder);
 
-
+	
 }
 
 Scene0::~Scene0()
@@ -48,10 +50,10 @@ void Scene0::OnCreate()
 
 
 	/* Setting GameObject Functionality*/
-//	enemy->SetTarget(player);
-//	enemy0->SetTarget(player);
-//	Game::AI_Manager->getInstance()->getTotalAgents();
-	//Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
+	enemy->SetTarget(player);
+	enemy0->SetTarget(player);
+	Game::AI_Manager->getInstance()->getTotalAgents();
+	Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1),mapA->getTiles(), 200);
 
 //	Game::initialized = true;
 
@@ -95,7 +97,7 @@ void Scene0::Update(float deltaTime_)
 		Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 		break;
 	case 1:
-		obj->Update(deltaTime_);
+
 		break;
 	}
 	
@@ -118,21 +120,19 @@ void Scene0::Render()
 
 	case 0:
 
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
-			mapA->Render();
-			player->Render();
-			enemy->Render();
-			enemy0->Render();
-			enemy1->Render();
-			Game::window->Render();
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
-		
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
+		mapA->Render();
+		player->Render();
+		enemy->Render();
+		enemy0->Render();
+		enemy1->Render();
+		Game::window->Render();
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
 		break;
-
 	case 1: 
-			obj->Render();
-			obj1->Render();
+		obj->Render();
+		obj1->Render();
 		break;
 	}
 	

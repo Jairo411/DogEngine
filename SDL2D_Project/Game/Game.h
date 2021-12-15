@@ -48,7 +48,7 @@ public:
 	//new Code
 	void FixedUpdate(float deltaTime_);
 	void handleCollisions();
-	void Render(double timeStep_);
+	void Render();
 	void clean();
 	static bool	setIsRunning(bool tempBool_);
 	static Timer* timer; //EngineFunctitonality 
@@ -65,14 +65,7 @@ public:
 
 	virtual void RunInstructions()
 	{
-	//	std::this_thread::sleep_for(std::chrono::seconds(5));
-	//	while (true) // put some sort of thread safe check here in this while loop
-	//	{
-	//		if (rendererManager->GetIsRunning() == true)
-	//		{
-	//			Render();
-	//		}
-	//	}
+		Render();
 	};
 private:
 	static bool isRunning;	

@@ -10,7 +10,7 @@ public:
 	PlayerController();
 	~PlayerController();
 	virtual void OnCreate(BaseObj* parent_);
-	virtual bool OnDestroy();
+	virtual	void OnDestroy();
 	virtual void Update();
 	virtual void FixedUpdate();
 	virtual void Render();

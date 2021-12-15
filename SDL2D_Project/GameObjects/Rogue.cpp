@@ -6,7 +6,7 @@ Rogue::Rogue()
 {
 	/* Basic intializations of a member variables */
 	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
-	realPosition = Vec2();
+	Position = Vec2();
 	srcRect.w = 0;
 	srcRect.h = 0;
 	srcRect.x = 0;
@@ -14,7 +14,6 @@ Rogue::Rogue()
 	FrameTicks = NULL;
 	amountOfAnimations = 0;
 	disableObject = NULL;
-	collider = RectCollider();
 	/* Don't know the point of this to be honest...*/
 }
 
@@ -24,23 +23,26 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 	className = "Player";
 	//objTexture = TextureManager::LoadTexture(textureSheet);
 	animState = AnimationStates::IDLE0;
-	setPosition(x, y);
 	srcRect.w = 100; // IMAGE SIZE ----> MAKE THIS A GAMEOBJECT FUNCTION 
 	srcRect.h = 80; // IMAGE SIZE  This is where the image get finished drawed  
 	srcRect.x = 0;  // This is where the image start begin drawed 
-	srcRect.y = 0; // This is where the image start begin drawed
+	srcRect.y =	0; // This is where the image start begin drawed
 
 
 	dstRect.x = srcRect.x;
 	dstRect.y = srcRect.y;
 
+	
+
+	
+
 	amountOfAnimations = 0;
 	FrameTicks = NULL;
 	disableObject = NULL;
 
-	circleCol = CircleCollider(5.0f);
-	collider = RectCollider(srcRect.w,srcRect.h);
+
 	IntiAnimations("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt", "./Assets/Character/Sprites/", 'a'); //Calling from the Animator class
+	
 	if (this->objTexture != NULL)
 	{
 		textureIsOn = true;
@@ -51,6 +53,14 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 		std::cout << "Object texture wasn't found" << std::endl;
 	}
 
+	UpdatePostion();
+	this->AddComponent<C_Sprite>();
+	this->GetComponent<C_Sprite>()->SetImageSize(srcRect);
+	this->GetComponent<C_Sprite>()->SetTexture("./Assets/Character/Sprites/adventurer-attack1-00.png");
+	this->AddComponent<C_RectangleCollider>();
+	this->GetComponent<C_RectangleCollider>()->SetSize(50, 80);
+	this->AddComponent<C_CircleCollider>();
+	this->GetComponent<C_CircleCollider>()->SetDistance(47); // the input here is the radius. 
 	GameObject::OBJHolder.push_back(this);
 
 
@@ -81,18 +91,22 @@ void Rogue::Update(float dt_)
 	PlayAnimations(animState);
 
 	if (getDisable() == false)
-	{
-		dstRect.x = realPosition.x * dt_;
-		dstRect.y = realPosition.y * dt_;
+	{ 
+		Position.x += 10;
+		dstRect.x = Position.x * dt_;
+		dstRect.y = Position.y * dt_;
 		dstRect.w = srcRect.w;
 		dstRect.h = srcRect.h;
+		this->GetComponent<C_Sprite>()->Update(dt_);
+		this->GetComponent<C_RectangleCollider>()->Update(dt_);
+		this->GetComponent<C_CircleCollider>()->Update(dt_);
 	}
 	else if (getDisable() == true)
 	{
 		Disable();
 	}
-	collider.CollisonUpdate(this->realPosition);
 	UpdatePostion();
+	
 }
 
 void Rogue::fixedUpdate(float dt_)
@@ -110,18 +124,18 @@ void Rogue::Render()
 	case 0: //SDL
 		if (nullObjTexture != NULL)
 		{
-			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, NULL, NULL);
-				//	cout << "You're player Texture isn't working" <<endl;
+		
 		}
 		if (getDisable() == false)
 		{
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
-			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), objTexture, &srcRect, &destRect);
-			collider.CollisonRender();
+			//Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
+			this->GetComponent<C_Sprite>()->Render();
+			this->GetComponent<C_RectangleCollider>()->Render();
+			this->GetComponent<C_CircleCollider>()->Render();
 		}
 		else if (getDisable() == true)
 		{
-			//	SDL_RenderCopy(Game::rendererManager->GetInstance()->getRenderer(), nullObjTexture, &srcRect, &destRect);
+		
 		}
 		break;
 	case 1: //OPENGL

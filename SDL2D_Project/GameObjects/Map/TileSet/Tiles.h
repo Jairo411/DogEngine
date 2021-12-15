@@ -76,7 +76,6 @@ private:
 	SDL_Texture* baseTex;
 	SDL_Rect srcRect;
 	SDL_Rect dstRect;
-	RectCollider col;
 	Vec2 GridPosition;
 	Node* n;
 	int ID;

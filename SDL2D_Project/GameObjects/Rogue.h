@@ -1,7 +1,5 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-
-
 #include "GameObject.h"
 #include "../Animator/Animator.h"
 #include "../Input/Input.h"
@@ -26,11 +24,6 @@ public:
 	 virtual void Update(float dt_) override;
 	 virtual void fixedUpdate(float dt_) override;
 	 void Disable() override;
-	 /* Keyboard Handler */
-//	 bool KeyBoardInput(int key);
-//	 bool MouseInput(int key);
-//	 bool ControllerInput(int key);
-	 /* Get Rid of this*/
 	 enum class AnimationStates
 	 {
 		 ATTACK0 = 0,
@@ -55,11 +48,9 @@ private:
 	int amountOfAnimations;
 	bool disableObject;
 	/*Objects/Classes*/
-	RectCollider collider;
 	Uint32 FrameTicks;
 	SDL_Rect srcRect0, dstRect0;
 	GameObject* playerPtr;
-	CircleCollider circleCol;
 	AnimationStates animState;
 	/*Functions*/
 	virtual void PlayAnimations(AnimationStates temp_);
