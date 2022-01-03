@@ -45,6 +45,7 @@ void C_RectangleCollider::FixedUpdate(float deltatime_)
 void C_RectangleCollider::Render()
 {
 	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
+	
 }
 
 void C_RectangleCollider::SetSize(int width_, int height_)

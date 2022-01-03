@@ -73,20 +73,16 @@ public:
 	virtual Vec2 getPosition() final;
 	static std::list<GameObject*> OBJHolder;
 	void DrawLine(Vec2 start_, Vec2 end_);
+
+
 	template <typename T, typename ... Args > void AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
-		T* comp = new T(std::forward<Args>(args_)...); // Need to reLook at this, this has to do something with treating a Lvalue and turns it into a Lvalue or Rvalue?
-		//this ensures that we only try to add a class the derives 
-		//from component. This is tested at compile time.
+		T* comp = new T(std::forward<Args>(args_)...);
+		
 		static_assert(std::is_base_of<Component, T>::value,
-			"T must derive from Component");//<-- need to look at std::is_base_of() static assert seems to be an sort of execption checking
+			"T must derive from Component");// static arrest compiles this argument during compile time. To make sure the Type I add is a component
 
 			//check to see if we have this component already
-
-		if (components.size() > 0)
-		{
-			
-		}
 		// The object does not have this component so we create it and 
 		// and it to our list.	
 		Component* newComponent;

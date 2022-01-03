@@ -30,7 +30,7 @@ Game::Game()
 	threadManager = ThreadManager::GetInstance();
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(this);
-	threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process
+//	threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process
 	
 	audioManager->AddSong("./Martin Stig Andersen - Limbo (Original Videogame Soundtrack) - 01 Menu.wav");
 	audioManager->playFirstSong();
@@ -67,10 +67,10 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	int flags = 0;
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
 	window->setWindowTitle(title);
-	window->setFlag(0);
+	window->setFlag(SDL_WINDOW_OPENGL);
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
-	rendererManager->GetInstance()->setRenderer(0);
+	rendererManager->GetInstance()->setRenderer(1);
 	window->SetGUI(engineGUI);
 
 	isRunning = true;

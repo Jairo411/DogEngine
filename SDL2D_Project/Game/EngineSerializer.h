@@ -3,6 +3,7 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
+#include <assert.h>
 #include "PugiXML/pugixml.hpp"
 #include<sys/stat.h>
 #include<sys/types.h>
@@ -79,21 +80,18 @@ private:
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
 	std::map < const char*, const char*> directorydictionary;
-	const char* docRootNames[4] = 
+	const char* docRootNames[3] = 
 	{"EngineSaveData" ,
-	"EngineDataInfo",
 	"ScenesInfo",
 	"GameObjectsInfo"
 	};
-	const char* fullpath[4] = 
-	{ "C:/Users/jalbm/source/repos/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/EngineData.xml",
+	const char* fullpath[3] = 
+	{ "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/SceneData.xml",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjectData/GameObjectData.xml" 
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/GameObjectData.xml" 
 	};
-	const char* fileNames[4] = 
+	const char* fileNames[3] = 
 		{ "EngineSaveData.xml", 
-		"EngineData.xml",
 		"SceneData.xml",
 		"GameObjectData.xml"};
 	const char* directoryPath[4] = 

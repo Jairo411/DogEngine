@@ -17,7 +17,7 @@ functionality will be used to set up properties and maybe access none static var
 	that I can create my objects and assign there member values according to how I want.
 	Like how Graphics APIs set up there logic
 - THE WINDOW CLASS SHOULD NOT HANDLE INPUT LOGIC 
-- THE WINDOW CLASS WILL NOW HANDLE INPUT LOGIC THROUGH COMPOSITIONS OBJECTS. :D
+- THE WINDOW CLASS WILL NOW HANDLE INPUT LOGIC THROUGH COMPOSITIONS OBJECTS.
 - THE WINDOW CLASS INPUT LOGIC CAN AND WILL BE HARDCODEDISH.
 	.*/
 class Game;

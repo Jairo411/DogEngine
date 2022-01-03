@@ -10,7 +10,6 @@ Skeleton::Skeleton()
 	srcRect.y = 0;
 	srcRect0.x = 0;
 	dstRect0.y = 0;
-	nameIdentifier = "skeleton";
 }
 
 Skeleton::Skeleton(int x, int y)
@@ -19,6 +18,9 @@ Skeleton::Skeleton(int x, int y)
 	srcRect.x = 0;
 	srcRect.y = 0;
 	speed = 0.1f;
+
+	className = typeid(*this).name();
+	className.erase(0, 6);
 
 	srcRect0.x = 0;
 	srcRect0.y = 0;

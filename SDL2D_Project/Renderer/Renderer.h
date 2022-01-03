@@ -119,7 +119,7 @@ public:
 	void RenderClear();
 	void RenderPresent();
 	int getTotalFrames();
-private:
+private:x`
 	SDL_Renderer* rend;
 	SDL_Window* window;
 	int totalFrames;

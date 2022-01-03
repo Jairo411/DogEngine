@@ -34,27 +34,6 @@ protected:
 	{
 		return isthreadAssigned;
 	}
-	///Returns a function pointer of any type 
-	//template <typename T, typename ... Args>
-	//T getReturnType()
-	//{
-	//	return std::function<T(Args ...)> temporaryReturn;
-	//};
-	/////A simple flag to redirect the functions calls to a multithreaded Format 
-	//template<typename T>
-	//static bool isThreadAble()
-	//{
-	//	if (static_cast<this>(T)==true && isthreadAssigned==true) //This is saying if the upcast from whatever Type has the parent Threadable and the threadPtr is currently pointing somewhere, then true
-	//	{
-	//		return true;
-	//	}
-	//	else
-	//	{
-	//		return false;
-	//	}
-	//};
-
-	//ThreadAble& operator=(const ThreadAble&)=delete;
 private:
 	bool isthreadAssigned;
 };

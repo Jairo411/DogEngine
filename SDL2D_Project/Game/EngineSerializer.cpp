@@ -9,30 +9,70 @@ Serializer::Serializer()
 	//Just creating every file, not handling any of the files
 	CurrentDoc = new pugi::xml_document();
 	struct stat status;
-	int index = 0;
-	int length = sizeof(directoryPath) / sizeof(directoryPath[0]); //total length of the array, this works because the total size of the array 
-	while (index != length)
+	int indexDir = 0;
+	int indexFile = 0;
+	int lengthDir = 4;
+	int lengthFile = 3;
+	bool done = false;
+
+	/// Create the directories if they don't exist
+	for (int i = 0; i < lengthDir; i++)
+	{
+		if (std::filesystem::exists(directoryPath[indexDir]) == false)
+		{
+			std::cout << directoryPath[indexDir] << std::endl;
+			std::cout << "Directory doesn't exist, creating it..." << std::endl;
+		}
+		
+		bool file =std::filesystem::create_directories(directoryPath[indexDir]);
+		assert(file == false); //Put assert in places that shouldn't go hard at all. 
+		indexDir++;
+	}
+	for (int i = 0; i < lengthFile; i++)
+	{
+		std::string path = directoryPath[indexFile+1];
+		std::string file = fileNames[indexFile];
+		std::string combined = path + file;
+		/// Create the files if they don't exist
+		if (stat(combined.c_str(), &status)!=0)
+		{
+			std::cout << "Creating Files, currentFiles being created :" << docRootNames[indexFile] << std::endl;
+			pugi::xml_document* document;
+			document = DefaultSerialized(docRootNames[indexFile]);
+			document->save_file(combined.c_str(), PUGIXML_TEXT(""));
+			document_list.push_back(document);
+		}
+		/// Load the files because they exist
+		else if (stat(combined.c_str(),&status)==0)
+		{
+			std::cout << "Loading in Files..." << std::endl;
+			std::string file = fileNames[indexFile];
+			std::string combined = path + file;
+			pugi::xml_document* document = new pugi::xml_document();
+			document->load_file(combined.c_str());
+			document_list.push_back(document);
+		}
+		indexFile++;
+	}
+	/*while (done != true)
 	{
 		
-		if (std::filesystem::exists(directoryPath[index]) == false)
+		if (std::filesystem::exists(directoryPath[indexDir]) == false)
 		{
-			std::cout << directoryPath[index] << std::endl;
+			std::cout << directoryPath[indexDir] << std::endl;
 			std::cout << "Directory doesn't exist, creating it..." << std::endl;
-
-			std::filesystem::create_directory(directoryPath[index]);
-			std::cout << "Creating Files, currentFile being created :" << docRootNames[index] << std::endl;
 		}
 		// get current path from iterator then check to see if they exist or not
-		std::string path = directoryPath[index];
-		std::string file = fileNames[index];
+		std::string path = directoryPath[indexDir];
+		std::string file = fileNames[indexFile];
 		std::string combined = path + file;
 		// this checks to see if the files exist themselves  
 		// if they don't exist
 		if (stat(combined.c_str(), &status) != 0)
 		{
-			std::cout << "Creating Files, currentFile being created :" << docRootNames[index] << std::endl;
+			std::cout << "Creating Files, currentFile being created :" << docRootNames[indexFile] << std::endl;
 			pugi::xml_document* document;
-			document = DefaultSerialized(docRootNames[index]);
+			document = DefaultSerialized(docRootNames[indexFile]);
 			document->save_file(combined.c_str(), PUGIXML_TEXT(""));
 			document_list.push_back(document);
 		}
@@ -40,14 +80,14 @@ Serializer::Serializer()
 		else if (stat(combined.c_str(), &status) == 0)
 		{
 			std::cout << "Loading in Files...." << std::endl;
-			std::string file = fileNames[index];
+			std::string file = fileNames[indexFile];
 			std::string combined = path + file;
 			pugi::xml_document* document = new pugi::xml_document();
 			document->load_file(combined.c_str());
 			document_list.push_back(document);
 		}
-		index++;
 	}
+	*/
 }
 
 void Serializer::OnCreate()
@@ -145,7 +185,7 @@ bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 
 bool Serializer::GameObjectExist(int ID_)
 {
-	if (ID_==0)
+	if (ID_!=0)
 	{
 		return true;
 	}
@@ -276,16 +316,17 @@ void Serializer::CreateID(GameObject* OBJ_)
 {
 	//Lets just make sure that the ID doesn't already exist
 	//then assign that ID in our XML file
-	int ID;
+	int ID = 0;
 	for (int i = 0; i<gameObjectIDs.size(); i++)
 	{
 		//If ID doesn't exist then assign it 
-		int temp = gameObjectIDs[i];
+		int temp = gameObjectIDs[i];	
 		ID = GenerateRandomNumber();
-		while (ID==temp)
+		while (ID == temp)
 		{
-			ID = GenerateRandomNumber();
+		ID = GenerateRandomNumber();
 		}
+		
 	}
 	OBJ_->setID(ID);
 	gameObjectIDs.push_back(ID);

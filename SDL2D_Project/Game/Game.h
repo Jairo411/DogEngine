@@ -65,7 +65,10 @@ public:
 
 	virtual void RunInstructions()
 	{
-		Render();
+		while (getThreadAssignment()==true)
+		{
+			Render();
+		}
 	};
 private:
 	static bool isRunning;	

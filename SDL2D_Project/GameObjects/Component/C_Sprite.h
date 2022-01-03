@@ -25,4 +25,9 @@ public:
 	GameObject* Objcast;
 	SDL_Texture* texture;
 };
+
+
+
+
+
 #endif // !C_Sprite_H

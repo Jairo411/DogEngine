@@ -1,2 +1,123 @@
-<?xml version="1" encoding="UTF-8" standalone="no"?>
-<GameObjectsInfo />
+<?xml version="1.0"?>
+<GameObjectsInfo>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="0" Name="GameObject">
+<Class Name="Rogue" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+<GameObject ID="39" Name="GameObject">
+<Class Name="Skeleton" />
+<ParentOf />
+<ChildOf />
+</GameObject>
+</GameObjectsInfo>

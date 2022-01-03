@@ -20,7 +20,8 @@ Rogue::Rogue()
 Rogue::Rogue(const char* textureSheet, int x, int y)
 {
 	/* Basic intializations of a member variables */
-	className = "Player";
+	className = typeid(*this).name(); // you should put this code inside your seralizer
+	className.erase(0,6); // you should put this code inside your seralizer
 	//objTexture = TextureManager::LoadTexture(textureSheet);
 	animState = AnimationStates::IDLE0;
 	srcRect.w = 100; // IMAGE SIZE ----> MAKE THIS A GAMEOBJECT FUNCTION 
@@ -28,13 +29,8 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 	srcRect.x = 0;  // This is where the image start begin drawed 
 	srcRect.y =	0; // This is where the image start begin drawed
 
-
 	dstRect.x = srcRect.x;
 	dstRect.y = srcRect.y;
-
-	
-
-	
 
 	amountOfAnimations = 0;
 	FrameTicks = NULL;
@@ -54,13 +50,19 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 	}
 
 	UpdatePostion();
+
+
+
 	this->AddComponent<C_Sprite>();
 	this->GetComponent<C_Sprite>()->SetImageSize(srcRect);
 	this->GetComponent<C_Sprite>()->SetTexture("./Assets/Character/Sprites/adventurer-attack1-00.png");
+
+
 	this->AddComponent<C_RectangleCollider>();
 	this->GetComponent<C_RectangleCollider>()->SetSize(50, 80);
 	this->AddComponent<C_CircleCollider>();
 	this->GetComponent<C_CircleCollider>()->SetDistance(47); // the input here is the radius. 
+
 	GameObject::OBJHolder.push_back(this);
 
 
@@ -97,7 +99,7 @@ void Rogue::Update(float dt_)
 		dstRect.y = Position.y * dt_;
 		dstRect.w = srcRect.w;
 		dstRect.h = srcRect.h;
-		this->GetComponent<C_Sprite>()->Update(dt_);
+	//	this->GetComponent<C_Sprite>()->Update(dt_);
 		this->GetComponent<C_RectangleCollider>()->Update(dt_);
 		this->GetComponent<C_CircleCollider>()->Update(dt_);
 	}
@@ -128,7 +130,7 @@ void Rogue::Render()
 		}
 		if (getDisable() == false)
 		{
-			//Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
+		//	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
 			this->GetComponent<C_Sprite>()->Render();
 			this->GetComponent<C_RectangleCollider>()->Render();
 			this->GetComponent<C_CircleCollider>()->Render();
