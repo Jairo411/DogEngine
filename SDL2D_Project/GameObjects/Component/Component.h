@@ -1,5 +1,8 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
+#include <vector>
+#include <utility>
+#include <tuple>
 /*2021-07-17 
  Basic Component system class*/
 class BaseObj; // forward declaration 

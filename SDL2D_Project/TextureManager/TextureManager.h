@@ -25,23 +25,18 @@ public:
 	TextureManager(TextureManager& other) = delete;
 	void operator =(const TextureManager&) = delete;
 
-	///SDL CALLS
-
+	
+	///Will Create a Surface
 	SDL_Surface* LoadSurface(const char* filename_);
 
-	///will load texture into memory
+	///SDL IMAGE CALLS
+	///Will Create a texture
 	static SDL_Texture* LoadTexture(const char* filename);
-	///will take texture from memory then cut smaller texture from memory and make more texture
+	///Will Take a SDL_Texture and cut and portion of it and return a texture
     static SDL_Texture* LoadTexture(SDL_Rect sRect,SDL_Texture* source);
 	///Create a sprite map 
 	static std::vector<SDL_Texture*> CreateMapSprite(SDL_Texture* tex_,int width_, int height_,int SizeOfCut_,int sourceX_, int sourceY_);
-
-	///SDL CALLS
-
-
-//	void setRenderer(SDL_Renderer* renderer_);
-//	void setRenderer(OpenGLRenderer* renderer_);
-//	void setRenderer(VulkanRenderer* renderer_);
+	
 private:
 	TextureManager();
 	~TextureManager();

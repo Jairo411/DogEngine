@@ -99,7 +99,7 @@ void Rogue::Update(float dt_)
 		dstRect.y = Position.y * dt_;
 		dstRect.w = srcRect.w;
 		dstRect.h = srcRect.h;
-	//	this->GetComponent<C_Sprite>()->Update(dt_);
+		this->GetComponent<C_Sprite>()->Update(dt_);
 		this->GetComponent<C_RectangleCollider>()->Update(dt_);
 		this->GetComponent<C_CircleCollider>()->Update(dt_);
 	}

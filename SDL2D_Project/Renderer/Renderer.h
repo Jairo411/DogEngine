@@ -106,10 +106,10 @@ public:
 	void OnCreate(SDL_Window* window_);
 	void OnDestroy();
 	SDL_Texture* CreateTextureFromSurface(SDL_Surface* surface_);
-	void DrawGameObject(GameObject* gameOBJ_);
 	void DrawTexture(SDL_Texture* tex_,SDL_Rect* srcRect_,SDL_Rect* dstRect);
+	void DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_, double angle_, SDL_Point* center_, SDL_RendererFlip flipFlag_);
 	/// Please learn how the middle Point algorithm actually works in this case. Hard Coded
-	void DrawCircle(int centreX_, int centreY_, int radius_);
+	void DrawCircle(int centreX_, int centreY_, int radius_); // I need a better draw Circle function
 	void DrawLine(float startX_,float startY_, float endX_, float endY_);
 	void DrawPoint(int x_, int y_);
 	void DrawRect(SDL_Rect* rect_);
@@ -119,7 +119,7 @@ public:
 	void RenderClear();
 	void RenderPresent();
 	int getTotalFrames();
-private:x`
+private:
 	SDL_Renderer* rend;
 	SDL_Window* window;
 	int totalFrames;

@@ -26,7 +26,7 @@ Game::Game()
 	textureManager = TextureManager::GetInstance();
 	audioManager = AudioManager::GetInstance();
 	engineGUI = new GUI(); // I need to look into this 
-
+	
 	threadManager = ThreadManager::GetInstance();
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(this);
@@ -67,10 +67,10 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 	int flags = 0;
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
 	window->setWindowTitle(title);
-	window->setFlag(SDL_WINDOW_OPENGL);
+	window->setFlag(NULL);
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
-	rendererManager->GetInstance()->setRenderer(1);
+	rendererManager->GetInstance()->setRenderer(0);
 	window->SetGUI(engineGUI);
 
 	isRunning = true;

@@ -13,11 +13,11 @@ public:
 	virtual ~C_Animation();
 	virtual void OnCreate(BaseObj* owner_);
 	virtual void OnDestroy();
-	virtual void Update(float deltaTime_);
+	virtual void Update(float deltaTime_) { }
 	virtual void FixedUpdate(float deltaTime_){}
 	virtual void Render() {}
 	void AddImage(SDL_Texture* texture_);
-	void RemoveImage(SDL_Texture* texture_);
+	void RemoveImage(SDL_Texture* texture_); // could be an issue her because the vector that stores the texture might have a different address 
 	void SetAnimationLength(float animationLength_);
 private:
 	float secondsOfAnimations;

@@ -5,8 +5,10 @@ C_Sprite::C_Sprite()
 {
 	width = 0;
 	height = 0;
+	angle = 0.0;
 	texture = nullptr;
 	Objcast = nullptr;
+	flipType = SDL_FLIP_HORIZONTAL;
 }
 
 C_Sprite::~C_Sprite()
@@ -44,12 +46,23 @@ void C_Sprite::FixedUpdate(float deltaTime_)
 
 void C_Sprite::Render()
 {
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect);
+//	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect);
+	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect, angle, &center, flipType);
+}
+
+void C_Sprite::SetTexture(int id)
+{
+	assert((id < 0) && "Resource ID is less than zero");
+
+
+
 }
 
 void C_Sprite::SetTexture(const char* fileDirectory_)
 {
 	texture = TextureManager::LoadTexture(fileDirectory_);
+	center.x = SrcRect.w / 2;
+	center.y = SrcRect.h / 2;
 }
 
 void C_Sprite::SetImageSize(SDL_Rect src_)

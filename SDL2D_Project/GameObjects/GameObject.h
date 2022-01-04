@@ -15,6 +15,8 @@
 #include "Component/C_CircleCollider.h"
 #include "Component/C_RectangleCollider.h"
 #include "Component/C_Sprite.h"
+#include "Component/C_Animation.h"
+#include "Component/AnimationSet.h"
 #include"../DesignPattern/Observer.h"
 #include "../Input/PlayerController.h"
 
@@ -58,7 +60,6 @@ public:
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
 	/*Getters*/
-	
 	virtual bool getDisable();
 	bool setDisable(bool temp);
 	SDL_Texture* getTexture();
@@ -74,7 +75,7 @@ public:
 	static std::list<GameObject*> OBJHolder;
 	void DrawLine(Vec2 start_, Vec2 end_);
 
-
+	//Template Component Stuff
 	template <typename T, typename ... Args > void AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
 		T* comp = new T(std::forward<Args>(args_)...);
@@ -86,7 +87,6 @@ public:
 		// The object does not have this component so we create it and 
 		// and it to our list.	
 		Component* newComponent;
-		//T* newComponent = new Component();
 		newComponent = dynamic_cast<Component*>(comp);
 		components.push_back(newComponent);
 		newComponent->OnCreate(this);
@@ -109,10 +109,8 @@ public:
 				{
 					return ComponentType;
 				}
-			}
+			} 
 		}
-
-		
 	}
 	template <typename T> void RemoveComponent()
 	{
@@ -125,10 +123,6 @@ public:
 			if (dynamic_cast<T*>(*it) != nullptr)
 			{
 				components.erase(it);
-			}
-			else
-			{
-				std::cout << "Component does not exist" << std::endl;
 			}
 		}
 	}
@@ -155,9 +149,6 @@ private:
 	int posY;
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
 	std::vector<Component*> components;
-
-
-
 };
 
 

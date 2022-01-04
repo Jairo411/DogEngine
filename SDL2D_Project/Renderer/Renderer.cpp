@@ -281,14 +281,14 @@ SDL_Texture* SDLRenderer::CreateTextureFromSurface(SDL_Surface* surface_)
 	return tex;
 }
 
-void SDLRenderer::DrawGameObject(GameObject* gameOBJ_)
-{
-	DrawTexture(gameOBJ_->getTexture(), gameOBJ_->getTextureDisplayInfo().first, gameOBJ_->getTextureDisplayInfo().second);
-}
-
 void SDLRenderer::DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_)
 {
 	SDL_RenderCopy(rend, tex_, srcRect_, dstRect_);
+}
+
+void SDLRenderer::DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_, double angle_, SDL_Point* center_, SDL_RendererFlip flipFlag_)
+{
+	SDL_RenderCopyEx(rend, tex_, srcRect_, dstRect_, angle_, center_, flipFlag_);
 }
 
 void SDLRenderer::DrawCircle(int centreX_, int centreY_, int radius_)
