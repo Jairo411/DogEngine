@@ -24,10 +24,11 @@
 #include "../GameObjects/Skeleton.h"
 #include "../GameObjects/OpenGLTestGameObj.h"
 #include "../GameObjects/Map/Map.h"
-#include "EngineSerializer.h"
 #include "../Thread/ThreadManager.h"
 #include "../Audio/AudioManager.h"
-
+#include "ResourceAllocator.h"
+#include "ResourceManager.h"
+#include "EngineSerializer.h"
 
 
 /*2021-07-09 
@@ -59,7 +60,8 @@ public:
 	static Serializer* EngineSerializer; //Engine functionality 
 	static SceneManager* sceneManager; //Engine functionality 
 	static ThreadManager* threadManager; //Engine functionality
-	static AudioManager* audioManager;
+	static AudioManager* audioManager; //Engine Functionality
+	static ResourceManager* resourceManager;
 	GUI* engineGUI;
 	static bool initialized;
 

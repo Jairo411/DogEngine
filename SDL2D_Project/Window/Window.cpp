@@ -18,9 +18,6 @@ Window::Window()
 	keyBoardInput = KeyBoardInput();
 	mouseInput = MouseInput();
 	
-
-
-
 }
 
 
@@ -161,74 +158,30 @@ void Window::Render()
 	{
 	default:
 		break;
-	case 0:
-		/// <summary>
 	/// SDL Render Process
-	/// </summary>
-		switch (windowStatus)
-		{
-		case Window::DEBUG:
-		{
-			//NEW 
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&middleRect);
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
+	case 0:
+	{
+	
+				//NEW 
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&middleRect);
+		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
 
-			GUIContext->Render();
-
-			//OLD
-		//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 100, 0, 15, 100);
-		//	SDL_RenderDrawRect(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), &middleRect);
-		//	SDL_SetRenderDrawColor(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 0, 0, 0, 255);
-			//		GUIContext.Render();
-		}
-		break;
-		case Window::STANDARD:
-		{
-	/*		std::map<SDL_Rect*, int>::iterator it = GraphicSquareHolder.begin();
-			int cycleValue = 0;
-			for (it = GraphicSquareHolder.begin(); it != GraphicSquareHolder.end(); it++)
-			{
-				SDL_Rect* thisKey = it->first;
-				it->second = cycleValue;
-
-				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
-				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(it->first);
-				Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
-
-				cycleValue += 1;
-			}*/
-		}
+		GUIContext->Render();
 
 		break;
-		case Window::RELEASE:
-		{
-
-		}
-		break;
-		default:
-			break;
-		};
-		break;
-	/// <summary>
+	}
 	/// OpenGL Render Process
-	/// </summary>
-	case 1: 
-		switch (windowStatus)
-		{
-		default:
-			break;
-		}
+	case 1:
+	{
 		break;
-		/// <summary>
+	}
 	/// Vulkan Render Process
-	/// </summary>
 	case 2:
-		switch (windowStatus)
-		{
-		default:
-			break;
-		}
+	{
+		break;
+	}
+	
 	}
 }
 

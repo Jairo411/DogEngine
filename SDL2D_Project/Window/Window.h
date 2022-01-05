@@ -47,12 +47,6 @@ public:
 	bool getIsClose();
 	static Vec2 ConvertScreenCoords(int x, int y);
 	Vec2 midVec;
-	enum WindowStatus : unsigned int
-	{
-		DEBUG = 0,
-		STANDARD,
-		RELEASE
-	};
 private:
 	//Constructors
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct

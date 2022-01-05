@@ -2,6 +2,7 @@
 #define C_Sprite_H
 #include <SDL.h>
 #include <SDL_image.h>
+#include <string>
 #include "Component.h"
 #include "../../Game/ResourceAllocator.h"
 class TextureManager;
@@ -16,8 +17,10 @@ public:
 	virtual void Update(float deltaTime_);
 	virtual void FixedUpdate(float deltaTime_);
 	virtual void Render();
+	[[deprecated("hasn't be implemented yet")]]
 	void SetTexture(int id);
-	void SetTexture(const char* fileDirectory_ );
+	///full path to the file directory 
+	void SetTexture(std::string fileDirectory_ );
 	void SetImageSize(SDL_Rect src_);
  private:
 	int width;

@@ -10,6 +10,7 @@ TextureManager* Game::textureManager = nullptr;
 SceneManager* Game::sceneManager = nullptr;
 ThreadManager* Game::threadManager = nullptr;
 AudioManager* Game::audioManager = nullptr;
+ResourceManager* Game::resourceManager = nullptr;
 bool Game::initialized = false;
 
 bool Game::isRunning = false;
@@ -18,16 +19,21 @@ bool Game::isRunning = false;
 Game::Game()
 {
 	isRunning = true;
-	timer = Timer::GetInstance();//Im making all of these managers /Single entity type classes as singletons
+
+	///Singleton instantiation
+	timer = Timer::GetInstance();
 	sceneManager = SceneManager::GetInstance();
 	window = Window::GetInstance();
 	rendererManager = RendererManager::GetInstance();
 	EngineSerializer = Serializer::GetInstance();
 	textureManager = TextureManager::GetInstance();
 	audioManager = AudioManager::GetInstance();
-	engineGUI = new GUI(); // I need to look into this 
-	
+	resourceManager = ResourceManager::GetInstance();
 	threadManager = ThreadManager::GetInstance();
+
+	engineGUI = new GUI(); // I need to look into this 
+
+
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(this);
 //	threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process
@@ -35,14 +41,14 @@ Game::Game()
 	audioManager->AddSong("./Martin Stig Andersen - Limbo (Original Videogame Soundtrack) - 01 Menu.wav");
 	audioManager->playFirstSong();
 
+	//Testing file locations 
+	//ResoureAllocator<SDL_Texture*> tex = ResoureAllocator<SDL_Texture*>("./Assets/Character/Sprites/adventurer-attack1-00.png");
+	//resourceManager->GetInstance()->AccessGenericContainer()->Push_Back <ResoureAllocator<SDL_Texture*>>(tex);
 
 	
 
 	initialized = false;	
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
-	
-	
-		
 }
 
 

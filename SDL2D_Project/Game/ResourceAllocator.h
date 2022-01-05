@@ -1,5 +1,5 @@
 #ifndef RESOURCEALLOCATOR
-#define RESOURECALLOCATOR
+#define RESOURCEALLOCATOR
 /*NOTES I could Assign my ID's from one location within my engine that way all the ID's will be assigned one thing, instead of having multiple different IDS
 */
 #include <utility>
@@ -12,8 +12,9 @@ public:
 
 	ResoureAllocator(std::string filePath_)
 	{
+		T* ptr = new T();
 		reSource.first = filePath_;
-		reSource.second = &T;
+		reSource.second = ptr;
 		currentID = 1; // this will change in the future
 	}
 	~ResoureAllocator()

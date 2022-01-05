@@ -11,9 +11,10 @@ public:
 	ResourceManager(ResourceManager&&) = delete;
 	ResourceManager& operator = (const ResourceManager&)=delete;
 	ResourceManager& operator = (ResourceManager&&) = delete;
-	//actual code
 	
-	ResourceManager* getInstance();
+	
+
+	static ResourceManager* GetInstance();
 
 	///Lets you access the GenericContainerObject 
 	GenericContainer* AccessGenericContainer();

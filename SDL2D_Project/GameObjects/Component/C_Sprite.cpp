@@ -52,15 +52,15 @@ void C_Sprite::Render()
 
 void C_Sprite::SetTexture(int id)
 {
-	assert((id < 0) && "Resource ID is less than zero");
+	assert((id < 0) && "Resource ID can't be less than zero");
 
 
 
 }
 
-void C_Sprite::SetTexture(const char* fileDirectory_)
+void C_Sprite::SetTexture(std::string fileDirectory_)
 {
-	texture = TextureManager::LoadTexture(fileDirectory_);
+	texture = TextureManager::LoadTexture(fileDirectory_.c_str());
 	center.x = SrcRect.w / 2;
 	center.y = SrcRect.h / 2;
 }
