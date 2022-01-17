@@ -1,6 +1,6 @@
 #ifndef OPENGLTEST_HEADER
 #define OPENGLTEST_HEADER
-#include "../Game/Game.h"
+#include "../DogEngine/DogEngine.h"
 #include "../Renderer/Renderer.h"
 #include <vector>
 #include <string>

@@ -7,7 +7,7 @@
 #include "../Math/Vec2.h"
 /*2021-07-09
 	probably going to get rid of this class,yah.*/
-class Game;
+class DogEngine;
 class RectCollider
 {
 public:

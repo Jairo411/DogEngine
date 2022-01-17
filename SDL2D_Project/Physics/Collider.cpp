@@ -1,5 +1,5 @@
 #include "Collider.h"
-#include "../Game/Game.h"
+#include "../DogEngine/DogEngine.h"
 
 RectCollider::RectCollider()
 {
@@ -147,9 +147,9 @@ void RectCollider::CollisonUpdate(Vec2 position_)
 void RectCollider::CollisonRender()
 {
 	///NEW
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(33, 191, 75, 0);
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&srcRect);
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(33, 191, 75, 0);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&srcRect);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
 }
 
 

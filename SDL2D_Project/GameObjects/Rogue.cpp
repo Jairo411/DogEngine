@@ -11,6 +11,7 @@ Rogue::Rogue()
 	srcRect.h = 0;
 	srcRect.x = 0;
 	srcRect.y = 0;
+	speed = 15.0f;
 	FrameTicks = NULL;
 	amountOfAnimations = 0;
 	disableObject = NULL;
@@ -89,12 +90,12 @@ void Rogue::Update(float dt_)
 	//Note you need to get your FPS working properly in order to proper animate your character
 	
 	
-
+	dt_ /= 1000.0;
 	PlayAnimations(animState);
 
 	if (getDisable() == false)
 	{ 
-		Position.x += 10;
+		Position.x += 66; //22mm
 		dstRect.x = Position.x * dt_;
 		dstRect.y = Position.y * dt_;
 		dstRect.w = srcRect.w;
@@ -118,7 +119,7 @@ void Rogue::fixedUpdate(float dt_)
 void Rogue::Render()
 {
 	/*This is in the loop*/
-	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
@@ -130,7 +131,8 @@ void Rogue::Render()
 		}
 		if (getDisable() == false)
 		{
-		//	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
+		//	
+			DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
 			this->GetComponent<C_Sprite>()->Render();
 			this->GetComponent<C_RectangleCollider>()->Render();
 			this->GetComponent<C_CircleCollider>()->Render();
@@ -159,7 +161,7 @@ void Rogue::Disable()
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
 void Rogue::PlayAnimations(AnimationStates temp_)
 {
-	Uint32 ticks = 10*Game::timer->GetCurrentTicks();
+	Uint32 ticks = 10*DogEngine::timer->GetCurrentTicks();
 	Uint32 frames;
 	/*
 		Im gonna re-work all this mess, its old and doesnt really make sense. 

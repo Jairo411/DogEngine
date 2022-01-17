@@ -1,6 +1,6 @@
 SDL2D_Project.vcxproj.user filter=lfs diff=lfs merge=lfs -text
 Assets filter=lfs diff=lfs merge=lfs -text
-Game filter=lfs diff=lfs merge=lfs -text
+DogEngine filter=lfs diff=lfs merge=lfs -text
 Input filter=lfs diff=lfs merge=lfs -text
 SDL2.dll filter=lfs diff=lfs merge=lfs -text
 zlib1.dll filter=lfs diff=lfs merge=lfs -text

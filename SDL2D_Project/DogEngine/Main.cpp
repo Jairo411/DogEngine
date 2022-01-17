@@ -1,14 +1,14 @@
-#include "Game.h"	
+#include "DogEngine.h"	
 #include <iostream>
 #include <SDL.h>
 
 //An array to store frame times:
 using namespace std;
 
-Game *game = nullptr;
+DogEngine *game = nullptr;
 
 int main(int argc,char * argv[]) {
-	game = new Game();
+	game = new DogEngine();
 
 	return 0;
 }

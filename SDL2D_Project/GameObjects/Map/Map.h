@@ -1,7 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 #include "TileSet/Tiles.h"
-#include "../../Game/Game.h"
+#include "../../DogEngine/DogEngine.h"
 #include "../../Window/Window.h"
 #include "../../Math/Vec2.h"
 #include "../../Math/Converter.h"

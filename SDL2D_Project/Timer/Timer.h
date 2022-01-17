@@ -8,15 +8,17 @@
 #define ONESECOND 1000 /// This is exactly one second in milliseconds
 #define SIXTYFRAMES_PER_SECOND 16.666 // 60FPS in milliseconds 1/60 
 #define THIRTYFRAMES_PER_SECOND 33.333 // 30FPS in milliseconds
-/*2021-07-09
-This shit over here needs some work.
-2021-11-01
-Did the work.
-*/
+/*2022-01-07
+Happy New Year ! 
+Well just to inform you overhere, you having been working them the same time units in your timer.
+Thanks to how smart you've gotten. You've been actually able to figure out wtf is going on. For future reference 
+when you're doing any kind of math, MAKE SURE, I CAN'T STRESS THIS ENOUGH, MAKE SURE YOU ARE USING THE CORRECT UNITS. 
+AS WELL MAKE SURE THAT YOU'RE USING THE CORRECT MATH.
 
-/*
-* The Local Timer struct is essentially an object that I can create to check to see if a 
-* certain amount of time has passed. 
+I'm not being dramatic this could cause so many future problems if you do not take into account if your math is soild. 
+
+2022-01-09
+The math is soild but because of floating point errors, ill switch the units of time from seconds to miliseconds. 
 */
 struct LocalTimer
 {
@@ -35,11 +37,6 @@ public:
 	void Start();
 	void UpdateSteadyClock();
 	void UpdatePerformanceClock();
-	[[deprecated("replaced by Uint64 get delta")]]
-	float GetDeltaTime() const;
-//	[[deprecated("replaced")]]
-//	unsigned int GetSleepTime(unsigned int fps_) const;
-//	[[deprecated("don't use")]]
 	float GetCurrentTicks();
 	/*New Code*/
 	static Timer* GetInstance();
@@ -50,10 +47,11 @@ public:
 	///This will set the total system lag if any and make sure that the computer runs at an even 60, or 30 FPS
 	void IncrementUpdateLag(double updateLag_);
 	double GetUpdateLag();
-	///This will set the machine loop speed rate in milliseconds, in relation to frameRate 1/60 = 0.0166*1000 to convert to milliseconds = 16.6
+	///This will set the GameLoop logic speed to whatever you put in the parameters, example is 1F/60FPS = 0.01666S , then convert that to MS. 1 S = 1000MS. 
 	void SetLogicLoopSpeed(int FPS_);
-	double getMS_Machine_Update();
-	///This will return the performance timer current delta time in milliseconds
+	/// Returns the update unit of each frame in MS.
+	double getMS_Machine_UpdateFPS();
+	/// Returns the change of time of the machine 
 	double GetDelta();
 	///This will return the total seconds the engine has been running at
 	int GetTotalAmountTime();
@@ -69,8 +67,10 @@ public:
 	static void SetTimer(std::chrono::seconds secs_);
 	///get the Current local Timer flag
 	static bool getCurrentLocalTimerFlag();
-	///Here I will in
+	///Update all local timers
 	static void UpdateAllLocalTimers();
+	/// Print Update
+	void PrintUpdate();
  private:
 	/* Old Code*/
 	unsigned int prevTicks, currentTicks;
@@ -81,6 +81,7 @@ public:
 	~Timer();
 	double CalculateDelta();
 	static Timer* instance;
+	bool SecondsFlag;
 	int FPS;
 	int totalFrames; ///a frame is one draw call
 	double delta;

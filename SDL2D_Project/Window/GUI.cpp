@@ -1,9 +1,15 @@
 #include "GUI.h"
 #include "Window.h"
-#include "../Game/Game.h"
+#include "../DogEngine/DogEngine.h"
 GUI::GUI()
 {
-	
+	mouseX = 0;
+	mouseY = 0;
+	wheel = 0;
+	buttons = 0;
+	io = nullptr;
+	consoleapp = ConsoleApp();
+	fileDirectory = FileDirectoryHandler();
 }
 
 GUI::~GUI()
@@ -14,25 +20,19 @@ GUI::~GUI()
 void GUI::OnCreate()
 {
 	ImGui::CreateContext();
-
-
-	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
 
 	case 0: //SDL
-		ImGuiSDL::Initialize(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
+		ImGuiSDL::Initialize(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
 		break;
 	case 1://OPENGL
 		break;
 	case 2://VULKAN
 		break;
 	}
-
-	
-	//io.DisplaySize.x = 100;
-	//io.DisplaySize.y = 100;
 }
 
 void GUI::OnDestroy()
@@ -42,7 +42,15 @@ void GUI::OnDestroy()
 
 void GUI::HandleEvents(SDL_Event* e_)
 {
-	
+	SDL_PollEvent(e_);
+	switch (e_->type)
+	{
+	default:
+		break;
+
+	case SDL_KEYUP:
+		std::cout << "KeyBoard was pressed" << std::endl;
+	}
 }
 
 void GUI::Update(float deltaTime_)
@@ -80,17 +88,15 @@ void GUI::Update(float deltaTime_)
 
 void GUI::Render()
 {
-	
-
 	ImGui::NewFrame();
 
 	if (DisplayWindowMenuBar())
-	
+		DisplayConsole();
 
 	ImGui::ShowDemoWindow();
 	ImGui::Render();
 	ImGuiSDL::Render(ImGui::GetDrawData());
-	SDL_RenderPresent(Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer());
+	SDL_RenderPresent(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer());
 
 }
 
@@ -116,4 +122,11 @@ bool GUI::DisplayWindowMenuBar()
 
 	ImGui::EndMainMenuBar();
 	return true;
+}
+
+void GUI::DisplayConsole()
+{
+	bool* pO;
+	pO = nullptr;
+	consoleapp.Draw("Example: console", pO);
 }

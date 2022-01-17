@@ -3,7 +3,7 @@
 #include "Component.h"
 #include "../../Math/Vec2.h"
 class GameObject;
-class Game;
+class DogEngine;
 /*
 *So the CircleCollider works almost the same as the RectangleCollider,
 * we give this component the radius, which then allows us to intialize this Collider. 

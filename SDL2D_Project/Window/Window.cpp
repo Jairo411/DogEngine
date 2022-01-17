@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "../Game/Game.h"
+#include "../DogEngine/DogEngine.h"
 #include <SDL_syswm.h>
 
 int Window::ScreenHeight = 0; 
@@ -154,7 +154,7 @@ Window::~Window()
 
 void Window::Render()
 {
-	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
@@ -163,9 +163,9 @@ void Window::Render()
 	{
 	
 				//NEW 
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&middleRect);
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100, 0, 15, 100);
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&middleRect);
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(0, 0, 0, 225);
 
 		GUIContext->Render();
 

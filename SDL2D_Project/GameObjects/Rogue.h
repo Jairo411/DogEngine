@@ -45,6 +45,7 @@ public:
 private:  
 	//Look at this stuff here
 	/*Members*/
+	float speed;
 	int amountOfAnimations;
 	bool disableObject;
 	/*Objects/Classes*/

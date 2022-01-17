@@ -13,29 +13,29 @@ public:
 	ResoureAllocator(std::string filePath_)
 	{
 		T* ptr = new T();
-		reSource.first = filePath_;
-		reSource.second = ptr;
-		currentID = 1; // this will change in the future
+		resource.first = filePath_;
+		resource.second = ptr;
+		currentID = 1; // this will change in the future the manager should assign this value 
 	}
 	~ResoureAllocator()
 	{
 		currentID = 0;
-		reSource.first = std::string().empty();
-		reSource.second = nullptr;
-		delete reSource.second;
+		resource.first = std::string().empty();
+		resource.second = nullptr;
+		delete resource.second;
 	}
 
 	T* getResource()
 	{
-		return reSource.second;
+		return resource.second;
 	};
 
 	std::string getFileDirectory()
 	{
-		return reSource.first;
+		return resource.first;
 	};
 private:
 	int currentID;
-	std::pair<std::string, T*> reSource;
+	std::pair<std::string, T*> resource;
 };
 #endif // !RESOURCEALLOCATOR

@@ -20,7 +20,7 @@ functionality will be used to set up properties and maybe access none static var
 - THE WINDOW CLASS WILL NOW HANDLE INPUT LOGIC THROUGH COMPOSITIONS OBJECTS.
 - THE WINDOW CLASS INPUT LOGIC CAN AND WILL BE HARDCODEDISH.
 	.*/
-class Game;
+class DogEngine;
 class Window
 {	
 public:

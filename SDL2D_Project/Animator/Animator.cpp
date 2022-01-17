@@ -1,5 +1,5 @@
 #include "Animator.h"
-#include "../Game/Game.h"
+#include "../DogEngine/DogEngine.h"	
 
 Animator::~Animator()
 {

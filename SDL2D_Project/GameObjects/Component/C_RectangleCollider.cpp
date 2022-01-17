@@ -1,5 +1,5 @@
 #include "C_RectangleCollider.h"
-#include "../../Game/Game.h"
+#include "../../DogEngine/DogEngine.h"
 #include "../GameObject.h"
 
 
@@ -44,7 +44,7 @@ void C_RectangleCollider::FixedUpdate(float deltatime_)
 
 void C_RectangleCollider::Render()
 {
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
 	
 }
 

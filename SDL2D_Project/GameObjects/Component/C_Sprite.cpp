@@ -47,7 +47,7 @@ void C_Sprite::FixedUpdate(float deltaTime_)
 void C_Sprite::Render()
 {
 //	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect);
-	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect, angle, &center, flipType);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect, angle, &center, flipType);
 }
 
 void C_Sprite::SetTexture(int id)

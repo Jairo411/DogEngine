@@ -19,7 +19,7 @@
 	 just carry the amount of frames per , each "set" of animations
 	 Have a play funciton that doesn't nessarly handle the playing of the animations right away, but handle the animationSet vector
 	 */
-class Game; //forward delecrations  
+class DogEngine; //forward delecrations  
 struct Sprite
 {
 	std::vector <std::vector<SDL_Texture*>> animationSet;

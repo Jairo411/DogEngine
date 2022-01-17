@@ -3,6 +3,7 @@
 #include <vector>
 #include "ResourceAllocator.h"
 #include "../DesignPattern/GenericContainer.h"
+/*Created for accessing and storing asset files*/
 class ResourceManager
 {
 public:

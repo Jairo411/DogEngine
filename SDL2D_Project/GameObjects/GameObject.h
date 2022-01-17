@@ -36,6 +36,11 @@ potentailly going to have gameObjects with no movement or extra functionality be
 	I agree with past me, and looking forward to moving to a component base structure.
 	2021-10-04 
 	Okay so GameObject class isn't terrible like I thought it would be. Just need remove SDL Centering logic that I created myself. 
+
+	2022-01-11	
+	Happy new year :) 
+	https://gameprogrammingpatterns.com/update-method.html
+	here is a link so you can update the "update" design pattern you have for your gameobjects
 */
 /*
 NOTES:

@@ -1,7 +1,7 @@
 #ifndef SKELETON_H
 #define SKELETON_H
 #include "GameObject.h"
-#include "../Game/AI/AI.h"
+#include "../DogEngine/AI/AI.h"
 #include "Map/Map.h"
 #include "../TextureManager/TextureManager.h"
 #include "../Animator/Animator.h"

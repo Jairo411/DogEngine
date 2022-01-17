@@ -1,5 +1,5 @@
 #include "Skeleton.h"
-#include "../Game/Game.h"
+#include "../DogEngine/DogEngine.h"
 
 
 Skeleton::Skeleton()
@@ -160,6 +160,7 @@ void Skeleton::Update(float DeltaTime_)
 {
 	/* I like this but IObserverable Should be in the Game Object class*/
 	dt = DeltaTime_;
+	dt /= 1000.0;
 	if (dynamic_cast<IObserverable*>(this))
 	{
 		Notify();
@@ -185,7 +186,7 @@ void Skeleton::fixedUpdate(float dt_)
 
 void Skeleton::Render()
 {
-	switch (Game::rendererManager->getRenderValue())
+	switch (DogEngine::rendererManager->getRenderValue())
 	{
 	default:
 		break;
@@ -196,7 +197,7 @@ void Skeleton::Render()
 
 		if (getDisable() == false)
 		{
-			Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect0, &dstRect0);
+			DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect0, &dstRect0);
 			//navCollider.CollisonRender();
 		}
 		else if (getDisable() == true)
@@ -307,7 +308,7 @@ Vec2 Skeleton::getSeperationDirection(Vec2 pos_)
 
 void Skeleton::PlayAnimations(AnimationStates state_) // These in both the player and the enemy classes need to be over an animations class
 {
-	Uint32 ticks = 10 * Game::timer->GetCurrentTicks();
+	Uint32 ticks = 10 * DogEngine::timer->GetCurrentTicks();
 	Uint32 frame;
 
 	switch (state_)

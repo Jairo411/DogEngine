@@ -1,22 +1,22 @@
-#include "Game.h"
+#include "DogEngine.h"
 #include "AI/AI.h"
 
 SDL_Rect* srcR, dstR;
-RendererManager* Game::rendererManager = nullptr;
-Timer* Game::timer = nullptr;
-Window* Game::window = nullptr;
-Serializer* Game::EngineSerializer = nullptr;
-TextureManager* Game::textureManager = nullptr;
-SceneManager* Game::sceneManager = nullptr;
-ThreadManager* Game::threadManager = nullptr;
-AudioManager* Game::audioManager = nullptr;
-ResourceManager* Game::resourceManager = nullptr;
-bool Game::initialized = false;
+RendererManager* DogEngine::rendererManager = nullptr;
+Timer* DogEngine::timer = nullptr;
+Window* DogEngine::window = nullptr;
+Serializer* DogEngine::EngineSerializer = nullptr;
+TextureManager* DogEngine::textureManager = nullptr;
+SceneManager* DogEngine::sceneManager = nullptr;
+ThreadManager* DogEngine::threadManager = nullptr;
+AudioManager* DogEngine::audioManager = nullptr;
+ResourceManager* DogEngine::resourceManager = nullptr;
+bool DogEngine::initialized = false;
 
-bool Game::isRunning = false;
+bool DogEngine::isRunning = false;
 
 
-Game::Game()
+DogEngine::DogEngine()
 {
 	isRunning = true;
 
@@ -32,7 +32,7 @@ Game::Game()
 	threadManager = ThreadManager::GetInstance();
 
 	engineGUI = new GUI(); // I need to look into this 
-
+	event_ = new SDL_Event();
 
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(this);
@@ -45,7 +45,15 @@ Game::Game()
 	//ResoureAllocator<SDL_Texture*> tex = ResoureAllocator<SDL_Texture*>("./Assets/Character/Sprites/adventurer-attack1-00.png");
 	//resourceManager->GetInstance()->AccessGenericContainer()->Push_Back <ResoureAllocator<SDL_Texture*>>(tex);
 
-	
+	//Test environment
+	//FileDirectoryHandler fileDirectory;
+	//std::string filePath;
+	//filePath = "./Assets/Character/Sprites";
+	//fileDirectory.ChangeDirectory(filePath);
+	//fileDirectory.PrintDirectoryContents();
+	//fileDirectory.PrintDirectoryPath();
+	//system("pause");
+	//Test environment
 
 	initialized = false;	
 	OnCreate("Andre's Quest ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
@@ -54,7 +62,7 @@ Game::Game()
 
 
 
-bool Game::setIsRunning(bool tempBool_)
+bool DogEngine::setIsRunning(bool tempBool_)
 {
 	isRunning = tempBool_;
 	return isRunning;
@@ -62,13 +70,13 @@ bool Game::setIsRunning(bool tempBool_)
 
 
 
-Game::~Game()
+DogEngine::~DogEngine()
 {
 
 
 }
 
-void Game::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
+void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	int flags = 0;
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
@@ -93,10 +101,10 @@ void Game::OnCreate(const char* title, int posx, int posy, int width, int height
 
 
 }
-void Game::OnDestroy()
+void DogEngine::OnDestroy()
 {
 }
-void Game::GameLoop()
+void DogEngine::GameLoop()
 {
 	int currentRenderFlag = NULL;
 	int passRenderFlag = NULL;
@@ -124,17 +132,17 @@ void Game::GameLoop()
 		timer->IncrementUpdateLag(timer->GetDelta());
 
 
-		while (timer->GetUpdateLag()>=timer->getMS_Machine_Update())
+		while (timer->GetUpdateLag()>=timer->getMS_Machine_UpdateFPS())
 		{
 
-			double positiveTimeValue = timer->getMS_Machine_Update();
+			double positiveTimeValue = timer->getMS_Machine_UpdateFPS();
 
-//			FixedUpdate(positiveTimeValue);// Physics Update happen through here anddd animations too. 
+			FixedUpdate(positiveTimeValue);// Physics Update happen through here anddd animations too. 
 
 			Update(positiveTimeValue); // GameLogic happens all through this update.
 
 
-			double negativeTimeValue = timer->getMS_Machine_Update() * -1.0;
+			double negativeTimeValue = timer->getMS_Machine_UpdateFPS() * -1.0;
 
 			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
 		}	
@@ -150,36 +158,34 @@ void Game::GameLoop()
 
 }
 
-void Game::HandleEvents()
+void DogEngine::HandleEvents()
 {
-	/*SceneManager handleEvents is spefically for events that I set up for that current Scene*/
-	window->HandleEvents();
+	engineGUI->HandleEvents(event_);
 	sceneManager->HandleEvents();
-
+	window->HandleEvents();
 	if (window->getIsClose())
 	{
 		clean();
 	}
 }
 
-void Game::Update(float deltaTime_)
+void DogEngine::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
 	window->Update(deltaTime_);
-	//std::cout << "Machine Updating: " << timer->GetDelta() << std::endl;
 }
 
-void Game::FixedUpdate(float deltaTime_)
+void DogEngine::FixedUpdate(float deltaTime_)
 {
 	sceneManager->FixedUpdate(deltaTime_);
 }
 
-void Game::handleCollisions()
+void DogEngine::handleCollisions()
 {
 	sceneManager->handleCollison();
 }
 
-void Game::Render()
+void DogEngine::Render()
 {
 	if (rendererManager->GetInstance()->getRenderValue() == 0)
 	{
@@ -198,12 +204,12 @@ void Game::Render()
 	timer->IncrementFrames();
 }
 
-void Game::clean()
+void DogEngine::clean()
 {
 	SDL_DestroyWindow(window->getWindowContext());
 	SDL_DestroyRenderer(rendererManager->GetRenderAPI<SDLRenderer*>()->GetRenderer());
 	threadManager->StopThread(static_cast<ThreadAble*>(sceneManager));
 	delete this;
 	SDL_Quit();
-	std::cout << "Game Cleaned" << std::endl;
+	std::cout << "Engine Cleaned" << std::endl;
 }

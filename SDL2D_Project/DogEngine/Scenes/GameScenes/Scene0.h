@@ -2,7 +2,7 @@
 #define SCENE0_H
 
 #include"../Scene.h"
-#include"../../Game.h"
+#include"../../DogEngine.h"
 
 using namespace std;
 /*2021-07-09 

@@ -62,12 +62,12 @@ Tile::Tile(SDL_Texture* texture_, int srcX, int srcY, bool solid)
 
 void Tile::Render()
 {
-	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
 	case 0:// SDL
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(baseTex, &srcRect, &dstRect);
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(baseTex, &srcRect, &dstRect);
 	case 1: //OPENGL
 		break;
 		//Game::rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->CreateSquare();

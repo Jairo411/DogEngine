@@ -14,7 +14,7 @@ Timer::Timer()
 	FramePerSecondFlag = 0.0;
 	flag = 0;
 	totalFrames = 0;
-	updateLag = 0;
+	updateLag = 0.0;
 	delta = 0.0;
 	thresHold = 0.0;
 	updateLoopSpeed = 0.0f;
@@ -65,16 +65,8 @@ void Timer::UpdatePerformanceClock()
 		FPS = totalFrames;
 		PrintFPS();
 	}
-}
 
-float Timer::GetDeltaTime() const
-{
-	return static_cast<float>(currentTicks - prevTicks) MILLISECONDS_TO_SECONDS;
-	//std::chrono::nanoseconds elapsed = performanceTP1 - performanceTP2;
-	//double delta = std::chrono::duration<double, std::micro>(elapsed).count();
-	// return 
 }
-
 
 float Timer::GetCurrentTicks()
 {
@@ -138,10 +130,11 @@ double Timer::GetUpdateLag()
 
 void Timer::SetLogicLoopSpeed(int FPS_)
 {
-	updateLoopSpeed = 1.0/(double)FPS_; //1/60 = 0.016
+	updateLoopSpeed = 1.0/(double)FPS_; //1/60 = 0.0166 seconds 
+	updateLoopSpeed *= 1000.0; //convert 0.0166 seconds to 16 miliseconds
 }
 
-double Timer::getMS_Machine_Update()
+double Timer::getMS_Machine_UpdateFPS()
 {
 	return updateLoopSpeed;
 }
@@ -151,11 +144,16 @@ double Timer::GetDelta()
 	return delta;
 }
 
+void Timer::PrintUpdate()
+{
+	std::cout << "Current Machine Update : " << delta << std::endl;
+}
+
 double Timer::CalculateDelta()
 {
 	std::chrono::nanoseconds elasped = performanceTP.first - performanceTP.second; //elapsed == current - pervious 
 	double time = std::chrono::duration<double, std::milli>(elasped).count();
-	time /= 1000.0;
+	delta = time;
 	return time;
 }
 
@@ -220,7 +218,5 @@ bool Timer::getCurrentLocalTimerFlag()
 void Timer::UpdateAllLocalTimers()
 {
 }
-
-
 
 

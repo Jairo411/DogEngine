@@ -21,7 +21,7 @@ class OpenGLRenderer;
 class VulkanRenderer;
 class SDLRenderer;
 class Window;
-class Game;
+class DogEngine;
 class RendererManager 
 {
 public:

@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 #include <string>
 #include "Component.h"
-#include "../../Game/ResourceAllocator.h"
+#include "../../DogEngine/ResourceAllocator.h"
 class TextureManager;
 class GameObject;
 class C_Sprite : public Component

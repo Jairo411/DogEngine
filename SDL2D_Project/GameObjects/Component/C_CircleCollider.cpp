@@ -1,5 +1,5 @@
 #include "C_CircleCollider.h"
-#include "../../Game/Game.h"
+#include "../../DogEngine/DogEngine.h"
 #include "../GameObject.h"
 C_CircleCollider::C_CircleCollider()
 {
@@ -44,7 +44,7 @@ void C_CircleCollider::FixedUpdate(float DeltaTime_)
 void C_CircleCollider::Render()
 {
 
-	Game::rendererManager->GetRenderAPI<SDLRenderer*>()->DrawCircle(origin.x, origin.y, radius);
+	DogEngine::rendererManager->GetRenderAPI<SDLRenderer*>()->DrawCircle(origin.x, origin.y, radius);
 }
 
 void C_CircleCollider::SetDistance(int radius_)

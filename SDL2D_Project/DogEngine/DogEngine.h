@@ -1,5 +1,5 @@
-#ifndef Game_H
-#define Game_H
+#ifndef DOGENGINE_H
+#define DOGENGINE_H
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -26,6 +26,7 @@
 #include "../GameObjects/Map/Map.h"
 #include "../Thread/ThreadManager.h"
 #include "../Audio/AudioManager.h"
+#include "../FileInput_OutPut/FileDirectoryHandler.h"
 #include "ResourceAllocator.h"
 #include "ResourceManager.h"
 #include "EngineSerializer.h"
@@ -36,10 +37,10 @@
 	probably not coming on this side of the engine but yah, */
 class AIManager;
 class Serializer;
-class Game : public ThreadAble {
+class DogEngine : public ThreadAble {
 public:
-	Game();
-	~Game();
+	DogEngine();
+	~DogEngine();
 	void OnCreate(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
 	// new Code
 	void OnDestroy();
@@ -63,6 +64,7 @@ public:
 	static AudioManager* audioManager; //Engine Functionality
 	static ResourceManager* resourceManager;
 	GUI* engineGUI;
+	SDL_Event* event_;
 	static bool initialized;
 
 	virtual void RunInstructions()
@@ -77,4 +79,4 @@ private:
 	std::vector<std::thread> threadContainer;
 };
 
-#endif // !Game_H
+#endif // !DOGENGINE_H

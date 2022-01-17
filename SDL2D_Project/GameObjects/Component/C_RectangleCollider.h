@@ -4,7 +4,7 @@
 #include "../../Math/Vec2.h"
 #include <SDL.h>
 class GameObject;
-class Game;
+class DogEngine;
 /*
 * So the RectangleCollider works pretty simple. 
 * Basically you input the size of the collider width and height.

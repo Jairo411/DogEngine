@@ -12,16 +12,16 @@ OpenGLTestGameObj1* obj1 = nullptr;
 Scene0::Scene0()
 {
 
-	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
 
 	case 0:
 
-		Game::EngineSerializer->GetInstance()->CreateScene(9, "SCENE9");
-		Game::EngineSerializer->GetInstance()->CreateScene(10, "SCENE10");
-		Game::EngineSerializer->GetInstance()->CreateScene(11, "SCENE11");
+		DogEngine::EngineSerializer->GetInstance()->CreateScene(9, "SCENE9");
+		DogEngine::EngineSerializer->GetInstance()->CreateScene(10, "SCENE10");
+		DogEngine::EngineSerializer->GetInstance()->CreateScene(11, "SCENE11");
 
 		//SDL
 		/* Intial Object Creations*/
@@ -31,11 +31,11 @@ Scene0::Scene0()
 		enemy1 = new Skeleton(400, 200);
 
 
-		Game::EngineSerializer->GetInstance()->AddGameObject(player);
-		Game::EngineSerializer->GetInstance()->AddGameObject(enemy0);
+		DogEngine::EngineSerializer->GetInstance()->AddGameObject(player);
+		DogEngine::EngineSerializer->GetInstance()->AddGameObject(enemy0);
 
 		/*Observer Pattern Implemented*/
-		mapA = new MapLayer(Game::window);
+		mapA = new MapLayer(DogEngine::window);
 
 		//Game::EngineSerializer->GetInstance()->AssignID(GameObject::OBJHolder);
 		break;
@@ -54,7 +54,7 @@ Scene0::~Scene0()
 void Scene0::OnCreate()
 {
 
-	switch (Game::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
@@ -67,10 +67,10 @@ void Scene0::OnCreate()
 	/* Setting GameObject Functionality*/
 		enemy->SetTarget(player);
 		enemy0->SetTarget(player);
-		Game::AI_Manager->getInstance()->getTotalAgents();
-		Game::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1), mapA->getTiles(), 200);
+		DogEngine::AI_Manager->getInstance()->getTotalAgents();
+		DogEngine::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1), mapA->getTiles(), 200);
 
-		Game::initialized = true;
+		DogEngine::initialized = true;
 
 
 		break;
@@ -105,7 +105,7 @@ void Scene0::HandleCollison()
 void Scene0::Update(float deltaTime_)
 {
 	//Hackish way of me seperating my opengl render process from my sdl one this is not a final design choice 
-	switch (Game::rendererManager->getRenderValue())
+	switch (DogEngine::rendererManager->getRenderValue())
 	{
 	default:
 		break;
@@ -116,7 +116,7 @@ void Scene0::Update(float deltaTime_)
 		enemy0->Update(deltaTime_);
 		enemy1->Update(deltaTime_);
 		mapA->Update(deltaTime_);
-		Game::AI_Manager->getInstance()->OnUpdate(deltaTime_);
+		DogEngine::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 		break;
 	case 1:
 
@@ -135,22 +135,22 @@ void Scene0::Render()
 {
 	//Hackish way of me seperating my opengl render process from my sdl one this is not a final design choice 
 
-	switch (Game::rendererManager->getRenderValue())
+	switch (DogEngine::rendererManager->getRenderValue())
 	{
 	default:
 		break;
 
 	case 0:
 
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(225, 225, 225, 225);
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
 		mapA->Render();
 		player->Render();
 		enemy->Render();
 		enemy0->Render();
 		enemy1->Render();
-		Game::window->Render();
-		Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
+		DogEngine::window->Render();
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
 		break;
 	case 1: 
 		obj->Render();
