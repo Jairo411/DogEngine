@@ -12,7 +12,7 @@
 class BaseObj
 {
 public:
-	BaseObj() {}
+	BaseObj() { indexLocation = 0; ID = 0; isEnabled = true; }
 	virtual ~BaseObj() {}
 	virtual void OnCreate()=0;
 	virtual void OnDestroy()=0;
@@ -32,6 +32,7 @@ protected:
 	std::string name; //an subjective string variable that you assign what ever name; 
 	std::map <std::string, std::string> components; 
 private: 
+	bool isEnabled;
 	int indexLocation;// Localtion within my LargeStorage container of all my gameObjects
 	int ID; // unique Identifyer 
 };

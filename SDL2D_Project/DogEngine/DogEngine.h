@@ -53,19 +53,19 @@ public:
 	void Render();
 	void clean();
 	static bool	setIsRunning(bool tempBool_);
-	static Timer* timer; //EngineFunctitonality 
-	static Window* window; //EngineFunctionality 
-	static RendererManager* rendererManager; //EngineFunctionality
-	static TextureManager* textureManager;// textureManager
+	static Window* window; //Main Engine Component
+	static Timer* timer; //Engine Functitonality 
+	static RendererManager* rendererManager; //Engine functionality
+	static TextureManager* textureManager;// Engine functionality
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
 	static Serializer* EngineSerializer; //Engine functionality 
 	static SceneManager* sceneManager; //Engine functionality 
 	static ThreadManager* threadManager; //Engine functionality
-	static AudioManager* audioManager; //Engine Functionality
-	static ResourceManager* resourceManager;
+	static AudioManager* audioManager; //Engine functionality
+	static ResourceManager* resourceManager; //Engine functionality
+	static bool initialized;
 	GUI* engineGUI;
 	SDL_Event* event_;
-	static bool initialized;
 
 	virtual void RunInstructions()
 	{
