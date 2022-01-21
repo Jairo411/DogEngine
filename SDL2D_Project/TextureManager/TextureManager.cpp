@@ -60,11 +60,13 @@ SDL_Surface* TextureManager::LoadSurface(const char* filename_)
 	return tempSurface;
 }
 
-SDL_Texture * TextureManager::LoadTexture(const char * filename)
+TextureInfo TextureManager::LoadTexture(const char * filename)
 {	
+	TextureInfo textInfo;
 	SDL_Surface* tempSurface;
-
+	int height, width;
 	tempSurface = IMG_Load(filename);
+	
 	
 	if (tempSurface==nullptr)
 	{
@@ -73,11 +75,15 @@ SDL_Texture * TextureManager::LoadTexture(const char * filename)
 
 
 	SDL_Texture* tex = DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->CreateTextureFromSurface(tempSurface);
+	SDL_QueryTexture(tex,NULL,NULL,&width,&height);
+	textInfo.height = height;
+	textInfo.width = width;
+	textInfo.texture = tex;
 	SDL_FreeSurface(tempSurface);
 	
-	return tex;
+	return textInfo;
 }
-SDL_Texture * TextureManager::LoadTexture(SDL_Rect sRect,SDL_Texture* source)
+SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Texture* source)
 {
 	/*Loads part of the texture*/
 	SDL_Texture* tex = SDL_CreateTexture(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), SDL_PIXELFORMAT_ABGR8888,SDL_TEXTUREACCESS_TARGET,sRect.w,sRect.h);
@@ -91,15 +97,19 @@ SDL_Texture * TextureManager::LoadTexture(SDL_Rect sRect,SDL_Texture* source)
 	return tex;
 }
 
-std::vector<SDL_Texture*> TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
+MapSpriteInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
 {
-	std::vector<SDL_Texture*> MapSpriteContainer;
+	MapSpriteInfo mapInfo;
 	SDL_Rect srcRect;
 	SDL_Texture* tempIMG;
 	SDL_Texture* mapSprite = tex_;
+
 	int width = width_;
 	int height = height_;
 	int sourceX, sourceY;
+
+	mapInfo.width = width;
+	mapInfo.height = height;
 	
 	width = width / SizeOfCut_;
 	height = height / SizeOfCut_;
@@ -119,11 +129,11 @@ std::vector<SDL_Texture*> TextureManager::CreateMapSprite(SDL_Texture* tex_, int
 			srcRect.x = sourceX;
 			srcRect.y = sourceY;
 
-			tempIMG = TextureManager::LoadTexture(srcRect, mapSprite);
-			MapSpriteContainer.push_back(tempIMG);
+			tempIMG = TextureManager::CreateTextureFromTexture(srcRect, mapSprite);
+			mapInfo.sprites.push_back(tempIMG);
 		}
 	}
-	return MapSpriteContainer;
+	return mapInfo;
 }
 
 

@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include <string>
 #include "Component.h"
+#include "../../TextureManager/InfoStructs.h"
 #include "../../DogEngine/ResourceAllocator.h"
 class TextureManager;
 class GameObject;
@@ -17,20 +18,16 @@ public:
 	virtual void Update(float deltaTime_);
 	virtual void FixedUpdate(float deltaTime_);
 	virtual void Render();
-	[[deprecated("hasn't be implemented yet")]]
-	void SetTexture(int id);
 	///full path to the file directory 
 	void SetTexture(std::string fileDirectory_ );
 	void SetImageSize(SDL_Rect src_);
  private:
-	int width;
-	int height;
 	double angle;
 	SDL_RendererFlip flipType;
 	SDL_Rect SrcRect, dstRect;
 	SDL_Point center;
 	GameObject* Objcast;
-	SDL_Texture* texture;
+	ResoureAllocator<TextureInfo> assetInfo;
 };
 
 

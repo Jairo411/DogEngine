@@ -5,6 +5,7 @@
 Rogue::Rogue()
 {
 	/* Basic intializations of a member variables */
+	typeReference = this;
 	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
 	Position = Vec2();
 	srcRect.w = 0;
@@ -93,21 +94,14 @@ void Rogue::Update(float dt_)
 	dt_ /= 1000.0;
 	PlayAnimations(animState);
 
-	if (getDisable() == false)
-	{ 
-		Position.x += 66; //22mm
-		dstRect.x = Position.x * dt_;
-		dstRect.y = Position.y * dt_;
-		dstRect.w = srcRect.w;
-		dstRect.h = srcRect.h;
-		this->GetComponent<C_Sprite>()->Update(dt_);
-		this->GetComponent<C_RectangleCollider>()->Update(dt_);
-		this->GetComponent<C_CircleCollider>()->Update(dt_);
-	}
-	else if (getDisable() == true)
-	{
-		Disable();
-	}
+	Position.x += 66; //22mm
+	dstRect.x = Position.x * dt_;
+	dstRect.y = Position.y * dt_;
+	dstRect.w = srcRect.w;
+	dstRect.h = srcRect.h;
+	this->GetComponent<C_Sprite>()->Update(dt_);
+	this->GetComponent<C_RectangleCollider>()->Update(dt_);
+	this->GetComponent<C_CircleCollider>()->Update(dt_);
 	UpdatePostion();
 	
 }
@@ -125,22 +119,10 @@ void Rogue::Render()
 		break;
 
 	case 0: //SDL
-		if (nullObjTexture != NULL)
-		{
-		
-		}
-		if (getDisable() == false)
-		{
-		//	
 			DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
 			this->GetComponent<C_Sprite>()->Render();
 			this->GetComponent<C_RectangleCollider>()->Render();
 			this->GetComponent<C_CircleCollider>()->Render();
-		}
-		else if (getDisable() == true)
-		{
-		
-		}
 		break;
 	case 1: //OPENGL
 
@@ -149,12 +131,6 @@ void Rogue::Render()
 
 		break;
 	}
-}
-
-void Rogue::Disable()
-{
-	/* You can store all the vaules in here */
-	disableObject = true;
 }
 
 //This might be a way of hard coding this

@@ -60,13 +60,9 @@ public:
 	virtual void Update(float deltaTime_)=0;
 	virtual void fixedUpdate(float deltaTime) = 0;
 	virtual void Render()=0; 
-	virtual void Disable() = 0;
 	/*Setters*/
 	virtual void setPosition(int x_, int y_);
 	virtual void setPosition(Vec2 vPosition);
-	/*Getters*/
-	virtual bool getDisable();
-	bool setDisable(bool temp);
 	SDL_Texture* getTexture();
 	std::pair<SDL_Rect*, SDL_Rect*> getTextureDisplayInfo();
 	/*Observer Pattern Implemented*/
@@ -149,7 +145,6 @@ protected:
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, dstRect;
 private:
-	bool disableObject;
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;
 	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 

@@ -165,18 +165,11 @@ void Skeleton::Update(float DeltaTime_)
 	{
 		Notify();
 	}
-	if (getDisable() == false)
-	{
-		dstRect0.x = Position.x;
-		dstRect0.y = Position.y;
-		dstRect0.w = srcRect0.w;
-		dstRect0.h = srcRect0.h;
-	}
-	else if (getDisable() == true)
-	{
-		Disable();
-	}
-
+	dstRect0.x = Position.x;
+	dstRect0.y = Position.y;
+	dstRect0.w = srcRect0.w;
+	dstRect0.h = srcRect0.h;
+	
 	UpdatePostion();
 }
 
@@ -195,15 +188,9 @@ void Skeleton::Render()
 
 		PlayAnimations(AnimationStates::WALK);
 
-		if (getDisable() == false)
-		{
-			DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect0, &dstRect0);
-			//navCollider.CollisonRender();
-		}
-		else if (getDisable() == true)
-		{
+
+		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect0, &dstRect0);
 	
-		}
 
 		break;
 

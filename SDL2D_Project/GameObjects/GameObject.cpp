@@ -9,7 +9,6 @@ GameObject::GameObject()
 	posX = 0;
 	posY = 0;
 	Position = Vec2(posX, posY);
-	disableObject = false;
 	nameIdentifier = "GameObject";
 	TextureDisplayRectInfo.first = &srcRect;
 	TextureDisplayRectInfo.second = &dstRect;
@@ -50,20 +49,6 @@ SDL_Texture* GameObject::getTexture()
 std::pair<SDL_Rect*, SDL_Rect*> GameObject::getTextureDisplayInfo()
 {
 	return TextureDisplayRectInfo;
-}
-
-bool GameObject::setDisable(bool temp)
-{
-	return disableObject = temp;
-}
-
-bool GameObject::getDisable()
-{
-	if (disableObject == true)
-	{
-		return true;
-	}
-	return false;
 }
 
 Vec2 GameObject::moveMiddle(Vec2 pos_)

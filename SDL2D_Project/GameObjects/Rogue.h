@@ -23,7 +23,6 @@ public:
 	 virtual void Render()override;
 	 virtual void Update(float dt_) override;
 	 virtual void fixedUpdate(float dt_) override;
-	 void Disable() override;
 	 enum class AnimationStates
 	 {
 		 ATTACK0 = 0,

@@ -4,6 +4,11 @@
 #include <string>
 #include <map>
 #include <iostream>
+//NEW 
+#include "../../GameObject.h"
+#include "../../Component/C_Sprite.h"
+#include "../../Component/C_RectangleCollider.h"
+//OLD 
 #include "../../../Physics/Collider.h"
 #include "../../../Input/Input.h"
 #include "../../../PriorityQueue/node.h"
@@ -18,7 +23,10 @@ We done need any more than one
 ******************
 */
 using namespace std;
-class TextureManager; // don't remove this forward delecration things well break
+class TextureManager; 
+/*
+* This needs to removed 
+*/
 class TileSet
 {
 public:
@@ -82,6 +90,17 @@ private:
 	int x, y;
 	static int width, height;
 	bool isSoild;
+};
+
+class Tile0 : public GameObject
+{
+public:
+	Tile0();
+	~Tile0();
+
+private:
+
+
 };
 
 #endif // !TILE_H

@@ -12,7 +12,7 @@
 class BaseObj
 {
 public:
-	BaseObj() { indexLocation = 0; ID = 0; isEnabled = true; }
+	BaseObj() { indexLocation = 0; ID = 0; isEnabled = true; typeReference = nullptr; }
 	virtual ~BaseObj() {}
 	virtual void OnCreate()=0;
 	virtual void OnDestroy()=0;
@@ -21,6 +21,9 @@ public:
 	virtual void Render()=0;
 	void setID(int ID_) { ID = ID_; }
 	void setIndexLocation(int index_) { indexLocation = index_; }
+	void setEnable(bool flag_) { isEnabled = flag_; }
+	void* getTypeReference() { return typeReference; }
+	bool IsEnable() { return isEnabled; }
 	int getID() { return ID; }
 	int getIndexLocation() { return indexLocation; }
 	std::string getNameIdentifier() {	return nameIdentifier; }
@@ -31,6 +34,7 @@ protected:
 	std::string className; //The Actual class name 
 	std::string name; //an subjective string variable that you assign what ever name; 
 	std::map <std::string, std::string> components; 
+	void* typeReference;
 private: 
 	bool isEnabled;
 	int indexLocation;// Localtion within my LargeStorage container of all my gameObjects

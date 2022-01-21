@@ -30,14 +30,16 @@ Scene0::Scene0()
 		enemy0 = new Skeleton(300, 50);
 		enemy1 = new Skeleton(400, 200);
 
+		DogEngine::GameObjectManager->GetInstance()->AddActive(player);
+		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy);
+		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy0);
+		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy1);
 
-		DogEngine::EngineSerializer->GetInstance()->AddGameObject(player);
-		DogEngine::EngineSerializer->GetInstance()->AddGameObject(enemy0);
 
+		
 		/*Observer Pattern Implemented*/
 		mapA = new MapLayer(DogEngine::window);
 
-		//Game::EngineSerializer->GetInstance()->AssignID(GameObject::OBJHolder);
 		break;
 
 	case 1:
@@ -59,17 +61,11 @@ void Scene0::OnCreate()
 	default:
 		break;
 	case 0:
-		/*Observer Pattern Implemented*/
-	//enemy->Attach(new GameObserver(enemy));
-	//enemy0->Attach(new GameObserver(enemy0));
-	//enemy1->Attach(new GameObserver(enemy1));
-
 	/* Setting GameObject Functionality*/
 		enemy->SetTarget(player);
 		enemy0->SetTarget(player);
 		DogEngine::AI_Manager->getInstance()->getTotalAgents();
 		DogEngine::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1), mapA->getTiles(), 200);
-
 		DogEngine::initialized = true;
 
 
@@ -105,19 +101,19 @@ void Scene0::HandleCollison()
 void Scene0::Update(float deltaTime_)
 {
 	//Hackish way of me seperating my opengl render process from my sdl one this is not a final design choice 
+	
 	switch (DogEngine::rendererManager->getRenderValue())
 	{
 	default:
 		break;
 
+	
 	case 0:
-		player->Update(deltaTime_);
-		enemy->Update(deltaTime_);
-		enemy0->Update(deltaTime_);
-		enemy1->Update(deltaTime_);
-		mapA->Update(deltaTime_);
+	{
+		DogEngine::GameObjectManager->GetInstance()->Update(deltaTime_);
 		DogEngine::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 		break;
+	}
 	case 1:
 
 		break;

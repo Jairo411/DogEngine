@@ -27,8 +27,8 @@
 #include "../Thread/ThreadManager.h"
 #include "../Audio/AudioManager.h"
 #include "../FileInput_OutPut/FileDirectoryHandler.h"
+#include "ObjectManager.h"
 #include "ResourceAllocator.h"
-#include "ResourceManager.h"
 #include "EngineSerializer.h"
 
 
@@ -62,7 +62,7 @@ public:
 	static SceneManager* sceneManager; //Engine functionality 
 	static ThreadManager* threadManager; //Engine functionality
 	static AudioManager* audioManager; //Engine functionality
-	static ResourceManager* resourceManager; //Engine functionality
+	static ObjectManager* GameObjectManager; // Engine functionality 
 	static bool initialized;
 	GUI* engineGUI;
 	SDL_Event* event_;

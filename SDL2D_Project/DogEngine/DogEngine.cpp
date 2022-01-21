@@ -10,7 +10,7 @@ TextureManager* DogEngine::textureManager = nullptr;
 SceneManager* DogEngine::sceneManager = nullptr;
 ThreadManager* DogEngine::threadManager = nullptr;
 AudioManager* DogEngine::audioManager = nullptr;
-ResourceManager* DogEngine::resourceManager = nullptr;
+ObjectManager* DogEngine::GameObjectManager = nullptr;
 bool DogEngine::initialized = false;
 
 bool DogEngine::isRunning = false;
@@ -28,8 +28,8 @@ DogEngine::DogEngine()
 	EngineSerializer = Serializer::GetInstance();
 	textureManager = TextureManager::GetInstance();
 	audioManager = AudioManager::GetInstance();
-	resourceManager = ResourceManager::GetInstance();
 	threadManager = ThreadManager::GetInstance();
+	GameObjectManager = ObjectManager::GetInstance();
 
 	engineGUI = new GUI(); // I need to look into this 
 	event_ = new SDL_Event();

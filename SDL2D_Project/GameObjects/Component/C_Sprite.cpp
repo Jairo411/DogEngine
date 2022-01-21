@@ -3,10 +3,7 @@
 #include "../../TextureManager/TextureManager.h"
 C_Sprite::C_Sprite()
 {
-	width = 0;
-	height = 0;
 	angle = 0.0;
-	texture = nullptr;
 	Objcast = nullptr;
 	flipType = SDL_FLIP_HORIZONTAL;
 }
@@ -25,8 +22,6 @@ void C_Sprite::OnCreate(BaseObj* owner_)
 void C_Sprite::OnDestroy()
 {
 	Objcast = nullptr;
-	texture = nullptr;
-	delete texture;
 	delete Objcast;
 }
 
@@ -46,21 +41,15 @@ void C_Sprite::FixedUpdate(float deltaTime_)
 
 void C_Sprite::Render()
 {
-//	Game::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect);
-	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(texture, &SrcRect, &dstRect, angle, &center, flipType);
-}
-
-void C_Sprite::SetTexture(int id)
-{
-	assert((id < 0) && "Resource ID can't be less than zero");
-
-
+	SDL_Texture* tex = assetInfo.getResource()->texture;
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(tex, &SrcRect, &dstRect, angle, &center, flipType);
 
 }
 
 void C_Sprite::SetTexture(std::string fileDirectory_)
 {
-	texture = TextureManager::LoadTexture(fileDirectory_.c_str());
+	assetInfo= TextureManager::LoadTexture(fileDirectory_.c_str());
+	assetInfo.setFileDirectoryLocation(fileDirectory_);
 	center.x = SrcRect.w / 2;
 	center.y = SrcRect.h / 2;
 }
