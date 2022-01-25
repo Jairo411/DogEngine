@@ -9,7 +9,7 @@
 
 ```gitbash
     #clone repo in git bash  
-    git clone https://github.com/Jairo411/SDL2D_Project.git
+    git clone hhttps://github.com/Jairo411/DogEngine.git
 ```
 
 
