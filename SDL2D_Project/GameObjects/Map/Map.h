@@ -1,12 +1,12 @@
 #ifndef MAP_H
 #define MAP_H
+#include <list>
+#include <vector>
 #include "TileSet/Tiles.h"
 #include "../../DogEngine/DogEngine.h"
 #include "../../Window/Window.h"
 #include "../../Math/Vec2.h"
 #include "../../Math/Converter.h"
-#include <list>
-#include <vector>
 
 /*Map Layer is the background of the game, Currently acting like the actual game map
  but that will chance*/

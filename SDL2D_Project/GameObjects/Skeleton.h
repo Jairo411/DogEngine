@@ -24,10 +24,9 @@ public:
 	/*Old Code*/
 	void Inti();
 	void handleCollison();
-	virtual void Disable();
-	virtual void Update(float dt);
-	virtual void fixedUpdate(float dt_);
-	virtual void Render();
+	virtual void Update(float dt) override;
+	virtual void fixedUpdate(float dt_) override;
+	virtual void Render() override;
 	virtual void Steer();
 	virtual void Seperate();
 private:

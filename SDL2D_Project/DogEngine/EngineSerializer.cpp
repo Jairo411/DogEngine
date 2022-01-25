@@ -8,27 +8,109 @@ Serializer::Serializer()
 {
 	//Just creating every file, not handling any of the files
 	CurrentDoc = new pugi::xml_document();
-	struct stat status;
-	int indexDir = 0;
-	int indexFile = 0;
-	int lengthDir = 4;
-	int lengthFile = 3;
-	bool done = false;
-
-	/// Create the directories if they don't exist
-	for (int i = 0; i < lengthDir; i++)
+	directoryHandler = FileDirectoryHandler();
+	std::vector<std::string> directories = 
 	{
-		if (std::filesystem::exists(directoryPath[indexDir]) == false)
-		{
-			std::cout << directoryPath[indexDir] << std::endl;
-			std::cout << "Directory doesn't exist, creating it..." << std::endl;
-		}
-		
-		bool file =std::filesystem::create_directories(directoryPath[indexDir]);
-		assert(file == false); //Put assert in places that shouldn't go hard at all. 
-		indexDir++;
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/"
+	};
+
+	std::vector<std::string> files =
+	{
+		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
+		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/SceneData.xml",
+		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjectData.xml"
+	};
+
+	directoryHandler.SetDefaults(directories, files);
+
+	if (directoryHandler!="C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/")
+	{
+		directoryHandler.CreateDirectory("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/");
 	}
-	for (int i = 0; i < lengthFile; i++)
+	
+	directoryHandler = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/";
+
+	if (directoryHandler!=directoryHandler.GetIntialDirectories()) //create the directories
+	{
+		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[0].c_str());
+		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[1].c_str());
+		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[2].c_str());
+	}
+	
+	if (directoryHandler!=directoryHandler.GetIntialFiles())
+	{
+		pugi::xml_document* document0;
+		pugi::xml_document* document1;
+		pugi::xml_document* document2;
+		document0 = DefaultSerialized(directoryHandler.GetIntialFiles()[0].c_str());
+		document1 = DefaultSerialized(directoryHandler.GetIntialFiles()[1].c_str());
+		document2 = DefaultSerialized(directoryHandler.GetIntialFiles()[2].c_str());
+		document0->save_file(directoryHandler.GetIntialFiles()[0].c_str());
+		document1->save_file(directoryHandler.GetIntialFiles()[1].c_str());
+		document2->save_file(directoryHandler.GetIntialFiles()[2].c_str());
+		document_list.push_back(document0);
+		document_list.push_back(document1);
+		document_list.push_back(document2);
+	}
+
+	//struct stat status;
+	///// Create the directories if they don't exist
+	//for (int CurrentIndex = 0; CurrentIndex < sizeof(directoryPath) / sizeof(*directoryPath); CurrentIndex++) 
+	//{
+	//	if (std::filesystem::exists(directoryPath[CurrentIndex]) == false)
+	//	{
+	//		std::cout << directoryPath[CurrentIndex] << std::endl;
+	//		std::cout << "Directory doesn't exist, creating it..." << std::endl;
+	//	}
+	//	bool file = std::filesystem::create_directories(directoryPath[CurrentIndex]);
+	//	assert(file == false); //Put assert in places that shouldn't go wrong at all. 
+	//}
+
+	//for (int currentIndex = 0; currentIndex < sizeof(fileNames) / sizeof(*fileNames); currentIndex++)
+	//{
+	//	std::string path = directoryPath[currentIndex + 1];
+	//	std::string file = fileNames[currentIndex];
+	//	std::string combined = path + file;
+	//	/// Create the files if they don't exist
+	//	if (stat(combined.c_str(), &status) != 0)
+	//	{
+	//		std::cout << "Creating Files, currentFiles being created :" << docRootNames[currentIndex] << std::endl;
+	//		pugi::xml_document* document;
+	//		document = DefaultSerialized(docRootNames[currentIndex]);
+	//		document->save_file(combined.c_str(), PUGIXML_TEXT(""));
+	//		document_list.push_back(document);
+	//	}
+	//	/// Load the files because they exist
+	//	else if (stat(combined.c_str(), &status) == 0)
+	//	{
+	//		std::cout << "Loading in Files..." << std::endl;
+	//		std::string file = fileNames[currentIndex];
+	//		std::string combined = path + file;
+	//		pugi::xml_document* document = new pugi::xml_document();
+	//		document->load_file(combined.c_str());
+	//		document_list.push_back(document);
+	//	}
+	//}
+
+
+
+	
+	//for (int i = 0; i < lengthDir; i++)
+	//{
+	//	if (std::filesystem::exists(directoryPath[indexDir]) == false)
+	//	{
+	//		std::cout << directoryPath[indexDir] << std::endl;
+	//		std::cout << "Directory doesn't exist, creating it..." << std::endl;
+	//	}
+	//	
+	//	bool file =std::filesystem::create_directories(directoryPath[indexDir]);
+	//	assert(file == false); //Put assert in places that shouldn't go hard at all. 
+	//	indexDir++;
+	//}
+
+	/*for (int i = 0; i < lengthFile; i++)
 	{
 		std::string path = directoryPath[indexFile+1];
 		std::string file = fileNames[indexFile];
@@ -53,7 +135,7 @@ Serializer::Serializer()
 			document_list.push_back(document);
 		}
 		indexFile++;
-	}
+	}*/
 	/*while (done != true)
 	{
 		
@@ -88,14 +170,6 @@ Serializer::Serializer()
 		}
 	}
 	*/
-}
-
-void Serializer::OnCreate()
-{
-}
-
-void Serializer::OnDestroy()
-{
 }
 
 Serializer* Serializer::GetInstance()

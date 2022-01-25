@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <queue>
 #include <algorithm>
+#include "../FileInput_OutPut/FileDirectoryHandler.h"
 /* I could rework this right now,
 
 	main focus is that, the documents can be handle all together. Instead of individually.
@@ -41,8 +42,6 @@ class Serializer
 public:
 	Serializer(Serializer &other) = delete;
 	Serializer operator=(const Serializer& other) = delete;
-	void OnCreate();
-	void OnDestroy();
 	static Serializer* GetInstance();
 	//PURE WRITE FUNCTIONS
 	//Serializes GameObject
@@ -70,7 +69,6 @@ public:
 	bool SceneExist(int SceneIndex_, const char* SceneName_);//Read Function
 	bool GameObjectExist(int ID_); // Read Function
 	bool loadFile(const char* fileDirectory_); //Read function
-
 	void Update(); //this will update as fast as possible
 
 	
@@ -79,26 +77,32 @@ private:
 	~Serializer();
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
+	FileDirectoryHandler directoryHandler;
 	std::map < const char*, const char*> directorydictionary;
 	const char* docRootNames[3] = 
-	{"EngineSaveData" ,
+	{
+	"EngineSaveData" ,
 	"ScenesInfo",
 	"GameObjectsInfo"
 	};
 	const char* fullpath[3] = 
-	{ "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
+	{ 
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/SceneData.xml",
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/GameObjectData.xml" 
 	};
 	const char* fileNames[3] = 
-		{ "EngineSaveData.xml", 
-		"SceneData.xml",
-		"GameObjectData.xml"};
+	{ 
+	"EngineSaveData.xml", 
+	"SceneData.xml",
+	"GameObjectData.xml"
+	};
 	const char* directoryPath[4] = 
-		{"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/",
-		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/",
-		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/",
-		"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/"
+	{
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/",
+	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/"
 	};
 	std::list<pugi::xml_document*> document_list;
 	std::vector<int> gameObjectIDs;

@@ -22,7 +22,7 @@ std::string FileDirectoryHandler::GetCurrentPath()
 std::vector<std::string> FileDirectoryHandler::GetDirectories()
 {
 	std::vector<std::string> directories;
-	for (const auto& entry : std::filesystem::directory_iterator(currentPath.c_str()))
+	for (const auto& entry : fs::directory_iterator(currentPath.c_str()))
 	{
 		std::string filenameStr = entry.path().filename().string();
 		if (entry.is_directory())
@@ -36,7 +36,7 @@ std::vector<std::string> FileDirectoryHandler::GetDirectories()
 std::vector<std::string> FileDirectoryHandler::GetDirectoryContents()
 {
 	std::vector<std::string> contents;
-	for (const auto& entry : std::filesystem::directory_iterator(currentPath.c_str()))
+	for (const auto& entry : fs::directory_iterator(currentPath.c_str()))
 	{
 		std::string filenameStr = entry.path().filename().string();
 		if (entry.is_regular_file()) // files
@@ -47,14 +47,31 @@ std::vector<std::string> FileDirectoryHandler::GetDirectoryContents()
 	return contents;
 }
 
-void FileDirectoryHandler::ChangeDirectory(std::string directoryPath_)
+std::vector<std::string> FileDirectoryHandler::GetIntialDirectories()
 {
-	currentPath = directoryPath_;
+	return default_directories;
 }
+
+std::vector<std::string> FileDirectoryHandler::GetIntialFiles()
+{
+	return default_files;
+}
+
+void FileDirectoryHandler::SetDefaults(std::vector<std::string>intial_directories_)
+{
+	default_directories = intial_directories_;
+}
+
+void FileDirectoryHandler::SetDefaults(std::vector<std::string> intial_directories_, std::vector<std::string> intial_files_)
+{
+	default_directories = intial_directories_;
+	default_files = intial_files_;
+}
+
 
 void FileDirectoryHandler::PrintDirectoryContents()
 {
-	for (const auto& entry: std::filesystem::directory_iterator(currentPath.c_str()))
+	for (const auto& entry: fs::directory_iterator(currentPath.c_str()))
 	{
 		std::string filenameStr = entry.path().filename().string();
 		if (entry.is_directory())
@@ -74,6 +91,62 @@ void FileDirectoryHandler::PrintDirectoryContents()
 
 void FileDirectoryHandler::PrintDirectoryPath()
 {
-	const auto& entry = std::filesystem::directory_entry(currentPath.c_str());
+	const auto& entry = fs::directory_entry(currentPath.c_str());
 	std::cout << "Dir: " << entry.path().string();
+}
+
+
+void FileDirectoryHandler::CreateDirectory(std::string fulldirectoryPath_)
+{
+	fs::path directory; 
+	directory = fulldirectoryPath_;
+	fs::create_directory(directory);
+}
+
+void FileDirectoryHandler::Update()
+{
+}
+
+bool FileDirectoryHandler::operator==(const char* directoryPath_)
+{
+	if (fs::exists(directoryPath_) == true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool FileDirectoryHandler::operator==(std::vector<std::string> directories_)
+{
+	return false;
+}
+
+bool FileDirectoryHandler::operator!=(const char* directoryPath_)
+{
+	if (fs::exists(directoryPath_) == false)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool FileDirectoryHandler::operator!=(std::vector<std::string> directories_)
+{
+	return false;
+}
+
+bool FileDirectoryHandler::operator=(std::string path_)
+{
+	if (fs::exists(path_))
+	{
+		currentPath = path_;
+		std::cout << "Moved to " << currentPath.c_str() << std::endl;
+	}
+	return false;
 }

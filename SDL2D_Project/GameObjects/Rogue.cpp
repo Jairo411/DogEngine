@@ -6,7 +6,6 @@ Rogue::Rogue()
 {
 	/* Basic intializations of a member variables */
 	typeReference = this;
-	nullObjTexture = TextureManager::LoadTexture("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Effects/Effects1/1_magicspell_spritesheet.png");
 	Position = Vec2();
 	srcRect.w = 0;
 	srcRect.h = 0;
@@ -38,7 +37,6 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 	FrameTicks = NULL;
 	disableObject = NULL;
 
-
 	IntiAnimations("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt", "./Assets/Character/Sprites/", 'a'); //Calling from the Animator class
 	
 	if (this->objTexture != NULL)
@@ -65,7 +63,7 @@ Rogue::Rogue(const char* textureSheet, int x, int y)
 	this->AddComponent<C_CircleCollider>();
 	this->GetComponent<C_CircleCollider>()->SetDistance(47); // the input here is the radius. 
 
-	GameObject::OBJHolder.push_back(this);
+	//GameObject::OBJHolder.push_back(this);
 
 
 

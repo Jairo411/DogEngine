@@ -211,11 +211,6 @@ void Skeleton::handleCollison()
 
 }
 
-void Skeleton::Disable()
-{
-
-}
-
 // so steer gets defined in there respective GameObject class but they don't get called in the, yes but they don't get called in there GameObject classes 
 void Skeleton::Steer()
 {

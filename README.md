@@ -4,7 +4,7 @@
 
 <p>This is repository holds my attempt into making a game engine from stratch, using C/C++. This project has been worked on, on and off throughout my years in humber and continues to be developed on.<p> 
 
-## how to clone my repository using gitbash
+## How to clone my repository using gitbash
 <h4> <h4>
 
 ```gitbash

@@ -1,8 +1,17 @@
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\vc142.pdb
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\vc142.idb
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\fileinput_output\filedirectoryhandler.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\component\c_rectanglecollider.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\component\c_circlecollider.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\component\c_animation.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\component\animationset.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\gameobjects\component\c_sprite.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\audio\audiomanager.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\dogengine\main.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\dogengine\dogengine.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\dogengine\objectmanager.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\dogengine\engineserializer.obj
+c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\animator\animation.obj
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.command.1.tlog
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.read.1.tlog
 c:\users\jalbm\source\repos\sdl2d_project\sdl2d_project\x64\debug\sdl2d_project.tlog\cl.write.1.tlog

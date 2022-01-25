@@ -41,6 +41,7 @@ potentailly going to have gameObjects with no movement or extra functionality be
 	Happy new year :) 
 	https://gameprogrammingpatterns.com/update-method.html
 	here is a link so you can update the "update" design pattern you have for your gameobjects
+	I did it :) 2022-01-22
 */
 /*
 NOTES:
@@ -48,34 +49,34 @@ CHECK ON SHARED_PTR
 CHECK dynamic_PTR CAST
 ALSO Remove IObserverable
 */
+using SDLDisplayRects = std::pair<SDL_Rect*, SDL_Rect*>; // alias declarations  C++11
 class TextureManager;
 class IObserver;
-class GameObject : public BaseObj , public IObserverable
+class GameObject : public BaseObj
 {
 public:
 	GameObject();
 	virtual ~GameObject();
 	virtual void OnCreate()=0;
-	virtual void OnDestroy() = 0;
+	virtual void OnDestroy()=0;
 	virtual void Update(float deltaTime_)=0;
 	virtual void fixedUpdate(float deltaTime) = 0;
 	virtual void Render()=0; 
 	/*Setters*/
-	virtual void setPosition(int x_, int y_);
-	virtual void setPosition(Vec2 vPosition);
-	SDL_Texture* getTexture();
-	std::pair<SDL_Rect*, SDL_Rect*> getTextureDisplayInfo();
+	virtual void setPosition(int x_, int y_) final;
+	virtual void setPosition(Vec2 vPosition) final;
+	virtual SDL_Texture* getTexture() final;
+	SDLDisplayRects getTextureDisplayInfo();
 	/*Observer Pattern Implemented*/
-	virtual void Attach(IObserver* observer_);
-	virtual void Detach(IObserver* observer_);
-	virtual void Notify();
+//	virtual void Attach(IObserver* observer_);
+//	virtual void Detach(IObserver* observer_);
+//	virtual void Notify();
 	///Returns the Pivot Position (the middle) of the object position
 	virtual Vec2 getPivotPosition() final; 
 	///Returns the actual Sreen Coordinate position
 	virtual Vec2 getPosition() final;
-	static std::list<GameObject*> OBJHolder;
+	static std::list<GameObject*> OBJHolder; // this needs to be removed 
 	void DrawLine(Vec2 start_, Vec2 end_);
-
 	//Template Component Stuff
 	template <typename T, typename ... Args > void AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
@@ -130,9 +131,7 @@ public:
 protected:
 	/*Functions*/
 	virtual void UpdatePostion() final;
-	int ReadAmountOfAnimations();
 	/*Members variables*/
-	std::pair<SDL_Rect*, SDL_Rect*> TextureDisplayRectInfo;
 	float orientation;
 	float rotation;
 	float maxAcceleration;
@@ -141,9 +140,9 @@ protected:
 	Vec2 Position; // real position 
 	Vec2 PivotPosition; // stands for Piviot Position -> moved the origin of the gameObject to the middle of its rect
 	Vec2 velocity;
-	SDL_Texture* nullObjTexture;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, dstRect;
+	SDLDisplayRects TextureDisplayRectInfo;
 private:
 	int posX; // Individual postions X and Y. I don't want these variables to be touched 
 	int posY;

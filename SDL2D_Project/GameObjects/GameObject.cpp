@@ -17,11 +17,11 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	GameObserver* temp;
-	temp = dynamic_cast<GameObserver*>(this);
-	Detach(temp);
-	temp = nullptr;;
-	delete temp;
+	//GameObserver* temp;
+	//temp = dynamic_cast<GameObserver*>(this);
+	//Detach(temp);
+	//temp = nullptr;;
+	//delete temp;
 }
 
 void GameObject::UpdatePostion()
@@ -31,22 +31,20 @@ void GameObject::UpdatePostion()
 	PivotPosition = moveMiddle(Vec2(posX, posY));
 }
 
-int GameObject::ReadAmountOfAnimations()
-{
-	return 0;
-}
-
-
 void GameObject::DrawLine(Vec2 start_, Vec2 end_)
 {
 }
 
 SDL_Texture* GameObject::getTexture()
 {
+	if (objTexture==NULL)
+	{
+		std::cout << "Object doesn't have texture" << std::endl;
+	}
 	return objTexture;
 }
 
-std::pair<SDL_Rect*, SDL_Rect*> GameObject::getTextureDisplayInfo()
+SDLDisplayRects GameObject::getTextureDisplayInfo()
 {
 	return TextureDisplayRectInfo;
 }
@@ -76,26 +74,26 @@ void GameObject::setPosition(Vec2 vPosition)
 }
 
 /*Observer Pattern Implemented*/
-void GameObject::Attach(IObserver* observer_)
-{
-	currentObserver = observer_;
-	IObserverable::observerableContainer.push_back(observer_);
-}
-
-void GameObject::Detach(IObserver* observer_)
-{
-	IObserverable::observerableContainer.remove(observer_);
-	std::cout << "Observer has been removed from: " << getName().c_str() << endl;
-	system("pause");
-}
-/*Observer Pattern Implemented*/
-void GameObject::Notify()
-{
-	if (!observerableContainer.empty())
-	{
-		observerableContainer.front()->Update();
-	}
-}
+//void GameObject::Attach(IObserver* observer_)
+//{
+//	currentObserver = observer_;
+//	IObserverable::observerableContainer.push_back(observer_);
+//}
+//
+//void GameObject::Detach(IObserver* observer_)
+//{
+//	IObserverable::observerableContainer.remove(observer_);
+//	std::cout << "Observer has been removed from: " << getName().c_str() << endl;
+//	system("pause");
+//}
+///*Observer Pattern Implemented*/
+//void GameObject::Notify()
+//{
+//	if (!observerableContainer.empty())
+//	{
+//		observerableContainer.front()->Update();
+//	}
+//}
 
 Vec2 GameObject::getPivotPosition()
 {
