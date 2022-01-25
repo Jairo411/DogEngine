@@ -3,6 +3,7 @@
 ![DOGENGINELOGO](DogEngineMascot.png)
 
 <p>This is repository holds my attempt into making a game engine from stratch, using C/C++. This project has been worked on, on and off throughout my years in humber and continues to be developed on.<p> 
+<p>This repository holds my attempt into making a game engine from stratch, using C/C++. This project has been worked on, on and off throughout my years in humber and continues to be developed on.<p> 
 
 ## How to clone my repository using gitbash
 <h4> <h4>
@@ -36,6 +37,8 @@
 
 <h3> Hello my name is jairo morelli, i'm currently a 3rd year student at humber.
 I've spent my off time (up till now) building the dog engine. my contact information will be down below.</h3>
+<h3> Hello my name is Jairo Morelli, i'm currently a 3rd year student at humber.
+I've spent my off time (up intil now) building the dog engine. My contact information will be down below.</h3>
 
 
 <p>&nbsp</p>
