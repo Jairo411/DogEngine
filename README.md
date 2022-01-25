@@ -2,7 +2,7 @@
 # DogEngine 0.0
 ![DOGENGINELOGO](DogEngineMascot.png)
 
-<p>This repository holds my attempt into making a game engine from stratch, using C/C++. This project has been worked on, on and off throughout my years in humber and continues to be developed on.<p> 
+<p>This repository holds the dogEngine, a game engine made from stratch using C/C++, opensource libraries. This project has been worked on, on and off throughout my years in humber and continues to be developed on.<p> 
 
 ## How to clone my repository using gitbash
 <h4> <h4>
