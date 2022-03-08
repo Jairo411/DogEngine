@@ -60,6 +60,7 @@ void SceneManager::handleCollison()
 	if (curScene)
 	{
 		curScene->HandleCollison();
+		
 	}
 }
 

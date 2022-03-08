@@ -147,7 +147,7 @@ void Skeleton::Inti()
 			srcRect.x = sourceX;
 			srcRect.y = sourceY;
 
-			tempIMG = TextureManager::LoadTexture(srcRect, actualIMG);
+			//tempIMG = TextureManager::LoadTexture(srcRect, actualIMG);
 			sprite.animationSet.at(i).push_back(tempIMG);
 			totalSize++;
 		}
@@ -163,7 +163,7 @@ void Skeleton::Update(float DeltaTime_)
 	dt /= 1000.0;
 	if (dynamic_cast<IObserverable*>(this))
 	{
-		Notify();
+		//Notify();
 	}
 	dstRect0.x = Position.x;
 	dstRect0.y = Position.y;

@@ -26,14 +26,14 @@ Scene0::Scene0()
 		//SDL
 		/* Intial Object Creations*/
 		player = new Rogue("./Assets/Character/Sprites/adventurer-attack1-00.png", 0, 60);
-		enemy = new Skeleton(180, 100);
-		enemy0 = new Skeleton(300, 50);
-		enemy1 = new Skeleton(400, 200);
+//		enemy = new Skeleton(180, 100);
+//		enemy0 = new Skeleton(300, 50);
+//		enemy1 = new Skeleton(400, 200);
 
 		DogEngine::GameObjectManager->GetInstance()->AddActive(player);
-		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy);
-		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy0);
-		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy1);
+//		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy);
+//		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy0);
+//		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy1);
 
 
 		
@@ -62,11 +62,11 @@ void Scene0::OnCreate()
 		break;
 	case 0:
 	/* Setting GameObject Functionality*/
-		enemy->SetTarget(player);
-		enemy0->SetTarget(player);
-		DogEngine::AI_Manager->getInstance()->getTotalAgents();
-		DogEngine::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1), mapA->getTiles(), 200);
-		DogEngine::initialized = true;
+	//	enemy->SetTarget(player);
+	//	enemy0->SetTarget(player);
+	//	DogEngine::AI_Manager->getInstance()->getTotalAgents();
+	//	DogEngine::AI_Manager->getInstance()->setPath(dynamic_cast<AI*>(enemy1), mapA->getTiles(), 200);
+	//	DogEngine::initialized = true;
 
 
 		break;
@@ -111,7 +111,7 @@ void Scene0::Update(float deltaTime_)
 	case 0:
 	{
 		DogEngine::GameObjectManager->GetInstance()->Update(deltaTime_);
-		DogEngine::AI_Manager->getInstance()->OnUpdate(deltaTime_);
+	//	DogEngine::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 		break;
 	}
 	case 1:
@@ -142,9 +142,9 @@ void Scene0::Render()
 		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
 		mapA->Render();
 		player->Render();
-		enemy->Render();
-		enemy0->Render();
-		enemy1->Render();
+	//	enemy->Render();
+	//	enemy0->Render();
+	//	enemy1->Render();
 		DogEngine::window->Render();
 		DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
 		break;

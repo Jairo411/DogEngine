@@ -32,14 +32,14 @@ Serializer::Serializer()
 	
 	directoryHandler = "C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/";
 
-	if (directoryHandler!=directoryHandler.GetIntialDirectories()) //create the directories
+	if (directoryHandler!=directoryHandler.GetIntialDirectories()) //create the directories if files don't exist
 	{
 		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[0].c_str());
 		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[1].c_str());
 		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[2].c_str());
 	}
 	
-	if (directoryHandler!=directoryHandler.GetIntialFiles())
+	if (directoryHandler!=directoryHandler.GetIntialFiles()) // Load in the directories if files do exist
 	{
 		pugi::xml_document* document0;
 		pugi::xml_document* document1;
@@ -220,7 +220,7 @@ bool Serializer::isChildNodeExist(const char* nodeName_)
 
 bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
-	loadFile(fullpath[1]);
+	loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
 	pugi::xml_node root = CurrentDoc->first_child();
 	std::cout << root.name() << std::endl;
 	for (pugi::xml_node node : root.children("Scene"))
@@ -288,7 +288,7 @@ void Serializer::Update()
 
 void Serializer::AddGameObject(GameObject* OBJ_) // 
 {
-	loadFile(fullpath[2]);
+	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 	if (GameObjectExist(OBJ_->getID() == false))
 	{
 		CreateID(OBJ_); // Create ID for Object that doesn't have one
@@ -313,19 +313,19 @@ void Serializer::AddGameObject(GameObject* OBJ_) //
 			auto childNode = gameObjectNode.append_child(pugi::node_element);
 			childNode.set_name("ChildOf");
 
-			CurrentDoc->save_file(fullpath[2], PUGIXML_TEXT(""));
+			CurrentDoc->save_file(directoryHandler.GetIntialDirectories()[2].c_str(), PUGIXML_TEXT(""));
 		}
 	}
 }
 
 void Serializer::AddGameObject(int ID_)
 {
-	loadFile(fullpath[2]);
+	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 }
 
 void Serializer::AssignID(std::list<GameObject*> OBJ_List) //this will only assign ID to object/class that already exist, this will only be called in the beginning of the Engine load
 {
-	loadFile(fullpath[2]);
+	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 
 	pugi::xml_node root = CurrentDoc->first_child();
 	std::cout << root.name() << std::endl;
@@ -409,7 +409,7 @@ void Serializer::CreateID(GameObject* OBJ_)
 
 void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 {
-	loadFile(fullpath[2]);
+	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;
 
 	//Creates new file
@@ -468,7 +468,7 @@ void Serializer::RemoveAnimation(std::string tagID_, const char* imageSrc_)
 void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 {
 	/*I need to load the file if it exist*/
-	loadFile(fullpath[1]);
+	loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
 	if (SceneExist(currentScene_, sceneName_) == false)
 	{
 		if (isChildNodeExist("ScenesInfo") == true)
@@ -481,7 +481,7 @@ void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 			sceneNode.append_attribute("SceneNumber ") = currentScene_;
 			sceneNode.append_attribute("SceneName ") = sceneName_;
 
-			CurrentDoc->save_file(fullpath[1], PUGIXML_TEXT(""));
+			CurrentDoc->save_file(directoryHandler.GetIntialDirectories()[1].c_str(), PUGIXML_TEXT(""));
 		}
 	}
 	else

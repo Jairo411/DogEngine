@@ -36,7 +36,7 @@ bool Animator::IntiAnimations(const char* AnimSetName_, const char* relativeDir_
 					std::string RelativeDir;
 					fileElements = textReader;
 					RelativeDir = relativeDir_ + fileElements;
-					sprite.animationSet.at(index).push_back(TextureManager::LoadTexture(RelativeDir.c_str()));
+				//	sprite.animationSet.at(index).push_back(TextureManager::LoadTexture(RelativeDir.c_str()));
 				}
 				else if (textReader.at(0) == 'N')
 				{

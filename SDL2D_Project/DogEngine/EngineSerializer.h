@@ -19,7 +19,6 @@
 	main focus is that, the documents can be handle all together. Instead of individually.
 	So XMLHandler could handle a xml_document doc and a lastNodeElement variable
 	essentally a data structure class
-
 	*/
 	/* PATHS VISUALLIZED
 	*
@@ -70,41 +69,13 @@ public:
 	bool GameObjectExist(int ID_); // Read Function
 	bool loadFile(const char* fileDirectory_); //Read function
 	void Update(); //this will update as fast as possible
-
-	
 private:
 	Serializer();
 	~Serializer();
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
-	FileDirectoryHandler directoryHandler;
-	std::map < const char*, const char*> directorydictionary;
-	const char* docRootNames[3] = 
-	{
-	"EngineSaveData" ,
-	"ScenesInfo",
-	"GameObjectsInfo"
-	};
-	const char* fullpath[3] = 
-	{ 
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineSaveData.xml",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/SceneData.xml",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/GameObjectData.xml" 
-	};
-	const char* fileNames[3] = 
-	{ 
-	"EngineSaveData.xml", 
-	"SceneData.xml",
-	"GameObjectData.xml"
-	};
-	const char* directoryPath[4] = 
-	{
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/",
-	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/"
-	};
 	std::list<pugi::xml_document*> document_list;
+	FileDirectoryHandler directoryHandler;
 	std::vector<int> gameObjectIDs;
 	static Serializer* instance;
 };

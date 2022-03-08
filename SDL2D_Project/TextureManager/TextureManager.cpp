@@ -4,13 +4,13 @@ TextureManager* TextureManager::instance = nullptr;
 
 TextureManager::TextureManager()
 {
-	OnCreate();
+
 }
 
 
 TextureManager::~TextureManager()
 {
-	OnDestroy();
+
 }
 
 void TextureManager::OnCreate()
