@@ -7,14 +7,10 @@
 #include "InfoStructs.h"
 #include "../DogEngine/DogEngine.h"
 #include "../Renderer/Renderer.h"
-/*2021-07-09 
-	Soild*/
-//2021-10-17 not soild enough 
-
-
-/*TextureManager class has reference of all renderers now. 
- Not all of the same calls will work so I will have to be careful and abstract my TextureManager code a bit more.*/
-
+/*
+* 8/16/2022
+* Singleton texture manager interface, that loads/creates textures. 
+*/
 class TextureManager
 {
 public:

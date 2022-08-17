@@ -1,23 +1,9 @@
 #include "Timer.h"
-#define MILLISECONDS_TO_SECONDS /1000.0f 
 
 Timer* Timer::instance = nullptr;
-std::list<LocalTimer*> Timer::localTimersContainer = std::list<LocalTimer*>();
-LocalTimer* Timer::currentLocaltimerPtr = nullptr;
 
-Timer::Timer()
+Timer::Timer() :  FPS(0), SecondsFlag(false), thresHold(0.0f), prevPerformaceTicks(0), currentPerformanceTicks(0), FramePerSecondFlag(0.0f), flag(0), totalFrames(0), updateLag(0.0), delta(0.0f), updateLoopSpeed(0.0f)
 {
-	prevTicks = 0;
-	currentTicks = 0;
-	prevPerformaceTicks = 0;
-	currentPerformanceTicks = 0;
-	FramePerSecondFlag = 0.0;
-	flag = 0;
-	totalFrames = 0;
-	updateLag = 0.0;
-	delta = 0.0;
-	thresHold = 0.0;
-	updateLoopSpeed = 0.0f;
 }
 
 Timer::~Timer()
@@ -26,9 +12,6 @@ Timer::~Timer()
 
 void Timer::Start()
 {
-	prevTicks = SDL_GetTicks();
-	currentTicks = SDL_GetTicks();
-
 	//masterPerformanceClock.first is the prevTimer and then second part of the pair is the current tick
 	performanceClock.first = std::chrono::high_resolution_clock();
 	performanceClock.second = std::chrono::high_resolution_clock();
@@ -45,10 +28,7 @@ void Timer::Start()
 
 void Timer::UpdateSteadyClock()
 {
-	//This Update is for our SteadyClock timePoints
-	prevTicks = currentTicks;
-	currentTicks = SDL_GetTicks();
-
+	
 	steadyTP.second = steadyTP.first;
 	steadyTP.first = steadyClock.first.now();
 }
@@ -62,16 +42,15 @@ void Timer::UpdatePerformanceClock()
 	FramePerSecondFlag += delta;
 	if (FramePerSecondFlag>=ONESECOND)
 	{
+		
 		FPS = totalFrames;
+		PrintUpdate();
 		PrintFPS();
 	}
 
 }
 
-float Timer::GetCurrentTicks()
-{
-	return static_cast<float>(currentTicks)  MILLISECONDS_TO_SECONDS;
-}
+
 
 Timer* Timer::GetInstance()
 {
@@ -110,13 +89,6 @@ void Timer::IncrementFrames()
 	}
 }
 
-void Timer::PrintFPS()
-{
-	std::cout << "FPS: " << FPS << std::endl;
-}
-
-
-
 void Timer::IncrementUpdateLag(double updateLag_)
 {
 	updateLag += updateLag_;
@@ -130,8 +102,11 @@ double Timer::GetUpdateLag()
 
 void Timer::SetLogicLoopSpeed(int FPS_)
 {
-	updateLoopSpeed = 1.0/(double)FPS_; //1/60 = 0.0166 seconds 
-	updateLoopSpeed *= 1000.0; //convert 0.0166 seconds to 16 miliseconds
+	updateLoopSpeed = ONESECOND/(float)FPS_; //1/60 = 0.0166 seconds 
+	updateLoopSpeed *= ONESECOND; //convert 0.0166 seconds to 16 miliseconds
+
+	int x = 0;
+	x += 1;
 }
 
 double Timer::getMS_Machine_UpdateFPS()
@@ -144,79 +119,32 @@ double Timer::GetDelta()
 	return delta;
 }
 
-void Timer::PrintUpdate()
-{
-	std::cout << "Current Machine Update : " << delta << std::endl;
-}
 
 double Timer::CalculateDelta()
 {
 	std::chrono::nanoseconds elasped = performanceTP.first - performanceTP.second; //elapsed == current - pervious 
-	double time = std::chrono::duration<double, std::milli>(elasped).count();
-	delta = time;
-	return time;
+	std::chrono::duration<double,std::milli> time = elasped;
+	delta = time.count();
+	return delta;
 }
 
 int Timer::GetTotalAmountTime()
 {
 	std::chrono::duration<float> elasped = steadyTP.first - steadyTP.second; //elapsed == current - pervious 
-	float time = elasped.count();
+	int time = std::chrono::duration_cast<std::chrono::seconds>(elasped).count();
 	assert(time<0.0f);
-	return (int)time;
+	return time;
 }
 
-void Timer::AddLocalTimer(LocalTimer local_)
+void Timer::PrintUpdate()
 {
-	localTimersContainer.push_back(&local_);
+	double miliconversion = delta * 1000;
+	std::cout << "Current Machine Update" << miliconversion << TimeUnit <<std::endl;
 }
 
-void Timer::StartTimer()
+
+void Timer::PrintFPS()
 {
-	assert(localTimersContainer.empty() == true);
-	LocalTimer* tempLocalTimer = nullptr;
-	tempLocalTimer = localTimersContainer.back();
-	tempLocalTimer->LocalTimerPair.first = std::chrono::steady_clock();
-	currentLocaltimerPtr = tempLocalTimer;
+	std::cout << "FPS: " << FPS << std::endl;
 }
-
-void Timer::StartTimer(LocalTimer local_)
-{
-	assert(localTimersContainer.empty()==true);
-	for (auto timer : localTimersContainer  )
-	{
-		if (timer==&local_)
-		{
-			timer->LocalTimerPair.first = std::chrono::steady_clock();
-			currentLocaltimerPtr = timer;
-		}
-	}
-	
-}
-
-void Timer::SetTimer(std::chrono::milliseconds milli_)
-{
-	currentLocaltimerPtr->timerLimit = (double)milli_.count();
-}
-
-void Timer::SetTimer(std::chrono::seconds secs_)
-{
-	currentLocaltimerPtr->timerLimit = (double)secs_.count();
-}
-
-bool Timer::getCurrentLocalTimerFlag()
-{
-	if (currentLocaltimerPtr->timerLimit<=0.0)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-void Timer::UpdateAllLocalTimers()
-{
-}
-
 

@@ -135,76 +135,76 @@ void Rogue::Render()
 /* function doesn't hold anything, just tells vectors what size they are and plays animations*/
 void Rogue::PlayAnimations(AnimationStates temp_)
 {
-	Uint32 ticks = 10*DogEngine::timer->GetCurrentTicks();
-	Uint32 frames;
-	/*
-		Im gonna re-work all this mess, its old and doesnt really make sense. 
-	*/
-	switch (temp_)
-	{
-	case AnimationStates::ATTACK0:
-		frames = ticks % 4; 
-		objTexture = sprite.animationSet.at(0).at(frames);
-		break;
-	case AnimationStates::ATTACK1:
-		frames = ticks % 6;
-		objTexture = sprite.animationSet.at(1).at(frames);
-		break;
-	case AnimationStates::ATTACK2:
-		frames = ticks % 6;
-		objTexture = sprite.animationSet.at(2).at(frames);
-		break;
-	case AnimationStates::CLIMB:
-		frames =	ticks % 5;
-		objTexture = sprite.animationSet.at(3).at(frames);
-		break;
-	case AnimationStates::CORNERGRAB:
-		frames = ticks % 4;
-		objTexture = sprite.animationSet.at(4).at(frames);
-		break;
-	case AnimationStates::CORNERJUMP:
-		frames = ticks % 3;
-		objTexture = sprite.animationSet.at(5).at(frames);
-		break;
-	case AnimationStates::CROUCH:
-		frames = ticks % 4;
-		objTexture = sprite.animationSet.at(6).at(frames);
-		break;
-	case AnimationStates::DEATH:
-		frames = ticks % 7;
-		objTexture = sprite.animationSet.at(7).at(frames);
-		break;
-	case AnimationStates::FALL:
-		frames = ticks % 2;
-		objTexture = sprite.animationSet.at(8).at(frames);
-		break;
-	case AnimationStates::HURT:
-		frames = ticks % 3;
-		objTexture = sprite.animationSet.at(9).at(frames);
-		break;
-	case AnimationStates::IDLE0:
-		frames = ticks % 3;
-		objTexture = sprite.animationSet.at(10).at(frames);
-		break;
-	case AnimationStates::IDLE1:
-		frames = ticks % 4;
-		objTexture = sprite.animationSet.at(11).at(frames);
-		break;
-	case AnimationStates::JUMP:
-		frames = ticks % 4;
-		objTexture = sprite.animationSet.at(12).at(frames);
-		break;
-	case AnimationStates::RUN:
-		frames = ticks % 6;
-		objTexture = sprite.animationSet.at(13).at(frames);
-		break;
-	case AnimationStates::SLIDE:
-		frames =	ticks % 2;
-		objTexture = sprite.animationSet.at(14).at(frames);
-		break;
-	default:
-		break;
-	}
+	//Uint32 ticks = 10*DogEngine::timer->GetCurrentTicks();
+	//Uint32 frames;
+	///*
+	//	Im gonna re-work all this mess, its old and doesnt really make sense. 
+	//*/
+	//switch (temp_)
+	//{
+	//case AnimationStates::ATTACK0:
+	//	frames = ticks % 4; 
+	//	objTexture = sprite.animationSet.at(0).at(frames);
+	//	break;
+	//case AnimationStates::ATTACK1:
+	//	frames = ticks % 6;
+	//	objTexture = sprite.animationSet.at(1).at(frames);
+	//	break;
+	//case AnimationStates::ATTACK2:
+	//	frames = ticks % 6;
+	//	objTexture = sprite.animationSet.at(2).at(frames);
+	//	break;
+	//case AnimationStates::CLIMB:
+	//	frames =	ticks % 5;
+	//	objTexture = sprite.animationSet.at(3).at(frames);
+	//	break;
+	//case AnimationStates::CORNERGRAB:
+	//	frames = ticks % 4;
+	//	objTexture = sprite.animationSet.at(4).at(frames);
+	//	break;
+	//case AnimationStates::CORNERJUMP:
+	//	frames = ticks % 3;
+	//	objTexture = sprite.animationSet.at(5).at(frames);
+	//	break;
+	//case AnimationStates::CROUCH:
+	//	frames = ticks % 4;
+	//	objTexture = sprite.animationSet.at(6).at(frames);
+	//	break;
+	//case AnimationStates::DEATH:
+	//	frames = ticks % 7;
+	//	objTexture = sprite.animationSet.at(7).at(frames);
+	//	break;
+	//case AnimationStates::FALL:
+	//	frames = ticks % 2;
+	//	objTexture = sprite.animationSet.at(8).at(frames);
+	//	break;
+	//case AnimationStates::HURT:
+	//	frames = ticks % 3;
+	//	objTexture = sprite.animationSet.at(9).at(frames);
+	//	break;
+	//case AnimationStates::IDLE0:
+	//	frames = ticks % 3;
+	//	objTexture = sprite.animationSet.at(10).at(frames);
+	//	break;
+	//case AnimationStates::IDLE1:
+	//	frames = ticks % 4;
+	//	objTexture = sprite.animationSet.at(11).at(frames);
+	//	break;
+	//case AnimationStates::JUMP:
+	//	frames = ticks % 4;
+	//	objTexture = sprite.animationSet.at(12).at(frames);
+	//	break;
+	//case AnimationStates::RUN:
+	//	frames = ticks % 6;
+	//	objTexture = sprite.animationSet.at(13).at(frames);
+	//	break;
+	//case AnimationStates::SLIDE:
+	//	frames =	ticks % 2;
+	//	objTexture = sprite.animationSet.at(14).at(frames);
+	//	break;
+	//default:
+	//	break;
+	//}
 }
 
 Uint32 Rogue::WaitAnimationsTicks(Uint32 wait_)

@@ -10,13 +10,11 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
 #include "../GameObjects/GameObject.h";
-/*2021-7-15
-Renderer class will support many different renderers hopefully in the future
-I will also Write the difference renderer inside my Render class.
-2021-10-17
-a variant variable has been added to my rendererManager class in order to abstract my rendering process a bit more.
+/*
+* 8/16/2022
+* Singleton renderermanger interface. 
+* -Handles all rendererAPI calls.
 */
-
 class OpenGLRenderer;
 class VulkanRenderer;
 class SDLRenderer;
@@ -25,17 +23,15 @@ class DogEngine;
 class RendererManager 
 {
 public:
-	void OnCreate();
-	void OnDestroy();
 	RendererManager(RendererManager& other) = delete;
 	void operator =(const RendererManager&) = delete;
-	///note make sure that you can switch renderers but the machine has to reboot the program
+	///Set RenderAPI.
 	void setRenderer(int numbercase_);
+	///Pass current window context.
 	void setWindow(Window* window_);
-	// with the addition of new renderers, this will be changed.
 	static RendererManager* GetInstance();
 	static int getRenderValue();
-	//template function for returning the different renderers when you know what render
+	/// Return current rendererAPI.
 	template <typename T>
 	T GetRenderAPI();
 	template<>
@@ -44,7 +40,7 @@ public:
 		SDLRenderer* temp = nullptr;
 		try
 		{
-			temp = std::get<SDLRenderer*>(renderVariant);
+			temp = std::get<SDLRenderer*>(R_Variant);
 		}
 		catch (const std::bad_variant_access& e)
 		{
@@ -58,7 +54,7 @@ public:
 		OpenGLRenderer* temp = nullptr;
 		try
 		{
-			temp = std::get<OpenGLRenderer*>(renderVariant);
+			temp = std::get<OpenGLRenderer*>(R_Variant);
 		}
 		catch (const std::bad_variant_access& e)
 		{
@@ -72,7 +68,7 @@ public:
 		VulkanRenderer* temp = nullptr;
 		try
 		{
-			temp = std::get<VulkanRenderer*>(renderVariant);
+			temp = std::get<VulkanRenderer*>(R_Variant);
 		}
 		catch (const std::bad_variant_access& e)
 		{
@@ -83,21 +79,17 @@ public:
 	private:
 	~RendererManager();
 	RendererManager();
-	//Renderer() over load this function when you want to add other renderer, lets start with openGL, then vulkan....
 	static RendererManager* instance;
 	SDL_Window* window;
-	SDLRenderer* SDL__Renderer;
-	OpenGLRenderer* openGLRenderer;
-	VulkanRenderer* vulkanRenderer;
-	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderVariant;
-	// a simple value that I use to tell my engine what renderer its using.
-	static int RenderValue;
+	SDLRenderer* SDL_R;
+	OpenGLRenderer* OPGL_R;
+	VulkanRenderer* V_R;
+	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> R_Variant;
+
+	static int R_Value;
 	int frames;
 };
 
-/* My SDL Renderer class 
- Does all my rendering stuff here, some of these functions exist simply for abstracting 
- my render process and it also seems like that, I will create own purpose rendering functions*/
 class SDLRenderer 
 {
 public:
@@ -167,7 +159,7 @@ struct Particle
 
 };
 
-
+//8/16/2022	This interface needs to be reworked.
 class OpenGLRenderer 
 {
 public:
@@ -181,7 +173,7 @@ public:
 	void RefreshWindow();
 	void Update();
 	glm::mat4 getProjection();
-	Square2D CreateSquare(Square2D square2D_); // create a plain square don't know why I would need this. But im gonna leave this hear
+	Square2D CreateSquare(Square2D square2D_);
 	Particle CreateParticle(Particle particles_);
 	
 
@@ -196,7 +188,7 @@ private:
 	int ScreenHeight;
 	int ScreenWidth;
 };
-// Vulkan implementation really is the last thing you want to implement
+// Vulkan interface implementation
 class VulkanRenderer
 {
 public:

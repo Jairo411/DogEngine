@@ -13,14 +13,6 @@ TextureManager::~TextureManager()
 
 }
 
-void TextureManager::OnCreate()
-{
-}
-
-void TextureManager::OnDestroy()
-{
-}
-
 TextureManager* TextureManager::GetInstance()
 {
 	if (instance==nullptr)

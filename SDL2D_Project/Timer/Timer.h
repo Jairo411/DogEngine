@@ -5,26 +5,20 @@
 #include <assert.h>
 #include <iostream>
 #include <list>
-#define ONESECOND 1000 /// This is exactly one second in milliseconds
-#define SIXTYFRAMES_PER_SECOND 16.666 // 60FPS in milliseconds 1/60 
-#define THIRTYFRAMES_PER_SECOND 33.333 // 30FPS in milliseconds
-/*2022-01-07
-Happy New Year ! 
-Well just to inform you overhere, you having been working them the same time units in your timer.
-Thanks to how smart you've gotten. You've been actually able to figure out wtf is going on. For future reference 
-when you're doing any kind of math, MAKE SURE, I CAN'T STRESS THIS ENOUGH, MAKE SURE YOU ARE USING THE CORRECT UNITS. 
-AS WELL MAKE SURE THAT YOU'RE USING THE CORRECT MATH.
-
-I'm not being dramatic this could cause so many future problems if you do not take into account if your math is soild. 
-
-2022-01-09
-The math is soild but because of floating point errors, ill switch the units of time from seconds to miliseconds. 
+#define ONESECOND 1000.0f /// This is exactly one second in milliseconds
+#define SIXTYFRAMES_PER_SECOND 16.666f // 60FPS in milliseconds 1/60 
+#define THIRTYFRAMES_PER_SECOND 33.333f // 30FPS in milliseconds
+/*
+* 2022/8/16 
+* Singleton timer interface.
+* -Handles the GameLogic update speed.
+* -Has two clocks a performance clock that updates with the ticks of the current machine's processon, in other words really accurate.  
+*  Then steady clock is essentally the same as well, the difference is it isn't as accurate. 
+* -Best way to thing about it is, There is a very accurate clock, that clocks in its time measurements in ticks, and a not so accurate clock that 
+* clocks its measuresments of time in seconds. 
 */
-struct LocalTimer
-{
-	double timerLimit = 0.0;
-	std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> LocalTimerPair;
-};
+ 
+const std::string TimeUnit = " ms";
 
 class Timer
 {
@@ -33,17 +27,16 @@ public:
 	Timer(Timer&&) = delete;
 	Timer& operator = (const Timer&)=delete;
 	Timer& operator = (Timer&&) = delete;
-	/* Old Code*/
-	void Start();
-	void UpdateSteadyClock();
-	void UpdatePerformanceClock();
-	float GetCurrentTicks();
-	/*New Code*/
 	static Timer* GetInstance();
+	///Will Start the Machine timer.
+	void Start();
+	///Update the SteadyClock
+	void UpdateSteadyClock();
+	///Update the PerformanceClock
+	void UpdatePerformanceClock();
 	void IncrementSleepTime();
 	double getSleepTime();
 	void IncrementFrames();
-	void PrintFPS();
 	///This will set the total system lag if any and make sure that the computer runs at an even 60, or 30 FPS
 	void IncrementUpdateLag(double updateLag_);
 	double GetUpdateLag();
@@ -55,43 +48,27 @@ public:
 	double GetDelta();
 	///This will return the total seconds the engine has been running at
 	int GetTotalAmountTime();
-	///Will add my local timer structure to my list of local timers
-	static void AddLocalTimer(LocalTimer local_);
-	///Will just simply start the timer at the end of the list 
-	static void StartTimer();
-	///Can Pass the localTimer directly 
-	static void StartTimer(LocalTimer local_);
-	///Remember when working with std::chrono::<insert time variable here> that you know exactly what unit of time you are working in, i.e secs, millisecs,mircosecs 
-	static void SetTimer(std::chrono::milliseconds milli_);
-	///Remember when working with std::chrono::<insert time variable here> that you know exactly what unit of time you are working in, i.e secs, millisecs,mircosecs 
-	static void SetTimer(std::chrono::seconds secs_);
-	///get the Current local Timer flag
-	static bool getCurrentLocalTimerFlag();
-	///Update all local timers
-	static void UpdateAllLocalTimers();
-	/// Print Update
+	///DEBUG TOOLS
+	/// Print machine update
 	void PrintUpdate();
+	///Prints out the current FPS the current machine is getting. 
+	void PrintFPS();
  private:
-	/* Old Code*/
-	unsigned int prevTicks, currentTicks;
 	bool flag;
 	Uint64 prevPerformaceTicks, currentPerformanceTicks;
-	/*New Code*/
 	Timer();
 	~Timer();
 	double CalculateDelta();
 	static Timer* instance;
 	bool SecondsFlag;
 	int FPS;
-	int totalFrames; ///a frame is one draw call
+	int totalFrames; 
 	double delta;
 	double updateLag;
 	double thresHold;
 	double updateLoopSpeed;
 	double FramePerSecondFlag;
 	static double timerLimit;
-	static LocalTimer* currentLocaltimerPtr;
-	static std::list<LocalTimer*>localTimersContainer;
 	static std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> timer;
 	std::pair<std::chrono::high_resolution_clock,std::chrono::high_resolution_clock> performanceClock;
 	std::pair<std::chrono::steady_clock,std::chrono::steady_clock> steadyClock;

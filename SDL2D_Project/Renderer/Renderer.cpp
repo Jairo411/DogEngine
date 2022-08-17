@@ -3,31 +3,16 @@
 #include "../DogEngine/DogEngine.h"
 
 RendererManager* RendererManager::instance = nullptr;
-int RendererManager::RenderValue = NULL;
+int RendererManager::R_Value = NULL;
 
 
-RendererManager::RendererManager()
+RendererManager::RendererManager() : R_Variant(std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*>()), SDL_R(nullptr), OPGL_R(nullptr),V_R(nullptr), frames(0)
 {
-	renderVariant = std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*>();
-	SDL__Renderer = nullptr;
-	openGLRenderer = nullptr;
-	vulkanRenderer = nullptr;
-	window = nullptr;
-	frames = 0;
 }
 
 RendererManager::~RendererManager()
 {
 
-}
-
-void RendererManager::OnCreate()
-{
-	
-}
-
-void RendererManager::OnDestroy()
-{
 }
 
 void RendererManager::setRenderer(int numbercase_)
@@ -38,31 +23,31 @@ void RendererManager::setRenderer(int numbercase_)
 		break;
 	case 0:
 	{
-		RenderValue = 0;
-		SDL__Renderer = new SDLRenderer();
-		SDL__Renderer->OnCreate(window);
-		renderVariant = SDL__Renderer;
+		R_Value = 0;
+		SDL_R = new SDLRenderer();
+		SDL_R->OnCreate(window);
+		R_Variant = SDL_R;
 		break;
 	}
 	case 1:
 	{
-		RenderValue = 1;
+		R_Value = 1;
 		int w =0;
 		int h =0;
-		openGLRenderer = new OpenGLRenderer();
-		openGLRenderer->setWindow(window);
+		OPGL_R = new OpenGLRenderer();
+		OPGL_R->setWindow(window);
 		SDL_GetWindowSize(window, &w, &h);
-		openGLRenderer->SetWindowSize(w, h);
-		renderVariant = openGLRenderer;
-		openGLRenderer->OnCreate();
+		OPGL_R->SetWindowSize(w, h);
+		R_Variant = OPGL_R;
+		OPGL_R->OnCreate();
 		break;
 	}
 	case 2:
 	{
-		RenderValue = 2;
-		vulkanRenderer = new VulkanRenderer();
-		renderVariant = vulkanRenderer;
-		vulkanRenderer->OnCreate();
+		R_Value = 2;
+		V_R = new VulkanRenderer();
+		R_Variant = V_R;
+		V_R->OnCreate();
 		break;
 	}
 	}
@@ -78,14 +63,13 @@ RendererManager* RendererManager::GetInstance()
 	if (instance == nullptr)
 	{
 		instance = new RendererManager();
-		instance->OnCreate();
 	}
 	return instance;
 }
 
 int RendererManager::getRenderValue()
 {
-	return RenderValue;
+	return R_Value;
 }
 
 OpenGLRenderer::OpenGLRenderer()

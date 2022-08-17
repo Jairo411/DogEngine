@@ -17,6 +17,7 @@
 #include "../Math/Converter.h"
 #include "Scenes/SceneManager.h"
 #include "Scenes/GameScenes/Scene0.h"
+#include "Scenes/GameScenes/Scene1.h"
 #include "../GameObjects/Map/Map.h"
 #include "../GameObjects/Map/TileSet/Tiles.h"
 #include "../GameObjects/GameObject.h"

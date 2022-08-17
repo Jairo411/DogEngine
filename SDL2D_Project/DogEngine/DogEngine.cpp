@@ -89,10 +89,12 @@ void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int h
 
 	isRunning = true;
 
+	//Use gameScene when testing out scene features. 
+	//std::shared_ptr<Scene0> gameScene = std::make_shared<Scene0>();
+	//Use tempScene when testing out engine features.
+	std::shared_ptr<Scene1> tempScene = std::make_shared<Scene1>();
 
-	std::shared_ptr<Scene0> gameScene = std::make_shared<Scene0>();
-
-	unsigned int gameSceneID = sceneManager->Add(gameScene);
+	unsigned int gameSceneID = sceneManager->Add(tempScene);
 
 	timer->Start();
 	timer->SetLogicLoopSpeed(60);
@@ -118,9 +120,7 @@ void DogEngine::GameLoop()
 		{
 			currentRenderFlag = passRenderFlag;
 
-			rendererManager->OnDestroy();
 
-			rendererManager->OnCreate();
 			rendererManager->setRenderer(currentRenderFlag);
 		}
 		timer->UpdateSteadyClock();

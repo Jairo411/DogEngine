@@ -10,7 +10,7 @@
 #define BUFLEN 512 // Max legth of buffer
 
 #define PORT 8888 //The port on which to listen for incoming data
-
+/*2020/16/8 just a implemented interface class*/
 class NetworkManager
 {
 public:

@@ -2,12 +2,9 @@
 #define MATH_H
 #include <math.h>
 #include <iostream>
-/*Simple Vector 2 class with basic vector math
- All children Classes of GameObject will carry the Vec2 class*/
-/*2021-07-09
-	probably can be improved on, but works soild.*/
-/* 2021-07-20 
- With new Information all of my GameObjects will carry a transform*/
+/*
+2022/16/8 vector math interface. 
+*/
 class Vec2
 {
 public:

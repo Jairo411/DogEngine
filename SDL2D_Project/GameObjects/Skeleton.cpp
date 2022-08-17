@@ -290,7 +290,7 @@ Vec2 Skeleton::getSeperationDirection(Vec2 pos_)
 
 void Skeleton::PlayAnimations(AnimationStates state_) // These in both the player and the enemy classes need to be over an animations class
 {
-	Uint32 ticks = 10 * DogEngine::timer->GetCurrentTicks();
+	/*Uint32 ticks = 10 * DogEngine::timer->GetCurrentTicks();
 	Uint32 frame;
 
 	switch (state_)
@@ -321,5 +321,5 @@ void Skeleton::PlayAnimations(AnimationStates state_) // These in both the playe
 		break;
 	default:
 		break;
-	}
+	}*/
 }

@@ -162,10 +162,10 @@ TileSet::TileSet()
 	width = NULL;
 	height = NULL;
 }
-//Might change this name thingy
+
 TileSet::TileSet(const char* dir_, string name_, int ID_)
 {
-	tileSetImage = TextureManager::LoadTexture(dir_);
+//	tileSetImage = TextureManager::LoadTexture(dir_);
 	name = name_;
 	ID = ID_;
 	srcRect = SDL_Rect();
@@ -175,7 +175,7 @@ TileSet::TileSet(const char* dir_, string name_, int ID_)
 
 void TileSet::CreateSet(int sizeOfCut_, int srcX_, int srcY_)
 {
-	imageSetHolder = TextureManager::CreateMapSprite(tileSetImage, width, height, sizeOfCut_, srcX_, srcY_);
+//	imageSetHolder = TextureManager::CreateMapSprite(tileSetImage, width, height, sizeOfCut_, srcX_, srcY_);
 }
 
 
