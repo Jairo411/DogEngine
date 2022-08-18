@@ -1,24 +1,31 @@
 #ifndef TIMER_H
 #define TIMER_H
 #include <SDL.h>
-#include <chrono>
 #include <assert.h>
 #include <iostream>
 #include <list>
-#define ONESECOND 1000.0f /// This is exactly one second in milliseconds
+#include <chrono>
+#define ONESECOND 1000.0f //1 second in miliseconds
 #define SIXTYFRAMES_PER_SECOND 16.666f // 60FPS in milliseconds 1/60 
 #define THIRTYFRAMES_PER_SECOND 33.333f // 30FPS in milliseconds
 /*
 * 2022/8/16 
 * Singleton timer interface.
 * -Handles the GameLogic update speed.
-* -Has two clocks a performance clock that updates with the ticks of the current machine's processon, in other words really accurate.  
+* -Has two clocks a performance clock that updates with the ticks of the current machine's processor, in other words really accurate.  
 *  Then steady clock is essentally the same as well, the difference is it isn't as accurate. 
 * -Best way to thing about it is, There is a very accurate clock, that clocks in its time measurements in ticks, and a not so accurate clock that 
 * clocks its measuresments of time in seconds. 
+* 
 */
  
 const std::string TimeUnit = " ms";
+typedef std::chrono::high_resolution_clock PClock;
+typedef std::chrono::steady_clock  SClock;
+typedef std::chrono::milliseconds ms;
+typedef std::chrono::duration<float> fsecs;
+typedef std::chrono::steady_clock::time_point S_TimePoint;
+typedef std::chrono::high_resolution_clock::time_point P_TimePoint;
 
 class Timer
 {
@@ -44,36 +51,39 @@ public:
 	void SetLogicLoopSpeed(int FPS_);
 	/// Returns the update unit of each frame in MS.
 	double getMS_Machine_UpdateFPS();
-	/// Returns the change of time of the machine 
+	/// Returns the change of time of the machine
 	double GetDelta();
-	///This will return the total seconds the engine has been running at
-	int GetTotalAmountTime();
 	///DEBUG TOOLS
-	/// Print machine update
-	void PrintUpdate();
+	/// Print the time inbetween frames 
+	void PrintDelta();
 	///Prints out the current FPS the current machine is getting. 
 	void PrintFPS();
+	/// Print total time since machine has been running in seconds
+	void PrintTotalTime();
  private:
+	 ///Print all the timer information. 
+	void PrintStats();
 	bool flag;
-	Uint64 prevPerformaceTicks, currentPerformanceTicks;
 	Timer();
 	~Timer();
+	///This will return the total time between frames in miliseconds
 	double CalculateDelta();
+	///This will return the total time between frames in seconds
+	float CalculateTotalTime();
 	static Timer* instance;
 	bool SecondsFlag;
 	int FPS;
 	int totalFrames; 
+	float totalTime;
 	double delta;
 	double updateLag;
-	double thresHold;
 	double updateLoopSpeed;
 	double FramePerSecondFlag;
-	static double timerLimit;
-	static std::pair<std::chrono::steady_clock, std::chrono::steady_clock::time_point> timer;
-	std::pair<std::chrono::high_resolution_clock,std::chrono::high_resolution_clock> performanceClock;
-	std::pair<std::chrono::steady_clock,std::chrono::steady_clock> steadyClock;
-	std::pair<std::chrono::high_resolution_clock::time_point, std::chrono::high_resolution_clock::time_point> performanceTP;
-	std::pair<std::chrono::steady_clock::time_point, std::chrono::steady_clock::time_point> steadyTP;
+	static double timerLimit; 
+	std::pair<P_TimePoint, P_TimePoint> performanceTP;
+	std::pair<PClock, PClock>performanceClock;
+	std::pair<SClock, SClock>steadyClock;
+	std::pair<S_TimePoint, S_TimePoint> steadyTP;
 };
 
 

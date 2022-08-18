@@ -1,5 +1,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
+#include <cstddef>
+#include <cstdint>
+#include <numeric>
 #include<SDL.h>
 #include <glew.h>
 #include <SDL_opengl.h>
@@ -20,13 +23,23 @@ class VulkanRenderer;
 class SDLRenderer;
 class Window;
 class DogEngine;
+
+enum class RenderAPI
+{
+	SDLAPI = 0,
+	OPENGLAPI = 1,
+	VULKANAPI = 2,
+	
+};
 class RendererManager 
 {
 public:
 	RendererManager(RendererManager& other) = delete;
 	void operator =(const RendererManager&) = delete;
 	///Set RenderAPI.
-	void setRenderer(int numbercase_);
+	void SetRenderer(int numbercase_);
+	//New SetRenderer subroutine 
+	void SetRenderer(RenderAPI api_);
 	///Pass current window context.
 	void setWindow(Window* window_);
 	static RendererManager* GetInstance();
@@ -85,7 +98,7 @@ public:
 	OpenGLRenderer* OPGL_R;
 	VulkanRenderer* V_R;
 	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> R_Variant;
-
+	RenderAPI API;
 	static int R_Value;
 	int frames;
 };
@@ -167,7 +180,7 @@ public:
 	~OpenGLRenderer();
 	void OnCreate();
 	void OnDestroy();
-	void setWindow(SDL_Window* window_);
+	void SetWindow(SDL_Window* window_);
 	void SetWindowSize(int width_, int height_);
 	void SetViewPort(int width_, int height_);
 	void RefreshWindow();

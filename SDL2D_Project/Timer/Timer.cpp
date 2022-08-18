@@ -2,7 +2,7 @@
 
 Timer* Timer::instance = nullptr;
 
-Timer::Timer() :  FPS(0), SecondsFlag(false), thresHold(0.0f), prevPerformaceTicks(0), currentPerformanceTicks(0), FramePerSecondFlag(0.0f), flag(0), totalFrames(0), updateLag(0.0), delta(0.0f), updateLoopSpeed(0.0f)
+Timer::Timer() :  FPS(0), SecondsFlag(false),totalTime(0.0f),FramePerSecondFlag(0.0f), flag(0), totalFrames(0), updateLag(0.0), delta(0.0f), updateLoopSpeed(0.0f)
 {
 }
 
@@ -12,25 +12,30 @@ Timer::~Timer()
 
 void Timer::Start()
 {
-	//masterPerformanceClock.first is the prevTimer and then second part of the pair is the current tick
-	performanceClock.first = std::chrono::high_resolution_clock();
-	performanceClock.second = std::chrono::high_resolution_clock();
+	performanceClock.first = PClock();
+	performanceClock.second = PClock();
 
 	performanceTP.second = performanceClock.second.now();
 	performanceTP.first = performanceClock.first.now();
 
-	steadyClock.first = std::chrono::steady_clock();
-	steadyClock.second = std::chrono::steady_clock();
+	steadyClock.first = SClock();
+	steadyClock.second = SClock();
 
 	steadyTP.second = steadyClock.second.now();
 	steadyTP.first = steadyClock.first.now();
+
+ 
 }
 
 void Timer::UpdateSteadyClock()
 {
-	
 	steadyTP.second = steadyTP.first;
 	steadyTP.first = steadyClock.first.now();
+	totalTime += CalculateTotalTime();
+	if (FramePerSecondFlag>=ONESECOND)
+	{
+		PrintTotalTime();
+	}
 }
 
 void Timer::UpdatePerformanceClock()
@@ -42,14 +47,10 @@ void Timer::UpdatePerformanceClock()
 	FramePerSecondFlag += delta;
 	if (FramePerSecondFlag>=ONESECOND)
 	{
-		
 		FPS = totalFrames;
-		PrintUpdate();
 		PrintFPS();
 	}
-
 }
-
 
 
 Timer* Timer::GetInstance()
@@ -92,7 +93,6 @@ void Timer::IncrementFrames()
 void Timer::IncrementUpdateLag(double updateLag_)
 {
 	updateLag += updateLag_;
-//	std::cout << "sleepTime:" << updateLag << std::endl;
 }
 
 double Timer::GetUpdateLag()
@@ -102,11 +102,7 @@ double Timer::GetUpdateLag()
 
 void Timer::SetLogicLoopSpeed(int FPS_)
 {
-	updateLoopSpeed = ONESECOND/(float)FPS_; //1/60 = 0.0166 seconds 
-	updateLoopSpeed *= ONESECOND; //convert 0.0166 seconds to 16 miliseconds
-
-	int x = 0;
-	x += 1;
+	updateLoopSpeed = 1.0f/(float)FPS_; //1/60 = 0.0166 seconds 
 }
 
 double Timer::getMS_Machine_UpdateFPS()
@@ -122,24 +118,25 @@ double Timer::GetDelta()
 
 double Timer::CalculateDelta()
 {
-	std::chrono::nanoseconds elasped = performanceTP.first - performanceTP.second; //elapsed == current - pervious 
+	double d =0.0;
+	std::chrono::nanoseconds elasped = performanceTP.first - performanceTP.second; 
 	std::chrono::duration<double,std::milli> time = elasped;
-	delta = time.count();
-	return delta;
+	d = time.count();
+	return d;
 }
 
-int Timer::GetTotalAmountTime()
+float Timer::CalculateTotalTime()
 {
-	std::chrono::duration<float> elasped = steadyTP.first - steadyTP.second; //elapsed == current - pervious 
-	int time = std::chrono::duration_cast<std::chrono::seconds>(elasped).count();
-	assert(time<0.0f);
-	return time;
+	float totalT = 0.0f;
+	std::chrono::nanoseconds elasped = steadyTP.first - steadyTP.second;
+	std::chrono::duration<float> totalTime_ = elasped;
+	totalT = totalTime_.count();
+	return totalT;
 }
 
-void Timer::PrintUpdate()
+void Timer::PrintDelta()
 {
-	double miliconversion = delta * 1000;
-	std::cout << "Current Machine Update" << miliconversion << TimeUnit <<std::endl;
+	std::cout << "Delta: " << delta << TimeUnit <<std::endl;
 }
 
 
@@ -148,3 +145,13 @@ void Timer::PrintFPS()
 	std::cout << "FPS: " << FPS << std::endl;
 }
 
+void Timer::PrintTotalTime()
+{
+	std::cout << "Total Time: " << totalTime << std::endl;
+}
+
+
+void Timer::PrintStats()
+{
+	
+}

@@ -15,7 +15,7 @@ RendererManager::~RendererManager()
 
 }
 
-void RendererManager::setRenderer(int numbercase_)
+void RendererManager::SetRenderer(int numbercase_)
 {
 	switch (numbercase_)
 	{
@@ -35,7 +35,7 @@ void RendererManager::setRenderer(int numbercase_)
 		int w =0;
 		int h =0;
 		OPGL_R = new OpenGLRenderer();
-		OPGL_R->setWindow(window);
+		OPGL_R->SetWindow(window);
 		SDL_GetWindowSize(window, &w, &h);
 		OPGL_R->SetWindowSize(w, h);
 		R_Variant = OPGL_R;
@@ -52,6 +52,40 @@ void RendererManager::setRenderer(int numbercase_)
 	}
 	}
 }
+
+///The NewImplementation 
+//void RendererManager::SetRenderer(RenderAPI api_)
+//{
+//	switch (api_)
+//	{
+//	case RenderAPI::SDLAPI:
+//		R_Value = static_cast<std::underlying_type<RenderAPI>::type>(api_);
+//		SDL_R = new SDLRenderer();
+//		SDL_R->OnCreate(window);
+//		R_Variant = SDL_R;
+//		break;
+//	case RenderAPI::OPENGLAPI:
+//		R_Value = static_cast<std::underlying_type<RenderAPI>::type>(api_);
+//		int w = 0;
+//		int h = 0;
+//		OPGL_R = new OpenGLRenderer();
+//		OPGL_R->SetWindow(window);
+//		SDL_GetWindowSize(window, &w, &h);
+//		OPGL_R->SetWindowSize(w, h);
+//		R_Variant = OPGL_R;
+//		OPGL_R->OnCreate();
+//		break;
+//	case RenderAPI::VULKANAPI:
+//		R_Value = static_cast<std::underlying_type<RenderAPI>::type>(api_);
+//		R_Value = 2;
+//		V_R = new VulkanRenderer();
+//		R_Variant = V_R;
+//		V_R->OnCreate();
+//		break;
+//	default:
+//		break;
+//	}
+//}
 
 void RendererManager::setWindow(Window* window_)
 {
@@ -116,7 +150,7 @@ void OpenGLRenderer::OnDestroy()
 	delete context;
 }
 
-void OpenGLRenderer::setWindow(SDL_Window* window_)
+void OpenGLRenderer::SetWindow(SDL_Window* window_)
 {
 	window = window_;
 }

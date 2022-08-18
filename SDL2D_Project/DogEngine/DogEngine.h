@@ -77,6 +77,8 @@ public:
 	};
 private:
 	static bool isRunning;	
+	int currentRenderFlag = NULL;
+	int passRenderFlag = NULL;
 	std::vector<std::thread> threadContainer;
 };
 

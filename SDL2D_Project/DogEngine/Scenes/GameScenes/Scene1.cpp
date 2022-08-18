@@ -10,6 +10,7 @@ Scene1::~Scene1()
 
 void Scene1::OnCreate()
 {
+
 }
 
 void Scene1::OnDestroy()
@@ -42,4 +43,8 @@ void Scene1::FixedUpdate(float deltaTime_)
 
 void Scene1::Render()
 {
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderPresent();
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(100,30,40,100);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->RenderClear();
+
 }

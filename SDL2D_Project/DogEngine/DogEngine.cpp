@@ -84,7 +84,7 @@ void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int h
 	window->setFlag(NULL);
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
-	rendererManager->GetInstance()->setRenderer(0);
+	rendererManager->GetInstance()->SetRenderer(0);
 	window->SetGUI(engineGUI);
 
 	isRunning = true;
@@ -108,48 +108,50 @@ void DogEngine::OnDestroy()
 }
 void DogEngine::GameLoop()
 {
-	int currentRenderFlag = NULL;
-	int passRenderFlag = NULL;
+	
 
 	currentRenderFlag = rendererManager->getRenderValue();
 
 
 	while (isRunning == true)
 	{
+	
+		/// <summary>
+		/// Explation Here 
+		/// </summary>
+		timer->UpdatePerformanceClock();
+		timer->UpdateSteadyClock();
 		if (currentRenderFlag != rendererManager->getRenderValue())
 		{
 			currentRenderFlag = passRenderFlag;
 
 
-			rendererManager->setRenderer(currentRenderFlag);
+			rendererManager->SetRenderer(currentRenderFlag);
 		}
-		timer->UpdateSteadyClock();
-		timer->UpdatePerformanceClock();
 
 		handleCollisions();
-		HandleEvents(); // I handle my input here 
+		HandleEvents(); 
 
+
+		/// <summary>
+		/// Explation here is needed
+		/// </summary>
 		timer->IncrementUpdateLag(timer->GetDelta());
-
-
 		while (timer->GetUpdateLag()>=timer->getMS_Machine_UpdateFPS())
 		{
+		///	std::cout << "Update lag variable:" << timer->GetUpdateLag() << std::endl;
+		///	std::cout << "Machine update variable:" << timer->getMS_Machine_UpdateFPS() << std::endl;
+
 
 			double positiveTimeValue = timer->getMS_Machine_UpdateFPS();
 
-			FixedUpdate(positiveTimeValue);// Physics Update happen through here anddd animations too. 
-
-			Update(positiveTimeValue); // GameLogic happens all through this update.
-
-
+			FixedUpdate(positiveTimeValue); 
+			Update(positiveTimeValue);
 			double negativeTimeValue = timer->getMS_Machine_UpdateFPS() * -1.0;
-
-			timer->IncrementUpdateLag(negativeTimeValue); //reason I have to create a temp negative variable is because my setUpdateLag function has += operator when setting values, so I have to add a negative nun
+			timer->IncrementUpdateLag(negativeTimeValue); 		
 		}	
 		
-		Render(); // when everything has been finished render that is one call draw
-
-
+		Render(); 
 
 		passRenderFlag = rendererManager->getRenderValue();
 	}
