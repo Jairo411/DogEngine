@@ -54,6 +54,15 @@ Animator folder(ALL classes)
 -Bloated needs reworking. 
 
 (2022/8/18) DAY 2 
-#Currently Working on Timer class and DogEngine class.
+#Currently working on Timer class and DogEngine class.
+
+
+(2022/8/19) DAY 3 
+#Currently working on the DogEngine class. 
+
+
+
+
+
 
  
