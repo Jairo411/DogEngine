@@ -31,28 +31,24 @@
 #include "ObjectManager.h"
 #include "ResourceAllocator.h"
 #include "EngineSerializer.h"
-
-
-/*2021-07-09 
-	Currently looking at this, don't really see a problem besides the FPS Issues that I need to fix,
-	probably not coming on this side of the engine but yah, */
-class AIManager;
-class Serializer;
+/*
+* 2022/8/19 
+*  This is where the dog engine lives....
+*/
 class DogEngine : public ThreadAble {
 public:
 	DogEngine();
 	~DogEngine();
 	void OnCreate(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
-	// new Code
 	void OnDestroy();
 	void GameLoop();
 	void HandleEvents();
 	void Update(float deltaTime_);
-	//new Code
-	void FixedUpdate(float deltaTime_);
 	void handleCollisions();
+	void CheckRenderer();
 	void Render();
 	void clean();
+	virtual void RunInstructions();
 	static bool	setIsRunning(bool tempBool_);
 	static Window* window; //Main Engine Component
 	static Timer* timer; //Engine Functitonality 
@@ -67,14 +63,6 @@ public:
 	static bool initialized;
 	GUI* engineGUI;
 	SDL_Event* event_;
-
-	virtual void RunInstructions()
-	{
-		while (getThreadAssignment()==true)
-		{
-			Render();
-		}
-	};
 private:
 	static bool isRunning;	
 	int currentRenderFlag = NULL;

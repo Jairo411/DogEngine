@@ -10,7 +10,6 @@ public:
 	virtual void HandleEvents() {};
 	virtual void HandleCollison() {};
 	virtual void Update(float deltaTime_) = 0;
-	virtual void FixedUpdate(float deltaTime) = 0;
 	virtual void Render() = 0;
 	int currentScene;
 };

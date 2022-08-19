@@ -121,10 +121,6 @@ void Scene0::Update(float deltaTime_)
 	
 }
 
-void Scene0::FixedUpdate(float deltaTime_)
-{
-}
-
 
 
 void Scene0::Render()

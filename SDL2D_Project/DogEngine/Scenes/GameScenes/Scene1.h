@@ -19,7 +19,6 @@ public:
 	void HandleEvents() override;
 	void HandleCollison() override;
 	void Update(float deltaTime_) override;
-	void FixedUpdate(float deltaTime_) override;
 	void Render() override;
 private:
 };

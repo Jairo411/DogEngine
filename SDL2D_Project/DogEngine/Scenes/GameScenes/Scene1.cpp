@@ -37,9 +37,6 @@ void Scene1::Update(float deltaTime_)
 {
 }
 
-void Scene1::FixedUpdate(float deltaTime_)
-{
-}
 
 void Scene1::Render()
 {

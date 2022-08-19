@@ -39,14 +39,6 @@ void SceneManager::Update(float deltaTime_)
 	}
 }
 
-void SceneManager::FixedUpdate(float deltaTime_)
-{
-	if (curScene)
-	{
-		curScene->FixedUpdate(deltaTime_);
-	}
-}
-
 void SceneManager::Render()
 {
 	if (curScene)

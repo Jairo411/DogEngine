@@ -1,7 +1,6 @@
 #include "DogEngine.h"
 #include "AI/AI.h"
 
-SDL_Rect* srcR, dstR;
 RendererManager* DogEngine::rendererManager = nullptr;
 Timer* DogEngine::timer = nullptr;
 Window* DogEngine::window = nullptr;
@@ -12,7 +11,6 @@ ThreadManager* DogEngine::threadManager = nullptr;
 AudioManager* DogEngine::audioManager = nullptr;
 ObjectManager* DogEngine::GameObjectManager = nullptr;
 bool DogEngine::initialized = false;
-
 bool DogEngine::isRunning = false;
 
 
@@ -20,7 +18,7 @@ DogEngine::DogEngine()
 {
 	isRunning = true;
 
-	///Singleton instantiation
+	///Singletons instantiation
 	timer = Timer::GetInstance();
 	sceneManager = SceneManager::GetInstance();
 	window = Window::GetInstance();
@@ -31,7 +29,7 @@ DogEngine::DogEngine()
 	threadManager = ThreadManager::GetInstance();
 	GameObjectManager = ObjectManager::GetInstance();
 
-	engineGUI = new GUI(); // I need to look into this 
+	engineGUI = new GUI();
 	event_ = new SDL_Event();
 
 	threadManager->setMaxAmountOfThreads(4);
@@ -78,13 +76,12 @@ DogEngine::~DogEngine()
 
 void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
-	int flags = 0;
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
 	window->setWindowTitle(title);
 	window->setFlag(NULL);
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
-	rendererManager->GetInstance()->SetRenderer(0);
+	rendererManager->GetInstance()->SetRenderer(0); //Change this to the enum values you have. 
 	window->SetGUI(engineGUI);
 
 	isRunning = true;
@@ -108,56 +105,50 @@ void DogEngine::OnDestroy()
 }
 void DogEngine::GameLoop()
 {
-	
-
 	currentRenderFlag = rendererManager->getRenderValue();
-
-
 	while (isRunning == true)
 	{
-	
+	passRenderFlag = rendererManager->getRenderValue();
+	CheckRenderer();
 		/// <summary>
-		/// Explation Here 
+		/// At the beginning of each loop, DogEngine's timer will update itself.
+		/// the 'time' being updated in these two methods are from two seperate clocks, 
+		/// both can be considered to be stopwatches, but one is considered to be a more accurate 
+		/// in terms of the calulation of time. 
+		/// 
+		/// - The performance clock will manage all the engine functionality as, it is important for the time to be as accruate as possible.
+		/// - The steady clock i.e (not performance clock) will be used to represent time in our game worlds. 
+		/// 
+		///  Both clocks start at the same time(not true, but you know what I mean.)after the window has been created. 
 		/// </summary>
 		timer->UpdatePerformanceClock();
 		timer->UpdateSteadyClock();
-		if (currentRenderFlag != rendererManager->getRenderValue())
-		{
-			currentRenderFlag = passRenderFlag;
-
-
-			rendererManager->SetRenderer(currentRenderFlag);
-		}
-
 		handleCollisions();
 		HandleEvents(); 
-
-
 		/// <summary>
-		/// Explation here is needed
+		/// What is happening here, is the implemetation of a fixed time step, in my game logic. 
+		/// we tell the engine to keep track of how much time has passed compared to, what time step we want our game logic to run at. (I hope that isn't confusing.)
+		/// 
+		/// The while loop here represents a single time step, (I know a while loop, being used like this is hard to see.)
+		/// So everything else that happens before and after the while loop, is processed at a WAYYY(can't extaggerate more) faster rate then the gamelogic. 
+		/// like..
+		/// Rendering.
+		/// Collisions. 
+		/// Events. 
 		/// </summary>
-		timer->IncrementUpdateLag(timer->GetDelta());
-		while (timer->GetUpdateLag()>=timer->getMS_Machine_UpdateFPS())
+		timer->Increment_Time_Pass_Since_Update(timer->GetDelta());
+		while (timer->GetUpdateLag()>=timer->Get_Engine_Logic_Update_Speed())
 		{
-		///	std::cout << "Update lag variable:" << timer->GetUpdateLag() << std::endl;
-		///	std::cout << "Machine update variable:" << timer->getMS_Machine_UpdateFPS() << std::endl;
+			double positiveTimeValue = timer->Get_Engine_Logic_Update_Speed();
+			double negativeTimeValue = timer->Get_Engine_Logic_Update_Speed() * -1.0;
 
-
-			double positiveTimeValue = timer->getMS_Machine_UpdateFPS();
-
-			FixedUpdate(positiveTimeValue); 
 			Update(positiveTimeValue);
-			double negativeTimeValue = timer->getMS_Machine_UpdateFPS() * -1.0;
-			timer->IncrementUpdateLag(negativeTimeValue); 		
+			timer->Increment_Time_Pass_Since_Update(negativeTimeValue); 		
 		}	
-		
 		Render(); 
-
-		passRenderFlag = rendererManager->getRenderValue();
+		timer->IncrementFrames();
 	}
-
 	clean();
-
 }
 
 void DogEngine::HandleEvents()
@@ -177,14 +168,19 @@ void DogEngine::Update(float deltaTime_)
 	window->Update(deltaTime_);
 }
 
-void DogEngine::FixedUpdate(float deltaTime_)
-{
-	sceneManager->FixedUpdate(deltaTime_);
-}
 
 void DogEngine::handleCollisions()
 {
 	sceneManager->handleCollison();
+}
+
+void DogEngine::CheckRenderer()
+{
+	if (currentRenderFlag != rendererManager->getRenderValue())
+	{
+		currentRenderFlag = passRenderFlag;
+		rendererManager->SetRenderer(currentRenderFlag);
+	}
 }
 
 void DogEngine::Render()
@@ -203,7 +199,6 @@ void DogEngine::Render()
 
 	}
 	sceneManager->Render();
-	timer->IncrementFrames();
 }
 
 void DogEngine::clean()
@@ -214,4 +209,12 @@ void DogEngine::clean()
 	delete this;
 	SDL_Quit();
 	std::cout << "Engine Cleaned" << std::endl;
+}
+
+void DogEngine::RunInstructions()
+{
+	while (getThreadAssignment() == true)
+	{
+		Render();
+	}
 }

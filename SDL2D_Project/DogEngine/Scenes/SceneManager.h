@@ -20,7 +20,6 @@ public:
 
 	void HandleEvents();
 	void Update(float deltaTime_);
-	void FixedUpdate(float deltaTime_);
 	void Render();
 	void handleCollison();
 	unsigned int Add(std::shared_ptr<Scene> scene);

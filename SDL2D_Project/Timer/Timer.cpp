@@ -2,7 +2,7 @@
 
 Timer* Timer::instance = nullptr;
 
-Timer::Timer() :  FPS(0), SecondsFlag(false),totalTime(0.0f),FramePerSecondFlag(0.0f), flag(0), totalFrames(0), updateLag(0.0), delta(0.0f), updateLoopSpeed(0.0f)
+Timer::Timer() :  FPS(0),totalTime(0.0f),FramePerSecondFlag(0.0f), totalFrames(0), updateLag(0.0), delta(0.0f), updateLoopSpeed(0.0f)
 {
 }
 
@@ -23,7 +23,6 @@ void Timer::Start()
 
 	steadyTP.second = steadyClock.second.now();
 	steadyTP.first = steadyClock.first.now();
-
  
 }
 
@@ -32,10 +31,6 @@ void Timer::UpdateSteadyClock()
 	steadyTP.second = steadyTP.first;
 	steadyTP.first = steadyClock.first.now();
 	totalTime += CalculateTotalTime();
-	if (FramePerSecondFlag>=ONESECOND)
-	{
-		PrintTotalTime();
-	}
 }
 
 void Timer::UpdatePerformanceClock()
@@ -48,7 +43,7 @@ void Timer::UpdatePerformanceClock()
 	if (FramePerSecondFlag>=ONESECOND)
 	{
 		FPS = totalFrames;
-		PrintFPS();
+		PrintStats();
 	}
 }
 
@@ -90,7 +85,7 @@ void Timer::IncrementFrames()
 	}
 }
 
-void Timer::IncrementUpdateLag(double updateLag_)
+void Timer::Increment_Time_Pass_Since_Update(double updateLag_)
 {
 	updateLag += updateLag_;
 }
@@ -102,10 +97,11 @@ double Timer::GetUpdateLag()
 
 void Timer::SetLogicLoopSpeed(int FPS_)
 {
-	updateLoopSpeed = 1.0f/(float)FPS_; //1/60 = 0.0166 seconds 
+	updateLoopSpeed = 1.0f/(float)FPS_; 
+	updateLoopSpeed *= 1000.0f;
 }
 
-double Timer::getMS_Machine_UpdateFPS()
+double Timer::Get_Engine_Logic_Update_Speed()
 {
 	return updateLoopSpeed;
 }
@@ -153,5 +149,7 @@ void Timer::PrintTotalTime()
 
 void Timer::PrintStats()
 {
-	
+	PrintDelta();
+	PrintFPS();
+	PrintTotalTime();
 }
