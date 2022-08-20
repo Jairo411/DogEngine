@@ -47,9 +47,6 @@ void GUI::HandleEvents(SDL_Event* e_)
 	{
 	default:
 		break;
-
-	case SDL_KEYUP:
-		std::cout << "KeyBoard was pressed" << std::endl;
 	}
 }
 

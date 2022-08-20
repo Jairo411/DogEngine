@@ -199,6 +199,7 @@ void Window::HandleEvents()
 	SDL_Event sdlEvent;
 	SDL_PollEvent(&sdlEvent);
 	mouseInput.SetEvent(&sdlEvent);
+	keyBoardInput.SetEvent(&sdlEvent);
 	switch (sdlEvent.window.event)
 	{
 	default:
@@ -214,8 +215,10 @@ void Window::HandleEvents()
 		isClose = true;
 			break;
 		}
+
 	}
 	mouseInput.HandleEvents();
+	keyBoardInput.HandleEvents();
 }
 
 bool Window::getIsClose()

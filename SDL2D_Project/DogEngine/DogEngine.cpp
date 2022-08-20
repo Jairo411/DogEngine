@@ -1,10 +1,12 @@
 #include "DogEngine.h"
 #include "AI/AI.h"
 
+DogEngine* DogEngine::instance = nullptr;
 RendererManager* DogEngine::rendererManager = nullptr;
+InputManager* DogEngine::inputManager = nullptr;
 Timer* DogEngine::timer = nullptr;
 Window* DogEngine::window = nullptr;
-Serializer* DogEngine::EngineSerializer = nullptr;
+Serializer* DogEngine::engineSerializer = nullptr;
 TextureManager* DogEngine::textureManager = nullptr;
 SceneManager* DogEngine::sceneManager = nullptr;
 ThreadManager* DogEngine::threadManager = nullptr;
@@ -23,11 +25,12 @@ DogEngine::DogEngine()
 	sceneManager = SceneManager::GetInstance();
 	window = Window::GetInstance();
 	rendererManager = RendererManager::GetInstance();
-	EngineSerializer = Serializer::GetInstance();
+	engineSerializer = Serializer::GetInstance();
 	textureManager = TextureManager::GetInstance();
 	audioManager = AudioManager::GetInstance();
 	threadManager = ThreadManager::GetInstance();
 	GameObjectManager = ObjectManager::GetInstance();
+	inputManager = InputManager::GetInstance();
 
 	engineGUI = new GUI();
 	event_ = new SDL_Event();
@@ -74,11 +77,20 @@ DogEngine::~DogEngine()
 
 }
 
+DogEngine* DogEngine::GetInstance()
+{
+	if (instance==nullptr)
+	{
+		instance = new DogEngine();
+	}
+	return instance;
+}
+
 void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	window->setWindowProperties(posx, posy, width, height, fullscreen);
 	window->setWindowTitle(title);
-	window->setFlag(NULL);
+	window->setFlag(NULL); //Change this to the enum values you have. 
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
 	rendererManager->GetInstance()->SetRenderer(0); //Change this to the enum values you have. 
@@ -153,8 +165,10 @@ void DogEngine::GameLoop()
 
 void DogEngine::HandleEvents()
 {
+	/// <summary>
+	/// Engine Specific events. 
+	/// </summary>
 	engineGUI->HandleEvents(event_);
-	sceneManager->HandleEvents();
 	window->HandleEvents();
 	if (window->getIsClose())
 	{

@@ -5,49 +5,68 @@
 #include <vector>
 #include "../Physics/Collider.h"
 #include "../Math/Vec2.h"
-
 class SDL;
 class Window;
-/* This is Input class is capable of an abstract class,
-but does have actual functionallity. Really its more of an interface if anything.
+/*
+* 2022/8/19 
+*  Almost pure abstract Input class , that lets children Input classes to define their own functionality.  
 */
-/*2021-07-09
- My first implementation of the Input class is kinda wonky, I believe it would be better if I completely re-work this.*/
-/*2021-11-14
-Now Inputs are compeletly abstracted like before but with more concert defientions, to seperate certain inputs that aren't always going to be working together. i.e keyboard and mouse inputs aren't always going to be working 
-with each other. 
-Im totally copying Unity in the sense that are arbitrary defientions that I define that I can map for mutiple thing./// this actually sounds like alot of work
-*/
+enum class PLAYSTATION_MAPPINGS
+{
+	T_BUTTON = false,
+	C_BUTTON, 
+	X_BUTTON, 
+	S_BUTTON, 
+	OPTIONS, 
+	SHARE, 
+	R1, 
+	R2, 
+	L1, 
+	L2, 
+	TOUCHPAD,
+	TOPDIR,
+	RIGHTDIR,
+	BOTTOMDIR,
+	LEFTDIR,
+};
+
+enum class KEYBOARD_MAPPINGS
+{
+	W = false,
+	D,
+	S,
+	A,
+	SPACE,
+	TOPDIR,
+	RIGHTDIR,
+	BOTTOMDIR,
+	LEFTDIR,
+};
+
+enum class MOUSE_MAPPINGS
+{
+	LEFTCLICK =false,
+	RIGHTCLICK,
+};
+
 class Input
 {
 public:
 	virtual ~Input();
-	///NEW
+	virtual void OnCreate() = 0;
+	virtual void OnDestroy() = 0;
 	virtual void HandleEvents() =0;
-   	///OLD
-	static RectCollider* mouseClick;
-	void setWindow(Window* windowptr_);
-	void setMiddlePoint(Vec2 tempV);
-	Vec2 getMiddlePoint();
-	void SetEvent(SDL_Event* event_);
+	virtual void SetEvent(SDL_Event* e_);
 protected:
-	SDL_Event* currentEvent;
-private:
-	static int mouseX, mouseY;
-	static bool CreateCollider(bool state_);
-	
-	///Remove middlePoint
-	Vec2 middlepoint;
-	Window* window;
+	SDL_Event* currentEvent =nullptr;
 };
-
-//KeyBoard should always be listening, to accept mutiple inputs 
 class KeyBoardInput : public Input
 {
-	///Constructor & Destructor 
 public:
 	KeyBoardInput();
 	~KeyBoardInput();
+	virtual void OnCreate() final;
+	virtual void OnDestroy() final;
 	virtual void HandleEvents() final;
 private:
 	std::map<int, bool> InputKeyBoardHolder;
@@ -56,9 +75,10 @@ private:
 class MouseInput : public Input
 {
 public:
-	///Constructor & Destructor 
 	MouseInput();
 	~MouseInput();
+	virtual void OnCreate() final;
+	virtual void OnDestroy() final;
 	std::vector<int> getMouse();
 	std::vector<int> getButtons();
 	int GetWheel();
@@ -68,6 +88,17 @@ private:
 	int buttons;
 	int wheel;
 	std::map<int, bool> InputMouseHolder;
+};
+
+class PlayStation4Input : public Input
+{
+public:
+	PlayStation4Input();
+	~PlayStation4Input();
+	virtual void OnCreate() final;
+	virtual void OnDestroy() final;
+private:
+
 };
 
 

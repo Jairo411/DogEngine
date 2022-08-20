@@ -17,12 +17,8 @@ ThreadManager* ThreadManager::GetInstance()
 	if (instance==nullptr)
 	{
 		instance = new ThreadManager();
-		return instance;
 	}
-	else 
-	{
-		return instance;
-	}
+	return instance;
 }
 
 void ThreadManager::setMaxAmountOfThreads(int MaxAmount_)

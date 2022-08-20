@@ -2,47 +2,28 @@
 #include "Input.h"
 #include "../Window/Window.h"
 
-RectCollider* Input::mouseClick = new RectCollider();
-int Input::mouseX = 0, Input::mouseY = 0;
-
 Input::~Input()
 {
+	currentEvent = nullptr;	
+	delete currentEvent;
 }
 
-void Input::SetEvent(SDL_Event* event_)
+void Input::SetEvent(SDL_Event* e_)
 {
-	currentEvent = event_;
+	currentEvent = e_;
 }
 
-void Input::setWindow(Window* windowptr_)
-{
-	window = windowptr_;
-}
-
-void Input::setMiddlePoint(Vec2 tempV)
-{
-	middlepoint = tempV;
-}
-
-Vec2 Input::getMiddlePoint()
-{
-	return middlepoint;
-}
-
-bool Input::CreateCollider(bool state_)
-{
-	if (state_==true)
-	{
-		mouseClick = new RectCollider(mouseX, mouseY, 10);
-	}
-	else if (state_==false)
-	{
-		mouseClick = NULL;
-	}
-	return false;
-}
 
 MouseInput::MouseInput()
+{
+}
+
+MouseInput::~MouseInput()
+{
+	InputMouseHolder.empty();
+}
+
+void MouseInput::OnCreate()
 {
 	mouseX = 0;
 	mouseY = 0;
@@ -51,15 +32,15 @@ MouseInput::MouseInput()
 	InputMouseHolder = std::map<int, bool>();
 }
 
-MouseInput::~MouseInput()
+void MouseInput::OnDestroy()
 {
-	InputMouseHolder.empty();
+
 }
 
 std::vector<int> MouseInput::getMouse()
 {
 	std::vector<int> temp;
-
+	
 	temp.push_back(mouseX);
 	temp.push_back(mouseY);
 
@@ -95,15 +76,17 @@ void MouseInput::HandleEvents()
 		
 	case SDL_MOUSEBUTTONUP: //Should be used for singluar clicks
 		InputMouseHolder.insert(std::pair<int, bool>());
+		std::cout << "Mouse button was pressed" << std::endl;
 		break;
 	case SDL_MOUSEBUTTONDOWN:  //Should be used when holding down the button
-		
 		InputMouseHolder.insert(std::pair<int, bool>());
+		std::cout << "Mouse button was pressed" << std::endl;
 		break;
 
 	case SDL_MOUSEWHEEL: //Should be used when using the scrolling wheel
 		InputMouseHolder.insert(std::pair<int, bool>());
 		wheel = currentEvent->wheel.y;
+		std::cout << "Mouse button was pressed" << std::endl;
 		break;
 	}
 }
@@ -117,6 +100,14 @@ KeyBoardInput::~KeyBoardInput()
 {
 }
 
+void KeyBoardInput::OnCreate()
+{
+}
+
+void KeyBoardInput::OnDestroy()
+{
+}
+
 
 
 void KeyBoardInput::HandleEvents()
@@ -127,11 +118,27 @@ void KeyBoardInput::HandleEvents()
 		break;
 	case SDL_KEYDOWN:
 		InputKeyBoardHolder.insert(std::pair<int,bool>(currentEvent->key.keysym.scancode,true));
+		std::cout << "KeyBoard button was pressed" << std::endl;
 		break;
 	case SDL_KEYUP:
 		InputKeyBoardHolder.insert(std::pair<int, bool>(currentEvent->key.keysym.scancode, true));
+	//	std::cout << "KeyBoard button was pressed" << std::endl;
 		break;
 	}
 }
 
+PlayStation4Input::PlayStation4Input()
+{
+}
 
+PlayStation4Input::~PlayStation4Input()
+{
+}
+
+void PlayStation4Input::OnCreate()
+{
+}
+
+void PlayStation4Input::OnDestroy()
+{
+}

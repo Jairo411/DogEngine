@@ -19,9 +19,9 @@ Scene0::Scene0()
 
 	case 0:
 
-		DogEngine::EngineSerializer->GetInstance()->CreateScene(9, "SCENE9");
-		DogEngine::EngineSerializer->GetInstance()->CreateScene(10, "SCENE10");
-		DogEngine::EngineSerializer->GetInstance()->CreateScene(11, "SCENE11");
+		DogEngine::engineSerializer->GetInstance()->CreateScene(9, "SCENE9");
+		DogEngine::engineSerializer->GetInstance()->CreateScene(10, "SCENE10");
+		DogEngine::engineSerializer->GetInstance()->CreateScene(11, "SCENE11");
 
 		//SDL
 		/* Intial Object Creations*/

@@ -15,12 +15,8 @@ SceneManager* SceneManager::GetInstance()
 	if (instance==nullptr)
 	{
 		instance = new SceneManager();
-		return instance;
 	}
-	else
-	{
-		return instance;
-	}
+	return instance;
 }
 
 void SceneManager::HandleEvents()

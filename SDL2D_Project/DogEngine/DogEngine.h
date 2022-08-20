@@ -13,6 +13,7 @@
 #include "../Window/Window.h"
 #include "../Window/GUI.h"
 #include "../Input/Input.h"
+#include "../Input/InputManager.h"
 #include "../Timer/Timer.h"
 #include "../Math/Converter.h"
 #include "Scenes/SceneManager.h"
@@ -31,14 +32,21 @@
 #include "ObjectManager.h"
 #include "ResourceAllocator.h"
 #include "EngineSerializer.h"
+
+
 /*
 * 2022/8/19 
 *  This is where the dog engine lives....
 */
 class DogEngine : public ThreadAble {
 public:
-	DogEngine();
+
 	~DogEngine();
+
+	static DogEngine* GetInstance();
+	/// <summary>
+	/// Start the DogEngine Application
+	/// </summary>
 	void OnCreate(const char* title, int posx, int posy, int widith, int height,bool fullscreen);
 	void OnDestroy();
 	void GameLoop();
@@ -50,20 +58,23 @@ public:
 	void clean();
 	virtual void RunInstructions();
 	static bool	setIsRunning(bool tempBool_);
-	static Window* window; //Main Engine Component
+	static Window* window; //Engine Functionality 
 	static Timer* timer; //Engine Functitonality 
 	static RendererManager* rendererManager; //Engine functionality
 	static TextureManager* textureManager;// Engine functionality
 	static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
-	static Serializer* EngineSerializer; //Engine functionality 
+	static Serializer* engineSerializer; //Engine functionality 
 	static SceneManager* sceneManager; //Engine functionality 
 	static ThreadManager* threadManager; //Engine functionality
 	static AudioManager* audioManager; //Engine functionality
-	static ObjectManager* GameObjectManager; // Engine functionality 
+	static ObjectManager* GameObjectManager; // Engine functionality
+	static InputManager* inputManager; //Engine functionality
 	static bool initialized;
 	GUI* engineGUI;
 	SDL_Event* event_;
 private:
+	DogEngine();
+	static DogEngine* instance;
 	static bool isRunning;	
 	int currentRenderFlag = NULL;
 	int passRenderFlag = NULL;

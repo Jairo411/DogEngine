@@ -22,7 +22,6 @@ AudioManager* AudioManager::GetInstance()
 	if (instance==nullptr)
 	{
 		instance = new AudioManager();
-		return instance;
 	}
 	return instance;
 }

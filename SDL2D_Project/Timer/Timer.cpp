@@ -50,14 +50,11 @@ void Timer::UpdatePerformanceClock()
 
 Timer* Timer::GetInstance()
 {
-	if (instance ==nullptr)
+	if (instance == nullptr)
 	{
 		instance = new Timer();
 	}
-	else
-	{
-		return instance;
-	}
+	return instance;
 }
 
 void Timer::IncrementSleepTime()
