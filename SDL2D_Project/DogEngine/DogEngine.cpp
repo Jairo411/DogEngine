@@ -3,7 +3,7 @@
 
 DogEngine* DogEngine::instance = nullptr;
 RendererManager* DogEngine::rendererManager = nullptr;
-InputManager* DogEngine::inputManager = nullptr;
+EventManager* DogEngine::eventManager = nullptr;
 Timer* DogEngine::timer = nullptr;
 Window* DogEngine::window = nullptr;
 Serializer* DogEngine::engineSerializer = nullptr;
@@ -11,7 +11,7 @@ TextureManager* DogEngine::textureManager = nullptr;
 SceneManager* DogEngine::sceneManager = nullptr;
 ThreadManager* DogEngine::threadManager = nullptr;
 AudioManager* DogEngine::audioManager = nullptr;
-ObjectManager* DogEngine::GameObjectManager = nullptr;
+ObjectManager* DogEngine::gameObjectManager = nullptr;
 bool DogEngine::initialized = false;
 bool DogEngine::isRunning = false;
 
@@ -20,20 +20,30 @@ DogEngine::DogEngine()
 {
 	isRunning = true;
 
-	///Singletons instantiation
-	timer = Timer::GetInstance();
-	sceneManager = SceneManager::GetInstance();
-	window = Window::GetInstance();
-	rendererManager = RendererManager::GetInstance();
-	engineSerializer = Serializer::GetInstance();
-	textureManager = TextureManager::GetInstance();
-	audioManager = AudioManager::GetInstance();
-	threadManager = ThreadManager::GetInstance();
-	GameObjectManager = ObjectManager::GetInstance();
-	inputManager = InputManager::GetInstance();
-
+	SetupSystems();
+	///instantiations
 	engineGUI = new GUI();
 	event_ = new SDL_Event();
+	mouseInput = new MouseInput();
+	keyBoardInput = new KeyBoardInput();
+
+	ListenerInfo mouseInfo;
+	ListenerInfo keyboardInfo;
+
+	mouseInfo.index = 0;
+	mouseInfo.order = 0;
+	mouseInfo.listener = (EventListener*)mouseInput;
+	
+
+	keyboardInfo.index = 1;
+	keyboardInfo.order = 1;
+	keyboardInfo.listener = (EventListener*)keyBoardInput;
+
+
+	eventManager->SetEvent(event_);
+	eventManager->AddListener(keyboardInfo);
+	eventManager->AddListener(mouseInfo);
+
 
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(this);
@@ -41,6 +51,10 @@ DogEngine::DogEngine()
 	
 	audioManager->AddSong("./Martin Stig Andersen - Limbo (Original Videogame Soundtrack) - 01 Menu.wav");
 	audioManager->playFirstSong();
+
+
+
+	
 
 	//Testing file locations 
 	//ResoureAllocator<SDL_Texture*> tex = ResoureAllocator<SDL_Texture*>("./Assets/Character/Sprites/adventurer-attack1-00.png");
@@ -58,6 +72,22 @@ DogEngine::DogEngine()
 
 	initialized = false;	
 	OnCreate("DogEngine 0.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+}
+
+void DogEngine::SetupSystems()
+{
+	///Singletons instantiations
+	timer = Timer::GetInstance();
+	sceneManager = SceneManager::GetInstance();
+	window = Window::GetInstance();
+	rendererManager = RendererManager::GetInstance();
+	engineSerializer = Serializer::GetInstance();
+	textureManager = TextureManager::GetInstance();
+	audioManager = AudioManager::GetInstance();
+	threadManager = ThreadManager::GetInstance();
+	gameObjectManager = ObjectManager::GetInstance();
+	eventManager = EventManager::GetInstance();
+
 }
 
 
@@ -151,6 +181,7 @@ void DogEngine::GameLoop()
 		timer->Increment_Time_Pass_Since_Update(timer->GetDelta());
 		while (timer->GetUpdateLag()>=timer->Get_Engine_Logic_Update_Speed())
 		{
+			
 			double positiveTimeValue = timer->Get_Engine_Logic_Update_Speed();
 			double negativeTimeValue = timer->Get_Engine_Logic_Update_Speed() * -1.0;
 
@@ -165,15 +196,7 @@ void DogEngine::GameLoop()
 
 void DogEngine::HandleEvents()
 {
-	/// <summary>
-	/// Engine Specific events. 
-	/// </summary>
-	engineGUI->HandleEvents(event_);
-	window->HandleEvents();
-	if (window->getIsClose())
-	{
-		clean();
-	}
+	eventManager->HandleEvents();
 }
 
 void DogEngine::Update(float deltaTime_)

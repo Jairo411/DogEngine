@@ -2,7 +2,7 @@
 #define PLAYER_H
 #include "GameObject.h"
 #include "../Animator/Animator.h"
-#include "../Input/Input.h"
+#include "../EventSystem/Event.h"
 #include "../Physics/Collider.h"
 /*2021-07-09 
 	Not prefect, but  will intentioned going to reimplement this class.

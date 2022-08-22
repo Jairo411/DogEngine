@@ -12,8 +12,8 @@
 #include "../TextureManager/TextureManager.h"
 #include "../Window/Window.h"
 #include "../Window/GUI.h"
-#include "../Input/Input.h"
-#include "../Input/InputManager.h"
+#include "../EventSystem/Event.h"
+#include "../EventSystem/EventManager.h"
 #include "../Timer/Timer.h"
 #include "../Math/Converter.h"
 #include "Scenes/SceneManager.h"
@@ -67,13 +67,18 @@ public:
 	static SceneManager* sceneManager; //Engine functionality 
 	static ThreadManager* threadManager; //Engine functionality
 	static AudioManager* audioManager; //Engine functionality
-	static ObjectManager* GameObjectManager; // Engine functionality
-	static InputManager* inputManager; //Engine functionality
+	static ObjectManager* gameObjectManager; // Engine functionality
+	static EventManager* eventManager; //Engine functionality
 	static bool initialized;
 	GUI* engineGUI;
 	SDL_Event* event_;
 private:
 	DogEngine();
+	//Helper functions 
+	void SetupSystems();
+
+	MouseInput* mouseInput;
+	KeyBoardInput* keyBoardInput;
 	static DogEngine* instance;
 	static bool isRunning;	
 	int currentRenderFlag = NULL;

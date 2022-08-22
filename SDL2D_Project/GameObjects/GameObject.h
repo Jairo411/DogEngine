@@ -18,7 +18,7 @@
 #include "Component/C_Animation.h"
 #include "Component/AnimationSet.h"
 #include"../DesignPattern/Observer.h"
-#include "../Input/PlayerController.h"
+#include "../EventSystem/PlayerController.h"
 
 
 /*Standard GameObject class should be abstract and should be the base class.

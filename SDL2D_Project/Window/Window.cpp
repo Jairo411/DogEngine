@@ -196,29 +196,7 @@ void Window::Update(float deltaTime_)
 
 void Window::HandleEvents()
 {
-	SDL_Event sdlEvent;
-	SDL_PollEvent(&sdlEvent);
-	mouseInput.SetEvent(&sdlEvent);
-	keyBoardInput.SetEvent(&sdlEvent);
-	switch (sdlEvent.window.event)
-	{
-	default:
-		break;
 	
-	case SDL_WINDOWEVENT_SIZE_CHANGED:
-	{
-
-		break;
-	}
-	case SDL_WINDOWEVENT_CLOSE:
-		{
-		isClose = true;
-			break;
-		}
-
-	}
-	mouseInput.HandleEvents();
-	keyBoardInput.HandleEvents();
 }
 
 bool Window::getIsClose()

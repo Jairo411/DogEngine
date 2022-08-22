@@ -30,7 +30,7 @@ Scene0::Scene0()
 //		enemy0 = new Skeleton(300, 50);
 //		enemy1 = new Skeleton(400, 200);
 
-		DogEngine::GameObjectManager->GetInstance()->AddActive(player);
+		DogEngine::gameObjectManager->GetInstance()->AddActive(player);
 //		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy);
 //		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy0);
 //		DogEngine::GameObjectManager->GetInstance()->AddActive(enemy1);
@@ -110,7 +110,7 @@ void Scene0::Update(float deltaTime_)
 	
 	case 0:
 	{
-		DogEngine::GameObjectManager->GetInstance()->Update(deltaTime_);
+		DogEngine::gameObjectManager->GetInstance()->Update(deltaTime_);
 	//	DogEngine::AI_Manager->getInstance()->OnUpdate(deltaTime_);
 		break;
 	}

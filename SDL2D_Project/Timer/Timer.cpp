@@ -43,7 +43,6 @@ void Timer::UpdatePerformanceClock()
 	if (FramePerSecondFlag>=ONESECOND)
 	{
 		FPS = totalFrames;
-		PrintStats();
 	}
 }
 

@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 #include <map>
 #include <iterator>
-#include "../Input/Input.h"
+#include "../EventSystem/Event.h"
 #include "../Renderer/Renderer.h"
 #include "GUI.h"
 /*2021-07-09
@@ -52,28 +52,24 @@ private:
 	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
 	Window(SDL_Window* window_);
 	~Window();
-	//INPUT HANDLER
-	KeyBoardInput keyBoardInput;
-	MouseInput mouseInput;
-	//Basic Window Member Variables
 	static int ScreenWidth, ScreenHeight; //Window Size
 	int CurrentWindow_XPOS, CurrentWindow_YPOS; // Position of the window 
-	int* mouseX, *mouseY, *mousePtr; //Position of the mouse Remove this 
+	int* mouseX, *mouseY, *mousePtr; //Remove this
 	int windowFlag; 
 	int SquareSize;
 	int windowStatus;
+	bool isClose;
+	GUI* GUIContext;
+	SDL_Surface* graphicLayer;
+	SDL_Window* window;
+	SDL_Event* GUIEvent;
 	std::string WindowTitle;
 	static Window* instance;
 	SDL_Rect middleRect;
 	static SDL_Point middleOfScreen;
 	Vec2 covertedScreenCoords;
-	//FLAGS
-	bool isClose;
-	/* Graphics Stuff*/
-	GUI* GUIContext;
-	SDL_Surface* graphicLayer;
-	SDL_Window* window;
-	SDL_Event* GUIEvent;
+	KeyBoardInput keyBoardInput;
+	MouseInput mouseInput;
 };
 
 #endif // !WINDOW_H
