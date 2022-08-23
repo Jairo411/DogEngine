@@ -3,52 +3,16 @@
 #include <map>
 #include <iostream>
 #include <vector>
+#include <utility>
 #include "../Physics/Collider.h"
 #include "../Math/Vec2.h"
 class SDL;
 class Window;
 /*
 * 2022/8/19 
-*  Almost pure abstract Input class , that lets children Input classes to define their own functionality.  
+*  Abstract EventListener class. 
+*  with concrete input classes
 */
-enum class PLAYSTATION_MAPPINGS
-{
-	T_BUTTON = false,
-	C_BUTTON, 
-	X_BUTTON, 
-	S_BUTTON, 
-	OPTIONS, 
-	SHARE, 
-	R1, 
-	R2, 
-	L1, 
-	L2, 
-	TOUCHPAD,
-	TOPDIR,
-	RIGHTDIR,
-	BOTTOMDIR,
-	LEFTDIR,
-};
-
-enum class KEYBOARD_MAPPINGS
-{
-	W = false,
-	D,
-	S,
-	A,
-	SPACE,
-	TOPDIR,
-	RIGHTDIR,
-	BOTTOMDIR,
-	LEFTDIR,
-};
-
-enum class MOUSE_MAPPINGS
-{
-	LEFTCLICK =false,
-	RIGHTCLICK,
-};
-
 class EventListener
 {
 public:
@@ -60,6 +24,22 @@ public:
 protected:
 	SDL_Event* currentEvent =nullptr;
 };
+
+enum class KEYBOARD_MAPPINGS
+{
+	NONE=false,
+	W,
+	D,
+	S,
+	A,
+	SPACE,
+	TOPDIR,
+	RIGHTDIR,
+	BOTTOMDIR,
+	LEFTDIR,
+};
+
+
 class KeyBoardInput : public EventListener
 {
 public:
@@ -68,9 +48,21 @@ public:
 	virtual void OnCreate() final;
 	virtual void OnDestroy() final;
 	virtual void HandleEvents() final;
+	std::map<KEYBOARD_MAPPINGS, bool> GetInput();
 private:
-	std::map<int, bool> InputKeyBoardHolder;
+	std::map<KEYBOARD_MAPPINGS , bool> inputKeyBoardHolder;
 };
+
+
+enum class MOUSEMAPPINGS
+{
+	NONE = false,
+	LEFTCLICK,
+	RIGHTCLICK,
+	MIDDLECLICK,
+	MOUSEMOVED,
+};
+
 
 class MouseInput : public EventListener
 {
@@ -79,15 +71,35 @@ public:
 	~MouseInput();
 	virtual void OnCreate() final;
 	virtual void OnDestroy() final;
-	std::vector<int> getMouse();
-	std::vector<int> getButtons();
-	int GetWheel();
 	virtual void HandleEvents() final;
+	int GetWheel();
+	std::map<MOUSEMAPPINGS, std::pair<bool, float>> GetInput();
 private:
-	int mouseX, mouseY;
-	int buttons;
-	int wheel;
-	std::map<int, bool> InputMouseHolder;
+	float mouseX, mouseY;
+	float wheel;
+	bool click;
+	std::map<MOUSEMAPPINGS, std::pair<bool,float>> inputMouseHolder;
+};
+
+enum class PLAYSTATION_MAPPINGS
+{
+	NONE=false,
+	T_BUTTON,
+	C_BUTTON,
+	X_BUTTON,
+	S_BUTTON,
+	OPTIONS,
+	SHARE,
+	R1,
+	R2,
+	L1,
+	L2,
+	TOPDIR,
+	RIGHTDIR,
+	BOTTOMDIR,
+	LEFTDIR,
+	RANALOG,
+	LEFTANALOG,
 };
 
 class PlayStation4Input : public EventListener
@@ -97,8 +109,13 @@ public:
 	~PlayStation4Input();
 	virtual void OnCreate() final;
 	virtual void OnDestroy() final;
+	virtual void HandleEvents() final;
+	std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>> GetInput();
 private:
-
+	bool click;
+	float L_Analog;
+	float R_Analog;
+	std::map<PLAYSTATION_MAPPINGS, std::pair<bool,float>> controllerInput;
 };
 
 

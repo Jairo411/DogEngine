@@ -13,22 +13,17 @@ void EventListener::SetEvent(SDL_Event* e_)
 	currentEvent = e_;
 }
 
-MouseInput::MouseInput()
+MouseInput::MouseInput() : mouseX(0), mouseY(0), click(false), wheel(0.0f)
 {
 }
 
 MouseInput::~MouseInput()
 {
-	InputMouseHolder.empty();
+	inputMouseHolder.empty();
 }
 
 void MouseInput::OnCreate()
 {
-	mouseX = 0;
-	mouseY = 0;
-	buttons = 0;
-	wheel = 0;
-	InputMouseHolder = std::map<int, bool>();
 }
 
 void MouseInput::OnDestroy()
@@ -36,28 +31,12 @@ void MouseInput::OnDestroy()
 
 }
 
-std::vector<int> MouseInput::getMouse()
+std::map<MOUSEMAPPINGS, std::pair<bool, float>> MouseInput::GetInput()
 {
-	std::vector<int> temp;
-	
-	temp.push_back(mouseX);
-	temp.push_back(mouseY);
-
-	return temp;
+	return inputMouseHolder;
 }
 
-std::vector<int> MouseInput::getButtons()
-{
-	std::vector<int> temp;
 
-	int tempButton = buttons & SDL_BUTTON(SDL_BUTTON_LEFT);
-	int tempButton1 = buttons & SDL_BUTTON(SDL_BUTTON_RIGHT);
-
-	temp.push_back(tempButton);
-	temp.push_back(tempButton1);
-
-	return temp;
-}
 
 int MouseInput::GetWheel()
 {
@@ -67,36 +46,30 @@ int MouseInput::GetWheel()
 
 void MouseInput::HandleEvents()
 {
-	int buttons = SDL_GetMouseState(&mouseX, &mouseY);
+	int buttons = SDL_GetMouseState((int*)&mouseX, (int*)&mouseY);
 	switch (currentEvent->type)
 	{
 	default:
 		break;
 		
-	case SDL_MOUSEBUTTONUP: //Should be used for singluar clicks
-		InputMouseHolder.insert(std::pair<int, bool>());
-		std::cout << "Mouse button was pressed" << std::endl;
+	case SDL_MOUSEBUTTONUP: 
 		break;
-	case SDL_MOUSEBUTTONDOWN:  //Should be used when holding down the button
-		InputMouseHolder.insert(std::pair<int, bool>());
-		std::cout << "Mouse button was pressed" << std::endl;
+	case SDL_MOUSEBUTTONDOWN:  
 		break;
-
-	case SDL_MOUSEWHEEL: //Should be used when using the scrolling wheel
-		InputMouseHolder.insert(std::pair<int, bool>());
+	case SDL_MOUSEWHEEL: 
 		wheel = currentEvent->wheel.y;
-		std::cout << "Mouse button was pressed" << std::endl;
 		break;
 	}
 }
 
 KeyBoardInput::KeyBoardInput()
 {
-	InputKeyBoardHolder = std::map<int, bool>();
+
 }
 
 KeyBoardInput::~KeyBoardInput()
 {
+	inputKeyBoardHolder.empty();
 }
 
 void KeyBoardInput::OnCreate()
@@ -116,26 +89,59 @@ void KeyBoardInput::HandleEvents()
 	default:
 		break;
 	case SDL_KEYDOWN:
-		InputKeyBoardHolder.insert(std::pair<int,bool>(currentEvent->key.keysym.scancode,true));
-		std::cout << "KeyBoard button was pressed" << std::endl;
+		
 		break;
 	case SDL_KEYUP:
-		InputKeyBoardHolder.insert(std::pair<int, bool>(currentEvent->key.keysym.scancode, true));
-	//	std::cout << "KeyBoard button was pressed" << std::endl;
+	
 		break;
 	}
 }
 
-PlayStation4Input::PlayStation4Input()
+std::map<KEYBOARD_MAPPINGS, bool> KeyBoardInput::GetInput()
+{
+	return inputKeyBoardHolder;
+}
+
+PlayStation4Input::PlayStation4Input() : click(false) , L_Analog(0.0f) , R_Analog(0.0f), controllerInput(std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>>())
 {
 }
 
 PlayStation4Input::~PlayStation4Input()
 {
+	controllerInput.empty();
+}
+
+std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>> PlayStation4Input::GetInput()
+{
+	return controllerInput;
 }
 
 void PlayStation4Input::OnCreate()
 {
+}
+
+void PlayStation4Input::HandleEvents()
+{
+	switch (currentEvent->type)
+	{
+	case SDL_CONTROLLERAXISMOTION:
+	
+		break;
+	case SDL_CONTROLLERBUTTONDOWN:
+
+		break;
+	case SDL_CONTROLLERBUTTONUP:
+
+		break;
+	case SDL_CONTROLLERDEVICEADDED:
+
+		break;
+	case SDL_CONTROLLERDEVICEREMOVED:
+
+		break;
+	default:
+		break;
+	}
 }
 
 void PlayStation4Input::OnDestroy()

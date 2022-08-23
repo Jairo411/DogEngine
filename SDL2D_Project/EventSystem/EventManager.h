@@ -3,9 +3,6 @@
 #include <list>
 #include <queue>
 #include "Event.h"
-#include <thread>
-#include <chrono>
-
 enum class EVENTPRIORITY
 {
 	NONE = 0,
@@ -27,9 +24,11 @@ struct ListenerInfo
 	EventListener* listener = nullptr; 
 };  
 
-inline bool operator ==(ListenerInfo lhs, ListenerInfo rhs)
+//For comparing if listenerInfo class has the same address. 
+//checking to see if it is the same listenerInfo class not an 'equal' listenerInfo class.
+inline bool operator ==(ListenerInfo lhs_, ListenerInfo rhs_)
 {
-	if (&lhs == &rhs)
+	if (&lhs_ == &rhs_)
 	{
 		return true;
 	}
@@ -38,6 +37,31 @@ inline bool operator ==(ListenerInfo lhs, ListenerInfo rhs)
 		return false;
 	}
 };
+
+inline bool operator >(EventInfo lhs_, EventInfo rhs_)
+{
+	if (lhs_.priority>rhs_.priority)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+};
+
+inline bool operator < (EventInfo lhs_, EventInfo rhs_)
+{
+	if (lhs_.priority<rhs_.priority)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 class EventManager
 {
 public:
@@ -85,71 +109,104 @@ public:
 		SDL_PollEvent(event_);
 		EventInfo eventInfo = EventInfo();
 		eventInfo.event_ = event_;
-		std::cout << "Event Type " << event_->type << std::endl;
-			switch (event_->type)
+		switch (event_->type)
+		{
+		case SDL_FIRSTEVENT:
+
+			break;
+		case SDL_QUIT:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_APP_TERMINATING:
+
+			break;
+		case SDL_APP_LOWMEMORY:
+			break;
+		case SDL_APP_WILLENTERBACKGROUND:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_APP_DIDENTERBACKGROUND:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_APP_WILLENTERFOREGROUND:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_APP_DIDENTERFOREGROUND:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_DISPLAYEVENT:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_WINDOWEVENT:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_SYSWMEVENT:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		case SDL_KEYDOWN:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_KEYUP:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_MOUSEMOTION:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_MOUSEBUTTONUP:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_MOUSEWHEEL:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_CONTROLLERAXISMOTION:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_CONTROLLERBUTTONDOWN:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_CONTROLLERBUTTONUP:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_CONTROLLERDEVICEADDED:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_CONTROLLERDEVICEREMOVED:
+			eventInfo.priority = EVENTPRIORITY::HIGH;
+			break;
+		case SDL_CONTROLLERDEVICEREMAPPED:
+			eventInfo.priority = EVENTPRIORITY::LOW;
+			break;
+		}
+			if (eventInfo.priority==EVENTPRIORITY::LOW)
 			{
-		/*	SDL_WINDOWEVENT_CLOSE:
-				eventInfo.priority = EVENTPRIORITY::LOW;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_WindowEvent:
-				eventInfo.priority = EVENTPRIORITY::LOW;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_KeyboardEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_MouseMotionEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_MouseButtonEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_MouseWheelEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_ControllerAxisEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_ControllerButtonEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			SDL_ControllerDeviceEvent:
-				eventInfo.priority = EVENTPRIORITY::HIGH;
-				requestContainer.push(eventInfo);
-				break;
-			default:
-				break;*/
-			} 
-		/*	if (eventInfo.priority==EVENTPRIORITY::LOW)
+				requestC.push(eventInfo);
+			}
+			else if (eventInfo.priority==EVENTPRIORITY::HIGH)
 			{
-				requestContainer.emplace(eventInfo);
+				requestC.push(eventInfo);
 			}
 			
-		if (!requestContainer.empty())
+		if (!requestC.empty())
 		{
-				SDL_Event* tempEvent = requestContainer.front().event_;
-				for (auto item : listenerContainer)
-				{
-					item.listener->SetEvent(tempEvent);
-					item.listener->HandleEvents();
-				};
-		}*/
+			for (auto item : listenerContainer )
+			{
+				SDL_Event* tempEvent = requestC.top().event_;
+				item.listener->SetEvent(tempEvent);
+				item.listener->HandleEvents();
+			}
+		}
 		
 	};
 private:
-	EventManager() : listenerContainer (std::list<ListenerInfo>()) , requestContainer(std::queue<EventInfo>()), currentLength(0),passLength(0), event_(nullptr)
+	EventManager() : listenerContainer (std::list<ListenerInfo>()) , requestC(std::priority_queue<EventInfo,std::vector<EventInfo>>()), currentLength(0),passLength(0), event_(nullptr)
 	{
 	};
 	inline static EventManager* instance = nullptr;
 	std::list<ListenerInfo> listenerContainer;
-	std::queue<EventInfo> requestContainer;
+	std::priority_queue<EventInfo, std::vector<EventInfo>> requestC;
 	SDL_Event* event_;
 	int currentLength;
 	int passLength;
