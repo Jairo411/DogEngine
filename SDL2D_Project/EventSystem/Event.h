@@ -13,6 +13,20 @@ class Window;
 *  Abstract EventListener class. 
 *  with concrete input classes
 */
+enum class EVENTPRIORITY
+{
+	NONE = 0,
+	LOW,
+	MEDIUM,
+	HIGH,
+};
+struct EventInfo
+{
+	SDL_Event* event_ = nullptr;
+	EVENTPRIORITY priority = EVENTPRIORITY::NONE;
+	bool handled = false;
+};
+
 class EventListener
 {
 public:
@@ -20,9 +34,17 @@ public:
 	virtual void OnCreate() = 0;
 	virtual void OnDestroy() = 0;
 	virtual void HandleEvents() =0;
-	virtual void SetEvent(SDL_Event* e_);
+	virtual void SetEvent(EventInfo* eInfo_);
 protected:
-	SDL_Event* currentEvent =nullptr;
+	EventInfo* eventInfo =nullptr;
+};
+
+
+struct ListenerInfo
+{
+	int order = 0;
+	int index = 0;
+	EventListener* listener = nullptr;
 };
 
 enum class KEYBOARD_MAPPINGS
@@ -102,11 +124,11 @@ enum class PLAYSTATION_MAPPINGS
 	LEFTANALOG,
 };
 
-class PlayStation4Input : public EventListener
+class Controller : public EventListener
 {
 public:
-	PlayStation4Input();
-	~PlayStation4Input();
+	Controller();
+	~Controller();
 	virtual void OnCreate() final;
 	virtual void OnDestroy() final;
 	virtual void HandleEvents() final;

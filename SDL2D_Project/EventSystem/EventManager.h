@@ -3,27 +3,6 @@
 #include <list>
 #include <queue>
 #include "Event.h"
-enum class EVENTPRIORITY
-{
-	NONE = 0,
-	LOW,
-	MEDIUM, 
-	HIGH,
-};
-
-struct EventInfo
-{
-	SDL_Event* event_ = nullptr;
-	EVENTPRIORITY priority =  EVENTPRIORITY::NONE;
-};
-
-struct ListenerInfo 
-{
-	int order = 0;  
-	int index = 0; 
-	EventListener* listener = nullptr; 
-};  
-
 //For comparing if listenerInfo class has the same address. 
 //checking to see if it is the same listenerInfo class not an 'equal' listenerInfo class.
 inline bool operator ==(ListenerInfo lhs_, ListenerInfo rhs_)
@@ -140,9 +119,6 @@ public:
 		case SDL_WINDOWEVENT:
 			eventInfo.priority = EVENTPRIORITY::LOW;
 			break;
-		case SDL_SYSWMEVENT:
-			eventInfo.priority = EVENTPRIORITY::LOW;
-			break;
 		case SDL_KEYDOWN:
 			eventInfo.priority = EVENTPRIORITY::HIGH;
 			break;
@@ -193,9 +169,16 @@ public:
 		{
 			for (auto item : listenerContainer )
 			{
-				SDL_Event* tempEvent = requestC.top().event_;
-				item.listener->SetEvent(tempEvent);
+				 EventInfo tempEventInfo = requestC.top();
+				item.listener->SetEvent(&tempEventInfo);
 				item.listener->HandleEvents();
+				if (tempEventInfo.handled==true)
+				{
+					requestC.pop();
+					item.listener->SetEvent(nullptr);
+					if (requestC.empty())
+						break;
+				}
 			}
 		}
 		

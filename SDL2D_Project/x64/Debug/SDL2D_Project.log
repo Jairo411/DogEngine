@@ -1,4 +1,7 @@
 ﻿  Event.cpp
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.h(15,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\EventSystem\Event.cpp(22,24): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\EventSystem\Event.cpp(43,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\EventSystem\Event.cpp(74,27): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\EventSystem\Event.cpp(114,23): warning C4834: discarding return value of function with 'nodiscard' attribute
   SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe

@@ -26,9 +26,11 @@ DogEngine::DogEngine()
 	event_ = new SDL_Event();
 	mouseInput = new MouseInput();
 	keyBoardInput = new KeyBoardInput();
+	ps4ControllorInput = new Controller();
 
 	ListenerInfo mouseInfo;
 	ListenerInfo keyboardInfo;
+	ListenerInfo ps4ControllorInfo;
 
 	mouseInfo.index = 0;
 	mouseInfo.order = 0;
@@ -40,9 +42,14 @@ DogEngine::DogEngine()
 	keyboardInfo.listener = (EventListener*)keyBoardInput;
 
 
+	ps4ControllorInfo.index = 2;
+	ps4ControllorInfo.order = 2;
+	ps4ControllorInfo.listener = (EventListener*)ps4ControllorInput;
+
 	eventManager->SetEvent(event_);
 	eventManager->AddListener(keyboardInfo);
 	eventManager->AddListener(mouseInfo);
+	eventManager->AddListener(ps4ControllorInfo);
 
 
 	threadManager->setMaxAmountOfThreads(4);

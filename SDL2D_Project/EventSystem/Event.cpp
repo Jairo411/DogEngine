@@ -4,13 +4,13 @@
 
 EventListener::~EventListener()
 {
-	currentEvent = nullptr;	
-	delete currentEvent;
+	eventInfo = nullptr;	
+	delete eventInfo;
 }
 
-void EventListener::SetEvent(SDL_Event* e_)
+void EventListener::SetEvent(EventInfo* eInfo_)
 {
-	currentEvent = e_;
+	eventInfo = eInfo_;
 }
 
 MouseInput::MouseInput() : mouseX(0), mouseY(0), click(false), wheel(0.0f)
@@ -47,17 +47,19 @@ int MouseInput::GetWheel()
 void MouseInput::HandleEvents()
 {
 	int buttons = SDL_GetMouseState((int*)&mouseX, (int*)&mouseY);
-	switch (currentEvent->type)
+	switch (eventInfo->event_->type)
 	{
 	default:
 		break;
 		
 	case SDL_MOUSEBUTTONUP: 
+		eventInfo->handled = true;
 		break;
 	case SDL_MOUSEBUTTONDOWN:  
+		eventInfo->handled = true;
 		break;
 	case SDL_MOUSEWHEEL: 
-		wheel = currentEvent->wheel.y;
+		eventInfo->handled = true;
 		break;
 	}
 }
@@ -84,15 +86,16 @@ void KeyBoardInput::OnDestroy()
 
 void KeyBoardInput::HandleEvents()
 {
-	switch (currentEvent->type)
+	switch (eventInfo->event_->type)
 	{
 	default:
 		break;
 	case SDL_KEYDOWN:
-		
+		eventInfo->handled = true;
+		std::cout << "Keyboard working" << std::endl;
 		break;
 	case SDL_KEYUP:
-	
+		eventInfo->handled = true;
 		break;
 	}
 }
@@ -102,48 +105,57 @@ std::map<KEYBOARD_MAPPINGS, bool> KeyBoardInput::GetInput()
 	return inputKeyBoardHolder;
 }
 
-PlayStation4Input::PlayStation4Input() : click(false) , L_Analog(0.0f) , R_Analog(0.0f), controllerInput(std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>>())
+Controller::Controller() : click(false) , L_Analog(0.0f) , R_Analog(0.0f), controllerInput(std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>>())
 {
 }
 
-PlayStation4Input::~PlayStation4Input()
+Controller::~Controller()
 {
 	controllerInput.empty();
 }
 
-std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>> PlayStation4Input::GetInput()
+std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>> Controller::GetInput()
 {
 	return controllerInput;
 }
 
-void PlayStation4Input::OnCreate()
+void Controller::OnCreate()
 {
 }
 
-void PlayStation4Input::HandleEvents()
+void Controller::HandleEvents()
 {
-	switch (currentEvent->type)
+	switch (eventInfo->event_->type)
 	{
 	case SDL_CONTROLLERAXISMOTION:
-	
+		eventInfo->handled = true;
+		std::cout << "Analog moved" << std::endl;
 		break;
 	case SDL_CONTROLLERBUTTONDOWN:
-
+		eventInfo->handled = true;
+		std::cout << "button pressed" << std::endl;
 		break;
 	case SDL_CONTROLLERBUTTONUP:
-
+		eventInfo->handled = true;
+		std::cout << "button released" << std::endl;
 		break;
 	case SDL_CONTROLLERDEVICEADDED:
-
+		eventInfo->handled = true;
+		if (SDL_GameControllerOpen(0)==NULL)
+		{
+			std::cout << "Error occurred" << std::endl;
+		}
+		std::cout << "controller added" << std::endl;
 		break;
 	case SDL_CONTROLLERDEVICEREMOVED:
-
+		eventInfo->handled = true;
+		std::cout << "controller removed" << std::endl;
 		break;
 	default:
 		break;
 	}
 }
 
-void PlayStation4Input::OnDestroy()
+void Controller::OnDestroy()
 {
 }

@@ -79,6 +79,7 @@ private:
 
 	MouseInput* mouseInput;
 	KeyBoardInput* keyBoardInput;
+	Controller* ps4ControllorInput;
 	static DogEngine* instance;
 	static bool isRunning;	
 	int currentRenderFlag = NULL;
