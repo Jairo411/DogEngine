@@ -7,69 +7,67 @@
 #include "../EventSystem/Event.h"
 #include "../Renderer/Renderer.h"
 #include "GUI.h"
-/*2021-07-09
-This whole entire class need to be re-implemented and improved appond. */
-/*There should always be a main window, and maybe supplementary windows*/
-/* So functions will be called throughout the engine using Window::Functionhere() and most of the getInstance 
-functionality will be used to set up properties and maybe access none static variables*/
-/* Cool notes:
-	I am going to create structs to represent the properites of my objects before hand so 
-	that I can create my objects and assign there member values according to how I want.
-	Like how Graphics APIs set up there logic
-- THE WINDOW CLASS SHOULD NOT HANDLE INPUT LOGIC 
-- THE WINDOW CLASS WILL NOW HANDLE INPUT LOGIC THROUGH COMPOSITIONS OBJECTS.
-- THE WINDOW CLASS INPUT LOGIC CAN AND WILL BE HARDCODEDISH.
-	.*/
+/*
+* Window singleton class.
+*/
+enum class WINDOWFLAGS
+{
+	NONE_=0,
+};
+enum class WINDOWSTATUS
+{
+	NONE_=0,
+};
 class DogEngine;
 class Window
 {	
 public:
 	Window(Window& other) = delete;
-	void operator=(const Window&) = delete;
-	//Takes a WindowProp structure, and intializes Window classe's member variables.
+	Window(const Window&) = delete;
+	Window& operator =(Window& other) = delete;
+	Window& operator=(const Window&) = delete;
 	void OnCreate();
 	void OnDestroy();
-	void PrintWindowProperities();
+	///Prints window's current properities.
+	void PrintWindowProperties();
 	static Window* GetInstance(); 
 	SDL_Window* getWindowContext();
 	static int getScreenHeight();
 	static int getScreenWidth();
-	void CreateMiddleRect();
-	void setWindowProperties(int xPosition_, int yPosition, int width, int height, int flag);
-	void setWindowTitle(const char* title_);
-	void setFlag(int flag_);
-	void setWindowContext(SDL_Window* windowContext_);
-	void SetGUIEvent(SDL_Event* GUIEvent_);
-	void SetGUI(GUI* GUIContext_);
+	///Set properties.
+	void setWindowProperties(int xPosition_, int yPosition, int width, int height, WINDOWFLAGS flag_);
+	///Set the Title of the window.
+	void SetWindowTitle(const char* title_);
+	///Set a Window flag.
+	void SetFlag(WINDOWFLAGS flag_);
+	///Set a rendering context for graphic APIs like vulkan and opengl.
+	void SetWindowContext(SDL_Window* windowContext_);
+	void SetGUIEvent(SDL_Event* GUIEvent_); //Remove this. 
+	void SetGUI(GUI* GUIContext_); // Remove this. 
 	void Render();
 	void Update(float deltaTime_);
 	void HandleEvents();
 	bool getIsClose();
-	static Vec2 ConvertScreenCoords(int x, int y);
-	Vec2 midVec;
 private:
-	//Constructors
-	Window(); // With the singleton I will only have default constructors, then change them later with the WindowProp Struct
+	Window(); 
 	Window(SDL_Window* window_);
 	~Window();
-	static int ScreenWidth, ScreenHeight; //Window Size
-	int CurrentWindow_XPOS, CurrentWindow_YPOS; // Position of the window 
-	int* mouseX, *mouseY, *mousePtr; //Remove this
-	int windowFlag; 
-	int SquareSize;
-	int windowStatus;
+	template <typename enumType>
+	constexpr typename std::underlying_type<enumType>::type to_underlying(enumType e) noexcept
+	{
+		return static_cast<typename std::underlying_type<enumType>::type>(e);
+	};
+	static int ScreenWidth, ScreenHeight;	
+	int posX, posY; 
 	bool isClose;
+	WINDOWFLAGS windowFlag; 
+	WINDOWSTATUS windowStatus;
 	GUI* GUIContext;
 	SDL_Surface* graphicLayer;
 	SDL_Window* window;
 	SDL_Event* GUIEvent;
 	std::string WindowTitle;
 	static Window* instance;
-	SDL_Rect middleRect;
-	static SDL_Point middleOfScreen;
-	Vec2 covertedScreenCoords;
-	KeyBoardInput keyBoardInput;
-	MouseInput mouseInput;
 };
 
 #endif // !WINDOW_H

@@ -16,7 +16,7 @@ inline bool operator ==(ListenerInfo lhs_, ListenerInfo rhs_)
 		return false;
 	}
 };
-
+//Comparing the level of priority an event has.
 inline bool operator >(EventInfo lhs_, EventInfo rhs_)
 {
 	if (lhs_.priority>rhs_.priority)
@@ -28,7 +28,7 @@ inline bool operator >(EventInfo lhs_, EventInfo rhs_)
 		return false;
 	}
 };
-
+//Comparing the level of priority an event has.
 inline bool operator < (EventInfo lhs_, EventInfo rhs_)
 {
 	if (lhs_.priority<rhs_.priority)
@@ -40,7 +40,6 @@ inline bool operator < (EventInfo lhs_, EventInfo rhs_)
 		return false;
 	}
 }
-
 class EventManager
 {
 public:
@@ -79,10 +78,20 @@ public:
 	{
 		event_ = e_;
 	};
-	void CheckInputs()
+	void EnableInputs()
 	{
-		
-	}
+		int totalJoySticks = SDL_NumJoysticks();
+		std::cout << "Total Amount of JoySticks" << totalJoySticks << std::endl;
+		SDL_GameController* controller = NULL;
+		for (int i = 0; i < totalJoySticks; i++)
+		{
+			if (SDL_IsGameController(i))
+			{
+				controller = SDL_GameControllerOpen(i);
+				std::cout << "Controller Name: " << SDL_GameControllerName(controller) << std::endl;
+			}
+		}
+	};
 	void HandleEvents()
 	{
 		SDL_PollEvent(event_);
@@ -91,15 +100,16 @@ public:
 		switch (event_->type)
 		{
 		case SDL_FIRSTEVENT:
-
+			eventInfo.priority = EVENTPRIORITY::LOW;
 			break;
 		case SDL_QUIT:
 			eventInfo.priority = EVENTPRIORITY::LOW;
 			break;
 		case SDL_APP_TERMINATING:
-
+			eventInfo.priority = EVENTPRIORITY::LOW;
 			break;
 		case SDL_APP_LOWMEMORY:
+			eventInfo.priority = EVENTPRIORITY::LOW;
 			break;
 		case SDL_APP_WILLENTERBACKGROUND:
 			eventInfo.priority = EVENTPRIORITY::LOW;
@@ -148,6 +158,7 @@ public:
 			break;
 		case SDL_CONTROLLERDEVICEADDED:
 			eventInfo.priority = EVENTPRIORITY::HIGH;
+			EnableInputs();
 			break;
 		case SDL_CONTROLLERDEVICEREMOVED:
 			eventInfo.priority = EVENTPRIORITY::HIGH;
@@ -169,7 +180,7 @@ public:
 		{
 			for (auto item : listenerContainer )
 			{
-				 EventInfo tempEventInfo = requestC.top();
+				EventInfo tempEventInfo = requestC.top();
 				item.listener->SetEvent(&tempEventInfo);
 				item.listener->HandleEvents();
 				if (tempEventInfo.handled==true)

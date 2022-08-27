@@ -52,6 +52,8 @@ DogEngine::DogEngine()
 	eventManager->AddListener(ps4ControllorInfo);
 
 
+	eventManager->OnCreate();
+
 	threadManager->setMaxAmountOfThreads(4);
 	threadManager->AddThreadAble(this);
 //	threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process

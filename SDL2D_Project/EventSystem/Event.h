@@ -6,8 +6,7 @@
 #include <utility>
 #include "../Physics/Collider.h"
 #include "../Math/Vec2.h"
-class SDL;
-class Window;
+#include <SDL_events.h>
 /*
 * 2022/8/19 
 *  Abstract EventListener class. 
@@ -47,21 +46,9 @@ struct ListenerInfo
 	EventListener* listener = nullptr;
 };
 
-enum class KEYBOARD_MAPPINGS
-{
-	NONE=false,
-	W,
-	D,
-	S,
-	A,
-	SPACE,
-	TOPDIR,
-	RIGHTDIR,
-	BOTTOMDIR,
-	LEFTDIR,
-};
 
 
+//Remove this once you're done testing input 
 class KeyBoardInput : public EventListener
 {
 public:
@@ -70,22 +57,9 @@ public:
 	virtual void OnCreate() final;
 	virtual void OnDestroy() final;
 	virtual void HandleEvents() final;
-	std::map<KEYBOARD_MAPPINGS, bool> GetInput();
-private:
-	std::map<KEYBOARD_MAPPINGS , bool> inputKeyBoardHolder;
 };
 
-
-enum class MOUSEMAPPINGS
-{
-	NONE = false,
-	LEFTCLICK,
-	RIGHTCLICK,
-	MIDDLECLICK,
-	MOUSEMOVED,
-};
-
-
+//Remove this once you're done testing input 
 class MouseInput : public EventListener
 {
 public:
@@ -95,35 +69,13 @@ public:
 	virtual void OnDestroy() final;
 	virtual void HandleEvents() final;
 	int GetWheel();
-	std::map<MOUSEMAPPINGS, std::pair<bool, float>> GetInput();
 private:
 	float mouseX, mouseY;
 	float wheel;
 	bool click;
-	std::map<MOUSEMAPPINGS, std::pair<bool,float>> inputMouseHolder;
+	
 };
-
-enum class PLAYSTATION_MAPPINGS
-{
-	NONE=false,
-	T_BUTTON,
-	C_BUTTON,
-	X_BUTTON,
-	S_BUTTON,
-	OPTIONS,
-	SHARE,
-	R1,
-	R2,
-	L1,
-	L2,
-	TOPDIR,
-	RIGHTDIR,
-	BOTTOMDIR,
-	LEFTDIR,
-	RANALOG,
-	LEFTANALOG,
-};
-
+//Remove this once you're done testing input 
 class Controller : public EventListener
 {
 public:
@@ -132,12 +84,10 @@ public:
 	virtual void OnCreate() final;
 	virtual void OnDestroy() final;
 	virtual void HandleEvents() final;
-	std::map<PLAYSTATION_MAPPINGS, std::pair<bool, float>> GetInput();
 private:
 	bool click;
 	float L_Analog;
 	float R_Analog;
-	std::map<PLAYSTATION_MAPPINGS, std::pair<bool,float>> controllerInput;
 };
 
 

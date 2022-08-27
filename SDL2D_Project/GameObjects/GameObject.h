@@ -49,7 +49,7 @@ CHECK ON SHARED_PTR
 CHECK dynamic_PTR CAST
 ALSO Remove IObserverable
 */
-using SDLDisplayRects = std::pair<SDL_Rect*, SDL_Rect*>; // alias declarations  C++11
+typedef std::pair<SDL_Rect*, SDL_Rect*> SDLDisplayRects;
 class TextureManager;
 class IObserver;
 class GameObject : public BaseObj
@@ -60,18 +60,17 @@ public:
 	virtual void OnCreate()=0;
 	virtual void OnDestroy()=0;
 	virtual void Update(float deltaTime_)=0;
-	virtual void fixedUpdate(float deltaTime) = 0;
 	virtual void Render()=0; 
-	/*Setters*/
+	///Set position
 	virtual void setPosition(int x_, int y_) final;
+	///Set position
 	virtual void setPosition(Vec2 vPosition) final;
+	[[deprecated("Game object shouldn't have this as a direct feature, this should be in a component")]]
 	virtual SDL_Texture* getTexture() final;
+	[[deprecated("Game object shouldn't have this as a direct feature, this should be in a component")]]
 	SDLDisplayRects getTextureDisplayInfo();
-	/*Observer Pattern Implemented*/
-//	virtual void Attach(IObserver* observer_);
-//	virtual void Detach(IObserver* observer_);
-//	virtual void Notify();
 	///Returns the Pivot Position (the middle) of the object position
+	[[deprecated("This should be removed, just use proper game dev math.")]]
 	virtual Vec2 getPivotPosition() final; 
 	///Returns the actual Sreen Coordinate position
 	virtual Vec2 getPosition() final;

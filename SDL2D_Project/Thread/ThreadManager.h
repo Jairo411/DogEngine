@@ -18,7 +18,9 @@ class ThreadManager
 public:
 
 	ThreadManager(ThreadManager& other) = delete;
-	void operator =(const ThreadManager&) = delete;
+	ThreadManager(const ThreadManager&) = delete;
+	ThreadManager& operator = (ThreadManager& other) = delete;
+	ThreadManager& operator =(const ThreadManager&) = delete;
 
 	static ThreadManager* GetInstance();
 	///Set the maximum number of threads
