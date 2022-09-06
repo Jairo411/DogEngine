@@ -4,9 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <utility>
-#include "../Physics/Collider.h"
-#include "../Math/Vec2.h"
 #include <SDL_events.h>
+#include "../Math/Vec2.h"
 /*
 * 2022/8/19 
 *  Abstract EventListener class. 
@@ -25,7 +24,6 @@ struct EventInfo
 	EVENTPRIORITY priority = EVENTPRIORITY::NONE;
 	bool handled = false;
 };
-
 class EventListener
 {
 public:
@@ -37,8 +35,6 @@ public:
 protected:
 	EventInfo* eventInfo =nullptr;
 };
-
-
 struct ListenerInfo
 {
 	int order = 0;
@@ -47,48 +43,47 @@ struct ListenerInfo
 };
 
 
-
-//Remove this once you're done testing input 
-class KeyBoardInput : public EventListener
-{
-public:
-	KeyBoardInput();
-	~KeyBoardInput();
-	virtual void OnCreate() final;
-	virtual void OnDestroy() final;
-	virtual void HandleEvents() final;
-};
-
-//Remove this once you're done testing input 
-class MouseInput : public EventListener
-{
-public:
-	MouseInput();
-	~MouseInput();
-	virtual void OnCreate() final;
-	virtual void OnDestroy() final;
-	virtual void HandleEvents() final;
-	int GetWheel();
-private:
-	float mouseX, mouseY;
-	float wheel;
-	bool click;
-	
-};
-//Remove this once you're done testing input 
-class Controller : public EventListener
-{
-public:
-	Controller();
-	~Controller();
-	virtual void OnCreate() final;
-	virtual void OnDestroy() final;
-	virtual void HandleEvents() final;
-private:
-	bool click;
-	float L_Analog;
-	float R_Analog;
-};
+////Remove this once you're done testing input 
+//class KeyBoardInput : public EventListener
+//{
+//public:
+//	KeyBoardInput();
+//	~KeyBoardInput();
+//	virtual void OnCreate() final;
+//	virtual void OnDestroy() final;
+//	virtual void HandleEvents() final;
+//};
+//
+////Remove this once you're done testing input 
+//class MouseInput : public EventListener
+//{
+//public:
+//	MouseInput();
+//	~MouseInput();
+//	virtual void OnCreate() final;
+//	virtual void OnDestroy() final;
+//	virtual void HandleEvents() final;
+//	int GetWheel();
+//private:
+//	float mouseX, mouseY;
+//	float wheel;
+//	bool click;
+//	
+//};
+////Remove this once you're done testing input 
+//class Controller : public EventListener
+//{
+//public:
+//	Controller();
+//	~Controller();
+//	virtual void OnCreate() final;
+//	virtual void OnDestroy() final;
+//	virtual void HandleEvents() final;
+//private:
+//	bool click;
+//	float L_Analog;
+//	float R_Analog;
+//};
 
 
 #endif // !KEYINPUT_H*/

@@ -1,5 +1,6 @@
 #ifndef WINDOW_H
 #define WINDOW_H
+#define MAXWINDOWFLAGS 21 
 #include <SDL.h>
 #include <SDL_image.h>
 #include <map>
@@ -10,10 +11,6 @@
 /*
 * Window singleton class.
 */
-enum class WINDOWFLAGS
-{
-	NONE_=0,
-};
 enum class WINDOWSTATUS
 {
 	NONE_=0,
@@ -35,11 +32,11 @@ public:
 	static int getScreenHeight();
 	static int getScreenWidth();
 	///Set properties.
-	void setWindowProperties(int xPosition_, int yPosition, int width, int height, WINDOWFLAGS flag_);
+	void setWindowProperties(int xPosition_, int yPosition, int width, int height, int flag_);
 	///Set the Title of the window.
 	void SetWindowTitle(const char* title_);
 	///Set a Window flag.
-	void SetFlag(WINDOWFLAGS flag_);
+	void SetFlag(int flag_);
 	///Set a rendering context for graphic APIs like vulkan and opengl.
 	void SetWindowContext(SDL_Window* windowContext_);
 	void SetGUIEvent(SDL_Event* GUIEvent_); //Remove this. 
@@ -52,15 +49,10 @@ private:
 	Window(); 
 	Window(SDL_Window* window_);
 	~Window();
-	template <typename enumType>
-	constexpr typename std::underlying_type<enumType>::type to_underlying(enumType e) noexcept
-	{
-		return static_cast<typename std::underlying_type<enumType>::type>(e);
-	};
 	static int ScreenWidth, ScreenHeight;	
-	int posX, posY; 
+	int posX, posY;
+	int windowFlag;
 	bool isClose;
-	WINDOWFLAGS windowFlag; 
 	WINDOWSTATUS windowStatus;
 	GUI* GUIContext;
 	SDL_Surface* graphicLayer;

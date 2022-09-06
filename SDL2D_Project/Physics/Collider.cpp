@@ -45,7 +45,7 @@ RectCollider::RectCollider(int width_, int height_)
 	srcRect.w = width_;
 	srcRect.h = height_;
 
-	middlePoint = Vec2(width_ / 2, height_ / 2);
+	middlePoint = vec2(width_ / 2, height_ / 2);
 	
 }
 
@@ -138,7 +138,7 @@ void RectCollider::CollisonUpdate(int colPosX, int colPosY)
 	}
 }
 
-void RectCollider::CollisonUpdate(Vec2 position_)
+void RectCollider::CollisonUpdate(vec2 position_)
 {
 	srcRect.x = position_.x;
 	srcRect.y = position_.y;
@@ -201,7 +201,7 @@ CircleCollider::CircleCollider(float radius_)
 		startAngle = i;
 		x = radius * cos(startAngle);
 		y = radius * sin(startAngle);
-		positions.push_back(Vec2(x, y));
+		positions.push_back(vec2(x, y));
 	}
 }
 
@@ -218,12 +218,12 @@ CircleCollider::CircleCollider(int x_, int y_, float radius_)
 		x = oX + radius * cos(startAngle);
 		y = oY + radius * sin(startAngle);
 		//std::cout << "Circle pos X: " << x << " Circle pos Y: " << y << std::endl;
-		positions.push_back(Vec2(x, y));
+		positions.push_back(vec2(x, y));
 	}
 }
 
 
-void CircleCollider::Update(Vec2 position_)
+void CircleCollider::Update(vec2 position_)
 {
 	positions.clear();
 	oX = position_.x;
@@ -236,7 +236,7 @@ void CircleCollider::Update(Vec2 position_)
 		x = oX + radius * cos(startAngle);
 		y = oY + radius * sin(startAngle);
 		//std::cout << "Circle pos X: " << x << " Circle pos Y: " << y << std::endl;
-		positions.push_back(Vec2(x, y));
+		positions.push_back(vec2(x, y));
 	}
 	
 }

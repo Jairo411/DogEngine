@@ -43,8 +43,8 @@ enum class XBOX_MAPPINGS
 class Controller : public EventListener
 {
 public:
-	Controller();
-	~Controller();
+	inline Controller() { click = false; L_Analog = 0.0f; R_Analog = 0.0f; };
+	virtual ~Controller() {};
 	virtual void OnCreate()=0;
 	virtual void OnDestroy() =0;
 	virtual void HandleEvents()=0;

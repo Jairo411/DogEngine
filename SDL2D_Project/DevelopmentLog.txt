@@ -1,68 +1,17 @@
-(2022/8/16)This is the first entry in the development Log.
-*Quick Guide lines* 
-This .txt file will only contain information about what needs to be worked on
-and the result of that work. Might create another .txt to describe more in detail what has
-been worked on and what will be implemented in the future. But I believe that
-keeping the task simples will make the development easier for myself.
-
-(2022/8/16) DAY 1 
-
-TIMER.H
--Timer interface needs to worked on, way too bloated.
-
--alot of functions and alot of variables that might be assigned or not. Do not
-know.Interface is way to big and needs to specialize a bit more. 
- 
--Might need to create different types of time interfaces. 
-
-VEC.H 
--Suppose to be some sort of a math interface only supports 2D math with some
-overloaded operators, knowing what I know now, there is probably a better way
-to implement this. 
-
-Converter.H 
--Remove it
-
-Input folder (ALL classes) 
--Don't remember that it works, should implement this feature as soon as
-possible. 
- 
-EngineSeralizer.H 
--Has alot of valueable comments, I don't think it works the best as it should
-from what I remember. Leave this as one of the last things to polish. 
-
-DogEngine.H
--Kinda bloated(might just be that way because of all the manager classes you
-have. 
--You have a thread function, that's just kinda shoved right in there. 
-
-AI folder (ALL  classes) 
--Yeah those interfaces have been broken for awhile.. 
-
-Design Patter folder(ALL classes) 
--Don't really have an exact idea what you're going do to it. But its
-implemented into your engine and it shouldn't be at least not the way it
-currently is. 
-
-AutoManager.H 
--Not a real interface, just something you created to get grades. 
-
-Animator folder(ALL classes) 
--just a bloaded mess. 
-  
- Window folder(ALL classes) 
--Bloated needs reworking. 
-
-(2022/8/18) DAY 2 
-#Currently working on Timer class and DogEngine class.
+This is the new development log im just going to keep this simple and reable. 
 
 
-(2022/8/19) DAY 3 
-#Currently working on the DogEngine class. 
+9/1/2022	
 
+-currenlty working on the rogue class
 
+Goal 1
+trying to get the runtime enviroment up and running. 
+That means having my scene0 class working during run time with the changed code base. 
 
+9/2/2022	
+-AI class broken need to reimplement it. 
 
+*note 
+any class using vec2 needs to replaced by vector2. 
 
-
- 

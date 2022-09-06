@@ -1,7 +1,5 @@
 #include "Tiles.h"
-#include "../../../TextureManager/TextureManager.h"
-
-vector<SDL_Texture*> TileSet::imageSetHolder = vector<SDL_Texture*>();
+#include "../../../DogEngine/DogEngine.h"
 int Tile::width = 0;
 int Tile::height = 0;
 
@@ -94,13 +92,13 @@ int Tile::getHeight()
 }
 
 
-void Tile::SetPosition(Vec2 pos_)
+void Tile::SetPosition(vec2 pos_)
 {
 	x = pos_.x;
 	y = pos_.y;
 }
 
-void Tile::setGridPosition(Vec2 pos_)
+void Tile::setGridPosition(vec2 pos_)
 {
 	GridPosition.x = pos_.x;
 	GridPosition.y = pos_.y;
@@ -111,15 +109,15 @@ void Tile::Update(float deltaTime_)
 
 }
 
-Vec2 Tile::getPosition()
+vec2 Tile::getPosition()
 {
-	Vec2 Aposition= Vec2(); 
+	vec2 Aposition= vec2(); 
 	Aposition.x = x + srcRect.w / 2;
 	Aposition.y = y + srcRect.h / 2;
 	return Aposition;
 }
 
-Vec2 Tile::getGridPosition()
+vec2 Tile::getGridPosition()
 {
 	return GridPosition;
 }
@@ -147,12 +145,13 @@ Node* Tile::getID(int ID_)
 	{
 		return n;
 	}
+	return nullptr;
 }
 
 Tile::~Tile()
 {
 }
-TileSet::TileSet()
+TileSetManager::TileSetManager()
 {
 	tileSetImage = nullptr;
 	name = "NULL";
@@ -163,7 +162,20 @@ TileSet::TileSet()
 	height = NULL;
 }
 
-TileSet::TileSet(const char* dir_, string name_, int ID_)
+TileSetManager* TileSetManager::GetInstance()
+{
+	if (instance != nullptr)
+	{
+		return instance;
+	}
+	else
+	{
+		instance = new TileSetManager();
+		return instance;
+	}
+}
+
+TileSetManager::TileSetManager(const char* dir_, std::string name_, int ID_)
 {
 //	tileSetImage = TextureManager::LoadTexture(dir_);
 	name = name_;
@@ -173,39 +185,77 @@ TileSet::TileSet(const char* dir_, string name_, int ID_)
 	SDL_QueryTexture(tileSetImage, NULL, NULL, &width, &height);
 }
 
-void TileSet::CreateSet(int sizeOfCut_, int srcX_, int srcY_)
+void TileSetManager::CreateSet(int sizeOfCut_, int srcX_, int srcY_)
 {
 //	imageSetHolder = TextureManager::CreateMapSprite(tileSetImage, width, height, sizeOfCut_, srcX_, srcY_);
 }
 
 
-void TileSet::SetDisplayRects(SDL_Rect tempSrcR_, SDL_Rect tempDesR_)
+void TileSetManager::SetDisplayRects(SDL_Rect tempSrcR_, SDL_Rect tempDesR_)
 {
 	srcRect = tempSrcR_;
 	desRect = tempDesR_;
 }
 
-void TileSet::SetBaseImage(SDL_Texture* tempIMG_)
+void TileSetManager::SetBaseImage(SDL_Texture* tempIMG_)
 {
 	baseImage = tempIMG_;
 }
 
-SDL_Texture* TileSet::getBaseImage()
+SDL_Texture* TileSetManager::getBaseImage()
 {
 	return baseImage;
 }
 
-vector<SDL_Texture*> TileSet::GetTileSet()
+
+TileSetManager::~TileSetManager()
 {
-	return imageSetHolder;
 }
 
-
-SDL_Texture* TileSet::getTile(int index_)
+TILE::TILE()
 {
-	return imageSetHolder[index_];
 }
 
-TileSet::~TileSet()
+TILE::~TILE()
+{
+}
+
+void TILE::OnCreate()
+{
+}
+
+void TILE::OnDestroy()
+{
+}
+
+void TILE::Update(float deltaTime_)
+{
+}
+
+void TILE::Render()
+{
+}
+
+GridPosition::GridPosition()
+{
+}
+
+GridPosition::~GridPosition()
+{
+}
+
+void GridPosition::OnCreate()
+{
+}
+
+void GridPosition::OnDestroy()
+{
+}
+
+void GridPosition::Update(float deltaTime_)
+{
+}
+
+void GridPosition::Render()
 {
 }

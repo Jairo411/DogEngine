@@ -12,7 +12,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
-#include "../GameObjects/GameObject.h";
+
 /*
 * 8/16/2022
 * Singleton renderermanger interface. 
@@ -21,8 +21,12 @@
 class OpenGLRenderer;
 class VulkanRenderer;
 class SDLRenderer;
+class GameObject;
 class Window;
 class DogEngine;
+
+
+typedef std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderers;
 
 enum class RenderAPI
 {
@@ -97,7 +101,7 @@ public:
 	SDLRenderer* SDL_R;
 	OpenGLRenderer* OPGL_R;
 	VulkanRenderer* V_R;
-	std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> R_Variant;
+	renderers R_Variant;
 	RenderAPI API;
 	static int R_Value;
 	int frames;
@@ -114,7 +118,7 @@ public:
 	void DrawTexture(SDL_Texture* tex_,SDL_Rect* srcRect_,SDL_Rect* dstRect);
 	void DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_, double angle_, SDL_Point* center_, SDL_RendererFlip flipFlag_);
 	/// Please learn how the middle Point algorithm actually works in this case. Hard Coded
-	void DrawCircle(int centreX_, int centreY_, int radius_); // I need a better draw Circle function
+	void DrawCircle(float centreX_, float centreY_, float radius_); // I need a better draw Circle function
 	void DrawLine(float startX_,float startY_, float endX_, float endY_);
 	void DrawPoint(int x_, int y_);
 	void DrawRect(SDL_Rect* rect_);

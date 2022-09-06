@@ -16,7 +16,7 @@ void ObjectManager::AddInActive(BaseObj* obj_)
 {
 	if (obj_->IsEnable()==true)
 	{
-		obj_->IsEnable() == false;
+		obj_->setEnable(false);
 		activeObjects.remove(obj_);
 	}
 	inactiveObjects.push_back(obj_);

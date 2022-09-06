@@ -1,8 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-#include "Object.h"
 #include <string>
-#include "SDL.h"
+#include <SDL.h>
 #include <map>
 #include <list>
 #include<vector>
@@ -10,17 +9,9 @@
 #include<fstream>
 #include<type_traits>
 #include <utility>
-#include"../Math/Vec2.h"
-#include"Component/Component.h"
-#include "Component/C_CircleCollider.h"
-#include "Component/C_RectangleCollider.h"
-#include "Component/C_Sprite.h"
-#include "Component/C_Animation.h"
-#include "Component/AnimationSet.h"
-#include"../DesignPattern/Observer.h"
-#include "../EventSystem/PlayerController.h"
-
-
+#include "Object.h"
+#include "../Components/C_2DTransform.h"
+#include "../DogEngine/DogEngineDefinitions.h""
 /*Standard GameObject class should be abstract and should be the base class.
 of any game object in the game i.e
 -Enemies
@@ -49,10 +40,8 @@ CHECK ON SHARED_PTR
 CHECK dynamic_PTR CAST
 ALSO Remove IObserverable
 */
-typedef std::pair<SDL_Rect*, SDL_Rect*> SDLDisplayRects;
-class TextureManager;
-class IObserver;
-class GameObject : public BaseObj
+
+class GameObject : public BaseObj   
 {
 public:
 	GameObject();
@@ -64,18 +53,11 @@ public:
 	///Set position
 	virtual void setPosition(int x_, int y_) final;
 	///Set position
-	virtual void setPosition(Vec2 vPosition) final;
-	[[deprecated("Game object shouldn't have this as a direct feature, this should be in a component")]]
-	virtual SDL_Texture* getTexture() final;
-	[[deprecated("Game object shouldn't have this as a direct feature, this should be in a component")]]
-	SDLDisplayRects getTextureDisplayInfo();
+	virtual void setPosition(vector2 position_) final;
 	///Returns the Pivot Position (the middle) of the object position
-	[[deprecated("This should be removed, just use proper game dev math.")]]
-	virtual Vec2 getPivotPosition() final; 
+	virtual vector2 getPivotPosition() final; 
 	///Returns the actual Sreen Coordinate position
-	virtual Vec2 getPosition() final;
-	static std::list<GameObject*> OBJHolder; // this needs to be removed 
-	void DrawLine(Vec2 start_, Vec2 end_);
+	virtual vector2 getPosition() final;
 	//Template Component Stuff
 	template <typename T, typename ... Args > void AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
@@ -96,22 +78,22 @@ public:
 	{
 		static_assert(std::is_base_of<Component, T>::value,
 			"T must derived from Component");
-		T* CurrentType = new T();
-		T* ComponentType;
+		T* componentType;
 		for (Component* component : components)
 		{
-			ComponentType = dynamic_cast<T*>(component);
-			if (ComponentType != nullptr)
+			componentType = dynamic_cast<T*>(component);
+			if (componentType != nullptr)
 			{
-				std::string typePtrID = typeid(CurrentType).name();
-				std::string ComponentPtrID = typeid(ComponentType).name();
-
+				std::string typePtrID = typeid(componentType).name();
+				std::string ComponentPtrID = typeid(componentType).name();
 				if (strcmp(typePtrID.c_str(), ComponentPtrID.c_str()) == 0) // if the types are the same types then return the current type
 				{
-					return ComponentType;
+					return componentType;
 				}
 			} 
 		}
+		std::cout << "Couldn't find component" << std::endl;
+		return nullptr;
 	}
 	template <typename T> void RemoveComponent()
 	{
@@ -128,24 +110,11 @@ public:
 		}
 	}
 protected:
-	/*Functions*/
 	virtual void UpdatePostion() final;
-	/*Members variables*/
-	float orientation;
-	float rotation;
-	float maxAcceleration;
-	bool textureIsOn;
-	/*Object Members*/
-	Vec2 Position; // real position 
-	Vec2 PivotPosition; // stands for Piviot Position -> moved the origin of the gameObject to the middle of its rect
-	Vec2 velocity;
-	SDL_Texture* objTexture;
-	SDL_Rect srcRect, dstRect;
-	SDLDisplayRects TextureDisplayRectInfo;
-private:
-	int posX; // Individual postions X and Y. I don't want these variables to be touched 
-	int posY;
-	Vec2 moveMiddle(Vec2 pos_); // moves the postion of the game object from the top right corner of the screen to the middle 
+	Transform2D transform; //transform that holds all object data , orientation , position and size. 
+	vector2 position;   // the x and y position.
+	vector2 pivotPosition; // stands for Pivot Position -> moved the origin of the gameObject to the middle of its rect.
+private: 
 	std::vector<Component*> components;
 };
 

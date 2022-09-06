@@ -5,12 +5,11 @@
 #include <variant>
 #include <assert.h>
 #include "InfoStructs.h"
-#include "../DogEngine/DogEngine.h"
-#include "../Renderer/Renderer.h"
 /*
 * 8/16/2022
 * Singleton texture manager interface, that loads/creates textures. 
 */
+class DogEngine;
 class TextureManager
 {
 public:

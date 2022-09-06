@@ -190,7 +190,8 @@ struct ConsoleApp
 		}
 	}
 
-	// In C++11 you'd be better off using lambdas for this sort of forwarding callbacks
+	/// know what you are doing. 
+	//In C++11 you'd be better off using lambdas for this sort of forwarding callbacks
 	static int TextEditCallbackStub(ImGuiTextEditCallbackData* data)
 	{
 		ConsoleApp* console = (ConsoleApp*)data->UserData;

@@ -1,70 +1,41 @@
 #include "Rogue.h"
-#include "../TextureManager/TextureManager.h"
-
-/* How the sprite gets loaded is a problem. */
-Rogue::Rogue()
+#include "../DogEngine/DogEngine.h"
+Rogue::Rogue() 
 {
-	/* Basic intializations of a member variables */
-	typeReference = this;
-	Position = Vec2();
-	srcRect.w = 0;
-	srcRect.h = 0;
-	srcRect.x = 0;
-	srcRect.y = 0;
-	speed = 15.0f;
-	FrameTicks = NULL;
-	amountOfAnimations = 0;
-	disableObject = NULL;
-	/* Don't know the point of this to be honest...*/
+
+	//new code 
+	transform = Transform2D();
+	collider = C_RectangleCollider();
+	sprite = C_Sprite();
+
+	sprite.OnCreate(this);
+	sprite.SetTexture("./Assets/Character/Sprites/adventurer-attack1-00.png");
+
+	collider.SetSize(50, 80);
+	
+	this->AddComponent<Transform2D>(transform);
+	this->AddComponent<C_RectangleCollider>(collider);
+	this->AddComponent<C_Sprite>(sprite);
+	
 }
 
 Rogue::Rogue(const char* textureSheet, int x, int y)
 {
 	/* Basic intializations of a member variables */
+	//Seralization is a seperate process and needs to be decouple from this logic. 
 	className = typeid(*this).name(); // you should put this code inside your seralizer
 	className.erase(0,6); // you should put this code inside your seralizer
-	//objTexture = TextureManager::LoadTexture(textureSheet);
-	animState = AnimationStates::IDLE0;
-	srcRect.w = 100; // IMAGE SIZE ----> MAKE THIS A GAMEOBJECT FUNCTION 
-	srcRect.h = 80; // IMAGE SIZE  This is where the image get finished drawed  
-	srcRect.x = 0;  // This is where the image start begin drawed 
-	srcRect.y =	0; // This is where the image start begin drawed
-
-	dstRect.x = srcRect.x;
-	dstRect.y = srcRect.y;
-
-	amountOfAnimations = 0;
-	FrameTicks = NULL;
-	disableObject = NULL;
-
-	IntiAnimations("C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/Assets/Character/Sprites/Animations.txt", "./Assets/Character/Sprites/", 'a'); //Calling from the Animator class
 	
-	if (this->objTexture != NULL)
-	{
-		textureIsOn = true;
-		std::cout << "Object texture was intialized" << std::endl;
-	}
-	else {
-		textureIsOn = false;
-		std::cout << "Object texture wasn't found" << std::endl;
-	}
 
 	UpdatePostion();
 
 
-
 	this->AddComponent<C_Sprite>();
-	this->GetComponent<C_Sprite>()->SetImageSize(srcRect);
 	this->GetComponent<C_Sprite>()->SetTexture("./Assets/Character/Sprites/adventurer-attack1-00.png");
 
 
 	this->AddComponent<C_RectangleCollider>();
 	this->GetComponent<C_RectangleCollider>()->SetSize(50, 80);
-	this->AddComponent<C_CircleCollider>();
-	this->GetComponent<C_CircleCollider>()->SetDistance(47); // the input here is the radius. 
-
-	//GameObject::OBJHolder.push_back(this);
-
 
 
 }
@@ -79,34 +50,18 @@ void Rogue::OnDestroy()
 
 Rogue::~Rogue()
 {
-	objTexture = nullptr;
 
 }
 
 void Rogue::Update(float dt_)
 {
-	/*Over here add somesort of function in order to change the objTexture variable of Player Character Model*/
-	//Note you need to get your FPS working properly in order to proper animate your character
-	
-	
-	dt_ /= 1000.0;
-	PlayAnimations(animState);
-
-	Position.x += 66; //22mm
-	dstRect.x = Position.x * dt_;
-	dstRect.y = Position.y * dt_;
-	dstRect.w = srcRect.w;
-	dstRect.h = srcRect.h;
+	position.x += 66; 
 	this->GetComponent<C_Sprite>()->Update(dt_);
 	this->GetComponent<C_RectangleCollider>()->Update(dt_);
-	this->GetComponent<C_CircleCollider>()->Update(dt_);
 	UpdatePostion();
 	
 }
 
-void Rogue::fixedUpdate(float dt_)
-{
-}
 
 void Rogue::Render()
 {
@@ -117,10 +72,8 @@ void Rogue::Render()
 		break;
 
 	case 0: //SDL
-			DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(objTexture, &srcRect, &dstRect);
 			this->GetComponent<C_Sprite>()->Render();
 			this->GetComponent<C_RectangleCollider>()->Render();
-			this->GetComponent<C_CircleCollider>()->Render();
 		break;
 	case 1: //OPENGL
 
@@ -129,86 +82,4 @@ void Rogue::Render()
 
 		break;
 	}
-}
-
-//This might be a way of hard coding this
-/* function doesn't hold anything, just tells vectors what size they are and plays animations*/
-void Rogue::PlayAnimations(AnimationStates temp_)
-{
-	//Uint32 ticks = 10*DogEngine::timer->GetCurrentTicks();
-	//Uint32 frames;
-	///*
-	//	Im gonna re-work all this mess, its old and doesnt really make sense. 
-	//*/
-	//switch (temp_)
-	//{
-	//case AnimationStates::ATTACK0:
-	//	frames = ticks % 4; 
-	//	objTexture = sprite.animationSet.at(0).at(frames);
-	//	break;
-	//case AnimationStates::ATTACK1:
-	//	frames = ticks % 6;
-	//	objTexture = sprite.animationSet.at(1).at(frames);
-	//	break;
-	//case AnimationStates::ATTACK2:
-	//	frames = ticks % 6;
-	//	objTexture = sprite.animationSet.at(2).at(frames);
-	//	break;
-	//case AnimationStates::CLIMB:
-	//	frames =	ticks % 5;
-	//	objTexture = sprite.animationSet.at(3).at(frames);
-	//	break;
-	//case AnimationStates::CORNERGRAB:
-	//	frames = ticks % 4;
-	//	objTexture = sprite.animationSet.at(4).at(frames);
-	//	break;
-	//case AnimationStates::CORNERJUMP:
-	//	frames = ticks % 3;
-	//	objTexture = sprite.animationSet.at(5).at(frames);
-	//	break;
-	//case AnimationStates::CROUCH:
-	//	frames = ticks % 4;
-	//	objTexture = sprite.animationSet.at(6).at(frames);
-	//	break;
-	//case AnimationStates::DEATH:
-	//	frames = ticks % 7;
-	//	objTexture = sprite.animationSet.at(7).at(frames);
-	//	break;
-	//case AnimationStates::FALL:
-	//	frames = ticks % 2;
-	//	objTexture = sprite.animationSet.at(8).at(frames);
-	//	break;
-	//case AnimationStates::HURT:
-	//	frames = ticks % 3;
-	//	objTexture = sprite.animationSet.at(9).at(frames);
-	//	break;
-	//case AnimationStates::IDLE0:
-	//	frames = ticks % 3;
-	//	objTexture = sprite.animationSet.at(10).at(frames);
-	//	break;
-	//case AnimationStates::IDLE1:
-	//	frames = ticks % 4;
-	//	objTexture = sprite.animationSet.at(11).at(frames);
-	//	break;
-	//case AnimationStates::JUMP:
-	//	frames = ticks % 4;
-	//	objTexture = sprite.animationSet.at(12).at(frames);
-	//	break;
-	//case AnimationStates::RUN:
-	//	frames = ticks % 6;
-	//	objTexture = sprite.animationSet.at(13).at(frames);
-	//	break;
-	//case AnimationStates::SLIDE:
-	//	frames =	ticks % 2;
-	//	objTexture = sprite.animationSet.at(14).at(frames);
-	//	break;
-	//default:
-	//	break;
-	//}
-}
-
-Uint32 Rogue::WaitAnimationsTicks(Uint32 wait_)
-{
-	FrameTicks = wait_;
-	return FrameTicks;
 }

@@ -34,7 +34,7 @@ protected:
 	float MaxD;
 	float minD;
 	float radius;
-	Vec2 targetPos;
+	vector2 targetPos;
 	GameObject* targetObj; // I should make this private
 	RectCollider navCollider;
 	CircleCollider circleCol;
@@ -57,7 +57,7 @@ public:
 	void getTotalAgents();
 	void OnUpdate(float deltaTime);
 	static std::list<GameObject*> AIAgentList;
-	static std::map<GameObject*, Vec2> getClosestDistanceBetweenAgents();
+	static std::map<GameObject*, vector2> getClosestDistanceBetweenAgents();
 	void setPath(AI* agents_, std::vector<Tile*> mapData ,int goal_);
 	
 private:

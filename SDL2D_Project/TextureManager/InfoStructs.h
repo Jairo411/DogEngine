@@ -3,12 +3,31 @@
 #include <vector>
 #include <string>
 #include <SDL.h>
+#include "../DogEngine/DogEngineDefinitions.h"
+struct SpriteInfo
+{
+	int width;
+	int height;
+	float angle;
+	SpriteRect rect; 
+	SDL_Point center;
+	SDL_RendererFlip flip;
+	void operator = (const SpriteInfo spriteInfoB)
+	{
+		this->width = spriteInfoB.width;
+		this->height = spriteInfoB.height;
+		this->angle = spriteInfoB.angle;
+		this->rect = spriteInfoB.rect;
+		this->center = spriteInfoB.center;
+		this->flip = spriteInfoB.flip;
+	}
+};
+
 struct TextureInfo
 {
 	int width;
 	int height;
 	SDL_Texture* texture;
-
 	void operator = (const TextureInfo textureInfoB)
 	{
 		this->width = textureInfoB.width;

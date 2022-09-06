@@ -1,23 +1,18 @@
 #ifndef SKELETON_H
 #define SKELETON_H
 #include "GameObject.h"
-#include "../DogEngine/AI/AI.h"
-#include "Map/Map.h"
-#include "../TextureManager/TextureManager.h"
-#include "../Animator/Animator.h"
-#include "../Physics/Collider.h"
-#include "../Math/Converter.h"
-
-using namespace std;
-
+#include "../Components/C_2DTransform.h"
+#include "../Components/C_RectangleCollider.h"
+#include "../Components/C_Sprite.h"
 /*2021-07-09
 	Not prefect, going to reimplement this class.*/
-class Skeleton : public GameObject, public AI , public Animator
+class DogEngine;
+class Skeleton : public GameObject
 {
 public:
 	Skeleton();
 	Skeleton(int x, int y);
-	~Skeleton();
+	virtual ~Skeleton();
 	/*New Code*/
 	void OnCreate()override;
 	void OnDestroy()override;
@@ -25,18 +20,22 @@ public:
 	void Inti();
 	void handleCollison();
 	virtual void Update(float dt) override;
-	virtual void fixedUpdate(float dt_) override;
 	virtual void Render() override;
-	virtual void Steer();
-	virtual void Seperate();
+	/*virtual void Steer();
+	virtual void Seperate();*/
 private:
+	//New 
+	Transform2D transform;
+	C_RectangleCollider collider;
+	C_Sprite sprite;
+
+	//OLD 
 	/*Member variables*/
-	float dt;
-	float speed;
-	float prediction;
+	float dt; //remove 
+	float speed; // remove 
+	float prediction; // remove
 	/*Objects Members*/
-	Vec2 targetPos;	
-	SDL_Rect srcRect0, dstRect0;
+	vector2 targetPos;	//remove
 	/*Get rid of this */
 	enum class AnimationStates
 	{
@@ -46,13 +45,12 @@ private:
 		IDLE,
 		REACT,
 		WALK
-	};
-	AnimationStates animState;
-	/*Functions*/
-	virtual void PlayAnimations(AnimationStates state_);
-	Vec2 getTargetDirection();
+	}; // remove
+	AnimationStates animState; //remove 
+	/*virtual void PlayAnimations(AnimationStates state_);*/
+	/*Vec2 getTargetDirection();
 	Vec2 nodeDirection(std::vector<NavTile> directionSet);
-	Vec2 getSeperationDirection(Vec2 pos_);
+	Vec2 getSeperationDirection(Vec2 pos_);*/
 };
 
 

@@ -16,7 +16,7 @@ void GameObserver::DisplayAllMovementComponents()
 	{
 		temp = dynamic_cast<GameObject*>(Observerable);
 		std::cout << "Displaying: " << temp->getName().c_str() << " X and Y Positions" << std::endl;
-		std::cout << "X: " << temp->getPivotPosition().x << " Y: " << temp->getPivotPosition().y << std::endl;
+	//	std::cout << "X: " << temp->getPivotPosition().x << " Y: " << temp->getPivotPosition().y << std::endl;
 	}
 }
 

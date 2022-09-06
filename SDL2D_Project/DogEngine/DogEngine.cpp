@@ -1,5 +1,7 @@
 #include "DogEngine.h"
 #include "AI/AI.h"
+#include "Scenes/GameScenes/Scene0.h"
+#include "Scenes/GameScenes/Scene1.h"
 
 DogEngine* DogEngine::instance = nullptr;
 RendererManager* DogEngine::rendererManager = nullptr;
@@ -26,11 +28,10 @@ DogEngine::DogEngine()
 	event_ = new SDL_Event();
 	mouseInput = new MouseInput();
 	keyBoardInput = new KeyBoardInput();
-	ps4ControllorInput = new Controller();
+	
 
 	ListenerInfo mouseInfo;
 	ListenerInfo keyboardInfo;
-	ListenerInfo ps4ControllorInfo;
 
 	mouseInfo.index = 0;
 	mouseInfo.order = 0;
@@ -42,14 +43,9 @@ DogEngine::DogEngine()
 	keyboardInfo.listener = (EventListener*)keyBoardInput;
 
 
-	ps4ControllorInfo.index = 2;
-	ps4ControllorInfo.order = 2;
-	ps4ControllorInfo.listener = (EventListener*)ps4ControllorInput;
-
 	eventManager->SetEvent(event_);
 	eventManager->AddListener(keyboardInfo);
 	eventManager->AddListener(mouseInfo);
-	eventManager->AddListener(ps4ControllorInfo);
 
 
 	eventManager->OnCreate();
@@ -127,9 +123,9 @@ DogEngine* DogEngine::GetInstance()
 
 void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
-	window->setWindowProperties(posx, posy, width, height, fullscreen);
-	window->setWindowTitle(title);
-	window->setFlag(NULL); //Change this to the enum values you have. 
+	window->setWindowProperties(posx, posy, width, height,SDL_WINDOWPOS_CENTERED);
+	window->SetWindowTitle(title);
+	window->SetFlag(SDL_RENDERER_ACCELERATED); //Change this to the enum values you have. 
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
 	rendererManager->GetInstance()->SetRenderer(0); //Change this to the enum values you have. 

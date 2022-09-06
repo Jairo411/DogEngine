@@ -6,7 +6,7 @@ int Window::ScreenHeight = 0;
 int Window::ScreenWidth = 0;
 Window* Window::instance = nullptr;
 
-Window::Window() :windowFlag(WINDOWFLAGS::NONE_)
+Window::Window()
 {
 }
 
@@ -33,15 +33,17 @@ Window::Window(SDL_Window *window_)
 
 void Window::OnCreate()
 {
-	if (to_underlying(windowFlag) ==SDL_WINDOW_FULLSCREEN)
+	if (windowFlag ==SDL_WINDOW_FULLSCREEN)
 	{
 		std::cout << "FullScreen : ON" << std::endl;
+		
 	}
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		std::cout << "SDL initialized " << std::endl;
-		window = SDL_CreateWindow(WindowTitle.c_str(),posX,posY,ScreenWidth,ScreenHeight,to_underlying(windowFlag));
+		
+		window = SDL_CreateWindow(WindowTitle.c_str(),posX,posY,ScreenWidth,ScreenHeight,windowFlag);
 		PrintWindowProperties();
 	}
 	else
@@ -54,7 +56,7 @@ void Window::OnDestroy()
 {
 }
 
-void Window::setWindowProperties(int xPosition_, int yPosition_, int width_, int height_, WINDOWFLAGS flag_)
+void Window::setWindowProperties(int xPosition_, int yPosition_, int width_, int height_, int flag_)
 {
 	posX = xPosition_;
 	posY = yPosition_;
@@ -68,7 +70,7 @@ void Window::SetWindowTitle(const char* title_)
 	WindowTitle = title_;
 }
 
-void Window::SetFlag(WINDOWFLAGS flag_)
+void Window::SetFlag(int flag_)
 {
 	windowFlag = flag_;
 }
@@ -84,8 +86,9 @@ void Window::PrintWindowProperties()
 	{
 		std::cout << "Current Window X Position: " << posX << " " << "Current Window Y Position " << posY << std::endl;
 	}
-	std::cout << "Current Window Flag: " << to_underlying(windowFlag) << std::endl;
+	std::cout << "Current Window Flag: " << windowFlag << std::endl;
 }
+
 
 Window* Window::GetInstance()
 {
@@ -156,9 +159,6 @@ void Window::Update(float deltaTime_)
 {
 	
 	GUIContext->Update(deltaTime_);
-
-
-
 }
 
 void Window::HandleEvents()

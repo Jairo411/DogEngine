@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "../Window/Window.h"
 #include "../DogEngine/DogEngine.h"
+#include "../GameObjects/GameObject.h"
 
 RendererManager* RendererManager::instance = nullptr;
 int RendererManager::R_Value = NULL;
@@ -287,6 +288,7 @@ void SDLRenderer::OnCreate(SDL_Window* window_)
 
 void SDLRenderer::OnDestroy()
 {
+
 	rend = nullptr;
 	window = nullptr;
 	delete rend;
@@ -309,14 +311,14 @@ void SDLRenderer::DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* d
 	SDL_RenderCopyEx(rend, tex_, srcRect_, dstRect_, angle_, center_, flipFlag_);
 }
 
-void SDLRenderer::DrawCircle(int centreX_, int centreY_, int radius_)
+void SDLRenderer::DrawCircle(float centreX_, float centreY_, float radius_)
 {
 
 	SDL_SetRenderDrawColor(rend, 89, 225, 0, 1);
 	
-	float fcentreX = (float)centreX_;
-	float fcentreY = (float)centreY_;
-	float fradius = (float)radius_;
+	float fcentreX = centreX_;
+	float fcentreY = centreY_;
+	float fradius = radius_;
 	SDL_FPoint points[24000];
 	float xPoint = 0;
 	float yPoint = 0;
@@ -332,7 +334,7 @@ void SDLRenderer::DrawCircle(int centreX_, int centreY_, int radius_)
 
 		//Move the origin of the circle to where my object actually is 
 		//SDL_RenderDrawPoint(rend, xPoint, yPoint);
-		i += 0.015;
+		i += 0.015f;
 		index++;
 	}
 

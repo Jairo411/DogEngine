@@ -1,28 +1,28 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef ROUGE_H
+#define ROGUE_H
 #include "GameObject.h"
-#include "../Animator/Animator.h"
-#include "../EventSystem/Event.h"
-#include "../Physics/Collider.h"
+#include "../Components/C_2DTransform.h"
+#include "../Components/C_RectangleCollider.h"
+#include "../Components/C_Sprite.h"
 /*2021-07-09 
 	Not prefect, but  will intentioned going to reimplement this class.
 	Rename this to PlayerController
 	*/
-class TextureManager;
-class Rogue : public GameObject , public Animator
+class DogEngine;
+class Rogue : public GameObject
 {
 public:
 	 Rogue();
+	 [[deprecated("Don't use this")]]
 	 Rogue(const char * textureSheet, int x, int y);
 	 /*New Code*/
-	 virtual void OnCreate()override;
-	 virtual void OnDestroy()override;
-	 ~Rogue();
+	 virtual void OnCreate() override;
+	 virtual void OnDestroy() override;
+	 virtual  ~Rogue();
 	 /*Texture Display functions*/
 	 //new Code
-	 virtual void Render()override;
+	 virtual void Render() override;
 	 virtual void Update(float dt_) override;
-	 virtual void fixedUpdate(float dt_) override;
 	 enum class AnimationStates
 	 {
 		 ATTACK0 = 0,
@@ -42,22 +42,10 @@ public:
 		 SLIDE,
 	 };
 private:  
-	//Look at this stuff here
-	/*Members*/
-	float speed;
-	int amountOfAnimations;
-	bool disableObject;
-	/*Objects/Classes*/
-	Uint32 FrameTicks;
-	SDL_Rect srcRect0, dstRect0;
-	GameObject* playerPtr;
-	AnimationStates animState;
-	/*Functions*/
-	virtual void PlayAnimations(AnimationStates temp_);
-	Uint32 WaitAnimationsTicks(Uint32 wait_);
-	
-
+	Transform2D transform;
+	C_RectangleCollider collider;
+	C_Sprite sprite;
 };
 
-#endif // !PLAYER_HEADER
+#endif // !ROGUE
 

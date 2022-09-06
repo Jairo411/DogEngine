@@ -1,4 +1,5 @@
 #include "TextureManager.h"
+#include "../DogEngine/DogEngine.h"
 
 TextureManager* TextureManager::instance = nullptr;
 

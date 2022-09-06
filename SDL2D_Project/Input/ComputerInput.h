@@ -1,8 +1,8 @@
 #ifndef COMPUTERINPUT_H
 #define COMPUTERINPUT_H
 #include "../EventSystem/Event.h"
-
-typedef std::pair<bool, float> inputVals;
+#include "../DogEngine/DogEngineDefinitions.h"
+class DogEngine;
 enum class KEYBOARD_MAPPINGS
 {
 	NONE = false,
@@ -16,7 +16,6 @@ enum class KEYBOARD_MAPPINGS
 	BOTTOMDIR,
 	LEFTDIR,
 };
-
 enum class MOUSEMAPPINGS
 {
 	NONE = false,
@@ -25,7 +24,6 @@ enum class MOUSEMAPPINGS
 	MIDDLECLICK,
 	MOUSEMOVED,
 };
-
 class KeyBoardInput : public EventListener
 {
 public:
@@ -38,7 +36,6 @@ public:
 private:
 	std::map<KEYBOARD_MAPPINGS, bool> inputKeyBoardHolder;
 };
-
 class MouseInput : public EventListener
 {
 public:

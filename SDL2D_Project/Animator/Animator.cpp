@@ -1,5 +1,4 @@
 #include "Animator.h"
-#include "../DogEngine/DogEngine.h"	
 
 Animator::~Animator()
 {
@@ -17,7 +16,7 @@ bool Animator::IntiAnimations(const char* AnimSetName_, const char* relativeDir_
 	{
 		std::string textReader;
 		std::string fileElements;
-		ifstream input;
+		std::ifstream input;
 		input.open(AnimSetName_);
 		/*Reads txt and checks if has a char that matches with what I put in:
 		A's will in the next line will have a const char locations that will read and input those values inside a a map/vector.
@@ -56,9 +55,9 @@ bool Animator::IntiAnimations(const char* AnimSetName_, const char* relativeDir_
 
 void Animator::IntiSprite()
 {
-	sprite.animationSet = vector<vector<SDL_Texture*>>();
+	sprite.animationSet = std::vector<std::vector<SDL_Texture*>>();
 	sprite.spriteContainer = std::map<int, Uint32>();
-	sprite.stringID = std::map<int, string>();
+	sprite.stringID = std::map<int, std::string>();
 	sprite.spriteFrames = 0;
 	sprite.frameSpeed = 100;
 }
@@ -79,7 +78,7 @@ void Animator::CreateStates()
 	std::string StateID;
 	for (int i = 0; i < sprite.animationSet.size(); i++)
 	{
-		sprite.stringID.insert(pair<int, std::string>(i, "state" + i));
+		sprite.stringID.insert(std::pair<int, std::string>(i, "state" + i));
 	}
 }
 

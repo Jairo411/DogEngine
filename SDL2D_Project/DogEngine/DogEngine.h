@@ -1,48 +1,38 @@
 #ifndef DOGENGINE_H
 #define DOGENGINE_H
-
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
 #include <thread>
 #include <functional>
-#include "AI/AI.h"
+#include "DogEngineDefinitions.h"
 #include "../Renderer/Renderer.h"
 #include "../../Server/Server.h"
-#include "../TextureManager/TextureManager.h"
 #include "../Window/Window.h"
 #include "../Window/GUI.h"
 #include "../EventSystem/Event.h"
-#include "../EventSystem/EventManager.h"
 #include "../Timer/Timer.h"
 #include "../Math/Converter.h"
 #include "Scenes/SceneManager.h"
-#include "Scenes/GameScenes/Scene0.h"
-#include "Scenes/GameScenes/Scene1.h"
-#include "../GameObjects/Map/Map.h"
-#include "../GameObjects/Map/TileSet/Tiles.h"
-#include "../GameObjects/GameObject.h"
-#include "../GameObjects/Rogue.h"
-#include "../GameObjects/Skeleton.h"
-#include "../GameObjects/OpenGLTestGameObj.h"
-#include "../GameObjects/Map/Map.h"
 #include "../Thread/ThreadManager.h"
 #include "../Audio/AudioManager.h"
-#include "../FileInput_OutPut/FileDirectoryHandler.h"
+#include "../EventSystem/EventManager.h"
+#include "../TextureManager/TextureManager.h"
 #include "ObjectManager.h"
+#include "../FileInput_OutPut/FileDirectoryHandler.h"
 #include "ResourceAllocator.h"
 #include "EngineSerializer.h"
-
-
+#include "../Input/ComputerInput.h"
 /*
 * 2022/8/19 
 *  This is where the dog engine lives....
 */
+class Scene0;
+class Scene1;
+class AIManager;
 class DogEngine : public ThreadAble {
 public:
-
 	~DogEngine();
-
 	static DogEngine* GetInstance();
 	/// <summary>
 	/// Start the DogEngine Application
@@ -76,10 +66,8 @@ private:
 	DogEngine();
 	//Helper functions 
 	void SetupSystems();
-
 	MouseInput* mouseInput;
 	KeyBoardInput* keyBoardInput;
-	Controller* ps4ControllorInput;
 	static DogEngine* instance;
 	static bool isRunning;	
 	int currentRenderFlag = NULL;

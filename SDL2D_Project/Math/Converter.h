@@ -7,9 +7,9 @@
 class Converter
 {
 public:
-	static Vec2 GetMiddleOfSquare(Vec2 ScreenCoordinatesPos_);
-	static Vec2 ConvertedScreenCoordinates(); // fill this in when you need it 
-	static bool inRange(Vec2 low_, Vec2 high_, Vec2 vector_);
+	static vec2 GetMiddleOfSquare(vec2 ScreenCoordinatesPos_);
+	static vec2 ConvertedScreenCoordinates(); // fill this in when you need it 
+	static bool inRange(vec2 low_, vec2 high_, vec2 vector_);
 };
 
 #endif // !COORDINATEHANDLER

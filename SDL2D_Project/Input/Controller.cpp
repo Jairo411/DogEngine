@@ -34,7 +34,6 @@ void PS4Controller::HandleEvents()
 	case SDL_CONTROLLERDEVICEADDED:
 
 		break;
-
 	case SDL_CONTROLLERDEVICEREMOVED:
 
 		break;
@@ -58,15 +57,12 @@ XBOXController::XBOXController() : controllermap(std::map<XBOX_MAPPINGS,inputVal
 	case SDL_CONTROLLERBUTTONDOWN:
 
 		break;
-
 	case SDL_CONTROLLERBUTTONUP:
 
 		break;
-
 	case SDL_CONTROLLERDEVICEADDED:
 
 		break;
-
 	case SDL_CONTROLLERDEVICEREMOVED:
 
 		break;

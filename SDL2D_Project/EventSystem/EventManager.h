@@ -61,7 +61,8 @@ public:
 	};
 	void OnDestroy()
 	{
-		listenerContainer.empty();
+		//Because of warning C4834: discarding return value of function with 'nodiscard' attribute
+		(void*)listenerContainer.empty();
 	};
 	void AddListener(ListenerInfo info_) 
 	{

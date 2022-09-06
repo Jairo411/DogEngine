@@ -20,7 +20,7 @@ public:
 	RectCollider(int x_, int y_, int size_, const char* colliderName_);
 
 	void CollisonUpdate(int colPosX_,int colPosY_); // don't use this 
-	void CollisonUpdate(Vec2 position_);
+	void CollisonUpdate(vec2 position_);
 	void CollisonRender();
 	void SetCollisonObjectType(int col_);
 	void SetCollisonType(int col);
@@ -36,7 +36,7 @@ private:
 	int collisonObjectType;
 	int collisonType;
 	SDL_Rect srcRect;
-	Vec2 middlePoint;
+	vec2 middlePoint;
 	std::string tag;
 	
 
@@ -64,11 +64,11 @@ public:
 	CircleCollider();
 	CircleCollider(float radius_); // GameObjects that move
 	CircleCollider(int x_, int y_, float radius_); // static positions 
-	void Update(Vec2 position_);
+	void Update(vec2 position_);
 	void Render();
 	~CircleCollider();
 private:
-	std::vector<Vec2> positions;
+	std::vector<vec2> positions;
 	float oX, oY; // Origin of the circle 
 	float x, y;
 	float radius;//radius 

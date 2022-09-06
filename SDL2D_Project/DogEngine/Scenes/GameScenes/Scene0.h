@@ -1,12 +1,10 @@
 #ifndef SCENE0_H
 #define SCENE0_H
-
 #include"../Scene.h"
-#include"../../DogEngine.h"
-
-using namespace std;
-/*2021-07-09 
-	This code here is fine*/
+#include "../../../GameObjects/Rogue.h"
+#include "../../../GameObjects/Skeleton.h"
+#include "../../../GameObjects/OpenGLTestGameObj.h"
+#include "../../../GameObjects/Map/Map.h"
 class Scene0: public Scene
 {
 public:
