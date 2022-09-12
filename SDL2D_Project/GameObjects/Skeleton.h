@@ -25,7 +25,7 @@ public:
 	virtual void Seperate();*/
 private:
 	//New 
-	Transform2D transform;
+	C_Transform2D transform;
 	C_RectangleCollider collider;
 	C_Sprite sprite;
 

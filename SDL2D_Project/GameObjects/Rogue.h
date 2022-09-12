@@ -42,7 +42,7 @@ public:
 		 SLIDE,
 	 };
 private:  
-	Transform2D transform;
+	C_Transform2D transform;
 	C_RectangleCollider collider;
 	C_Sprite sprite;
 };

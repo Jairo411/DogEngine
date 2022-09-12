@@ -4,15 +4,15 @@
 #include "Component.h"
 #include "../DogEngine/DogEngineDefinitions.h"
 class DogEngine;
-class Transform2D : public Component
+class C_Transform2D : public Component
 {
 public:
-	Transform2D();
-	~Transform2D();
+	C_Transform2D();
+	~C_Transform2D();
 	virtual void OnCreate(BaseObj* owner_) final;
 	virtual void OnDestroy() final;
 	virtual void Update(float deltaTime_) final;
-	virtual void Render();
+	virtual void Render() final ; 
 	void SetMatrix(Mat3 matrix_);
 	Mat3 GetMatrix();
 	//Future matrix functions 

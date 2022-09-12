@@ -8,6 +8,9 @@
 #include <glm/glm.hpp>
 //NEW 
 #include "../../../GameObjects/GameObject.h"
+#include "../../../Components/C_Sprite.h"
+#include "../../../Components/C_2DTransform.h"
+#include "../../../Components/C_RectangleCollider.h"
 #include "../../../DogEngine/DogEngineDefinitions.h"
 //OLD 
 #include "../../../EventSystem/Event.h"
@@ -29,7 +32,7 @@ We done need any more than one
 
 class DogEngine;
 enum ID : unsigned int
-{
+{ 
 	BASETILE = 0,
 	DIRTTILE,
 	GRASSTILE,
@@ -38,30 +41,27 @@ enum ID : unsigned int
 	TILE6,
 	TILE7,
 	TILE8
-};
+}; //remove this 
 //reconstruct this.
-class TileSetManager
+class TileSetManagerr
 {
 public:
-	TileSetManager(const TileSetManager&) = delete;
-	TileSetManager(TileSetManager& other_) = delete;
-	TileSetManager& operator = (const TileSetManager&) = delete;
-	TileSetManager& operator = (TileSetManager&) = delete;
-	TileSetManager* GetInstance();
-
-
-
+	TileSetManagerr(const TileSetManagerr&) = delete;
+	TileSetManagerr(TileSetManagerr& other_) = delete;
+	TileSetManagerr& operator = (const TileSetManagerr&) = delete;
+	TileSetManagerr& operator = (TileSetManagerr&) = delete;
+	TileSetManagerr* GetInstance();
 	///Remove all this code. 
-	TileSetManager(const char* dir_,std::string name_, int ID_);
+	TileSetManagerr(const char* dir_,std::string name_, int ID_);
 
 	void CreateSet(int sizeOfCut_, int srcX_,int srcY_);
 	void SetDisplayRects(SDL_Rect tempSrcR_,SDL_Rect tempDesR_);
 	void SetBaseImage(SDL_Texture* tempIMG_);
 	SDL_Texture* getBaseImage();
 private:
-	TileSetManager();
-	~TileSetManager();
-	TileSetManager* instance;
+	TileSetManagerr();
+	~TileSetManagerr();
+	TileSetManagerr* instance;
 	int ID;
 	int width, height;
 	std::string name;
@@ -69,7 +69,6 @@ private:
 	SDL_Texture* tileSetImage;
 	SDL_Texture* baseImage;
 };
-
 //Tile represents a single tile in the window 
 class TILE : public GameObject
 {
@@ -81,7 +80,9 @@ public:
 	virtual void Update(float deltaTime_) final;
 	virtual void Render() final;
 private:
-	vector2 position;
+	C_RectangleCollider* collider;
+	C_Sprite* sprite;
+	C_Transform2D* transform;
 };
 //GridPosition represents a group of tiles inside the grid.
 class GridPosition : public GameObject
@@ -98,35 +99,35 @@ private:
 };
 
 //Keep this as a reference
-class Tile
-{
-public:
-	Tile();
-	Tile(int srcX_, int srcY_);
-	Tile(SDL_Texture* tex_, int srcX, int srcY, bool solid);
-	SDL_Texture* getTex();
-	SDL_Rect getSrcRect();
-	vec2 getPosition();
-	vec2 getGridPosition();
-	static int getWidth();
-	static int getHeight();
-	static void setTileSize(int width_, int height_);
-	void SetID(int ID_);
-	Node* getID(int ID_);
-	void Render();
-	void Update(float deltaTime_);
-	void SetPosition(vec2 pos_);
-	void setGridPosition(vec2 pos_);
-	~Tile();
-private:
-	SDL_Texture* baseTex;
-	SDL_Rect srcRect;
-	SDL_Rect dstRect;
-	vec2 GridPosition;
-	Node* n;
-	int ID;
-	int x, y;
-	static int width, height;
-	bool isSoild;
-};
+//class Tile
+//{
+//public:
+//	Tile();
+//	Tile(int srcX_, int srcY_);
+//	Tile(SDL_Texture* tex_, int srcX, int srcY, bool solid);
+//	SDL_Texture* getTex();
+//	SDL_Rect getSrcRect();
+//	vec2 getPosition();
+//	vec2 getGridPosition();
+//	static int getWidth();
+//	static int getHeight();
+//	static void setTileSize(int width_, int height_);
+//	void SetID(int ID_);
+//	Node* getID(int ID_);
+//	void Render();
+//	void Update(float deltaTime_);
+//	void SetPosition(vec2 pos_);
+//	void setGridPosition(vec2 pos_);
+//	~Tile();
+//private:
+//	SDL_Texture* baseTex;
+//	SDL_Rect srcRect;
+//	SDL_Rect dstRect;
+//	vec2 GridPosition;
+//	Node* n;
+//	int ID;
+//	int x, y;
+//	static int width, height;
+//	bool isSoild;
+//};
 #endif // !TILE_H

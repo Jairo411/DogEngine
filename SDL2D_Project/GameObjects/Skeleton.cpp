@@ -1,15 +1,15 @@
 #include "Skeleton.h"
 #include "../DogEngine/DogEngine.h"
 
-Skeleton::Skeleton() : transform(Transform2D()) , collider(C_RectangleCollider()) , sprite(C_Sprite())
+Skeleton::Skeleton() : transform(C_Transform2D()) , collider(C_RectangleCollider()) , sprite(C_Sprite())
 {
 
-	transform = Transform2D();
+	transform = C_Transform2D();
 	collider = C_RectangleCollider();
 	sprite = C_Sprite();
 
 
-	this->AddComponent<Transform2D>(transform);
+	this->AddComponent<C_Transform2D>(transform);
 	this->AddComponent<C_RectangleCollider>(collider);
 	this->AddComponent<C_Sprite>(sprite);
 

@@ -76,6 +76,10 @@ TextureInfo TextureManager::LoadTexture(const char * filename)
 	
 	return textInfo;
 }
+TextureInfo TextureManager::LoadTexture(TextureInfo info_)
+{
+	return TextureInfo();
+}
 SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Texture* source)
 {
 	/*Loads part of the texture*/
@@ -90,9 +94,9 @@ SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Textur
 	return tex;
 }
 
-MapSpriteInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
+SpriteMapInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
 {
-	MapSpriteInfo mapInfo;
+	SpriteMapInfo mapInfo;
 	SDL_Rect srcRect;
 	SDL_Texture* tempIMG;
 	SDL_Texture* mapSprite = tex_;
@@ -127,6 +131,44 @@ MapSpriteInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int
 		}
 	}
 	return mapInfo;
+}
+
+SpriteMapInfo TextureManager::CreateMapSprite(SpriteMapInfo info_, SDL_Texture* spriteMapTexture_)
+{
+	/* HOW IT WORKS
+	*
+	*/
+
+	int width;
+	int height;
+	int sourceX, sourceY;
+	SDL_Rect sourceRect;
+	SDL_Texture* tempImage;
+
+	width = info_.width;
+	height = info_.height;
+
+
+	sourceRect.x = sourceX;
+	sourceRect.y = sourceY;
+
+	// r stands for row
+	for (int r = 0; r < width; r++)
+	{
+		// c stands for column
+		for (int c = 0; c < height; c++)
+		{
+			sourceX = sourceX;
+			sourceY = sourceY;
+
+			sourceX = sourceX * r;
+			sourceY = sourceY * c;
+
+			tempImage = TextureManager::CreateTextureFromTexture(sourceRect, spriteMapTexture_);
+			info_.sprites.push_back(tempImage);
+		}
+	}
+	return info_;
 }
 
 
