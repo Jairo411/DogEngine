@@ -53,7 +53,4 @@ private:
 	std::map<MOUSEMAPPINGS, inputVals> inputMouseHolder;
 };
 
-
-
-
 #endif // !COMPUTERINPUT_H

@@ -2,9 +2,9 @@
 
 GameObject::GameObject()
 {
-	transform = Transform2D();
+	transform = C_Transform2D();
 
-	this->AddComponent<Transform2D>(transform);
+	this->AddComponent<C_Transform2D>(transform);
 }
 
 GameObject::~GameObject()

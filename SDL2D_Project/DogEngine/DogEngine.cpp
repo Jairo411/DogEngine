@@ -1,7 +1,9 @@
 #include "DogEngine.h"
-#include "AI/AI.h"
-#include "Scenes/GameScenes/Scene0.h"
-#include "Scenes/GameScenes/Scene1.h"
+//#include "AI/AI.h"
+#include "Scenes/SDLGameScenes/Scene0.h"
+#include "Scenes/SDLGameScenes/Scene1.h"
+#include "Scenes/SDLGameScenes/Scene2.h"
+#include "Scenes/SDLGameScenes/DebugScene.h"
 
 DogEngine* DogEngine::instance = nullptr;
 RendererManager* DogEngine::rendererManager = nullptr;
@@ -20,15 +22,59 @@ bool DogEngine::isRunning = false;
 
 DogEngine::DogEngine()
 {
+	
+	IntializeEngineSystems();
 	isRunning = true;
-
-	SetupSystems();
 	///instantiations
 	engineGUI = new GUI();
 	event_ = new SDL_Event();
-	mouseInput = new MouseInput();
-	keyBoardInput = new KeyBoardInput();
+
+
+	/*
+	*	threadManager->setMaxAmountOfThreads(4);
+	* threadManager->AddThreadAble(this);	
+	* threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process
+	*/
+
+	/*
+	* Setting up engine file directory 
+	*Test environment
+	* FileDirectoryHandler fileDirectory;
+	* std::string filePath;
+	* filePath = "./Assets/Character/Sprites";
+	* fileDirectory.ChangeDirectory(filePath);
+	* fileDirectory.PrintDirectoryContents();
+	* fileDirectory.PrintDirectoryPath();
+	* system("pause");
+	* Test environment
+	*/
 	
+
+
+	CurrentSetUp();
+	OnCreate("DogEngine 0.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+}
+
+void DogEngine::IntializeEngineSystems()
+{
+	///Singletons instantiations
+	timer = Timer::GetInstance();
+	sceneManager = SceneManager::GetInstance();
+	window = Window::GetInstance();
+	rendererManager = RendererManager::GetInstance();
+	engineSerializer = Serializer::GetInstance();
+	textureManager = TextureManager::GetInstance();
+	audioManager = AudioManager::GetInstance();
+	threadManager = ThreadManager::GetInstance();
+	gameObjectManager = ObjectManager::GetInstance();
+	eventManager = EventManager::GetInstance();
+	initialized = true;
+}
+
+void DogEngine::CurrentSetUp()
+{
+	MouseInput* mouseInput = new MouseInput();
+	KeyBoardInput* keyBoardInput = new KeyBoardInput();
 
 	ListenerInfo mouseInfo;
 	ListenerInfo keyboardInfo;
@@ -50,54 +96,11 @@ DogEngine::DogEngine()
 
 	eventManager->OnCreate();
 
-	threadManager->setMaxAmountOfThreads(4);
-	threadManager->AddThreadAble(this);
-//	threadManager->StartThread(static_cast<Game*>(this)); //when using the std renderer you re-add this process
-	
-	audioManager->AddSong("./Martin Stig Andersen - Limbo (Original Videogame Soundtrack) - 01 Menu.wav");
-	audioManager->playFirstSong();
-
-
-
-	
-
-	//Testing file locations 
-	//ResoureAllocator<SDL_Texture*> tex = ResoureAllocator<SDL_Texture*>("./Assets/Character/Sprites/adventurer-attack1-00.png");
-	//resourceManager->GetInstance()->AccessGenericContainer()->Push_Back <ResoureAllocator<SDL_Texture*>>(tex);
-
-	//Test environment
-	//FileDirectoryHandler fileDirectory;
-	//std::string filePath;
-	//filePath = "./Assets/Character/Sprites";
-	//fileDirectory.ChangeDirectory(filePath);
-	//fileDirectory.PrintDirectoryContents();
-	//fileDirectory.PrintDirectoryPath();
-	//system("pause");
-	//Test environment
-
-	initialized = false;	
-	OnCreate("DogEngine 0.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
-}
-
-void DogEngine::SetupSystems()
-{
-	///Singletons instantiations
-	timer = Timer::GetInstance();
-	sceneManager = SceneManager::GetInstance();
-	window = Window::GetInstance();
-	rendererManager = RendererManager::GetInstance();
-	engineSerializer = Serializer::GetInstance();
-	textureManager = TextureManager::GetInstance();
-	audioManager = AudioManager::GetInstance();
-	threadManager = ThreadManager::GetInstance();
-	gameObjectManager = ObjectManager::GetInstance();
-	eventManager = EventManager::GetInstance();
-
 }
 
 
 
-
+//Should see if I really need this function
 bool DogEngine::setIsRunning(bool tempBool_)
 {
 	isRunning = tempBool_;
@@ -123,26 +126,26 @@ DogEngine* DogEngine::GetInstance()
 
 void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
+	//Window and render intialization
 	window->setWindowProperties(posx, posy, width, height,SDL_WINDOWPOS_CENTERED);
 	window->SetWindowTitle(title);
-	window->SetFlag(SDL_RENDERER_ACCELERATED); //Change this to the enum values you have. 
+	window->SetFlag(SDL_RENDERER_ACCELERATED); 
 	window->OnCreate();
 	rendererManager->GetInstance()->setWindow(window);
-	rendererManager->GetInstance()->SetRenderer(0); //Change this to the enum values you have. 
+	rendererManager->GetInstance()->SetRenderer(static_cast<int>(RenderAPI::SDLAPI)); 
 	window->SetGUI(engineGUI);
 
-	isRunning = true;
 
-	//Use gameScene when testing out scene features. 
-	//std::shared_ptr<Scene0> gameScene = std::make_shared<Scene0>();
-	//Use tempScene when testing out engine features.
-	std::shared_ptr<Scene1> tempScene = std::make_shared<Scene1>();
+	std::shared_ptr<Scene0> tScene = std::make_shared<Scene0>();
+	unsigned int gameSceneID = sceneManager->Add(tScene);
 
-	unsigned int gameSceneID = sceneManager->Add(tempScene);
 
+	//Timer intialization 
 	timer->Start();
 	timer->SetLogicLoopSpeed(60);
 	sceneManager->SwitchTo(gameSceneID);
+
+	
 	GameLoop();
 
 
@@ -227,16 +230,16 @@ void DogEngine::CheckRenderer()
 
 void DogEngine::Render()
 {
-	if (rendererManager->GetInstance()->getRenderValue() == 0)
+	if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::SDLAPI))
 	{
 		//till I figure out why my engine keeps crashing when I do SDL clear calls here, ill leave this empty. 
 	}
-	else if (rendererManager->GetInstance()->getRenderValue() == 1)
+	else if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::OPENGLAPI))
 	{
 		rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->RefreshWindow();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
-	else if (rendererManager->GetInstance()->getRenderValue() == 2)
+	else if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::VULKANAPI))
 	{
 
 	}
@@ -247,7 +250,6 @@ void DogEngine::clean()
 {
 	SDL_DestroyWindow(window->getWindowContext());
 	SDL_DestroyRenderer(rendererManager->GetRenderAPI<SDLRenderer*>()->GetRenderer());
-	threadManager->StopThread(static_cast<ThreadAble*>(sceneManager));
 	delete this;
 	SDL_Quit();
 	std::cout << "Engine Cleaned" << std::endl;

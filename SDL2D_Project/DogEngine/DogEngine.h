@@ -1,7 +1,7 @@
 #ifndef DOGENGINE_H
 #define DOGENGINE_H
-#include <SDL.h>
-#include <SDL_image.h>
+#include "SDL.h"
+#include "SDL_image.h"
 #include <iostream>
 #include <thread>
 #include <functional>
@@ -29,7 +29,10 @@
 */
 class Scene0;
 class Scene1;
-class AIManager;
+class Scene2;
+
+class DebugScene;
+class AIManager; //remove this 
 class DogEngine : public ThreadAble {
 public:
 	~DogEngine();
@@ -46,7 +49,7 @@ public:
 	void CheckRenderer();
 	void Render();
 	void clean();
-	virtual void RunInstructions();
+	virtual void RunInstructions(); //Threading functionality 07-11-2023 needs to be reviewed 
 	static bool	setIsRunning(bool tempBool_);
 	static Window* window; //Engine Functionality 
 	static Timer* timer; //Engine Functitonality 
@@ -59,20 +62,32 @@ public:
 	static AudioManager* audioManager; //Engine functionality
 	static ObjectManager* gameObjectManager; // Engine functionality
 	static EventManager* eventManager; //Engine functionality
-	static bool initialized;
-	GUI* engineGUI;
-	SDL_Event* event_;
 private:
-	DogEngine();
+	DogEngine(); 
 	//Helper functions 
-	void SetupSystems();
-	MouseInput* mouseInput;
-	KeyBoardInput* keyBoardInput;
-	static DogEngine* instance;
-	static bool isRunning;	
+	void IntializeEngineSystems();
+	/// <summary>
+	/// This function, contains specific dogEngine setting already chosen to help with development speed as a tinkering ground.
+	/// </summary>
+	void CurrentSetUp();
+	static bool isRunning; // should remove static keyword
+	static bool initialized; // should remove static keyword
 	int currentRenderFlag = NULL;
 	int passRenderFlag = NULL;
+	GUI* engineGUI;
+	SDL_Event* event_;
+	static DogEngine* instance;
 	std::vector<std::thread> threadContainer;
 };
+
+
+
+/*
+* 
+void doSomething()
+{
+
+};
+*/
 
 #endif // !DOGENGINE_H

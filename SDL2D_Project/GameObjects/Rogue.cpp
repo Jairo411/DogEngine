@@ -4,7 +4,7 @@ Rogue::Rogue()
 {
 
 	//new code 
-	transform = Transform2D();
+	transform = C_Transform2D();
 	collider = C_RectangleCollider();
 	sprite = C_Sprite();
 
@@ -13,7 +13,7 @@ Rogue::Rogue()
 
 	collider.SetSize(50, 80);
 	
-	this->AddComponent<Transform2D>(transform);
+	this->AddComponent<C_Transform2D>(transform);
 	this->AddComponent<C_RectangleCollider>(collider);
 	this->AddComponent<C_Sprite>(sprite);
 	

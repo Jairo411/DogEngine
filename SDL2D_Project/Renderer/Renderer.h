@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "../DogEngine/DogEngineDefinitions.h"
 #include "Shader.h"
 
 /*
@@ -28,13 +29,7 @@ class DogEngine;
 
 typedef std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderers;
 
-enum class RenderAPI
-{
-	SDLAPI = 0,
-	OPENGLAPI = 1,
-	VULKANAPI = 2,
-	
-};
+
 class RendererManager 
 {
 public:

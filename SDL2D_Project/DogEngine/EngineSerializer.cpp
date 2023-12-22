@@ -9,12 +9,33 @@ Serializer::Serializer()
 	//Just creating every file, not handling any of the files
 	CurrentDoc = new pugi::xml_document();
 	directoryHandler = FileDirectoryHandler();
+	cwd = __FILE__;
+	std::cout << cwd << std::endl;
+	
+
+	/*22-12-2023
+	* Okay here is an idea, the iterator will simply just erase where it is at
+	* so what I can do is create a for loop probably using auto, because I will never know the path
+	* of the root,user and desktop. But what I can do is erase all the characters of the current working directory of this file 
+	* till I get to this path /DogEngine/SDL2D_Project.
+	*/
+	std::string::const_iterator it = cwd.begin();
+	cwd.erase(it);
+	
+	std::cout << cwd << std::endl;
+	/*
+	* If I am able to take the current working directory of this file C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\DogEngine\EngineSerializer.cpp
+	* which is the full path of this project, and then remove every that isn't this \DogEngine\SDL2D_Project\DogEngine
+	* I will be able to access all files through my project while also technically being cross platform.
+	*/
 	std::vector<std::string> directories = 
 	{
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/EngineData/",
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/Scenes/",
 	"C:/Users/jalbm/source/repos/SDL2D_Project/SDL2D_Project/GameEngineSaveInfo/GameObjects/"
 	};
+
+	
 
 	std::vector<std::string> files =
 	{

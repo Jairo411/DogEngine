@@ -28,12 +28,15 @@
 	2021-07-09 
 	So the way this is going to work is, that I am going to see if everyfile is created in the constructor, if it doesnt need to be created
 	it is already loaded within a variable or I have reference to load it in. with the loadFile Function i've created i've made it possible to 
-	correctly load in each and every document into the CurrentDoc variable. 
+	correctly load in each and every document into the CurrentDoc variable.		
 
 	Now Each Read and Write function can be handle properly through my load file function.
 	To prevent any future problems we are going to try, catch execptions all over the read and write functions that I have. 
 	*/
 /* Note about the gameObject deserializer you might not have to have seperate function to deserialize components. */
+/*Note 14-12-2023
+	Instead of using full paths to create directories or files, use environmental variables.
+*/
 class GameObject;
 class Scene;
 class Serializer 
@@ -75,8 +78,9 @@ private:
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
 	std::list<pugi::xml_document*> document_list;
-	FileDirectoryHandler directoryHandler;
 	std::vector<int> gameObjectIDs;
+	std::string cwd;
+	FileDirectoryHandler directoryHandler;
 	static Serializer* instance;
 };
 

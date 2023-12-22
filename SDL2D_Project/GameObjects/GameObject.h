@@ -111,7 +111,7 @@ public:
 	}
 protected:
 	virtual void UpdatePostion() final;
-	Transform2D transform; //transform that holds all object data , orientation , position and size. 
+	C_Transform2D transform; //transform that holds all object data , orientation , position and size. 
 	vector2 position;   // the x and y position.
 	vector2 pivotPosition; // stands for Pivot Position -> moved the origin of the gameObject to the middle of its rect.
 private: 

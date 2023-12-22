@@ -96,12 +96,4 @@ void SceneManager::Remove(unsigned int id)
 	}
 }
 
-void SceneManager::RunInstructions()
-{
-	while (getThreadAssignment() == true)
-	{
-		Render();
-	}
-
-}
 

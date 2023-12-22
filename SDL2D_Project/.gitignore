@@ -1,3 +1,11 @@
+#cmake Ignores
+/out
+bin/
+build/
+/.vs
+.idea/
+CMakeSettings.json
+
 # Prerequisites
 *.d
 *.ipch 

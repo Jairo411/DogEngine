@@ -1,74 +1,42 @@
-﻿  C_2DTransform.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  AnimationSet.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  C_Animation.cpp
-  C_Sprite.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Components\C_Sprite.cpp(27,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Components\C_Sprite.cpp(28,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  C_CircleCollider.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Components\C_CircleCollider.cpp(49,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Components\C_CircleCollider.cpp(51,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Components\C_CircleCollider.cpp(56,23): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Components\C_CircleCollider.cpp(60,14): warning C4305: '*=': truncation from 'double' to 'float'
-  C_RectangleCollider.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
-  ComputerInput.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Controller.cpp
-  Generating Code...
-  FileDirectoryHandler.cpp
-  AudioManager.cpp
-  EngineSerializer.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ObjectManager.cpp
-  DogEngine.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\DogEngine\DogEngine.cpp(193,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Main.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
+﻿  EngineSerializer.cpp
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Animation.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Animator\Animation.cpp(41,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Animator\Animation.cpp(41,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Animator.cpp
   Generating Code...
   AnimationHandler.cpp
   Observer.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   pugixml.cpp
   PlayerController.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   NetworkManager.cpp
   OpenGLTestGameObj.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   Skeleton.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   GameObject.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Rogue.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   Generating Code...
   Renderer.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(294,13): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\DearGUI\imgui_sdl.h(4): message : see declaration of 'SDL_Renderer'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(295,15): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
-C:\GameDev\SDL2-2.0.12\include\SDL_video.h(90): message : see declaration of 'SDL_Window'
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(354,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(354,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(354,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Renderer.cpp(354,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Renderer.cpp(294,2): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Window\DearGUI\imgui_sdl.h(4,8): message : see declaration of 'SDL_Renderer'
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Renderer.cpp(295,2): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
+C:\Dev\SDL2-2.0.12\include\SDL_video.h(90,16): message : see declaration of 'SDL_Window'
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Renderer.cpp(354,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Renderer.cpp(354,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Renderer.cpp(354,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Renderer.cpp(354,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Shader.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Shader.cpp(110,35): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Renderer\Shader.cpp(125,35): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
-  Generating Code...
-  Scene1.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Scene0.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Shader.cpp(110,33): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Renderer\Shader.cpp(125,33): warning C4267: '=': conversion from 'size_t' to 'GLsizei', possible loss of data
   Generating Code...
   ThreadManager.cpp
   imgui.cpp
@@ -78,49 +46,44 @@ C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h
   imgui_widgets.cpp
   Generating Code...
   GUI.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\GUI.cpp(50,2): warning C4065: switch statement contains 'default' but no 'case' labels
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Window\GUI.cpp(50,2): warning C4065: switch statement contains 'default' but no 'case' labels
   Window.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Window\GUI.h(199): warning C4717: 'ConsoleApp::TextEditCallbackStub': recursive on all control paths, function will cause runtime stack overflow
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Window\GUI.h(199): warning C4717: 'ConsoleApp::TextEditCallbackStub': recursive on all control paths, function will cause runtime stack overflow
   Converter.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Vec2.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(14,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Math\Vec2.cpp(15,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Math\Vec2.cpp(14,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Math\Vec2.cpp(15,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Generating Code...
   AI.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Grid.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\DogEngine\AI\Grid.cpp(56): warning C4715: 'NavTile::giveAddress': not all control paths return a value
   Collider.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(144,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(201,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(210,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(211,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(215,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(217,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(233,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\Physics\Collider.cpp(235,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(144,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(201,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(210,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(211,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(215,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(217,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(233,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\Physics\Collider.cpp(235,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Map.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Event.cpp
   SceneManager.cpp
   A_Star_Node_Priority.cpp
   node.cpp
   Generating Code...
   TextureManager.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Tiles.cpp
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(97,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(98,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(115,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\source\repos\SDL2D_Project\SDL2D_Project\GameObjects\Map\TileSet\Tiles.cpp(116,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\GameObjects\GameObject.h(14,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\SDL2D_Project\EventSystem\EventManager.h(65,33): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   Timer.cpp
-  SDL2D_Project.vcxproj -> C:\Users\jalbm\source\repos\SDL2D_Project\x64\Debug\SDL2D_Project.exe
+  SDL2D_Project.vcxproj -> C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\x64\Debug\SDL2D_Project.exe

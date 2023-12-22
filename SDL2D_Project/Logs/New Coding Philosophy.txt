@@ -1,0 +1,34 @@
+13-07-2023 
+Currently erased everything, that was here previously. I do feel like I need a development log 
+on the on going progress of the DogEngine but because I am the only person working on this engine, 
+I am going to make the simplest approach to everything I do, as not to get lost. 
+30-10-2023
+Yeah, I know this entry is pretty late, but I guess I had to do some soul searching in order to get back here. So yeah it's offical 
+I am going to finish this Game Engine. Through some recent books I've read I decided to make everything that I design, engineer and make 
+be as simple as possible. I am only a one man team, and I need to be efficent and as effective as possible.
+
+
+okay so what is the game plan going from now on?
+1. Simplicity, no over complicated design or impressive code. It is time to start with the fundamentals at get great at them, then 
+maybe I can do complex stuff later. 
+
+The Fundamentals are: 
+-Understanding and using logical design, functionality and architecture. This basically means using math, and good software programming design.
+-Writing good comments, to explain what certain things that need to be explained.
+-Working to proper scale with everything I do, no massive to-do lists, no extremely ambitious project scale, no extremely impressive API usage in every facet of your game engine, no large management systems of any kind.
+-Focusing learning on key specific areas at a time, no trying to learn everything at once.
+-Focus on high leverage activities.
+-Writing encapsulated, object oritented code and modern code.
+-Having a good understanding of software fundamnetals, be that coding or design and have a good concept of were the tech industry is headed and merge the two knowledges constantly.
+
+2. Constant Iteration and Learning 
+The need to constantly be implementing and finishing features towards your Game Engine. Because you'll never have the knowledge you need, in order to develop whatever you want. You need to know how to build projects and learn on the fly in short time. That is not only a requirement but a necessity for being a software developer. Working, Building and learning all kind of need to be done at the same time, you cannot just prepare on the side and then build your project. This is always an on-going process.
+
+You do not struggle with iteration, but you do have difficulties with actually learning within a decent amount of time. You need to be completely engaged in your learning, put all your focus and energy towards learning whatever you need to learn always. Take things step by step, when programming and don't jump steps, don't get impatient, because that is going to cost you down the line.
+
+3. Organization, please keep were you work organizated and easy to find. This makes the friction to start working not that much and you waste less time getting started. Have things in places were you can easily find them and they make sense.
+
+4.Planning, execution and reflection 
+It is always good to have a plan. You don't always have to follow all of your plans, but if you're able to avoid future road blocks or get a running head start that is obviously a benefit. Once you've finished executing your plan, relfect on it and see if planning helped a lot helped a little. Just try and see where the planning actually benefted you and where it didn't.
+
+5.To Dos, there is a good chance that once you start something, you're not going to finish it right away, be that a new feature or fixing a bug, or learning something new. It is good to have a To-Do, to know what you were working on previously, so you can get to working right away.

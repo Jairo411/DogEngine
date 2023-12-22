@@ -23,7 +23,7 @@ TileSetManager::~TileSetManager()
 
 void TileSetManager::CreateSpriteMap(SpriteMapInfo info)
 {
-	DogEngine::textureManager->GetInstance()->CreateMapSprite();
+	//DogEngine::textureManager->GetInstance()->CreateMapSprite();
 }
 
 void TileSetManager::Increment()

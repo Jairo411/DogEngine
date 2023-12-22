@@ -222,9 +222,9 @@ TILE::~TILE()
 
 void TILE::OnCreate()
 {
-	this->AddComponent<C_RectangleCollider*>(collider);
-	this->AddComponent<C_Sprite*>(sprite);
-	this->AddComponent<C_Transform2D>(transform);
+	//this->AddComponent<C_RectangleCollider*>(collider);
+	//this->AddComponent<C_Sprite*>(sprite);
+	//this->AddComponent<C_Transform2D>(transform);
 
 
 }

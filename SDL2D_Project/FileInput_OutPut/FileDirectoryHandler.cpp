@@ -3,6 +3,9 @@
 FileDirectoryHandler::FileDirectoryHandler()
 {
 	currentPath = std::string();
+	directoryFiles = std::vector<std::string>();
+	default_directories = std::vector<std::string>();
+	default_files = std::vector<std::string>();
 }
 
 FileDirectoryHandler::FileDirectoryHandler(std::string directoryPath_)

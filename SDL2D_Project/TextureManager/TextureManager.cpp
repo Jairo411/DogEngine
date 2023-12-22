@@ -135,13 +135,12 @@ SpriteMapInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int
 
 SpriteMapInfo TextureManager::CreateMapSprite(SpriteMapInfo info_, SDL_Texture* spriteMapTexture_)
 {
-	/* HOW IT WORKS
-	*
-	*/
+
 
 	int width;
 	int height;
-	int sourceX, sourceY;
+	int sourceX = 0;
+	int sourceY = 0;
 	SDL_Rect sourceRect;
 	SDL_Texture* tempImage;
 
@@ -151,6 +150,8 @@ SpriteMapInfo TextureManager::CreateMapSprite(SpriteMapInfo info_, SDL_Texture* 
 
 	sourceRect.x = sourceX;
 	sourceRect.y = sourceY;
+
+
 
 	// r stands for row
 	for (int r = 0; r < width; r++)

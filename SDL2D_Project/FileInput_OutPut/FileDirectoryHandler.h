@@ -5,22 +5,9 @@
 #include <string>
 #include <iostream>
 #include <assert.h>
-/*
-* This class is suppose to read the contents of whatever directory it is in.
-	What you are doing here is pure C++ 17 magic 
-	*NOTE* you can do something with file extentions probably only showing the file extentions that you want. 
-	* You haven't implementmented it because you're pretty lazy and it seems kinda extra work for you engine. 
-	* leaving this note, to remind you it's possible just in case you need it. *From past jairo =) 
-*/
-/* just some clarfication here
-* because im building my own command line object, ill leave some terminolongy for myself
-* there are only three things my command line object can do 
-* READ 
-* which reads a physical directory or file 
-* WRITE 
-* which changes a physical directory or file by either adding it or removing it 
-* VOID 
-* anything else pretty much, using setters and getters (sometimes) anything that isn't immediate with the console interface.
+/* 13-07-2023
+* This is my FileDirectoryHandler class, this class creates,navigates and stores important file information. 
+* The types of files that I want to create mainly are, Dogengine files. These files are mainly plain txt.
 */
 namespace fs = std::filesystem; //typedef, name alias
 class FileDirectoryHandler
@@ -31,11 +18,11 @@ public:
 	///Will properly construct a FileDirectoryHandler with a CWD 
 	FileDirectoryHandler(std::string directoryPath_);
 	~FileDirectoryHandler();
-	///Return current working READ
+	///Return current working, READ
 	std::string GetCurrentPath();
-	///Returns directories inside of current working directory READ
+	///Returns directories inside of current working directory, READ
 	std::vector<std::string> GetDirectories();
-	///Returns directory contents READ
+	///Returns directory contents, READ
 	std::vector<std::string> GetDirectoryContents();
 	///VOID
 	std::vector<std::string> GetIntialDirectories();

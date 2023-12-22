@@ -1,5 +1,6 @@
 #include "DogEngine.h"	
 #include <iostream>
+#include <SDL_main.h>
 
 DogEngine *engine = nullptr;
 
