@@ -1,0 +1,21 @@
+//Current coding standards for DogEngine 17-07-2023 
+
+
+/*Commenting in general, is a little bit diffcult because what needs to be explain for someone else won't for another. 
+*So to cercumnavigate this, the rule is simple and clear, short as possible. 
+*/
+
+Comments should be like this in .h files:
+
+YYYY-MM-DD
+2023-07-17 
+
+/*Comment explaining what this file does or is.*\
+
+
+Comments should be like this in .cpp files in two cases: 
+
+Case 1: 
+// 
+
+ 

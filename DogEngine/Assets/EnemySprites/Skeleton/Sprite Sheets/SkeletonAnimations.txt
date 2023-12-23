@@ -1,0 +1,12 @@
+Skeleton-Attack.png
+N
+Skeleton-Dead.png
+N
+Skeleton-Hit.png
+N
+Skeleton-Idle.png
+N
+Skeleton-React.png
+N
+Skeleton-walk.png
+E

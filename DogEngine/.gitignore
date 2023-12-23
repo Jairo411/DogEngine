@@ -1,0 +1,46 @@
+#cmake Ignores
+/out
+bin/
+build/
+/.vs
+.idea/
+CMakeSettings.json
+
+# Prerequisites
+*.d
+*.ipch 
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.ipch 
+
+# Precompiled Headers
+*.gch
+*.pch
+*.ipch 
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.ipch 
+# Fortran module files
+*.mod
+*.smod
+*.ipch 
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+*.ipch 
+
+# Executables
+*.exe
+*.out
+*.app
+*.ipch 
