@@ -1,46 +1,26 @@
 
-# DogEngine 0.0
-![DOGENGINELOGO](DogEngineMascot.png)
+# NOT FINAL README THIS IS A ROUGH COPY
+![License shield](/Resources/License_-MIT-blue.svg) ![Build](Resources/C++_build_not_working.svg) 
+![Logo banner](Resources/banner.png)
 
-<p>This repository holds my attempt into making a game engine from stratch, using C/C++. This project has been worked on, on and off throughout my years in humber and continues to be developed on.<p> 
+<br> 
 
-## How to clone my repository using gitbash
-<h4> <h4>
+## About The Dog Engine
+---
+The Dog Engine, is a engine that I made during 2019 days as a student at humber college. At first, this engine was made to be a final presentation of what I had learned at humber throughout the years, which it did end up being. But I managed to use this engine, while building it, for completing certain assignments. During this process, I learned a lot through the process of building the engine as time went on. 
 
-```gitbash
-    #clone repo in git bash  
-    git clone https://github.com/Jairo411/SDL2D_Project.git
-```
-
-
-# Main features
-<ul style="font-size:27px">
-    <li>
- Concurrency 
-    </li>
-    <li>
- Entity Component System 
-    </li>
-    <li>
- Modern C++ Features C++14,C++17 
-    </li>
-    <li>
-    OpenGL
-    </li>
-    <li>
-    Platform Independent File I/O
-    </li>
-</ul>
-
-# Credits 
-
-<h3> Hello my name is Jairo Morelli, i'm currently a 3rd year student at humber.
-I've spent my off time (up intil now) building the dog engine. My contact information will be down below.</h3>
+The engine now will display certain assignments, that I did for school with the technologies and designs I used to make those programs. 
 
 
-<p>&nbsp</p>
+<br>
 
-<h2> Jairo Alberto Morelli (Game Engine Programmer / Generalist Programmer)</h2>
+## Impressive Parts Of My GameEngine  (Placeholder, put assignments and the tech you used to make them)
+#### entity component system, Using modern C++ standard library features, OpenGL, Vulkan, timer. 
 
-[github](https://github.com/Jairo411)
-[linkedin](https://www.linkedin.com/in/jairo-morelli-b1018514b)
+<br>
+
+## Project Instructions On How To Install
+### clone repo and build project to your platform with the proper dependenices using cmake.
+
+
+<br>
