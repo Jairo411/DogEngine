@@ -9,8 +9,6 @@ Serializer::Serializer()
 	//Just creating every file, not handling any of the files
 	CurrentDoc = new pugi::xml_document();
 	directoryHandler = FileDirectoryHandler();
-	cwd = __FILE__;
-	std::cout << cwd << std::endl;
 	
 
 	/*22-12-2023
@@ -19,8 +17,7 @@ Serializer::Serializer()
 	* of the root,user and desktop. But what I can do is erase all the characters of the current working directory of this file 
 	* till I get to this path /DogEngine/SDL2D_Project.
 	*/
-	std::string::const_iterator it = cwd.begin();
-	cwd.erase(it);
+
 	
 	/*23-12-2023
 	Because the iterator checks for characters one by one, 
@@ -225,6 +222,36 @@ Serializer::~Serializer()
 {
 	CurrentDoc = nullptr;
 	delete CurrentDoc;
+}
+
+bool Serializer::FileExceptionThrower(const char* path_)
+{
+	std::string s = path_;
+	std::string::iterator it = std::string::iterator();
+	int length = strlen(s.c_str());
+	it = s.end() - 1;
+
+
+	std::cout << "Current size of const char * path" << length << std::endl;
+
+	for (int i = 0; i < i - 1 < length; it--)
+	{
+		if (*it=='.')
+		{
+			std::string errpath = __FILE__;
+			throw std::invalid_argument("In " + errpath + " gave invalid string input");
+		}
+		else if (*it=='/')
+		{
+			return true;
+		}
+		else if (it==s.begin())
+		{
+			std::string errpath = __FILE__;
+			throw std::invalid_argument("In " + errpath + " gave invalid string input");
+		}
+		it++;
+	}
 }
 
 int Serializer::GenerateRandomNumber()

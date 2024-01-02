@@ -52,6 +52,9 @@ public:
 	/// Change the current working directory with full paths
 	bool operator = (std::string path_);
 private:
+	bool FileExceptionThrower(const char* path_);
+
+
 	std::string currentPath;
 	std::vector<std::string> directoryFiles;
 	std::vector<std::string> directories;

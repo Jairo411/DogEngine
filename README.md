@@ -1,26 +1,16 @@
-
-# NOT FINAL README THIS IS A ROUGH COPY
+# DogEngine
 ![License shield](/Resources/License_-MIT-blue.svg) ![Build](Resources/C++_build_not_working.svg) 
 ![Logo banner](Resources/banner.png)
 
-<br> 
 
-## About The Dog Engine
----
-The Dog Engine, is a engine that I made during 2019 days as a student at humber college. At first, this engine was made to be a final presentation of what I had learned at humber throughout the years, which it did end up being. But I managed to use this engine, while building it, for completing certain assignments. During this process, I learned a lot through the process of building the engine as time went on. 
+The Dog Engine, is a  game engine that I started working on during 2019 in my days as a college student at humber college. I have gone through many trails and tribulations trying to finish this game engine, as well as many refactors. I am currently working on this engine again, to display what I've learn up to so far in my journey of programming for 6 years now. My plan is to have acouple stable releases of my game engine before I finish working on this project.
 
-The engine now will display certain assignments, that I did for school with the technologies and designs I used to make those programs. 
+## DogEngine Features
+* Entity Component System 
+* C++17 standard library features  
+* OpenGL 3D Graphics API 
 
-
-<br>
-
-## Impressive Parts Of My GameEngine  (Placeholder, put assignments and the tech you used to make them)
-#### entity component system, Using modern C++ standard library features, OpenGL, Vulkan, timer. 
-
-<br>
-
-## Project Instructions On How To Install
-### clone repo and build project to your platform with the proper dependenices using cmake.
-
-
-<br>
+## Current Tasks 
+* Implementing  Engine Serializer
+* Implementing Vulkan API 
+* Implementing stable release of the DogEngine, with calendar versioning to distinguish current/future releases 

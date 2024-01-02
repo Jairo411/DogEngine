@@ -78,12 +78,16 @@ public:
 private:
 	Serializer();
 	~Serializer();
+	bool FileExceptionThrower(const char* path_);
+
+
+
 	pugi::xml_document* CurrentDoc;
 	pugi::xml_parse_result result;
 	std::list<pugi::xml_document*> document_list;
 	std::vector<int> gameObjectIDs;
-	std::string cwd;
-	FileDirectoryHandler directoryHandler;
+	std::string cwd; //Current working directory 
+	FileDirectoryHandler directoryHandler; // Directory Handler Class
 	static Serializer* instance;
 };
 

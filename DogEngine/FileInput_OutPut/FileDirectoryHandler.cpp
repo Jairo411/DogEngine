@@ -153,3 +153,33 @@ bool FileDirectoryHandler::operator=(std::string path_)
 	}
 	return false;
 }
+
+bool FileDirectoryHandler::FileExceptionThrower(const char* path_)
+{
+	std::string s = path_;
+	std::string::iterator it = std::string::iterator();
+	int length = strlen(s.c_str());
+	it = s.end() - 1;
+
+
+	std::cout << "Current size of const char * path" << length << std::endl;
+
+	for (int i = 0; i < i - 1 < length; it--)
+	{
+		if (*it == '.')
+		{
+			std::string errpath = __FILE__;
+			throw std::invalid_argument("In " + errpath + " gave invalid string input");
+		}
+		else if (*it == '/')
+		{
+			return true;
+		}
+		else if (it == s.begin())
+		{
+			std::string errpath = __FILE__;
+			throw std::invalid_argument("In " + errpath + " gave invalid string input");
+		}
+		it++;
+	}
+}
