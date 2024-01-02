@@ -2,13 +2,13 @@
 #include "../GameObjects/GameObject.h"
 #include "Scenes/Scene.h"
 
-Serializer* Serializer::instance = nullptr;
+DGEngine::Serializer* Serializer::instance = nullptr;
 
-Serializer::Serializer()
+DGEngine::Serializer::Serializer()
 {
 	//Just creating every file, not handling any of the files
 	CurrentDoc = new pugi::xml_document();
-	directoryHandler = FileDirectoryHandler();
+	directoryHandler = DirectoryHandler();
 	
 
 	/*22-12-2023
@@ -209,7 +209,7 @@ Serializer::Serializer()
 	*/
 }
 
-Serializer* Serializer::GetInstance()
+DGEngine::Serializer* Serializer::GetInstance()
 {
 	if (instance == nullptr)
 	{
@@ -218,43 +218,15 @@ Serializer* Serializer::GetInstance()
 	return instance;
 }
 
-Serializer::~Serializer()
+DGEngine::Serializer::~Serializer()
 {
 	CurrentDoc = nullptr;
 	delete CurrentDoc;
 }
 
-bool Serializer::FileExceptionThrower(const char* path_)
-{
-	std::string s = path_;
-	std::string::iterator it = std::string::iterator();
-	int length = strlen(s.c_str());
-	it = s.end() - 1;
 
 
-	std::cout << "Current size of const char * path" << length << std::endl;
-
-	for (int i = 0; i < i - 1 < length; it--)
-	{
-		if (*it=='.')
-		{
-			std::string errpath = __FILE__;
-			throw std::invalid_argument("In " + errpath + " gave invalid string input");
-		}
-		else if (*it=='/')
-		{
-			return true;
-		}
-		else if (it==s.begin())
-		{
-			std::string errpath = __FILE__;
-			throw std::invalid_argument("In " + errpath + " gave invalid string input");
-		}
-		it++;
-	}
-}
-
-int Serializer::GenerateRandomNumber()
+int DGEngine::Serializer::GenerateRandomNumber()
 {
 	int random = 0;
 	srand(random);
@@ -262,7 +234,7 @@ int Serializer::GenerateRandomNumber()
 	return random;
 }
 
-pugi::xml_document* Serializer::DefaultSerialized(std::string tag_)
+pugi::xml_document* DGEngine::Serializer::DefaultSerialized(std::string tag_)
 {
 	/* SO THIS IS ALWAYS THE DEFAULT*/
 	pugi::xml_document* temp = new pugi::xml_document();
@@ -275,7 +247,7 @@ pugi::xml_document* Serializer::DefaultSerialized(std::string tag_)
 	return temp;
 }
 
-bool Serializer::isChildNodeExist(const char* nodeName_)
+bool DGEngine::Serializer::isChildNodeExist(const char* nodeName_)
 {
 	if (CurrentDoc->child(nodeName_) != NULL)
 	{
@@ -285,7 +257,7 @@ bool Serializer::isChildNodeExist(const char* nodeName_)
 	return false;
 }
 
-bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
+bool DGEngine::Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
 	loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
 	pugi::xml_node root = CurrentDoc->first_child();
@@ -324,7 +296,7 @@ bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 	return false;
 }
 
-bool Serializer::GameObjectExist(int ID_)
+bool DGEngine::Serializer::GameObjectExist(int ID_)
 {
 	if (ID_!=0)
 	{
@@ -336,7 +308,7 @@ bool Serializer::GameObjectExist(int ID_)
 	}
 }
 
-bool Serializer::loadFile(const char* FileDirectory_)
+bool DGEngine::Serializer::loadFile(const char* FileDirectory_)
 {
 
 	pugi::xml_parse_result result = CurrentDoc->load_file(FileDirectory_);
@@ -346,14 +318,14 @@ bool Serializer::loadFile(const char* FileDirectory_)
 
 
 
-void Serializer::Update()
+void DGEngine::Serializer::Update()
 {
 	//if HasFileChange == true or whatever
 	//Assign existing ID to existing gameObj
 	//if existing GameObj exist and no ID exist make an ID for that existing game object
 }
 
-void Serializer::AddGameObject(GameObject* OBJ_) // 
+void DGEngine::Serializer::AddGameObject(GameObject* OBJ_) // 
 {
 	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 	if (GameObjectExist(OBJ_->getID() == false))
@@ -385,12 +357,12 @@ void Serializer::AddGameObject(GameObject* OBJ_) //
 	}
 }
 
-void Serializer::AddGameObject(int ID_)
+void DGEngine::Serializer::AddGameObject(int ID_)
 {
 	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 }
 
-void Serializer::AssignID(std::list<GameObject*> OBJ_List) //this will only assign ID to object/class that already exist, this will only be called in the beginning of the Engine load
+void DGEngine::Serializer::AssignID(std::list<GameObject*> OBJ_List) //this will only assign ID to object/class that already exist, this will only be called in the beginning of the Engine load
 {
 	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 
@@ -453,7 +425,7 @@ void Serializer::AssignID(std::list<GameObject*> OBJ_List) //this will only assi
 	}
 }
 
-void Serializer::CreateID(GameObject* OBJ_)
+void DGEngine::Serializer::CreateID(GameObject* OBJ_)
 {
 	//Lets just make sure that the ID doesn't already exist
 	//then assign that ID in our XML file
@@ -474,7 +446,7 @@ void Serializer::CreateID(GameObject* OBJ_)
 	
 }
 
-void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
+void DGEngine::Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 {
 	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;
@@ -529,10 +501,10 @@ void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 	//	
 	//}
 }
-void Serializer::RemoveAnimation(std::string tagID_, const char* imageSrc_)
+void DGEngine::Serializer::RemoveAnimation(std::string tagID_, const char* imageSrc_)
 {
 }
-void Serializer::CreateScene(int currentScene_, const char* sceneName_)
+void DGEngine::Serializer::CreateScene(int currentScene_, const char* sceneName_)
 {
 	/*I need to load the file if it exist*/
 	loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
@@ -557,19 +529,19 @@ void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 	}
 }
 
-void Serializer::SaveScene(int currentScene_, Scene& Scenedata_)
+void DGEngine::Serializer::SaveScene(int currentScene_, Scene& Scenedata_)
 {
 }
 
-void Serializer::RemoveScene(const char* sceneName)
+void DGEngine::Serializer::RemoveScene(const char* sceneName)
 {
 }
 
-void Serializer::DeserializeAnimations()
+void DGEngine::Serializer::DeserializeAnimations()
 {
 }
 
-void Serializer::DeserializeScenes()
+void DGEngine::Serializer::DeserializeScenes()
 {
 }
 

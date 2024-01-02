@@ -10,14 +10,15 @@
 * The types of files that I want to create mainly are, Dogengine files. These files are mainly plain txt.
 */
 namespace fs = std::filesystem; //typedef, name alias
-class FileDirectoryHandler
+
+class DirectoryHandler
 {
 public:
 	///Will construct a FileDirectoryHandler with no idea in which directory it is currently working in
-	FileDirectoryHandler();
+	DirectoryHandler();
 	///Will properly construct a FileDirectoryHandler with a CWD 
-	FileDirectoryHandler(std::string directoryPath_);
-	~FileDirectoryHandler();
+	DirectoryHandler(std::string directoryPath_);
+	~DirectoryHandler();
 	///Return current working, READ
 	std::string GetCurrentPath();
 	///Returns directories inside of current working directory, READ
@@ -52,6 +53,7 @@ public:
 	/// Change the current working directory with full paths
 	bool operator = (std::string path_);
 private:
+
 	bool FileExceptionThrower(const char* path_);
 
 
