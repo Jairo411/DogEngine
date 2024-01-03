@@ -1,4 +1,5 @@
 #include "../../DogEngine/DogEngineDefinitions.h"
+#include "../../../DogEngine/DogEngine/DogEngine.h"
 #include "../GameObjects/GameObject.h"
 #include "C_RectangleCollider.h"
 
@@ -32,7 +33,7 @@ void C_RectangleCollider::OnDestroy()
 
 void C_RectangleCollider::Update(float deltatime)
 {
-	vector2 newPos;
+	DGEngine::core::vector2 newPos;
 	newPos.x = objCast->getPosition().x * deltatime;
 	newPos.y = objCast->getPosition().y * deltatime;
 	newPos.x += (float)offsetX;
@@ -41,9 +42,8 @@ void C_RectangleCollider::Update(float deltatime)
 }
 
 void C_RectangleCollider::Render()
-{
-	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
-	
+{	
+	DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
 }
 
 void C_RectangleCollider::SetSize(int width_, int height_)

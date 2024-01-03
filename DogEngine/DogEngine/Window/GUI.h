@@ -217,7 +217,6 @@ private:
 	int buttons;
 	ImGuiIO* io;
 	ConsoleApp consoleapp;
-	DirectoryHandler fileDirectory
 };
 
 #endif // ! GUI_H

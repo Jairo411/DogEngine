@@ -1,6 +1,8 @@
 #ifndef CIRCLECOLLIDER_H
 #define CIRCLECOLLIDER_H
-#include "Component.h""
+#include "Component.h"
+#include "../GameObjects/GameObject.h"
+#include "../../DogEngine/DogEngine.h"
 #include "../../DogEngine/DogEngineDefinitions.h"
 /*
 *So the CircleCollider works almost the same as the RectangleCollider,
@@ -13,8 +15,6 @@
 * obviously this intialize colldier value that display the collider is just a intialization, with the engine support coming, it will just be something that might make things easier for
 * the user.
 */
-class DogEngine;
-class GameObject;
 class C_CircleCollider : public Component
 {
 public:

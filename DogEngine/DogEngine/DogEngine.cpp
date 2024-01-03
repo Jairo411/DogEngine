@@ -2,7 +2,6 @@
 //#include "AI/AI.h"
 #include "../DogEnginePlayground/Scenes/SDLGameScenes/Scene0.h"
 #include "../DogEnginePlayground/Scenes/SDLGameScenes/Scene1.h"
-#include "../DogEnginePlayground/Scenes/SDLGameScenes/Scene2.h"
 #include "../DogEnginePlayground/Scenes/SDLGameScenes/DebugScene.h"
 
 

@@ -1,6 +1,5 @@
 #include "C_CircleCollider.h"
-#include "../GameObjects/GameObject.h"
-#include "../../DogEngine/DogEngine.h"
+
 
 C_CircleCollider::C_CircleCollider()
 {

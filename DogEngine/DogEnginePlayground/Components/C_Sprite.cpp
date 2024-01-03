@@ -1,5 +1,5 @@
 #include "C_Sprite.h"
-#include "../DogEngine/DogEngine.h"
+#include "../../DogEngine/DogEngine.h"
 #include "../GameObjects/GameObject.h"
 C_Sprite::C_Sprite() : objCast(nullptr) ,info(SpriteInfo())
 {

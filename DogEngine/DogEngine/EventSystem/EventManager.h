@@ -5,7 +5,6 @@
 #include "Event.h"
 //For comparing if listenerInfo class has the same address. 
 //checking to see if it is the same listenerInfo class not an 'equal' listenerInfo class.
-namespace DGEngine::core {
 	inline bool operator ==(ListenerInfo lhs_, ListenerInfo rhs_)
 	{
 		if (&lhs_ == &rhs_)
@@ -207,6 +206,5 @@ namespace DGEngine::core {
 		int currentLength;
 		int passLength;
 	};
-}
 
 #endif // !EVENTMANAGER_H*/

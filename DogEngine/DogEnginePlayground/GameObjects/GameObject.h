@@ -8,10 +8,10 @@
 #include<iostream>
 #include<fstream>
 #include<type_traits>
-#include "../../DogEngine/DogEngineDefinitions.h"
 #include <utility>
 #include "Object.h"
 #include "../Components/C_2DTransform.h"
+#include "../../DogEngine/DogEngineDefinitions.h"
 /*Standard GameObject class should be abstract and should be the base class.
 of any game object in the game i.e
 -Enemies

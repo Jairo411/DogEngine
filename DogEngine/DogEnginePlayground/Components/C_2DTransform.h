@@ -21,5 +21,5 @@ public:
 	//Relfect().
 private:
 	DGEngine::core::Mat3 matrix2D;
-}
+};
 #endif // !C_TRANSFORM_H

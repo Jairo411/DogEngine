@@ -28,7 +28,7 @@ void C_Transform2D::Render()
 {
 }
 
-void C_Transform2D::SetMatrix(Mat3 matrix_)
+void C_Transform2D::SetMatrix(DGEngine::core::Mat3 matrix_)
 {
 	matrix2D = matrix_;
 }
