@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "../DogEngine/DogEngine.h"
+#include "../DogEngine.h"
 #include <SDL_syswm.h>
 
 int Window::ScreenHeight = 0; 
@@ -128,7 +128,7 @@ Window::~Window()
 
 void Window::Render()
 {
-	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
+	switch (DGEngine::core::DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 		default:
 		break;

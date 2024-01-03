@@ -3,9 +3,9 @@
 #include <list>
 #include <vector>
 #include "TileSet/Tiles.h"
-#include "../../Window/Window.h" //Remove this 
-#include "../../Math/Vec2.h"
-#include "../../Math/Converter.h"
+#include "../../../DogEngine/Window/Window.h"
+#include "../../../DogEngine/Math/Vec2.h"
+#include "../../../DogEngine/Math/Converter.h"
 ///*Map Layer is the background of the game, Currently acting like the actual game map
 // but that will chance*/
 // /* I either need to build a nav mesh class or extend MapLayer functionality to make this work better, right now I do not know */

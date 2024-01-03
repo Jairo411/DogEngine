@@ -67,7 +67,7 @@ TextureInfo TextureManager::LoadTexture(const char * filename)
 	}
 
 
-	SDL_Texture* tex = DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->CreateTextureFromSurface(tempSurface);
+	SDL_Texture* tex = DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->CreateTextureFromSurface(tempSurface);
 	SDL_QueryTexture(tex,NULL,NULL,&width,&height);
 	textInfo.height = height;
 	textInfo.width = width;
@@ -83,14 +83,14 @@ TextureInfo TextureManager::LoadTexture(TextureInfo info_)
 SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Texture* source)
 {
 	/*Loads part of the texture*/
-	SDL_Texture* tex = SDL_CreateTexture(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), SDL_PIXELFORMAT_ABGR8888,SDL_TEXTUREACCESS_TARGET,sRect.w,sRect.h);
-	SDL_SetRenderTarget(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), tex);
+	SDL_Texture* tex = SDL_CreateTexture(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), SDL_PIXELFORMAT_ABGR8888,SDL_TEXTUREACCESS_TARGET,sRect.w,sRect.h);
+	SDL_SetRenderTarget(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), tex);
 	SDL_SetTextureBlendMode(tex, SDL_BLENDMODE_BLEND);
-	SDL_SetRenderDrawColor(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 0, 0, 0, 0);
-	SDL_RenderClear(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer());
-	SDL_RenderCopy(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), source, &sRect,NULL);
+	SDL_SetRenderDrawColor(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 0, 0, 0, 0);
+	SDL_RenderClear(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer());
+	SDL_RenderCopy(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), source, &sRect,NULL);
 	// the following line should reset the target to default(the screen)
-	SDL_SetRenderTarget(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), NULL);
+	SDL_SetRenderTarget(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), NULL);
 	return tex;
 }
 

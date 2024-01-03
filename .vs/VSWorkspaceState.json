@@ -2,8 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\SDL2D_Project",
-    "\\SDL2D_Project\\Renderer"
+    "\\SDL2D_Project\\DogEngine",
+    "\\SDL2D_Project\\DogEngine\\Scenes",
+    "\\SDL2D_Project\\DogEngine\\Scenes\\GameScenes",
+    "\\SDL2D_Project\\FileInput_OutPut",
+    "\\SDL2D_Project\\Window"
   ],
-  "SelectedNode": "\\SDL2D_Project\\Renderer\\Shader.cpp",
+  "SelectedNode": "\\SDL2D_Project\\DogEngine\\DogEngine.h",
   "PreviewInSolutionExplorer": false
 }

@@ -1,26 +1,26 @@
 #include "DirectoryHandler.h"
 
-DGEngine::DirectoryHandler::DirectoryHandler()
+DirectoryHandler::DirectoryHandler()
 {
 	currentPath = std::string();
 	files = std::vector<std::string>();
 }
 
-DGEngine::DirectoryHandler::DirectoryHandler(std::string directoryPath_)
+DirectoryHandler::DirectoryHandler(std::string directoryPath_)
 {
 	currentPath = directoryPath_;
 }
 
-DGEngine::DirectoryHandler::~DirectoryHandler()
+DirectoryHandler::~DirectoryHandler()
 {
 }
 
-std::string DGEngine::DirectoryHandler::GetCurrentPath()
+std::string DirectoryHandler::GetCurrentPath()
 {
 	return currentPath;
 }
 
-std::vector<std::string> DGEngine::DirectoryHandler::GetDirectories()
+std::vector<std::string> DirectoryHandler::GetDirectories()
 {
 	std::vector<std::string> directories;
 	for (const auto& entry : fs::directory_iterator(currentPath.c_str()))
@@ -34,7 +34,7 @@ std::vector<std::string> DGEngine::DirectoryHandler::GetDirectories()
 	return directories;
 }
 
-std::vector<std::string> DGEngine::DirectoryHandler::GetDirectoryContents()
+std::vector<std::string> DirectoryHandler::GetDirectoryContents()
 {
 	std::vector<std::string> contents;
 	for (const auto& entry : fs::directory_iterator(currentPath.c_str()))
@@ -48,24 +48,24 @@ std::vector<std::string> DGEngine::DirectoryHandler::GetDirectoryContents()
 	return contents;
 }
 
-void DGEngine::DirectoryHandler::SetDirectory(const char* dp_)
+void DirectoryHandler::SetDirectory(const char* dp_)
 {
 	directories.push_back(dp_);
 }
 
-void DGEngine::DirectoryHandler::SetDirectory(const std::vector<std::string> dp_)
+void DirectoryHandler::SetDirectory(const std::vector<std::string> dp_)
 {
 	directories = dp_;
 }
 
-void DGEngine::DirectoryHandler::SetDirectory(const std::vector<std::string> dp_, const std::vector<std::string> fp_)
+void DirectoryHandler::SetDirectory(const std::vector<std::string> dp_, const std::vector<std::string> fp_)
 {
 	directories = dp_;
 	files = fp_;
 }
 
 
-void DGEngine::DirectoryHandler::PrintDirectoryContents()
+void DirectoryHandler::PrintDirectoryContents()
 {
 	for (const auto& entry: fs::directory_iterator(currentPath.c_str()))
 	{
@@ -85,25 +85,25 @@ void DGEngine::DirectoryHandler::PrintDirectoryContents()
 	}
 }
 
-void DGEngine::DirectoryHandler::PrintDirectoryPath()
+void DirectoryHandler::PrintDirectoryPath()
 {
 	const auto& entry = fs::directory_entry(currentPath.c_str());
 	std::cout << "Dir: " << entry.path().string();
 }
 
 
-void DGEngine::DirectoryHandler::CreateDirectory(std::string fulldirectoryPath_)
+void DirectoryHandler::CreateDirectory(std::string fulldirectoryPath_)
 {
 	fs::path directory; 
 	directory = fulldirectoryPath_;
 	fs::create_directory(directory);
 }
 
-void DGEngine::DirectoryHandler::Update()
+void DirectoryHandler::Update()
 {
 }
 
-bool DGEngine::DirectoryHandler::operator==(const char* directoryPath_)
+bool DirectoryHandler::operator==(const char* directoryPath_)
 {
 	if (fs::exists(directoryPath_) == true)
 	{
@@ -115,12 +115,12 @@ bool DGEngine::DirectoryHandler::operator==(const char* directoryPath_)
 	}
 }
 
-bool DGEngine::DirectoryHandler::operator==(std::vector<std::string> directories_)
+bool DirectoryHandler::operator==(std::vector<std::string> directories_)
 {
 	return false;
 }
 
-bool DGEngine::DirectoryHandler::operator!=(const char* directoryPath_)
+bool DirectoryHandler::operator!=(const char* directoryPath_)
 {
 	if (fs::exists(directoryPath_) == false)
 	{
@@ -132,12 +132,12 @@ bool DGEngine::DirectoryHandler::operator!=(const char* directoryPath_)
 	}
 }
 
-bool DGEngine::DirectoryHandler::operator!=(std::vector<std::string> directories_)
+bool DirectoryHandler::operator!=(std::vector<std::string> directories_)
 {
 	return false;
 }
 
-bool DGEngine::DirectoryHandler::operator=(std::string path_)
+bool DirectoryHandler::operator=(std::string path_)
 {
 	if (fs::exists(path_))
 	{
@@ -147,7 +147,7 @@ bool DGEngine::DirectoryHandler::operator=(std::string path_)
 	return false;
 }
 
-bool DGEngine::DirectoryHandler::FileExceptionThrower(const char* path_)
+bool DirectoryHandler::FileExceptionThrower(const char* path_)
 {
 	std::string s = path_;
 	std::string::iterator it = std::string::iterator();

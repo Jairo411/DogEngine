@@ -16,6 +16,8 @@ TextureManager* DGEngine::core::DogEngine::textureManager = nullptr;
 SceneManager* DGEngine::core::DogEngine::sceneManager = nullptr;
 ThreadManager* DGEngine::core::DogEngine::threadManager = nullptr;
 AudioManager* DGEngine::core::DogEngine::audioManager = nullptr;
+ObjectManager* DGEngine::core::DogEngine::gameObjectManager = nullptr;
+EventManager* DGEngine::core::DogEngine::eventManager = nullptr;
 
 bool DGEngine::core::DogEngine::initialized = false;
 bool DGEngine::core::DogEngine::isRunning = false;

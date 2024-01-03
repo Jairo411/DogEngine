@@ -11,9 +11,7 @@
 * The types of files that I want to create mainly are, Dogengine files. These files are mainly plain txt.
 */
 namespace fs = std::filesystem; //typedef, name alias
-namespace DGEngine::core {
-	class DirectoryHandler
-	{
+	class DirectoryHandler{
 	public:
 		DirectoryHandler(DirectoryHandler& other) = delete;
 		DirectoryHandler(const DirectoryHandler&) = delete;
@@ -67,10 +65,8 @@ namespace DGEngine::core {
 	private:
 		bool FileExceptionThrower(const char* path_);
 
-
 		std::string currentPath;
 		std::vector<std::string> files;
 		std::vector<std::string> directories;
 	};
-}
 #endif //FILEDIRECTORYHANDLER_H

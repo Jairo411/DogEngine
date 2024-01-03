@@ -39,7 +39,7 @@ void C_Sprite::Update(float deltaTime_)
 void C_Sprite::Render()
 {
 	SDL_Texture* tex = assetInfo.getResource()->texture;
-	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(tex, &spriteRect.first, &spriteRect.second, info.angle, &info.center, info.flip);
+	DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(tex, &spriteRect.first, &spriteRect.second, info.angle, &info.center, info.flip);
 }
 
 void C_Sprite::SetInfo(const SpriteInfo info_)

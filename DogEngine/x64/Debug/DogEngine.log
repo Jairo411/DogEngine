@@ -1,18 +1,5 @@
-﻿  C_2DTransform.cpp
+﻿  DogEngine.cpp
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  AnimationSet.cpp
-  C_Animation.cpp
-  C_Sprite.cpp
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(2,10): fatal  error C1083: Cannot open include file: '../DogEngine/DogEngine.h': No such file or directory
-  C_CircleCollider.cpp
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(48,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(50,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(55,13): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(59,14): warning C4305: '*=': truncation from 'double' to 'float'
-  C_RectangleCollider.cpp
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.cpp(199,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  DogEngine.vcxproj -> C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\x64\Debug\DogEngine.exe

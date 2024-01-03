@@ -1,5 +1,5 @@
 #include "Rogue.h"
-#include "../DogEngine/DogEngine.h"
+#include "../../DogEngine/DogEngine.h"
 Rogue::Rogue() 
 {
 
@@ -66,7 +66,7 @@ void Rogue::Update(float dt_)
 void Rogue::Render()
 {
 	/*This is in the loop*/
-	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
+	switch (DGEngine::core::DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;

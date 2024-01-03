@@ -1,7 +1,8 @@
 #include "Renderer.h"
+#include "../DogEngine.h"
 #include "../Window/Window.h"
-#include "../DogEngine/DogEngine.h"
-#include "../GameObjects/GameObject.h"
+#include "../../DogEnginePlayground/GameObjects/GameObject.h"
+
 
 RendererManager* RendererManager::instance = nullptr;
 int RendererManager::R_Value = NULL;
@@ -455,7 +456,7 @@ void Square2D::OnCreate()
 
 void Square2D::SetImage(const char* imageSrc_)
 {
-	texture = DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
+	texture = DGEngine::core::DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
 }
 
 void Square2D::SetProjection(glm::mat4 projection_)
@@ -511,7 +512,7 @@ void Particle::OnCreate()
 
 void Particle::SetImage(const char* imageSrc_)
 {
-	texture = DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
+	texture = DGEngine::core::DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
 }
 
 void Particle::SetProjection(glm::mat4 projection_)

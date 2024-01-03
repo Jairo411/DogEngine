@@ -1,7 +1,7 @@
 #ifndef OPENGLTEST_HEADER
 #define OPENGLTEST_HEADER
-#include "../DogEngine/DogEngine.h"
-#include "../Renderer/Renderer.h"
+#include "../../DogEngine/DogEngine.h"
+#include "../../DogEngine/Renderer/Renderer.h"
 #include <vector>
 #include <string>
 class OpenGLTestGameObj

@@ -1,7 +1,8 @@
 #ifndef COMPUTERINPUT_H
 #define COMPUTERINPUT_H
 #include "../EventSystem/Event.h"
-#include "../DogEngine/DogEngineDefinitions.h"
+#include "../DogEngineDefinitions.h"
+#include "Controller.h"
 class DogEngine;
 enum class KEYBOARD_MAPPINGS
 {

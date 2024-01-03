@@ -1,14 +1,14 @@
 #include "EngineSerializer.h"
-#include "../../GameObjects/GameObject.h"
-#include "../Scenes/Scene.h"
+#include "../../DogEnginePlayground/GameObjects/GameObject.h"
+#include "../../DogEngine/SceneManager/Scene.h"
 
-DGEngine::core::Serializer* DGEngine::core::Serializer::instance = nullptr;
+Serializer* Serializer::instance = nullptr;
 
-DGEngine::core::Serializer::Serializer()
+Serializer::Serializer()
 {
 	//Just creating every file, not handling any of the files
 	CurrentDoc = new pugi::xml_document();
-	directoryHandler = DirectoryHandler();
+	
 	
 
 	/*22-12-2023
@@ -60,37 +60,37 @@ DGEngine::core::Serializer::Serializer()
 		"DogEngine/DogEngine/GameEngineSaveInfo/GameObjectData.xml"
 	};
 
-	directoryHandler.SetDirectory(directories, files);
+	//directoryHandler.SetDirectory(directories, files);
 
-	if (directoryHandler!="DogEngine/DogEngine/GameEngineSaveInfo/")
-	{
-		directoryHandler.CreateDirectory("DogEngine/DogEngine/GameEngineSaveInfo/");
-	}
-	
-	directoryHandler = "DogEngine/DogEngine/GameEngineSaveInfo/";
+	//if (directoryHandler!="DogEngine/DogEngine/GameEngineSaveInfo/")
+	//{
+	//	directoryHandler.CreateDirectory("DogEngine/DogEngine/GameEngineSaveInfo/");
+	//}
+	//
+	//directoryHandler = "DogEngine/DogEngine/GameEngineSaveInfo/";
 
-	if (directoryHandler!=directoryHandler.GetIntialDirectories()) //create the directories if files don't exist
-	{
-		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[0].c_str());
-		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[1].c_str());
-		directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[2].c_str());
-	}
-	
-	if (directoryHandler!=directoryHandler.GetIntialFiles()) // Load in the directories if files do exist
-	{
-		pugi::xml_document* document0;
-		pugi::xml_document* document1;
-		pugi::xml_document* document2;
-		document0 = DefaultSerialized(directoryHandler.GetIntialFiles()[0].c_str());
-		document1 = DefaultSerialized(directoryHandler.GetIntialFiles()[1].c_str());
-		document2 = DefaultSerialized(directoryHandler.GetIntialFiles()[2].c_str());
-		document0->save_file(directoryHandler.GetIntialFiles()[0].c_str());
-		document1->save_file(directoryHandler.GetIntialFiles()[1].c_str());
-		document2->save_file(directoryHandler.GetIntialFiles()[2].c_str());
-		document_list.push_back(document0);
-		document_list.push_back(document1);
-		document_list.push_back(document2);
-	}
+	//if (directoryHandler!=directoryHandler.GetIntialDirectories()) //create the directories if files don't exist
+	//{
+	//	directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[0].c_str());
+	//	directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[1].c_str());
+	//	directoryHandler.CreateDirectory(directoryHandler.GetIntialDirectories()[2].c_str());
+	//}
+	//
+	//if (directoryHandler!=directoryHandler.GetIntialFiles()) // Load in the directories if files do exist
+	//{
+	//	pugi::xml_document* document0;
+	//	pugi::xml_document* document1;
+	//	pugi::xml_document* document2;
+	//	document0 = DefaultSerialized(directoryHandler.GetIntialFiles()[0].c_str());
+	//	document1 = DefaultSerialized(directoryHandler.GetIntialFiles()[1].c_str());
+	//	document2 = DefaultSerialized(directoryHandler.GetIntialFiles()[2].c_str());
+	//	document0->save_file(directoryHandler.GetIntialFiles()[0].c_str());
+	//	document1->save_file(directoryHandler.GetIntialFiles()[1].c_str());
+	//	document2->save_file(directoryHandler.GetIntialFiles()[2].c_str());
+	//	document_list.push_back(document0);
+	//	document_list.push_back(document1);
+	//	document_list.push_back(document2);
+	//}
 
 	//struct stat status;
 	///// Create the directories if they don't exist
@@ -209,7 +209,7 @@ DGEngine::core::Serializer::Serializer()
 	*/
 }
 
-DGEngine::core::Serializer* DGEngine::core::Serializer::GetInstance()
+Serializer* Serializer::GetInstance()
 {
 	if (instance == nullptr)
 	{
@@ -218,7 +218,7 @@ DGEngine::core::Serializer* DGEngine::core::Serializer::GetInstance()
 	return instance;
 }
 
-DGEngine::core::Serializer::~Serializer()
+Serializer::~Serializer()
 {
 	CurrentDoc = nullptr;
 	delete CurrentDoc;
@@ -226,7 +226,7 @@ DGEngine::core::Serializer::~Serializer()
 
 
 
-int DGEngine::core::Serializer::GenerateRandomNumber()
+int Serializer::GenerateRandomNumber()
 {
 	int random = 0;
 	srand(random);
@@ -234,7 +234,7 @@ int DGEngine::core::Serializer::GenerateRandomNumber()
 	return random;
 }
 
-pugi::xml_document* DGEngine::core::Serializer::DefaultSerialized(std::string tag_)
+pugi::xml_document* Serializer::DefaultSerialized(std::string tag_)
 {
 	/* SO THIS IS ALWAYS THE DEFAULT*/
 	pugi::xml_document* temp = new pugi::xml_document();
@@ -247,7 +247,7 @@ pugi::xml_document* DGEngine::core::Serializer::DefaultSerialized(std::string ta
 	return temp;
 }
 
-bool DGEngine::core::Serializer::isChildNodeExist(const char* nodeName_)
+bool Serializer::isChildNodeExist(const char* nodeName_)
 {
 	if (CurrentDoc->child(nodeName_) != NULL)
 	{
@@ -257,46 +257,47 @@ bool DGEngine::core::Serializer::isChildNodeExist(const char* nodeName_)
 	return false;
 }
 
-bool DGEngine::core::Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
+bool Serializer::SceneExist(int SceneIndex_, const char* SceneName_)
 {
-	loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
-	pugi::xml_node root = CurrentDoc->first_child();
-	std::cout << root.name() << std::endl;
-	for (pugi::xml_node node : root.children("Scene"))
-	{
-		std::cout << node.name() << std::endl;
-		pugi::xml_attribute_iterator it;
-		std::string de_SerializedContainer[2];
-		for (it = node.attributes().begin(); it != node.attributes().end(); it++)
-		{
-			std::string attributeName = it->name();
-			if (strcmp(attributeName.c_str(), "SceneNumber") == 0)
-			{
-				std::cout << " " << it->name();
-				std::cout << " = " << it->as_string();
-				de_SerializedContainer[0] = it->as_string();
-			}
-			if (strcmp(attributeName.c_str(), "SceneName") == 0)
-			{
-				std::cout << " " << it->name();
-				std::cout << " = " << it->as_string();
-				de_SerializedContainer[1] = it->as_string();
-			}
-			if (strcmp(de_SerializedContainer[0].c_str(), std::to_string(SceneIndex_).c_str()) == 0) // comparing the first attribute with my SceneIndex value
-			{
-				if (strcmp(de_SerializedContainer[1].c_str(), SceneName_) == 0)
-				{
-					std::cout << std::endl;
-					return true;
-				}
-			}
-		}
-		std::cout << std::endl;
-	}
+	//loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
+	//pugi::xml_node root = CurrentDoc->first_child();
+	//std::cout << root.name() << std::endl;
+	//for (pugi::xml_node node : root.children("Scene"))
+	//{
+	//	std::cout << node.name() << std::endl;
+	//	pugi::xml_attribute_iterator it;
+	//	std::string de_SerializedContainer[2];
+	//	for (it = node.attributes().begin(); it != node.attributes().end(); it++)
+	//	{
+	//		std::string attributeName = it->name();
+	//		if (strcmp(attributeName.c_str(), "SceneNumber") == 0)
+	//		{
+	//			std::cout << " " << it->name();
+	//			std::cout << " = " << it->as_string();
+	//			de_SerializedContainer[0] = it->as_string();
+	//		}
+	//		if (strcmp(attributeName.c_str(), "SceneName") == 0)
+	//		{
+	//			std::cout << " " << it->name();
+	//			std::cout << " = " << it->as_string();
+	//			de_SerializedContainer[1] = it->as_string();
+	//		}
+	//		if (strcmp(de_SerializedContainer[0].c_str(), std::to_string(SceneIndex_).c_str()) == 0) // comparing the first attribute with my SceneIndex value
+	//		{
+	//			if (strcmp(de_SerializedContainer[1].c_str(), SceneName_) == 0)
+	//			{
+	//				std::cout << std::endl;
+	//				return true;
+	//			}
+	//		}
+	//	}
+	//	std::cout << std::endl;
+	//}
+	//return false;
 	return false;
 }
 
-bool DGEngine::core::Serializer::GameObjectExist(int ID_)
+bool Serializer::GameObjectExist(int ID_)
 {
 	if (ID_!=0)
 	{
@@ -308,7 +309,7 @@ bool DGEngine::core::Serializer::GameObjectExist(int ID_)
 	}
 }
 
-bool DGEngine::core::Serializer::loadFile(const char* FileDirectory_)
+bool Serializer::loadFile(const char* FileDirectory_)
 {
 
 	pugi::xml_parse_result result = CurrentDoc->load_file(FileDirectory_);
@@ -318,114 +319,114 @@ bool DGEngine::core::Serializer::loadFile(const char* FileDirectory_)
 
 
 
-void DGEngine::core::Serializer::Update()
+void Serializer::Update()
 {
 	//if HasFileChange == true or whatever
 	//Assign existing ID to existing gameObj
 	//if existing GameObj exist and no ID exist make an ID for that existing game object
 }
 
-void DGEngine::core::Serializer::AddGameObject(GameObject* OBJ_) // 
+void Serializer::AddGameObject(GameObject* OBJ_) // 
 {
-	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
-	if (GameObjectExist(OBJ_->getID() == false))
-	{
-		CreateID(OBJ_); // Create ID for Object that doesn't have one
-		if (isChildNodeExist("GameObjectsInfo") == true)
-		{
-			auto rootNode = CurrentDoc->child("GameObjectsInfo"); //get to this node, then locate yourself to the last entry in that node
+	//loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
+	//if (GameObjectExist(OBJ_->getID() == false))
+	//{
+	//	CreateID(OBJ_); // Create ID for Object that doesn't have one
+	//	if (isChildNodeExist("GameObjectsInfo") == true)
+	//	{
+	//		auto rootNode = CurrentDoc->child("GameObjectsInfo"); //get to this node, then locate yourself to the last entry in that node
 
-			auto gameObjectNode = rootNode.append_child(pugi::node_element);
-			gameObjectNode.set_name("GameObject");
-			gameObjectNode.append_attribute("ID") = OBJ_->getID();
-			gameObjectNode.append_attribute("Name") = OBJ_->getNameIdentifier().c_str();
-
-
-			auto classNode = gameObjectNode.append_child(pugi::node_element);
-			classNode.set_name("Class");
-			classNode.append_attribute("Name") = OBJ_->getClassName().c_str();
+	//		auto gameObjectNode = rootNode.append_child(pugi::node_element);
+	//		gameObjectNode.set_name("GameObject");
+	//		gameObjectNode.append_attribute("ID") = OBJ_->getID();
+	//		gameObjectNode.append_attribute("Name") = OBJ_->getNameIdentifier().c_str();
 
 
-			auto ParentNode = gameObjectNode.append_child(pugi::node_element);
-			ParentNode.set_name("ParentOf");
+	//		auto classNode = gameObjectNode.append_child(pugi::node_element);
+	//		classNode.set_name("Class");
+	//		classNode.append_attribute("Name") = OBJ_->getClassName().c_str();
 
-			auto childNode = gameObjectNode.append_child(pugi::node_element);
-			childNode.set_name("ChildOf");
 
-			CurrentDoc->save_file(directoryHandler.GetIntialDirectories()[2].c_str(), PUGIXML_TEXT(""));
-		}
-	}
+	//		auto ParentNode = gameObjectNode.append_child(pugi::node_element);
+	//		ParentNode.set_name("ParentOf");
+
+	//		auto childNode = gameObjectNode.append_child(pugi::node_element);
+	//		childNode.set_name("ChildOf");
+
+	//		CurrentDoc->save_file(directoryHandler.GetIntialDirectories()[2].c_str(), PUGIXML_TEXT(""));
+	//	}
+	//}
 }
 
-void DGEngine::core::Serializer::AddGameObject(int ID_)
+void Serializer::AddGameObject(int ID_)
 {
-	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
+	/*loadFile(directoryHandler.GetIntialDirectories()[2].c_str());*/
 }
 
-void DGEngine::core::Serializer::AssignID(std::list<GameObject*> OBJ_List) //this will only assign ID to object/class that already exist, this will only be called in the beginning of the Engine load
+void Serializer::AssignID(std::list<GameObject*> OBJ_List) //this will only assign ID to object/class that already exist, this will only be called in the beginning of the Engine load
 {
-	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
+	//loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
 
-	pugi::xml_node root = CurrentDoc->first_child();
-	std::cout << root.name() << std::endl;
-	
-	for (pugi::xml_node node : root.children("GameObject"))
-	{
-		if (node.first_attribute().as_int()!=0)
-		{
-			gameObjectIDs.push_back(node.first_attribute().as_int());
-		}
-	}
+	//pugi::xml_node root = CurrentDoc->first_child();
+	//std::cout << root.name() << std::endl;
+	//
+	//for (pugi::xml_node node : root.children("GameObject"))
+	//{
+	//	if (node.first_attribute().as_int()!=0)
+	//	{
+	//		gameObjectIDs.push_back(node.first_attribute().as_int());
+	//	}
+	//}
 
-	if (gameObjectIDs.size()<OBJ_List.size())
-	{
-		/// if there are less GameObject in memory then in save data, we can choose to create more GameObjects or remove the data
-		///remove the data
-		std::vector<int>::iterator it = gameObjectIDs.begin();
-		for (pugi::xml_node node : root.children("GameObject"))
-		{
-			if (node.first_attribute().as_int()!=*it|| node.first_attribute().as_int()!=0 && it==gameObjectIDs.end())
-			{
-				//first remove node's children 
-				CurrentDoc->child(node.name()).remove_children();
-				//then remove that node itself
-				CurrentDoc->remove_child(node.name());
-			}
-			if (it!=gameObjectIDs.end())
-			{
-				it++;
-			}
-		}
-	}
-	else if (gameObjectIDs.size()>OBJ_List.size())
-	{
-		/// if there are more GameObject in memory then in save data, we can choose to remove the GameObjects from memory or add the data
-		///add the data
-		/// if the last xml_node doesn't exist to the current 
-		/// with the way this is set up, it will probably load the information during the program being ran, but not actually create the objects in the program. Only till the next program run.
-		/// Ill have to decide if im okay with this design choice
-		std::vector<int>::iterator it = gameObjectIDs.begin();
-		pugi::xml_node::iterator nodeIt = CurrentDoc->children().begin();
-		for (it; it != gameObjectIDs.end(); it++)
-		{
-			int ID = *it;
-			if (nodeIt==CurrentDoc->children().end())
-			{
-				AddGameObject(ID);
-			}
-			else
-			{
-				nodeIt++;
-			}
-		}
-	}
-	else if (gameObjectIDs.size()==OBJ_List.size())
-	{
-		/// there is the same amount of GameObject in memory as in save data
-	}
+	//if (gameObjectIDs.size()<OBJ_List.size())
+	//{
+	//	/// if there are less GameObject in memory then in save data, we can choose to create more GameObjects or remove the data
+	//	///remove the data
+	//	std::vector<int>::iterator it = gameObjectIDs.begin();
+	//	for (pugi::xml_node node : root.children("GameObject"))
+	//	{
+	//		if (node.first_attribute().as_int()!=*it|| node.first_attribute().as_int()!=0 && it==gameObjectIDs.end())
+	//		{
+	//			//first remove node's children 
+	//			CurrentDoc->child(node.name()).remove_children();
+	//			//then remove that node itself
+	//			CurrentDoc->remove_child(node.name());
+	//		}
+	//		if (it!=gameObjectIDs.end())
+	//		{
+	//			it++;
+	//		}
+	//	}
+	//}
+	//else if (gameObjectIDs.size()>OBJ_List.size())
+	//{
+	//	/// if there are more GameObject in memory then in save data, we can choose to remove the GameObjects from memory or add the data
+	//	///add the data
+	//	/// if the last xml_node doesn't exist to the current 
+	//	/// with the way this is set up, it will probably load the information during the program being ran, but not actually create the objects in the program. Only till the next program run.
+	//	/// Ill have to decide if im okay with this design choice
+	//	std::vector<int>::iterator it = gameObjectIDs.begin();
+	//	pugi::xml_node::iterator nodeIt = CurrentDoc->children().begin();
+	//	for (it; it != gameObjectIDs.end(); it++)
+	//	{
+	//		int ID = *it;
+	//		if (nodeIt==CurrentDoc->children().end())
+	//		{
+	//			AddGameObject(ID);
+	//		}
+	//		else
+	//		{
+	//			nodeIt++;
+	//		}
+	//	}
+	//}
+	//else if (gameObjectIDs.size()==OBJ_List.size())
+	//{
+	//	/// there is the same amount of GameObject in memory as in save data
+	//}
 }
 
-void DGEngine::core::Serializer::CreateID(GameObject* OBJ_)
+void Serializer::CreateID(GameObject* OBJ_)
 {
 	//Lets just make sure that the ID doesn't already exist
 	//then assign that ID in our XML file
@@ -446,10 +447,10 @@ void DGEngine::core::Serializer::CreateID(GameObject* OBJ_)
 	
 }
 
-void DGEngine::core::Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
+void Serializer::AddAnimationState(GameObject* OBJ_, const char* imageSrc_)
 {
-	loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
-	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;
+	/*loadFile(directoryHandler.GetIntialDirectories()[2].c_str());
+	std::map<pugi::xml_document*, pugi::xml_node>::iterator it;*/
 
 	//Creates new file
 	//if (stat(combinedPath.c_str(), &status) != 0)
@@ -501,13 +502,13 @@ void DGEngine::core::Serializer::AddAnimationState(GameObject* OBJ_, const char*
 	//	
 	//}
 }
-void DGEngine::core::Serializer::RemoveAnimation(std::string tagID_, const char* imageSrc_)
+void Serializer::RemoveAnimation(std::string tagID_, const char* imageSrc_)
 {
 }
-void DGEngine::core::Serializer::CreateScene(int currentScene_, const char* sceneName_)
+void Serializer::CreateScene(int currentScene_, const char* sceneName_)
 {
 	/*I need to load the file if it exist*/
-	loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
+	/*loadFile(directoryHandler.GetIntialDirectories()[1].c_str());
 	if (SceneExist(currentScene_, sceneName_) == false)
 	{
 		if (isChildNodeExist("ScenesInfo") == true)
@@ -526,22 +527,22 @@ void DGEngine::core::Serializer::CreateScene(int currentScene_, const char* scen
 	else
 	{
 		std::cout << sceneName_ << ": this scene already exist" << std::endl;
-	}
+	}*/
 }
 
-void DGEngine::core::Serializer::SaveScene(int currentScene_, Scene& Scenedata_)
+void Serializer::SaveScene(int currentScene_, Scene& Scenedata_)
 {
 }
 
-void DGEngine::core::Serializer::RemoveScene(const char* sceneName)
+void Serializer::RemoveScene(const char* sceneName)
 {
 }
 
-void DGEngine::core::Serializer::DeserializeAnimations()
+void Serializer::DeserializeAnimations()
 {
 }
 
-void DGEngine::core::Serializer::DeserializeScenes()
+void Serializer::DeserializeScenes()
 {
 }
 

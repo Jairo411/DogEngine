@@ -84,7 +84,6 @@ class Scene;
 		std::list<pugi::xml_document*> document_list;
 		std::vector<int> gameObjectIDs;
 		std::string cwd; //Current working directory 
-		DirectoryHandler directoryHandler; // Directory Handler Class
 		static Serializer* instance;
 	};
 #endif // !ANIMATORSERIALIZER

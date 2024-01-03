@@ -1,5 +1,5 @@
 #include "Observer.h"
-#include "../GameObjects/GameObject.h"
+#include "../DogEnginePlayground/GameObjects/GameObject.h"
 
 std::list<IObserver*>IObserverable::observerableContainer = std::list<IObserver*>();
 

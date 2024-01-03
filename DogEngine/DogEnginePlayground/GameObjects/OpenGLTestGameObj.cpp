@@ -4,7 +4,7 @@ OpenGLTestGameObj::OpenGLTestGameObj()
 {
 	square = Square2D();
 	square.SetImage("C:/Users/jalbm/Pictures/Saved Pictures/homenumerodos.png");	
-	square =DogEngine::rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->CreateSquare(square);
+	square =DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<OpenGLRenderer*>()->CreateSquare(square);
 }
 
 OpenGLTestGameObj::~OpenGLTestGameObj()

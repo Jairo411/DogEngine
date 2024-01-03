@@ -1,5 +1,5 @@
 #include "Skeleton.h"
-#include "../DogEngine/DogEngine.h"
+#include "../../DogEngine/DogEngine.h"
 
 Skeleton::Skeleton() : transform(C_Transform2D()) , collider(C_RectangleCollider()) , sprite(C_Sprite())
 {
@@ -175,7 +175,7 @@ void Skeleton::Update(float DeltaTime_)
 
 void Skeleton::Render()
 {
-	switch (DogEngine::rendererManager->getRenderValue())
+	switch (DGEngine::core::DogEngine::rendererManager->getRenderValue())
 	{
 	default:
 		break;

@@ -1,5 +1,5 @@
 #include "ObjectManager.h"
-#include "../GameObjects/Object.h"
+#include "../../DogEnginePlayground/GameObjects/GameObject.h"
 
 ObjectManager* ObjectManager::instance = nullptr;
 

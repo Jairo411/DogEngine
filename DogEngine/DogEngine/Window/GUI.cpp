@@ -9,7 +9,6 @@ GUI::GUI()
 	buttons = 0;
 	io = nullptr;
 	consoleapp = ConsoleApp();
-	fileDirectory = DirectoryHandler();
 }
 
 GUI::~GUI()
@@ -20,13 +19,13 @@ GUI::~GUI()
 void GUI::OnCreate()
 {
 	ImGui::CreateContext();
-	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
+	switch (DGEngine::core::DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;
 
 	case 0: //SDL
-		ImGuiSDL::Initialize(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
+		ImGuiSDL::Initialize(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 800, 600);
 		break;
 	case 1://OPENGL
 		break;
@@ -93,7 +92,7 @@ void GUI::Render()
 	ImGui::ShowDemoWindow();
 	ImGui::Render();
 	ImGuiSDL::Render(ImGui::GetDrawData());
-	SDL_RenderPresent(DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer());
+	SDL_RenderPresent(DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer());
 
 }
 

@@ -1,7 +1,7 @@
 #ifndef TILESETMANAGER_H
 #define TILESETMANAGER_H
 #define MAXSPRITEMAPS_H 200
-#include "../../../TextureManager/InfoStructs.h"
+#include "../../../../DogEngine/TextureManager/InfoStructs.h"
 class DogEngine;
 class TileSetManager
 {
