@@ -11,9 +11,9 @@ class Component
 public:
 	inline Component() { Parent = nullptr; }
 	inline virtual ~Component() { Parent = nullptr; }
-	virtual void OnCreate(BaseObj* owner) = 0;
+	virtual void OnCreate(BaseObj* owner_) = 0;
 	virtual void OnDestroy() = 0;
-	virtual void Update(float deltatime) =0; // I want this to always be defined in there child classes.
+	virtual void Update(float deltatime_) =0; // I want this to always be defined in there child classes.
 	virtual void Render() =0;
 protected:
 		BaseObj* Parent; 
