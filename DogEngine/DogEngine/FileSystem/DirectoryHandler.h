@@ -9,6 +9,19 @@
 /* 13-07-2023
 * This is my FileDirectoryHandler class, this class creates,navigates and stores important file information. 
 * The types of files that I want to create mainly are, Dogengine files. These files are mainly plain txt.
+* 09-01-2023
+* This class should be a singleton.
+* 
+* With using the std::filesystem library, it should be kept in mind with either being crossplatform for windows 
+* or just for windows. I have no idea what that exactly looks like, but that means making sure, that your filedirectory properly traverses 
+* the windows operating system file system. With no hiccups. Or it is essentially able to exist purely through C++ code.
+* 
+* 
+* I think so of my functions should be removed, the ones that accept or return vectors. I think it is too much and not necessary because my this class
+* doesn't need that many directories to be held in reference. 
+* 
+* There will be a directory to store engine metadata
+* There will be a directory to save current scene game state 
 */
 namespace fs = std::filesystem; //typedef, name alias
 	class DirectoryHandler{

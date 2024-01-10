@@ -14,6 +14,18 @@ void Animator2D::OnCreate(BaseObj* owner_)
 	Parent = owner_;
 }
 
+void Animator2D::OnDestroy()
+{
+}
+
+void Animator2D::Update(float deltatime_)
+{
+}
+
+void Animator2D::Render()
+{
+}
+
 //bool Animator::IntiAnimations(const char* AnimSetName_, const char* relativeDir_, const char firstChar_)
 //{
 //	/*

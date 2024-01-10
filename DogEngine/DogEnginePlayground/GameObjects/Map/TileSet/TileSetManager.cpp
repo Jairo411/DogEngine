@@ -21,7 +21,7 @@ TileSetManager::~TileSetManager()
 {
 }
 
-void TileSetManager::CreateSpriteMap(SpriteMapInfo info)
+void TileSetManager::CreateSpriteMap(SpriteMapData info)
 {
 	//DogEngine::textureManager->GetInstance()->CreateMapSprite();
 }

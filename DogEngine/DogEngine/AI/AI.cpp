@@ -1,4 +1,4 @@
-#include "AI.h"
+//#include "AI.h"
 
 //AIManager* AIManager::instance = nullptr;
 //std::list<GameObject*> AIManager::AIAgentList = std::list<GameObject*>();

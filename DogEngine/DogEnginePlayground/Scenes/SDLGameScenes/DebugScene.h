@@ -1,6 +1,7 @@
 #ifndef DEBUGSCENE_H
 #define DEBUGSCENE_H
 #include "../../../DogEngine/SceneManager/Scene.h"
+#include "../../../DogEngine/DogEngine.h"
 class DebugScene : public Scene
 {
 public:
@@ -16,5 +17,6 @@ public:
 	 virtual void Update(float deltaTime_);
 	 virtual void Render(); 
 	 int currentScene;
+
 };
 #endif

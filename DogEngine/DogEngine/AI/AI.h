@@ -1,5 +1,5 @@
-#ifndef AI_H
-#define AI_H
+//#ifndef AI_H
+//#define AI_H
 //#include "../../Math/Vec2.h"
 //#include "../../Math/Converter.h"
 //#include "../../Physics/Collider.h"
@@ -68,4 +68,4 @@
 //	static AIManager* instance;
 //
 //};
-#endif //AI_H
+//#endif //AI_H

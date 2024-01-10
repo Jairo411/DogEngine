@@ -22,7 +22,7 @@
 #include "FileSystem/EngineSerializer.h"
 #include "ResourceManager/ResourceAllocator.h""
 #include "Input/ComputerInput.h"
-#include "Input//Controller.h"
+#include "Input/Controller.h"
 /*
 * 2022/8/19 
 *  This is where the dog engine lives....
@@ -32,7 +32,6 @@ class Scene1;
 class Scene2;
 class DebugScene;
 class AIManager; //remove this 
-namespace DGEngine::core {
 	class DogEngine : public ThreadAble {
 	public:
 		~DogEngine();
@@ -79,7 +78,7 @@ namespace DGEngine::core {
 		static DogEngine* instance;
 		std::vector<std::thread> threadContainer;
 	};
-}
+
 
 /*
 * 

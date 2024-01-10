@@ -94,9 +94,9 @@ SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Textur
 	return tex;
 }
 
-SpriteMapInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
+SpriteMapData TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
 {
-	SpriteMapInfo mapInfo;
+	SpriteMapData mapInfo;
 	SDL_Rect srcRect;
 	SDL_Texture* tempIMG;
 	SDL_Texture* mapSprite = tex_;
@@ -133,7 +133,7 @@ SpriteMapInfo TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int
 	return mapInfo;
 }
 
-SpriteMapInfo TextureManager::CreateMapSprite(SpriteMapInfo info_, SDL_Texture* spriteMapTexture_)
+SpriteMapData TextureManager::CreateMapSprite(SpriteMapData info_, SDL_Texture* spriteMapTexture_)
 {
 
 

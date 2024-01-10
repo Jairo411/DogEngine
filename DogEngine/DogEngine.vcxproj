@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DogEnginePlayground\Components\C_AI.cpp" />
     <ClCompile Include="DogEnginePlayground\Components\C_2DTransform.cpp" />
     <ClCompile Include="DogEnginePlayground\Scenes\SDLGameScenes\DebugScene.cpp" />
     <ClCompile Include="DogEnginePlayground\GameObjects\Map\TileSet\TileSetManager.cpp" />
@@ -153,9 +154,8 @@
     <ClCompile Include="DogEnginePlayground\Components\C_Animation.cpp" />
     <ClCompile Include="DogEnginePlayground\Components\C_Sprite.cpp" />
     <ClCompile Include="DogEngine\FileSystem\EngineSerializer.cpp" />
-    <ClCompile Include="DogEngine\Animator\Animation.cpp" />
-    <ClCompile Include="DogEngine\AnimationHandler\AnimationHandler.cpp" />
-    <ClCompile Include="DogEngine\Animator\Animator.cpp" />
+    <ClCompile Include="DogEnginePlayground\Components\Frames2D.cpp" />
+    <ClCompile Include="DogEnginePlayground\Components\Animator2D.cpp" />
     <ClCompile Include="DogEnginePlayground\Components\C_CircleCollider.cpp" />
     <ClCompile Include="DogEnginePlayground\Components\C_RectangleCollider.cpp" />
     <ClCompile Include="DesignPattern\Observer.cpp" />
@@ -176,9 +176,7 @@
     <ClCompile Include="DogEngine\Window\GUI.cpp" />
     <ClCompile Include="DogEngine\Math\Converter.cpp" />
     <ClCompile Include="DogEnginePlayground\GameObjects\Skeleton.cpp" />
-    <ClCompile Include="DogEngine\AI\AI.cpp" />
     <ClCompile Include="DogEngine\Math\Vec2.cpp" />
-    <ClCompile Include="DogEngine\AI\Grid.cpp" />
     <ClCompile Include="DogEngine\Physics\Collider.cpp" />
     <ClCompile Include="DogEngine\DogEngine.cpp" />
     <ClCompile Include="DogEnginePlayground\GameObjects\GameObject.cpp" />
@@ -188,14 +186,13 @@
     <ClCompile Include="DogEngine\EventSystem\Event.cpp" />
     <ClCompile Include="DogEngine\SceneManager\SceneManager.cpp" />
     <ClCompile Include="DogEnginePlayground\Scenes\SDLGameScenes\Scene0.cpp" />
-    <ClCompile Include="DogEngine\AI\PriorityQueue\A_Star_Node_Priority.cpp" />
-    <ClCompile Include="DogEngine\AI\PriorityQueue\node.cpp" />
     <ClCompile Include="DogEngine\TextureManager\TextureManager.cpp" />
     <ClCompile Include="DogEnginePlayground\GameObjects\Map\TileSet\Tiles.cpp" />
     <ClCompile Include="DogEngine\Timer\Timer.cpp" />
     <ClCompile Include="DogEngine\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DogEnginePlayground\Components\C_AI.h" />
     <ClInclude Include="DogEnginePlayground\Components\C_2DTransform.h" />
     <ClInclude Include="DogEnginePlayground\Scenes\SDLGameScenes\DebugScene.h" />
     <ClInclude Include="DogEngine\DogEngineDefinitions.h" />
@@ -208,9 +205,8 @@
     <ClInclude Include="DogEnginePlayground\Components\C_Animation.h" />
     <ClInclude Include="DogEnginePlayground\Components\C_Sprite.h" />
     <ClInclude Include="DogEngine\FileSystem\EngineSerializer.h" />
-    <ClInclude Include="DogEngine\Animator\Animation.h" />
-    <ClInclude Include="DogEngine\AnimationHandler\AnimationHandler.h" />
-    <ClInclude Include="DogEngine\Animator\Animator.h" />
+    <ClInclude Include="DogEnginePlayground\Components\Frames2D.h" />
+    <ClInclude Include="DogEnginePlayground\Components\Animator2D.h" />
     <ClInclude Include="DogEnginePlayground\Components\C_CircleCollider.h" />
     <ClInclude Include="DogEnginePlayground\Components\C_RectangleCollider.h" />
     <ClInclude Include="DogEnginePlayground\Components\Component.h" />
@@ -242,10 +238,8 @@
     <ClInclude Include="DogEngine\Window\DearGUI\imstb_truetype.h" />
     <ClInclude Include="DogEngine\Window\GUI.h" />
     <ClInclude Include="DogEngine\Math\Converter.h" />
-    <ClInclude Include="DogEngine\AI\AI.h" />
     <ClInclude Include="DogEnginePlayground\GameObjects\Skeleton.h" />
     <ClInclude Include="DogEngine\Math\Vec2.h" />
-    <ClInclude Include="DogEngine\AI\Grid.h" />
     <ClInclude Include="DogEngine\Physics\Collider.h" />
     <ClInclude Include="DogEngine\DogEngine.h" />
     <ClInclude Include="DogEnginePlayground\GameObjects\GameObject.h" />
@@ -255,8 +249,6 @@
     <ClInclude Include="DogEngine\SceneManager\Scene.h" />
     <ClInclude Include="DogEngine\SceneManager\SceneManager.h" />
     <ClInclude Include="DogEnginePlayground\Scenes\SDLGameScenes\Scene0.h" />
-    <ClInclude Include="DogEngine\AI\PriorityQueue\A_Star_Node_Priority.h" />
-    <ClInclude Include="DogEngine\AI\PriorityQueue\node.h" />
     <ClInclude Include="DogEngine\TextureManager\TextureManager.h" />
     <ClInclude Include="DogEnginePlayground\GameObjects\Map\TileSet\Tiles.h" />
     <ClInclude Include="DogEngine\Timer\Timer.h" />
@@ -272,7 +264,6 @@
   <ItemGroup>
     <Xml Include="DogEngine\EngineData\EngineData.xml" />
     <Xml Include="DogEngine\GameEngineSaveInfo\EngineData\EngineSaveData.xml" />
-    <Xml Include="DogEngine\GameEngineSaveInfo\GameObjects\GameObjectData.xml" />
     <Xml Include="DogEngine\GameEngineSaveInfo\Scenes\SceneData.xml" />
   </ItemGroup>
   <ItemGroup>

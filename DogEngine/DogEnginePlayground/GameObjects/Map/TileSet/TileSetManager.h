@@ -17,7 +17,7 @@ public:
 	/// Load spriteMap Info create spritemap
 	/// </summary>
 	/// <param name="info"></param>
-	void CreateSpriteMap(SpriteMapInfo info);
+	void CreateSpriteMap(SpriteMapData info);
 
 private:
 	TileSetManager();
@@ -25,6 +25,6 @@ private:
 	void Decrement();
 	int index;
 	TileSetManager* instance;
-	SpriteMapInfo maps[MAXSPRITEMAPS_H];
+	SpriteMapData maps[MAXSPRITEMAPS_H];
 };
 #endif // !TILESETMANAGER_H

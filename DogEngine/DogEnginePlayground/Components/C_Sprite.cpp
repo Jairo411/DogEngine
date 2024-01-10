@@ -1,7 +1,7 @@
 #include "C_Sprite.h"
 #include "../../DogEngine/DogEngine.h"
 #include "../GameObjects/GameObject.h"
-C_Sprite::C_Sprite() : objCast(nullptr) ,info(SpriteInfo())
+C_Sprite::C_Sprite() : objCast(nullptr) ,info(Spritedata())
 {
 }
 
@@ -42,7 +42,7 @@ void C_Sprite::Render()
 	DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(tex, &spriteRect.first, &spriteRect.second, info.angle, &info.center, info.flip);
 }
 
-void C_Sprite::SetInfo(const SpriteInfo info_)
+void C_Sprite::SetInfo(const Spritedata info_)
 {
 	info = info_;
 }

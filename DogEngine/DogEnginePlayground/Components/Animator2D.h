@@ -8,7 +8,12 @@
 #include <map>
 #include <string>
 #include "Component.h"
-
+/*Animator2D class
+* 
+* Will store animations 
+* Will play and change animations depending on state.
+* Can have some sort of editing of animations if needed.
+*/
 class Animator2D : Component
 {
 public:
@@ -19,6 +24,15 @@ public:
 	virtual void OnDestroy();
 	virtual void Update(float deltatime_);
 	virtual void Render();
+
+	/* 09-01-2023
+	* To-Do 
+	* Create a statemachine to hold all the information of changes of state of varying animations of gameobjects.
+	* 
+	* Animations (which could also be called sprites) themselves should be stored inside a container, probably a struct containing:
+	* Animation length (in some sort of time unit)
+	* The Images that make the animation in some sort of container.
+	*/
 };
 
 

@@ -7,23 +7,23 @@
 
 
 
-DGEngine::core::DogEngine * DGEngine::core::DogEngine::instance = nullptr;
-RendererManager* DGEngine::core::DogEngine::rendererManager = nullptr;
-Timer* DGEngine::core::DogEngine::timer = nullptr;
-Window* DGEngine::core::DogEngine::window = nullptr;
-Serializer* DGEngine::core::DogEngine::engineSerializer = nullptr;
-TextureManager* DGEngine::core::DogEngine::textureManager = nullptr;
-SceneManager* DGEngine::core::DogEngine::sceneManager = nullptr;
-ThreadManager* DGEngine::core::DogEngine::threadManager = nullptr;
-AudioManager* DGEngine::core::DogEngine::audioManager = nullptr;
-ObjectManager* DGEngine::core::DogEngine::gameObjectManager = nullptr;
-EventManager* DGEngine::core::DogEngine::eventManager = nullptr;
+DogEngine * DogEngine::instance = nullptr;
+RendererManager* DogEngine::rendererManager = nullptr;
+Timer* DogEngine::timer = nullptr;
+Window* DogEngine::window = nullptr;
+Serializer* DogEngine::engineSerializer = nullptr;
+TextureManager* DogEngine::textureManager = nullptr;
+SceneManager* DogEngine::sceneManager = nullptr;
+ThreadManager* DogEngine::threadManager = nullptr;
+AudioManager* DogEngine::audioManager = nullptr;
+ObjectManager* DogEngine::gameObjectManager = nullptr;
+EventManager* DogEngine::eventManager = nullptr;
 
-bool DGEngine::core::DogEngine::initialized = false;
-bool DGEngine::core::DogEngine::isRunning = false;
+bool DogEngine::initialized = false;
+bool DogEngine::isRunning = false;
 
 
-DGEngine::core::DogEngine::DogEngine()
+DogEngine::DogEngine()
 {
 	
 	IntializeEngineSystems();
@@ -58,7 +58,7 @@ DGEngine::core::DogEngine::DogEngine()
 	OnCreate("DogEngine 0.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
-void DGEngine::core::DogEngine::IntializeEngineSystems()
+void DogEngine::IntializeEngineSystems()
 {
 	///Singletons instantiations
 	timer = Timer::GetInstance();
@@ -74,7 +74,7 @@ void DGEngine::core::DogEngine::IntializeEngineSystems()
 	initialized = true;
 }
 
-void DGEngine::core::DogEngine::CurrentSetUp()
+void DogEngine::CurrentSetUp()
 {
 	MouseInput* mouseInput = new MouseInput();
 	KeyBoardInput* keyBoardInput = new KeyBoardInput();
@@ -104,7 +104,7 @@ void DGEngine::core::DogEngine::CurrentSetUp()
 
 
 //Should see if I really need this function
-bool DGEngine::core::DogEngine::setIsRunning(bool tempBool_)
+bool DogEngine::setIsRunning(bool tempBool_)
 {
 	isRunning = tempBool_;
 	return isRunning;
@@ -112,13 +112,13 @@ bool DGEngine::core::DogEngine::setIsRunning(bool tempBool_)
 
 
 
-DGEngine::core::DogEngine::~DogEngine()
+DogEngine::~DogEngine()
 {
 
 
 }
 
-DGEngine::core::DogEngine* DGEngine::core::DogEngine::GetInstance()
+DogEngine* DogEngine::GetInstance()
 {
 	if (instance==nullptr)
 	{
@@ -127,7 +127,7 @@ DGEngine::core::DogEngine* DGEngine::core::DogEngine::GetInstance()
 	return instance;
 }
 
-void DGEngine::core::DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
+void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int height, bool fullscreen)
 {
 	//Window and render intialization
 	window->setWindowProperties(posx, posy, width, height,SDL_WINDOWPOS_CENTERED);
@@ -139,7 +139,7 @@ void DGEngine::core::DogEngine::OnCreate(const char* title, int posx, int posy, 
 	window->SetGUI(engineGUI);
 
 
-	std::shared_ptr<Scene0> tScene = std::make_shared<Scene0>();
+	std::shared_ptr<DebugScene> tScene = std::make_shared<DebugScene>();
 	unsigned int gameSceneID = sceneManager->Add(tScene);
 
 
@@ -153,10 +153,10 @@ void DGEngine::core::DogEngine::OnCreate(const char* title, int posx, int posy, 
 
 
 }
-void DGEngine::core::DogEngine::OnDestroy()
+void DogEngine::OnDestroy()
 {
 }
-void DGEngine::core::DogEngine::GameLoop()
+void DogEngine::GameLoop()
 {
 	currentRenderFlag = rendererManager->getRenderValue();
 	while (isRunning == true)
@@ -205,24 +205,24 @@ void DGEngine::core::DogEngine::GameLoop()
 	clean();
 }
 
-void DGEngine::core::DogEngine::HandleEvents()
+void DogEngine::HandleEvents()
 {
 	eventManager->HandleEvents();
 }
 
-void DGEngine::core::DogEngine::Update(float deltaTime_)
+void DogEngine::Update(float deltaTime_)
 {
 	sceneManager->Update(deltaTime_);
 	window->Update(deltaTime_);
 }
 
 
-void DGEngine::core::DogEngine::handleCollisions()
+void DogEngine::handleCollisions()
 {
 	sceneManager->handleCollison();
 }
 
-void DGEngine::core::DogEngine::CheckRenderer()
+void DogEngine::CheckRenderer()
 {
 	if (currentRenderFlag != rendererManager->getRenderValue())
 	{
@@ -231,7 +231,7 @@ void DGEngine::core::DogEngine::CheckRenderer()
 	}
 }
 
-void DGEngine::core::DogEngine::Render()
+void DogEngine::Render()
 {
 	if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::SDLAPI))
 	{
@@ -249,7 +249,7 @@ void DGEngine::core::DogEngine::Render()
 	sceneManager->Render();
 }
 
-void DGEngine::core::DogEngine::clean()
+void DogEngine::clean()
 {
 	SDL_DestroyWindow(window->getWindowContext());
 	SDL_DestroyRenderer(rendererManager->GetRenderAPI<SDLRenderer*>()->GetRenderer());
@@ -258,7 +258,7 @@ void DGEngine::core::DogEngine::clean()
 	std::cout << "Engine Cleaned" << std::endl;
 }
 
-void DGEngine::core::DogEngine::RunInstructions()
+void DogEngine::RunInstructions()
 {
 	while (getThreadAssignment() == true)
 	{

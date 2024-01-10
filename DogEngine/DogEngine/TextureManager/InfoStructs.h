@@ -15,7 +15,7 @@
 /// </summary>
 
 using namespace DGEngine::core;	
-struct SpriteInfo
+struct Spritedata
 {
 	int width;
 	int height;
@@ -24,7 +24,7 @@ struct SpriteInfo
 	SpriteRect rect; 
 	SDL_Point center;
 	SDL_RendererFlip flip;
-	void operator = (const SpriteInfo spriteInfoB)
+	void operator = (const Spritedata spriteInfoB)
 	{
 		this->width = spriteInfoB.width;
 		this->height = spriteInfoB.height;
@@ -59,7 +59,7 @@ struct TextureInfo
 /// SizeOfCut is the area of the cut to be made out of each specific cut. 
 /// sprites is a collection of pointers to the images in the heap. 
 /// </summary>
-struct SpriteMapInfo
+struct SpriteMapData
 {
 	int width;
 	int height;
@@ -67,7 +67,7 @@ struct SpriteMapInfo
 	const char* path;
 	std::vector<SDL_Texture*> sprites;
 
-	void operator = (const SpriteMapInfo MapSpriteInfo)
+	void operator = (const SpriteMapData MapSpriteInfo)
 	{
 		this->width = MapSpriteInfo.width;
 		this->height = MapSpriteInfo.height;

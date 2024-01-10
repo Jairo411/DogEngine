@@ -29,9 +29,9 @@ class DogEngine;
 		///Will Take an SDL_Texture that is loaded and cut a portion of it and return a new texture
 		static SDL_Texture* CreateTextureFromTexture(SDL_Rect sRect, SDL_Texture* source);
 		///Create a sprite map 
-		static SpriteMapInfo CreateMapSprite(SDL_Texture* tex_, int width_, int height_, int SizeOfCut_, int sourceX_, int sourceY_);
+		static SpriteMapData CreateMapSprite(SDL_Texture* tex_, int width_, int height_, int SizeOfCut_, int sourceX_, int sourceY_);
 		///Create a sprite map 
-		static SpriteMapInfo CreateMapSprite(SpriteMapInfo info_, SDL_Texture* spriteMaptexture_);
+		static SpriteMapData CreateMapSprite(SpriteMapData info_, SDL_Texture* spriteMaptexture_);
 	private:
 		TextureManager();
 		~TextureManager();

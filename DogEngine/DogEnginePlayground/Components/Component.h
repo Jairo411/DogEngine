@@ -9,7 +9,7 @@ class BaseObj;
 class Component
 {
 public:
-	inline Component() { Parent = nullptr; }
+	inline Component() { Parent = nullptr; }	
 	inline virtual ~Component() { Parent = nullptr; }
 	virtual void OnCreate(BaseObj* owner_) = 0;
 	virtual void OnDestroy() = 0;

@@ -5,6 +5,11 @@ AI::AI()
 
 }
 
+AI::~AI()
+{
+
+}
+
 void AI::OnCreate(BaseObj* owner_)
 {
 

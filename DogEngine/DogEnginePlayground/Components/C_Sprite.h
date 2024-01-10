@@ -19,12 +19,12 @@ public:
 	virtual void Update(float deltaTime_);
 	virtual void Render();
 	///full path to the file directory 
-	void SetInfo(const SpriteInfo info_);
+	void SetInfo(const Spritedata info_);
 	void SetTexture(std::string fileDirectory_ ); //Remove this
 	void SetImageSize(SDL_Rect src_); // Remove this
  private:
 	SpriteRect spriteRect;
-	SpriteInfo info;
+	Spritedata info;
 	GameObject* objCast;
 	ResoureAllocator<TextureInfo> assetInfo; //Remove this 
 };

@@ -15,8 +15,7 @@ enum class EVENTPRIORITY
 {
 	NONE = 0,
 	LOW,
-	MEDIUM,
-	HIGH,
+	HIGH
 };
 struct EventInfo
 {
@@ -43,47 +42,7 @@ struct ListenerInfo
 };
 
 
-////Remove this once you're done testing input 
-//class KeyBoardInput : public EventListener
-//{
-//public:
-//	KeyBoardInput();
-//	~KeyBoardInput();
-//	virtual void OnCreate() final;
-//	virtual void OnDestroy() final;
-//	virtual void HandleEvents() final;
-//};
-//
-////Remove this once you're done testing input 
-//class MouseInput : public EventListener
-//{
-//public:
-//	MouseInput();
-//	~MouseInput();
-//	virtual void OnCreate() final;
-//	virtual void OnDestroy() final;
-//	virtual void HandleEvents() final;
-//	int GetWheel();
-//private:
-//	float mouseX, mouseY;
-//	float wheel;
-//	bool click;
-//	
-//};
-////Remove this once you're done testing input 
-//class Controller : public EventListener
-//{
-//public:
-//	Controller();
-//	~Controller();
-//	virtual void OnCreate() final;
-//	virtual void OnDestroy() final;
-//	virtual void HandleEvents() final;
-//private:
-//	bool click;
-//	float L_Analog;
-//	float R_Analog;
-//};
+
 
 
 #endif // !KEYINPUT_H*/
