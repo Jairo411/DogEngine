@@ -53,11 +53,11 @@ public:
 	///Set position
 	virtual void setPosition(int x_, int y_) final;
 	///Set position
-	virtual void setPosition(DGEngine::core::vector2 position_) final;
+	virtual void setPosition(vector2 position_) final;
 	///Returns the Pivot Position (the middle) of the object position
-	virtual DGEngine::core::vector2 getPivotPosition() final;
+	virtual vector2 getPivotPosition() final;
 	///Returns the actual Sreen Coordinate position
-	virtual DGEngine::core::vector2 getPosition() final;
+	virtual vector2 getPosition() final;
 	//Template Component Stuff
 	template <typename T, typename ... Args > void AddComponent(Args&& ... args_ ) // Move Constructor 
 	{
@@ -112,8 +112,8 @@ public:
 protected:
 	virtual void UpdatePostion() final;
 	C_Transform2D transform; //transform that holds all object data , orientation , position and size. 
-	DGEngine::core::vector2 position;   // the x and y position.
-	DGEngine::core::vector2 pivotPosition; // stands for Pivot Position -> moved the origin of the gameObject to the middle of its rect.
+	vector2 position;   // the x and y position. //remove this
+	vector2 pivotPosition; // stands for Pivot Position -> moved the origin of the gameObject to the middle of its rect.
 private: 
 	std::vector<Component*> components;
 };

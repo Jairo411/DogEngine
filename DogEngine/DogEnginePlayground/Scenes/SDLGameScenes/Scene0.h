@@ -1,7 +1,7 @@
 #ifndef SCENE0_H
 #define SCENE0_H
 #include "../../../DogEngine/SceneManager/Scene.h"
-class DogEngine;
+#include "../../../DogEngine/DogEngine.h"
 class Scene0: public Scene
 {
 public:

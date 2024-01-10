@@ -33,7 +33,7 @@ void C_RectangleCollider::OnDestroy()
 
 void C_RectangleCollider::Update(float deltatime)
 {
-	DGEngine::core::vector2 newPos;
+	vector2 newPos;
 	newPos.x = objCast->getPosition().x * deltatime;
 	newPos.y = objCast->getPosition().y * deltatime;
 	newPos.x += (float)offsetX;
@@ -43,7 +43,7 @@ void C_RectangleCollider::Update(float deltatime)
 
 void C_RectangleCollider::Render()
 {	
-	DGEngine::core::DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
+	DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawRect(&SquareCol);
 }
 
 void C_RectangleCollider::SetSize(int width_, int height_)

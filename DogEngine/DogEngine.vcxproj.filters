@@ -49,6 +49,7 @@
     <ClCompile Include="DogEnginePlayground\GameObjects\Map\TileSet\TileSetManager.cpp" />
     <ClCompile Include="DogEnginePlayground\Scenes\SDLGameScenes\DebugScene.cpp" />
     <ClCompile Include="DogEnginePlayground\Components\C_AI.cpp" />
+    <ClCompile Include="DogEnginePlayground\GameObjects\Spinningplanet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DogEnginePlayground\Components\Animator2D.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="DogEnginePlayground\GameObjects\Map\TileSet\TileSetManager.h" />
     <ClInclude Include="DogEnginePlayground\Scenes\SDLGameScenes\DebugScene.h" />
     <ClInclude Include="DogEnginePlayground\Components\C_AI.h" />
+    <ClInclude Include="DogEnginePlayground\GameObjects\Spinningplanet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Window\DearGUI\imgui.ini" />

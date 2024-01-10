@@ -128,7 +128,7 @@ Window::~Window()
 
 void Window::Render()
 {
-	switch (DGEngine::core::DogEngine::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 		default:
 		break;

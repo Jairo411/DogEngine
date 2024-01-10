@@ -456,7 +456,7 @@ void Square2D::OnCreate()
 
 void Square2D::SetImage(const char* imageSrc_)
 {
-	texture = DGEngine::core::DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
+	texture = DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
 }
 
 void Square2D::SetProjection(glm::mat4 projection_)
@@ -512,7 +512,7 @@ void Particle::OnCreate()
 
 void Particle::SetImage(const char* imageSrc_)
 {
-	texture = DGEngine::core::DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
+	texture = DogEngine::textureManager->GetInstance()->LoadSurface(imageSrc_);
 }
 
 void Particle::SetProjection(glm::mat4 projection_)

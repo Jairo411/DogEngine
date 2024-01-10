@@ -66,7 +66,7 @@ void Rogue::Update(float dt_)
 void Rogue::Render()
 {
 	/*This is in the loop*/
-	switch (DGEngine::core::DogEngine::rendererManager->GetInstance()->getRenderValue())
+	switch (DogEngine::rendererManager->GetInstance()->getRenderValue())
 	{
 	default:
 		break;

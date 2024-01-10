@@ -68,7 +68,7 @@ class AIManager; //remove this
 		/// <summary>
 		/// This function, contains specific dogEngine setting already chosen to help with development speed as a tinkering ground.
 		/// </summary>
-		void CurrentSetUp();
+		void SetupInput();
 		static bool isRunning; // should remove static keyword
 		static bool initialized; // should remove static keyword
 		int currentRenderFlag = NULL;

@@ -27,7 +27,7 @@ public:
  private:
 	int width, height;
 	int offsetX, offsetY;
-	DGEngine::core::vector2 position; // the position of the rectangle, should be relative to the gameObject position 
+	vector2 position; // the position of the rectangle, should be relative to the gameObject position 
 	SDL_Rect SquareCol;
 	GameObject* objCast; // each component should have a GameObject pointer, since all my components are suppose to connect to a game
 };

@@ -175,7 +175,7 @@ void Skeleton::Update(float DeltaTime_)
 
 void Skeleton::Render()
 {
-	switch (DGEngine::core::DogEngine::rendererManager->getRenderValue())
+	switch (DogEngine::rendererManager->getRenderValue())
 	{
 	default:
 		break;

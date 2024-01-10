@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SDL_main.h>
 
-DGEngine::core::DogEngine *engine = nullptr;
+DogEngine *engine = nullptr;
 
 int main(int argc,char * argv[]) {
 	

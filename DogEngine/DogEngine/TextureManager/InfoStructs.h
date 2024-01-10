@@ -14,7 +14,6 @@
 /// flip is a enum value
 /// </summary>
 
-using namespace DGEngine::core;	
 struct Spritedata
 {
 	int width;

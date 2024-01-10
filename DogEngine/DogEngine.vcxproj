@@ -190,6 +190,7 @@
     <ClCompile Include="DogEnginePlayground\GameObjects\Map\TileSet\Tiles.cpp" />
     <ClCompile Include="DogEngine\Timer\Timer.cpp" />
     <ClCompile Include="DogEngine\Window\Window.cpp" />
+    <ClCompile Include="DogEnginePlayground\GameObjects\Spinningplanet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DogEnginePlayground\Components\C_AI.h" />
@@ -253,6 +254,7 @@
     <ClInclude Include="DogEnginePlayground\GameObjects\Map\TileSet\Tiles.h" />
     <ClInclude Include="DogEngine\Timer\Timer.h" />
     <ClInclude Include="DogEngine\Window\Window.h" />
+    <ClInclude Include="DogEnginePlayground\GameObjects\Spinningplanet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DogEngine\Renderer\ShadersScripts\ParticleF.glsl" />

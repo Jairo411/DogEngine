@@ -12,14 +12,14 @@ public:
 	virtual void OnDestroy() final;
 	virtual void Update(float deltaTime_) final;
 	virtual void Render() final;
-	void SetMatrix(DGEngine::core::Mat3 matrix_);
-	DGEngine::core::Mat3 GetMatrix();
+	void SetMatrix(Mat3 matrix_);
+	Mat3 GetMatrix();
 	//Future matrix functions 
 	//Translate()
 	//Scale()
 	//Rotate about origin(). 
 	//Relfect().
 private:
-	DGEngine::core::Mat3 matrix2D;
+	Mat3 matrix2D;
 };
 #endif // !C_TRANSFORM_H

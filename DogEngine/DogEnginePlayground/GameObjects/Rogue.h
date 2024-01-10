@@ -23,7 +23,7 @@ public:
 	 //new Code
 	 virtual void Render() override;
 	 virtual void Update(float dt_) override;
-	 enum class AnimationStates
+	 enum class AnimationStates //Remove this
 	 {
 		 ATTACK0 = 0,
 		 ATTACK1,

@@ -32,7 +32,7 @@ private:
 	float radius;
 	float area;
 	float circumfrence;
-	DGEngine::core::vector2 origin;
+	vector2 origin;
 	GameObject* ObjCast; 
 };
 #endif // !CIRCLECOLLIDER_H

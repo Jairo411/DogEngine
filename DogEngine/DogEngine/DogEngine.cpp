@@ -7,7 +7,7 @@
 
 
 
-DogEngine * DogEngine::instance = nullptr;
+DogEngine* DogEngine::instance = nullptr;
 RendererManager* DogEngine::rendererManager = nullptr;
 Timer* DogEngine::timer = nullptr;
 Window* DogEngine::window = nullptr;
@@ -18,7 +18,6 @@ ThreadManager* DogEngine::threadManager = nullptr;
 AudioManager* DogEngine::audioManager = nullptr;
 ObjectManager* DogEngine::gameObjectManager = nullptr;
 EventManager* DogEngine::eventManager = nullptr;
-
 bool DogEngine::initialized = false;
 bool DogEngine::isRunning = false;
 
@@ -31,8 +30,7 @@ DogEngine::DogEngine()
 	///instantiations
 	engineGUI = new GUI();
 	event_ = new SDL_Event();
-
-
+	
 	/*
 	*	threadManager->setMaxAmountOfThreads(4);
 	* threadManager->AddThreadAble(this);	
@@ -53,8 +51,9 @@ DogEngine::DogEngine()
 	*/
 	
 
-
-	CurrentSetUp();
+	audioManager->AddSong("./Assets/Audio/Press Play  (16-Bit Arcade No Copyright Music).wav");
+	
+	SetupInput();
 	OnCreate("DogEngine 0.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 }
 
@@ -74,7 +73,7 @@ void DogEngine::IntializeEngineSystems()
 	initialized = true;
 }
 
-void DogEngine::CurrentSetUp()
+void DogEngine::SetupInput()
 {
 	MouseInput* mouseInput = new MouseInput();
 	KeyBoardInput* keyBoardInput = new KeyBoardInput();
@@ -139,7 +138,7 @@ void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int h
 	window->SetGUI(engineGUI);
 
 
-	std::shared_ptr<DebugScene> tScene = std::make_shared<DebugScene>();
+	std::shared_ptr<Scene> tScene = std::make_shared<DebugScene>();
 	unsigned int gameSceneID = sceneManager->Add(tScene);
 
 
@@ -235,7 +234,7 @@ void DogEngine::Render()
 {
 	if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::SDLAPI))
 	{
-		//till I figure out why my engine keeps crashing when I do SDL clear calls here, ill leave this empty. 
+		rendererManager->GetRenderAPI<SDLRenderer*>()->RenderClear();
 	}
 	else if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::OPENGLAPI))
 	{
@@ -247,6 +246,16 @@ void DogEngine::Render()
 
 	}
 	sceneManager->Render();
+
+	if (rendererManager->GetInstance()->getRenderValue()== static_cast<int>(RenderAPI::SDLAPI))
+	{
+		rendererManager->GetRenderAPI<SDLRenderer*>()->RenderPresent();
+	}
+	else if (rendererManager->GetInstance()->getRenderValue() == static_cast<int>(RenderAPI::VULKANAPI))
+	{
+
+	}
+
 }
 
 void DogEngine::clean()

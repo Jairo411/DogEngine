@@ -1,35 +1,8 @@
-﻿  C_AI.cpp
-  C_2DTransform.cpp
+﻿  DebugScene.cpp
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  AnimationSet.cpp
-  C_Animation.cpp
-  C_Sprite.cpp
+  DogEngine.cpp
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(27,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(28,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(42,18): error C3083: 'DogEngine': the symbol to the left of a '::' must be a type
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(42,29): error C2039: 'rendererManager': is not a member of 'DGEngine::core'
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\Renderer.h(32,11): message : see declaration of 'DGEngine::core'
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(42,29): error C2065: 'rendererManager': undeclared identifier
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_Sprite.cpp(42,86): error C2059: syntax error: '>'
-  Frames2D.cpp
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\Frames2D.cpp(41,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Animator2D.cpp
-  C_CircleCollider.cpp
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(48,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(50,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(55,13): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_CircleCollider.cpp(59,14): warning C4305: '*=': truncation from 'double' to 'float'
-  C_RectangleCollider.cpp
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_RectangleCollider.cpp(46,18): error C3083: 'DogEngine': the symbol to the left of a '::' must be a type
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_RectangleCollider.cpp(46,29): error C2039: 'rendererManager': is not a member of 'DGEngine::core'
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\Renderer.h(32,11): message : see declaration of 'DGEngine::core'
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_RectangleCollider.cpp(46,29): error C2065: 'rendererManager': undeclared identifier
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\Components\C_RectangleCollider.cpp(46,86): error C2059: syntax error: '>'
-  Generating Code...
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.cpp(198,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  DogEngine.vcxproj -> C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\x64\Debug\DogEngine.exe

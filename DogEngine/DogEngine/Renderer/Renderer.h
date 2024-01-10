@@ -29,7 +29,6 @@ class DogEngine;
 
 typedef std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderers;
 
-namespace DGEngine::core {
 	class RendererManager
 	{
 	public:
@@ -101,7 +100,7 @@ namespace DGEngine::core {
 		static int R_Value;
 		int frames;
 	};
-}
+
 
 class SDLRenderer 
 {

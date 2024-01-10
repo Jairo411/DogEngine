@@ -1,22 +1,20 @@
-#include "DebugScene.h"
+﻿#include "DebugScene.h"
+#include "../../../DogEngine/DogEngine.h"
 
-SpriteMapData galaxySpriteMapData = SpriteMapData();
-SDL_Rect srcRect = SDL_Rect();
-SDL_Rect dstRect = SDL_Rect();
-TextureInfo info = TextureInfo();
+
 DebugScene::DebugScene()
 {	
 	/*Building my debugscene
 	*/
 	
-	galaxySpriteMapData.height = 300;
-	galaxySpriteMapData.width = 15000;
-	galaxySpriteMapData.sizeOfCut = 300;
-	galaxySpriteMapData.path = "C:/Users/jalbm/Documents/Visual Studio 2022/DogEngine/DogEngine/Assets/Map Sprites/galaxy_sp.png";
 
 	
-	info = DogEngine
+	//planet0 = SpinningPlanet();
 
+
+	AudioManager::GetInstance()->playFirstSong();
+	
+	stillplanet = TextureManager::LoadTexture("./Assets/Debug_p/stillplanet.png").texture;
 }
 
 DebugScene::~DebugScene()
@@ -54,15 +52,15 @@ void DebugScene::Update(float deltaTime_)
 
 void DebugScene::Render()
 {
-
+	SDL_SetRenderDrawColor(RendererManager::GetInstance()->GetRenderAPI<SDLRenderer*>()->GetRenderer(), 0, 0, 0, 0);
+	
+	RendererManager::GetInstance()->GetRenderAPI<SDLRenderer*>()->DrawTexture(stillplanet, NULL, NULL);
 	
 
-	//DGEngine::core::DogEngine::GetInstance()->rendererManager->GetRenderAPI<SDLRenderer*>()->SetRenderDrawColour(200, 200, 200, 200);
-	//DGEngine::core::DogEngine::GetInstance()->rendererManager->GetRenderAPI<SDLRenderer*>()->RenderClear();
 
-	//DGEngine::core::DogEngine::GetInstance()->rendererManager->GetRenderAPI<SDLRenderer*>()->DrawTexture(info.texture, &srcRect, &dstRect);
 
-	//DGEngine::core::DogEngine::GetInstance()->rendererManager->GetRenderAPI<SDLRenderer*>()->RenderPresent();
+
+	
 
 }
 
