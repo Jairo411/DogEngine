@@ -20,13 +20,12 @@ public:
 	virtual void Render();
 	///full path to the file directory 
 	void SetInfo(const Spritedata info_);
-	void SetTexture(std::string fileDirectory_ ); //Remove this
+	void SetTexture(const char* p_ ); //Remove this
 	void SetImageSize(SDL_Rect src_); // Remove this
  private:
-	SpriteRect spriteRect;
-	Spritedata info;
+	Spritedata spriteData;
 	GameObject* objCast;
-	ResoureAllocator<TextureInfo> assetInfo; //Remove this 
+	//ResoureAllocator<TextureInfo> assetInfo; //Remove this 
 };
 
 

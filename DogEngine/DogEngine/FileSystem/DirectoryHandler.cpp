@@ -1,21 +1,57 @@
 #include "DirectoryHandler.h"
 
-DirectoryHandler::DirectoryHandler()
+DirectoryHandler* DirectoryHandler::instance = nullptr;
+
+
+DirectoryHandler* DirectoryHandler::GetInstance()
 {
-	currentPath = std::string();
-	files = std::vector<std::string>();
+	if (instance == nullptr)
+	{
+		instance = new DirectoryHandler();
+	}
+	return instance;
 }
 
-DirectoryHandler::DirectoryHandler(std::string directoryPath_)
+DirectoryHandler::DirectoryHandler()
 {
-	currentPath = directoryPath_;
+	currentPath = nullptr;
+	currentFiles = std::vector<const char*>();
+	savedDirectories = std::vector<const char*>();
+
+	std::string fileP = __FILE__;
+	
+	assert(FileExceptionThrower == false);
+
+	for (auto it = fileP.begin(); it < fileP.end(); it++)
+	{
+		if (*it=='/')
+		{
+			//read directory name
+		}
+	}
+
+	/* 
+	* 1. Loop the iterator and delete all characters till you reach ./DogEngine 
+	*  the reason you do this, is because you want your game engine to be able to be set up on any computer. 
+	*  because it will take the full path from where your DirectoryHandler.cpp file is and then get to where the dog engine folder 
+	*  is.
+	* 2. Once you've reach this directory path, create two folders DogEngineSaveDirectory and DogEngineGameSaveDirectory
+	* 
+	*	DogEngineSaveDirectory will be created, ./DogEngine/DogEngine/dogEngineSaveDirectory 
+	*	DogEngineGameSaveDirectory will be created ./DogEngine/DogEnginePlayground
+	* 3. 
+	*/
+
+
+	
 }
+
 
 DirectoryHandler::~DirectoryHandler()
 {
 }
 
-std::string DirectoryHandler::GetCurrentPath()
+const char * DirectoryHandler::GetCurrentPath()
 {
 	return currentPath;
 }
@@ -23,7 +59,7 @@ std::string DirectoryHandler::GetCurrentPath()
 std::vector<std::string> DirectoryHandler::GetDirectories()
 {
 	std::vector<std::string> directories;
-	for (const auto& entry : fs::directory_iterator(currentPath.c_str()))
+	for (const auto& entry : fs::directory_iterator(currentPath))
 	{
 		std::string filenameStr = entry.path().filename().string();
 		if (entry.is_directory())
@@ -37,7 +73,7 @@ std::vector<std::string> DirectoryHandler::GetDirectories()
 std::vector<std::string> DirectoryHandler::GetDirectoryContents()
 {
 	std::vector<std::string> contents;
-	for (const auto& entry : fs::directory_iterator(currentPath.c_str()))
+	for (const auto& entry : fs::directory_iterator(currentPath))
 	{
 		std::string filenameStr = entry.path().filename().string();
 		if (entry.is_regular_file()) // files
@@ -50,24 +86,14 @@ std::vector<std::string> DirectoryHandler::GetDirectoryContents()
 
 void DirectoryHandler::SetDirectory(const char* dp_)
 {
-	directories.push_back(dp_);
+	currentPath = dp_;
 }
 
-void DirectoryHandler::SetDirectory(const std::vector<std::string> dp_)
-{
-	directories = dp_;
-}
-
-void DirectoryHandler::SetDirectory(const std::vector<std::string> dp_, const std::vector<std::string> fp_)
-{
-	directories = dp_;
-	files = fp_;
-}
 
 
 void DirectoryHandler::PrintDirectoryContents()
 {
-	for (const auto& entry: fs::directory_iterator(currentPath.c_str()))
+	for (const auto& entry: fs::directory_iterator(currentPath))
 	{
 		std::string filenameStr = entry.path().filename().string();
 		if (entry.is_directory())
@@ -87,7 +113,7 @@ void DirectoryHandler::PrintDirectoryContents()
 
 void DirectoryHandler::PrintDirectoryPath()
 {
-	const auto& entry = fs::directory_entry(currentPath.c_str());
+	const auto& entry = fs::directory_entry(currentPath);
 	std::cout << "Dir: " << entry.path().string();
 }
 
@@ -137,12 +163,12 @@ bool DirectoryHandler::operator!=(std::vector<std::string> directories_)
 	return false;
 }
 
-bool DirectoryHandler::operator=(std::string path_)
+bool DirectoryHandler::operator=(const char* path_)
 {
 	if (fs::exists(path_))
 	{
 		currentPath = path_;
-		std::cout << "Moved to " << currentPath.c_str() << std::endl;
+		std::cout << "Moved to " << currentPath << std::endl;
 	}
 	return false;
 }

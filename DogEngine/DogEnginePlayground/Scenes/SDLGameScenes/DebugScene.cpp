@@ -13,8 +13,13 @@ DebugScene::DebugScene()
 
 
 	AudioManager::GetInstance()->playFirstSong();
+	SDL_RendererInfo* info = new SDL_RendererInfo();
+	SDL_GetRenderDriverInfo(0, info);
+
+	std::cout << info->name << std::endl;
+	stillplanet = TextureManager::LoadTexture("./Assets/Debug_p/stillplanet.png");
+
 	
-	stillplanet = TextureManager::LoadTexture("./Assets/Debug_p/stillplanet.png").texture;
 }
 
 DebugScene::~DebugScene()

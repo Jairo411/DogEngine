@@ -23,9 +23,9 @@ TextureManager* TextureManager::GetInstance()
 	return instance;
 }
 
-SDL_Surface* TextureManager::LoadSurface(const char* filename_)
+SDL_Surface* TextureManager::LoadSurface(const char* p_)
 {
-	SDL_Surface* tempSurface = IMG_Load(filename_);
+	SDL_Surface* tempSurface = IMG_Load(p_);
 
 	assert(tempSurface != NULL); // if the sdlSurface returns null its and the file directory is correct, its most likely because IMG_LOAD doesn't support the picture file format that you gave it. 
 
@@ -53,12 +53,11 @@ SDL_Surface* TextureManager::LoadSurface(const char* filename_)
 	return tempSurface;
 }
 
-TextureInfo TextureManager::LoadTexture(const char * filename)
+SDL_Texture * TextureManager::LoadTexture(const char * p_)
 {	
-	TextureInfo textInfo;
 	SDL_Surface* tempSurface;
 	int height, width;
-	tempSurface = IMG_Load(filename);
+	tempSurface = IMG_Load(p_);
 	
 	
 	if (tempSurface==nullptr)
@@ -68,18 +67,10 @@ TextureInfo TextureManager::LoadTexture(const char * filename)
 
 
 	SDL_Texture* tex = DogEngine::rendererManager->GetInstance()->GetRenderAPI<SDLRenderer*>()->CreateTextureFromSurface(tempSurface);
-	SDL_QueryTexture(tex,NULL,NULL,&width,&height);
-	textInfo.height = height;
-	textInfo.width = width;
-	textInfo.texture = tex;
-	SDL_FreeSurface(tempSurface);
 	
-	return textInfo;
+	return tex;
 }
-TextureInfo TextureManager::LoadTexture(TextureInfo info_)
-{
-	return TextureInfo();
-}
+
 SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Texture* source)
 {
 	/*Loads part of the texture*/
@@ -94,6 +85,8 @@ SDL_Texture * TextureManager::CreateTextureFromTexture(SDL_Rect sRect,SDL_Textur
 	return tex;
 }
 
+
+
 SpriteMapData TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int height_,int SizeOfCut_,int sourceX_,int sourceY_)
 {
 	SpriteMapData mapInfo;
@@ -105,8 +98,8 @@ SpriteMapData TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int
 	int height = height_;
 	int sourceX, sourceY;
 
-	mapInfo.width = width;
-	mapInfo.height = height;
+//	mapInfo.width = width;
+//	mapInfo.height = height;
 	
 	width = width / SizeOfCut_;
 	height = height / SizeOfCut_;
@@ -133,43 +126,46 @@ SpriteMapData TextureManager::CreateMapSprite(SDL_Texture* tex_, int width_, int
 	return mapInfo;
 }
 
-SpriteMapData TextureManager::CreateMapSprite(SpriteMapData info_, SDL_Texture* spriteMapTexture_)
+SpriteMapData TextureManager::CreateMapSprite(SDL_Texture* spriteMaptexture_)
 {
-
-
-	int width;
+	int width; 
 	int height;
-	int sourceX = 0;
-	int sourceY = 0;
-	SDL_Rect sourceRect;
+	int source_X = 0;
+	int source_Y = 0;
+
+	SDL_Rect sourceRect = SDL_Rect();
 	SDL_Texture* tempImage;
+	SpriteMapData info;
 
-	width = info_.width;
-	height = info_.height;
-
-
-	sourceRect.x = sourceX;
-	sourceRect.y = sourceY;
+	
 
 
+	SDL_QueryTexture(spriteMaptexture_, nullptr, nullptr, &width, &height);
 
-	// r stands for row
+	
+
+	///r is the size of the cut on the row size
+
 	for (int r = 0; r < width; r++)
 	{
-		// c stands for column
+	///c is the size of the cut on the column size
 		for (int c = 0; c < height; c++)
 		{
-			sourceX = sourceX;
-			sourceY = sourceY;
+			source_X = source_X;
+			source_Y = source_Y;
 
-			sourceX = sourceX * r;
-			sourceY = sourceY * c;
+			sourceRect.x = source_X;
+			sourceRect.y = source_Y;
 
-			tempImage = TextureManager::CreateTextureFromTexture(sourceRect, spriteMapTexture_);
-			info_.sprites.push_back(tempImage);
+			source_X = source_X * r;
+			source_Y = source_Y * c;
+
+			tempImage = TextureManager::CreateTextureFromTexture(sourceRect, spriteMaptexture_);
+			info.sprites.push_back(tempImage);
 		}
 	}
-	return info_;
+
+	return info;
 }
 
 

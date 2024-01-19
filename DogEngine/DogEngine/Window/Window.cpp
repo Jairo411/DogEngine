@@ -158,7 +158,7 @@ void Window::Render()
 void Window::Update(float deltaTime_)
 {
 	
-	GUIContext->Update(deltaTime_);
+	//GUIContext->Update(deltaTime_);
 }
 
 void Window::HandleEvents()

@@ -1,8 +1,49 @@
-﻿  DebugScene.cpp
+﻿  SDLRenderer.cpp
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp(35,2): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+C:\Dev\SDL2-2.0.12\include\SDL_render.h(131,8): message : see declaration of 'SDL_Renderer'
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp(36,2): warning C4150: deletion of pointer to incomplete type 'SDL_Window'; no destructor called
+C:\Dev\SDL2-2.0.12\include\SDL_video.h(90,16): message : see declaration of 'SDL_Window'
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp(95,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp(95,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp(95,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp(95,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  OpenGLRenderer.cpp
+  Generating Code...
+  ThreadManager.cpp
+  GUI.cpp
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Window\GUI.cpp(49,2): warning C4065: switch statement contains 'default' but no 'case' labels
+  Window.cpp
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Window\GUI.h(199): warning C4717: 'ConsoleApp::TextEditCallbackStub': recursive on all control paths, function will cause runtime stack overflow
+  Collider.cpp
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(143,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(144,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(201,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(210,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(211,7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(215,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(217,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(233,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Physics\Collider.cpp(235,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   DogEngine.cpp
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(23,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.cpp(198,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.cpp(197,11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Main.cpp
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  Map.cpp
+  SceneManager.cpp
+  TextureManager.cpp
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\EventSystem\EventManager.h(65,34): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\DogEngine.h(22,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\TextureManager\TextureManager.cpp(59,6): warning C4101: 'height': unreferenced local variable
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\TextureManager\TextureManager.cpp(59,14): warning C4101: 'width': unreferenced local variable
   DogEngine.vcxproj -> C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\x64\Debug\DogEngine.exe

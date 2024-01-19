@@ -1,7 +1,7 @@
 #ifndef TILESETMANAGER_H
 #define TILESETMANAGER_H
 #define MAXSPRITEMAPS_H 200
-#include "../../../../DogEngine/TextureManager/InfoStructs.h"
+#include "../../../../DogEngine/TextureManager/DataStructs.h"
 class DogEngine;
 class TileSetManager
 {
@@ -16,7 +16,6 @@ public:
 	/// <summary>
 	/// Load spriteMap Info create spritemap
 	/// </summary>
-	/// <param name="info"></param>
 	void CreateSpriteMap(SpriteMapData info);
 
 private:

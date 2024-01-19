@@ -18,19 +18,18 @@ ThreadManager* DogEngine::threadManager = nullptr;
 AudioManager* DogEngine::audioManager = nullptr;
 ObjectManager* DogEngine::gameObjectManager = nullptr;
 EventManager* DogEngine::eventManager = nullptr;
-bool DogEngine::initialized = false;
-bool DogEngine::isRunning = false;
+//GUI* DogEngine::dogEngineGUI = nullptr;
 
 
-DogEngine::DogEngine()
+DogEngine::DogEngine() : isRunning(false) , initialized(false) , currentRenderFlag (NULL), passRenderFlag (NULL)
 {
-	
-	IntializeEngineSystems();
 	isRunning = true;
-	///instantiations
-	engineGUI = new GUI();
-	event_ = new SDL_Event();
+	IntializeEngineSystems();
 	
+	///instantiations
+	//engineGUI = new GUI();
+	event_ = new SDL_Event();
+
 	/*
 	*	threadManager->setMaxAmountOfThreads(4);
 	* threadManager->AddThreadAble(this);	
@@ -96,7 +95,7 @@ void DogEngine::SetupInput()
 	eventManager->AddListener(mouseInfo);
 
 
-	eventManager->OnCreate();
+	//eventManager->OnCreate();
 
 }
 
@@ -133,9 +132,9 @@ void DogEngine::OnCreate(const char* title, int posx, int posy, int width, int h
 	window->SetWindowTitle(title);
 	window->SetFlag(SDL_RENDERER_ACCELERATED); 
 	window->OnCreate();
-	rendererManager->GetInstance()->setWindow(window);
+	rendererManager->GetInstance()->SetWindow(window);
 	rendererManager->GetInstance()->SetRenderer(static_cast<int>(RenderAPI::SDLAPI)); 
-	window->SetGUI(engineGUI);
+	//window->SetGUI(engineGUI);
 
 
 	std::shared_ptr<Scene> tScene = std::make_shared<DebugScene>();
@@ -198,6 +197,8 @@ void DogEngine::GameLoop()
 			Update(positiveTimeValue);
 			timer->Increment_Time_Pass_Since_Update(negativeTimeValue); 		
 		}	
+		HandleEvents();
+		handleCollisions();
 		Render(); 
 		timer->IncrementFrames();
 	}

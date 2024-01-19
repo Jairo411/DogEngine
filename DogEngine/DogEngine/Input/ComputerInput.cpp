@@ -22,7 +22,7 @@ void KeyBoardInput::OnDestroy()
 
 void KeyBoardInput::HandleEvents()
 {
-
+	
 }
 
 std::map<KEYBOARD_MAPPINGS, bool> KeyBoardInput::GetInput()

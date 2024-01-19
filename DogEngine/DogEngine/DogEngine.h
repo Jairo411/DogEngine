@@ -8,10 +8,8 @@
 #include "DogEngineDefinitions.h"
 #include "Renderer/Renderer.h"
 #include "Window/Window.h"
-#include "Window/GUI.h"
 #include "EventSystem/EventManager.h"
 #include "Timer/Timer.h"
-#include "Math/Converter.h"
 #include "SceneManager/SceneManager.h"
 #include "Thread/ThreadManager.h"
 #include "Audio/AudioManager.h"
@@ -34,7 +32,10 @@ class DebugScene;
 class AIManager; //remove this 
 	class DogEngine : public ThreadAble {
 	public:
-		~DogEngine();
+		DogEngine(const DogEngine&) = delete;
+		DogEngine(DogEngine& other) = delete;
+		DogEngine& operator =(const DogEngine&) = delete;
+		DogEngine& operator =(DogEngine&&) = delete;
 		static DogEngine* GetInstance();
 		/// <summary>
 		/// Start the DogEngine Application
@@ -48,35 +49,36 @@ class AIManager; //remove this
 		void CheckRenderer();
 		void Render();
 		void clean();
+		bool setIsRunning(bool tempBool_);
 		virtual void RunInstructions(); //Threading functionality 07-11-2023 needs to be reviewed 
-		static bool	setIsRunning(bool tempBool_);
 		static Window* window; //Engine Functionality 
-		static Timer* timer; //Engine Functitonality 
+		static Timer* timer; //Engine Functionality 
 		static RendererManager* rendererManager; //Engine functionality
 		static TextureManager* textureManager;// Engine functionality
-		//static AIManager* AI_Manager; // this is a component not a engineFunctionality, should be removed 
 		static Serializer* engineSerializer; //Engine functionality 
 		static SceneManager* sceneManager; //Engine functionality 
 		static ThreadManager* threadManager; //Engine functionality
 		static AudioManager* audioManager; //Engine functionality
 		static ObjectManager* gameObjectManager; // Engine functionality
 		static EventManager* eventManager; //Engine functionality
+	//	static GUI* dogEngineGUI;
 	private:
 		DogEngine();
-		//Helper functions 
+		~DogEngine();
+		/// <summary>
+		/// Intialize all singleton dogengine Systems
+		/// </summary>
 		void IntializeEngineSystems();
 		/// <summary>
 		/// This function, contains specific dogEngine setting already chosen to help with development speed as a tinkering ground.
 		/// </summary>
 		void SetupInput();
-		static bool isRunning; // should remove static keyword
-		static bool initialized; // should remove static keyword
-		int currentRenderFlag = NULL;
-		int passRenderFlag = NULL;
-		GUI* engineGUI;
-		SDL_Event* event_;
+		bool isRunning; 
+		bool initialized; //might be the exact same thing as isRunning
+		int currentRenderFlag;
+		int passRenderFlag;
 		static DogEngine* instance;
-		std::vector<std::thread> threadContainer;
+		SDL_Event* event_;
 	};
 
 

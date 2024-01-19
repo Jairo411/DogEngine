@@ -1,10 +1,10 @@
 #ifndef ENGINESERIALIZER
 #define ENGINESERIALIZER
+#include "../DogEngineDefinitions.h"
+#include "../PugiXML/pugixml.hpp"
 #include <fstream>
 #include <filesystem>
 #include <assert.h>
-#include "../DogEngineDefinitions.h"
-#include "../PugiXML/pugixml.hpp"
 #include<sys/stat.h>
 #include<sys/types.h>
 #include <iostream>
@@ -14,10 +14,6 @@
 #include <queue>
 #include <algorithm>
 #include "DirectoryHandler.h"
-
-/*
-* 
-*/
 
 class GameObject;
 class Scene;

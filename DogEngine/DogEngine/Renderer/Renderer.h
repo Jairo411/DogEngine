@@ -13,34 +13,33 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "../../DogEngine/DogEngineDefinitions.h"
 #include "Shader.h"
+#include "SDLRenderer.h"
+#include "OpenGLRenderer.h"
+#include "VulkanRenderer.h"
 
 /*
 * 8/16/2022
-* Singleton renderermanger interface. 
-* -Handles all rendererAPI calls.
+* Singleton renderermanger system. 
+* Allows me to switch in between different renderers, SDL's 2D basic renderer, opengl and vulkan.
 */
-class OpenGLRenderer;
-class VulkanRenderer;
-class SDLRenderer;
-class GameObject;
+
 class Window;
 class DogEngine;
-
-
 typedef std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderers;
 
 	class RendererManager
 	{
 	public:
+		RendererManager(const RendererManager&) = delete;
 		RendererManager(RendererManager& other) = delete;
-		void operator =(const RendererManager&) = delete;
+		RendererManager operator =(const RendererManager&) = delete;
+		RendererManager operator =(RendererManager&&) = delete;
+		static RendererManager* GetInstance();
 		///Set RenderAPI.
 		void SetRenderer(int numbercase_);
 		//New SetRenderer subroutine 
-		void SetRenderer(RenderAPI api_);
 		///Pass current window context.
-		void setWindow(Window* window_);
-		static RendererManager* GetInstance();
+		void SetWindow(Window* window_);
 		static int getRenderValue();
 		/// Return current rendererAPI.
 		template <typename T>
@@ -91,10 +90,10 @@ typedef std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderers;
 		~RendererManager();
 		RendererManager();
 		static RendererManager* instance;
-		SDL_Window* window;
-		SDLRenderer* SDL_R;
-		OpenGLRenderer* OPGL_R;
-		VulkanRenderer* V_R;
+		SDL_Window* window =nullptr;
+		SDLRenderer* SDL_R = nullptr;
+		OpenGLRenderer* OPGL_R = nullptr;
+		VulkanRenderer* V_R = nullptr;
 		renderers R_Variant;
 		RenderAPI API;
 		static int R_Value;
@@ -102,117 +101,8 @@ typedef std::variant<SDLRenderer*, OpenGLRenderer*, VulkanRenderer*> renderers;
 	};
 
 
-class SDLRenderer 
-{
-public:
-	SDLRenderer();
-	~SDLRenderer();
-	void OnCreate(SDL_Window* window_);
-	void OnDestroy();
-	SDL_Texture* CreateTextureFromSurface(SDL_Surface* surface_);
-	void DrawTexture(SDL_Texture* tex_,SDL_Rect* srcRect_,SDL_Rect* dstRect);
-	void DrawTexture(SDL_Texture* tex_, SDL_Rect* srcRect_, SDL_Rect* dstRect_, double angle_, SDL_Point* center_, SDL_RendererFlip flipFlag_);
-	/// Please learn how the middle Point algorithm actually works in this case. Hard Coded
-	void DrawCircle(float centreX_, float centreY_, float radius_); // I need a better draw Circle function
-	void DrawLine(float startX_,float startY_, float endX_, float endY_);
-	void DrawPoint(int x_, int y_);
-	void DrawRect(SDL_Rect* rect_);
-	void DrawRect(int x_, int y_, int width_, int height_);
-	void SetRenderDrawColour(Uint8 r_, Uint8 g_, Uint8 b_, Uint8 a_);
-	SDL_Renderer* GetRenderer();
-	void RenderClear();
-	void RenderPresent();
-	int getTotalFrames();
-private:
-	SDL_Renderer* rend;
-	SDL_Window* window;
-	int totalFrames;
-};
-
-struct Square2D 
-{
-	Square2D();
-	void OnCreate();
-	void SetImage(const char* imageSrc_);
-	void SetProjection(glm::mat4 projection_);
-	glm::mat4 transform;
-	glm::mat4 projection;
-	unsigned VBO;
-	unsigned VAO;
-	unsigned int projectionLoc;
-	unsigned int transformLoc;
-	unsigned texturePtr;
-	SDL_Surface* texture;
-	ShaderScript* shader;
-};
-
-struct Particle
-{
-	Particle();
-	void OnCreate();
-	void SetImage(const char* imageSrc_);
-	void SetProjection(glm::mat4 projection_);
-
-	unsigned int VBO;
-	unsigned int VAO;
-	unsigned int texturePtr;
-	unsigned int projectionLoc;
-	unsigned int transformLoc;
-	unsigned int nr_particles;
-	unsigned int lastUsedParticle;
-	SDL_Surface* texture;
-	ShaderScript* shader;
-	glm::mat4 projection;
-	glm::mat4 transform;
-	glm::vec3 Position;
-	glm::vec2 Velocity;
-	glm::vec4 colour;
-	float life;
-
-};
-
-//8/16/2022	This interface needs to be reworked.
-class OpenGLRenderer 
-{
-public:
-	OpenGLRenderer();
-	~OpenGLRenderer();
-	void OnCreate();
-	void OnDestroy();
-	void SetWindow(SDL_Window* window_);
-	void SetWindowSize(int width_, int height_);
-	void SetViewPort(int width_, int height_);
-	void RefreshWindow();
-	void Update();
-	glm::mat4 getProjection();
-	Square2D CreateSquare(Square2D square2D_);
-	Particle CreateParticle(Particle particles_);
-	
-
-private:
-	void PrintOpenGL(int* major_, int* minor_);
-	void SetAttributes(int major_, int minor_);
-	void SetContext();
-	glm::mat4 projection;
-	SDL_Window* window;
-	SDL_GLContext* context;
-	GLenum error;
-	int ScreenHeight;
-	int ScreenWidth;
-};
-// Vulkan interface implementation
-class VulkanRenderer
-{
-public:
-	VulkanRenderer();
-	~VulkanRenderer();
-
-	void OnCreate();
-	void OnDestroy();
 
 
-	int ScreenHeight;
-	int ScreenWidth;
-};
+
 
 #endif //RENDERER_H

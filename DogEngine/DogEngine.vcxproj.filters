@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="DogEnginePlayground\Components\Animator2D.cpp" />
-    <ClCompile Include="DogEngine\Math\Converter.cpp" />
     <ClCompile Include="DogEnginePlayground\GameObjects\Skeleton.cpp" />
     <ClCompile Include="DogEngine\Math\Vec2.cpp" />
     <ClCompile Include="DogEngine\Physics\Collider.cpp" />
@@ -50,10 +49,12 @@
     <ClCompile Include="DogEnginePlayground\Scenes\SDLGameScenes\DebugScene.cpp" />
     <ClCompile Include="DogEnginePlayground\Components\C_AI.cpp" />
     <ClCompile Include="DogEnginePlayground\GameObjects\Spinningplanet.cpp" />
+    <ClCompile Include="DogEngine\Renderer\SDLRenderer.cpp" />
+    <ClCompile Include="DogEngine\Renderer\OpenGLRenderer.cpp" />
+    <ClCompile Include="DogEngine\Renderer\VulkanRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DogEnginePlayground\Components\Animator2D.h" />
-    <ClInclude Include="DogEngine\Math\Converter.h" />
     <ClInclude Include="DogEnginePlayground\GameObjects\Skeleton.h" />
     <ClInclude Include="DogEngine\Math\Vec2.h" />
     <ClInclude Include="DogEngine\Physics\Collider.h" />
@@ -97,7 +98,7 @@
     <ClInclude Include="DogEngine\FileSystem\DirectoryHandler.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="DogEngine\ObjectManager\ObjectManager.h" />
-    <ClInclude Include="DogEngine\TextureManager\InfoStructs.h" />
+    <ClInclude Include="DogEngine\TextureManager\DataStructs.h" />
     <ClInclude Include="DogEnginePlayground\Scenes\SDLGameScenes\Scene1.h" />
     <ClInclude Include="DogEngine\Input\Controller.h" />
     <ClInclude Include="DogEngine\Input\ComputerInput.h" />
@@ -114,6 +115,9 @@
     <ClInclude Include="DogEnginePlayground\Scenes\SDLGameScenes\DebugScene.h" />
     <ClInclude Include="DogEnginePlayground\Components\C_AI.h" />
     <ClInclude Include="DogEnginePlayground\GameObjects\Spinningplanet.h" />
+    <ClInclude Include="DogEngine\Renderer\SDLRenderer.h" />
+    <ClInclude Include="DogEngine\Renderer\OpenGLRenderer.h" />
+    <ClInclude Include="DogEngine\Renderer\VulkanRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Window\DearGUI\imgui.ini" />

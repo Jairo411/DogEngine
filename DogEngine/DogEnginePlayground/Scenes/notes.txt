@@ -1,0 +1,16 @@
+NOTE
+Because you are using SDL2 which doesn't have a 3D rendering API for you use, 
+but I could imagine if you set up the math properly by your own means you
+could create your own rendering frame work through the use of SDL2. 
+
+Because you're engine logic is every different from your SDL2 to OpenGL to
+Vulkan logic, I decided that it would be best to separate all scenes into 
+there respective graphics API usage, for easy usage. 
+
+I think porting over one scene from OpenGL to Vulkan is actually possible and
+probably pretty easy in comparsion to any of the 2 serious graphics APIs to
+each other, but porting to SDL2, bro, I don't even know how to articulate the
+pain the ass that would be.
+
+So yeah, different scene folders for different Graphics APIs. 
+

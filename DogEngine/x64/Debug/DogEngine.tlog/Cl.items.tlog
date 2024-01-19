@@ -47,3 +47,6 @@ C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlaygro
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Timer\Timer.cpp;C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\x64\Debug\DogEngine\Timer\Timer.obj
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Window\Window.cpp;C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\x64\Debug\DogEngine\Window\Window.obj
 C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEnginePlayground\GameObjects\Spinningplanet.cpp;C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\x64\Debug\DogEnginePlayground\GameObjects\Spinningplanet.obj
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\SDLRenderer.cpp;C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\x64\Debug\DogEngine\Renderer\SDLRenderer.obj
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\OpenGLRenderer.cpp;C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\x64\Debug\DogEngine\Renderer\OpenGLRenderer.obj
+C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\DogEngine\Renderer\VulkanRenderer.cpp;C:\Users\jalbm\Documents\Visual Studio 2022\DogEngine\DogEngine\x64\Debug\DogEngine\Renderer\VulkanRenderer.obj

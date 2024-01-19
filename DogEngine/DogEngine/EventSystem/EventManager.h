@@ -132,6 +132,7 @@
 				break;
 			case SDL_KEYDOWN:
 				eventInfo.priority = EVENTPRIORITY::HIGH;
+				std::cout << "Key down happened" << std::endl;
 				break;
 			case SDL_KEYUP:
 				eventInfo.priority = EVENTPRIORITY::HIGH;
@@ -141,6 +142,7 @@
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				eventInfo.priority = EVENTPRIORITY::HIGH;
+				std::cout << "Mouse button down happened" << std::endl;
 				break;
 			case SDL_MOUSEBUTTONUP:
 				eventInfo.priority = EVENTPRIORITY::HIGH;
@@ -176,7 +178,7 @@
 			{
 				requestC.push(eventInfo);
 			}
-
+		
 			if (!requestC.empty())
 			{
 				for (auto item : listenerContainer)
